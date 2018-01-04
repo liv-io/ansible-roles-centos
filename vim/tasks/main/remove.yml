@@ -1,0 +1,45 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - vim
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove vim'
+  package:
+    state: 'absent'
+    name: "{{package_name_vim}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - vim
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove vimrc'
+  file:
+    state: 'absent'
+    path: "{{file_path_vimrc}}"
+  tags:
+    - files
+    - remove
+    - main
+    - vim
