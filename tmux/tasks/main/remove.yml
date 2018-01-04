@@ -1,0 +1,45 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - tmux
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove tmux'
+  package:
+    state: 'absent'
+    name: "{{package_name_tmux}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - tmux
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove tmux.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_tmux_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - tmux
