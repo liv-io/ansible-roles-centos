@@ -1,0 +1,8 @@
+---
+
+- name: 'task include config'
+  include: config.yml
+  when: not (hosts_state|match('false|no|disable|quiesce|inactive'))
+  tags:
+    - main
+    - hosts
