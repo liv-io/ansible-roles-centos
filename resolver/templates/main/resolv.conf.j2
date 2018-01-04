@@ -1,0 +1,35 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : resolv.conf
+# Type   : resolver configuration file
+# Role   : resolver
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+# Local domain name
+{% if not (resolver_domain == '') %}
+domain {{(resolver_domain|e)}}
+{% endif %}
+
+# Search list for host-name lookup
+{% if not ((resolver_search == '') or (resolver_search == [])) %}
+search {% for search in resolver_search %}{{(search|e)}}{% if not loop.last %} {% endif %}{% endfor %}
+
+{% endif %}
+
+# Name server IP address
+{% for nameserver in resolver_nameserver|default([]) %}
+{% if (nameserver.comment is defined) and not (nameserver.comment == '') %}
+# {{nameserver.comment}}
+{% endif %}
+nameserver {{nameserver.server}}
+{% endfor %}

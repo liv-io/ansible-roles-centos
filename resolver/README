@@ -1,0 +1,170 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : resolver
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+The resolver configuration file contains information that is read by the
+resolver routines the first time they are invoked by a process. The file is
+designed to be human readable and contains a list of keywords with values that
+provide various types of resolver information.
+The configuration file is considered a trusted source of DNS information
+(e.g., DNSSEC AD-bit information will be returned unmodified from this source).
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: resolver
+    vars:
+      resolver_state: 'install'
+      resolver_domain: 'domain.tld'
+      resolver_nameserver: [{server: '192.168.1.11', comment: 'ns01.domain.tld'},
+                            {server: '192.168.1.12', comment: 'ns02.domain.tld'}]
+      resolver_search: ['domain01.tld', 'domain02.tld']
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: resolver
+    vars:
+      resolver_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  resolver_state
+    Description: Control the state of the role.
+                 'resolv.conf' is a core file and can therefore not be removed.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'install'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Inactive: 'quiesce' | 'inactive'
+
+  resolver_domain
+    Description: Define the 'resolver_domain' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "{{ansible_domain}}"
+    Options    :
+      Examples: 'domain.tld' | 'example.tld'
+      None    : ''
+
+  resolver_nameserver
+    Description: Define the 'resolver_nameserver' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{server: '127.0.0.1', comment: 'Localhost'}]
+    Options    :
+      Examples: [{server: '192.168.1.21', comment: 'ns01.domain.tld'},
+                 {server: '192.168.1.22', comment: 'ns02.domain.tld'}]
+      None    : []
+
+  resolver_search
+    Description: Define the 'resolver_search' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : ["{{ansible_domain}}"]
+    Options    :
+      Examples: ['domain.tld'] | ['domain01.tld', 'domain02.tld'] |
+                ['domain01.tld', 'domain02.tld', 'domain03.tld']
+      None    : []
+
+  resolver_resolv_conf_template
+    Description: Define the template source for 'resolv.conf.j2'.
+                 Any value other than 'main' requires a Jinja2
+                 file to be created. The custom Jinja2 file for an example
+                 configuration called 'example' needs to be placed as follows:
+                 'resolver/templates/example/resolv.conf.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+
+ROLES
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.0
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------
