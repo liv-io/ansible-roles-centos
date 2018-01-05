@@ -1,0 +1,9 @@
+---
+
+motd_state: 'install'
+
+motd_env_name: 'Production'
+
+motd_host_description: ''
+
+motd_motd_template: 'main'
