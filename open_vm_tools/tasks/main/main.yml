@@ -1,0 +1,29 @@
+---
+
+- name: 'task include install'
+  include: install.yml
+  when: not (open_vm_tools_state|match('false|no|remove|quiesce|inactive'))
+  tags:
+    - main
+    - open_vm_tools
+
+- name: 'task include enable'
+  include: enable.yml
+  when: (open_vm_tools_state|match('start|on|enable'))
+  tags:
+    - main
+    - open_vm_tools
+
+- name: 'task include disable'
+  include: disable.yml
+  when: (open_vm_tools_state|match('stop|off|disable'))
+  tags:
+    - main
+    - open_vm_tools
+
+- name: 'task include remove'
+  include: remove.yml
+  when: (open_vm_tools_state|match('false|no|remove'))
+  tags:
+    - main
+    - open_vm_tools

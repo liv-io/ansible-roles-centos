@@ -1,0 +1,32 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - main
+    - open_vm_tools
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start open-vm-tools'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_open_vm_tools}}"
+  tags:
+    - system
+    - enable
+    - main
+    - open_vm_tools
