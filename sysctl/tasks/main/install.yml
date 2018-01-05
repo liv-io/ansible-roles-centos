@@ -1,0 +1,62 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - sysctl
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create sysctl.conf'
+  template:
+    src: "{{file_src_sysctl_conf}}"
+    dest: "{{file_path_sysctl_conf}}"
+    mode: "{{file_mode_sysctl_conf}}"
+    owner: "{{file_owner_sysctl_conf}}"
+    group: "{{file_group_sysctl_conf}}"
+  register: register_sysctl_conf
+  tags:
+    - files
+    - install
+    - main
+    - sysctl
+
+- name: 'file create sysctl.d'
+  file:
+    state: 'directory'
+    path: "{{file_path_sysctl_d}}"
+    mode: "{{file_mode_sysctl_d}}"
+    owner: "{{file_owner_sysctl_d}}"
+    group: "{{file_group_sysctl_d}}"
+  tags:
+    - files
+    - install
+    - main
+    - sysctl
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+- name: 'command set sysctl.conf'
+  shell: "{{command_cmd_set_sysctl}} {{file_path_sysctl_conf}}"
+  with_items: "{{sysctl_all + sysctl_group + sysctl_host + sysctl_dependencies}}"
+  when: (register_sysctl_conf|changed)
+  tags:
+    - commands
+    - config
+    - main
+    - sysctl

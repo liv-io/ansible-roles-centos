@@ -1,0 +1,271 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : sysctl
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+'sysctl' is used to modify kernel parameters at runtime. The parameters
+available are those listed under /proc/sys/. Procfs is required for sysctl
+support in Linux. You can use sysctl to both read and write sysctl data.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - sysctl: all
+    roles:
+      - role: sysctl
+    vars:
+      sysctl_state: 'install'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: sysctl
+    vars:
+      sysctl_state: 'inactive'
+
+CONFIG
+  vars:
+    sysctl_all:
+      - name: 'network-hardening'
+        order: '10'
+        state: 'true'
+        sysctl:
+          - key: 'net.ipv4.tcp_syncookies'
+            value: '1'
+            comment: 'TCP SYN cookie protection'
+          - key: 'net.ipv4.tcp_rfc1337'
+            value: '1'
+            comment: 'TCP time-wait assassination hazards'
+          - key: 'net.ipv4.conf.all.rp_filter'
+            value: '1'
+            comment: 'Reverse path filtering'
+          - key: 'net.ipv4.conf.default.rp_filter'
+            value: '1'
+            comment: 'Reverse path filtering'
+          - key: 'net.ipv4.icmp_echo_ignore_broadcasts'
+            value: '1'
+            comment: 'Smurf attack protection'
+
+    sysctl_dependencies
+      - name: 'ip-forwarding'
+        order: '10'
+        state: 'true'
+        sysctl:
+          - key: 'net.ipv4.ip_forward'
+            value: '1'
+            comment: 'IPv4 forwarding'
+          - key: 'net.ipv6.conf.all.forwarding'
+            value: '1'
+            comment: 'IPv6 forwarding'
+
+    sysctl_group:
+      - name: 'kernel-security'
+        order: '00'
+        state: 'true'
+        sysctl:
+          - key: 'kernel.exec-shield'
+            value: '1'
+            comment: 'ExecShield protection'
+          - key: 'kernel.randomize_va_space'
+            value: '1'
+            comment: 'ASLR full randomization'
+
+    sysctl_host:
+      - name: 'pids'
+        order: '10'
+        state: 'false'
+        sysctl:
+          - key: 'fs.file-max'
+            value: '65535'
+            comment: 'Set max PIDs'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  sysctl_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'install'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Inactive: 'quiesce' | 'inactive'
+
+  sysctl_all
+    Description: Define the 'sysctl_all' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'network-hardening', order: '10',
+                  sysctl: [{key: 'net.ipv4.tcp_syncookies', value: '1', comment: 'TCP SYN cookie protection'},
+                           {key: 'net.ipv4.tcp_rfc1337', value: '1', comment: 'TCP time-wait assassination hazards'},
+                           {key: 'net.ipv4.conf.all.rp_filter', value: '1', comment: 'Reverse path filtering'},
+                           {key: 'net.ipv4.conf.default.rp_filter', value: '1', comment: 'Reverse path filtering'},
+                           {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
+      None    : []
+
+  sysctl_group
+    Description: Define the 'sysctl_group' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'network-hardening', order: '10',
+                  sysctl: [{key: 'net.ipv4.tcp_syncookies', value: '1', comment: 'TCP SYN cookie protection'},
+                           {key: 'net.ipv4.tcp_rfc1337', value: '1', comment: 'TCP time-wait assassination hazards'},
+                           {key: 'net.ipv4.conf.all.rp_filter', value: '1', comment: 'Reverse path filtering'},
+                           {key: 'net.ipv4.conf.default.rp_filter', value: '1', comment: 'Reverse path filtering'},
+                           {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
+      None    : []
+
+  sysctl_group
+    Description: Define the 'sysctl_group' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'network-hardening', order: '10',
+                  sysctl: [{key: 'net.ipv4.tcp_syncookies', value: '1', comment: 'TCP SYN cookie protection'},
+                           {key: 'net.ipv4.tcp_rfc1337', value: '1', comment: 'TCP time-wait assassination hazards'},
+                           {key: 'net.ipv4.conf.all.rp_filter', value: '1', comment: 'Reverse path filtering'},
+                           {key: 'net.ipv4.conf.default.rp_filter', value: '1', comment: 'Reverse path filtering'},
+                           {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
+      None    : []
+
+  sysctl_host
+    Description: Define the 'sysctl_host' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'network-hardening', order: '10',
+                  sysctl: [{key: 'net.ipv4.tcp_syncookies', value: '1', comment: 'TCP SYN cookie protection'},
+                           {key: 'net.ipv4.tcp_rfc1337', value: '1', comment: 'TCP time-wait assassination hazards'},
+                           {key: 'net.ipv4.conf.all.rp_filter', value: '1', comment: 'Reverse path filtering'},
+                           {key: 'net.ipv4.conf.default.rp_filter', value: '1', comment: 'Reverse path filtering'},
+                           {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
+      None    : []
+
+  sysctl_name_default
+    Description: Define the 'sysctl_name_default' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'dummy' | 'example'
+
+  sysctl_sysctl_conf_template
+    Description: Define the template source for 'sysctl.conf.j2'.
+                 Any value other than 'main' requires a Jinja2
+                 file to be created. The custom Jinja2 file for an example
+                 configuration called 'example' needs to be placed as follows:
+                 'sysctl/templates/example/sysctl.conf.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  sysctl_sysctl_config_template
+    Description: Define the template source for 'sysctl-config.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'sysctl/templates/example/sysctl-config.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+
+ROLES
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.0
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

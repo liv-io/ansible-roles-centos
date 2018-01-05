@@ -1,0 +1,25 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : sysctl-config
+# Type   : sysctl configuration file
+# Role   : sysctl
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+{% for sysctl in item.sysctl|default([]) %}
+{% if (sysctl.comment is defined) and not (sysctl.comment == '') %}
+# {{sysctl.comment}}
+{% endif %}
+{%- if (sysctl.key is defined) and not (sysctl.key == '') %}{{sysctl.key}}{% endif %}=
+{%- if (sysctl.value is defined) and not (sysctl.value == '') %}{{sysctl.value}}{% endif %}
+
+{% endfor %}
