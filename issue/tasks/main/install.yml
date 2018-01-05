@@ -1,0 +1,34 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - issue
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create issue'
+  template:
+    src: "{{file_src_issue}}"
+    dest: "{{file_path_issue}}"
+    mode: "{{file_mode_issue}}"
+    owner: "{{file_owner_issue}}"
+    group: "{{file_group_issue}}"
+  tags:
+    - files
+    - install
+    - main
+    - issue

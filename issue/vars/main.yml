@@ -1,0 +1,12 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# issue
+file_src_issue: "templates/{{(issue_issue_template|e)}}/issue.j2"
+file_path_issue: '/etc/issue'
+file_mode_issue: '0644'
+file_owner_issue: 'root'
+file_group_issue: 'root'
