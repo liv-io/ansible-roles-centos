@@ -177,7 +177,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '/bin/ash'
+    Default    : '/bin/bash'
     Options    :
       Examples: '/bin/bash' | '/bin/sh' | '/bin/csh' | '/bin/ksh' | '/bin/zsh'
 

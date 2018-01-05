@@ -22,4 +22,4 @@ root_root_dir_mode: '0700'
 
 root_root_dir_owner: 'root'
 
-root_shell: '/bin/ash'
+root_shell: '/bin/bash'
