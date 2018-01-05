@@ -1,0 +1,19 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# hostname
+file_src_hostname: "templates/{{(hostname_hostname_template|e)}}/hostname.j2"
+file_path_hostname: '/etc/hostname'
+file_mode_hostname: '0644'
+file_owner_hostname: 'root'
+file_group_hostname: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# set hostname
+command_cmd_set_hostname: "hostnamectl set-hostname {{inventory_hostname}}"
