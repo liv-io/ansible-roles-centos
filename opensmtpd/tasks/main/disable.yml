@@ -1,0 +1,62 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - disable
+    - main
+    - opensmtpd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create aliases'
+  template:
+    src: "{{file_src_aliases}}"
+    dest: "{{file_path_aliases}}"
+    mode: "{{file_mode_aliases}}"
+    owner: "{{file_owner_aliases}}"
+    group: "{{file_group_aliases}}"
+  tags:
+    - files
+    - disable
+    - main
+    - opensmtpd
+
+- name: 'template create smtpd.conf'
+  template:
+    src: "{{file_src_smtpd_conf}}"
+    dest: "{{file_path_smtpd_conf}}"
+    mode: "{{file_mode_smtpd_conf}}"
+    owner: "{{file_owner_smtpd_conf}}"
+    group: "{{file_group_smtpd_conf}}"
+  tags:
+    - files
+    - disable
+    - main
+    - opensmtpd
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service stop opensmtpd'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_opensmtpd}}"
+  tags:
+    - system
+    - disable
+    - main
+    - opensmtpd

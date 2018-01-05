@@ -1,0 +1,40 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# opensmtpd
+package_name_opensmtpd: 'opensmtpd'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# aliases
+file_src_aliases: "templates/{{(opensmtpd_aliases_template|e)}}/aliases.j2"
+file_path_aliases: '/etc/aliases'
+file_mode_aliases: '0644'
+file_owner_aliases: 'root'
+file_group_aliases: 'root'
+
+# smtpd.conf
+file_src_smtpd_conf: "templates/{{(opensmtpd_smtpd_conf_template|e)}}/smtpd.conf.j2"
+file_path_smtpd_conf: '/etc/opensmtpd/smtpd.conf'
+file_mode_smtpd_conf: '0644'
+file_owner_smtpd_conf: 'root'
+file_group_smtpd_conf: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# smtpctl aliases
+command_cmd_smtpctl_aliases: 'smtpctl update table aliases'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# opensmtpd
+service_name_opensmtpd: 'opensmtpd'
