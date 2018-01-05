@@ -1,0 +1,15 @@
+---
+
+- name: 'task include install'
+  include: install.yml
+  when: not (nmap_ncat_state|match('false|no|remove|quiesce|inactive'))
+  tags:
+    - main
+    - nmap_ncat
+
+- name: 'task include remove'
+  include: remove.yml
+  when: (nmap_ncat_state|match('false|no|remove'))
+  tags:
+    - main
+    - nmap_ncat
