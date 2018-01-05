@@ -1,0 +1,319 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : sudo
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+Sudo (superuser do) allows a system administrator to give certain users (or
+groups of users) the ability to run some (or all) commands as root while logging
+all commands and arguments. Sudo operates on a per-command basis. It is not a
+replacement for the shell. Features include: the ability to restrict what
+commands a user may run on a per-host basis, copious logging of each command
+(providing a clear audit trail of who did what), a configurable timeout of the
+sudo command, and the ability to use the same configuration file (sudoers) on
+many different machines.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - sudo: all
+    roles:
+      - role: sudo
+    vars:
+      sudo_state: 'install'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: sudo
+    vars:
+      sudo_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: sudo
+    vars:
+      sudo_state: 'inactive'
+
+CONFIG
+  vars:
+    sudo_all:
+      - name: 'core'
+        state: 'true'
+        comment: 'Core Sudoers'
+        config: ['root ALL=(ALL) ALL']
+
+      - name: 'ansible'
+        state: 'true'
+        comment: 'Ansible Configuration Management'
+        config: ['ansible ALL=(root) NOPASSWD: ALL']
+
+    sudo_group:
+      - name: 'sysadmin'
+        state: 'true'
+        comment: 'System Administrators'
+        config: ['%sysadmin ALL=(ALL) ALL']
+
+      - name: 'dbadmin'
+        state: 'true'
+        comment: 'Database Administrators'
+        config: ['%dbadmin ALL=(root) service mysqld restart, service mysql restart']
+
+      - name: 'appadmin'
+        state: 'true'
+        comment: 'Application Administrators'
+        config: ['%appadmin ALL=(root) NOPASSWD: service apache2 graceful, NOPASSWD: service httpd graceful']
+
+    sudo_host:
+      - name: 'obsolete'
+        state: 'false'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+CONFIG
+  state
+    Description: Control the 'state' of the sudo file.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'true'
+    Options    :
+      Create: 'true' | 'yes' | 'create'
+      Remove: 'false' | 'no' | 'remove'
+
+  name
+    Description: Define the 'name' of the sudo file.
+                 For more details see 'man sudo' or 'sudo --help'.
+    Implemented: 0.1
+    Required   : True
+    Value      : Arbitrary
+    Type       : String
+    Default    : "{{sudo_name_default}}"
+    Options    :
+      Examples: 'sysadmin' | 'dbadmin' | 'appadmin'
+
+  comment
+    Description: Define a 'comment' for the sudo file.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'System Administrators' | 'Database Administrators' |
+                'Application Administrators'
+      None    : ''
+
+  config
+    Description: Define the 'config' entry/entries.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['%sysadmin ALL=(ALL) ALL'] |
+                ['%dbadmin ALL=(root) service mysqld restart, service mysql restart'] |
+                ['%appadmin ALL=(root) NOPASSWD: service apache2 graceful, NOPASSWD: service httpd graceful']
+      None    : []
+
+  order
+    Description: Define the 'order' of the sudo file.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : ''
+    Options    :
+      Examples: '05' | '23' | '42' | '55'
+      None    : ''
+
+ROLE
+  sudo_state
+    Description: Control the state of the role.
+                 'sudo' is a core package and should therefore not be removed.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'install'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  sudo_all
+    Description: Define the 'sudo_all' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'core', state: 'true', order: '10', comment: 'Core Sudoers', config: {'root ALL=(ALL) ALL'}},
+                 {name: 'sysadmin', state: 'true', order: '50', config: {'%sysadmin ALL=(ALL) ALL'}]
+      None    : []
+
+  sudo_group
+    Description: Define the 'sudo_group' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'core', state: 'true', order: '10', comment: 'Core Sudoers', config: {'root ALL=(ALL) ALL'}},
+                 {name: 'sysadmin', state: 'true', order: '50', config: {'%sysadmin ALL=(ALL) ALL'}]
+      None    : []
+
+  sudo_host
+    Description: Define the 'sudo_host' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'core', state: 'true', order: '10', comment: 'Core Sudoers', config: {'root ALL=(ALL) ALL'}},
+                 {name: 'sysadmin', state: 'true', order: '50', config: {'%sysadmin ALL=(ALL) ALL'}]
+      None    : []
+
+  sudo_insults
+    Description: Control the 'sudo_insults' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  sudo_lecture
+    Description: Control the 'sudo_lecture' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  sudo_name_default
+    Description: Define the 'sudo_name_default' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'default'
+    Options    :
+      Examples: 'dummy' | 'example'
+
+  sudo_sudo_config_template
+    Description: Define the template source for 'sudo-config.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'sudo/templates/example/sudo-config.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  sudo_sudoers_template
+    Description: Define the template source for 'sudoers.j2'.
+                 Any value other than 'main' requires a Jinja2
+                 file to be created. The custom Jinja2 file for an example
+                 configuration called 'example' needs to be placed as follows:
+                 'sudo/templates/example/sudoers.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  sudo
+    Version: >= 1.8
+    Name   :
+      CentOS 7: 'sudo'
+
+ROLES
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.0
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

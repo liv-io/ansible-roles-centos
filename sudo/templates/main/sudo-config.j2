@@ -1,0 +1,23 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : sudo-config
+# Type   : sudo configuration file
+# Role   : sudo
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+{% if (item.config is defined) and not ((item.config == '') or (item.config == [])) %}
+{% for config in item.config %}
+# {{item.comment}}
+{{config}}
+{% endfor %}
+{% endif %}

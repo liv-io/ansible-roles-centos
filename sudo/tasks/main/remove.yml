@@ -1,0 +1,55 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - sudo
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove sudo'
+  package:
+    state: 'absent'
+    name: "{{package_name_sudo}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - sudo
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove sudoers.d'
+  file:
+    state: 'absent'
+    path: "{{file_path_sudoers_d}}"
+  tags:
+    - files
+    - remove
+    - main
+    - sudo
+
+- name: 'file remove sudoers'
+  file:
+    state: 'absent'
+    path: "{{file_path_sudoers}}"
+  tags:
+    - files
+    - remove
+    - main
+    - sudo
