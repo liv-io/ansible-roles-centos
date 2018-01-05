@@ -1,0 +1,85 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - root
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'group create root'
+  group:
+    state: 'present'
+    name: "{{group_name_root}}"
+    gid: "{{group_gid_root}}"
+    system: "{{group_system_root}}"
+  tags:
+    - system
+    - install
+    - main
+    - root
+
+- name: 'user create root'
+  user:
+    state: 'present'
+    name: "{{user_name_root}}"
+    comment: "{{user_comment_root}}"
+    uid: "{{user_uid_root}}"
+    group: "{{user_group_root}}"
+    groups: "{{user_groups_root|join(',')}}"
+    append: "{{user_append_root}}"
+    createhome: "{{user_home_create_root}}"
+    move_home: "{{user_home_move_root}}"
+    remove: "{{user_home_remove_root}}"
+    force: "{{user_home_force_root}}"
+    password: "{{user_password_root}}"
+    update_password: "{{user_password_update_root}}"
+    shell: "{{user_shell_root}}"
+    system: "{{user_system_root}}"
+  tags:
+    - system
+    - install
+    - main
+    - root
+
+- name: 'authorized_key create root'
+  authorized_key:
+    state: "{{'absent' if (root_authorized_key_state|match('false|no|remove')) else 'present'}}"
+    user: "{{authorized_key_user_root}}"
+    key: "{{'' if (root_authorized_key|match('false|no|remove')) else root_authorized_key}}"
+    key_options: "{{'' if (root_authorized_key_options|match('false|no|remove')) else root_authorized_key_options}}"
+  tags:
+    - system
+    - install
+    - main
+    - root
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create root.dir'
+  file:
+    state: 'directory'
+    path: "{{file_path_root_dir}}"
+    mode: "{{file_mode_root_dir}}"
+    owner: "{{file_owner_root_dir}}"
+    group: "{{file_group_root_dir}}"
+  tags:
+    - files
+    - install
+    - main
+    - root

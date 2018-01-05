@@ -1,0 +1,41 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# root.dir
+file_path_root_dir: '/root'
+file_mode_root_dir: "{{root_root_dir_mode if not (root_root_dir_mode == '') else '0700'}}"
+file_owner_root_dir: "{{root_root_dir_owner if not (root_root_dir_owner == '') else 'root'}}"
+file_group_root_dir: "{{root_root_dir_group if not (root_root_dir_group == '') else 'root'}}"
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# root
+group_name_root: 'root'
+group_gid_root: '0'
+group_system_root: 'yes'
+
+# root
+user_name_root: 'root'
+user_comment_root: "{{(root_comment|e) if not (root_comment == '') else 'root'}}"
+user_uid_root: '0'
+user_group_root: '0'
+user_groups_root: "{{root_groups if not ((root_groups == '') or (root_groups == [])) else ['root']}}"
+user_append_root: "{{'no' if (root_groups_append|match('false|no|disable')) else 'yes'}}"
+user_home_create_root: 'no'
+user_home_move_root: 'no'
+user_home_remove_root: 'no'
+user_home_force_root: 'no'
+user_password_root: "{{root_password if not (root_password == '') else '!'}}"
+user_password_update_root: 'always'
+user_shell_root: "{{root_shell if not (root_shell == '') else '/bin/ash'}}"
+user_system_root: 'yes'
+
+# root
+authorized_key_user_root: "{{user_name_root if not (user_name_root == '') else 'root'}}"
+authorized_key_key_root: "{{root_authorized_key if not (root_authorized_key == '')}}"
+authorized_key_options_root: ''

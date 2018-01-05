@@ -1,0 +1,33 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - root
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'authorized_key remove root'
+  authorized_key:
+    state: 'absent'
+    user: "{{authorized_key_user_root}}"
+    key: "{{'' if (root_authorized_key|match('false|no|remove')) else root_authorized_key}}"
+    key_options: "{{'' if (root_authorized_key_options|match('false|no|remove')) else root_authorized_key_options}}"
+  tags:
+    - system
+    - remove
+    - main
+    - root
