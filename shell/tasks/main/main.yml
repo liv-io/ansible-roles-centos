@@ -1,0 +1,15 @@
+---
+
+- name: 'task include install'
+  include: install.yml
+  when: not (shell_state|match('false|no|remove|quiesce|inactive'))
+  tags:
+    - main
+    - shell
+
+- name: 'task include remove'
+  include: remove.yml
+  when: (shell_state|match('false|no|remove'))
+  tags:
+    - main
+    - shell

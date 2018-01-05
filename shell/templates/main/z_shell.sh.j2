@@ -1,0 +1,87 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : z_shell.sh
+# Type   : environment variable configuration file
+# Role   : shell
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# COLOR SUPPORT
+#-------------------------------------------------------------------------------
+
+{% if not (shell_color_support|match('false|no|disable')) %}
+if [ -x /usr/bin/dircolors ]; then
+  # ls
+  alias ls='ls -F --color=auto --time-style="+{{(shell_ls_time_style|e)}}"'
+  alias la='ls -laF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"' # long listing, list all files
+  alias ll='ls -lF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"'  # long listing
+  alias lr='ls -lRF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"' # long listing, list subdirectories recursively
+  alias lt='ls -ltF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"' # long listing, sort by modification time
+  alias lz='ls -lZF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"' # long listing, shellow MAC label
+  
+  # dir
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
+  
+  # grep
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
+{% endif %}
+
+#-------------------------------------------------------------------------------
+# SHELL ALIASES
+#-------------------------------------------------------------------------------
+
+# cls
+alias cls='printf "\033c"'
+
+{% if not (shell_safety|match('false|no|disable')) %}
+# Shell safety
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias ln='ln -i'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+{% endif %}
+
+#-------------------------------------------------------------------------------
+# SHELL VARIABLES
+#-------------------------------------------------------------------------------
+
+{% if not (shell_ftp_proxy|match('false|no|disable')) %}
+# ftp_proxy
+ftp_proxy='{{shell_ftp_proxy}}'
+export ftp_proxy
+{% endif %}
+
+{% if not (shell_http_proxy|match('false|no|disable')) %}
+# http_proxy
+http_proxy='{{shell_http_proxy}}'
+export http_proxy
+{% endif %}
+
+{% if not (shell_histsize|match('false|no|disable')) %}
+# HISTSIZE
+HISTSIZE={{(shell_histsize|int)}}
+export HISTSIZE
+{% endif %}
+
+{% if not (shell_pager|match('false|no|disable')) %}
+# PAGER
+PAGER='{{(shell_pager|e)}}'
+export PAGER
+{% endif %}

@@ -1,0 +1,73 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - shell
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create profile.d'
+  file:
+    state: 'directory'
+    path: "{{file_path_profile_d}}"
+    mode: "{{file_mode_profile_d}}"
+    owner: "{{file_owner_profile_d}}"
+    group: "{{file_group_profile_d}}"
+  tags:
+    - files
+    - install
+    - main
+    - shell
+
+- name: 'template create profile'
+  template:
+    src: "{{file_src_profile}}"
+    dest: "{{file_path_profile}}"
+    mode: "{{file_mode_profile}}"
+    owner: "{{file_owner_profile}}"
+    group: "{{file_group_profile}}"
+  tags:
+    - files
+    - install
+    - main
+    - shell
+
+- name: 'template create shell.sh'
+  template:
+    src: "{{file_src_shell_shell}}"
+    dest: "{{file_path_shell_shell}}"
+    mode: "{{file_mode_shell_shell}}"
+    owner: "{{file_owner_shell_shell}}"
+    group: "{{file_group_shell_shell}}"
+  tags:
+    - files
+    - install
+    - main
+    - shell
+
+- name: 'template create z_shell.sh'
+  template:
+    src: "{{file_src_z_shell_shell}}"
+    dest: "{{file_path_z_shell_shell}}"
+    mode: "{{file_mode_z_shell_shell}}"
+    owner: "{{file_owner_z_shell_shell}}"
+    group: "{{file_group_z_shell_shell}}"
+  tags:
+    - files
+    - install
+    - main
+    - shell
