@@ -1,0 +1,75 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - openssh
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove openssh'
+  package:
+    state: 'absent'
+    name: "{{package_name_openssh}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - openssh
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove banner'
+  file:
+    state: 'absent'
+    path: "{{file_path_banner}}"
+  tags:
+    - files
+    - remove
+    - main
+    - openssh
+
+- name: 'file remove moduli'
+  file:
+    state: 'absent'
+    path: "{{file_path_moduli}}"
+  tags:
+    - files
+    - remove
+    - main
+    - openssh
+
+- name: 'file remove ssh_config'
+  file:
+    state: 'absent'
+    path: "{{file_path_ssh_config}}"
+  tags:
+    - files
+    - remove
+    - main
+    - openssh
+
+- name: 'file remove sshd_config'
+  file:
+    state: 'absent'
+    path: "{{file_path_sshd_config}}"
+  tags:
+    - files
+    - remove
+    - main
+    - openssh
