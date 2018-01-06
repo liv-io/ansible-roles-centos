@@ -125,8 +125,8 @@ ROLE
                            {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
       None    : []
 
-  sysctl_group
-    Description: Define the 'sysctl_group' option.
+  sysctl_dependencies
+    Description: Define the 'sysctl_dependencies' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
