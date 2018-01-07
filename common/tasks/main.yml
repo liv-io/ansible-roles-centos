@@ -1,0 +1,7 @@
+---
+
+- name: 'task include main'
+  include: main/main.yml
+  when: ((ansible_distribution == 'CentOS') and (ansible_distribution_major_version|match("7")))
+  tags:
+    - common
