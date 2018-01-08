@@ -1,0 +1,90 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - cronjob
+    - main
+    - ntpd
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service stop ntpd'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_ntpd}}"
+  tags:
+    - system
+    - cronjob
+    - main
+    - ntpd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create ntp.conf'
+  template:
+    src: "{{file_src_ntp_conf}}"
+    dest: "{{file_path_ntp_conf}}"
+    mode: "{{file_mode_ntp_conf}}"
+    owner: "{{file_owner_ntp_conf}}"
+    group: "{{file_group_ntp_conf}}"
+  tags:
+    - files
+    - cronjob
+    - main
+    - ntpd
+
+- name: 'template create step-tickers'
+  template:
+    src: "{{file_src_step_tickers}}"
+    dest: "{{file_path_step_tickers}}"
+    mode: "{{file_mode_step_tickers}}"
+    owner: "{{file_owner_step_tickers}}"
+    group: "{{file_group_step_tickers}}"
+  tags:
+    - files
+    - cronjob
+    - main
+    - ntpd
+
+- name: 'template create ntpd_update-time.sh'
+  template:
+    src: "{{file_src_ntpd_update_time_sh}}"
+    dest: "{{file_path_ntpd_update_time_sh}}"
+    mode: "{{file_mode_ntpd_update_time_sh}}"
+    owner: "{{file_owner_ntpd_update_time_sh}}"
+    group: "{{file_group_ntpd_update_time_sh}}"
+  tags:
+    - files
+    - cronjob
+    - main
+    - ntpd
+
+- name: 'cron create ntpd_update-time.cron'
+  cron:
+    state: 'present'
+    disabled: 'no'
+    name: "{{cron_name_ntpd_update_time}}"
+    cron_file: "{{cron_cron_file_ntpd_update_time}}"
+    minute: "{{cron_minute_ntpd_update_time}}"
+    user: "{{cron_user_ntpd_update_time}}"
+    job: "{{cron_job_ntpd_update_time}}"
+  tags:
+    - files
+    - cronjob
+    - main
+    - ntpd

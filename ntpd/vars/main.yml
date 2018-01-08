@@ -1,0 +1,56 @@
+---
+
+# ntpd_command
+ntpd_command: 'ntpdate -s -b'
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# ntp
+package_name_ntpd: 'ntp'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# ntp.conf
+file_src_ntp_conf: "templates/{{ntpd_ntp_conf_template}}/ntp.conf.j2"
+file_path_ntp_conf: '/etc/ntp.conf'
+file_mode_ntp_conf: '0644'
+file_owner_ntp_conf: 'root'
+file_group_ntp_conf: 'root'
+
+# step-tickers
+file_src_step_tickers: "templates/{{ntpd_step_tickers_template}}/step-tickers.j2"
+file_path_step_tickers: '/etc/ntp/step-tickers'
+file_mode_step_tickers: '0644'
+file_owner_step_tickers: 'root'
+file_group_step_tickers: 'root'
+
+# ntpd-script.dir
+file_path_ntpd_script_dir: "/{{common_script_dir}}/ntpd"
+file_mode_ntpd_script_dir: '0755'
+file_owner_ntpd_script_dir: 'root'
+file_group_ntpd_script_dir: 'root'
+
+# ntpd_update-time.sh
+file_src_ntpd_update_time_sh: "templates/{{ntpd_ntpd_update_time_sh_template}}/ntpd_update-time.sh.j2"
+file_path_ntpd_update_time_sh: "{{file_path_ntpd_script_dir}}/ntpd_update-time.sh"
+file_mode_ntpd_update_time_sh: '0754'
+file_owner_ntpd_update_time_sh: 'root'
+file_group_ntpd_update_time_sh: 'root'
+
+# ntpd_update-time.cron
+cron_name_ntpd_update_time: "NTPD: Update Time"
+cron_cron_file_ntpd_update_time: "ntpd_update-time"
+cron_minute_ntpd_update_time: "*/{% if ((ntpd_ntpd_update_time_interval|int(10)) > 59) %}59{% elif ((ntpd_ntpd_update_time_interval|int(10)) < 1) %}1{% else %}{{(ntpd_ntpd_update_time_interval|int(10))}}{% endif %}"
+cron_user_ntpd_update_time: "{{file_owner_ntpd_update_time_sh}}"
+cron_job_ntpd_update_time: "{{file_path_ntpd_update_time_sh}}"
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# ntpd
+service_name_ntpd: 'ntpd'

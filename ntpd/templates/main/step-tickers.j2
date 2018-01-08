@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : step-tickers
+# Type   : ntpd configuration file
+# Role   : ntpd
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+# List of NTP servers used by the ntpdate service.
+
+{% if not ((ntpd_server == '') or (ntpd_server == [])) %}
+{% for item in (ntpd_server|sort) %}
+# {{item.comment}}
+{% for server in (item.server|sort) %}
+{{server}}
+
+{% endfor %}
+{% endfor %}
+{% else %}
+{% endif %}

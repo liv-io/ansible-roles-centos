@@ -1,0 +1,86 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - ntpd
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove ntpd'
+  package:
+    state: 'absent'
+    name: "{{package_name_ntpd}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - ntpd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'cron remove ntpd_update-time.cron'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_ntpd_update_time}}"
+    cron_file: "{{cron_cron_file_ntpd_update_time}}"
+  tags:
+    - files
+    - remove
+    - main
+    - ntpd
+
+- name: 'file remove ntpd_update-time.sh'
+  file:
+    state: 'absent'
+    path: "{{file_path_ntpd_update_time_sh}}"
+  tags:
+    - files
+    - remove
+    - main
+    - ntpd
+
+- name: 'file remove ntdp-script.dir'
+  file:
+    state: 'absent'
+    path: "{{file_path_ntpd_script_dir}}"
+  tags:
+    - files
+    - remove
+    - main
+    - ntpd
+
+- name: 'file remove step-tickers'
+  file:
+    state: 'absent'
+    path: "{{file_path_step_tickers}}"
+  tags:
+    - files
+    - remove
+    - main
+    - ntpd
+
+- name: 'file remove ntp.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_ntp_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - ntpd
