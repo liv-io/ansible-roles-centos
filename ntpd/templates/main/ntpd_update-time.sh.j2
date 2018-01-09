@@ -42,7 +42,7 @@ rm=$($which rm) || { echo "Error: Command 'rm' not found."; exit 127; }
 touch=$($which touch) || { echo "Error: Command 'touch' not found."; exit 127; }
 whoami=$($which whoami) || { echo "Error: Command 'whoami' not found."; exit 127; }
 
-ntpd_command='{{ntpd_command}}'
+ntpd='{{ntpd}}'
 
 #-------------------------------------------------------------------------------
 # VARIABLES
@@ -58,7 +58,7 @@ retval=0
 severity='Debug'
 message='Please check log files for more information.'
 
-ntpd_servers='{% for item in (ntpd_server|sort) %}{% if not ((item.server == '') or (item.server == [])) %}{% for server in (item.server|sort) %}{{server}}{% if not loop.last %} {% endif %}{% endfor %}{% endif %}{% endfor %}'
+ntpd_servers='{% for item in ntpd_server %}{% if not ((item.server == '') or (item.server == [])) %}{% for server in item.server %}{{server}}{% if not loop.last %} {% endif %}{% endfor %}{% endif %}{% endfor %}'
 
 {% if (ntpd_monitor_mail_state|match('true|yes|enable')) %}
 mail_sender='{{ntpd_monitor_mail_sender}}'
@@ -175,7 +175,7 @@ create_lockfile
 
 # Update the system time by polling NTP servers to determine the correct time
 for ntpd_server in $ntpd_servers ; do
-  $ntpd_command $ntpd_server > /dev/null 2>&1
+  $ntpd $ntpd_server > /dev/null 2>&1
   if [ $? -eq 0 ]; then
     ntpd_status=0
     break;

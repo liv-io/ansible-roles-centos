@@ -34,9 +34,9 @@ driftfile /var/lib/ntp/drift
 #restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
 
 {% if not ((ntpd_restrict == '') or (ntpd_restrict == [])) %}
-{% for item in (ntpd_restrict|sort) %}
+{% for item in ntpd_restrict %}
 # {{item.comment}}
-restrict {% for config in (item.config|sort) %}{{config}}{% if not loop.last %} {% endif %}{% endfor %}
+restrict {% for config in item.config %}{{config}}{% if not loop.last %} {% endif %}{% endfor %}
 
 {% endfor %}
 {% else %}
@@ -52,10 +52,10 @@ restrict {% for config in (item.config|sort) %}{{config}}{% if not loop.last %} 
 #server 3.centos.pool.ntp.org iburst
 
 {% if not ((ntpd_server == '') or (ntpd_server == [])) %}
-{% for item in (ntpd_server|sort) %}
+{% for item in ntpd_server %}
 # {{item.comment}}
-{% for server in (item.server|sort) %}
-server {{server}} {% for option in (item.option|sort) %}{{option}}{% if not loop.last %} {% endif %}{% endfor %}
+{% for server in item.server %}
+server {{server}} {% for option in item.option %}{{option}}{% if not loop.last %} {% endif %}{% endfor %}
 
 {% endfor %}
 {% endfor %}

@@ -34,7 +34,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'cron remove ntpd_update-time.cron'
+- name: 'cron remove ntpd_update-time'
   cron:
     state: 'absent'
     name: "{{cron_name_ntpd_update_time}}"
@@ -55,7 +55,7 @@
     - main
     - ntpd
 
-- name: 'file remove ntdp-script.dir'
+- name: 'file remove ntpd_script.dir'
   file:
     state: 'absent'
     path: "{{file_path_ntpd_script_dir}}"

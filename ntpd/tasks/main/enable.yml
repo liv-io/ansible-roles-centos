@@ -48,21 +48,21 @@
     - main
     - ntpd
 
-- name: 'file remove ntpd_update-time.sh'
-  file:
+- name: 'cron remove ntpd_update-time'
+  cron:
     state: 'absent'
-    path: "{{file_path_ntpd_update_time_sh}}"
+    name: "{{cron_name_ntpd_update_time}}"
+    cron_file: "{{cron_cron_file_ntpd_update_time}}"
   tags:
     - files
     - enable
     - main
     - ntpd
 
-- name: 'cron remove ntpd_update-time.cron'
-  cron:
+- name: 'file remove ntpd_update-time.sh'
+  file:
     state: 'absent'
-    name: "{{cron_name_ntpd_update_time}}"
-    cron_file: "{{cron_cron_file_ntpd_update_time}}"
+    path: "{{file_path_ntpd_update_time_sh}}"
   tags:
     - files
     - enable

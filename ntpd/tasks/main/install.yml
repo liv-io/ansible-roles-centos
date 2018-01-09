@@ -34,7 +34,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create ntpd-script.dir'
+- name: 'file create ntpd_script.dir'
   file:
     state: 'directory'
     path: "{{file_path_ntpd_script_dir}}"

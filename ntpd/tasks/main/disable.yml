@@ -59,7 +59,7 @@
     - main
     - ntpd
 
-- name: 'cron create ntpd_update-time.cron'
+- name: 'cron create ntpd_update-time'
   cron:
     state: 'present'
     disabled: 'yes'
