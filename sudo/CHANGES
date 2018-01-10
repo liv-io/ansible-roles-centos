@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-01-10)
+I: Improve Jinja2 filters
+I: Add missing 'dependencies' option
+
 * Version 0.1.1 (2018-01-07)
 I: Improve 'sudo' order and name separation character
 

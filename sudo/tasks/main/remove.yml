@@ -34,20 +34,20 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file remove sudoers.d'
+- name: 'file remove sudoers'
   file:
     state: 'absent'
-    path: "{{file_path_sudoers_d}}"
+    path: "{{file_path_sudoers}}"
   tags:
     - files
     - remove
     - main
     - sudo
 
-- name: 'file remove sudoers'
+- name: 'file remove sudoers.d'
   file:
     state: 'absent'
-    path: "{{file_path_sudoers}}"
+    path: "{{file_path_sudoers_d}}"
   tags:
     - files
     - remove

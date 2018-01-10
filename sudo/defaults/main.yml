@@ -4,6 +4,8 @@ sudo_state: 'install'
 
 sudo_all: []
 
+sudo_dependencies: []
+
 sudo_group: []
 
 sudo_host: []
