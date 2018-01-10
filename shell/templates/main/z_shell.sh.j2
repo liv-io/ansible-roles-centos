@@ -22,12 +22,12 @@
 {% if not (shell_color_support|match('false|no|disable')) %}
 if [ -x /usr/bin/dircolors ]; then
   # ls
-  alias ls='ls -F --color=auto --time-style="+{{(shell_ls_time_style|e)}}"'
-  alias la='ls -laF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"' # long listing, list all files
-  alias ll='ls -lF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"'  # long listing
-  alias lr='ls -lRF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"' # long listing, list subdirectories recursively
-  alias lt='ls -ltF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"' # long listing, sort by modification time
-  alias lz='ls -lZF --color=auto --time-style="+{{(shell_ls_time_style|e)}}"' # long listing, shellow MAC label
+  alias ls='ls -F --color=auto --time-style="+{{shell_ls_time_style}}"'
+  alias la='ls -laF --color=auto --time-style="+{{shell_ls_time_style}}"' # long listing, list all files
+  alias ll='ls -lF --color=auto --time-style="+{{shell_ls_time_style}}"'  # long listing
+  alias lr='ls -lRF --color=auto --time-style="+{(shell_ls_time_style}}"' # long listing, list subdirectories recursively
+  alias lt='ls -ltF --color=auto --time-style="+{{shell_ls_time_style}}"' # long listing, sort by modification time
+  alias lz='ls -lZF --color=auto --time-style="+{{shell_ls_time_style}}"' # long listing, shellow MAC label
   
   # dir
   alias dir='dir --color=auto'
@@ -82,6 +82,6 @@ export HISTSIZE
 
 {% if not (shell_pager|match('false|no|disable')) %}
 # PAGER
-PAGER='{{(shell_pager|e)}}'
+PAGER='{{shell_pager}}'
 export PAGER
 {% endif %}
