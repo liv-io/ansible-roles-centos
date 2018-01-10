@@ -20,6 +20,19 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file create sysctl.d'
+  file:
+    state: 'directory'
+    path: "{{file_path_sysctl_d}}"
+    mode: "{{file_mode_sysctl_d}}"
+    owner: "{{file_owner_sysctl_d}}"
+    group: "{{file_group_sysctl_d}}"
+  tags:
+    - files
+    - install
+    - main
+    - sysctl
+
 - name: 'template create sysctl.conf'
   template:
     src: "{{file_src_sysctl_conf}}"
@@ -34,26 +47,13 @@
     - main
     - sysctl
 
-- name: 'file create sysctl.d'
-  file:
-    state: 'directory'
-    path: "{{file_path_sysctl_d}}"
-    mode: "{{file_mode_sysctl_d}}"
-    owner: "{{file_owner_sysctl_d}}"
-    group: "{{file_group_sysctl_d}}"
-  tags:
-    - files
-    - install
-    - main
-    - sysctl
-
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
 
 - name: 'command set sysctl.conf'
   shell: "{{command_cmd_set_sysctl}} {{file_path_sysctl_conf}}"
-  with_items: "{{sysctl_all + sysctl_group + sysctl_host + sysctl_dependencies}}"
+  with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: (register_sysctl_conf|changed)
   tags:
     - commands

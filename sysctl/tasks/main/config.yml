@@ -23,12 +23,12 @@
 - name: 'template create sysctl-config'
   template:
     src: "{{file_src_sysctl_config}}"
-    dest: "{{file_path_sysctl_d}}/{{(item.order|e) if (item.order is defined) else ''}}{{'-' if (item.order is defined) else ''}}{{(item.name|e) if (item.name is defined) and not (item.name == '') else sysctl_name_default}}.conf"
+    dest: "{{file_path_sysctl_d}}/{{item.order if (item.order is defined) else ''}}{{'-' if (item.order is defined) else ''}}{{item.name if (item.name is defined) and not (item.name == '') else sysctl_name_default}}.conf"
     mode: "{{file_mode_sysctl_config}}"
     owner: "{{file_owner_sysctl_config}}"
     group: "{{file_group_sysctl_config}}"
   register: register_sysctl_config
-  with_items: "{{sysctl_all + sysctl_group + sysctl_host + sysctl_dependencies}}"
+  with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: not (item.state|match('false|no|remove'))
   tags:
     - files
@@ -39,8 +39,8 @@
 - name: 'file remove sysctl-config'
   file:
     state: 'absent'
-    path: "{{file_path_sysctl_d}}/{{(item.order|e) if (item.order is defined) else ''}}{{'-' if (item.order is defined) else ''}}{{(item.name|e) if (item.name is defined) and not (item.name == '') else sysctl_name_default}}.conf"
-  with_items: "{{sysctl_all + sysctl_group + sysctl_host + sysctl_dependencies}}"
+    path: "{{file_path_sysctl_d}}/{{item.order if (item.order is defined) else ''}}{{'-' if (item.order is defined) else ''}}{{item.name if (item.name is defined) and not (item.name == '') else sysctl_name_default}}.conf"
+  with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: (item.state|match('false|no|remove'))
   tags:
     - files
@@ -53,8 +53,8 @@
 #-------------------------------------------------------------------------------
 
 - name: 'command set sysctl-config'
-  shell: "{{command_cmd_set_sysctl}} {{file_path_sysctl_d}}/{{(item.order|e) if (item.order is defined) else ''}}{{'-' if (item.order is defined) else ''}}{{(item.name|e) if (item.name is defined) and not (item.name == '') else sysctl_name_default}}.conf"
-  with_items: "{{sysctl_all + sysctl_group + sysctl_host + sysctl_dependencies}}"
+  shell: "{{command_cmd_set_sysctl}} {{file_path_sysctl_d}}/{{item.order if (item.order is defined) else ''}}{{'-' if (item.order is defined) else ''}}{{item.name if (item.name is defined) and not (item.name == '') else sysctl_name_default}}.conf"
+  with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: (register_sysctl_config|changed)
   tags:
     - commands
