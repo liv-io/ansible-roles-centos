@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-01-11)
+I: Move option 'bash_color_prompt' to role 'shell'
+
 * Version 0.1.1 (2018-01-10)
 I: Improve Jinja2 filters
 

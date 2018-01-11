@@ -6,8 +6,6 @@ bash_bash_bash_template: 'main'
 
 bash_checkwinsize: 'true'
 
-bash_color_prompt: 'true'
-
 bash_histappend: 'true'
 
 bash_histcontrol: 'false'

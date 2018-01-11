@@ -87,17 +87,6 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
-  bash_color_prompt
-    Description: Control the state of a colored Bash prompt.
-    Implemented: 0.1
-    Required   : False
-    Value      : Predetermined
-    Type       : String
-    Default    : 'true'
-    Options    :
-      Enable : 'true' | 'yes' | 'enable'
-      Disable: 'false' | 'no' | 'disable'
-
   bash_histappend
     Description: Control the state of the 'histappend' Bash option.
     Implemented: 0.1
