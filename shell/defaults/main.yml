@@ -2,6 +2,8 @@
 
 shell_state: 'install'
 
+shell_color_prompt: 'true'
+
 shell_color_support: 'true'
 
 shell_ftp_proxy: 'false'

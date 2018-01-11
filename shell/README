@@ -59,8 +59,19 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  shell_color_prompt
+    Description: Control the 'shell_color_prompt' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'true'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   shell_color_support
-    Description: Control the state of colored 'shell' commands.
+    Description: Control the 'shell_color_support' option.
     Implemented: 0.1
     Required   : False
     Value      : Predetermined
