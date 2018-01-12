@@ -1,0 +1,11 @@
+---
+
+fstab_state: 'install'
+
+fstab_all: []
+
+fstab_dependencies: []
+
+fstab_group: []
+
+fstab_host: []
