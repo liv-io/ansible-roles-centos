@@ -1,0 +1,41 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - firewalld
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove firewalld'
+  package:
+    state: 'absent'
+    name: "{{package_name_firewalld}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - firewalld
+
+- name: 'package remove firewalld-filesystem'
+  package:
+    state: 'absent'
+    name: "{{package_name_firewalld_filesystem}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - firewalld_filesystem
