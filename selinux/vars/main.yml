@@ -1,0 +1,25 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# config
+file_src_config: "templates/{{selinux_config_template}}/config.j2"
+file_path_config: '/etc/selinux/config'
+file_mode_config: '0644'
+file_owner_config: 'root'
+file_group_config: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# get mode
+command_cmd_get_mode: 'getenforce'
+
+# set enforcing mode
+command_cmd_set_enforcing_mode: 'setenforce enforcing'
+
+# set permissive mode
+command_cmd_set_permissive_mode: 'setenforce permissive'

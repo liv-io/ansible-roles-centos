@@ -1,0 +1,67 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - selinux
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create config'
+  template:
+    src: "{{file_src_config}}"
+    dest: "{{file_path_config}}"
+    mode: "{{file_mode_config}}"
+    owner: "{{file_owner_config}}"
+    group: "{{file_group_config}}"
+  tags:
+    - files
+    - install
+    - main
+    - selinux
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+- name: 'command get mode'
+  command: "{{command_cmd_get_mode}}"
+  register: register_mode
+  changed_when: False
+  check_mode: 'no'
+  tags:
+    - commands
+    - install
+    - main
+    - selinux
+
+- name: 'command set enforcing mode'
+  command: "{{command_cmd_set_enforcing_mode}}"
+  when: not (selinux_mode|match('permissive|disable|disabled')) and not (register_mode.stdout == 'Enforcing')
+  tags:
+    - commands
+    - install
+    - main
+    - selinux
+
+- name: 'command set permissive mode'
+  command: "{{command_cmd_set_permissive_mode}}" 
+  when: (selinux_mode|match('permissive|disable|disabled')) and (register_mode.stdout == 'Enforcing')
+  tags:
+    - commands
+    - install
+    - main
+    - selinux
