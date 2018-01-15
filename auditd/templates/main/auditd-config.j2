@@ -1,0 +1,24 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : auditd-config
+# Type   : auditd configuration file
+# Role   : auditd
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+{% for config in item.config|default([]) %}
+{% if (config.comment is defined) and not (config.comment == '') %}
+# {{config.comment}}
+{% endif %}
+{{config.rule}}
+
+{% endfor %}

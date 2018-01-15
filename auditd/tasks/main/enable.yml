@@ -1,0 +1,78 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - main
+    - auditd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create auditd.conf'
+  template:
+    src: "{{file_src_auditd_conf}}"
+    dest: "{{file_path_auditd_conf}}"
+    mode: "{{file_mode_auditd_conf}}"
+    owner: "{{file_owner_auditd_conf}}"
+    group: "{{file_group_auditd_conf}}"
+  notify: 'command restart auditd'
+  tags:
+    - files
+    - enable
+    - main
+    - auditd
+
+- name: 'template create audispd.conf'
+  template:
+    src: "{{file_src_audispd_conf}}"
+    dest: "{{file_path_audispd_conf}}"
+    mode: "{{file_mode_audispd_conf}}"
+    owner: "{{file_owner_audispd_conf}}"
+    group: "{{file_group_audispd_conf}}"
+  notify: 'command restart auditd'
+  tags:
+    - files
+    - enable
+    - main
+    - auditd
+
+- name: 'template create syslog.conf'
+  template:
+    src: "{{file_src_syslog_conf}}"
+    dest: "{{file_path_syslog_conf}}"
+    mode: "{{file_mode_syslog_conf}}"
+    owner: "{{file_owner_syslog_conf}}"
+    group: "{{file_group_syslog_conf}}"
+  notify: 'command restart auditd'
+  tags:
+    - files
+    - enable
+    - main
+    - auditd
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start auditd'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_auditd}}"
+  tags:
+    - system
+    - enable
+    - main
+    - auditd

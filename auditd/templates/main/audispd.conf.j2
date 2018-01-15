@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : audispd.conf
+# Type   : auditd configuration file
+# Role   : auditd
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+#
+# This file controls the configuration of the audit event 
+# dispatcher daemon, audispd.
+#
+
+q_depth = 250
+overflow_action = SYSLOG
+priority_boost = 4
+max_restarts = 10
+name_format = HOSTNAME
+#name = mydomain
+

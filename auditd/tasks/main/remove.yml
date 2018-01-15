@@ -1,0 +1,65 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - auditd
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove audit'
+  package:
+    state: 'absent'
+    name: "{{package_name_audit}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - auditd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove auditd.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_auditd_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - auditd
+
+- name: 'file remove syslog.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_syslog_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - auditd
+
+- name: 'file remove audispd.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_audispd_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - auditd

@@ -1,0 +1,100 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - disable
+    - main
+    - auditd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create auditd.conf'
+  template:
+    src: "{{file_src_auditd_conf}}"
+    dest: "{{file_path_auditd_conf}}"
+    mode: "{{file_mode_auditd_conf}}"
+    owner: "{{file_owner_auditd_conf}}"
+    group: "{{file_group_auditd_conf}}"
+  tags:
+    - files
+    - disable
+    - main
+    - auditd
+
+- name: 'template create audispd.conf'
+  template:
+    src: "{{file_src_audispd_conf}}"
+    dest: "{{file_path_audispd_conf}}"
+    mode: "{{file_mode_audispd_conf}}"
+    owner: "{{file_owner_audispd_conf}}"
+    group: "{{file_group_audispd_conf}}"
+  tags:
+    - files
+    - disable
+    - main
+    - auditd
+
+- name: 'template create syslog.conf'
+  template:
+    src: "{{file_src_syslog_conf}}"
+    dest: "{{file_path_syslog_conf}}"
+    mode: "{{file_mode_syslog_conf}}"
+    owner: "{{file_owner_syslog_conf}}"
+    group: "{{file_group_syslog_conf}}"
+  tags:
+    - files
+    - disable
+    - main
+    - auditd
+
+#-------------------------------------------------------------------------------
+# COMMAND
+#-------------------------------------------------------------------------------
+
+# NOTE: systemd refuses to stop 'auditd' service. RedHat bug: 1026648
+
+- name: 'command status auditd'
+  command: "{{command_cmd_status_auditd}}"
+  register: register_status_auditd
+  changed_when: (register_status_auditd.rc > 1)
+  failed_when: (register_status_auditd.rc > 1)
+  check_mode: 'no'
+  tags:
+    - commands
+    - disable
+    - main
+    - auditd
+
+- name: 'command disable auditd'
+  command: "{{command_cmd_disable_auditd}}"
+  check_mode: 'no'
+  when: (register_status_auditd.rc != 3)
+  tags:
+    - commands
+    - disable
+    - main
+    - auditd
+
+- name: 'command stop auditd'
+  command: "{{command_cmd_stop_auditd}}"
+  check_mode: 'no'
+  when: (register_status_auditd.rc != 3)
+  args:
+    warn: False
+  tags:
+    - commands
+    - disable
+    - main
+    - auditd
