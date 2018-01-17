@@ -1,0 +1,157 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : ip6tables
+# Type   : iptables configuration file
+# Role   : iptables
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# FILTER
+#-------------------------------------------------------------------------------
+
+*filter
+
+# Set the default policy and zero the packet and byte counters
+
+{% for policy in iptables_filter_policies|default([]) %}
+{%- if (policy.version is defined) and (policy.version|match('ipv6|v6|inet6')) %}
+{%- if (policy.comment is defined) and not (policy.comment == '') %}
+# {{policy.comment}}
+{% endif %}
+{%- if (policy.direction is defined) and (policy.direction|match('input|in')) %}:INPUT {% elif (policy.direction is defined) and (policy.direction|match('forward|for')) %}:FORWARD {% else %}:OUTPUT {% endif %}
+{%- if (policy.action is defined) and (policy.action|match('accept')) %}ACCEPT {% elif (policy.action is defined) and (policy.action|match('reject')) %}REJECT {% else %}DROP {% endif %}
+[0:0]
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+#-------------------------------------------------------------------------------
+
+# Established and related connections
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT -m comment --comment "Incoming related and established connections"
+-A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT -m comment --comment "Outgoing related and established connections"
+
+# Loopback connections
+-A INPUT -i lo -j ACCEPT -m comment --comment "Incoming loopback connections"
+-A OUTPUT -o lo -j ACCEPT -m comment --comment "Outgoing loopback connections"
+
+#-------------------------------------------------------------------------------
+
+# ALL
+
+{% for all in iptables_filter_all|default([]) %}
+{%- if (all.version is defined) and (all.version|match('ipv6|v6|inet6')) %}
+{%- if (all.comment is defined) and not (all.comment == '') %}
+# {{all.comment}}
+{% endif %}
+-A
+{%- if (all.direction is defined) and (all.direction|match('input|in')) %} INPUT {% else %} OUTPUT {% endif %}
+{%- if (all.sources is defined) and not (all.sources == []) %}-s {% endif %}
+{% for source in all.sources|default([]) %}
+{{source}}{% if not loop.last %},{% endif %}
+{% endfor %}
+{%- if (all.sources is defined) and not (all.sources == []) %} {% endif %}
+{%- if (all.destinations is defined) and not (all.destinations == []) %}-d {% endif %}
+{% for destination in all.destinations|default([]) %}
+{{destination}}{% if not loop.last %},{% endif %}
+{% endfor %}
+{%- if (all.destinations is defined) and not (all.destinations == []) %} {% endif %}
+-m state --state NEW
+{%- if (all.protocol is defined) and (all.protocol|match('icmp|icmpv6')) %} -m icmpv6 -p icmpv6 {% elif (all.protocol is defined) and (all.protocol|match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
+{%- if (all.code is defined) and not (all.code == '') %}--icmpv6-type {{all.code}} {% endif %}
+{%- if (all.port is defined) and not (all.port == []) %}--dport {{all.port}} {% endif %}
+{%- if (all.action is defined) and (all.action|match('accept')) %}-j ACCEPT {% elif (all.action is defined) and (all.action|match('reject')) %}-j REJECT {% else %}-j DROP {% endif %}
+{%- if (all.comment is defined) and not (all.comment == []) %}-m comment --comment "{{all.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+
+{% endif %}
+{% endfor %}
+
+#-------------------------------------------------------------------------------
+
+# GROUP
+
+{% for group in iptables_filter_group|default([]) %}
+{%- if (group.version is defined) and (group.version|match('ipv6|v6|inet6')) %}
+{%- if (group.comment is defined) and not (group.comment == '') %}
+# {{group.comment}}
+{% endif %}
+-A
+{%- if (group.direction is defined) and (group.direction|match('input|in')) %} INPUT {% else %} OUTPUT {% endif %}
+{%- if (group.sources is defined) and not (group.sources == []) %}-s {% endif %}
+{% for source in group.sources|default([]) %}
+{{source}}{% if not loop.last %},{% endif %}
+{% endfor %}
+{%- if (group.sources is defined) and not (group.sources == []) %} {% endif %}
+{%- if (group.destinations is defined) and not (group.destinations == []) %}-d {% endif %}
+{% for destination in group.destinations|default([]) %}
+{{destination}}{% if not loop.last %},{% endif %}
+{% endfor %}
+{%- if (group.destinations is defined) and not (group.destinations == []) %} {% endif %}
+-m state --state NEW
+{%- if (group.protocol is defined) and (group.protocol|match('icmp|icmpv6')) %} -m icmpv6 -p icmpv6 {% elif (group.protocol is defined) and (group.protocol|match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
+{%- if (group.code is defined) and not (group.code == '') %}--icmpv6-type {{group.code}} {% endif %}
+{%- if (group.port is defined) and not (group.port == []) %}--dport {{group.port}} {% endif %}
+{%- if (group.action is defined) and (group.action|match('accept')) %}-j ACCEPT {% elif (group.action is defined) and (group.action|match('reject')) %}-j REJECT {% else %}-j DROP {% endif %}
+{%- if (group.comment is defined) and not (group.comment == []) %}-m comment --comment "{{group.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+
+{% endif %}
+{% endfor %}
+
+#-------------------------------------------------------------------------------
+
+# HOST
+
+{% for host in iptables_filter_host|default([]) %}
+{%- if (host.version is defined) and (host.version|match('ipv6|v6|inet6')) %}
+{%- if (host.comment is defined) and not (host.comment == '') %}
+# {{host.comment}}
+{% endif %}
+-A
+{%- if (host.direction is defined) and (host.direction|match('input|in')) %} INPUT {% else %} OUTPUT {% endif %}
+{%- if (host.sources is defined) and not (host.sources == []) %}-s {% endif %}
+{% for source in host.sources|default([]) %}
+{{source}}{% if not loop.last %},{% endif %}
+{% endfor %}
+{%- if (host.sources is defined) and not (host.sources == []) %} {% endif %}
+{%- if (host.destinations is defined) and not (host.destinations == []) %}-d {% endif %}
+{% for destination in host.destinations|default([]) %}
+{{destination}}{% if not loop.last %},{% endif %}
+{% endfor %}
+{%- if (host.destinations is defined) and not (host.destinations == []) %} {% endif %}
+-m state --state NEW
+{%- if (host.protocol is defined) and (host.protocol|match('icmp|icmpv6')) %} -m icmpv6 -p icmpv6 {% elif (host.protocol is defined) and (host.protocol|match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
+{%- if (host.code is defined) and not (host.code == '') %}--icmpv6-type {{host.code}} {% endif %}
+{%- if (host.port is defined) and not (host.port == []) %}--dport {{host.port}} {% endif %}
+{%- if (host.action is defined) and (host.action|match('accept')) %}-j ACCEPT {% elif (host.action is defined) and (host.action|match('reject')) %}-j REJECT {% else %}-j DROP {% endif %}
+{%- if (host.comment is defined) and not (host.comment == []) %}-m comment --comment "{{host.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+
+{% endif %}
+{% endfor %}
+
+#-------------------------------------------------------------------------------
+
+# Commit *filter
+COMMIT
+
+#-------------------------------------------------------------------------------

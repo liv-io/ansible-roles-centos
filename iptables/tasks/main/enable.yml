@@ -1,0 +1,103 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - main
+    - iptables
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create ip6tables-config'
+  template:
+    src: "{{file_src_ip6tables_config}}"
+    dest: "{{file_path_ip6tables_config}}"
+    mode: "{{file_mode_ip6tables_config}}"
+    owner: "{{file_owner_ip6tables_config}}"
+    group: "{{file_group_ip6tables_config}}"
+  notify: 'service reload ip6tables'
+  tags:
+    - files
+    - enable
+    - main
+    - iptables
+
+- name: 'template create ip6tables'
+  template:
+    src: "{{file_src_ip6tables}}"
+    dest: "{{file_path_ip6tables}}"
+    mode: "{{file_mode_ip6tables}}"
+    owner: "{{file_owner_ip6tables}}"
+    group: "{{file_group_ip6tables}}"
+  notify: 'service reload ip6tables'
+  tags:
+    - files
+    - enable
+    - main
+    - iptables
+
+- name: 'template create iptables-config'
+  template:
+    src: "{{file_src_iptables_config}}"
+    dest: "{{file_path_iptables_config}}"
+    mode: "{{file_mode_iptables_config}}"
+    owner: "{{file_owner_iptables_config}}"
+    group: "{{file_group_iptables_config}}"
+  notify: 'service reload iptables'
+  tags:
+    - files
+    - enable
+    - main
+    - iptables
+
+- name: 'template create iptables'
+  template:
+    src: "{{file_src_iptables}}"
+    dest: "{{file_path_iptables}}"
+    mode: "{{file_mode_iptables}}"
+    owner: "{{file_owner_iptables}}"
+    group: "{{file_group_iptables}}"
+  notify: 'service reload iptables'
+  tags:
+    - files
+    - enable
+    - main
+    - iptables
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start ip6tables'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_ip6tables}}"
+  tags:
+    - system
+    - enable
+    - main
+    - iptables
+
+- name: 'service start iptables'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_iptables}}"
+  tags:
+    - system
+    - enable
+    - main
+    - iptables

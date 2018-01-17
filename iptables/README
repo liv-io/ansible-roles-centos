@@ -1,0 +1,353 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : iptables
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+The iptables utility controls the network packet filtering code in the Linux
+kernel. If you need to set up firewalls and/or IP masquerading, you should
+install this package.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: iptables
+    vars:
+      iptables_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: iptables
+    vars:
+      iptables_state: 'enable'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: iptables
+    vars:
+     iptables_state: 'disable'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: iptables
+    vars:
+      iptables_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: iptables
+    vars:
+      iptables_state: 'inactive'
+
+CONFIG
+  vars:
+    iptables_filter_all:
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', code: 'network-unreachable', comment: 'ICMP network unreachable: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', code: 'host-unreachable', comment: 'ICMP host unreachable: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', code: 'port-unreachable', comment: 'ICMP port unreachable: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', code: 'source-quench', comment: 'ICMP source quench: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', code: 'echo-request', comment: 'ICMP echo request: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', sources: {'192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'}, port: 'ssh', comment: 'SSH: From private address space (RFC 1918)'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', code: 'network-unreachable', comment: 'ICMP network unreachable: To any'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', code: 'host-unreachable', comment: 'ICMP host unreachable: To any'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: To any'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', code: 'port-unreachable', comment: 'ICMP port unreachable: To any'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', code: 'source-quench', comment: 'ICMP source quench: To any'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', code: 'echo-request', comment: 'ICMP echo request: To any'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.11.1.11', '10.21.1.11'}, port: 'domain', comment: 'DNS: To dns servers'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'10.11.1.11', '10.21.1.11'}, port: 'domain', comment: 'DNS: To dns servers'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'10.2.1.11', '10.2.1.12', '10.2.1.13', '10.2.1.14'}, port: 'ntp', comment: 'NTP: To ntp servers'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.2.1.15'}, port: 'http', comment: 'HTTP: To package repository'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.2.1.15'}, port: 'https', comment: 'HTTPS: To package repository'}
+
+    iptables_filter_group:
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'http', comment: 'HTTP: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'https', comment: 'HTTPS: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv6', protocol: 'tcp', port: 'http', comment: 'HTTP: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv6', protocol: 'tcp', port: 'https', comment: 'HTTPS: From any'}
+
+    iptables_filter_host:
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'smtp', comment: 'MAIL: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'submission', comment: 'MAIL: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'imaps', comment: 'IMAPS: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'http', comment: 'HTTP: From any'}
+      - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'https', comment: 'HTTPS: From any'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', port: 'smtp', comment: 'MAIL: From any'}
+      - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', port: 'submission', comment: 'MAIL: From any'}
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  iptables_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  iptables_filter_all
+    Description: Define the 'iptables_filter_all' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'ICMP network unreachable: From any'},
+                  {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'ICMP host unreachable: From any'},
+                  {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: From any'},
+                  {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'ICMP port unreachable: From any'},
+                  {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'source-quench', comment: 'ICMP source quench: From any'},
+                  {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'echo-request', comment: 'ICMP echo request: From any'},
+                  {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', sources: {'192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'}, port: 'ssh', comment: 'SSH: From private address space (RFC 1918)'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'ICMP network unreachable: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'ICMP host unreachable: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'ICMP port unreachable: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'source-quench', comment: 'ICMP source quench: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'echo-request', comment: 'ICMP echo request: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'domain', comment: 'DNS: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, port: 'domain', comment: 'DNS: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, port: 'ntp', comment: 'NTP: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'http', comment: 'HTTP: To any'},
+                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'https', comment: 'HTTPS: To any'}]
+    Options    :
+      Examples: [{action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'ICMP network unreachable: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'ICMP host unreachable: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'ICMP port unreachable: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'source-quench', comment: 'ICMP source quench: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'echo-request', comment: 'ICMP echo request: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', sources: {'192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'}, port: 'ssh', comment: 'SSH: From private address space (RFC 1918)'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'ICMP network unreachable: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'ICMP host unreachable: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'ICMP port unreachable: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'source-quench', comment: 'ICMP source quench: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'echo-request', comment: 'ICMP echo request: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'domain', comment: 'DNS: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, port: 'domain', comment: 'DNS: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, port: 'ntp', comment: 'NTP: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'http', comment: 'HTTP: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'https', comment: 'HTTPS: To any'},
+                 {action: 'accept', direction: 'in', version: 'ipv6', protocol: 'icmp', sources: {'::'}, code: 'address-unreachable', comment: 'ICMP address unreachable: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv6', protocol: 'icmp', sources: {'::'}, code: 'port-unreachable', comment: 'ICMP port unreachable: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv6', protocol: 'icmp', sources: {'::'}, code: 'packet-too-big', comment: 'ICMP packet too big: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv6', protocol: 'icmp', sources: {'::'}, code: 'echo-request', comment: 'ICMP echo request: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv6', protocol: 'tcp', sources: {'fc00::/7'}, port: 'ssh', comment: 'SSH: From private address space (RFC 1918)'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'icmp', destinations: {'::'}, code: 'address-unreachable', comment: 'ICMP address unreachable: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'icmp', destinations: {'::'}, code: 'port-unreachable', comment: 'ICMP port unreachable: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'icmp', destinations: {'::'}, code: 'packet-too-big', comment: 'ICMP packet too big: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'icmp', destinations: {'::'}, code: 'echo-request', comment: 'ICMP echo request: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'tcp', destinations: {'::'}, port: 'domain', comment: 'DNS: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'udp', destinations: {'::'}, port: 'domain', comment: 'DNS: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'udp', destinations: {'::'}, port: 'ntp', comment: 'NTP: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'tcp', destinations: {'::'}, port: 'http', comment: 'HTTP: To any'},
+                 {action: 'accept', direction: 'out', version: 'ipv6', protocol: 'tcp', destinations: {'::'}, port: 'https', comment: 'HTTPS: To any'}]
+      None    : []
+
+  iptables_filter_group
+    Description: Define the 'iptables_filter_group' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'http', comment: 'HTTP: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'https', comment: 'HTTPS: From any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, port: 'http', comment: 'HTTP: To n_dmz, n_int'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, port: 'https', comment: 'HTTPS: To n_dmz, n_int'}]
+      None    : []
+
+  iptables_filter_host
+   Description: Define the 'iptables_filter_host' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'http', comment: 'HTTP: From any'},
+                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', port: 'https', comment: 'HTTPS: From any'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, port: 'http', comment: 'HTTP: To n_dmz, n_int'},
+                 {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, port: 'https', comment: 'HTTPS: To n_dmz, n_int'}]
+      None    : []
+
+  iptables_filter_policies:
+   Description: Define the 'iptables_filter_policies' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{action: 'drop', direction: 'input', version: 'ipv4', comment: 'Default IPv4 input policy'},
+                  {action: 'drop', direction: 'forward', version: 'ipv4', comment: 'Default IPv4 forward policy'},
+                  {action: 'drop', direction: 'output', version: 'ipv4', comment: 'Default IPv4 output policy'},
+                  {action: 'drop', direction: 'input', version: 'ipv6', comment: 'Default IPv6 input policy'},
+                  {action: 'drop', direction: 'forward', version: 'ipv6', comment: 'Default IPv6 forward policy'},
+                  {action: 'drop', direction: 'output', version: 'ipv6', comment: 'Default IPv6 output policy'}]
+    Options    :
+      Examples: [{action: 'drop', direction: 'input', version: 'ipv4', comment: 'Default IPv4 input policy'},
+                 {action: 'drop', direction: 'forward', version: 'ipv4', comment: 'Default IPv4 forward policy'},
+                 {action: 'accept', direction: 'output', version: 'ipv4', comment: 'Default IPv4 output policy'},
+                 {action: 'drop', direction: 'input', version: 'ipv6', comment: 'Default IPv6 input policy'},
+                 {action: 'drop', direction: 'forward', version: 'ipv6', comment: 'Default IPv6 forward policy'},
+                 {action: 'accept', direction: 'output', version: 'ipv6', comment: 'Default IPv6 output policy'}]
+      None    : []
+
+  iptables_ip6tables_config_template
+    Description: Define the template source for 'ip6tables-config.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'iptables/templates/example/ip6tables-config.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  iptables_ip6tables_template
+    Description: Define the template source for 'ip6tables.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'iptables/templates/example/ip6tables.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  iptables_iptables_config_template
+    Description: Define the template source for 'iptables-config.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'iptables/templates/example/iptables-config.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  iptables_iptables_template
+    Description: Define the template source for 'iptables.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'iptables/templates/example/iptables.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  iptables
+    Version: >= 1.0
+    Name   :
+      CentOS 7: 'iptables'
+
+  iptables-services
+    Version: >= 1.0
+    Name   :
+      CentOS 7: 'iptables-services'
+
+  iptables-utils
+    Version: >= 1.0
+    Name   :
+      CentOS 7: 'iptables-utils'
+
+ROLES
+  firewalld
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.0
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

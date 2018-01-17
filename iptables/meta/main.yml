@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - {role: firewalld, vars: [firewalld_state: 'remove'], when: not (iptables_state|match('false|no|remove|quiesce|inactive'))}

@@ -1,0 +1,41 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - iptables
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove iptables-services'
+  package:
+    state: 'absent'
+    name: "{{package_name_iptables_services}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - iptables
+
+- name: 'package remove iptables-utils'
+  package:
+    state: 'absent'
+    name: "{{package_name_iptables_utils}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - iptables

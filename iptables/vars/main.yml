@@ -1,0 +1,56 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# iptables
+package_name_iptables: 'iptables'
+
+# iptables-services
+package_name_iptables_services: 'iptables-services'
+
+# iptables-utils
+package_name_iptables_utils: 'iptables-utils'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# ip6tables
+file_src_ip6tables: "templates/{{(iptables_ip6tables_template|e)}}/ip6tables.j2"
+file_path_ip6tables: '/etc/sysconfig/ip6tables'
+file_mode_ip6tables: '0600'
+file_owner_ip6tables: 'root'
+file_group_ip6tables: 'root'
+
+# ip6tables-config
+file_src_ip6tables_config: "templates/{{(iptables_ip6tables_config_template|e)}}/ip6tables-config.j2"
+file_path_ip6tables_config: '/etc/sysconfig/ip6tables-config'
+file_mode_ip6tables_config: '0600'
+file_owner_ip6tables_config: 'root'
+file_group_ip6tables_config: 'root'
+
+# iptables
+file_src_iptables: "templates/{{(iptables_iptables_template|e)}}/iptables.j2"
+file_path_iptables: '/etc/sysconfig/iptables'
+file_mode_iptables: '0600'
+file_owner_iptables: 'root'
+file_group_iptables: 'root'
+
+# iptables-config
+file_src_iptables_config: "templates/{{(iptables_iptables_config_template|e)}}/iptables-config.j2"
+file_path_iptables_config: '/etc/sysconfig/iptables-config'
+file_mode_iptables_config: '0600'
+file_owner_iptables_config: 'root'
+file_group_iptables_config: 'root'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# ip6tables
+service_name_ip6tables: 'ip6tables'
+
+# iptables
+service_name_iptables: 'iptables'

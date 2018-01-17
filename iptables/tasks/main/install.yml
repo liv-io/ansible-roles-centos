@@ -1,0 +1,51 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - iptables
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install iptables'
+  package:
+    state: 'present'
+    name: "{{package_name_iptables}}"
+  tags:
+    - packaging
+    - install
+    - main
+    - iptables
+
+- name: 'package install iptables-services'
+  package:
+    state: 'present'
+    name: "{{package_name_iptables_services}}"
+  tags:
+    - packaging
+    - install
+    - main
+    - iptables
+
+- name: 'package install iptables-utils'
+  package:
+    state: 'present'
+    name: "{{package_name_iptables_utils}}"
+  tags:
+    - packaging
+    - install
+    - main
+    - iptables

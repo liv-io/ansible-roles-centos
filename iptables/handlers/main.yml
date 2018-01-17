@@ -1,0 +1,27 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service reload ip6tables'
+  service:
+    state: 'reloaded'
+    name: "{{service_name_ip6tables}}"
+
+- name: 'service reload iptables'
+  service:
+    state: 'reloaded'
+    name: "{{service_name_iptables}}"

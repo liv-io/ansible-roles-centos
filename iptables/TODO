@@ -1,0 +1,48 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : iptables
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+BUGS
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+IMPROVEMENTS
+--------------------------------------------------------------------------------
+
+ - Ensure safe defaults if parameter 'iptables_filter_policies' is empty
+
+--------------------------------------------------------------------------------
+FEATURES
+--------------------------------------------------------------------------------
+
+ - Add support for table: 'nat'
+ - Add support for built-in chains: 'FORWARD', 'PREROUTING', 'POSTROUTING'
+ - Add support for custom chains
+ - Add support for built-in targets: 'LOG', 'SNAT', 'DNAT'...
+ - Add support for module: 'limit'
+ - Add parameter 'iptables_filter_dependencies'
+ - Add parameter to define incoming interface (-i, --in-interface)
+ - Add parameter to define outgoing interface (-o, --out-interface)
+ - Add parameter to set limits (--limit)
+ - Add parameter to define log prefix (--log-prefix)
+ - Add parameter to define log level (--log-level)
+ - Add dependency to configure sysctl parameters: 'net.ipv4.ip_forward', 'net.ipv6.conf.all.forwarding'
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------
