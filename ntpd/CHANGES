@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-01-18)
+B: Add missing 'ntpdate' dependency
+
 * Version 0.1.1 (2018-01-09)
 I: Multiple minor improvements
 
