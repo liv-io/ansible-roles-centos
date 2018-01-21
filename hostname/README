@@ -23,19 +23,24 @@ USAGE
 --------------------------------------------------------------------------------
 
 INSTALL
-  - host: all
+  - hosts: all
     roles:
       - role: hostname
     vars:
-      host_state: 'install'
-      hostname_hostname: 'nameserver01'
+      hostname_state: 'install'
+      hostname_chassis: 'vm'
+      hostname_deployment: 'production'
+      hostname_hostname: 't101.cyberdyne.com'
+      hostname_icon_name: 'computer'
+      hostname_location: 'McMurdo Base, Antarctica'
+      hostname_pretty_hostname: 'T-101'
 
 INACTIVE
   - hosts: all
     roles:
       - role: hostname
     vars:
-      host_state: 'inactive'
+      hostname_state: 'inactive'
 
 --------------------------------------------------------------------------------
 VARIABLES
@@ -53,6 +58,29 @@ ROLE
       Install : 'true' | 'yes' | 'install'
       Inactive: 'quiesce' | 'inactive'
 
+  hostname_chassis
+    Description: Define the chassis type of the system.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'desktop' | 'laptop' | 'server' | 'tablet' | 'handset' |
+                'watch' | 'embedded' | 'vm' | 'container'
+      None    : ''
+
+  hostname_deployment
+    Description: Define the deployment environment of the system.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'development' | 'integration' | 'staging' | 'production'
+      None    : ''
+
   hostname_hostname
     Description: Define the hostname of the system.
     Implemented: 0.1
@@ -61,21 +89,40 @@ ROLE
     Type       : String
     Default    : "{{inventory_hostname}}"
     Options    :
-      Examples: 'proxy' | 'nameserver' | 'webserver'
+      Examples: 'proxy.domain.tld' | 'nameserver.domain.tld' | 'webserver.domain.tld'
 
-  hostname_hostname_template
-    Description: Define the template source for 'hostname.j2'.
-                 Any value other than 'main' requires a Jinja2
-                 file to be created. The custom Jinja2 file for an example
-                 configuration called 'example' needs to be placed as follows:
-                 'hostname/templates/example/hostname.j2'
+  hostname_icon_name
+    Description: Define the icon of the system.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : 'main'
+    Default    : ''
     Options    :
-      Examples: 'example' | 'environment' | 'hostname'
+      Examples: 'computer' | 'phone' | 'pda'
+      None    : ''
+
+  hostname_location
+    Description: Define the location of the system.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'Zurich, Switzerland' | 'Rack 01/48' | 'Cyber Shelter'
+      None    : ''
+
+  hostname_pretty_hostname
+    Description: Define the pretty hostname of the system.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'forward-proxy' | 'reverse-proxy' | 'web-server'
+      None    : ''
 
 --------------------------------------------------------------------------------
 CONFLICTS
@@ -88,6 +135,10 @@ DEPENDENCIES
 --------------------------------------------------------------------------------
 
 PACKAGES
+  hostname
+    Version: >= 3.0
+    Name   :
+      CentOS 7: 'hostname'
 
 ROLES
 
