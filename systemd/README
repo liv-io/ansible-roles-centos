@@ -1,0 +1,372 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : systemd
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+systemd is a system and service manager for Linux, compatible with SysV and LSB
+init scripts. systemd provides aggressive parallelization capabilities, uses
+socket and D-Bus activation for starting services, offers on-demand starting of
+daemons, keeps track of processes using Linux cgroups, supports snapshotting and
+restoring of the system state, maintains mount and automount points and
+implements an elaborate transactional dependency-based service control logic. It
+can work as a drop-in replacement for sysvinit.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - systemd: all
+    roles:
+      - role: systemd
+    vars:
+      systemd_state: 'install'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: systemd
+    vars:
+      systemd_state: 'inactive'
+
+CONFIG
+  vars:
+    systemd_all:
+      - name: 'ctrl-alt-del'
+        state: 'true'
+        mode: 'system'
+        type: 'target'
+        comment: "Disable 'ctrl+alt+del' hotkey"
+        options: []
+
+    systemd_dependencies:
+      - name: 'emergency-net'
+        state: 'true'
+        mode: 'system'
+        type: 'target'
+        comment: 'Emergency Mode with Networking'
+        options:
+          - section: 'Unit'
+          - key: 'Description'
+            value: 'Emergency Mode with Networking'
+          - key: 'Requires'
+            value: 'emergency.target systemd-networkd.service'
+          - key: 'After'
+            value: 'emergency.target systemd-networkd.service'
+          - key: 'AllowIsolate'
+            value: 'yes'
+
+    systemd_group:
+      - name: 'opensmtpd'
+        state: 'true'
+        mode: 'system'
+        type: 'target'
+        comment: 'OpenSMTPD mail daemon'
+        options:
+          - section: 'Unit'
+          - key: 'Description'
+            value: 'OpenSMTPD mail daemon'
+          - key: 'After'
+            value: 'syslog.target network.target'
+          - key: 'Conflicts'
+            value: 'sendmail.service postfix.service exim.service'
+
+          - section: 'Service'
+          - key: 'Type'
+            value: 'forking'
+          - key: 'ExecStart'
+            value: '/usr/sbin/smtpd'
+          - key: 'ExecStop'
+            value: '/usr/sbin/smtpctl stop'
+
+          - section: 'Install'
+          - key: 'WantedBy'
+            value: 'multi-user.target'
+
+    systemd_host:
+      - name: 'crond'
+        state: 'true'
+        mode: 'system'
+        type: 'target'
+        comment: 'Command Scheduler'
+        options:
+          - section: 'Unit'
+          - key: 'Description'
+            value: 'Command Scheduler'
+          - key: 'After'
+            value: 'auditd.service systemd-user-sessions.service time-sync.target'
+
+          - section: 'Service'
+          - key: 'EnvironmentFile'
+            value: '/etc/sysconfig/crond'
+          - key: 'ExecStart'
+            value: '/usr/sbin/crond -n $CRONDARGS'
+          - key: 'ExecReload'
+            value: '/bin/kill -HUP $MAINPID'
+          - key: 'KillMode'
+            value: 'process'
+
+          - section: 'Install'
+          - key: 'WantedBy'
+            value: 'multi-user.target'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+CONFIG
+  state
+    Description: Control the 'state' of the systemd file.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'true'
+    Options    :
+      Create: 'true' | 'yes' | 'create'
+      Remove: 'false' | 'no' | 'remove'
+
+  mode
+    Description: Define the 'mode' of the systemd file.
+    Implemented: 0.1
+    Required   : True
+    Value      : Arbitrary
+    Type       : String
+    Default    : "{{systemd_mode_default}}"
+    Options    :
+      Examples: 'system' | 'user'
+
+  name
+    Description: Define the 'name' of the systemd file.
+    Implemented: 0.1
+    Required   : True
+    Value      : Arbitrary
+    Type       : String
+    Default    : "{{systemd_name_default}}"
+    Options    :
+      Examples: 'opensmtpd' | 'ctrl+alt+del'
+
+  comment
+    Description: Define a 'comment' for the systemd file.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'Dummy comment' | 'Example comment'
+      None    : ''
+
+  options
+    Description: Define the systemd 'options'.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: [{section: 'Unit',
+                 {key: 'Description', value: 'OpenSMTPD mail daemon'},
+                 {key: 'After', value: 'syslog.target network.target'},
+                 {key: 'Conflicts', value: 'sendmail.service postfix.service exim.service'}},
+                 {section: 'Service',
+                 {key: 'Type', value: 'forking'},
+                 {key: 'ExecStart', value: '/usr/sbin/smtpd'},
+                 {key: 'ExecStop', value: '/usr/sbin/smtpctl stop'}},
+                 {section: 'Install',
+                 {key: 'WantedBy', value: 'multi-user.target'}}]
+      None    : []
+
+  type
+    Description: Define the 'type' of the systemd file.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "{{systemd_type_default}}"
+    Options    :
+      Examples: 'service' | 'socket' | 'target' | 'device' | 'mount' |
+                'automount' | 'snapshot' | 'timer' | 'swap' | 'path' | 'slice' |
+                'scope'
+
+ROLE
+  systemd_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'install'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Inactive: 'quiesce' | 'inactive'
+
+  systemd_all
+    Description: Define the 'systemd_all' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{name: 'ctrl-alt-del', state: 'true', mode: 'system', type: 'target',
+                  comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
+    Options    :
+      Examples: [{name: 'ctrl-alt-del', state: 'true', mode: 'system', type: 'target',
+                  comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
+      None    : []
+
+  systemd_dependencies
+    Description: Define the 'systemd_dependencies' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'ctrl-alt-del', state: 'true', mode: 'system', type: 'target',
+                  comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
+      None    : []
+
+  systemd_group
+    Description: Define the 'systemd_group' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'ctrl-alt-del', state: 'true', mode: 'system', type: 'target',
+                  comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
+      None    : []
+
+  systemd_host
+    Description: Define the 'systemd_host' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'ctrl-alt-del', state: 'true', mode: 'system', type: 'target',
+                  comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
+      None    : []
+
+  systemd_mode_default
+    Description: Define the 'systemd_mode_default' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'system'
+    Options    :
+      Examples: 'system' | 'user'
+
+  systemd_name_default
+    Description: Define the 'systemd_name_default' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'dummy' | 'example'
+
+  systemd_systemd_config_template
+    Description: Define the template source for 'systemd-config.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'systemd/templates/example/systemd-config.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  systemd_type_default
+    Description: Define the 'systemd_type_default' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'target'
+    Options    :
+      Examples: 'service' | 'socket' | 'target' | 'device' | 'mount' |
+                'automount' | 'snapshot' | 'timer' | 'swap' | 'path' | 'slice' |
+                'scope'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  systemd
+    Version: >= 219
+    Name   :
+      CentOS 7: 'systemd'
+
+ROLES
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.0
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

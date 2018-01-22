@@ -1,0 +1,27 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : systemd-config
+# Type   : systemd configuration file
+# Role   : systemd
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+{% if (item.comment is defined) and not (item.comment == '') %}
+# {{item.comment}}
+{% endif %}
+
+{% for option in item.options|default([]) %}
+{% if (option.section is defined) and not (option.section == '') %}[{{option.section|capitalize}}]{% endif %}
+{% if (option.key is defined) and not (option.key == '') %}{{option.key}}{% endif %}
+{%- if (option.value is defined) and not (option.value == '') %}={{option.value}}{% endif %}
+
+{% endfor %}

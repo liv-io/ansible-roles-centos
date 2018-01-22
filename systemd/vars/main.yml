@@ -1,0 +1,21 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# systemd
+package_name_systemd: 'systemd'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# systemd
+file_path_systemd: '/etc/systemd'
+
+# systemd-config
+file_src_systemd_config: "templates/{{systemd_systemd_config_template}}/systemd-config.j2"
+file_mode_systemd_config: '0644'
+file_owner_systemd_config: 'root'
+file_group_systemd_config: 'root'
