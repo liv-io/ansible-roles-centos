@@ -31,7 +31,6 @@ ROLES
  - logrotate
  - networking
  - rsyslog
- - systemd
  - timedatectl
  - user
  - yum
