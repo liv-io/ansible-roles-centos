@@ -60,7 +60,7 @@ CONFIG
             value: '1'
             comment: 'Smurf attack protection'
 
-    sysctl_dependencies
+    sysctl_dependencies:
       - name: 'ip-forwarding'
         order: '10'
         state: 'true'
