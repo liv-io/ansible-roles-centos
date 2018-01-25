@@ -1,0 +1,77 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - config
+    - main
+    - yum
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'copy content gpg-key'
+  copy:
+    content: "{{item.key_content}}"
+    dest: "{{file_path_rpm_gpg}}/{{item.key_name|default(yum_name_default)}}"
+    mode: "0644"
+    owner: "root"
+    group: "root"
+  with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
+  when: not (item.key_state|default('false')|match('false|no|remove'))
+  tags:
+    - files
+    - config
+    - main
+    - yum
+
+- name: 'template create yum-repo'
+  template:
+    src: "{{file_src_yum_config}}"
+    dest: "{{file_path_yum_repos_d}}/{{item.name|default(yum_name_default)}}.repo"
+    mode: "{{file_mode_yum_config}}"
+    owner: "{{file_owner_yum_config}}"
+    group: "{{file_group_yum_config}}"
+  notify: 'command clean yum-cache'
+  with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
+  when: not (item.state|default('false')|match('false|no|remove'))
+  tags:
+    - files
+    - config
+    - main
+    - yum
+
+- name: 'file remove gpg-key'
+  file:
+    state: 'absent'
+    path: "{{file_path_rpm_gpg}}/{{item.key_name|default(yum_name_default)}}"
+  with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
+  when: (item.key_state|default('false')|match('false|no|remove'))
+  tags:
+    - files
+    - config
+    - main
+    - yum
+
+- name: 'file remove yum-repo'
+  file:
+    state: 'absent'
+    path: "{{file_path_yum_repos_d}}/{{item.name|default(yum_name_default)}}.repo"
+  notify: 'command clean yum-cache'
+  with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
+  when: (item.state|default('false')|match('false|no|remove'))
+  tags:
+    - files
+    - config
+    - main
+    - yum

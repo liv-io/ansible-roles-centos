@@ -1,0 +1,408 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : yum
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+Yum is a utility that can check for and automatically download and install
+updated RPM packages. Dependencies are obtained and downloaded automatically,
+prompting the user for permission as necessary.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - yum: all
+    roles:
+      - role: yum
+    vars:
+      yum_state: 'install'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: yum
+    vars:
+      yum_state: 'inactive'
+
+CONFIG
+  vars:
+    yum_all:
+      - name: 'CentOS-Base'
+        state: 'true'
+        comment: 'CentOS Base'
+        repositories:
+          - name: 'base'
+            state: 'true'
+            comment: 'CentOS - Base'
+            description: 'CentOS-$releasever - Base'
+            url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'
+
+          - name: 'updates'
+            state: 'true'
+            comment: 'CentOS - Updates'
+            description: 'CentOS-$releasever - Updates'
+            url: 'http://mirror.centos.org/centos/$releasever/updates/$basearch/'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'
+
+        gpg_name: 'RPM-GPG-KEY-CentOS-7'
+        gpg_state: 'true'
+        gpg_content: |
+          -----BEGIN PGP PUBLIC KEY BLOCK-----
+          Version: GnuPG v1.4.5 (GNU/Linux)
+
+          mQINBFOn/0sBEADLDyZ+DQHkcTHDQSE0a0B2iYAEXwpPvs67cJ4tmhe/iMOyVMh9
+          Yw/vBIF8scm6T/vPN5fopsKiW9UsAhGKg0epC6y5ed+NAUHTEa6pSOdo7CyFDwtn
+          4HF61Esyb4gzPT6QiSr0zvdTtgYBRZjAEPFVu3Dio0oZ5UQZ7fzdZfeixMQ8VMTQ
+          4y4x5vik9B+cqmGiq9AW71ixlDYVWasgR093fXiD9NLT4DTtK+KLGYNjJ8eMRqfZ
+          Ws7g7C+9aEGHfsGZ/SxLOumx/GfiTloal0dnq8TC7XQ/JuNdB9qjoXzRF+faDUsj
+          WuvNSQEqUXW1dzJjBvroEvgTdfCJfRpIgOrc256qvDMp1SxchMFltPlo5mbSMKu1
+          x1p4UkAzx543meMlRXOgx2/hnBm6H6L0FsSyDS6P224yF+30eeODD4Ju4BCyQ0jO
+          IpUxmUnApo/m0eRelI6TRl7jK6aGqSYUNhFBuFxSPKgKYBpFhVzRM63Jsvib82rY
+          438q3sIOUdxZY6pvMOWRkdUVoz7WBExTdx5NtGX4kdW5QtcQHM+2kht6sBnJsvcB
+          JYcYIwAUeA5vdRfwLKuZn6SgAUKdgeOtuf+cPR3/E68LZr784SlokiHLtQkfk98j
+          NXm6fJjXwJvwiM2IiFyg8aUwEEDX5U+QOCA0wYrgUQ/h8iathvBJKSc9jQARAQAB
+          tEJDZW50T1MtNyBLZXkgKENlbnRPUyA3IE9mZmljaWFsIFNpZ25pbmcgS2V5KSA8
+          c2VjdXJpdHlAY2VudG9zLm9yZz6JAjUEEwECAB8FAlOn/0sCGwMGCwkIBwMCBBUC
+          CAMDFgIBAh4BAheAAAoJECTGqKf0qA61TN0P/2730Th8cM+d1pEON7n0F1YiyxqG
+          QzwpC2Fhr2UIsXpi/lWTXIG6AlRvrajjFhw9HktYjlF4oMG032SnI0XPdmrN29lL
+          F+ee1ANdyvtkw4mMu2yQweVxU7Ku4oATPBvWRv+6pCQPTOMe5xPG0ZPjPGNiJ0xw
+          4Ns+f5Q6Gqm927oHXpylUQEmuHKsCp3dK/kZaxJOXsmq6syY1gbrLj2Anq0iWWP4
+          Tq8WMktUrTcc+zQ2pFR7ovEihK0Rvhmk6/N4+4JwAGijfhejxwNX8T6PCuYs5Jiv
+          hQvsI9FdIIlTP4XhFZ4N9ndnEwA4AH7tNBsmB3HEbLqUSmu2Rr8hGiT2Plc4Y9AO
+          aliW1kOMsZFYrX39krfRk2n2NXvieQJ/lw318gSGR67uckkz2ZekbCEpj/0mnHWD
+          3R6V7m95R6UYqjcw++Q5CtZ2tzmxomZTf42IGIKBbSVmIS75WY+cBULUx3PcZYHD
+          ZqAbB0Dl4MbdEH61kOI8EbN/TLl1i077r+9LXR1mOnlC3GLD03+XfY8eEBQf7137
+          YSMiW5r/5xwQk7xEcKlbZdmUJp3ZDTQBXT06vavvp3jlkqqH9QOE8ViZZ6aKQLqv
+          pL+4bs52jzuGwTMT7gOR5MzD+vT0fVS7Xm8MjOxvZgbHsAgzyFGlI1ggUQmU7lu3
+          uPNL0eRx4S1G4Jn5
+          =OGYX
+          -----END PGP PUBLIC KEY BLOCK-----
+
+    yum_dependencies:
+      - name: 'epel'
+        state: 'true'
+        comment: 'Extra Packages for Enterprise Linux'
+        repositories:
+          - name: 'epel'
+            state: 'true'
+            comment: 'Extra Packages for Enterprise Linux 7 - Stable'
+            description: 'Extra Packages for Enterprise Linux 7 - $basearch'
+            url: 'http://download.fedoraproject.org/pub/epel/7/$basearch'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
+
+        gpg_name: 'RPM-GPG-KEY-EPEL-7'
+        gpg_state: 'true'
+        gpg_content: |
+          -----BEGIN PGP PUBLIC KEY BLOCK-----
+          Version: GnuPG v1.4.11 (GNU/Linux)
+
+          mQINBFKuaIQBEAC1UphXwMqCAarPUH/ZsOFslabeTVO2pDk5YnO96f+rgZB7xArB
+          OSeQk7B90iqSJ85/c72OAn4OXYvT63gfCeXpJs5M7emXkPsNQWWSju99lW+AqSNm
+          jYWhmRlLRGl0OO7gIwj776dIXvcMNFlzSPj00N2xAqjMbjlnV2n2abAE5gq6VpqP
+          vFXVyfrVa/ualogDVmf6h2t4Rdpifq8qTHsHFU3xpCz+T6/dGWKGQ42ZQfTaLnDM
+          jToAsmY0AyevkIbX6iZVtzGvanYpPcWW4X0RDPcpqfFNZk643xI4lsZ+Y2Er9Yu5
+          S/8x0ly+tmmIokaE0wwbdUu740YTZjCesroYWiRg5zuQ2xfKxJoV5E+Eh+tYwGDJ
+          n6HfWhRgnudRRwvuJ45ztYVtKulKw8QQpd2STWrcQQDJaRWmnMooX/PATTjCBExB
+          9dkz38Druvk7IkHMtsIqlkAOQMdsX1d3Tov6BE2XDjIG0zFxLduJGbVwc/6rIc95
+          T055j36Ez0HrjxdpTGOOHxRqMK5m9flFbaxxtDnS7w77WqzW7HjFrD0VeTx2vnjj
+          GqchHEQpfDpFOzb8LTFhgYidyRNUflQY35WLOzLNV+pV3eQ3Jg11UFwelSNLqfQf
+          uFRGc+zcwkNjHh5yPvm9odR1BIfqJ6sKGPGbtPNXo7ERMRypWyRz0zi0twARAQAB
+          tChGZWRvcmEgRVBFTCAoNykgPGVwZWxAZmVkb3JhcHJvamVjdC5vcmc+iQI4BBMB
+          AgAiBQJSrmiEAhsPBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBqL66iNSxk
+          5cfGD/4spqpsTjtDM7qpytKLHKruZtvuWiqt5RfvT9ww9GUUFMZ4ZZGX4nUXg49q
+          ixDLayWR8ddG/s5kyOi3C0uX/6inzaYyRg+Bh70brqKUK14F1BrrPi29eaKfG+Gu
+          MFtXdBG2a7OtPmw3yuKmq9Epv6B0mP6E5KSdvSRSqJWtGcA6wRS/wDzXJENHp5re
+          9Ism3CYydpy0GLRA5wo4fPB5uLdUhLEUDvh2KK//fMjja3o0L+SNz8N0aDZyn5Ax
+          CU9RB3EHcTecFgoy5umRj99BZrebR1NO+4gBrivIfdvD4fJNfNBHXwhSH9ACGCNv
+          HnXVjHQF9iHWApKkRIeh8Fr2n5dtfJEF7SEX8GbX7FbsWo29kXMrVgNqHNyDnfAB
+          VoPubgQdtJZJkVZAkaHrMu8AytwT62Q4eNqmJI1aWbZQNI5jWYqc6RKuCK6/F99q
+          thFT9gJO17+yRuL6Uv2/vgzVR1RGdwVLKwlUjGPAjYflpCQwWMAASxiv9uPyYPHc
+          ErSrbRG0wjIfAR3vus1OSOx3xZHZpXFfmQTsDP7zVROLzV98R3JwFAxJ4/xqeON4
+          vCPFU6OsT3lWQ8w7il5ohY95wmujfr6lk89kEzJdOTzcn7DBbUru33CQMGKZ3Evt
+          RjsC7FDbL017qxS+ZVA/HGkyfiu4cpgV8VUnbql5eAZ+1Ll6Dw==
+          =hdPa
+          -----END PGP PUBLIC KEY BLOCK-----
+
+    yum_group:
+      - name: 'epel-testing'
+        state: 'true'
+        comment: 'Extra Packages for Enterprise Linux'
+        repositories:
+          - name: 'base'
+            state: 'true'
+            comment: 'Extra Packages for Enterprise Linux - Testing'
+            description: 'Extra Packages for Enterprise Linux 7 - Testing - $basearch'
+            url: 'baseurl=http://download.fedoraproject.org/pub/epel/testing/7/$basearch'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
+
+    yum_host:
+      - name: 'epel-testing'
+        state: 'true'
+        comment: 'Extra Packages for Enterprise Linux'
+        repositories:
+          - name: 'base'
+            state: 'false'
+            comment: 'Extra Packages for Enterprise Linux - Testing'
+            description: 'Extra Packages for Enterprise Linux 7 - Testing - $basearch'
+            url: 'baseurl=http://download.fedoraproject.org/pub/epel/testing/7/$basearch'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  yum_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'install'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Inactive: 'quiesce' | 'inactive'
+
+  yum_all
+    Description: Define the 'yum_all' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
+                   [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
+                     url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'},
+                    {name: 'updates', state: 'true', comment: 'CentOS - Updates', description: 'CentOS-$releasever - Updates',
+                     url: 'http://mirror.centos.org/centos/$releasever/updates/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'},
+                    {name: 'extras', state: 'true', comment: 'CentOS - Extras', description: 'CentOS-$releasever - Extras',
+                     url: 'http://mirror.centos.org/centos/$releasever/extras/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'},
+                    {name: 'centosplus', state: 'false', comment: 'CentOS - Plus', description: 'CentOS-$releasever - Plus',
+                     url: 'http://mirror.centos.org/centos/$releasever/centosplus/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}],
+                    gpg_name: 'RPM-GPG-KEY-CentOS-7', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'},
+                    {name: 'epel', state: 'true', comment: 'Extra Packages for Enterprise Linux', repositories:
+                   [{name: 'epel', state: 'true', comment: 'Extra Packages for Enterprise Linux 7 - Stable', description: 'Extra Packages for Enterprise Linux 7 - $basearch',
+                     url: 'http://download.fedoraproject.org/pub/epel/7/$basearch', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'},
+                    {name: 'epel-debuginfo', state: 'false', comment: 'Extra Packages for Enterprise Linux - Debug', description: 'Extra Packages for Enterprise Linux 7 - $basearch - Debug',
+                     url: 'http://download.fedoraproject.org/pub/epel/7/$basearch/debug', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7',
+                    {name: 'epel-source', state: 'false', comment: 'Extra Packages for Enterprise Linux - Source', description: 'Extra Packages for Enterprise Linux 7 - $basearch - Source',
+                     url: 'http://download.fedoraproject.org/pub/epel/7/SRPMS', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'}],
+                    gpg_name: 'RPM-GPG-KEY-EPEL-7', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'}]
+    Options    :
+      Examples: [[{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
+                   [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
+                     url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
+      None    : []
+
+  yum_dependencies
+    Description: Define the 'yum_dependencies' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
+                  [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
+                    url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
+      None    : []
+
+  yum_exclude
+    Description: Define the 'yum_exclude' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['systemd*', 'avahi', 'firewalld', 'gnome*']
+      None    : []
+
+  yum_group
+    Description: Define the 'yum_dependencies' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
+                  [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
+                    url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
+      None    : []
+
+  yum_host
+    Description: Define the 'yum_host' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
+                  [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
+                    url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
+      None    : []
+
+  yum_include
+    Description: Define the 'yum_include' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['bsd*', 'openntpd', 'opensmtpd', 'tmux']
+      None    : []
+
+  yum_name_default
+    Description: Define the 'yum_name_default' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'dummy' | 'example'
+
+  yum_proxy
+    Description: Define the 'yum_proxy' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'http://proxy.domain.tld:3128'
+      None    : ''
+
+  yum_proxy_password
+    Description: Define the 'yum_proxy_password' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'Kd7TN_eL2upGV9Y63w-M9.3tf' | 'B47Y.TShmg_Z6C5s8e-Uv+wPb'
+      None    : ''
+
+  yum_proxy_username
+    Description: Define the 'yum_proxy_username' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'user' | 'yum-user'
+      None    : ''
+
+  yum_yum_conf_template
+    Description: Define the template source for 'yum.conf.j2'.
+                 Any value other than 'main' requires a Jinja2
+                 file to be created. The custom Jinja2 file for an example
+                 configuration called 'example' needs to be placed as follows:
+                 'yum/templates/example/yum.conf.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  yum_yum_config_template
+    Description: Define the template source for 'yum-config.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'yum/templates/example/yum-config.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  yum
+    Version: >= 3.0
+    Name   :
+      CentOS 7: 'yum'
+
+ROLES
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.0
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

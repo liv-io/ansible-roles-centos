@@ -1,0 +1,85 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : yum-config
+# Type   : yum configuration file
+# Role   : yum
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+{% if (item.comment|default('')) %}
+# {{item.comment}}
+{% endif %}
+
+{% for repository in item.repositories|default([]) %}
+{% if (repository.comment|default('')) %}
+# {{repository.comment}}
+{% endif %}
+[{{repository.name|default(yum_name_default)}}]
+{% if (repository.description|default('')) %}
+name={{repository.description}}
+{% endif %}
+{% if (repository.state|default('true')|match('false|no|disable')) %}
+enabled=0
+{% else %}
+enabled=1
+{% endif %}
+{% if (repository.url|default('')) %}
+baseurl={{repository.url}}
+{% endif %}
+{% if (repository.gpg_check|default('true')|match('false|no|disable')) %}
+gpgcheck=0
+{% else %}
+gpgcheck=1
+{% endif %}
+{% if (repository.gpg_key|default('')) %}
+gpgkey={{repository.gpg_key}}
+{% endif %}
+{% if (repository.exclude|default([])) %}
+exclude={% for exclude in repository.exclude %}{{exclude}}{% if not loop.last %} {% endif %}{% endfor %}
+{% endif %}
+{% if (repository.include|default([])) %}
+includepkgs={% for include in repository.include %}{{include}}{% if not loop.last %} {% endif %}{% endfor %}
+{% endif %}
+{% if (repository.priority|default('')) %}
+priority={{repository.priority|int(80)}}
+{% endif %}
+{% if (repository.ssl_verify|default('true')|match('false|no|disable')) %}
+sslverify=0
+{% endif %}
+{% if (repository.ssl_ca_cert|default('')) %}
+sslcacert={{repository.ssl_ca_cert}}
+{% endif %}
+{% if (repository.ssl_client_cert|default('')) %}
+sslclientcert={{repository.ssl_client_cert}}
+{% endif %}
+{% if (repository.ssl_client_key|default('')) %}
+sslclientkey={{repository.ssl_client_key}}
+{% endif %}
+{% if (repository.username|default('')) %}
+username={{repository.username}}
+{% endif %}
+{% if (repository.password|default('')) %}
+password={{repository.password}}
+{% endif %}
+{% if (repository.proxy|default('')) %}
+proxy={{repository.proxy}}
+{% endif %}
+{% if (repository.proxy_username|default('')) %}
+proxy_username={{repository.proxy_username}}
+{% endif %}
+{% if (repository.proxy_password|default('')) %}
+proxy_password={{repository.proxy_password}}
+{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
