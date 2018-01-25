@@ -33,4 +33,3 @@ ROLES
  - rsyslog
  - timedatectl
  - user
- - yum
