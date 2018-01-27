@@ -1,0 +1,41 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - timezone
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+- name: 'command get time-zone'
+  shell: "{{command_cmd_get_timezone}}"
+  register: register_timezone
+  changed_when: False
+  check_mode: 'no'
+  tags:
+    - commands
+    - install
+    - main
+    - timezone
+
+- name: 'command set time-zone'
+  command: "{{command_cmd_set_timezone}}"
+  when: not (timezone_timezone == '') and not (register_timezone.stdout == timezone_timezone)
+  tags:
+    - commands
+    - install
+    - main
+    - timezone

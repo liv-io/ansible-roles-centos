@@ -1,0 +1,11 @@
+---
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# get time-zone
+command_cmd_get_timezone: "timezonectl status | grep '^.*Time zone: ' | sed 's/^.*Time zone: //'"
+
+# set time-zone
+command_cmd_set_timezone: "timezonectl set-timezone {{timezone_timezone}}"
