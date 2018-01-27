@@ -30,5 +30,4 @@ ROLES
  - logrotate
  - networking
  - rsyslog
- - timedatectl
  - user
