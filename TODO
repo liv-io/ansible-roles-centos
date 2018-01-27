@@ -27,7 +27,6 @@ ROLES
  - ca_trust
  - group
  - haproxy
- - localectl
  - logrotate
  - networking
  - rsyslog
