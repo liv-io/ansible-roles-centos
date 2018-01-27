@@ -60,7 +60,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : ''
+    Default    : 'us'
     Options    :
       Examples: 'ch' | 'de' | 'uk' | 'us'
 
@@ -70,7 +70,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : ''
+    Default    : 'us'
     Options    :
       Examples: 'ch' | 'de' | 'uk' | 'us'
 
