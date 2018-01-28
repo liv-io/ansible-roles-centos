@@ -1,0 +1,34 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - config
+    - main
+    - group
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'group config group'
+  group:
+    state: "{{'absent' if (item.state|default('true')|match('false|no|disable')) else 'present'}}"
+    name: "{{item.name}}"
+    gid: "{{item.gid|default(omit)}}"
+    system: "{{'yes' if (item.system|default('false')|match('true|yes|enable')) else 'no'}}"
+  with_items: "{{group_all + group_dependencies + group_group + group_host}}"
+  tags:
+    - system
+    - config
+    - main
+    - group
