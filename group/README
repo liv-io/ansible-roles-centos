@@ -12,7 +12,7 @@ License: Simplified BSD License
 DESCRIPTION
 --------------------------------------------------------------------------------
 
-Create, update and delete group accounts with this role.
+Create, update and delete groups with this role.
 
 For more detailed information on the usage and available configuration options
 please consult the following sections.
