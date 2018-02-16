@@ -22,13 +22,13 @@
 
 - name: 'copy content gpg-key'
   copy:
-    content: "{{item.key_content}}"
-    dest: "{{file_path_rpm_gpg}}/{{item.key_name|default(yum_name_default)}}"
+    content: "{{item.gpg_content}}"
+    dest: "{{file_path_rpm_gpg}}/{{item.gpg_name|default(yum_name_default)}}"
     mode: "0644"
     owner: "root"
     group: "root"
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
-  when: not (item.key_state|default('false')|match('false|no|remove'))
+  when: not (item.gpg_state|default('false')|match('false|no|remove'))
   tags:
     - files
     - config
@@ -54,9 +54,9 @@
 - name: 'file remove gpg-key'
   file:
     state: 'absent'
-    path: "{{file_path_rpm_gpg}}/{{item.key_name|default(yum_name_default)}}"
+    path: "{{file_path_rpm_gpg}}/{{item.gpg_name|default(yum_name_default)}}"
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
-  when: (item.key_state|default('false')|match('false|no|remove'))
+  when: (item.gpg_state|default('false')|match('false|no|remove'))
   tags:
     - files
     - config
