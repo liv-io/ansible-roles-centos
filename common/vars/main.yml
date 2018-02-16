@@ -5,25 +5,25 @@
 #-------------------------------------------------------------------------------
 
 # common-app.dir
-file_path_common_app_dir: "/{{common_app_dir_name}}"
+file_path_common_app_dir: "/{{common_app_dir}}"
 file_mode_common_app_dir: '0755'
 file_owner_common_app_dir: 'root'
 file_group_common_app_dir: 'root'
 
 # common-backup.dir
-file_path_common_backup_dir: "/{{common_backup_dir_name}}"
+file_path_common_backup_dir: "/{{common_backup_dir}}"
 file_mode_common_backup_dir: '0755'
 file_owner_common_backup_dir: 'root'
 file_group_common_backup_dir: 'root'
 
 # common-data.dir
-file_path_common_data_dir: "/{{common_data_dir_name}}"
+file_path_common_data_dir: "/{{common_data_dir}}"
 file_mode_common_data_dir: '0755'
 file_owner_common_data_dir: 'root'
 file_group_common_data_dir: 'root'
 
 # common-script.dir
-file_path_common_script_dir: "/{{common_script_dir_name}}"
+file_path_common_script_dir: "/{{common_script_dir}}"
 file_mode_common_script_dir: '0755'
 file_owner_common_script_dir: 'root'
 file_group_common_script_dir: 'root'
