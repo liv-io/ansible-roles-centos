@@ -86,7 +86,7 @@
 # GROUP
 
 {% for group in iptables_filter_group|default([]) %}
-{%- if (all.version is defined) and (all.version|match('ipv4|v4|inet')) %}
+{%- if (group.version is defined) and (group.version|match('ipv4|v4|inet')) %}
 {%- if (group.comment is defined) and not (group.comment == '') %}
 # {{group.comment}}
 {% endif %}
@@ -120,7 +120,7 @@
 # HOST
 
 {% for host in iptables_filter_host|default([]) %}
-{%- if (all.version is defined) and (all.version|match('ipv4|v4|inet')) %}
+{%- if (host.version is defined) and (host.version|match('ipv4|v4|inet')) %}
 {%- if (host.comment is defined) and not (host.comment == '') %}
 # {{host.comment}}
 {% endif %}
