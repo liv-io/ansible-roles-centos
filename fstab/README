@@ -16,9 +16,9 @@ The file fstab contains descriptive information about the various file systems.
 fstab is only read by programs, and not written; it is the duty of the system
 administrator to properly create and maintain this file. Each filesystem is
 described on a separate line; fields on each line are separated by tabs or
-spaces. Lines starting with '#' are comments, blank lines are ignored. The
-order of records in fstab is important because fsck, mount, and umount
-sequentially iterate through fstab doing their thing.
+spaces. Lines starting with '#' are comments, blank lines are ignored. The order
+of records in fstab is important because fsck, mount, and umount sequentially
+iterate through fstab doing their thing.
 
 For more detailed information on the usage and available configuration options
 please consult the following sections.
