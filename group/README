@@ -22,14 +22,14 @@ USAGE
 --------------------------------------------------------------------------------
 
 INSTALL
-  - group: all
+  - hosts: all
     roles:
       - role: group
     vars:
       group_state: 'install'
 
 INACTIVE
-  - groups: all
+  - hosts: all
     roles:
       - role: group
     vars:
@@ -125,7 +125,7 @@ ROLE
     Options    :
       Examples: [{name: 'group01', state: 'true', gid: '2001'},
                  {name: 'group02', state: 'true', gid: '2002'}]
-      None : []
+      None    : []
 
   group_dependencies
     Description: Define the 'group_dependencies' option.
@@ -137,7 +137,7 @@ ROLE
     Options    :
       Examples: [{name: 'group01', state: 'true', gid: '2001'},
                  {name: 'group02', state: 'true', gid: '2002'}]
-      None : []
+      None    : []
 
   group_group
     Description: Define the 'group_group' option.
@@ -149,7 +149,7 @@ ROLE
     Options    :
       Examples: [{name: 'group01', state: 'true', gid: '2001'},
                  {name: 'group02', state: 'true', gid: '2002'}]
-      None : []
+      None    : []
 
   group_host
     Description: Define the 'group_host' option.
@@ -161,7 +161,7 @@ ROLE
     Options    :
       Examples: [{name: 'group01', state: 'true', gid: '2001'},
                  {name: 'group02', state: 'true', gid: '2002'}]
-      None : []
+      None    : []
 
 --------------------------------------------------------------------------------
 CONFLICTS
