@@ -22,14 +22,14 @@ USAGE
 --------------------------------------------------------------------------------
 
 INSTALL
-  - user: all
+  - hosts: all
     roles:
       - role: user
     vars:
       user_state: 'install'
 
 INACTIVE
-  - users: all
+  - hosts: all
     roles:
       - role: user
     vars:
@@ -98,8 +98,8 @@ CONFIG (user)
     Type       : String
     Default    : 'true'
     Options    :
-      Create: 'true' | 'yes' | 'enable'
-      Remove: 'false' | 'no' | 'disable'
+      Create: 'true' | 'yes' | 'create'
+      Remove: 'false' | 'no' | 'remove'
 
   name
     Description: Define the name of the user.
@@ -265,8 +265,8 @@ CONFIG (authorized_key)
     Type       : String
     Default    : 'true'
     Options    :
-      Create: 'true' | 'yes' | 'enable'
-      Remove: 'false' | 'no' | 'disable'
+      Create: 'true' | 'yes' | 'create'
+      Remove: 'false' | 'no' | 'remove'
 
   user
     Description: Define the user of the authorized_key.
