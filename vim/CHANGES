@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-03-14)
+B: Fix issue with 'ttymouse' setting
+I: Improve VIM configuration
+
 * Version 0.1.1 (2018-01-10)
 I: Improve Jinja2 filters
 
