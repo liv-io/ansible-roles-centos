@@ -1,28 +1,28 @@
 ---
 
 - name: 'task include install'
-  include: install.yml
+  import_tasks: install.yml
   when: not (open_vm_tools_state|match('false|no|remove|quiesce|inactive'))
   tags:
     - main
     - open_vm_tools
 
 - name: 'task include enable'
-  include: enable.yml
+  import_tasks: enable.yml
   when: (open_vm_tools_state|match('start|on|enable'))
   tags:
     - main
     - open_vm_tools
 
 - name: 'task include disable'
-  include: disable.yml
+  import_tasks: disable.yml
   when: (open_vm_tools_state|match('stop|off|disable'))
   tags:
     - main
     - open_vm_tools
 
 - name: 'task include remove'
-  include: remove.yml
+  import_tasks: remove.yml
   when: (open_vm_tools_state|match('false|no|remove'))
   tags:
     - main
