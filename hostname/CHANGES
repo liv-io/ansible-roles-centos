@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.0 (2018-03-30)
+F: Port role to Ansible 2.4
+
 * Version 0.2.0 (2018-01-21)
 F: Redesign role and add support for 'machine-info' (local machine information file)
 
