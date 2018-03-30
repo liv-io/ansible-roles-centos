@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2018-03-30)
+F: Port role to Ansible 2.4
+
 * Version 0.1.2 (2018-01-10)
 I: Improve Jinja2 filters
 I: Add missing 'dependencies' option
