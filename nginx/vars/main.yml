@@ -1,0 +1,54 @@
+---
+
+# log.dir
+log_dir: '/var/log/nginx/'
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# nginx
+package_name_nginx: 'nginx'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# nginx.conf
+file_src_nginx_conf: "templates/{{nginx_nginx_conf_template}}/nginx.conf.j2"
+file_path_nginx_conf: '/etc/nginx/nginx.conf'
+file_mode_nginx_conf: '0644'
+file_owner_nginx_conf: 'root'
+file_group_nginx_conf: 'root'
+
+# dhparam.pem
+file_path_dhparam_pem: '/etc/nginx/dhparam.pem'
+
+# vhost
+file_src_vhost: "templates/{{nginx_vhost_template}}/vhost.conf.j2"
+file_mode_vhost: '0644'
+file_owner_vhost: 'root'
+file_group_vhost: 'root'
+
+# vhosts.d
+file_path_vhosts_d: "/etc/nginx/{{nginx_vhosts_d}}"
+file_mode_vhosts_d: '0755'
+file_owner_vhosts_d: 'root'
+file_group_vhosts_d: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check nginx
+command_cmd_check_nginx: 'nginx -t'
+
+# generate dhparam
+command_shell_generate_dhparam: "openssl dhparam -dsaparam 4096 -out {{file_path_dhparam_pem}}"
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# nginx
+service_name_nginx: 'nginx'

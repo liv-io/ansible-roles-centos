@@ -1,0 +1,52 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - main
+    - nginx
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create nginx.conf'
+  template:
+    src: "{{file_src_nginx_conf}}"
+    dest: "{{file_path_nginx_conf}}"
+    mode: "{{file_mode_nginx_conf}}"
+    owner: "{{file_owner_nginx_conf}}"
+    group: "{{file_group_nginx_conf}}"
+  notify:
+    - 'command check nginx'
+    - 'service reload nginx'
+  tags:
+    - files
+    - enable
+    - main
+    - nginx
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start nginx'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_nginx}}"
+  tags:
+    - system
+    - enable
+    - main
+    - nginx
