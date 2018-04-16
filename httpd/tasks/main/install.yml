@@ -1,0 +1,48 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - httpd
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install httpd'
+  package:
+    state: 'present'
+    name: "{{package_name_httpd}}"
+  tags:
+    - packaging
+    - install
+    - main
+    - httpd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create vhosts.d'
+  file:
+    state: 'directory'
+    path: "{{file_path_vhosts_d}}"
+    mode: "{{file_mode_vhosts_d}}"
+    owner: "{{file_owner_vhosts_d}}"
+    group: "{{file_group_vhosts_d}}"
+  tags:
+    - files
+    - install
+    - main
+    - httpd

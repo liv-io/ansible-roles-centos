@@ -1,0 +1,169 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : vhost.conf
+# Type   : httpd configuration file
+# Role   : httpd
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+<VirtualHost 
+{%- if (item.listen is defined) and not (item.listen == '') %}
+ {{item.listen}}:{{(item.port|int)}}
+{%- else %}
+ *:{{(item.port|int)}}
+{%- endif %}>
+
+  #-----------------------------------------------------------------------------
+  # GENERAL
+  #-----------------------------------------------------------------------------
+
+  # Server hostname and port
+  ServerName {{item.name}}
+  # Server aliases
+{% if (item.alias is defined) and not (item.alias == []) %}
+{% for alias in item.alias %}
+  ServerAlias {{alias}}
+{% endfor %}
+{% endif %}
+  # Server admin
+{% if (item.server_admin is defined) and not (item.server_admin == []) %}
+  ServerAdmin {{item.server_admin}}
+{% endif %}
+  # Main document tree
+{% if (item.document_root is defined) and not (item.document_root == '') %}
+  DocumentRoot '{{item.document_root}}'
+{% endif %}
+
+  #-----------------------------------------------------------------------------
+  # LOGGING
+  #-----------------------------------------------------------------------------
+
+{% if (item.ssl_state is defined) and (item.ssl_state|match('true|yes|enable')) %}
+  # Combined Log Format (CLF) + SSL/TLS Information
+  LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %{SSL_PROTOCOL}x %{SSL_CIPHER}x" combinedssl
+{% endif %}
+
+  # Logging options
+  ErrorLog logs/{{item.name}}-{{(item.port|int)}}_error_log
+  CustomLog logs/{{item.name}}-{{(item.port|int)}}_access_log
+{%- if (item.ssl_state is defined) and (item.ssl_state|match('true|yes|enable')) %}
+ combinedssl
+{% else %}
+ combined
+{% endif %}
+
+  # Log level
+{% if (item.log_level is defined) and not (item.log_level == '') %}
+  LogLevel {{item.log_level}}
+{% else %}
+  LogLevel warn
+{% endif %}
+
+  #-----------------------------------------------------------------------------
+  # HTTP HEADER
+  #-----------------------------------------------------------------------------
+
+{% if (item.hsts_state is defined) and (item.hsts_state|match('true|yes|enable')) %}
+  # HTTP Strict Transport Security (HSTS)
+  Header always set Strict-Transport-Security 'max-age={% if (item.hsts_max_age is defined) and not (item.hsts_max_age == '') %}{{(item.hsts_max_age|int(31536000))}}{% else %}{{httpd_hsts_max_age}}{% endif %}'
+{% endif %}
+
+{% if (item.xss_protection_state is defined) and (item.xss_protection_state|match('true|yes|enable')) %}
+  # X-Frame-Options: Disable frame embedding (phishing, clickjacking prevention)
+  Header always set X-Frame-Options 'DENY'
+  # X-Content-Type-Options: Disable MIME-sniffing (drive-by download attacks prevention)
+  Header always set X-Content-Type-Options 'nosniff'
+  # X-XSS-Protection: Enable XSS filter (cross-site scripting prevention)
+  Header always set X-XSS-Protection '1; mode=block'
+{% endif %}
+
+{% if (item.ssl_state is defined) and (item.ssl_state|match('true|yes|enable')) %}
+  #-----------------------------------------------------------------------------
+  # SSL
+  #-----------------------------------------------------------------------------
+
+  # Enable SSL/TLS protocol engine
+  SSLEngine On
+  # Disable compression on the SSL level
+{% if (item.ssl_compression is defined) and (item.ssl_compression|match('true|yes|enable')) %}
+  SSLCompression On
+{% else %}
+  SSLCompression Off
+{% endif %}
+  # SSL/TLS protocol versions
+{% if (item.ssl_protocols is defined) and not (item.ssl_protocols == []) %}
+  SSLProtocol {% for ssl_protocols in item.ssl_protocols %}{{ssl_protocols}}{% if not loop.last %} {% endif %}{% endfor %}
+{% else %}
+  SSLProtocol -ALL +TLSv1.2
+{% endif %}
+  # Option to prefer the server's cipher preference order
+{% if (item.ssl_honor_cipher_order is defined) and (item.ssl_honor_cipher_order|match('false|no|disable')) %}
+  SSLHonorCipherOrder Off
+{% else %}
+  SSLHonorCipherOrder On
+{% endif %}
+  # Cipher Suite available for negotiation in SSL handshake
+{% if (item.ssl_ciphers is defined) and not (item.ssl_ciphers == []) %}
+  SSLCipherSuite '{{item.ssl_ciphers}}'
+{% else %}
+  SSLCipherSuite 'AES256+EECDH:AES256+EDH'
+{% endif %}
+{% if (item.ssl_session_tickets is defined) and (item.ssl_session_tickets|match('false|no|disable')) %}
+  # Disable use of TLS session tickets
+  SSLSessionTickets Off
+{% endif %}
+  # Server PEM-encoded X.509 certificate file
+{% if (item.ssl_certificate is defined) and not (item.ssl_certificate == '') %}
+  SSLCertificateFile '{{item.ssl_certificate}}'
+{% else %}
+  #SSLCertificateFile ''
+{% endif %}
+  # Server PEM-encoded private key file
+{% if (item.ssl_certificate_key is defined) and not (item.ssl_certificate_key == '') %}
+  SSLCertificateKeyFile '{{item.ssl_certificate_key}}'
+{% else %}
+  #SSLCertificateKeyFile ''
+{% endif %}
+  # PEM-encoded server CA certificate file
+{% if (item.ssl_certificate_chain is defined) and not (item.ssl_certificate_chain == '') %}
+  SSLCertificateChainFile '{{item.ssl_certificate_chain}}'
+{% else %}
+  #SSLCertificateChainFile ''
+{% endif %}
+  # Concatenated, PEM-encoded CA Certificates for Client Auth
+{% if (item.ssl_ca_certificate is defined) and not (item.ssl_ca_certificate == '') %}
+  SSLCACertificateFile '{{item.ssl_ca_certificate}}'
+{% else %}
+  #SSLCACertificateFile ''
+{% endif %}
+{% endif %}
+
+  #-----------------------------------------------------------------------------
+  # CUSTOM CONFIGURATION
+  #-----------------------------------------------------------------------------
+
+{% if (item.custom_config is defined) and not (item.custom_config == []) %}
+{% for item in item.custom_config %}
+{% if (item.comment is defined) and not (item.comment == '') %}
+  #-----------------------------------------------------------------------------
+  # {{(item.comment|upper)}}
+  #-----------------------------------------------------------------------------
+
+{% endif %}
+{% for config in item.config %}
+  {{config}}
+{% endfor %}
+
+{% endfor %}
+{% endif %}
+
+</VirtualHost>

@@ -1,0 +1,92 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - disable
+    - main
+    - httpd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create autoindex.conf'
+  template:
+    src: "{{file_src_autoindex_conf}}"
+    dest: "{{file_path_autoindex_conf}}"
+    mode: "{{file_mode_autoindex_conf}}"
+    owner: "{{file_owner_autoindex_conf}}"
+    group: "{{file_group_autoindex_conf}}"
+  notify: 'command check httpd'
+  tags:
+    - files
+    - disable
+    - main
+    - httpd
+
+- name: 'template create httpd.conf'
+  template:
+    src: "{{file_src_httpd_conf}}"
+    dest: "{{file_path_httpd_conf}}"
+    mode: "{{file_mode_httpd_conf}}"
+    owner: "{{file_owner_httpd_conf}}"
+    group: "{{file_group_httpd_conf}}"
+  notify: 'command check httpd'
+  tags:
+    - files
+    - disable
+    - main
+    - httpd
+
+- name: 'template create userdir.conf'
+  template:
+    src: "{{file_src_userdir_conf}}"
+    dest: "{{file_path_userdir_conf}}"
+    mode: "{{file_mode_userdir_conf}}"
+    owner: "{{file_owner_userdir_conf}}"
+    group: "{{file_group_userdir_conf}}"
+  notify: 'command check httpd'
+  tags:
+    - files
+    - disable
+    - main
+    - httpd
+
+- name: 'template create welcome.conf'
+  template:
+    src: "{{file_src_welcome_conf}}"
+    dest: "{{file_path_welcome_conf}}"
+    mode: "{{file_mode_welcome_conf}}"
+    owner: "{{file_owner_welcome_conf}}"
+    group: "{{file_group_welcome_conf}}"
+  notify: 'command check httpd'
+  tags:
+    - files
+    - disable
+    - main
+    - httpd
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service stop httpd'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_httpd}}"
+  tags:
+    - system
+    - disable
+    - main
+    - httpd

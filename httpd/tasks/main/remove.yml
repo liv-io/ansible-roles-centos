@@ -1,0 +1,85 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - httpd
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove httpd'
+  package:
+    state: 'absent'
+    name: "{{package_name_httpd}}"
+  tags:
+    - packaging
+    - remove
+    - main
+    - httpd
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove autoindex.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_autoindex_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - httpd
+
+- name: 'file remove httpd.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_httpd_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - httpd
+
+- name: 'file remove userdir.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_userdir_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - httpd
+
+- name: 'file remove welcome.conf'
+  file:
+    state: 'absent'
+    path: "{{file_path_welcome_conf}}"
+  tags:
+    - files
+    - remove
+    - main
+    - httpd
+
+- name: 'file remove vhosts.d'
+  file:
+    state: 'absent'
+    path: "{{file_path_vhosts_d}}"
+  tags:
+    - files
+    - remove
+    - main
+    - httpd

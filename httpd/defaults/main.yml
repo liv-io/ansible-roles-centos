@@ -1,0 +1,35 @@
+---
+
+httpd_state: 'enable'
+
+httpd_autoindex_conf_template: 'main'
+
+httpd_custom_config: []
+
+httpd_enable_mmap: 'true'
+
+httpd_enable_sendfile: 'true'
+
+httpd_hsts_max_age: 31536000
+
+httpd_httpd_conf_template: 'main'
+
+httpd_listen: ['80']
+
+httpd_server_admin: "admin@{{ansible_domain}}"
+
+httpd_server_signature: 'true'
+
+httpd_server_tokens: 'prod'
+
+httpd_trace_enable: 'false'
+
+httpd_userdir_conf_template: 'main'
+
+httpd_vhost: []
+
+httpd_vhost_template: 'main'
+
+httpd_vhosts_d: 'vhosts.d'
+
+httpd_welcome_conf_template: 'main'
