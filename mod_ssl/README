@@ -76,6 +76,17 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  mod_ssl_listen
+    Description: Set the 'mod_ssl_listen' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '443 https'
+    Options    :
+      Examples: '443 https' | '443' | '8443'
+      None    : ''
+
   mod_ssl_ssl_conf_template
     Description: Define the template source for 'ssl.conf.j2'.
                  Any value other than 'main' requires a Jinja2 file to be

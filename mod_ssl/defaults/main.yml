@@ -2,4 +2,6 @@
 
 mod_ssl_state: 'enable'
 
+mod_ssl_listen: ['443 https']
+
 mod_ssl_ssl_conf_template: 'main'
