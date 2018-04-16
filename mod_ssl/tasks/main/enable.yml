@@ -29,7 +29,7 @@
     group: "{{file_group_ssl_conf}}"
   notify:
     - 'command check httpd'
-    - 'service reload httpd'
+    - 'command reload httpd'
   tags:
     - files
     - enable

@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2018-04-16)
+B: Fix notify task
+
 * Version 0.2.0 (2018-04-16)
 F: Add option to specify ports that the server listens to
 
