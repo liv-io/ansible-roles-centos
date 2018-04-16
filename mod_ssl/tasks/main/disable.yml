@@ -1,0 +1,35 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - disable
+    - main
+    - mod_ssl
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create ssl.conf'
+  template:
+    src: "{{file_src_ssl_conf}}"
+    dest: "{{file_path_ssl_conf}}"
+    mode: "{{file_mode_ssl_conf}}"
+    owner: "{{file_owner_ssl_conf}}"
+    group: "{{file_group_ssl_conf}}"
+  notify: 'command check httpd'
+  tags:
+    - files
+    - disable
+    - main
+    - mod_ssl

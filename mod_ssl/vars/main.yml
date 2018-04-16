@@ -1,0 +1,29 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# mod_ssl
+package_name_mod_ssl: 'mod_ssl'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# ssl.conf
+file_src_ssl_conf: "templates/{{mod_ssl_ssl_conf_template}}/ssl.conf.j2"
+file_path_ssl_conf: '/etc/httpd/conf.d/ssl.conf'
+file_mode_ssl_conf: '0644'
+file_owner_ssl_conf: 'root'
+file_group_ssl_conf: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check httpd
+command_cmd_check_httpd: 'apachectl configtest'
+
+# reload httpd
+command_cmd_reload_httpd: 'apachectl graceful'
