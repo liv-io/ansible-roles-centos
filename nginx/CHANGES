@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-04-16)
+I: Remove needless else statement in Jinja2 template
+
 * Version 0.1.1 (2018-04-15)
 B: Add missing package remove task
 
