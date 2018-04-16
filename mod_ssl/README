@@ -81,11 +81,11 @@ ROLE
     Implemented: 0.2
     Required   : False
     Value      : Arbitrary
-    Type       : Integer, String
-    Default    : '443 https'
+    Type       : Array
+    Default    : ['443 https']
     Options    :
-      Examples: '443 https' | '443' | '8443'
-      None    : ''
+      Examples: ['443 https'] | ['443', '8443']
+      None    : []
 
   mod_ssl_ssl_conf_template
     Description: Define the template source for 'ssl.conf.j2'.
