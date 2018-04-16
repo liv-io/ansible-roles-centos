@@ -1,0 +1,107 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : mod_security.conf
+# Type   : mod_security configuration file
+# Role   : mod_security
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+<IfModule mod_security2.c>
+    # ModSecurity Core Rules Set configuration
+	IncludeOptional modsecurity.d/*.conf
+	IncludeOptional modsecurity.d/activated_rules/*.conf
+    
+    # Default recommended configuration
+{% if (mod_security_sec_rule_engine is defined) and (mod_security_sec_rule_engine|match('false|no|disable')) %}
+    SecRuleEngine Off
+{% elif (mod_security_sec_rule_engine is defined) and (mod_security_sec_rule_engine|match('detection|DetectionOnly')) %}
+    SecRuleEngine DetectionOnly
+{% else %}
+    SecRuleEngine On
+{% endif %}
+{% if (mod_security_sec_request_body_access is defined) and (mod_security_sec_request_body_access|match('false|no|disable')) %}
+    SecRequestBodyAccess Off
+{% else %}
+    SecRequestBodyAccess On
+{% endif %}
+    SecRule REQUEST_HEADERS:Content-Type "text/xml" \
+         "id:'200000',phase:1,t:none,t:lowercase,pass,nolog,ctl:requestBodyProcessor=XML"
+{% if (mod_security_sec_request_body_limit is defined) and not (mod_security_sec_request_body_limit == '') %}
+    SecRequestBodyLimit {{(mod_security_sec_request_body_limit|int(13107200))}}
+{% endif %}
+{% if (mod_security_sec_request_body_no_files_limit is defined) and not (mod_security_sec_request_body_no_files_limit == '') %}
+    SecRequestBodyNoFilesLimit {{(mod_security_sec_request_body_no_files_limit|int(13107200))}}
+{% endif %}
+    SecRequestBodyInMemoryLimit 131072
+{% if (mod_security_sec_request_body_limit_action is defined) and (mod_security_sec_request_body_limit_action|match('partial|ProcessPartial')) %}
+    SecRequestBodyLimitAction ProcessPartial
+{% else %}
+    SecRequestBodyLimitAction Reject
+{% endif %}
+    SecRule REQBODY_ERROR "!@eq 0" \
+    "id:'200001', phase:2,t:none,log,deny,status:400,msg:'Failed to parse request body.',logdata:'%{reqbody_error_msg}',severity:2"
+    SecRule MULTIPART_STRICT_ERROR "!@eq 0" \
+    "id:'200002',phase:2,t:none,log,deny,status:44,msg:'Multipart request body \
+    failed strict validation: \
+    PE %{REQBODY_PROCESSOR_ERROR}, \
+    BQ %{MULTIPART_BOUNDARY_QUOTED}, \
+    BW %{MULTIPART_BOUNDARY_WHITESPACE}, \
+    DB %{MULTIPART_DATA_BEFORE}, \
+    DA %{MULTIPART_DATA_AFTER}, \
+    HF %{MULTIPART_HEADER_FOLDING}, \
+    LF %{MULTIPART_LF_LINE}, \
+    SM %{MULTIPART_MISSING_SEMICOLON}, \
+    IQ %{MULTIPART_INVALID_QUOTING}, \
+    IP %{MULTIPART_INVALID_PART}, \
+    IH %{MULTIPART_INVALID_HEADER_FOLDING}, \
+    FL %{MULTIPART_FILE_LIMIT_EXCEEDED}'"
+
+    SecRule MULTIPART_UNMATCHED_BOUNDARY "!@eq 0" \
+    "id:'200003',phase:2,t:none,log,deny,status:44,msg:'Multipart parser detected a possible unmatched boundary.'"
+
+{% if (mod_security_sec_pcre_match_limit is defined) and not (mod_security_sec_pcre_match_limit == '') %}
+    SecPcreMatchLimit {{(mod_security_sec_pcre_match_limit|int(1000))}}
+{% endif %}
+{% if (mod_security_sec_pcre_match_limit_recursion is defined) and not (mod_security_sec_pcre_match_limit_recursion == '') %}
+    SecPcreMatchLimitRecursion {{(mod_security_sec_pcre_match_limit_recursion|int(1000))}}
+{% endif %}
+
+    SecRule TX:/^MSC_/ "!@streq 0" \
+            "id:'200004',phase:2,t:none,deny,msg:'ModSecurity internal error flagged: %{MATCHED_VAR_NAME}'"
+
+{% if (mod_security_sec_server_signature is defined) and not (mod_security_sec_server_signature == '') %}
+  SecServerSignature  "{{mod_security_sec_server_signature}}"
+{% endif %}
+{% if (mod_security_sec_response_body_access is defined) and (mod_security_sec_response_body_access|match('true|yes|enable')) %}
+    SecResponseBodyAccess On
+{% else %}
+    SecResponseBodyAccess Off
+{% endif %}
+{% if (mod_security_sec_response_body_limit_action is defined) and (mod_security_sec_response_body_limit_action|match('partial|ProcessPartial')) %}
+    SecResponseBodyLimitAction ProcessPartial
+{% else %}
+    SecResponseBodyLimitAction Reject
+{% endif %}
+    SecDebugLog /var/log/httpd/modsec_debug.log
+    SecDebugLogLevel 0
+    SecAuditEngine RelevantOnly
+    SecAuditLogRelevantStatus "^(?:5|4(?!04))"
+{% if (mod_security_sec_audit_log_parts is defined) and not (mod_security_sec_audit_log_parts == '') %}
+    SecAuditLogParts {{mod_security_sec_audit_log_parts}}
+{% endif %}
+    SecAuditLogType Serial
+    SecAuditLog /var/log/httpd/modsec_audit.log
+    SecArgumentSeparator &
+    SecCookieFormat 0
+    SecTmpDir /var/lib/mod_security
+    SecDataDir /var/lib/mod_security
+</IfModule>

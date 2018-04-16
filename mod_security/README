@@ -1,0 +1,274 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : mod_security
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+ModSecurity is an open source intrusion detection and prevention engine for web
+applications. It operates embedded into the web server, acting as a powerful
+umbrella - shielding web applications from attacks.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: mod_security
+    vars:
+      mod_security_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: mod_security
+    vars:
+      mod_security_state: 'enable'
+      mod_security_sec_server_signature: 'liv'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: mod_security
+    vars:
+      mod_security_state: 'disable'
+      mod_security_sec_server_signature: 'liv'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: mod_security
+    vars:
+      mod_security_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: mod_security
+    vars:
+      mod_security_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  mod_security_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  mod_security_mod_security_conf_template
+    Description: Define the template source for 'mod_security.conf.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'mod_security/templates/example/mod_security.conf.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  mod_security_sec_audit_log_parts
+    Description: Define the 'mod_security_sec_audit_log_parts' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'ABIFHZ'
+    Options    :
+      Examples: 'ABIFHZ' | 'ABIJDEFHZ'
+
+  mod_security_sec_pcre_match_limit
+    Description: Set the 'mod_security_sec_pcre_match_limit' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer
+    Default    : 1000000
+    Options    :
+      Examples: 500000 | 1000000 | 2000000
+
+  mod_security_sec_pcre_match_limit_recursion
+    Description: Set the 'mod_security_sec_pcre_match_limit_recursion' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer
+    Default    : 1000000
+    Options    :
+      Examples: 500000 | 1000000 | 2000000
+
+  mod_security_sec_request_body_access
+    Description: Control the 'mod_security_sec_request_body_access' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'true'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  mod_security_sec_request_body_limit
+    Description: Set the 'mod_security_sec_request_body_limit' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer
+    Default    : 13107200
+    Options    :
+      Examples: 5000000 | 10000000 | 20000000
+
+  mod_security_sec_request_body_limit_action
+    Description: Define the 'mod_security_sec_request_body_limit_action' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'reject'
+    Options    :
+      Reject        : 'reject' | 'Reject'
+      ProcessPartial: 'partial' | 'ProcessPartial'
+
+  mod_security_sec_request_body_no_files_limit
+    Description: Set the 'mod_security_sec_request_body_no_files_limit' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer
+    Default    : 13107200
+    Options    :
+      Examples: 5000000 | 10000000 | 20000000
+
+  mod_security_sec_response_body_access
+    Description: Control the 'mod_security_sec_response_body_access' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  mod_security_sec_response_body_limit_action
+    Description: Define the 'mod_security_sec_response_body_limit_action' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'reject'
+    Options    :
+      Reject        : 'reject' | 'Reject'
+      ProcessPartial: 'partial' | 'ProcessPartial'
+
+  mod_security_sec_rule_engine
+    Description: Define the 'mod_security_sec_rule_engine' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'reject'
+    Options    :
+      Enable       : 'true' | 'yes' | 'enable'
+      Disable      : 'false' | 'no' | 'disable'
+      DetectionOnly: 'detect' | 'DetectionOnly'
+
+  mod_security_sec_server_signature
+    Description: Define the 'mod_security_sec_server_signature' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'custom' | 'example'
+      None    : ''
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  mod_security
+    Version: >= 2.4
+    Name   :
+      CentOS 7: 'mod_security'
+
+ROLES
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.4
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

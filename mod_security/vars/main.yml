@@ -1,0 +1,29 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# mod_security
+package_name_mod_security: 'mod_security'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# mod_security.conf
+file_src_mod_security_conf: "templates/{{mod_security_mod_security_conf_template}}/mod_security.conf.j2"
+file_path_mod_security_conf: '/etc/httpd/conf.d/mod_security.conf'
+file_mode_mod_security_conf: '0644'
+file_owner_mod_security_conf: 'root'
+file_group_mod_security_conf: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check httpd
+command_cmd_check_httpd: 'apachectl configtest'
+
+# reload httpd
+command_cmd_reload_httpd: 'apachectl graceful'

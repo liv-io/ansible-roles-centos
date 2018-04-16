@@ -1,0 +1,27 @@
+---
+
+mod_security_state: 'enable'
+
+mod_security_mod_security_conf_template: 'main'
+
+mod_security_sec_audit_log_parts: 'ABIFHZ'
+
+mod_security_sec_pcre_match_limit: 1000000
+
+mod_security_sec_pcre_match_limit_recursion: 1000000
+
+mod_security_sec_request_body_access: 'true'
+
+mod_security_sec_request_body_limit: 13107200
+
+mod_security_sec_request_body_limit_action: 'reject'
+
+mod_security_sec_request_body_no_files_limit: 13107200
+
+mod_security_sec_response_body_access: 'false'
+
+mod_security_sec_response_body_limit_action: 'reject'
+
+mod_security_sec_rule_engine: 'DetectionOnly'
+
+mod_security_sec_server_signature: 'liv'
