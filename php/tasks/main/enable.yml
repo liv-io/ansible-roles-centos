@@ -1,0 +1,37 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - main
+    - php
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create php.ini'
+  template:
+    src: "{{file_src_php_ini}}"
+    dest: "{{file_path_php_ini}}"
+    mode: "{{file_mode_php_ini}}"
+    owner: "{{file_owner_php_ini}}"
+    group: "{{file_group_php_ini}}"
+  notify:
+    - 'command check httpd'
+    - 'command reload httpd'
+  tags:
+    - files
+    - enable
+    - main
+    - php

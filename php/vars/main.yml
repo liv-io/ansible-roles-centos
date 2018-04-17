@@ -1,0 +1,29 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# php
+package_name_php: 'php'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# php.ini
+file_src_php_ini: "templates/{{php_php_ini_template}}/php.ini.j2"
+file_path_php_ini: '/etc/php.ini'
+file_mode_php_ini: '0644'
+file_owner_php_ini: 'root'
+file_group_php_ini: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check httpd
+command_cmd_check_httpd: 'apachectl configtest'
+
+# reload httpd
+command_cmd_reload_httpd: 'apachectl graceful'

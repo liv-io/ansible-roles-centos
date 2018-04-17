@@ -1,0 +1,215 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : php
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+PHP is an HTML-embedded scripting language. PHP attempts to make it easy for
+developers to write dynamically generated web pages. PHP also offers built-in
+database integration for several commercial and non-commercial database
+management systems, so writing a database-enabled webpage with PHP is fairly
+simple. The most common use of PHP coding is probably as a replacement for CGI
+scripts.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: php
+    vars:
+      php_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: php
+    vars:
+      php_state: 'enable'
+      php_date_timezone: 'Antarctica/Vostok'
+      php_post_max_size: '64M'
+      php_upload_max_filesize: '64M'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: php
+    vars:
+      php_state: 'disable'
+      php_date_timezone: 'Antarctica/Vostok'
+      php_post_max_size: '64M'
+      php_upload_max_filesize: '64M'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: php
+    vars:
+      php_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: php
+    vars:
+      php_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  php_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  php_date_timezone
+    Description: Define the 'php_date_timezone' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'Europe/Zurich'
+    Options    :
+      Examples: 'Europe/London' | 'America/Yellowknife'
+
+  php_expose_php
+    Description: Control the 'php_expose_php' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  php_memory_limit
+    Description: Set the 'php_memory_limit' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '128M'
+    Options    :
+      Examples: '64M' | '128M' | '256M'
+
+  php_php_ini_template
+    Description: Define the template source for 'php.ini.j2'.
+                 Any value other than 'main' requires a Jinja2 file to be
+                 created. The custom Jinja2 file for an example configuration
+                 called 'example' needs to be placed as follows:
+                 'php/templates/example/php.ini.j2'
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'main'
+    Options    :
+      Examples: 'example' | 'environment' | 'hostname'
+
+  php_post_max_size
+    Description: Set the 'php_post_max_size' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '128M'
+    Options    :
+      Examples: '64M' | '128M' | '256M'
+
+  php_upload_max_filesize
+    Description: Set the 'php_upload_max_filesize' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '64M'
+    Options    :
+      Examples: '32M' | '64M' | '128M'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  php
+    Version: >= 5.0
+    Name   :
+      CentOS 7: 'php'
+
+ROLES
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.4
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------
