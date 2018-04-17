@@ -12,7 +12,7 @@ mod_security_sec_pcre_match_limit_recursion: 1000000
 
 mod_security_sec_request_body_access: 'true'
 
-mod_security_sec_request_body_limit: 13107200
+mod_security_sec_request_body_limit: 41943040
 
 mod_security_sec_request_body_limit_action: 'reject'
 

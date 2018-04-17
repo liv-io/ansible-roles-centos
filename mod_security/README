@@ -140,7 +140,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Integer
-    Default    : 13107200
+    Default    : 41943040
     Options    :
       Examples: 5000000 | 10000000 | 20000000
 

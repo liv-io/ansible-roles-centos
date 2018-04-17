@@ -79,7 +79,7 @@
             "id:'200004',phase:2,t:none,deny,msg:'ModSecurity internal error flagged: %{MATCHED_VAR_NAME}'"
 
 {% if (mod_security_sec_server_signature is defined) and not (mod_security_sec_server_signature == '') %}
-  SecServerSignature  "{{mod_security_sec_server_signature}}"
+    SecServerSignature "{{mod_security_sec_server_signature}}"
 {% endif %}
 {% if (mod_security_sec_response_body_access is defined) and (mod_security_sec_response_body_access|match('true|yes|enable')) %}
     SecResponseBodyAccess On

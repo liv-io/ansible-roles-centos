@@ -13,5 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.1 (2018-04-17)
+I: Improve default value of 'mod_security_sec_request_body_limit'
+I: Minor indenting correction
+
 * Version 0.1.0 (2018-04-16)
 F: Initial release
