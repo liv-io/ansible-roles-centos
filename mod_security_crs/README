@@ -109,7 +109,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : 'phase:2,deny,log'
+    Default    : 'phase:2,pass,log'
     Options    :
       Examples: 'phase:1,deny,log' | 'phase:2,deny,log'
 
