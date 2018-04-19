@@ -1,0 +1,32 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - main
+    - docker
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start docker'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_docker}}"
+  tags:
+    - system
+    - enable
+    - main
+    - docker
