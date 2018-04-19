@@ -81,7 +81,7 @@ yum_all:
         state: 'true'
         comment: 'Extra Packages for Enterprise Linux 7 - Stable'
         description: 'Extra Packages for Enterprise Linux 7 - $basearch'
-        url: 'http://download.fedoraproject.org/pub/epel/7/$basearch'
+        url: 'https://mirrors.kernel.org/fedora-epel/7/$basearch'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
 
@@ -89,7 +89,7 @@ yum_all:
         state: 'false'
         comment: 'Extra Packages for Enterprise Linux - Debug'
         description: 'Extra Packages for Enterprise Linux 7 - $basearch - Debug'
-        url: 'http://download.fedoraproject.org/pub/epel/7/$basearch/debug'
+        url: 'https://mirrors.kernel.org/fedora-epel/7/$basearch/debug'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
 
@@ -97,7 +97,7 @@ yum_all:
         state: 'false'
         comment: 'Extra Packages for Enterprise Linux - Source'
         description: 'Extra Packages for Enterprise Linux 7 - $basearch - Source'
-        url: 'http://download.fedoraproject.org/pub/epel/7/SRPMS'
+        url: 'https://mirrors.kernel.org/fedora-epel/7/SRPMS'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
 

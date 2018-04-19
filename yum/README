@@ -103,7 +103,7 @@ CONFIG
             state: 'true'
             comment: 'Extra Packages for Enterprise Linux 7 - Stable'
             description: 'Extra Packages for Enterprise Linux 7 - $basearch'
-            url: 'http://download.fedoraproject.org/pub/epel/7/$basearch'
+            url: 'https://mirrors.kernel.org/fedora-epel/7/$basearch'
             gpg_check: 'yes'
             gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
 
@@ -149,7 +149,7 @@ CONFIG
             state: 'true'
             comment: 'Extra Packages for Enterprise Linux - Testing'
             description: 'Extra Packages for Enterprise Linux 7 - Testing - $basearch'
-            url: 'baseurl=http://download.fedoraproject.org/pub/epel/testing/7/$basearch'
+            url: 'baseurl=https://mirrors.kernel.org/fedora-epel/testing/7/$basearch'
             gpg_check: 'yes'
             gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
 
@@ -162,7 +162,7 @@ CONFIG
             state: 'false'
             comment: 'Extra Packages for Enterprise Linux - Testing'
             description: 'Extra Packages for Enterprise Linux 7 - Testing - $basearch'
-            url: 'baseurl=http://download.fedoraproject.org/pub/epel/testing/7/$basearch'
+            url: 'baseurl=https://mirrors.kernel.org/fedora-epel/testing/7/$basearch'
             gpg_check: 'yes'
             gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
 
@@ -200,11 +200,11 @@ ROLE
                     gpg_name: 'RPM-GPG-KEY-CentOS-7', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'},
                     {name: 'epel', state: 'true', comment: 'Extra Packages for Enterprise Linux', repositories:
                    [{name: 'epel', state: 'true', comment: 'Extra Packages for Enterprise Linux 7 - Stable', description: 'Extra Packages for Enterprise Linux 7 - $basearch',
-                     url: 'http://download.fedoraproject.org/pub/epel/7/$basearch', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'},
+                     url: 'https://mirrors.kernel.org/fedora-epel/7/$basearch', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'},
                     {name: 'epel-debuginfo', state: 'false', comment: 'Extra Packages for Enterprise Linux - Debug', description: 'Extra Packages for Enterprise Linux 7 - $basearch - Debug',
-                     url: 'http://download.fedoraproject.org/pub/epel/7/$basearch/debug', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7',
+                     url: 'https://mirrors.kernel.org/fedora-epel/7/$basearch/debug', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7',
                     {name: 'epel-source', state: 'false', comment: 'Extra Packages for Enterprise Linux - Source', description: 'Extra Packages for Enterprise Linux 7 - $basearch - Source',
-                     url: 'http://download.fedoraproject.org/pub/epel/7/SRPMS', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'}],
+                     url: 'https://mirrors.kernel.org/fedora-epel/7/SRPMS', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'}],
                     gpg_name: 'RPM-GPG-KEY-EPEL-7', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'}]
     Options    :
       Examples: [[{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
