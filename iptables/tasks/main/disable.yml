@@ -33,19 +33,6 @@
     - main
     - iptables
 
-- name: 'template create ip6tables'
-  template:
-    src: "{{file_src_ip6tables}}"
-    dest: "{{file_path_ip6tables}}"
-    mode: "{{file_mode_ip6tables}}"
-    owner: "{{file_owner_ip6tables}}"
-    group: "{{file_group_ip6tables}}"
-  tags:
-    - files
-    - disable
-    - main
-    - iptables
-
 - name: 'template create iptables-config'
   template:
     src: "{{file_src_iptables_config}}"
@@ -59,15 +46,194 @@
     - main
     - iptables
 
-- name: 'template create iptables'
+- name: 'template create ipv4-filter_ansible'
   template:
-    src: "{{file_src_iptables}}"
-    dest: "{{file_path_iptables}}"
-    mode: "{{file_mode_iptables}}"
-    owner: "{{file_owner_iptables}}"
-    group: "{{file_group_iptables}}"
+    src: "{{file_src_ipv4_filter_ansible}}"
+    dest: "{{file_path_ipv4_filter_ansible}}"
+    mode: "{{file_mode_ipv4_filter_ansible}}"
+    owner: "{{file_owner_ipv4_filter_ansible}}"
+    group: "{{file_group_ipv4_filter_ansible}}"
   tags:
     - files
+    - disable
+    - main
+    - iptables
+
+- name: 'template create ipv4-nat_ansible'
+  template:
+    src: "{{file_src_ipv4_nat_ansible}}"
+    dest: "{{file_path_ipv4_nat_ansible}}"
+    mode: "{{file_mode_ipv4_nat_ansible}}"
+    owner: "{{file_owner_ipv4_nat_ansible}}"
+    group: "{{file_group_ipv4_nat_ansible}}"
+  tags:
+    - files
+    - disable
+    - main
+    - iptables
+
+- name: 'template create ipv6-filter_ansible'
+  template:
+    src: "{{file_src_ipv6_filter_ansible}}"
+    dest: "{{file_path_ipv6_filter_ansible}}"
+    mode: "{{file_mode_ipv6_filter_ansible}}"
+    owner: "{{file_owner_ipv6_filter_ansible}}"
+    group: "{{file_group_ipv6_filter_ansible}}"
+  tags:
+    - files
+    - disable
+    - main
+    - iptables
+
+- name: 'template create ipv6-nat_ansible'
+  template:
+    src: "{{file_src_ipv6_nat_ansible}}"
+    dest: "{{file_path_ipv6_nat_ansible}}"
+    mode: "{{file_mode_ipv6_nat_ansible}}"
+    owner: "{{file_owner_ipv6_nat_ansible}}"
+    group: "{{file_group_ipv6_nat_ansible}}"
+  tags:
+    - files
+    - disable
+    - main
+    - iptables
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+- name: 'command get ipv4-filter_docker'
+  shell: "{{command_cmd_get_ipv4_filter_docker}}"
+  register: register_get_ipv4_filter_docker
+  changed_when: (register_get_ipv4_filter_docker.rc > 1)
+  failed_when: (register_get_ipv4_filter_docker.rc > 1)
+  check_mode: 'no'
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command get ipv4-nat_docker'
+  shell: "{{command_cmd_get_ipv4_nat_docker}}"
+  register: register_get_ipv4_nat_docker
+  changed_when: (register_get_ipv4_nat_docker.rc > 1)
+  failed_when: (register_get_ipv4_nat_docker.rc > 1)
+  check_mode: 'no'
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command get ipv6-filter_docker'
+  shell: "{{command_cmd_get_ipv6_filter_docker}}"
+  register: register_get_ipv6_filter_docker
+  changed_when: (register_get_ipv6_filter_docker.rc > 1)
+  failed_when: (register_get_ipv6_filter_docker.rc > 1)
+  check_mode: 'no'
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command get ipv6-nat_docker'
+  shell: "{{command_cmd_get_ipv6_nat_docker}}"
+  register: register_get_ipv6_nat_docker
+  changed_when: (register_get_ipv6_nat_docker.rc > 1)
+  failed_when: (register_get_ipv6_nat_docker.rc > 1)
+  check_mode: 'no'
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command set ipv4-filter'
+  shell: "{{command_cmd_set_ipv4_filter}}"
+  register: register_set_ipv4_filter
+  check_mode: 'no'
+  changed_when: (register_set_ipv4_filter.rc > 1)
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command set ipv4-filter-commit'
+  shell: "{{command_cmd_set_ipv4_filter_commit}}"
+  register: register_set_ipv4_filter_commit
+  check_mode: 'no'
+  changed_when: (register_set_ipv4_filter_commit.rc > 1)
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command set ipv6-filter'
+  shell: "{{command_cmd_set_ipv6_filter}}"
+  register: register_set_ipv6_filter
+  check_mode: 'no'
+  changed_when: (register_set_ipv6_filter.rc > 1)
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command set ipv6-filter-commit'
+  shell: "{{command_cmd_set_ipv6_filter_commit}}"
+  register: register_set_ipv6_filter_commit
+  check_mode: 'no'
+  changed_when: (register_set_ipv6_filter_commit.rc > 1)
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command set ipv4-nat'
+  shell: "{{command_cmd_set_ipv4_nat}}"
+  register: register_set_ipv4_nat
+  check_mode: 'no'
+  changed_when: (register_set_ipv4_nat.rc > 1)
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command set ipv4-nat-commit'
+  shell: "{{command_cmd_set_ipv4_nat_commit}}"
+  register: register_set_ipv4_nat_commit
+  check_mode: 'no'
+  changed_when: (register_set_ipv4_nat_commit.rc > 1)
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command set ipv6-nat'
+  shell: "{{command_cmd_set_ipv6_nat}}"
+  register: register_set_ipv6_nat
+  check_mode: 'no'
+  changed_when: (register_set_ipv6_nat.rc > 1)
+  tags:
+    - commands
+    - disable
+    - main
+    - iptables
+
+- name: 'command set ipv6-nat-commit'
+  shell: "{{command_cmd_set_ipv6_nat_commit}}"
+  register: register_set_ipv6_nat_commit
+  check_mode: 'no'
+  changed_when: (register_set_ipv6_nat_commit.rc > 1)
+  tags:
+    - commands
     - disable
     - main
     - iptables

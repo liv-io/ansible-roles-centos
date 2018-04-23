@@ -21,6 +21,7 @@ IMPROVEMENTS
 --------------------------------------------------------------------------------
 
  - Ensure safe defaults if parameter 'iptables_filter_policies' is empty
+ - Improve support of Docker rules and chains
 
 --------------------------------------------------------------------------------
 FEATURES

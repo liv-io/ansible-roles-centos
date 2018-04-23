@@ -17,33 +17,117 @@ package_name_iptables_utils: 'iptables-utils'
 # FILES
 #-------------------------------------------------------------------------------
 
-# ip6tables
-file_src_ip6tables: "templates/{{(iptables_ip6tables_template|e)}}/ip6tables.j2"
-file_path_ip6tables: '/etc/sysconfig/ip6tables'
-file_mode_ip6tables: '0600'
-file_owner_ip6tables: 'root'
-file_group_ip6tables: 'root'
-
 # ip6tables-config
-file_src_ip6tables_config: "templates/{{(iptables_ip6tables_config_template|e)}}/ip6tables-config.j2"
+file_src_ip6tables_config: "templates/main/ip6tables-config.j2"
 file_path_ip6tables_config: '/etc/sysconfig/ip6tables-config'
 file_mode_ip6tables_config: '0600'
 file_owner_ip6tables_config: 'root'
 file_group_ip6tables_config: 'root'
 
-# iptables
-file_src_iptables: "templates/{{(iptables_iptables_template|e)}}/iptables.j2"
-file_path_iptables: '/etc/sysconfig/iptables'
-file_mode_iptables: '0600'
-file_owner_iptables: 'root'
-file_group_iptables: 'root'
+# ip6tables.d
+file_path_ip6tables_d: '/etc/sysconfig/ip6tables.d'
+file_mode_ip6tables_d: '0755'
+file_owner_ip6tables_d: 'root'
+file_group_ip6tables_d: 'root'
 
 # iptables-config
-file_src_iptables_config: "templates/{{(iptables_iptables_config_template|e)}}/iptables-config.j2"
+file_src_iptables_config: "templates/main/iptables-config.j2"
 file_path_iptables_config: '/etc/sysconfig/iptables-config'
 file_mode_iptables_config: '0600'
 file_owner_iptables_config: 'root'
 file_group_iptables_config: 'root'
+
+# iptables.d
+file_path_iptables_d: '/etc/sysconfig/iptables.d'
+file_mode_iptables_d: '0755'
+file_owner_iptables_d: 'root'
+file_group_iptables_d: 'root'
+
+# ipv4-filter_ansible
+file_src_ipv4_filter_ansible: "templates/main/ipv4-filter_ansible.j2"
+file_path_ipv4_filter_ansible: '/etc/sysconfig/iptables.d/ipv4-filter_ansible'
+file_mode_ipv4_filter_ansible: '0600'
+file_owner_ipv4_filter_ansible: 'root'
+file_group_ipv4_filter_ansible: 'root'
+
+# ipv4-filter_docker
+file_path_ipv4_filter_docker: '/etc/sysconfig/iptables.d/ipv4-filter_docker'
+
+# ipv4-nat_ansible
+file_src_ipv4_nat_ansible: "templates/main/ipv4-nat_ansible.j2"
+file_path_ipv4_nat_ansible: '/etc/sysconfig/iptables.d/ipv4-nat_ansible'
+file_mode_ipv4_nat_ansible: '0600'
+file_owner_ipv4_nat_ansible: 'root'
+file_group_ipv4_nat_ansible: 'root'
+
+# ipv4-nat_docker
+file_path_ipv4_nat_docker: '/etc/sysconfig/iptables.d/ipv4-nat_docker'
+
+# ipv6-filter_ansible
+file_src_ipv6_filter_ansible: "templates/main/ipv6-filter_ansible.j2"
+file_path_ipv6_filter_ansible: '/etc/sysconfig/ip6tables.d/ipv6-filter_ansible'
+file_mode_ipv6_filter_ansible: '0600'
+file_owner_ipv6_filter_ansible: 'root'
+file_group_ipv6_filter_ansible: 'root'
+
+# ipv6-filter_docker
+file_path_ipv6_filter_docker: '/etc/sysconfig/ip6tables.d/ipv6-filter_docker'
+
+# ipv6-nat_ansible
+file_src_ipv6_nat_ansible: "templates/main/ipv6-nat_ansible.j2"
+file_path_ipv6_nat_ansible: '/etc/sysconfig/ip6tables.d/ipv6-nat_ansible'
+file_mode_ipv6_nat_ansible: '0600'
+file_owner_ipv6_nat_ansible: 'root'
+file_group_ipv6_nat_ansible: 'root'
+
+# ipv6-nat_docker
+file_path_ipv6_nat_docker: '/etc/sysconfig/ip6tables.d/ipv6-nat_docker'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# get ipv4-filter_docker
+command_cmd_get_ipv4_filter_docker: "iptables-save --table filter | grep -i 'docker' > {{file_path_ipv4_filter_docker}}"
+
+# get ipv4-nat_docker
+command_cmd_get_ipv4_nat_docker: "iptables-save --table nat | grep -i 'docker' > {{file_path_ipv4_nat_docker}}"
+
+# get ipv6-filter_docker
+command_cmd_get_ipv6_filter_docker: "ip6tables-save --table filter | grep -i 'docker' > {{file_path_ipv6_filter_docker}}"
+
+# get ipv6-nat_docker
+command_cmd_get_ipv6_nat_docker: "ip6tables-save --table nat | grep -i 'docker' > {{file_path_ipv6_nat_docker}}"
+
+# set ipv4-filter
+command_cmd_set_ipv4_filter: "cat {{file_path_ipv4_filter_ansible}} {{file_path_ipv4_filter_docker}} > /etc/sysconfig/iptables"
+
+# set ipv4-filter-commit
+command_cmd_set_ipv4_filter_commit: "echo 'COMMIT' >> /etc/sysconfig/iptables"
+
+# set ipv6-filter
+command_cmd_set_ipv6_filter: "cat {{file_path_ipv6_filter_ansible}} {{file_path_ipv6_filter_docker}} > /etc/sysconfig/ip6tables"
+
+# set ipv6-filter-commit
+command_cmd_set_ipv6_filter_commit: "echo 'COMMIT' >> /etc/sysconfig/ip6tables"
+
+# set ipv4-nat
+command_cmd_set_ipv4_nat: "cat {{file_path_ipv4_nat_ansible}} {{file_path_ipv4_nat_docker}} >> /etc/sysconfig/iptables"
+
+# set ipv4-nat-commit
+command_cmd_set_ipv4_nat_commit: "echo 'COMMIT' >> /etc/sysconfig/iptables"
+
+# set ipv6-nat
+command_cmd_set_ipv6_nat: "cat {{file_path_ipv6_nat_ansible}} {{file_path_ipv6_nat_docker}} >> /etc/sysconfig/ip6tables"
+
+# set ipv6-nat-commit
+command_cmd_set_ipv6_nat_commit: "echo 'COMMIT' >> /etc/sysconfig/ip6tables"
+
+# reload iptables
+command_cmd_reload_iptables: 'iptables-restore /etc/sysconfig/iptables'
+
+# reload ip6tables
+command_cmd_reload_ip6tables: 'ip6tables-restore /etc/sysconfig/ip6tables'
 
 #-------------------------------------------------------------------------------
 # SYSTEM

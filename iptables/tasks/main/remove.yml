@@ -39,3 +39,87 @@
     - remove
     - main
     - iptables
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove ip6tables-config'
+  file:
+    state: 'absent'
+    path: "{{file_path_ip6tables_config}}"
+  tags:
+    - files
+    - remove
+    - main
+    - iptables
+
+- name: 'file remove ip6tables.d'
+  file:
+    state: 'absent'
+    path: "{{file_path_ip6tables_d}}"
+  tags:
+    - files
+    - remove
+    - main
+    - iptables
+
+- name: 'file remove iptables-config'
+  file:
+    state: 'absent'
+    path: "{{file_path_iptables_config}}"
+  tags:
+    - files
+    - remove
+    - main
+    - iptables
+
+- name: 'file remove iptables.d'
+  file:
+    state: 'absent'
+    path: "{{file_path_iptables_d}}"
+  tags:
+    - files
+    - remove
+    - main
+    - iptables
+
+- name: 'file remove ipv4-filter_ansible'
+  file:
+    state: 'absent'
+    path: "{{file_path_ipv4_filter_ansible}}"
+  tags:
+    - files
+    - remove
+    - main
+    - iptables
+
+- name: 'file remove ipv4-nat_ansible'
+  file:
+    state: 'absent'
+    path: "{{file_path_ipv4_nat_ansible}}"
+  tags:
+    - files
+    - remove
+    - main
+    - iptables
+
+- name: 'file remove ipv6-filter_ansible'
+  file:
+    state: 'absent'
+    path: "{{file_path_ipv6_filter_ansible}}"
+  tags:
+    - files
+    - remove
+    - main
+    - iptables
+
+- name: 'file remove ipv6-nat_ansible'
+  file:
+    state: 'absent'
+    path: "{{file_path_ipv6_nat_ansible}}"
+  tags:
+    - files
+    - remove
+    - main
+    - iptables

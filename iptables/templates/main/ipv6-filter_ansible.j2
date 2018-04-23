@@ -3,19 +3,6 @@
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# INFORMATION
-#-------------------------------------------------------------------------------
-#
-# Name   : ip6tables
-# Type   : iptables configuration file
-# Role   : iptables
-#
-# Authors: liv community
-# License: Simplified BSD License
-#
-#-------------------------------------------------------------------------------
-
-#-------------------------------------------------------------------------------
 # FILTER
 #-------------------------------------------------------------------------------
 
@@ -28,7 +15,7 @@
 {%- if (policy.comment is defined) and not (policy.comment == '') %}
 # {{policy.comment}}
 {% endif %}
-{%- if (policy.direction is defined) and (policy.direction|match('input|in')) %}:INPUT {% elif (policy.direction is defined) and (policy.direction|match('forward|for')) %}:FORWARD {% else %}:OUTPUT {% endif %}
+{%- if (policy.direction is defined) and (policy.direction|match('input|in')) %}:INPUT {% elif (policy.direction is defined) and (policy.direction|match('forward|fw')) %}:FORWARD {% else %}:OUTPUT {% endif %}
 {%- if (policy.action is defined) and (policy.action|match('accept')) %}ACCEPT {% elif (policy.action is defined) and (policy.action|match('reject')) %}REJECT {% else %}DROP {% endif %}
 [0:0]
 {% if not loop.last %}
@@ -150,8 +137,6 @@
 {% endfor %}
 
 #-------------------------------------------------------------------------------
-
-# Commit *filter
-COMMIT
-
+# DOCKER
 #-------------------------------------------------------------------------------
+

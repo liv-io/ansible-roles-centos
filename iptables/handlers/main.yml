@@ -13,15 +13,11 @@
       skip: 'true'
 
 #-------------------------------------------------------------------------------
-# SYSTEM
+# COMMANDS
 #-------------------------------------------------------------------------------
 
-- name: 'service reload ip6tables'
-  service:
-    state: 'reloaded'
-    name: "{{service_name_ip6tables}}"
+- name: 'command reload iptables'
+  command: "{{command_cmd_reload_iptables}}"
 
-- name: 'service reload iptables'
-  service:
-    state: 'reloaded'
-    name: "{{service_name_iptables}}"
+- name: 'command reload ip6tables'
+  command: "{{command_cmd_reload_ip6tables}}"

@@ -49,3 +49,33 @@
     - install
     - main
     - iptables
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create iptables.d'
+  file:
+    state: 'directory'
+    path: "{{file_path_iptables_d}}"
+    mode: "{{file_mode_iptables_d}}"
+    owner: "{{file_owner_iptables_d}}"
+    group: "{{file_group_iptables_d}}"
+  tags:
+    - files
+    - install
+    - main
+    - iptables
+
+- name: 'file create ip6tables.d'
+  file:
+    state: 'directory'
+    path: "{{file_path_ip6tables_d}}"
+    mode: "{{file_mode_ip6tables_d}}"
+    owner: "{{file_owner_ip6tables_d}}"
+    group: "{{file_group_ip6tables_d}}"
+  tags:
+    - files
+    - install
+    - main
+    - iptables

@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.0 (2018-04-23)
+F: Add rudimentary support for Docker rules and chains
+
 * Version 0.2.0 (2018-03-30)
 F: Port role to Ansible 2.4
 

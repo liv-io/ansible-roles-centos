@@ -3,19 +3,6 @@
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# INFORMATION
-#-------------------------------------------------------------------------------
-#
-# Name   : iptables
-# Type   : iptables configuration file
-# Role   : iptables
-#
-# Authors: liv community
-# License: Simplified BSD License
-#
-#-------------------------------------------------------------------------------
-
-#-------------------------------------------------------------------------------
 # FILTER
 #-------------------------------------------------------------------------------
 
@@ -28,7 +15,7 @@
 {%- if (policy.comment is defined) and not (policy.comment == '') %}
 # {{policy.comment}}
 {% endif %}
-{%- if (policy.direction is defined) and (policy.direction|match('input|in')) %}:INPUT {% elif (policy.direction is defined) and (policy.direction|match('forward|for')) %}:FORWARD {% else %}:OUTPUT {% endif %}
+{%- if (policy.direction is defined) and (policy.direction|match('input|in')) %}:INPUT {% elif (policy.direction is defined) and (policy.direction|match('forward|fw')) %}:FORWARD {% else %}:OUTPUT {% endif %}
 {%- if (policy.action is defined) and (policy.action|match('accept')) %}ACCEPT {% elif (policy.action is defined) and (policy.action|match('reject')) %}REJECT {% else %}DROP {% endif %}
 [0:0]
 {% if not loop.last %}
@@ -57,7 +44,7 @@
 # {{all.comment}}
 {% endif %}
 -A
-{%- if (all.direction is defined) and (all.direction|match('input|in')) %} INPUT {% else %} OUTPUT {% endif %}
+{%- if (all.direction is defined) and (all.direction|match('input|in')) %} INPUT {% elif (all.direction is defined) and (all.direction|match('forward|fw')) %} FORWARD {% else %} OUTPUT {% endif %}
 {%- if (all.sources is defined) and not (all.sources == []) %}-s {% endif %}
 {% for source in all.sources|default([]) %}
 {{source}}{% if not loop.last %},{% endif %}
@@ -91,7 +78,7 @@
 # {{group.comment}}
 {% endif %}
 -A
-{%- if (group.direction is defined) and (group.direction|match('input|in')) %} INPUT {% else %} OUTPUT {% endif %}
+{%- if (group.direction is defined) and (group.direction|match('input|in')) %} INPUT {% elif (group.direction is defined) and (group.direction|match('forward|fw')) %} FORWARD {% else %} OUTPUT {% endif %}
 {%- if (group.sources is defined) and not (group.sources == []) %}-s {% endif %}
 {% for source in group.sources|default([]) %}
 {{source}}{% if not loop.last %},{% endif %}
@@ -125,7 +112,7 @@
 # {{host.comment}}
 {% endif %}
 -A
-{%- if (host.direction is defined) and (host.direction|match('input|in')) %} INPUT {% else %} OUTPUT {% endif %}
+{%- if (host.direction is defined) and (host.direction|match('input|in')) %} INPUT {% elif (host.direction is defined) and (host.direction|match('forward|fw')) %} FORWARD {% else %} OUTPUT {% endif %}
 {%- if (host.sources is defined) and not (host.sources == []) %}-s {% endif %}
 {% for source in host.sources|default([]) %}
 {{source}}{% if not loop.last %},{% endif %}
@@ -150,8 +137,6 @@
 {% endfor %}
 
 #-------------------------------------------------------------------------------
-
-# Commit *filter
-COMMIT
-
+# DOCKER
 #-------------------------------------------------------------------------------
+
