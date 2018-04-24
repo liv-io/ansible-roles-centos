@@ -8,8 +8,6 @@ php_expose_php: 'false'
 
 php_memory_limit: '128M'
 
-php_php_ini_template: 'main'
-
 php_post_max_size: '32M'
 
 php_upload_max_filesize: '32M'

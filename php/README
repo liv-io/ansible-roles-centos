@@ -117,20 +117,6 @@ ROLE
     Options    :
       Examples: '64M' | '128M' | '256M'
 
-  php_php_ini_template
-    Description: Define the template source for 'php.ini.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'php/templates/example/php.ini.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
   php_post_max_size
     Description: Set the 'php_post_max_size' option.
     Implemented: 0.1
