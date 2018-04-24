@@ -316,34 +316,6 @@ ROLE
       Examples: 'user' | 'yum-user'
       None    : ''
 
-  yum_yum_conf_template
-    Description: Define the template source for 'yum.conf.j2'.
-                 Any value other than 'main' requires a Jinja2
-                 file to be created. The custom Jinja2 file for an example
-                 configuration called 'example' needs to be placed as follows:
-                 'yum/templates/example/yum.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
-  yum_yum_config_template
-    Description: Define the template source for 'yum-config.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'yum/templates/example/yum-config.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
 --------------------------------------------------------------------------------
 CONFLICTS
 --------------------------------------------------------------------------------

@@ -151,7 +151,3 @@ yum_proxy: ''
 yum_proxy_password: ''
 
 yum_proxy_username: ''
-
-yum_yum_conf_template: 'main'
-
-yum_yum_config_template: 'main'
