@@ -15,7 +15,7 @@ package_name_nginx: 'nginx'
 #-------------------------------------------------------------------------------
 
 # nginx.conf
-file_src_nginx_conf: "templates/{{nginx_nginx_conf_template}}/nginx.conf.j2"
+file_src_nginx_conf: "templates/main/nginx.conf.j2"
 file_path_nginx_conf: '/etc/nginx/nginx.conf'
 file_mode_nginx_conf: '0644'
 file_owner_nginx_conf: 'root'
@@ -25,7 +25,7 @@ file_group_nginx_conf: 'root'
 file_path_dhparam_pem: '/etc/nginx/dhparam.pem'
 
 # vhost
-file_src_vhost: "templates/{{nginx_vhost_template}}/vhost.conf.j2"
+file_src_vhost: "templates/main/vhost.conf.j2"
 file_mode_vhost: '0644'
 file_owner_vhost: 'root'
 file_group_vhost: 'root'

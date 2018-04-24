@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.3 (2018-04-24)
+I: Simplify role by removing 'template' option
+
 * Version 0.1.2 (2018-04-16)
 I: Remove needless else statement in Jinja2 template
 
