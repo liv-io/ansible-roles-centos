@@ -11,7 +11,3 @@ sysctl_group: []
 sysctl_host: []
 
 sysctl_name_default: 'main'
-
-sysctl_sysctl_conf_template: 'main'
-
-sysctl_sysctl_config_template: 'main'
