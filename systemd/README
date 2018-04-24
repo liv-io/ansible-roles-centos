@@ -282,20 +282,6 @@ ROLE
     Options    :
       Examples: 'dummy' | 'example'
 
-  systemd_systemd_config_template
-    Description: Define the template source for 'systemd-config.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'systemd/templates/example/systemd-config.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
   systemd_type_default
     Description: Define the 'systemd_type_default' option.
     Implemented: 0.1

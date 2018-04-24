@@ -20,6 +20,4 @@ systemd_mode_default: 'system'
 
 systemd_name_default: 'main'
 
-systemd_systemd_config_template: 'main'
-
 systemd_type_default: 'none'
