@@ -371,20 +371,6 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  httpd_autoindex_conf_template
-    Description: Define the template source for 'autoindex.conf.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'httpd/templates/example/autoindex.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
   httpd_custom_config
     Description: Define the 'httpd_custom_config' option.
     Implemented: 0.1
@@ -433,20 +419,6 @@ ROLE
     Default    : '31536000'
     Options    :
       Examples: '15768000' | '31536000' | '47304000'
-
-  httpd_httpd_conf_template
-    Description: Define the template source for 'httpd.conf.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'httpd/templates/example/httpd.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
 
   httpd_listen
     Description: Set the 'httpd_listen' option.
@@ -508,20 +480,6 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
-  httpd_userdir_conf_template
-    Description: Define the template source for 'userdir.conf.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'httpd/templates/example/userdir.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
   httpd_vhost
     Description: Define the 'httpd_vhost' option.
     Implemented: 0.1
@@ -540,20 +498,6 @@ ROLE
                   ssl_ca_certificate: '/etc/ssl/host/ca.domain.tld.crt'}]
     None      : []
 
-  httpd_vhost_template
-    Description: Define the template source for 'vhost.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'httpd/templates/example/vhost.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
   httpd_vhosts_d
     Description: Define the 'httpd_vhosts_d' option.
     Implemented: 0.1
@@ -563,20 +507,6 @@ ROLE
     Default    : 'vhosts.d'
     Options    :
       Examples: 'vhosts.d'
-
-  httpd_welcome_conf_template
-    Description: Define the template source for 'welcome.conf.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'httpd/templates/example/welcome.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
 
 --------------------------------------------------------------------------------
 CONFLICTS
