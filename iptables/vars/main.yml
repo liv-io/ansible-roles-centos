@@ -88,16 +88,16 @@ file_path_ipv6_nat_docker: '/etc/sysconfig/ip6tables.d/ipv6-nat_docker'
 #-------------------------------------------------------------------------------
 
 # get ipv4-filter_docker
-command_cmd_get_ipv4_filter_docker: "iptables-save --table filter | grep -i 'docker' > {{file_path_ipv4_filter_docker}}"
+command_cmd_get_ipv4_filter_docker: "iptables-save --table filter | grep -E 'DOCKER|docker0|172.17.0' > {{file_path_ipv4_filter_docker}}"
 
 # get ipv4-nat_docker
-command_cmd_get_ipv4_nat_docker: "iptables-save --table nat | grep -i 'docker' > {{file_path_ipv4_nat_docker}}"
+command_cmd_get_ipv4_nat_docker: "iptables-save --table nat | grep -E 'DOCKER|docker0|172.17.0' > {{file_path_ipv4_nat_docker}}"
 
 # get ipv6-filter_docker
-command_cmd_get_ipv6_filter_docker: "ip6tables-save --table filter | grep -i 'docker' > {{file_path_ipv6_filter_docker}}"
+command_cmd_get_ipv6_filter_docker: "ip6tables-save --table filter | grep -E 'DOCKER|docker0' > {{file_path_ipv6_filter_docker}}"
 
 # get ipv6-nat_docker
-command_cmd_get_ipv6_nat_docker: "ip6tables-save --table nat | grep -i 'docker' > {{file_path_ipv6_nat_docker}}"
+command_cmd_get_ipv6_nat_docker: "ip6tables-save --table nat | grep -E 'DOCKER|docker0' > {{file_path_ipv6_nat_docker}}"
 
 # set ipv4-filter
 command_cmd_set_ipv4_filter: "cat {{file_path_ipv4_filter_ansible}} {{file_path_ipv4_filter_docker}} > /etc/sysconfig/iptables"

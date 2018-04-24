@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.1 (2018-04-24)
+I: Improve regular expressions of Docker exceptions
+
 * Version 0.3.0 (2018-04-23)
 F: Add rudimentary support for Docker rules and chains
 
