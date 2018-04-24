@@ -2,8 +2,6 @@
 
 mod_security_state: 'enable'
 
-mod_security_mod_security_conf_template: 'main'
-
 mod_security_sec_audit_log_parts: 'ABIFHZ'
 
 mod_security_sec_pcre_match_limit: 1000000
