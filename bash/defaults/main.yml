@@ -2,8 +2,6 @@
 
 bash_state: 'install'
 
-bash_bash_bash_template: 'main'
-
 bash_checkwinsize: 'true'
 
 bash_histappend: 'true'
@@ -25,5 +23,3 @@ bash_prompt_command: 'history -a'
 bash_tmout: '1800'
 
 bash_tmout_readonly: 'true'
-
-bash_zz_bash_bash_template: 'main'
