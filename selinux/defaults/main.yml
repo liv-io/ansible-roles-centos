@@ -2,6 +2,4 @@
 
 selinux_state: 'install'
 
-selinux_config_template: 'main'
-
 selinux_mode: 'enforcing'
