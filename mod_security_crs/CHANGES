@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-04-24)
+I: Simplify role by removing 'template' option
+
 * Version 0.1.1 (2018-04-17)
 I: Improve default value of 'mod_security_crs_sec_default_action'
 

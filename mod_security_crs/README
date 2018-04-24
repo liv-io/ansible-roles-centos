@@ -75,34 +75,6 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  mod_security_crs_modsecurity_crs_10_config_conf_template
-    Description: Define the template source for 'modsecurity_crs_10_config.conf.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'mod_security_crs/templates/example/modsecurity_crs_10_config.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
-  mod_security_crs_modsecurity_crs_15_adjust_conf_template
-    Description: Define the template source for 'modsecurity_crs_15_config.conf.j2'.
-                 Any value other than 'main' requires a Jinja2 file to be
-                 created. The custom Jinja2 file for an example configuration
-                 called 'example' needs to be placed as follows:
-                 'mod_security_crs/templates/example/modsecurity_crs_15_config.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
   mod_security_crs_sec_default_action
     Description: Define the 'mod_security_crs_sec_default_action' option.
     Implemented: 0.1

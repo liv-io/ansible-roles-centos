@@ -2,8 +2,4 @@
 
 mod_security_crs_state: 'enable'
 
-mod_security_crs_modsecurity_crs_10_config_conf_template: 'main'
-
-mod_security_crs_modsecurity_crs_15_adjust_conf_template: 'main'
-
 mod_security_crs_sec_default_action: 'phase:2,pass,log'
