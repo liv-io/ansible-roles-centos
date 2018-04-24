@@ -142,48 +142,6 @@ ROLE
       Examples: [{state: 'true', name: 'file', config: [{rule: '-w /etc/shadow -p wa', comment: "Watch '/etc/shadow' for changes"}]
       None    : []
 
-  auditd_audispd_conf_template
-    Description: Define the template source for 'audispd.conf.j2'.
-                 Any value other than 'main' requires a Jinja2
-                 file to be created. The custom Jinja2 file for an example
-                 configuration called 'example' needs to be placed as follows:
-                 'auditd/templates/example/audispd.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
-  auditd_auditd_conf_template
-    Description: Define the template source for 'auditd.conf.j2'.
-                 Any value other than 'main' requires a Jinja2
-                 file to be created. The custom Jinja2 file for an example
-                 configuration called 'example' needs to be placed as follows:
-                 'auditd/templates/example/auditd.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
-  auditd_auditd_config_template
-    Description: Define the template source for 'auditd-config.j2'.
-                 Any value other than 'main' requires a Jinja2
-                 file to be created. The custom Jinja2 file for an example
-                 configuration called 'example' needs to be placed as follows:
-                 'auditd/templates/example/auditd-config.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
-
   auditd_dependencies
     Description: Define the 'auditd_dependencies' option.
     Implemented: 0.1
@@ -226,20 +184,6 @@ ROLE
     Default    : 'audit'
     Options    :
       Examples: 'main' | 'example' | 'user' | 'app'
-
-  auditd_syslog_conf_template
-    Description: Define the template source for 'syslog.conf.j2'.
-                 Any value other than 'main' requires a Jinja2
-                 file to be created. The custom Jinja2 file for an example
-                 configuration called 'example' needs to be placed as follows:
-                 'auditd/templates/example/syslog.conf.j2'
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'example' | 'environment' | 'hostname'
 
 --------------------------------------------------------------------------------
 CONFLICTS

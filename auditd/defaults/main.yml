@@ -5,12 +5,6 @@ auditd_state: 'enable'
 auditd_all:
   - {state: 'true', name: 'audit', config: [{rule: '-D', comment: 'First rule - delete all'}, {rule: '-b 8192', comment: 'Increase the buffers to survive stress events.'}, {rule: '-f 1', comment: 'Set failure mode to syslog'}]}
 
-auditd_audispd_conf_template: 'main'
-
-auditd_auditd_conf_template: 'main'
-
-auditd_auditd_config_template: 'main'
-
 auditd_dependencies: []
 
 auditd_group: []
@@ -18,5 +12,3 @@ auditd_group: []
 auditd_host: []
 
 auditd_name_default: 'audit'
-
-auditd_syslog_conf_template: 'main'
