@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2018-05-17)
+B: Fix 'get_timezone' and 'set_timezone' commands
+
 * Version 0.2.0 (2018-03-30)
 F: Port role to Ansible 2.4
 
