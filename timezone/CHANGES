@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.2 (2018-05-17)
+B: Ensure 'get_timezone' only returns timezone
+
 * Version 0.2.1 (2018-05-17)
 B: Fix 'get_timezone' and 'set_timezone' commands
 
