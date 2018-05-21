@@ -2,14 +2,14 @@
 
 - name: 'task include install'
   import_tasks: install.yml
-  when: not (yum_state|match('false|no|remove|quiesce|inactive'))
+  when: not (yum_state is match('false|no|remove|quiesce|inactive'))
   tags:
     - main
     - yum
 
 - name: 'task include config'
   import_tasks: config.yml
-  when: not (yum_state|match('false|no|remove|quiesce|inactive'))
+  when: not (yum_state is match('false|no|remove|quiesce|inactive'))
   tags:
     - main
     - yum

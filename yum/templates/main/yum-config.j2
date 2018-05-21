@@ -27,7 +27,7 @@
 {% if (repository.description|default('')) %}
 name={{repository.description}}
 {% endif %}
-{% if (repository.state|default('true')|match('false|no|disable')) %}
+{% if (repository.state|default('true') is match('false|no|disable')) %}
 enabled=0
 {% else %}
 enabled=1
@@ -35,7 +35,7 @@ enabled=1
 {% if (repository.url|default('')) %}
 baseurl={{repository.url}}
 {% endif %}
-{% if (repository.gpg_check|default('true')|match('false|no|disable')) %}
+{% if (repository.gpg_check|default('true') is match('false|no|disable')) %}
 gpgcheck=0
 {% else %}
 gpgcheck=1
@@ -52,7 +52,7 @@ includepkgs={% for include in repository.include %}{{include}}{% if not loop.las
 {% if (repository.priority|default('')) %}
 priority={{repository.priority|int(80)}}
 {% endif %}
-{% if (repository.ssl_verify|default('true')|match('false|no|disable')) %}
+{% if (repository.ssl_verify|default('true') is match('false|no|disable')) %}
 sslverify=0
 {% endif %}
 {% if (repository.ssl_ca_cert|default('')) %}

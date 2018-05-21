@@ -28,7 +28,7 @@
     owner: "root"
     group: "root"
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
-  when: not (item.gpg_state|default('false')|match('false|no|remove'))
+  when: not (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
     - files
     - config
@@ -44,7 +44,7 @@
     group: "{{file_group_yum_config}}"
   notify: 'command clean yum-cache'
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
-  when: not (item.state|default('false')|match('false|no|remove'))
+  when: not (item.state|default('false') is match('false|no|remove'))
   tags:
     - files
     - config
@@ -56,7 +56,7 @@
     state: 'absent'
     path: "{{file_path_rpm_gpg}}/{{item.gpg_name|default(yum_name_default)}}"
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
-  when: (item.gpg_state|default('false')|match('false|no|remove'))
+  when: (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
     - files
     - config
@@ -69,7 +69,7 @@
     path: "{{file_path_yum_repos_d}}/{{item.name|default(yum_name_default)}}.repo"
   notify: 'command clean yum-cache'
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
-  when: (item.state|default('false')|match('false|no|remove'))
+  when: (item.state|default('false') is match('false|no|remove'))
   tags:
     - files
     - config
