@@ -96,7 +96,7 @@ keys /etc/ntp/keys
 # monlist command when default restrict does not include the noquery flag. See
 # CVE-2013-5211 for more details.
 # Note: Monitoring will not be disabled with the limited restriction flag.
-{% if (ntpd_monitor|match('true|yes|enable')) %}
+{% if (ntpd_monitor is match('true|yes|enable')) %}
 enable monitor
 {% else %}
 disable monitor
