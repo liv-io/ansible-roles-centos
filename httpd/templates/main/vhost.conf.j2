@@ -47,7 +47,7 @@
   # LOGGING
   #-----------------------------------------------------------------------------
 
-{% if (item.ssl_state is defined) and (item.ssl_state|match('true|yes|enable')) %}
+{% if (item.ssl_state is defined) and (item.ssl_state is match('true|yes|enable')) %}
   # Combined Log Format (CLF) + SSL/TLS Information
   LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %{SSL_PROTOCOL}x %{SSL_CIPHER}x" combinedssl
 {% endif %}
@@ -55,7 +55,7 @@
   # Logging options
   ErrorLog logs/{{item.name}}-{{(item.port|int)}}_error_log
   CustomLog logs/{{item.name}}-{{(item.port|int)}}_access_log
-{%- if (item.ssl_state is defined) and (item.ssl_state|match('true|yes|enable')) %}
+{%- if (item.ssl_state is defined) and (item.ssl_state is match('true|yes|enable')) %}
  combinedssl
 {% else %}
  combined
@@ -72,12 +72,12 @@
   # HTTP HEADER
   #-----------------------------------------------------------------------------
 
-{% if (item.hsts_state is defined) and (item.hsts_state|match('true|yes|enable')) %}
+{% if (item.hsts_state is defined) and (item.hsts_state is match('true|yes|enable')) %}
   # HTTP Strict Transport Security (HSTS)
   Header always set Strict-Transport-Security 'max-age={% if (item.hsts_max_age is defined) and not (item.hsts_max_age == '') %}{{(item.hsts_max_age|int(31536000))}}{% else %}{{httpd_hsts_max_age}}{% endif %}'
 {% endif %}
 
-{% if (item.xss_protection_state is defined) and (item.xss_protection_state|match('true|yes|enable')) %}
+{% if (item.xss_protection_state is defined) and (item.xss_protection_state is match('true|yes|enable')) %}
   # X-Frame-Options: Disable frame embedding (phishing, clickjacking prevention)
   Header always set X-Frame-Options 'DENY'
   # X-Content-Type-Options: Disable MIME-sniffing (drive-by download attacks prevention)
@@ -86,7 +86,7 @@
   Header always set X-XSS-Protection '1; mode=block'
 {% endif %}
 
-{% if (item.ssl_state is defined) and (item.ssl_state|match('true|yes|enable')) %}
+{% if (item.ssl_state is defined) and (item.ssl_state is match('true|yes|enable')) %}
   #-----------------------------------------------------------------------------
   # SSL
   #-----------------------------------------------------------------------------
@@ -94,7 +94,7 @@
   # Enable SSL/TLS protocol engine
   SSLEngine On
   # Disable compression on the SSL level
-{% if (item.ssl_compression is defined) and (item.ssl_compression|match('true|yes|enable')) %}
+{% if (item.ssl_compression is defined) and (item.ssl_compression is match('true|yes|enable')) %}
   SSLCompression On
 {% else %}
   SSLCompression Off
@@ -106,7 +106,7 @@
   SSLProtocol -ALL +TLSv1.2
 {% endif %}
   # Option to prefer the server's cipher preference order
-{% if (item.ssl_honor_cipher_order is defined) and (item.ssl_honor_cipher_order|match('false|no|disable')) %}
+{% if (item.ssl_honor_cipher_order is defined) and (item.ssl_honor_cipher_order is match('false|no|disable')) %}
   SSLHonorCipherOrder Off
 {% else %}
   SSLHonorCipherOrder On
@@ -117,7 +117,7 @@
 {% else %}
   SSLCipherSuite 'AES256+EECDH:AES256+EDH'
 {% endif %}
-{% if (item.ssl_session_tickets is defined) and (item.ssl_session_tickets|match('false|no|disable')) %}
+{% if (item.ssl_session_tickets is defined) and (item.ssl_session_tickets is match('false|no|disable')) %}
   # Disable use of TLS session tickets
   SSLSessionTickets Off
 {% endif %}

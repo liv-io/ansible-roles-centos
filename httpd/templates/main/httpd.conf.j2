@@ -370,12 +370,12 @@ AddDefaultCharset UTF-8
 # broken on your system.
 # Defaults if commented: EnableMMAP On, EnableSendfile Off
 #
-{% if (httpd_enable_mmap is defined) and (httpd_enable_mmap|match('false|no|disable')) %}
+{% if (httpd_enable_mmap is defined) and (httpd_enable_mmap is match('false|no|disable')) %}
 EnableMMAP Off
 {% else %}
 EnableMMAP On
 {% endif %}
-{% if (httpd_enable_sendfile is defined) and (httpd_enable_sendfile|match('false|no|disable')) %}
+{% if (httpd_enable_sendfile is defined) and (httpd_enable_sendfile is match('false|no|disable')) %}
 EnableSendfile Off
 {% else %}
 EnableSendfile On
@@ -405,15 +405,15 @@ IncludeOptional {{file_path_vhosts_d}}/*.conf
 # and compiled in modules.
 # Set to one of:  Full | OS | Minor | Minimal | Major | Prod
 # where Full conveys the most information, and Prod the least.
-{% if (httpd_server_tokens is defined) and (httpd_server_tokens|match('full')) %}
+{% if (httpd_server_tokens is defined) and (httpd_server_tokens is match('full')) %}
 ServerTokens Full
-{% elif (httpd_server_tokens is defined) and (httpd_server_tokens|match('os')) %}
+{% elif (httpd_server_tokens is defined) and (httpd_server_tokens is match('os')) %}
 ServerTokens OS
-{% elif (httpd_server_tokens is defined) and (httpd_server_tokens|match('minor')) %}
+{% elif (httpd_server_tokens is defined) and (httpd_server_tokens is match('minor')) %}
 ServerTokens Minor
-{% elif (httpd_server_tokens is defined) and (httpd_server_tokens|match('minimal')) %}
+{% elif (httpd_server_tokens is defined) and (httpd_server_tokens is match('minimal')) %}
 ServerTokens Minimal
-{% elif (httpd_server_tokens is defined) and (httpd_server_tokens|match('major')) %}
+{% elif (httpd_server_tokens is defined) and (httpd_server_tokens is match('major')) %}
 ServerTokens Major
 {% else %}
 ServerTokens Prod
@@ -426,7 +426,7 @@ ServerTokens Prod
 # causes the core server and mod_proxy to return a 405 (Method not allowed)
 # error to the client.
 # For security reasons this is turned off by default. (bug #240680)
-{% if (httpd_trace_enable is defined) and (httpd_trace_enable|match('true|yes|enable')) %}
+{% if (httpd_trace_enable is defined) and (httpd_trace_enable is match('true|yes|enable')) %}
 TraceEnable On
 {% else %}
 TraceEnable Off
@@ -438,9 +438,9 @@ TraceEnable Off
 # documents or custom error documents).
 # Set to "EMail" to also include a mailto: link to the ServerAdmin.
 # Set to one of:  On | Off | EMail
-{% if (httpd_server_signature is defined) and (httpd_server_signature|match('email')) %}
+{% if (httpd_server_signature is defined) and (httpd_server_signature is match('email')) %}
 ServerSignature EMail
-{% elif (httpd_server_signature is defined) and (httpd_server_signature|match('false|no|disable')) %}
+{% elif (httpd_server_signature is defined) and (httpd_server_signature is match('false|no|disable')) %}
 ServerSignature Off
 {% else %}
 ServerSignature On

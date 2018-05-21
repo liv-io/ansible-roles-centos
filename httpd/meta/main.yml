@@ -1,4 +1,4 @@
 ---
 
 dependencies:
-  - {role: mod_ssl, when: not (httpd_state|match('false|no|remove|quiesce|inactive'))}
+  - {role: mod_ssl, when: not (httpd_state is match('false|no|remove|quiesce|inactive'))}
