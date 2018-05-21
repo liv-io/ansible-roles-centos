@@ -20,9 +20,9 @@
 #     enforcing - SELinux security policy is enforced.
 #     permissive - SELinux prints warnings instead of enforcing.
 #     disabled - No SELinux policy is loaded.
-{% if (selinux_mode|match('disable|disabled')) %}
+{% if (selinux_mode is match('disable|disabled')) %}
 SELINUX=disabled
-{% elif (selinux_mode|match('permissive')) %}
+{% elif (selinux_mode is match('permissive')) %}
 SELINUX=permissive
 {% else %}
 SELINUX=enforcing

@@ -50,7 +50,7 @@
 
 - name: 'command set enforcing mode'
   command: "{{command_cmd_set_enforcing_mode}}"
-  when: not (selinux_mode|match('permissive|disable|disabled')) and not (register_mode.stdout == 'Enforcing')
+  when: not (selinux_mode is match('permissive|disable|disabled')) and not (register_mode.stdout == 'Enforcing')
   tags:
     - commands
     - install
@@ -59,7 +59,7 @@
 
 - name: 'command set permissive mode'
   command: "{{command_cmd_set_permissive_mode}}" 
-  when: (selinux_mode|match('permissive|disable|disabled')) and (register_mode.stdout == 'Enforcing')
+  when: (selinux_mode is match('permissive|disable|disabled')) and (register_mode.stdout == 'Enforcing')
   tags:
     - commands
     - install
