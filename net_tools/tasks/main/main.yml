@@ -2,14 +2,14 @@
 
 - name: 'task include install'
   import_tasks: install.yml
-  when: not (net_tools_state|match('false|no|remove|quiesce|inactive'))
+  when: not (net_tools_state is match('false|no|remove|quiesce|inactive'))
   tags:
     - main
     - net_tools
 
 - name: 'task include remove'
   import_tasks: remove.yml
-  when: (net_tools_state|match('false|no|remove'))
+  when: (net_tools_state is match('false|no|remove'))
   tags:
     - main
     - net_tools
