@@ -21,14 +21,14 @@
 	IncludeOptional modsecurity.d/activated_rules/*.conf
     
     # Default recommended configuration
-{% if (mod_security_sec_rule_engine is defined) and (mod_security_sec_rule_engine|match('false|no|disable')) %}
+{% if (mod_security_sec_rule_engine is defined) and (mod_security_sec_rule_engine is match('false|no|disable')) %}
     SecRuleEngine Off
-{% elif (mod_security_sec_rule_engine is defined) and (mod_security_sec_rule_engine|match('detection|DetectionOnly')) %}
+{% elif (mod_security_sec_rule_engine is defined) and (mod_security_sec_rule_engine is match('detection|DetectionOnly')) %}
     SecRuleEngine DetectionOnly
 {% else %}
     SecRuleEngine On
 {% endif %}
-{% if (mod_security_sec_request_body_access is defined) and (mod_security_sec_request_body_access|match('false|no|disable')) %}
+{% if (mod_security_sec_request_body_access is defined) and (mod_security_sec_request_body_access is match('false|no|disable')) %}
     SecRequestBodyAccess Off
 {% else %}
     SecRequestBodyAccess On
@@ -42,7 +42,7 @@
     SecRequestBodyNoFilesLimit {{(mod_security_sec_request_body_no_files_limit|int(13107200))}}
 {% endif %}
     SecRequestBodyInMemoryLimit 131072
-{% if (mod_security_sec_request_body_limit_action is defined) and (mod_security_sec_request_body_limit_action|match('partial|ProcessPartial')) %}
+{% if (mod_security_sec_request_body_limit_action is defined) and (mod_security_sec_request_body_limit_action is match('partial|ProcessPartial')) %}
     SecRequestBodyLimitAction ProcessPartial
 {% else %}
     SecRequestBodyLimitAction Reject
@@ -81,12 +81,12 @@
 {% if (mod_security_sec_server_signature is defined) and not (mod_security_sec_server_signature == '') %}
     SecServerSignature "{{mod_security_sec_server_signature}}"
 {% endif %}
-{% if (mod_security_sec_response_body_access is defined) and (mod_security_sec_response_body_access|match('true|yes|enable')) %}
+{% if (mod_security_sec_response_body_access is defined) and (mod_security_sec_response_body_access is match('true|yes|enable')) %}
     SecResponseBodyAccess On
 {% else %}
     SecResponseBodyAccess Off
 {% endif %}
-{% if (mod_security_sec_response_body_limit_action is defined) and (mod_security_sec_response_body_limit_action|match('partial|ProcessPartial')) %}
+{% if (mod_security_sec_response_body_limit_action is defined) and (mod_security_sec_response_body_limit_action is match('partial|ProcessPartial')) %}
     SecResponseBodyLimitAction ProcessPartial
 {% else %}
     SecResponseBodyLimitAction Reject
