@@ -2,14 +2,14 @@
 
 - name: 'task include install'
   import_tasks: install.yml
-  when: not (bzip2_state|match('false|no|remove|quiesce|inactive'))
+  when: not (bzip2_state is match('false|no|remove|quiesce|inactive'))
   tags:
     - main
     - bzip2
 
 - name: 'task include remove'
   import_tasks: remove.yml
-  when: (bzip2_state|match('false|no|remove'))
+  when: (bzip2_state is match('false|no|remove'))
   tags:
     - main
     - bzip2
