@@ -31,7 +31,7 @@
     - 'command run augenrules'
     - 'command restart auditd'
   with_items: "{{auditd_all + auditd_dependencies + auditd_group + auditd_host}}"
-  when: not (item.state|match('false|no|remove'))
+  when: not (item.state is match('false|no|remove'))
   tags:
     - files
     - config
@@ -46,7 +46,7 @@
     - 'command run augenrules'
     - 'command restart auditd'
   with_items: "{{auditd_all + auditd_dependencies + auditd_group + auditd_host}}"
-  when: (item.state|match('false|no|remove'))
+  when: (item.state is match('false|no|remove'))
   tags:
     - files
     - config

@@ -2,35 +2,35 @@
 
 - name: 'task include install'
   import_tasks: install.yml
-  when: not (auditd_state|match('false|no|remove|quiesce|inactive'))
+  when: not (auditd_state is match('false|no|remove|quiesce|inactive'))
   tags:
     - main
     - auditd
 
 - name: 'task include enable'
   import_tasks: enable.yml
-  when: (auditd_state|match('start|on|enable'))
+  when: (auditd_state is match('start|on|enable'))
   tags:
     - main
     - auditd
 
 - name: 'task include config'
   import_tasks: config.yml
-  when: not (auditd_state|match('false|no|remove|quiesce|inactive|stop|off|disable'))
+  when: not (auditd_state is match('false|no|remove|quiesce|inactive|stop|off|disable'))
   tags:
     - main
     - auditd
 
 - name: 'task include disable'
   import_tasks: disable.yml
-  when: (auditd_state|match('stop|off|disable'))
+  when: (auditd_state is match('stop|off|disable'))
   tags:
     - main
     - auditd
 
 - name: 'task include remove'
   import_tasks: remove.yml
-  when: (auditd_state|match('false|no|remove'))
+  when: (auditd_state is match('false|no|remove'))
   tags:
     - main
     - auditd
