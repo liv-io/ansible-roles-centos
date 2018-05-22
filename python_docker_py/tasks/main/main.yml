@@ -1,0 +1,15 @@
+---
+
+- name: 'task include install'
+  import_tasks: install.yml
+  when: not (python_docker_py_state is match('false|no|remove|quiesce|inactive'))
+  tags:
+    - main
+    - python_docker_py
+
+- name: 'task include remove'
+  import_tasks: remove.yml
+  when: (python_docker_py_state is match('false|no|remove'))
+  tags:
+    - main
+    - python_docker_py
