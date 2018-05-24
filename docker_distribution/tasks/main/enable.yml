@@ -17,6 +17,24 @@
     - docker_distribution
 
 #-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create config.yml'
+  template:
+    src: "{{file_src_config_yml}}"
+    dest: "{{file_path_config_yml}}"
+    mode: "{{file_mode_config_yml}}"
+    owner: "{{file_owner_config_yml}}"
+    group: "{{file_group_config_yml}}"
+  notify: 'service restart docker-distribution'
+  tags:
+    - files
+    - enable
+    - main
+    - docker_distribution
+
+#-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
 

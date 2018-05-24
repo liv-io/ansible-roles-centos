@@ -29,3 +29,17 @@
     - remove
     - main
     - docker_distribution
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove config.yml'
+  file:
+    state: 'absent'
+    path: "{{file_path_config_yml}}"
+  tags:
+    - files
+    - remove
+    - main
+    - docker_distribution

@@ -34,6 +34,7 @@ ENABLE
       - role: docker_distribution
     vars:
       docker_distribution_state: 'enable'
+      docker_distribution_root_directory: '/data'
 
 DISABLE
   - hosts: all
@@ -41,6 +42,7 @@ DISABLE
       - role: docker_distribution
     vars:
       docker_distribution_state: 'disable'
+      docker_distribution_root_directory: '/data'
 
 REMOVE
   - hosts: all
@@ -74,6 +76,16 @@ ROLE
       Disable : 'stop' | 'off' | 'disable'
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
+
+  docker_distribution_root_directory
+    Description: Define the 'docker_distribution_root_directory' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '/var/lib/registry'
+    Options    :
+      Examples: '/data' | '/data/registry'
 
 --------------------------------------------------------------------------------
 CONFLICTS

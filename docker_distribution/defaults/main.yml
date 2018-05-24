@@ -1,3 +1,5 @@
 ---
 
 docker_distribution_state: 'enable'
+
+docker_distribution_root_directory: '/var/lib/registry'

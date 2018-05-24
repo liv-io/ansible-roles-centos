@@ -8,6 +8,17 @@
 package_name_docker_distribution: 'docker-distribution'
 
 #-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# config.yml
+file_src_config_yml: "templates/main/config.yml.j2"
+file_path_config_yml: '/etc/docker-distribution/registry/config.yml'
+file_mode_config_yml: '0644'
+file_owner_config_yml: 'root'
+file_group_config_yml: 'root'
+
+#-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
 
