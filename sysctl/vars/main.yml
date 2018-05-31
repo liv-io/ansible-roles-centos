@@ -28,4 +28,4 @@ file_group_sysctl_d: 'root'
 #-------------------------------------------------------------------------------
 
 # set-sysctl
-command_cmd_set_sysctl: 'sysctl -qp'
+command_shell_set_sysctl: 'sysctl -qp'
