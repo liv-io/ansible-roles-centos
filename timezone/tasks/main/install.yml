@@ -21,7 +21,7 @@
 #-------------------------------------------------------------------------------
 
 - name: 'command get time-zone'
-  shell: "{{command_cmd_get_timezone}}"
+  shell: "{{command_shell_get_timezone}}"
   register: register_timezone
   changed_when: False
   check_mode: 'no'
@@ -32,7 +32,7 @@
     - timezone
 
 - name: 'command set time-zone'
-  command: "{{command_cmd_set_timezone}}"
+  command: "{{command_shell_set_timezone}}"
   when: not (timezone_timezone == '') and not (register_timezone.stdout == timezone_timezone)
   tags:
     - commands
