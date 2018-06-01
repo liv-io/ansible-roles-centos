@@ -1,0 +1,174 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : haproxy
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+HAProxy is a TCP/HTTP reverse proxy which is particularly suited for high
+availability environments. Indeed, it can:
+ - route HTTP requests depending on statically assigned cookies
+ - spread load among several servers while assuring server persistence
+   through the use of HTTP cookies
+ - switch to backup servers in the event a main server fails
+ - accept connections to special ports dedicated to service monitoring
+ - stop accepting connections without breaking existing ones
+ - add, modify, and delete HTTP headers in both directions
+ - block requests matching particular patterns
+ - report detailed status to authenticated users from a URI
+   intercepted by the application
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: haproxy
+    vars:
+      haproxy_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: haproxy
+    vars:
+      haproxy_state: 'enable'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: haproxy
+    vars:
+      haproxy_state: 'disable'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: haproxy
+    vars:
+      haproxy_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: haproxy
+    vars:
+      haproxy_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  haproxy_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  haproxy_custom_config
+    Description: Define the 'haproxy_custom_config' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{comment: 'btc'},
+                  config: {'frontend btc',
+                           '  description btc',
+                           '  mode tcp',
+                           '  bind *:8332',
+                           '  default_backend btc_bitcoind',
+                           '',
+                           'backend btc_bitcoind',
+                           '  description btc_bitcoind',
+                           '  mode tcp',
+                           '  balance roundrobin',
+                           '  server host01 10.10.10.10:8332',
+                           '  server host02 10.20.10.10:8332'}]
+                           '  server host02 10.30.10.10:8332'}]
+      None: []
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  haproxy
+    Version: >= 1.5
+    Name   :
+      CentOS 7: 'haproxy'
+
+ROLES
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.5
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

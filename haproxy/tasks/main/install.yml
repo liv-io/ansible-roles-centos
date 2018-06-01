@@ -1,0 +1,59 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - main
+    - haproxy
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install haproxy'
+  package:
+    state: 'present'
+    name: "{{package_name_haproxy}}"
+  tags:
+    - packaging
+    - install
+    - main
+    - haproxy
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'stat file dhparam.pem'
+  stat:
+    path: "{{file_path_dhparam_pem}}"
+  register: register_dhparam_pem
+  tags:
+    - files
+    - install
+    - main
+    - haproxy
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+- name: 'command generate dhparam'
+  shell: "{{command_shell_generate_dhparam}}"
+  check_mode: 'no'
+  when: (register_dhparam_pem.stat.exists == False)
+  tags:
+    - commands
+    - install
+    - main
+    - haproxy

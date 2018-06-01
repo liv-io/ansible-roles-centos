@@ -1,0 +1,39 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# haproxy
+package_name_haproxy: 'haproxy'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# dhparam.pem
+file_path_dhparam_pem: '/etc/haproxy/dhparam.pem'
+
+# haproxy.cfg
+file_src_haproxy_cfg: "templates/main/haproxy.cfg.j2"
+file_path_haproxy_cfg: '/etc/haproxy/haproxy.cfg'
+file_mode_haproxy_cfg: '0644'
+file_owner_haproxy_cfg: 'root'
+file_group_haproxy_cfg: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check haproxy
+command_shell_check_haproxy: 'haproxy -c -q -f /etc/haproxy/haproxy.cfg'
+
+# generate dhparam
+command_shell_generate_dhparam: "openssl dhparam -dsaparam 4096 -out {{file_path_dhparam_pem}}"
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# haproxy
+service_name_haproxy: 'haproxy'
