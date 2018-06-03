@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_audit}}"
   tags:
-    - packaging
     - remove
     - main
     - auditd
@@ -39,7 +38,6 @@
     state: 'absent'
     path: "{{file_path_auditd_conf}}"
   tags:
-    - files
     - remove
     - main
     - auditd
@@ -49,7 +47,6 @@
     state: 'absent'
     path: "{{file_path_syslog_conf}}"
   tags:
-    - files
     - remove
     - main
     - auditd
@@ -59,7 +56,6 @@
     state: 'absent'
     path: "{{file_path_audispd_conf}}"
   tags:
-    - files
     - remove
     - main
     - auditd

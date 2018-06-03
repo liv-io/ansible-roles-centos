@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_openssh}}"
   tags:
-    - packaging
     - install
     - main
     - openssh

@@ -28,7 +28,6 @@
     owner: "{{file_owner_shadow}}"
     group: "{{file_group_shadow}}"
   tags:
-    - files
     - install
     - main
     - shadow

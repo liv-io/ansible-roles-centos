@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_python_docker_py}}"
   tags:
-    - packaging
     - install
     - main
     - python_docker_py

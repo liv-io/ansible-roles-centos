@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_nginx}}"
   tags:
-    - packaging
     - remove
     - main
     - nginx
@@ -39,7 +38,6 @@
     state: 'absent'
     path: "{{file_path_nginx_conf}}"
   tags:
-    - files
     - remove
     - main
     - nginx
@@ -49,7 +47,6 @@
     state: 'absent'
     path: "{{file_path_dhparam_pem}}"
   tags:
-    - files
     - remove
     - main
     - nginx
@@ -59,7 +56,6 @@
     state: 'absent'
     path: "{{file_path_vhosts_d}}"
   tags:
-    - files
     - remove
     - main
     - nginx

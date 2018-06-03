@@ -26,7 +26,6 @@
     enabled: 'yes'
     name: "{{service_name_open_vm_tools}}"
   tags:
-    - system
     - enable
     - main
     - open_vm_tools

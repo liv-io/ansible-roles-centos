@@ -28,7 +28,6 @@
     owner: "{{file_owner_common_app_dir}}"
     group: "{{file_group_common_app_dir}}"
   tags:
-    - files
     - install
     - main
     - common
@@ -41,7 +40,6 @@
     owner: "{{file_owner_common_backup_dir}}"
     group: "{{file_group_common_backup_dir}}"
   tags:
-    - files
     - install
     - main
     - common
@@ -54,7 +52,6 @@
     owner: "{{file_owner_common_data_dir}}"
     group: "{{file_group_common_data_dir}}"
   tags:
-    - files
     - install
     - main
     - common
@@ -67,7 +64,6 @@
     owner: "{{file_owner_common_script_dir}}"
     group: "{{file_group_common_script_dir}}"
   tags:
-    - files
     - install
     - main
     - common
@@ -80,7 +76,6 @@
     owner: "{{file_owner_readme}}"
     group: "{{file_group_readme}}"
   tags:
-    - files
     - install
     - main
     - common

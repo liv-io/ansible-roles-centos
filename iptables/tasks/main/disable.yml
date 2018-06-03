@@ -28,7 +28,6 @@
     owner: "{{file_owner_ip6tables_config}}"
     group: "{{file_group_ip6tables_config}}"
   tags:
-    - files
     - disable
     - main
     - iptables
@@ -41,7 +40,6 @@
     owner: "{{file_owner_iptables_config}}"
     group: "{{file_group_iptables_config}}"
   tags:
-    - files
     - disable
     - main
     - iptables
@@ -54,7 +52,6 @@
     owner: "{{file_owner_ipv4_filter_ansible}}"
     group: "{{file_group_ipv4_filter_ansible}}"
   tags:
-    - files
     - disable
     - main
     - iptables
@@ -67,7 +64,6 @@
     owner: "{{file_owner_ipv4_nat_ansible}}"
     group: "{{file_group_ipv4_nat_ansible}}"
   tags:
-    - files
     - disable
     - main
     - iptables
@@ -80,7 +76,6 @@
     owner: "{{file_owner_ipv6_filter_ansible}}"
     group: "{{file_group_ipv6_filter_ansible}}"
   tags:
-    - files
     - disable
     - main
     - iptables
@@ -93,7 +88,6 @@
     owner: "{{file_owner_ipv6_nat_ansible}}"
     group: "{{file_group_ipv6_nat_ansible}}"
   tags:
-    - files
     - disable
     - main
     - iptables
@@ -109,7 +103,6 @@
   failed_when: (register_get_ipv4_filter_docker.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -121,7 +114,6 @@
   failed_when: (register_get_ipv4_nat_docker.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -133,7 +125,6 @@
   failed_when: (register_get_ipv6_filter_docker.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -145,7 +136,6 @@
   failed_when: (register_get_ipv6_nat_docker.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -156,7 +146,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv4_filter.rc > 1)
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -167,7 +156,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv4_filter_commit.rc > 1)
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -178,7 +166,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv6_filter.rc > 1)
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -189,7 +176,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv6_filter_commit.rc > 1)
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -200,7 +186,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv4_nat.rc > 1)
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -211,7 +196,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv4_nat_commit.rc > 1)
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -222,7 +206,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv6_nat.rc > 1)
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -233,7 +216,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv6_nat_commit.rc > 1)
   tags:
-    - commands
     - disable
     - main
     - iptables
@@ -248,7 +230,6 @@
     enabled: 'no'
     name: "{{service_name_ip6tables}}"
   tags:
-    - system
     - disable
     - main
     - iptables
@@ -259,7 +240,6 @@
     enabled: 'no'
     name: "{{service_name_iptables}}"
   tags:
-    - system
     - disable
     - main
     - iptables

@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_tmux}}"
   tags:
-    - packaging
     - install
     - main
     - tmux
@@ -42,7 +41,6 @@
     owner: "{{file_owner_tmux_conf}}"
     group: "{{file_group_tmux_conf}}"
   tags:
-    - files
     - install
     - main
     - tmux

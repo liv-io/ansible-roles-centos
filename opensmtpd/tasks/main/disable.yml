@@ -28,7 +28,6 @@
     owner: "{{file_owner_aliases}}"
     group: "{{file_group_aliases}}"
   tags:
-    - files
     - disable
     - main
     - opensmtpd
@@ -41,7 +40,6 @@
     owner: "{{file_owner_smtpd_conf}}"
     group: "{{file_group_smtpd_conf}}"
   tags:
-    - files
     - disable
     - main
     - opensmtpd
@@ -56,7 +54,6 @@
     enabled: 'no'
     name: "{{service_name_opensmtpd}}"
   tags:
-    - system
     - disable
     - main
     - opensmtpd

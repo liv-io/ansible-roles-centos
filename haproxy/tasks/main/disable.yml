@@ -29,7 +29,6 @@
     group: "{{file_group_haproxy_cfg}}"
   notify: 'command check haproxy'
   tags:
-    - files
     - disable
     - main
     - haproxy
@@ -44,7 +43,6 @@
     enabled: 'no'
     name: "{{service_name_haproxy}}"
   tags:
-    - system
     - disable
     - main
     - haproxy

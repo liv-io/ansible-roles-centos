@@ -33,7 +33,6 @@
     - 'command reload httpd'
   when: not (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - httpd
@@ -48,7 +47,6 @@
     - 'command reload httpd'
   when: (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - httpd

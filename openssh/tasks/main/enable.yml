@@ -31,7 +31,6 @@
     - 'command validate openssh'
     - 'service reload openssh'
   tags:
-    - files
     - enable
     - main
     - openssh
@@ -47,7 +46,6 @@
     - 'command validate openssh'
     - 'service reload openssh'
   tags:
-    - files
     - enable
     - main
     - openssh
@@ -63,7 +61,6 @@
     - 'command validate openssh'
     - 'service reload openssh'
   tags:
-    - files
     - enable
     - main
     - openssh
@@ -79,7 +76,6 @@
     - 'command validate openssh'
     - 'service reload openssh'
   tags:
-    - files
     - enable
     - main
     - openssh
@@ -94,7 +90,6 @@
     enabled: 'yes'
     name: "{{service_name_openssh}}"
   tags:
-    - system
     - enable
     - main
     - openssh

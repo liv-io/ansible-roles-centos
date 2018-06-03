@@ -31,7 +31,6 @@
     - 'command check nginx'
     - 'service reload nginx'
   tags:
-    - files
     - enable
     - main
     - nginx
@@ -46,7 +45,6 @@
     enabled: 'yes'
     name: "{{service_name_nginx}}"
   tags:
-    - system
     - enable
     - main
     - nginx

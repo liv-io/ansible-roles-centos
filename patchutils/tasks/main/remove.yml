@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_patchutils}}"
   tags:
-    - packaging
     - remove
     - main
     - patchutils

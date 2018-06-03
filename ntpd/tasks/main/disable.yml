@@ -28,7 +28,6 @@
     owner: "{{file_owner_ntp_conf}}"
     group: "{{file_group_ntp_conf}}"
   tags:
-    - files
     - disable
     - main
     - ntpd
@@ -41,7 +40,6 @@
     owner: "{{file_owner_step_tickers}}"
     group: "{{file_group_step_tickers}}"
   tags:
-    - files
     - disable
     - main
     - ntpd
@@ -54,7 +52,6 @@
     owner: "{{file_owner_ntpd_update_time_sh}}"
     group: "{{file_group_ntpd_update_time_sh}}"
   tags:
-    - files
     - disable
     - main
     - ntpd
@@ -69,7 +66,6 @@
     user: "{{cron_user_ntpd_update_time}}"
     job: "{{cron_job_ntpd_update_time}}"
   tags:
-    - files
     - disable
     - main
     - ntpd
@@ -84,7 +80,6 @@
     enabled: 'no'
     name: "{{service_name_ntpd}}"
   tags:
-    - system
     - disable
     - main
     - ntpd

@@ -31,7 +31,6 @@
     - 'command check haproxy'
     - 'service reload haproxy'
   tags:
-    - files
     - enable
     - main
     - haproxy
@@ -46,7 +45,6 @@
     enabled: 'yes'
     name: "{{service_name_haproxy}}"
   tags:
-    - system
     - enable
     - main
     - haproxy

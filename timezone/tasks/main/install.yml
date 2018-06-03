@@ -26,7 +26,6 @@
   changed_when: False
   check_mode: 'no'
   tags:
-    - commands
     - install
     - main
     - timezone
@@ -35,7 +34,6 @@
   command: "{{command_shell_set_timezone}}"
   when: not (timezone_timezone == '') and not (register_timezone.stdout == timezone_timezone)
   tags:
-    - commands
     - install
     - main
     - timezone

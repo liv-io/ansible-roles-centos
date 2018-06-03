@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_iptables}}"
   tags:
-    - packaging
     - install
     - main
     - iptables
@@ -35,7 +34,6 @@
     state: 'present'
     name: "{{package_name_iptables_services}}"
   tags:
-    - packaging
     - install
     - main
     - iptables
@@ -45,7 +43,6 @@
     state: 'present'
     name: "{{package_name_iptables_utils}}"
   tags:
-    - packaging
     - install
     - main
     - iptables
@@ -62,7 +59,6 @@
     owner: "{{file_owner_iptables_d}}"
     group: "{{file_group_iptables_d}}"
   tags:
-    - files
     - install
     - main
     - iptables
@@ -75,7 +71,6 @@
     owner: "{{file_owner_ip6tables_d}}"
     group: "{{file_group_ip6tables_d}}"
   tags:
-    - files
     - install
     - main
     - iptables

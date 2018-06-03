@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_openssh}}"
   tags:
-    - packaging
     - remove
     - main
     - openssh
@@ -39,7 +38,6 @@
     state: 'absent'
     path: "{{file_path_banner}}"
   tags:
-    - files
     - remove
     - main
     - openssh
@@ -49,7 +47,6 @@
     state: 'absent'
     path: "{{file_path_moduli}}"
   tags:
-    - files
     - remove
     - main
     - openssh
@@ -59,7 +56,6 @@
     state: 'absent'
     path: "{{file_path_ssh_config}}"
   tags:
-    - files
     - remove
     - main
     - openssh
@@ -69,7 +65,6 @@
     state: 'absent'
     path: "{{file_path_sshd_config}}"
   tags:
-    - files
     - remove
     - main
     - openssh

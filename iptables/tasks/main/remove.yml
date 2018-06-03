@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_iptables_services}}"
   tags:
-    - packaging
     - remove
     - main
     - iptables
@@ -35,7 +34,6 @@
     state: 'absent'
     name: "{{package_name_iptables_utils}}"
   tags:
-    - packaging
     - remove
     - main
     - iptables
@@ -49,7 +47,6 @@
     state: 'absent'
     path: "{{file_path_ip6tables_config}}"
   tags:
-    - files
     - remove
     - main
     - iptables
@@ -59,7 +56,6 @@
     state: 'absent'
     path: "{{file_path_ip6tables_d}}"
   tags:
-    - files
     - remove
     - main
     - iptables
@@ -69,7 +65,6 @@
     state: 'absent'
     path: "{{file_path_iptables_config}}"
   tags:
-    - files
     - remove
     - main
     - iptables
@@ -79,7 +74,6 @@
     state: 'absent'
     path: "{{file_path_iptables_d}}"
   tags:
-    - files
     - remove
     - main
     - iptables
@@ -89,7 +83,6 @@
     state: 'absent'
     path: "{{file_path_ipv4_filter_ansible}}"
   tags:
-    - files
     - remove
     - main
     - iptables
@@ -99,7 +92,6 @@
     state: 'absent'
     path: "{{file_path_ipv4_nat_ansible}}"
   tags:
-    - files
     - remove
     - main
     - iptables
@@ -109,7 +101,6 @@
     state: 'absent'
     path: "{{file_path_ipv6_filter_ansible}}"
   tags:
-    - files
     - remove
     - main
     - iptables
@@ -119,7 +110,6 @@
     state: 'absent'
     path: "{{file_path_ipv6_nat_ansible}}"
   tags:
-    - files
     - remove
     - main
     - iptables

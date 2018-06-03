@@ -28,7 +28,6 @@
     owner: "{{file_owner_banner}}"
     group: "{{file_group_banner}}"
   tags:
-    - files
     - disable
     - main
     - openssh
@@ -41,7 +40,6 @@
     owner: "{{file_owner_moduli}}"
     group: "{{file_group_moduli}}"
   tags:
-    - files
     - disable
     - main
     - openssh
@@ -54,7 +52,6 @@
     owner: "{{file_owner_ssh_config}}"
     group: "{{file_group_ssh_config}}"
   tags:
-    - files
     - disable
     - main
     - openssh
@@ -67,7 +64,6 @@
     owner: "{{file_owner_sshd_config}}"
     group: "{{file_group_sshd_config}}"
   tags:
-    - files
     - disable
     - main
     - openssh
@@ -82,7 +78,6 @@
     enabled: 'no'
     name: "{{service_name_openssh}}"
   tags:
-    - system
     - disable
     - main
     - openssh

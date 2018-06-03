@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_less}}"
   tags:
-    - packaging
     - remove
     - main
     - less

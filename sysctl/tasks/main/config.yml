@@ -31,7 +31,6 @@
   with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: not (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - sysctl
@@ -43,7 +42,6 @@
   with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - sysctl
@@ -57,7 +55,6 @@
   with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: (register_sysctl_config|changed)
   tags:
-    - commands
     - config
     - main
     - sysctl

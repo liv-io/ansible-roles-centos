@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_audit}}"
   tags:
-    - packaging
     - install
     - main
     - auditd

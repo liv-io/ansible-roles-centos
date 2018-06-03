@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_iproute2}}"
   tags:
-    - packaging
     - install
     - main
     - iproute2

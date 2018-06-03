@@ -28,7 +28,6 @@
     owner: "{{file_owner_config}}"
     group: "{{file_group_config}}"
   tags:
-    - files
     - install
     - main
     - selinux
@@ -43,7 +42,6 @@
   changed_when: False
   check_mode: 'no'
   tags:
-    - commands
     - install
     - main
     - selinux
@@ -52,7 +50,6 @@
   command: "{{command_cmd_set_enforcing_mode}}"
   when: not (selinux_mode is match('permissive|disable|disabled')) and not (register_mode.stdout == 'Enforcing')
   tags:
-    - commands
     - install
     - main
     - selinux
@@ -61,7 +58,6 @@
   command: "{{command_cmd_set_permissive_mode}}" 
   when: (selinux_mode is match('permissive|disable|disabled')) and (register_mode.stdout == 'Enforcing')
   tags:
-    - commands
     - install
     - main
     - selinux

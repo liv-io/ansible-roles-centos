@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_htop}}"
   tags:
-    - packaging
     - install
     - main
     - htop

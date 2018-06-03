@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_hostname}}"
   tags:
-    - packaging
     - install
     - main
     - hostname
@@ -40,7 +39,6 @@
   changed_when: False
   check_mode: 'no'
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -49,7 +47,6 @@
   command: "{{command_shell_set_chassis}}"
   when: not (hostname_chassis == '') and not (register_chassis.stdout == hostname_chassis)
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -60,7 +57,6 @@
   changed_when: False
   check_mode: 'no'
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -69,7 +65,6 @@
   command: "{{command_shell_set_deployment}}"
   when: not (hostname_deployment == '') and not (register_deployment.stdout == hostname_deployment)
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -80,7 +75,6 @@
   changed_when: False
   check_mode: 'no'
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -89,7 +83,6 @@
   command: "{{command_shell_set_hostname}}"
   when: not (register_hostname.stdout == hostname_hostname)
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -100,7 +93,6 @@
   changed_when: False
   check_mode: 'no'
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -109,7 +101,6 @@
   command: "{{command_shell_set_icon_name}}"
   when: not (hostname_icon_name == '') and not (register_icon_name.stdout == hostname_icon_name)
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -120,7 +111,6 @@
   changed_when: False
   check_mode: 'no'
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -129,7 +119,6 @@
   command: "{{command_shell_set_location}}"
   when: not (hostname_location == '') and not (register_location.stdout == hostname_location)
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -140,7 +129,6 @@
   changed_when: False
   check_mode: 'no'
   tags:
-    - commands
     - install
     - main
     - hostname
@@ -149,7 +137,6 @@
   command: "{{command_shell_set_pretty_hostname}}"
   when: not (hostname_pretty_hostname == '') and not (register_pretty_hostname.stdout == hostname_pretty_hostname)
   tags:
-    - commands
     - install
     - main
     - hostname

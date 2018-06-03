@@ -26,7 +26,6 @@
     enabled: 'yes'
     name: "{{service_name_docker}}"
   tags:
-    - system
     - enable
     - main
     - docker

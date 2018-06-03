@@ -29,7 +29,6 @@
     group: "{{file_group_modsecurity_crs_10_config_conf}}"
   notify: 'command check httpd'
   tags:
-    - files
     - disable
     - main
     - mod_security_crs
@@ -43,7 +42,6 @@
     group: "{{file_group_modsecurity_crs_15_adjust_conf}}"
   notify: 'command check httpd'
   tags:
-    - files
     - disable
     - main
     - mod_security_crs

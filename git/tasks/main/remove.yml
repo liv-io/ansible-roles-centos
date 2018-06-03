@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_git}}"
   tags:
-    - packaging
     - remove
     - main
     - git

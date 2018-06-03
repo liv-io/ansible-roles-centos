@@ -33,7 +33,6 @@
   with_items: "{{auditd_all + auditd_dependencies + auditd_group + auditd_host}}"
   when: not (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - auditd
@@ -48,7 +47,6 @@
   with_items: "{{auditd_all + auditd_dependencies + auditd_group + auditd_host}}"
   when: (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - auditd

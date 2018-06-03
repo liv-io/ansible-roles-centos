@@ -29,7 +29,6 @@
     group: "{{file_group_nginx_conf}}"
   notify: 'command check nginx'
   tags:
-    - files
     - disable
     - main
     - nginx
@@ -44,7 +43,6 @@
     enabled: 'no'
     name: "{{service_name_nginx}}"
   tags:
-    - system
     - disable
     - main
     - nginx

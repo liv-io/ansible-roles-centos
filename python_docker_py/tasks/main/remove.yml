@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_python_docker_py}}"
   tags:
-    - packaging
     - remove
     - main
     - python_docker_py

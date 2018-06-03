@@ -29,7 +29,6 @@
     group: "{{file_group_ip6tables_config}}"
   notify: 'command reload ip6tables'
   tags:
-    - files
     - enable
     - main
     - iptables
@@ -43,7 +42,6 @@
     group: "{{file_group_ipv4_filter_ansible}}"
   notify: 'command reload iptables'
   tags:
-    - files
     - enable
     - main
     - iptables
@@ -57,7 +55,6 @@
     group: "{{file_group_ipv4_nat_ansible}}"
   notify: 'command reload iptables'
   tags:
-    - files
     - enable
     - main
     - iptables
@@ -71,7 +68,6 @@
     group: "{{file_group_ipv6_filter_ansible}}"
   notify: 'command reload iptables'
   tags:
-    - files
     - enable
     - main
     - iptables
@@ -85,7 +81,6 @@
     group: "{{file_group_ipv6_nat_ansible}}"
   notify: 'command reload iptables'
   tags:
-    e files
     - enable
     - main
     - iptables
@@ -99,7 +94,6 @@
     group: "{{file_group_iptables_config}}"
   notify: 'command reload iptables'
   tags:
-    - files
     - enable
     - main
     - iptables
@@ -115,7 +109,6 @@
   failed_when: (register_get_ipv4_filter_docker.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -127,7 +120,6 @@
   failed_when: (register_get_ipv4_nat_docker.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -139,7 +131,6 @@
   failed_when: (register_get_ipv6_filter_docker.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -151,7 +142,6 @@
   failed_when: (register_get_ipv6_nat_docker.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -162,7 +152,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv4_filter.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -173,7 +162,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv4_filter_commit.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -184,7 +172,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv6_filter.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -195,7 +182,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv6_filter_commit.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -206,7 +192,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv4_nat.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -217,7 +202,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv4_nat_commit.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -228,7 +212,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv6_nat.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -239,7 +222,6 @@
   check_mode: 'no'
   changed_when: (register_set_ipv6_nat_commit.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -250,7 +232,6 @@
   check_mode: 'no'
   changed_when: (register_reload_iptables.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -261,7 +242,6 @@
   check_mode: 'no'
   changed_when: (register_reload_ip6tables.rc > 1)
   tags:
-    - commands
     - enable
     - main
     - iptables
@@ -276,7 +256,6 @@
     enabled: 'yes'
     name: "{{service_name_ip6tables}}"
   tags:
-    - system
     - enable
     - main
     - iptables
@@ -287,7 +266,6 @@
     enabled: 'yes'
     name: "{{service_name_iptables}}"
   tags:
-    - system
     - enable
     - main
     - iptables

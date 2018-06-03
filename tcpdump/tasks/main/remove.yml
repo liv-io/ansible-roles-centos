@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_tcpdump}}"
   tags:
-    - packaging
     - remove
     - main
     - tcpdump

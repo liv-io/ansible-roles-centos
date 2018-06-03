@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_network_manager}}"
   tags:
-    - packaging
     - install
     - main
     - network_manager

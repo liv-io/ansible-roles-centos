@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_network_manager}}*"
   tags:
-    - packaging
     - remove
     - main
     - network_manager

@@ -31,7 +31,6 @@
   with_items: "{{sudo_all + sudo_dependencies + sudo_group + sudo_host}}"
   when: not (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - sudo
@@ -43,7 +42,6 @@
   with_items: "{{sudo_all + sudo_dependencies + sudo_group + sudo_host}}"
   when: (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - sudo

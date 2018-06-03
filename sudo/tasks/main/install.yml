@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_sudo}}"
   tags:
-    - packaging
     - install
     - main
     - sudo
@@ -42,7 +41,6 @@
     owner: "{{file_owner_sudoers_d}}"
     group: "{{file_group_sudoers_d}}"
   tags:
-    - files
     - install
     - main
     - sudo
@@ -56,7 +54,6 @@
     group: "{{file_group_sudoers}}"
     validate: "{{file_validate_sudoers}}"
   tags:
-    - files
     - install
     - main
     - sudo

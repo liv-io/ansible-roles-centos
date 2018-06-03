@@ -28,7 +28,6 @@
     owner: "{{file_owner_motd}}"
     group: "{{file_group_motd}}"
   tags:
-    - files
     - install
     - main
     - motd

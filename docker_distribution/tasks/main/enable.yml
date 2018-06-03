@@ -29,7 +29,6 @@
     group: "{{file_group_config_yml}}"
   notify: 'service restart docker-distribution'
   tags:
-    - files
     - enable
     - main
     - docker_distribution
@@ -44,7 +43,6 @@
     enabled: 'yes'
     name: "{{service_name_docker_distribution}}"
   tags:
-    - system
     - enable
     - main
     - docker_distribution

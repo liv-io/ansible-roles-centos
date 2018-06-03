@@ -31,7 +31,6 @@
     - 'command check httpd'
     - 'command reload httpd'
   tags:
-    - files
     - enable
     - main
     - php

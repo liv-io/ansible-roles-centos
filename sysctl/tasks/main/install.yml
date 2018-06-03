@@ -28,7 +28,6 @@
     owner: "{{file_owner_sysctl_d}}"
     group: "{{file_group_sysctl_d}}"
   tags:
-    - files
     - install
     - main
     - sysctl
@@ -42,7 +41,6 @@
     group: "{{file_group_sysctl_conf}}"
   register: register_sysctl_conf
   tags:
-    - files
     - install
     - main
     - sysctl
@@ -56,7 +54,6 @@
   with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: (register_sysctl_conf|changed)
   tags:
-    - commands
     - config
     - main
     - sysctl

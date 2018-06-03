@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_open_vm_tools}}"
   tags:
-    - packaging
     - remove
     - main
     - open_vm_tools

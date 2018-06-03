@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_iftop}}"
   tags:
-    - packaging
     - install
     - main
     - iftop

@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_ntpd}}"
   tags:
-    - packaging
     - install
     - main
     - ntpd
@@ -42,7 +41,6 @@
     owner: "{{file_owner_ntpd_script_dir}}"
     group: "{{file_group_ntpd_script_dir}}"
   tags:
-    - files
     - install
     - main
     - ntpd

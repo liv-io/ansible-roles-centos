@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_firewalld}}"
   tags:
-    - packaging
     - install
     - main
     - firewalld
@@ -35,7 +34,6 @@
     state: 'present'
     name: "{{package_name_firewalld_filesystem}}"
   tags:
-    - packaging
     - install
     - main
     - firewalld_filesystem

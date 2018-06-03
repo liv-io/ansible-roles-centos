@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_nmap}}"
   tags:
-    - packaging
     - remove
     - main
     - nmap

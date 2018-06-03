@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_docker_distribution}}"
   tags:
-    - packaging
     - install
     - main
     - docker_distribution

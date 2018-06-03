@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_diffutils}}"
   tags:
-    - packaging
     - install
     - main
     - diffutils

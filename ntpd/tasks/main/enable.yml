@@ -29,7 +29,6 @@
     group: "{{file_group_ntp_conf}}"
   notify: 'service restart ntpd'
   tags:
-    - files
     - enable
     - main
     - ntpd
@@ -43,7 +42,6 @@
     group: "{{file_group_step_tickers}}"
   notify: 'service restart ntpd'
   tags:
-    - files
     - enable
     - main
     - ntpd
@@ -54,7 +52,6 @@
     name: "{{cron_name_ntpd_update_time}}"
     cron_file: "{{cron_cron_file_ntpd_update_time}}"
   tags:
-    - files
     - enable
     - main
     - ntpd
@@ -64,7 +61,6 @@
     state: 'absent'
     path: "{{file_path_ntpd_update_time_sh}}"
   tags:
-    - files
     - enable
     - main
     - ntpd
@@ -79,7 +75,6 @@
     enabled: 'yes'
     name: "{{service_name_ntpd}}"
   tags:
-    - system
     - enable
     - main
     - ntpd

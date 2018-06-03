@@ -25,7 +25,6 @@
     state: 'absent'
     path: "{{file_path_readme}}"
   tags:
-    - files
     - remove
     - main
     - common

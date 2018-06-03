@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_mod_security_crs}}"
   tags:
-    - packaging
     - remove
     - main
     - mod_security_crs
@@ -39,7 +38,6 @@
     state: 'absent'
     path: "{{file_path_modsecurity_crs_10_config_conf}}"
   tags:
-    - files
     - remove
     - main
     - mod_security_crs
@@ -49,7 +47,6 @@
     state: 'absent'
     path: "{{file_path_modsecurity_crs_15_adjust_conf}}"
   tags:
-    - files
     - remove
     - main
     - mod_security_crs

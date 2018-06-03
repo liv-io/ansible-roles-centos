@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_ldns}}"
   tags:
-    - packaging
     - install
     - main
     - ldns

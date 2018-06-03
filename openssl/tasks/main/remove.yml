@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_openssl}}"
   tags:
-    - packaging
     - remove
     - main
     - openssl

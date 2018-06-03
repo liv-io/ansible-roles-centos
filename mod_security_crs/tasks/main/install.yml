@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_mod_security_crs}}"
   tags:
-    - packaging
     - install
     - main
     - mod_security_crs

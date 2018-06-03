@@ -28,7 +28,6 @@
     owner: "{{file_owner_passwd}}"
     group: "{{file_group_passwd}}"
   tags:
-    - files
     - install
     - main
     - passwd

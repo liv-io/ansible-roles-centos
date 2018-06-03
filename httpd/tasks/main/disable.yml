@@ -29,7 +29,6 @@
     group: "{{file_group_autoindex_conf}}"
   notify: 'command check httpd'
   tags:
-    - files
     - disable
     - main
     - httpd
@@ -43,7 +42,6 @@
     group: "{{file_group_httpd_conf}}"
   notify: 'command check httpd'
   tags:
-    - files
     - disable
     - main
     - httpd
@@ -57,7 +55,6 @@
     group: "{{file_group_userdir_conf}}"
   notify: 'command check httpd'
   tags:
-    - files
     - disable
     - main
     - httpd
@@ -71,7 +68,6 @@
     group: "{{file_group_welcome_conf}}"
   notify: 'command check httpd'
   tags:
-    - files
     - disable
     - main
     - httpd
@@ -86,7 +82,6 @@
     enabled: 'no'
     name: "{{service_name_httpd}}"
   tags:
-    - system
     - disable
     - main
     - httpd

@@ -32,7 +32,6 @@
     - 'command smtpctl aliases'
     - 'service restart opensmtpd'
   tags:
-    - files
     - enable
     - main
     - opensmtpd
@@ -46,7 +45,6 @@
     group: "{{file_group_smtpd_conf}}"
   notify: 'service restart opensmtpd'
   tags:
-    - files
     - enable
     - main
     - opensmtpd
@@ -61,7 +59,6 @@
     enabled: 'yes'
     name: "{{service_name_opensmtpd}}"
   tags:
-    - system
     - enable
     - main
     - opensmtpd

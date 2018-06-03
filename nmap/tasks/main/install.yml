@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_nmap}}"
   tags:
-    - packaging
     - install
     - main
     - nmap

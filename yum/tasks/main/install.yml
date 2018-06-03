@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_yum}}"
   tags:
-    - packaging
     - install
     - main
     - yum
@@ -42,7 +41,6 @@
     owner: "{{file_owner_yum_conf}}"
     group: "{{file_group_yum_conf}}"
   tags:
-    - files
     - install
     - main
     - yum

@@ -28,7 +28,6 @@
     owner: "{{file_owner_issue}}"
     group: "{{file_group_issue}}"
   tags:
-    - files
     - install
     - main
     - issue

@@ -30,7 +30,6 @@
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
   when: not (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - yum
@@ -46,7 +45,6 @@
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
   when: not (item.state|default('false') is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - yum
@@ -58,7 +56,6 @@
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
   when: (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - yum
@@ -71,7 +68,6 @@
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
   when: (item.state|default('false') is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - yum

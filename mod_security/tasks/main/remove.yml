@@ -25,7 +25,6 @@
     state: 'absent'
     name: "{{package_name_mod_security}}"
   tags:
-    - packaging
     - remove
     - main
     - mod_security
@@ -39,7 +38,6 @@
     state: 'absent'
     path: "{{file_path_mod_security_conf}}"
   tags:
-    - files
     - remove
     - main
     - mod_security

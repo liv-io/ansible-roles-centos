@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_sysstat}}"
   tags:
-    - packaging
     - install
     - main
     - sysstat

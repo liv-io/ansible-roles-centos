@@ -28,7 +28,6 @@
     owner: "{{file_owner_auditd_conf}}"
     group: "{{file_group_auditd_conf}}"
   tags:
-    - files
     - disable
     - main
     - auditd
@@ -41,7 +40,6 @@
     owner: "{{file_owner_audispd_conf}}"
     group: "{{file_group_audispd_conf}}"
   tags:
-    - files
     - disable
     - main
     - auditd
@@ -54,7 +52,6 @@
     owner: "{{file_owner_syslog_conf}}"
     group: "{{file_group_syslog_conf}}"
   tags:
-    - files
     - disable
     - main
     - auditd
@@ -72,7 +69,6 @@
   failed_when: (register_status_auditd.rc > 1)
   check_mode: 'no'
   tags:
-    - commands
     - disable
     - main
     - auditd
@@ -82,7 +78,6 @@
   check_mode: 'no'
   when: (register_status_auditd.rc != 3)
   tags:
-    - commands
     - disable
     - main
     - auditd
@@ -94,7 +89,6 @@
   args:
     warn: False
   tags:
-    - commands
     - disable
     - main
     - auditd

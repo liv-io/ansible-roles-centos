@@ -30,7 +30,6 @@
   with_items: "{{systemd_all + systemd_dependencies + systemd_group + systemd_host}}"
   when: not (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - systemd
@@ -42,7 +41,6 @@
   with_items: "{{systemd_all + systemd_dependencies + systemd_group + systemd_host}}"
   when: (item.state is match('false|no|remove'))
   tags:
-    - files
     - config
     - main
     - systemd

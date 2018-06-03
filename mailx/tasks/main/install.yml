@@ -25,7 +25,6 @@
     state: 'present'
     name: "{{package_name_mailx}}"
   tags:
-    - packaging
     - install
     - main
     - mailx

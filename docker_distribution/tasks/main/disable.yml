@@ -28,7 +28,6 @@
     owner: "{{file_owner_config_yml}}"
     group: "{{file_group_config_yml}}"
   tags:
-    - files
     - disable
     - main
     - docker_distribution
@@ -43,7 +42,6 @@
     enabled: 'no'
     name: "{{service_name_docker_distribution}}"
   tags:
-    - system
     - disable
     - main
     - docker_distribution

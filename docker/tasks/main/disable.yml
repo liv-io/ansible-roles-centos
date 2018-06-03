@@ -26,7 +26,6 @@
     enabled: 'no'
     name: "{{service_name_docker}}"
   tags:
-    - system
     - disable
     - main
     - docker
