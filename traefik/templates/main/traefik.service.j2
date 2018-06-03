@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : traefik.service
+# Type   : systemd unit file
+# Role   : traefik
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+[Unit]
+Description=Traefik
+After=syslog.target network.target
+
+[Service]
+Type=notify
+ExecStart={{file_path_traefik_bin_dir}}/traefik --configFile={{file_path_traefik_conf_dir}}/traefik.toml
+Restart=always
+WatchdogSec=1s
+
+[Install]
+WantedBy=multi-user.target

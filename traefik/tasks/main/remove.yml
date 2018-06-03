@@ -1,0 +1,40 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - main
+    - traefik
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove traefik_app.dir'
+  file:
+    state: 'absent'
+    path: "{{file_path_traefik_app_dir}}"
+  tags:
+    - remove
+    - main
+    - traefik
+
+- name: 'file remove traefik.service'
+  file:
+    state: 'absent'
+    path: "{{file_path_traefik_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - main
+    - traefik

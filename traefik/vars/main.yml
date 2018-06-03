@@ -1,0 +1,70 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# traefik_app.dir
+file_path_traefik_app_dir: "/{{common_app_dir}}/traefik"
+file_mode_traefik_app_dir: '0755'
+file_owner_traefik_app_dir: 'root'
+file_group_traefik_app_dir: 'root'
+
+# traefik_version.dir
+file_path_traefik_version_dir: "/{{common_app_dir}}/traefik/traefik-{{traefik_version}}"
+file_mode_traefik_version_dir: '0755'
+file_owner_traefik_version_dir: 'root'
+file_group_traefik_version_dir: 'root'
+
+# traefik-current.link
+file_src_traefik_current_link: "/{{common_app_dir}}/traefik/traefik-{{traefik_version}}"
+file_path_traefik_current_link: "/{{common_app_dir}}/traefik/traefik-current"
+file_owner_traefik_current_link: 'root'
+file_group_traefik_current_link: 'root'
+
+# traefik_bin.dir
+file_path_traefik_bin_dir: "/{{common_app_dir}}/traefik/traefik-{{traefik_version}}/bin"
+file_mode_traefik_bin_dir: '0755'
+file_owner_traefik_bin_dir: 'root'
+file_group_traefik_bin_dir: 'root'
+
+# traefik_conf.dir
+file_path_traefik_conf_dir: "/{{common_app_dir}}/traefik/traefik-{{traefik_version}}/conf"
+file_mode_traefik_conf_dir: '0755'
+file_owner_traefik_conf_dir: 'root'
+file_group_traefik_conf_dir: 'root'
+
+# traefik.bin
+file_src_traefik_bin: "https://github.com/containous/traefik/releases/download/{{traefik_version}}/traefik_linux-amd64"
+file_path_traefik_bin: "/{{common_app_dir}}/traefik/traefik-{{traefik_version}}/bin/traefik"
+file_mode_traefik_bin: '0755'
+file_owner_traefik_bin: 'root'
+file_group_traefik_bin: 'root'
+
+# traefik.service
+file_src_traefik_service: "templates/main/traefik.service.j2"
+file_path_traefik_service: "/usr/lib/systemd/system/traefik.service"
+file_mode_traefik_service: '0644'
+file_owner_traefik_service: 'root'
+file_group_traefik_service: 'root'
+
+# traefik.toml
+file_src_traefik_toml: "templates/main/traefik.toml.j2"
+file_path_traefik_toml: "/{{common_app_dir}}/traefik/traefik-{{traefik_version}}/conf/traefik.toml"
+file_mode_traefik_toml: '0644'
+file_owner_traefik_toml: 'root'
+file_group_traefik_toml: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# traefik
+service_name_traefik: 'traefik'

@@ -1,0 +1,48 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - main
+    - traefik
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'template create traefik.toml'
+  template:
+    src: "{{file_src_traefik_toml}}"
+    dest: "{{file_path_traefik_toml}}"
+    mode: "{{file_mode_traefik_toml}}"
+    owner: "{{file_owner_traefik_toml}}"
+    group: "{{file_group_traefik_toml}}"
+  notify: 'service reload traefik'
+  tags:
+    - enable
+    - main
+    - traefik
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start traefik'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_traefik}}"
+  tags:
+    - enable
+    - main
+    - traefik
