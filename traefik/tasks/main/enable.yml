@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - traefik
 
 #-------------------------------------------------------------------------------
@@ -30,7 +29,6 @@
   notify: 'service reload traefik'
   tags:
     - enable
-    - main
     - traefik
 
 #-------------------------------------------------------------------------------
@@ -44,5 +42,4 @@
     name: "{{service_name_traefik}}"
   tags:
     - enable
-    - main
     - traefik

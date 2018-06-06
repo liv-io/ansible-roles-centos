@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - motd
 
 #-------------------------------------------------------------------------------
@@ -29,5 +28,4 @@
     group: "{{file_group_motd}}"
   tags:
     - install
-    - main
     - motd

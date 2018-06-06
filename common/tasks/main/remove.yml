@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - common
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     path: "{{file_path_readme}}"
   tags:
     - remove
-    - main
     - common

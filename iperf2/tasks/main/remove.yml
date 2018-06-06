@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - iperf2
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_iperf2}}"
   tags:
     - remove
-    - main
     - iperf2

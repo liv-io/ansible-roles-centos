@@ -4,5 +4,4 @@
   import_tasks: install.yml
   when: not (shadow_state is match('false|no|remove|quiesce|inactive'))
   tags:
-    - main
     - shadow

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - ldns
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_ldns}}"
   tags:
     - remove
-    - main
     - ldns

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - nginx
 
 #-------------------------------------------------------------------------------
@@ -30,7 +29,6 @@
   notify: 'command check nginx'
   tags:
     - disable
-    - main
     - nginx
 
 #-------------------------------------------------------------------------------
@@ -44,5 +42,4 @@
     name: "{{service_name_nginx}}"
   tags:
     - disable
-    - main
     - nginx

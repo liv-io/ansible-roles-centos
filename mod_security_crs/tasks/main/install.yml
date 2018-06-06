@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - mod_security_crs
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_mod_security_crs}}"
   tags:
     - install
-    - main
     - mod_security_crs

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - curl
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_curl}}"
   tags:
     - remove
-    - main
     - curl

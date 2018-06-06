@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - nmap
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_nmap}}"
   tags:
     - install
-    - main
     - nmap

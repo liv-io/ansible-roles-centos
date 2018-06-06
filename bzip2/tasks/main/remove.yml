@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - bzip2
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_bzip2}}"
   tags:
     - remove
-    - main
     - bzip2

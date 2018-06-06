@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - shadow
 
 #-------------------------------------------------------------------------------
@@ -29,5 +28,4 @@
     group: "{{file_group_shadow}}"
   tags:
     - install
-    - main
     - shadow

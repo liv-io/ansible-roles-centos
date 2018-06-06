@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - config
-    - main
     - hosts
 
 #-------------------------------------------------------------------------------
@@ -29,5 +28,4 @@
   with_items: "{{hosts_all + hosts_dependencies + hosts_group + hosts_host}}"
   tags:
     - config
-    - main
     - hosts

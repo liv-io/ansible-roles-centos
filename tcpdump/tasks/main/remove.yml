@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - tcpdump
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_tcpdump}}"
   tags:
     - remove
-    - main
     - tcpdump

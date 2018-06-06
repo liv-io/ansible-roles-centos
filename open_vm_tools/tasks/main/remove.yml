@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - open_vm_tools
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_open_vm_tools}}"
   tags:
     - remove
-    - main
     - open_vm_tools

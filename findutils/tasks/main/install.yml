@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - findutils
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_findutils}}"
   tags:
     - install
-    - main
     - findutils

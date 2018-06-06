@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - unzip
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_unzip}}"
   tags:
     - remove
-    - main
     - unzip

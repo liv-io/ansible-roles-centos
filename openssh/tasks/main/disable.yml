@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - openssh
 
 #-------------------------------------------------------------------------------
@@ -29,7 +28,6 @@
     group: "{{file_group_banner}}"
   tags:
     - disable
-    - main
     - openssh
 
 - name: 'template create moduli'
@@ -41,7 +39,6 @@
     group: "{{file_group_moduli}}"
   tags:
     - disable
-    - main
     - openssh
 
 - name: 'template create ssh_config'
@@ -53,7 +50,6 @@
     group: "{{file_group_ssh_config}}"
   tags:
     - disable
-    - main
     - openssh
 
 - name: 'template create sshd_config'
@@ -65,7 +61,6 @@
     group: "{{file_group_sshd_config}}"
   tags:
     - disable
-    - main
     - openssh
 
 #-------------------------------------------------------------------------------
@@ -79,5 +74,4 @@
     name: "{{service_name_openssh}}"
   tags:
     - disable
-    - main
     - openssh

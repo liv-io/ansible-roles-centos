@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - mod_security_crs
 
 #-------------------------------------------------------------------------------
@@ -30,7 +29,6 @@
   notify: 'command check httpd'
   tags:
     - disable
-    - main
     - mod_security_crs
 
 - name: 'template create modsecurity_crs_15_adjust.conf'
@@ -43,5 +41,4 @@
   notify: 'command check httpd'
   tags:
     - disable
-    - main
     - mod_security_crs

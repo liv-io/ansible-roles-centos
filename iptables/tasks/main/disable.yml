@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -29,7 +28,6 @@
     group: "{{file_group_ip6tables_config}}"
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'template create iptables-config'
@@ -41,7 +39,6 @@
     group: "{{file_group_iptables_config}}"
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'template create ipv4-filter_ansible'
@@ -53,7 +50,6 @@
     group: "{{file_group_ipv4_filter_ansible}}"
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'template create ipv4-nat_ansible'
@@ -65,7 +61,6 @@
     group: "{{file_group_ipv4_nat_ansible}}"
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'template create ipv6-filter_ansible'
@@ -77,7 +72,6 @@
     group: "{{file_group_ipv6_filter_ansible}}"
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'template create ipv6-nat_ansible'
@@ -89,7 +83,6 @@
     group: "{{file_group_ipv6_nat_ansible}}"
   tags:
     - disable
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -104,7 +97,6 @@
   check_mode: 'no'
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command get ipv4-nat_docker'
@@ -115,7 +107,6 @@
   check_mode: 'no'
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command get ipv6-filter_docker'
@@ -126,7 +117,6 @@
   check_mode: 'no'
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command get ipv6-nat_docker'
@@ -137,7 +127,6 @@
   check_mode: 'no'
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command set ipv4-filter'
@@ -147,7 +136,6 @@
   changed_when: (register_set_ipv4_filter.rc > 1)
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command set ipv4-filter-commit'
@@ -157,7 +145,6 @@
   changed_when: (register_set_ipv4_filter_commit.rc > 1)
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command set ipv6-filter'
@@ -167,7 +154,6 @@
   changed_when: (register_set_ipv6_filter.rc > 1)
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command set ipv6-filter-commit'
@@ -177,7 +163,6 @@
   changed_when: (register_set_ipv6_filter_commit.rc > 1)
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command set ipv4-nat'
@@ -187,7 +172,6 @@
   changed_when: (register_set_ipv4_nat.rc > 1)
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command set ipv4-nat-commit'
@@ -197,7 +181,6 @@
   changed_when: (register_set_ipv4_nat_commit.rc > 1)
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command set ipv6-nat'
@@ -207,7 +190,6 @@
   changed_when: (register_set_ipv6_nat.rc > 1)
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'command set ipv6-nat-commit'
@@ -217,7 +199,6 @@
   changed_when: (register_set_ipv6_nat_commit.rc > 1)
   tags:
     - disable
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -231,7 +212,6 @@
     name: "{{service_name_ip6tables}}"
   tags:
     - disable
-    - main
     - iptables
 
 - name: 'service stop iptables'
@@ -241,5 +221,4 @@
     name: "{{service_name_iptables}}"
   tags:
     - disable
-    - main
     - iptables

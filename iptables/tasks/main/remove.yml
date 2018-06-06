@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_iptables_services}}"
   tags:
     - remove
-    - main
     - iptables
 
 - name: 'package remove iptables-utils'
@@ -35,7 +33,6 @@
     name: "{{package_name_iptables_utils}}"
   tags:
     - remove
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -48,7 +45,6 @@
     path: "{{file_path_ip6tables_config}}"
   tags:
     - remove
-    - main
     - iptables
 
 - name: 'file remove ip6tables.d'
@@ -57,7 +53,6 @@
     path: "{{file_path_ip6tables_d}}"
   tags:
     - remove
-    - main
     - iptables
 
 - name: 'file remove iptables-config'
@@ -66,7 +61,6 @@
     path: "{{file_path_iptables_config}}"
   tags:
     - remove
-    - main
     - iptables
 
 - name: 'file remove iptables.d'
@@ -75,7 +69,6 @@
     path: "{{file_path_iptables_d}}"
   tags:
     - remove
-    - main
     - iptables
 
 - name: 'file remove ipv4-filter_ansible'
@@ -84,7 +77,6 @@
     path: "{{file_path_ipv4_filter_ansible}}"
   tags:
     - remove
-    - main
     - iptables
 
 - name: 'file remove ipv4-nat_ansible'
@@ -93,7 +85,6 @@
     path: "{{file_path_ipv4_nat_ansible}}"
   tags:
     - remove
-    - main
     - iptables
 
 - name: 'file remove ipv6-filter_ansible'
@@ -102,7 +93,6 @@
     path: "{{file_path_ipv6_filter_ansible}}"
   tags:
     - remove
-    - main
     - iptables
 
 - name: 'file remove ipv6-nat_ansible'
@@ -111,5 +101,4 @@
     path: "{{file_path_ipv6_nat_ansible}}"
   tags:
     - remove
-    - main
     - iptables

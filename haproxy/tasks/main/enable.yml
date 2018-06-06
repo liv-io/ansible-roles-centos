@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - haproxy
 
 #-------------------------------------------------------------------------------
@@ -32,7 +31,6 @@
     - 'service reload haproxy'
   tags:
     - enable
-    - main
     - haproxy
 
 #-------------------------------------------------------------------------------
@@ -46,5 +44,4 @@
     name: "{{service_name_haproxy}}"
   tags:
     - enable
-    - main
     - haproxy

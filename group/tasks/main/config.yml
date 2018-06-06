@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - config
-    - main
     - group
 
 #-------------------------------------------------------------------------------
@@ -29,5 +28,4 @@
   with_items: "{{group_all + group_dependencies + group_group + group_host}}"
   tags:
     - config
-    - main
     - group

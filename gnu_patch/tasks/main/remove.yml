@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - gnu_patch
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_gnu_patch}}"
   tags:
     - remove
-    - main
     - gnu_patch

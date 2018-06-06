@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - patchutils
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_patchutils}}"
   tags:
     - install
-    - main
     - patchutils

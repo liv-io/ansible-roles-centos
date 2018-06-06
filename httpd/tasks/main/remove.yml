@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - httpd
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_httpd}}"
   tags:
     - remove
-    - main
     - httpd
 
 #-------------------------------------------------------------------------------
@@ -39,7 +37,6 @@
     path: "{{file_path_autoindex_conf}}"
   tags:
     - remove
-    - main
     - httpd
 
 - name: 'file remove httpd.conf'
@@ -48,7 +45,6 @@
     path: "{{file_path_httpd_conf}}"
   tags:
     - remove
-    - main
     - httpd
 
 - name: 'file remove userdir.conf'
@@ -57,7 +53,6 @@
     path: "{{file_path_userdir_conf}}"
   tags:
     - remove
-    - main
     - httpd
 
 - name: 'file remove welcome.conf'
@@ -66,7 +61,6 @@
     path: "{{file_path_welcome_conf}}"
   tags:
     - remove
-    - main
     - httpd
 
 - name: 'file remove vhosts.d'
@@ -75,5 +69,4 @@
     path: "{{file_path_vhosts_d}}"
   tags:
     - remove
-    - main
     - httpd

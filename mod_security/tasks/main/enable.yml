@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - mod_security
 
 #-------------------------------------------------------------------------------
@@ -32,5 +31,4 @@
     - 'command reload httpd'
   tags:
     - enable
-    - main
     - mod_security

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - mod_security
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_mod_security}}"
   tags:
     - remove
-    - main
     - mod_security
 
 #-------------------------------------------------------------------------------
@@ -39,5 +37,4 @@
     path: "{{file_path_mod_security_conf}}"
   tags:
     - remove
-    - main
     - mod_security

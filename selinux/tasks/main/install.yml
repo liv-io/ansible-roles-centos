@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - selinux
 
 #-------------------------------------------------------------------------------
@@ -29,7 +28,6 @@
     group: "{{file_group_config}}"
   tags:
     - install
-    - main
     - selinux
 
 #-------------------------------------------------------------------------------
@@ -43,7 +41,6 @@
   check_mode: 'no'
   tags:
     - install
-    - main
     - selinux
 
 - name: 'command set enforcing mode'
@@ -51,7 +48,6 @@
   when: not (selinux_mode is match('permissive|disable|disabled')) and not (register_mode.stdout == 'Enforcing')
   tags:
     - install
-    - main
     - selinux
 
 - name: 'command set permissive mode'
@@ -59,5 +55,4 @@
   when: (selinux_mode is match('permissive|disable|disabled')) and (register_mode.stdout == 'Enforcing')
   tags:
     - install
-    - main
     - selinux

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - php
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_php}}"
   tags:
     - install
-    - main
     - php

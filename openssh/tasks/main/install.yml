@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - openssh
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_openssh}}"
   tags:
     - install
-    - main
     - openssh

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - ntpd
 
 #-------------------------------------------------------------------------------
@@ -29,7 +28,6 @@
     group: "{{file_group_ntp_conf}}"
   tags:
     - disable
-    - main
     - ntpd
 
 - name: 'template create step-tickers'
@@ -41,7 +39,6 @@
     group: "{{file_group_step_tickers}}"
   tags:
     - disable
-    - main
     - ntpd
 
 - name: 'template create ntpd_update-time.sh'
@@ -53,7 +50,6 @@
     group: "{{file_group_ntpd_update_time_sh}}"
   tags:
     - disable
-    - main
     - ntpd
 
 - name: 'cron create ntpd_update-time'
@@ -67,7 +63,6 @@
     job: "{{cron_job_ntpd_update_time}}"
   tags:
     - disable
-    - main
     - ntpd
 
 #-------------------------------------------------------------------------------
@@ -81,5 +76,4 @@
     name: "{{service_name_ntpd}}"
   tags:
     - disable
-    - main
     - ntpd

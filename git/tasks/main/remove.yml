@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - git
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_git}}"
   tags:
     - remove
-    - main
     - git

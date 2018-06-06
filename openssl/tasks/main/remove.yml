@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - openssl
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_openssl}}"
   tags:
     - remove
-    - main
     - openssl

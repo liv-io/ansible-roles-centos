@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - cronjob
-    - main
     - ntpd
 
 #-------------------------------------------------------------------------------
@@ -27,7 +26,6 @@
     name: "{{service_name_ntpd}}"
   tags:
     - cronjob
-    - main
     - ntpd
 
 #-------------------------------------------------------------------------------
@@ -43,7 +41,6 @@
     group: "{{file_group_ntp_conf}}"
   tags:
     - cronjob
-    - main
     - ntpd
 
 - name: 'template create step-tickers'
@@ -55,7 +52,6 @@
     group: "{{file_group_step_tickers}}"
   tags:
     - cronjob
-    - main
     - ntpd
 
 - name: 'template create ntpd_update-time.sh'
@@ -67,7 +63,6 @@
     group: "{{file_group_ntpd_update_time_sh}}"
   tags:
     - cronjob
-    - main
     - ntpd
 
 - name: 'cron create ntpd_update-time'
@@ -81,5 +76,4 @@
     job: "{{cron_job_ntpd_update_time}}"
   tags:
     - cronjob
-    - main
     - ntpd

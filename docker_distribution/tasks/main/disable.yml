@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - docker_distribution
 
 #-------------------------------------------------------------------------------
@@ -29,7 +28,6 @@
     group: "{{file_group_config_yml}}"
   tags:
     - disable
-    - main
     - docker_distribution
 
 #-------------------------------------------------------------------------------
@@ -43,5 +41,4 @@
     name: "{{service_name_docker_distribution}}"
   tags:
     - disable
-    - main
     - docker_distribution

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - bind_tools
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_bind_tools}}"
   tags:
     - install
-    - main
     - bind_tools

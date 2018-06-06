@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - dstat
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_dstat}}"
   tags:
     - remove
-    - main
     - dstat

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - nginx
 
 #-------------------------------------------------------------------------------
@@ -32,7 +31,6 @@
     - 'service reload nginx'
   tags:
     - enable
-    - main
     - nginx
 
 #-------------------------------------------------------------------------------
@@ -46,5 +44,4 @@
     name: "{{service_name_nginx}}"
   tags:
     - enable
-    - main
     - nginx

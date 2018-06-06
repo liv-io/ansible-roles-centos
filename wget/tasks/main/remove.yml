@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - wget
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_wget}}"
   tags:
     - remove
-    - main
     - wget

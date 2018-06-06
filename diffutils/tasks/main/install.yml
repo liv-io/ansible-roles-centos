@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - diffutils
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_diffutils}}"
   tags:
     - install
-    - main
     - diffutils

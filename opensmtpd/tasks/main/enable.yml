@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - opensmtpd
 
 #-------------------------------------------------------------------------------
@@ -33,7 +32,6 @@
     - 'service restart opensmtpd'
   tags:
     - enable
-    - main
     - opensmtpd
 
 - name: 'template create smtpd.conf'
@@ -46,7 +44,6 @@
   notify: 'service restart opensmtpd'
   tags:
     - enable
-    - main
     - opensmtpd
 
 #-------------------------------------------------------------------------------
@@ -60,5 +57,4 @@
     name: "{{service_name_opensmtpd}}"
   tags:
     - enable
-    - main
     - opensmtpd

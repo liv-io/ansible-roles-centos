@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - traefik
 
 #-------------------------------------------------------------------------------
@@ -29,7 +28,6 @@
     group: "{{file_group_traefik_toml}}"
   tags:
     - disable
-    - main
     - traefik
 
 #-------------------------------------------------------------------------------
@@ -43,5 +41,4 @@
     name: "{{service_name_traefik}}"
   tags:
     - disable
-    - main
     - traefik

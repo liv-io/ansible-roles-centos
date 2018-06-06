@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - hostname
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_hostname}}"
   tags:
     - install
-    - main
     - hostname
 
 #-------------------------------------------------------------------------------
@@ -40,7 +38,6 @@
   check_mode: 'no'
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command set chassis'
@@ -48,7 +45,6 @@
   when: not (hostname_chassis == '') and not (register_chassis.stdout == hostname_chassis)
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command get deployment'
@@ -58,7 +54,6 @@
   check_mode: 'no'
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command set deployment'
@@ -66,7 +61,6 @@
   when: not (hostname_deployment == '') and not (register_deployment.stdout == hostname_deployment)
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command get hostname'
@@ -76,7 +70,6 @@
   check_mode: 'no'
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command set hostname'
@@ -84,7 +77,6 @@
   when: not (register_hostname.stdout == hostname_hostname)
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command get icon-name'
@@ -94,7 +86,6 @@
   check_mode: 'no'
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command set icon-name'
@@ -102,7 +93,6 @@
   when: not (hostname_icon_name == '') and not (register_icon_name.stdout == hostname_icon_name)
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command get location'
@@ -112,7 +102,6 @@
   check_mode: 'no'
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command set location'
@@ -120,7 +109,6 @@
   when: not (hostname_location == '') and not (register_location.stdout == hostname_location)
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command get pretty-hostname'
@@ -130,7 +118,6 @@
   check_mode: 'no'
   tags:
     - install
-    - main
     - hostname
 
 - name: 'command set pretty-hostname'
@@ -138,5 +125,4 @@
   when: not (hostname_pretty_hostname == '') and not (register_pretty_hostname.stdout == hostname_pretty_hostname)
   tags:
     - install
-    - main
     - hostname

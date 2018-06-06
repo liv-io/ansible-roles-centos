@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - docker
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_docker}}"
   tags:
     - install
-    - main
     - docker

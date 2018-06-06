@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - sysstat
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_sysstat}}"
   tags:
     - remove
-    - main
     - sysstat

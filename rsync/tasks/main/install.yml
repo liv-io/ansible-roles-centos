@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - rsync
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_rsync}}"
   tags:
     - install
-    - main
     - rsync

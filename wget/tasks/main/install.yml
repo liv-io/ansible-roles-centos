@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - wget
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_wget}}"
   tags:
     - install
-    - main
     - wget

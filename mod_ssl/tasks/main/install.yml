@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - mod_ssl
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_mod_ssl}}"
   tags:
     - install
-    - main
     - mod_ssl

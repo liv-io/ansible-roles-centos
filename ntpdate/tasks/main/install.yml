@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - ntpdate
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_ntpdate}}"
   tags:
     - install
-    - main
     - ntpdate

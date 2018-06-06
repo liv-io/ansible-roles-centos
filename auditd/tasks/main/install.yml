@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - auditd
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_audit}}"
   tags:
     - install
-    - main
     - auditd

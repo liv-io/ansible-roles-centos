@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - net_tools
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_net_tools}}"
   tags:
     - install
-    - main
     - net_tools

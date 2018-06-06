@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - file
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_file}}"
   tags:
     - install
-    - main
     - file

@@ -4,26 +4,22 @@
   import_tasks: install.yml
   when: not (openssh_state is match('false|no|remove|quiesce|inactive'))
   tags:
-    - main
     - openssh
 
 - name: 'task include enable'
   import_tasks: enable.yml
   when: (openssh_state is match('start|on|enable'))
   tags:
-    - main
     - openssh
 
 - name: 'task include disable'
   import_tasks: disable.yml
   when: (openssh_state is match('stop|off|disable'))
   tags:
-    - main
     - openssh
 
 - name: 'task include remove'
   import_tasks: remove.yml
   when: (openssh_state is match('false|no|remove'))
   tags:
-    - main
     - openssh

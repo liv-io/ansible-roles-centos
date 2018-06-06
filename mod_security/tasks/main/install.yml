@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - mod_security
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_mod_security}}"
   tags:
     - install
-    - main
     - mod_security

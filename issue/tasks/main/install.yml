@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - issue
 
 #-------------------------------------------------------------------------------
@@ -29,5 +28,4 @@
     group: "{{file_group_issue}}"
   tags:
     - install
-    - main
     - issue

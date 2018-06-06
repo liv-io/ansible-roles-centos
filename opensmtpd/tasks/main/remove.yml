@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - opensmtpd
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_opensmtpd}}"
   tags:
     - remove
-    - main
     - opensmtpd
 
 #-------------------------------------------------------------------------------
@@ -39,5 +37,4 @@
     path: "{{file_path_smtpd_conf}}"
   tags:
     - remove
-    - main
     - opensmtpd

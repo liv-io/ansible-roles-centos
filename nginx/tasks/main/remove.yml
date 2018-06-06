@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - nginx
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_nginx}}"
   tags:
     - remove
-    - main
     - nginx
 
 #-------------------------------------------------------------------------------
@@ -39,7 +37,6 @@
     path: "{{file_path_nginx_conf}}"
   tags:
     - remove
-    - main
     - nginx
 
 - name: 'file remove dhparam.pem'
@@ -48,7 +45,6 @@
     path: "{{file_path_dhparam_pem}}"
   tags:
     - remove
-    - main
     - nginx
 
 - name: 'file remove vhosts.d'
@@ -57,5 +53,4 @@
     path: "{{file_path_vhosts_d}}"
   tags:
     - remove
-    - main
     - nginx

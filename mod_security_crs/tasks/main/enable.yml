@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - mod_security_crs
 
 #-------------------------------------------------------------------------------
@@ -32,7 +31,6 @@
     - 'command reload httpd'
   tags:
     - enable
-    - main
     - mod_security_crs
 
 - name: 'template create modsecurity_crs_15_adjust.conf'
@@ -47,5 +45,4 @@
     - 'command reload httpd'
   tags:
     - enable
-    - main
     - mod_security_crs

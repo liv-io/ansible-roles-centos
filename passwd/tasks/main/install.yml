@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - passwd
 
 #-------------------------------------------------------------------------------
@@ -29,5 +28,4 @@
     group: "{{file_group_passwd}}"
   tags:
     - install
-    - main
     - passwd

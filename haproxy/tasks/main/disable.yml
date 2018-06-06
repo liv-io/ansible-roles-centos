@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - haproxy
 
 #-------------------------------------------------------------------------------
@@ -30,7 +29,6 @@
   notify: 'command check haproxy'
   tags:
     - disable
-    - main
     - haproxy
 
 #-------------------------------------------------------------------------------
@@ -44,5 +42,4 @@
     name: "{{service_name_haproxy}}"
   tags:
     - disable
-    - main
     - haproxy

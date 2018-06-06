@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - config
-    - main
     - fstab
 
 #-------------------------------------------------------------------------------
@@ -29,5 +28,4 @@
   with_items: "{{fstab_all + fstab_dependencies + fstab_group + fstab_host}}"
   tags:
     - config
-    - main
     - fstab

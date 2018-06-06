@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - openssh
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_openssh}}"
   tags:
     - remove
-    - main
     - openssh
 
 #-------------------------------------------------------------------------------
@@ -39,7 +37,6 @@
     path: "{{file_path_banner}}"
   tags:
     - remove
-    - main
     - openssh
 
 - name: 'file remove moduli'
@@ -48,7 +45,6 @@
     path: "{{file_path_moduli}}"
   tags:
     - remove
-    - main
     - openssh
 
 - name: 'file remove ssh_config'
@@ -57,7 +53,6 @@
     path: "{{file_path_ssh_config}}"
   tags:
     - remove
-    - main
     - openssh
 
 - name: 'file remove sshd_config'
@@ -66,5 +61,4 @@
     path: "{{file_path_sshd_config}}"
   tags:
     - remove
-    - main
     - openssh

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - iperf2
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_iperf2}}"
   tags:
     - install
-    - main
     - iperf2

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - tmux
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_tmux}}"
   tags:
     - install
-    - main
     - tmux
 
 #-------------------------------------------------------------------------------
@@ -42,5 +40,4 @@
     group: "{{file_group_tmux_conf}}"
   tags:
     - install
-    - main
     - tmux

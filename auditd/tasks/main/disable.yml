@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - auditd
 
 #-------------------------------------------------------------------------------
@@ -29,7 +28,6 @@
     group: "{{file_group_auditd_conf}}"
   tags:
     - disable
-    - main
     - auditd
 
 - name: 'template create audispd.conf'
@@ -41,7 +39,6 @@
     group: "{{file_group_audispd_conf}}"
   tags:
     - disable
-    - main
     - auditd
 
 - name: 'template create syslog.conf'
@@ -53,7 +50,6 @@
     group: "{{file_group_syslog_conf}}"
   tags:
     - disable
-    - main
     - auditd
 
 #-------------------------------------------------------------------------------
@@ -70,7 +66,6 @@
   check_mode: 'no'
   tags:
     - disable
-    - main
     - auditd
 
 - name: 'command disable auditd'
@@ -79,7 +74,6 @@
   when: (register_status_auditd.rc != 3)
   tags:
     - disable
-    - main
     - auditd
 
 - name: 'command stop auditd'
@@ -90,5 +84,4 @@
     warn: False
   tags:
     - disable
-    - main
     - auditd

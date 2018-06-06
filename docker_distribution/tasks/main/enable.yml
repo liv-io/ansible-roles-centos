@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - docker_distribution
 
 #-------------------------------------------------------------------------------
@@ -30,7 +29,6 @@
   notify: 'service restart docker-distribution'
   tags:
     - enable
-    - main
     - docker_distribution
 
 #-------------------------------------------------------------------------------
@@ -44,5 +42,4 @@
     name: "{{service_name_docker_distribution}}"
   tags:
     - enable
-    - main
     - docker_distribution

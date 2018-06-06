@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - mod_security
 
 #-------------------------------------------------------------------------------
@@ -30,5 +29,4 @@
   notify: 'command check httpd'
   tags:
     - disable
-    - main
     - mod_security

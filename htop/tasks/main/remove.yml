@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - htop
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_htop}}"
   tags:
     - remove
-    - main
     - htop

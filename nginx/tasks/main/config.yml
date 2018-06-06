@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - config
-    - main
     - nginx
 
 #-------------------------------------------------------------------------------
@@ -34,7 +33,6 @@
   when: not (item.state is match('false|no|remove'))
   tags:
     - config
-    - main
     - nginx
 
 - name: 'file remove vhost'
@@ -48,5 +46,4 @@
   when: (item.state is match('false|no|remove'))
   tags:
     - config
-    - main
     - nginx

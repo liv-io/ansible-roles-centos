@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - patchutils
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_patchutils}}"
   tags:
     - remove
-    - main
     - patchutils

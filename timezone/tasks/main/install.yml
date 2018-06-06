@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - timezone
 
 #-------------------------------------------------------------------------------
@@ -27,7 +26,6 @@
   check_mode: 'no'
   tags:
     - install
-    - main
     - timezone
 
 - name: 'command set time-zone'
@@ -35,5 +33,4 @@
   when: not (timezone_timezone == '') and not (register_timezone.stdout == timezone_timezone)
   tags:
     - install
-    - main
     - timezone

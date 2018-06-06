@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - firewalld
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_firewalld}}"
   tags:
     - install
-    - main
     - firewalld
 
 - name: 'package install firewalld-filesystem'
@@ -35,5 +33,4 @@
     name: "{{package_name_firewalld_filesystem}}"
   tags:
     - install
-    - main
     - firewalld_filesystem

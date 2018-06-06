@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - curl
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_curl}}"
   tags:
     - install
-    - main
     - curl

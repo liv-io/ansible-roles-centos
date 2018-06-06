@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_iptables}}"
   tags:
     - install
-    - main
     - iptables
 
 - name: 'package install iptables-services'
@@ -35,7 +33,6 @@
     name: "{{package_name_iptables_services}}"
   tags:
     - install
-    - main
     - iptables
 
 - name: 'package install iptables-utils'
@@ -44,7 +41,6 @@
     name: "{{package_name_iptables_utils}}"
   tags:
     - install
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -60,7 +56,6 @@
     group: "{{file_group_iptables_d}}"
   tags:
     - install
-    - main
     - iptables
 
 - name: 'file create ip6tables.d'
@@ -72,5 +67,4 @@
     group: "{{file_group_ip6tables_d}}"
   tags:
     - install
-    - main
     - iptables

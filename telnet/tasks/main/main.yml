@@ -4,12 +4,10 @@
   import_tasks: install.yml
   when: not (telnet_state is match('false|no|remove|quiesce|inactive'))
   tags:
-    - main
     - telnet
 
 - name: 'task include remove'
   import_tasks: remove.yml
   when: (telnet_state is match('false|no|remove'))
   tags:
-    - main
     - telnet

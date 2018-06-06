@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - auditd
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_audit}}"
   tags:
     - remove
-    - main
     - auditd
 
 #-------------------------------------------------------------------------------
@@ -39,7 +37,6 @@
     path: "{{file_path_auditd_conf}}"
   tags:
     - remove
-    - main
     - auditd
 
 - name: 'file remove syslog.conf'
@@ -48,7 +45,6 @@
     path: "{{file_path_syslog_conf}}"
   tags:
     - remove
-    - main
     - auditd
 
 - name: 'file remove audispd.conf'
@@ -57,5 +53,4 @@
     path: "{{file_path_audispd_conf}}"
   tags:
     - remove
-    - main
     - auditd

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - disable
-    - main
     - open_vm_tools
 
 #-------------------------------------------------------------------------------
@@ -27,5 +26,4 @@
     name: "{{service_name_open_vm_tools}}"
   tags:
     - disable
-    - main
     - open_vm_tools

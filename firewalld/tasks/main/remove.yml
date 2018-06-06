@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - firewalld
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_firewalld}}"
   tags:
     - remove
-    - main
     - firewalld
 
 - name: 'package remove firewalld-filesystem'
@@ -35,5 +33,4 @@
     name: "{{package_name_firewalld_filesystem}}"
   tags:
     - remove
-    - main
     - firewalld_filesystem

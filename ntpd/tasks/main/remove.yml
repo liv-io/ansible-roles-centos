@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - ntpd
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_ntpd}}"
   tags:
     - remove
-    - main
     - ntpd
 
 #-------------------------------------------------------------------------------
@@ -40,7 +38,6 @@
     cron_file: "{{cron_cron_file_ntpd_update_time}}"
   tags:
     - remove
-    - main
     - ntpd
 
 - name: 'file remove ntpd_update-time.sh'
@@ -49,7 +46,6 @@
     path: "{{file_path_ntpd_update_time_sh}}"
   tags:
     - remove
-    - main
     - ntpd
 
 - name: 'file remove ntpd_script.dir'
@@ -58,7 +54,6 @@
     path: "{{file_path_ntpd_script_dir}}"
   tags:
     - remove
-    - main
     - ntpd
 
 - name: 'file remove step-tickers'
@@ -67,7 +62,6 @@
     path: "{{file_path_step_tickers}}"
   tags:
     - remove
-    - main
     - ntpd
 
 - name: 'file remove ntp.conf'
@@ -76,5 +70,4 @@
     path: "{{file_path_ntp_conf}}"
   tags:
     - remove
-    - main
     - ntpd

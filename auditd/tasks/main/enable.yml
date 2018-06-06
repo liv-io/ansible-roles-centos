@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - auditd
 
 #-------------------------------------------------------------------------------
@@ -30,7 +29,6 @@
   notify: 'command restart auditd'
   tags:
     - enable
-    - main
     - auditd
 
 - name: 'template create audispd.conf'
@@ -43,7 +41,6 @@
   notify: 'command restart auditd'
   tags:
     - enable
-    - main
     - auditd
 
 - name: 'template create syslog.conf'
@@ -56,7 +53,6 @@
   notify: 'command restart auditd'
   tags:
     - enable
-    - main
     - auditd
 
 #-------------------------------------------------------------------------------
@@ -70,5 +66,4 @@
     name: "{{service_name_auditd}}"
   tags:
     - enable
-    - main
     - auditd

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - lsof
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_lsof}}"
   tags:
     - remove
-    - main
     - lsof

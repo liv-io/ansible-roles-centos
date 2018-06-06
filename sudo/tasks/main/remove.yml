@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - sudo
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_sudo}}"
   tags:
     - remove
-    - main
     - sudo
 
 #-------------------------------------------------------------------------------
@@ -39,7 +37,6 @@
     path: "{{file_path_sudoers}}"
   tags:
     - remove
-    - main
     - sudo
 
 - name: 'file remove sudoers.d'
@@ -48,5 +45,4 @@
     path: "{{file_path_sudoers_d}}"
   tags:
     - remove
-    - main
     - sudo

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - traefik
 
 #-------------------------------------------------------------------------------
@@ -29,7 +28,6 @@
     group: "{{file_group_traefik_app_dir}}"
   tags:
     - install
-    - main
     - traefik
 
 - name: 'file create traefik_version.dir'
@@ -41,7 +39,6 @@
     group: "{{file_group_traefik_version_dir}}"
   tags:
     - install
-    - main
     - traefik
 
 - name: 'file create traefik_bin.dir'
@@ -53,7 +50,6 @@
     group: "{{file_group_traefik_bin_dir}}"
   tags:
     - install
-    - main
     - traefik
 
 - name: 'file create traefik_conf.dir'
@@ -65,7 +61,6 @@
     group: "{{file_group_traefik_conf_dir}}"
   tags:
     - install
-    - main
     - traefik
 
 - name: "url download traefik"
@@ -78,7 +73,6 @@
     checksum: "{{traefik_checksum_algorithm}}:{{traefik_checksum}}"
   tags:
     - install
-    - main
     - traefik
 
 - name: 'file create traefik-current.link'
@@ -90,7 +84,6 @@
     group: "{{file_group_traefik_current_link}}"
   tags:
     - install
-    - main
     - traefik
 
 - name: 'template create traefik.service'
@@ -103,5 +96,4 @@
   notify: 'command systemctl daemon-reload'
   tags:
     - install
-    - main
     - traefik

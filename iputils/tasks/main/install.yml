@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - iputils
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_iputils}}"
   tags:
     - install
-    - main
     - iputils

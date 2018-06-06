@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - sudo
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_sudo}}"
   tags:
     - install
-    - main
     - sudo
 
 #-------------------------------------------------------------------------------
@@ -42,7 +40,6 @@
     group: "{{file_group_sudoers_d}}"
   tags:
     - install
-    - main
     - sudo
 
 - name: 'template create sudoers'
@@ -55,5 +52,4 @@
     validate: "{{file_validate_sudoers}}"
   tags:
     - install
-    - main
     - sudo

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - mod_ssl
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_mod_ssl}}"
   tags:
     - remove
-    - main
     - mod_ssl
 
 #-------------------------------------------------------------------------------
@@ -39,5 +37,4 @@
     path: "{{file_path_ssl_conf}}"
   tags:
     - remove
-    - main
     - mod_ssl

@@ -4,12 +4,10 @@
   import_tasks: install.yml
   when: not (firewalld_state is match('false|no|remove|quiesce|inactive'))
   tags:
-    - main
     - firewalld
 
 - name: 'task include remove'
   import_tasks: remove.yml
   when: (firewalld_state is match('false|no|remove'))
   tags:
-    - main
     - firewalld

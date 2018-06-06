@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - ntpd
 
 #-------------------------------------------------------------------------------
@@ -30,7 +29,6 @@
   notify: 'service restart ntpd'
   tags:
     - enable
-    - main
     - ntpd
 
 - name: 'template create step-tickers'
@@ -43,7 +41,6 @@
   notify: 'service restart ntpd'
   tags:
     - enable
-    - main
     - ntpd
 
 - name: 'cron remove ntpd_update-time'
@@ -53,7 +50,6 @@
     cron_file: "{{cron_cron_file_ntpd_update_time}}"
   tags:
     - enable
-    - main
     - ntpd
 
 - name: 'file remove ntpd_update-time.sh'
@@ -62,7 +58,6 @@
     path: "{{file_path_ntpd_update_time_sh}}"
   tags:
     - enable
-    - main
     - ntpd
 
 #-------------------------------------------------------------------------------
@@ -76,5 +71,4 @@
     name: "{{service_name_ntpd}}"
   tags:
     - enable
-    - main
     - ntpd

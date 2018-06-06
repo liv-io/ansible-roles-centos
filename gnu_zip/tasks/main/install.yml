@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - gnu_zip
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_gnu_zip}}"
   tags:
     - install
-    - main
     - gnu_zip

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - gnu_grep
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_gnu_grep}}"
   tags:
     - install
-    - main
     - gnu_grep

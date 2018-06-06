@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - traefik
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     path: "{{file_path_traefik_app_dir}}"
   tags:
     - remove
-    - main
     - traefik
 
 - name: 'file remove traefik.service'
@@ -36,5 +34,4 @@
   notify: 'command systemctl daemon-reload'
   tags:
     - remove
-    - main
     - traefik

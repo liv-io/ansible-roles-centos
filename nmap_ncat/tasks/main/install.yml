@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - nmap_ncat
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_nmap_ncat}}"
   tags:
     - install
-    - main
     - nmap_ncat

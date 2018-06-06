@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - enable
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -30,7 +29,6 @@
   notify: 'command reload ip6tables'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'template create ipv4-filter_ansible'
@@ -43,7 +41,6 @@
   notify: 'command reload iptables'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'template create ipv4-nat_ansible'
@@ -56,7 +53,6 @@
   notify: 'command reload iptables'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'template create ipv6-filter_ansible'
@@ -69,7 +65,6 @@
   notify: 'command reload iptables'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'template create ipv6-nat_ansible'
@@ -82,7 +77,6 @@
   notify: 'command reload iptables'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'template create iptables-config'
@@ -95,7 +89,6 @@
   notify: 'command reload iptables'
   tags:
     - enable
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -110,7 +103,6 @@
   check_mode: 'no'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command get ipv4-nat_docker'
@@ -121,7 +113,6 @@
   check_mode: 'no'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command get ipv6-filter_docker'
@@ -132,7 +123,6 @@
   check_mode: 'no'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command get ipv6-nat_docker'
@@ -143,7 +133,6 @@
   check_mode: 'no'
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command set ipv4-filter'
@@ -153,7 +142,6 @@
   changed_when: (register_set_ipv4_filter.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command set ipv4-filter-commit'
@@ -163,7 +151,6 @@
   changed_when: (register_set_ipv4_filter_commit.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command set ipv6-filter'
@@ -173,7 +160,6 @@
   changed_when: (register_set_ipv6_filter.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command set ipv6-filter-commit'
@@ -183,7 +169,6 @@
   changed_when: (register_set_ipv6_filter_commit.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command set ipv4-nat'
@@ -193,7 +178,6 @@
   changed_when: (register_set_ipv4_nat.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command set ipv4-nat-commit'
@@ -203,7 +187,6 @@
   changed_when: (register_set_ipv4_nat_commit.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command set ipv6-nat'
@@ -213,7 +196,6 @@
   changed_when: (register_set_ipv6_nat.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command set ipv6-nat-commit'
@@ -223,7 +205,6 @@
   changed_when: (register_set_ipv6_nat_commit.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command reload iptables'
@@ -233,7 +214,6 @@
   changed_when: (register_reload_iptables.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'command reload ip6tables'
@@ -243,7 +223,6 @@
   changed_when: (register_reload_ip6tables.rc > 1)
   tags:
     - enable
-    - main
     - iptables
 
 #-------------------------------------------------------------------------------
@@ -257,7 +236,6 @@
     name: "{{service_name_ip6tables}}"
   tags:
     - enable
-    - main
     - iptables
 
 - name: 'service start iptables'
@@ -267,5 +245,4 @@
     name: "{{service_name_iptables}}"
   tags:
     - enable
-    - main
     - iptables

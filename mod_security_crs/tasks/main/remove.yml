@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - mod_security_crs
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_mod_security_crs}}"
   tags:
     - remove
-    - main
     - mod_security_crs
 
 #-------------------------------------------------------------------------------
@@ -39,7 +37,6 @@
     path: "{{file_path_modsecurity_crs_10_config_conf}}"
   tags:
     - remove
-    - main
     - mod_security_crs
 
 - name: 'file remove modsecurity_crs_15_adjust.conf'
@@ -48,5 +45,4 @@
     path: "{{file_path_modsecurity_crs_15_adjust_conf}}"
   tags:
     - remove
-    - main
     - mod_security_crs

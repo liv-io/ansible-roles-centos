@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - remove
-    - main
     - nano
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_nano}}"
   tags:
     - remove
-    - main
     - nano

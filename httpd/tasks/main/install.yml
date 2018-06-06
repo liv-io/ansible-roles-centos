@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - httpd
 
 #-------------------------------------------------------------------------------
@@ -26,7 +25,6 @@
     name: "{{package_name_httpd}}"
   tags:
     - install
-    - main
     - httpd
 
 #-------------------------------------------------------------------------------
@@ -42,5 +40,4 @@
     group: "{{file_group_vhosts_d}}"
   tags:
     - install
-    - main
     - httpd

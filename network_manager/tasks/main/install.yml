@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - install
-    - main
     - network_manager
 
 #-------------------------------------------------------------------------------
@@ -26,5 +25,4 @@
     name: "{{package_name_network_manager}}"
   tags:
     - install
-    - main
     - network_manager

@@ -13,7 +13,6 @@
       skip: 'true'
   tags:
     - config
-    - main
     - yum
 
 #-------------------------------------------------------------------------------
@@ -31,7 +30,6 @@
   when: not (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
     - config
-    - main
     - yum
 
 - name: 'template create yum-repo'
@@ -46,7 +44,6 @@
   when: not (item.state|default('false') is match('false|no|remove'))
   tags:
     - config
-    - main
     - yum
 
 - name: 'file remove gpg-key'
@@ -57,7 +54,6 @@
   when: (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
     - config
-    - main
     - yum
 
 - name: 'file remove yum-repo'
@@ -69,5 +65,4 @@
   when: (item.state|default('false') is match('false|no|remove'))
   tags:
     - config
-    - main
     - yum
