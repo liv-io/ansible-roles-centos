@@ -40,8 +40,8 @@ server {
   #-----------------------------------------------------------------------------
 
   # Logging options
-  error_log logs/{{item.name}}-{{(item.port|int)}}_error.log;
-  access_log logs/{{item.name}}-{{(item.port|int)}}_access.log
+  error_log /var/log/nginx/{{item.name}}-{{(item.port|int)}}_error.log;
+  access_log /var/log/nginx/{{item.name}}-{{(item.port|int)}}_access.log
 {%- if (item.ssl_state is defined) and (item.ssl_state is match('true|yes|enable')) %}
  main_ssl;
 {% else %}

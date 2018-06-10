@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.2 (2018-06-10)
+B: Fix Nginx log path in vhosts template
+
 * Version 0.2.1 (2018-06-01)
 I: Remove needless notify from 'command generate dhparam' task
 
