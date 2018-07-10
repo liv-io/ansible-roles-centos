@@ -60,7 +60,7 @@ retval=0
 severity='Debug'
 message='Please check log files for more information.'
 
-ssh_options='-o PasswordAuthentication=no -o StrictHostKeyChecking=no -o ConnectTimeout=5'
+ssh_options='-q -o PasswordAuthentication=no -o StrictHostKeyChecking=no -o ConnectTimeout=5'
 backup_user='{{restic_backup_user}}'
 backup_server='{{restic_backup_server}}'
 backup_folder="/backup/restic/$(hostname -s)"
