@@ -1,0 +1,56 @@
+---
+
+restic_state: 'enable'
+
+restic_checksum: 'f7f76812fa26ca390029216d1378e5504f18ba5dde790878dfaa84afef29bda7'
+
+restic_checksum_algorithm: 'sha256'
+
+restic_exclude:
+  - '/tmp'
+  - '/usr/tmp'
+
+restic_include:
+  - '/app'
+  - '/backup'
+  - '/data'
+  - '/etc'
+  - '/home'
+  - '/opt'
+  - '/root'
+  - '/script'
+  - '/usr/local'
+  - '/var/log'
+  - '/var/www'
+
+restic_keep_daily: 7
+
+restic_keep_hourly: 12
+
+restic_keep_monthly: 3
+
+restic_keep_weekly: 4
+
+restic_monitor: 'false'
+
+restic_monitor_mail_recipient: ["admin@{{ansible_domain}}"]
+
+restic_monitor_mail_sender: "root@{{ansible_domain}}"
+
+restic_monitor_mail_state: 'false'
+
+restic_monitor_mail_subject: "restic: Run Backup - Error ({{ansible_hostname}})"
+
+restic_password: '2t-C7s9fC_VR4jtm-Nv5,Uj7UdM3kv.8'
+
+restic_restic_run_backup_day: '*'
+
+restic_restic_run_backup_hour: 2
+
+restic_restic_run_backup_minute: 10
+
+restic_restic_run_backup_month: '*'
+
+restic_restic_run_backup_weekday: '*'
+
+restic_version: '0.9.1'

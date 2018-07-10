@@ -1,0 +1,183 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - restic
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create restic_app.dir'
+  file:
+    state: 'directory'
+    path: "{{file_path_restic_app_dir}}"
+    mode: "{{file_mode_restic_app_dir}}"
+    owner: "{{file_owner_restic_app_dir}}"
+    group: "{{file_group_restic_app_dir}}"
+  tags:
+    - install
+    - restic
+
+- name: 'file create restic_version.dir'
+  file:
+    state: 'directory'
+    path: "{{file_path_restic_version_dir}}"
+    mode: "{{file_mode_restic_version_dir}}"
+    owner: "{{file_owner_restic_version_dir}}"
+    group: "{{file_group_restic_version_dir}}"
+  tags:
+    - install
+    - restic
+
+- name: 'file create restic_bin.dir'
+  file:
+    state: 'directory'
+    path: "{{file_path_restic_bin_dir}}"
+    mode: "{{file_mode_restic_bin_dir}}"
+    owner: "{{file_owner_restic_bin_dir}}"
+    group: "{{file_group_restic_bin_dir}}"
+  tags:
+    - install
+    - restic
+
+- name: 'file create restic_log.dir'
+  file:
+    state: 'directory'
+    path: "{{file_path_restic_log_dir}}"
+    mode: "{{file_mode_restic_log_dir}}"
+    owner: "{{file_owner_restic_log_dir}}"
+    group: "{{file_group_restic_log_dir}}"
+  tags:
+    - install
+    - restic
+
+- name: 'file create restic_src.dir'
+  file:
+    state: 'directory'
+    path: "{{file_path_restic_src_dir}}"
+    mode: "{{file_mode_restic_src_dir}}"
+    owner: "{{file_owner_restic_src_dir}}"
+    group: "{{file_group_restic_src_dir}}"
+  tags:
+    - install
+    - restic
+
+- name: "url download restic.bz2"
+  get_url:
+    url: "{{file_src_restic_bz2}}"
+    dest: "{{file_path_restic_bz2}}"
+    mode: "{{file_mode_restic_bz2}}"
+    owner: "{{file_owner_restic_bz2}}"
+    group: "{{file_group_restic_bz2}}"
+    checksum: "{{restic_checksum_algorithm}}:{{restic_checksum}}"
+  tags:
+    - install
+    - restic
+
+- name: 'command unarchive restic.bz2'
+  shell: "{{command_cmd_unarchive_restic_bz2}}"
+  args:
+    creates: "{{command_creates_unarchive_restic_bz2}}"
+  tags:
+    - install
+    - restic
+
+- name: "file ensure restic"
+  file:
+    state: 'file'
+    path: "{{file_path_restic}}"
+    mode: "{{file_mode_restic}}"
+    owner: "{{file_owner_restic}}"
+    group: "{{file_group_restic}}"
+  tags:
+    - install
+    - restic
+
+- name: 'file create restic-current.link'
+  file:
+    state: 'link'
+    src: "{{file_src_restic_current_link}}"
+    path: "{{file_path_restic_current_link}}"
+    owner: "{{file_owner_restic_current_link}}"
+    group: "{{file_group_restic_current_link}}"
+  tags:
+    - install
+    - restic
+
+- name: 'file create restic_script.dir'
+  file:
+    state: 'directory'
+    path: "{{file_path_restic_script_dir}}"
+    mode: "{{file_mode_restic_script_dir}}"
+    owner: "{{file_owner_restic_script_dir}}"
+    group: "{{file_group_restic_script_dir}}"
+  tags:
+    - install
+    - restic
+
+- name: 'template create exclude.conf'
+  template:
+    src: "{{file_src_exclude_conf}}"
+    dest: "{{file_path_exclude_conf}}"
+    mode: "{{file_mode_exclude_conf}}"
+    owner: "{{file_owner_exclude_conf}}"
+    group: "{{file_group_exclude_conf}}"
+  tags:
+    - install
+    - restic
+
+- name: 'template create include.conf'
+  template:
+    src: "{{file_src_include_conf}}"
+    dest: "{{file_path_include_conf}}"
+    mode: "{{file_mode_include_conf}}"
+    owner: "{{file_owner_include_conf}}"
+    group: "{{file_group_include_conf}}"
+  tags:
+    - install
+    - restic
+
+- name: 'template create password.conf'
+  template:
+    src: "{{file_src_password_conf}}"
+    dest: "{{file_path_password_conf}}"
+    mode: "{{file_mode_password_conf}}"
+    owner: "{{file_owner_password_conf}}"
+    group: "{{file_group_password_conf}}"
+  tags:
+    - install
+    - restic
+
+- name: 'file create restic.log'
+  file:
+    state: 'file'
+    dest: "{{file_path_restic_log}}"
+    mode: "{{file_mode_restic_log}}"
+    owner: "{{file_owner_restic_log}}"
+    group: "{{file_group_restic_log}}"
+  tags:
+    - install
+    - restic
+
+- name: 'template create restic_run-backup.sh'
+  template:
+    src: "{{file_src_restic_run_backup_sh}}"
+    dest: "{{file_path_restic_run_backup_sh}}"
+    mode: "{{file_mode_restic_run_backup_sh}}"
+    owner: "{{file_owner_restic_run_backup_sh}}"
+    group: "{{file_group_restic_run_backup_sh}}"
+  tags:
+    - install
+    - restic
