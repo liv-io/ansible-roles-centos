@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.5 (2018-07-10)
+B: Fix 'date_time' in log header
+
 * Version 0.1.4 (2018-07-10)
 I: Enable quiet mode for SSH connections
 
