@@ -161,8 +161,9 @@
     - restic
 
 - name: 'file create restic.log'
-  file:
-    state: 'file'
+  copy:
+    content: ''
+    force: 'no'
     dest: "{{file_path_restic_log}}"
     mode: "{{file_mode_restic_log}}"
     owner: "{{file_owner_restic_log}}"

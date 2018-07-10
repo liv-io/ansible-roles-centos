@@ -85,8 +85,7 @@ file_owner_restic: 'root'
 file_group_restic: 'root'
 
 # restic.log
-file_src_restic_log: "templates/main/restic.log.j2"
-file_path_restic_log: '//{{common_app_dir}}/restic/restic-{{restic_version}}/log/restic.log'
+file_path_restic_log: '/{{common_app_dir}}/restic/restic-{{restic_version}}/log/restic.log'
 file_mode_restic_log: '0600'
 file_owner_restic_log: 'root'
 file_group_restic_log: 'root'

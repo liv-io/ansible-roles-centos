@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-07-10)
+B: Ensure log file is created if nonexistent
+
 * Version 0.1.1 (2018-07-10)
 I: Exclude 'restic' backup folder
 
