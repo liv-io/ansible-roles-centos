@@ -13,5 +13,8 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.1 (2018-07-10)
+I: Exclude 'restic' backup folder
+
 * Version 0.1.0 (2018-07-10)
 F: Initial release

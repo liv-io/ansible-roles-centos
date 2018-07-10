@@ -103,7 +103,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Array
-    Default    : ['/tmp', '/usr/tmp']
+    Default    : ['/backup/restic', '/tmp', '/usr/tmp']
     Options    :
       Examples: ['/tmp', '/data/example/*.tmp']
       None    : []
