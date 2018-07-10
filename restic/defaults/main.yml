@@ -6,6 +6,10 @@ restic_checksum: 'f7f76812fa26ca390029216d1378e5504f18ba5dde790878dfaa84afef29bd
 
 restic_checksum_algorithm: 'sha256'
 
+restic_backup_server: "backup.{{ansible_domain}}"
+
+restic_backup_user: 'restic'
+
 restic_exclude:
   - '/backup/restic'
   - '/tmp'

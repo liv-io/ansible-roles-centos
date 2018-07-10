@@ -76,6 +76,26 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  restic_backup_server
+    Description: Define the 'restic_backup_server' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "backup.{{ansible_domain}}"
+    Options    :
+      Examples: 'backup.domain.tld' | 'restic.domain.tld'
+
+  restic_backup_user
+    Description: Define the 'restic_backup_user' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'restic'
+    Options    :
+      Examples: 'restic' | 'backup'
+
   restic_checksum
     Description: Define the 'restic_checksum' option.
     Implemented: 0.1

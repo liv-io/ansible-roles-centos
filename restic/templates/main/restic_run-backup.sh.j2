@@ -60,11 +60,11 @@ retval=0
 severity='Debug'
 message='Please check log files for more information.'
 
-ssh_user='restic'
 ssh_options='-o PasswordAuthentication=no -o StrictHostKeyChecking=no -o ConnectTimeout=5'
-backup_server='centos7.liv.io'
+backup_user='{{restic_backup_user}}'
+backup_server='{{restic_backup_server}}'
 backup_folder="/backup/restic/$(hostname -s)"
-repo="sftp:${ssh_user}@${backup_server}:${backup_folder}"
+repo="sftp:${backup_user}@${backup_server}:${backup_folder}"
 password='{{file_path_password_conf}}'
 include='{{file_path_include_conf}}'
 exclude='{{file_path_exclude_conf}}'
@@ -205,11 +205,11 @@ create_lockfile
 add_log_header 'backup started'
 
 # Check SSH connectivity
-$ssh ${ssh_options} ${ssh_user}@${backup_server} true
+$ssh ${ssh_options} ${backup_user}@${backup_server} true
 log_and_exit_on_error "$?" 'Error' "Unable to connect to backup server: '${backup_server}'"
 
 # Check backup repository
-$ssh ${ssh_options} ${ssh_user}@${backup_server} test -s ${backup_folder}/config
+$ssh ${ssh_options} ${backup_user}@${backup_server} test -s ${backup_folder}/config
 if [ $? -ne 0 ]; then
   $restic init -r ${repo} -p ${password} >> ${log_file} 2>&1
   log_and_exit_on_error "$?" 'Error' "Unable to create backup repository: '${repo}'"

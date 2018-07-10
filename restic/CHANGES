@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.3 (2018-07-10)
+B: Add missing 'backup_server' and 'backup_user' parameters
+
 * Version 0.1.2 (2018-07-10)
 B: Ensure log file is created if nonexistent
 
