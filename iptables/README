@@ -188,7 +188,7 @@ ROLE
       None    : []
 
   iptables_filter_host
-   Description: Define the 'iptables_filter_host' option.
+    Description: Define the 'iptables_filter_host' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -201,8 +201,8 @@ ROLE
                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, port: 'https', comment: 'HTTPS: To n_dmz, n_int'}]
       None    : []
 
-  iptables_filter_policies:
-   Description: Define the 'iptables_filter_policies' option.
+  iptables_filter_policies
+    Description: Define the 'iptables_filter_policies' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
