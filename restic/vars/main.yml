@@ -13,8 +13,8 @@ file_group_restic_app_dir: 'root'
 # restic_backup.dir
 file_path_restic_backup_dir: "/{{common_backup_dir}}/restic"
 file_mode_restic_backup_dir: '0700'
-file_owner_restic_backup_dir: 'root'
-file_group_restic_backup_dir: 'root'
+file_owner_restic_backup_dir: 'restic'
+file_group_restic_backup_dir: 'restic'
 
 # restic_version.dir
 file_path_restic_version_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}"
