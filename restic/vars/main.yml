@@ -10,6 +10,12 @@ file_mode_restic_app_dir: '0755'
 file_owner_restic_app_dir: 'root'
 file_group_restic_app_dir: 'root'
 
+# restic_backup.dir
+file_path_restic_backup_dir: "/{{common_backup_dir}}/restic"
+file_mode_restic_backup_dir: '0700'
+file_owner_restic_backup_dir: 'root'
+file_group_restic_backup_dir: 'root'
+
 # restic_version.dir
 file_path_restic_version_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}"
 file_mode_restic_version_dir: '0755'
@@ -29,8 +35,8 @@ file_owner_restic_bin_dir: 'root'
 file_group_restic_bin_dir: 'root'
 
 # restic_log.dir
-file_path_restic_log_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}/log"
-file_mode_restic_log_dir: '0750'
+file_path_restic_log_dir: "/var/log/restic"
+file_mode_restic_log_dir: '0700'
 file_owner_restic_log_dir: 'root'
 file_group_restic_log_dir: 'root'
 
@@ -85,7 +91,7 @@ file_owner_restic: 'root'
 file_group_restic: 'root'
 
 # restic.log
-file_path_restic_log: '/{{common_app_dir}}/restic/restic-{{restic_version}}/log/restic.log'
+file_path_restic_log: '/var/log/restic/restic.log'
 file_mode_restic_log: '0600'
 file_owner_restic_log: 'root'
 file_group_restic_log: 'root'
@@ -100,10 +106,32 @@ file_group_restic_run_backup_sh: 'root'
 # restic_run-backup
 cron_name_restic_run_backup: "restic: Run Backup"
 cron_cron_file_restic_run_backup: "restic_run-backup"
-cron_day_restic_run_backup: "{{restic_restic_run_backup_day}}"
-cron_hour_restic_run_backup: "{{restic_restic_run_backup_hour}}"
-cron_minute_restic_run_backup: "{{restic_restic_run_backup_minute}}"
-cron_month_restic_run_backup: "{{restic_restic_run_backup_month}}"
-cron_weekday_restic_run_backup: "{{restic_restic_run_backup_weekday}}"
+cron_day_restic_run_backup: "{{restic_run_backup_day}}"
+cron_hour_restic_run_backup: "{{restic_run_backup_hour}}"
+cron_minute_restic_run_backup: "{{restic_run_backup_minute}}"
+cron_month_restic_run_backup: "{{restic_run_backup_month}}"
+cron_weekday_restic_run_backup: "{{restic_run_backup_weekday}}"
 cron_user_restic_run_backup: "{{file_owner_restic_run_backup_sh}}"
 cron_job_restic_run_backup: "{{file_path_restic_run_backup_sh}}"
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# restic
+group_name_restic: 'restic'
+group_system_restic: 'yes'
+
+# restic
+user_name_restic: 'restic'
+user_comment_restic: 'restic backup'
+user_group_restic: 'restic'
+user_append_restic: 'yes'
+user_home_create_restic: 'yes'
+user_home_move_restic: 'no'
+user_home_remove_restic: 'no'
+user_home_force_restic: 'no'
+user_password_restic: '!'
+user_password_update_restic: 'always'
+user_shell_restic: '/bin/bash'
+user_system_restic: 'yes'

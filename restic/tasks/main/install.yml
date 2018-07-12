@@ -16,6 +16,38 @@
     - restic
 
 #-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'group create restic'
+  group:
+    state: 'present'
+    name: "{{group_name_restic}}"
+    system: "{{group_system_restic}}"
+  tags:
+    - install
+    - restic
+
+- name: 'user create restic'
+  user:
+    state: 'present'
+    name: "{{user_name_restic}}"
+    comment: "{{user_comment_restic}}"
+    group: "{{user_group_restic}}"
+    append: "{{user_append_restic}}"
+    createhome: "{{user_home_create_restic}}"
+    move_home: "{{user_home_move_restic}}"
+    remove: "{{user_home_remove_restic}}"
+    force: "{{user_home_force_restic}}"
+    password: "{{user_password_restic}}"
+    update_password: "{{user_password_update_restic}}"
+    shell: "{{user_shell_restic}}"
+    system: "{{user_system_restic}}"
+  tags:
+    - install
+    - restic
+
+#-------------------------------------------------------------------------------
 # FILES
 #-------------------------------------------------------------------------------
 
@@ -112,6 +144,17 @@
     path: "{{file_path_restic_current_link}}"
     owner: "{{file_owner_restic_current_link}}"
     group: "{{file_group_restic_current_link}}"
+  tags:
+    - install
+    - restic
+
+- name: 'file create restic_backup.dir'
+  file:
+    state: 'directory'
+    path: "{{file_path_restic_backup_dir}}"
+    mode: "{{file_mode_restic_backup_dir}}"
+    owner: "{{file_owner_restic_backup_dir}}"
+    group: "{{file_group_restic_backup_dir}}"
   tags:
     - install
     - restic

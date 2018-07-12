@@ -13,6 +13,12 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2018-07-12)
+F: Add group and user 'restic'
+F: Add backup folder '/backup/restic'
+I: Generate a random minute for the cronjob
+I: Minor role improvements
+
 * Version 0.1.5 (2018-07-10)
 B: Fix 'date_time' in log header
 
