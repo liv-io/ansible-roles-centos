@@ -48,7 +48,7 @@ file_owner_my_cnf: 'root'
 file_group_my_cnf: 'root'
 
 # mariadb_backup-file
-file_mode_mariadb_backup_file: '0400'
+file_mode_mariadb_backup_file: '0600'
 file_owner_mariadb_backup_file: 'root'
 file_group_mariadb_backup_file: 'root'
 

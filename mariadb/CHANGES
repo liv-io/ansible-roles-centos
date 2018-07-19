@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-07-19)
+I: Change the default 'file_mode_mariadb_backup_file' permissions
+
 * Version 0.1.1 (2018-07-19)
 I: Change the default 'mariadb_run_backup_hour'
 
