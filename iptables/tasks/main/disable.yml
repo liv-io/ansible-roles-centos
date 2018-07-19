@@ -90,7 +90,7 @@
 #-------------------------------------------------------------------------------
 
 - name: 'command get ipv4-filter_docker'
-  shell: "{{command_shell_get_ipv4_filter_docker}}"
+  shell: "{{command_cmd_get_ipv4_filter_docker}}"
   register: register_get_ipv4_filter_docker
   changed_when: (register_get_ipv4_filter_docker.rc > 1)
   failed_when: (register_get_ipv4_filter_docker.rc > 1)
@@ -100,7 +100,7 @@
     - iptables
 
 - name: 'command get ipv4-nat_docker'
-  shell: "{{command_shell_get_ipv4_nat_docker}}"
+  shell: "{{command_cmd_get_ipv4_nat_docker}}"
   register: register_get_ipv4_nat_docker
   changed_when: (register_get_ipv4_nat_docker.rc > 1)
   failed_when: (register_get_ipv4_nat_docker.rc > 1)
@@ -110,7 +110,7 @@
     - iptables
 
 - name: 'command get ipv6-filter_docker'
-  shell: "{{command_shell_get_ipv6_filter_docker}}"
+  shell: "{{command_cmd_get_ipv6_filter_docker}}"
   register: register_get_ipv6_filter_docker
   changed_when: (register_get_ipv6_filter_docker.rc > 1)
   failed_when: (register_get_ipv6_filter_docker.rc > 1)
@@ -120,7 +120,7 @@
     - iptables
 
 - name: 'command get ipv6-nat_docker'
-  shell: "{{command_shell_get_ipv6_nat_docker}}"
+  shell: "{{command_cmd_get_ipv6_nat_docker}}"
   register: register_get_ipv6_nat_docker
   changed_when: (register_get_ipv6_nat_docker.rc > 1)
   failed_when: (register_get_ipv6_nat_docker.rc > 1)
@@ -130,7 +130,7 @@
     - iptables
 
 - name: 'command set ipv4-filter'
-  shell: "{{command_shell_set_ipv4_filter}}"
+  shell: "{{command_cmd_set_ipv4_filter}}"
   register: register_set_ipv4_filter
   check_mode: 'no'
   changed_when: (register_set_ipv4_filter.rc > 1)
@@ -139,7 +139,7 @@
     - iptables
 
 - name: 'command set ipv4-filter-commit'
-  shell: "{{command_shell_set_ipv4_filter_commit}}"
+  shell: "{{command_cmd_set_ipv4_filter_commit}}"
   register: register_set_ipv4_filter_commit
   check_mode: 'no'
   changed_when: (register_set_ipv4_filter_commit.rc > 1)
@@ -148,7 +148,7 @@
     - iptables
 
 - name: 'command set ipv6-filter'
-  shell: "{{command_shell_set_ipv6_filter}}"
+  shell: "{{command_cmd_set_ipv6_filter}}"
   register: register_set_ipv6_filter
   check_mode: 'no'
   changed_when: (register_set_ipv6_filter.rc > 1)
@@ -157,7 +157,7 @@
     - iptables
 
 - name: 'command set ipv6-filter-commit'
-  shell: "{{command_shell_set_ipv6_filter_commit}}"
+  shell: "{{command_cmd_set_ipv6_filter_commit}}"
   register: register_set_ipv6_filter_commit
   check_mode: 'no'
   changed_when: (register_set_ipv6_filter_commit.rc > 1)
@@ -166,7 +166,7 @@
     - iptables
 
 - name: 'command set ipv4-nat'
-  shell: "{{command_shell_set_ipv4_nat}}"
+  shell: "{{command_cmd_set_ipv4_nat}}"
   register: register_set_ipv4_nat
   check_mode: 'no'
   changed_when: (register_set_ipv4_nat.rc > 1)
@@ -175,7 +175,7 @@
     - iptables
 
 - name: 'command set ipv4-nat-commit'
-  shell: "{{command_shell_set_ipv4_nat_commit}}"
+  shell: "{{command_cmd_set_ipv4_nat_commit}}"
   register: register_set_ipv4_nat_commit
   check_mode: 'no'
   changed_when: (register_set_ipv4_nat_commit.rc > 1)
@@ -184,7 +184,7 @@
     - iptables
 
 - name: 'command set ipv6-nat'
-  shell: "{{command_shell_set_ipv6_nat}}"
+  shell: "{{command_cmd_set_ipv6_nat}}"
   register: register_set_ipv6_nat
   check_mode: 'no'
   changed_when: (register_set_ipv6_nat.rc > 1)
@@ -193,7 +193,7 @@
     - iptables
 
 - name: 'command set ipv6-nat-commit'
-  shell: "{{command_shell_set_ipv6_nat_commit}}"
+  shell: "{{command_cmd_set_ipv6_nat_commit}}"
   register: register_set_ipv6_nat_commit
   check_mode: 'no'
   changed_when: (register_set_ipv6_nat_commit.rc > 1)

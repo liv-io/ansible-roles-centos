@@ -17,7 +17,7 @@
 #-------------------------------------------------------------------------------
 
 - name: 'command reload iptables'
-  command: "{{command_shell_reload_iptables}}"
+  command: "{{command_cmd_reload_iptables}}"
 
 - name: 'command reload ip6tables'
-  command: "{{command_shell_reload_ip6tables}}"
+  command: "{{command_cmd_reload_ip6tables}}"
