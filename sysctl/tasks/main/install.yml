@@ -47,7 +47,7 @@
 #-------------------------------------------------------------------------------
 
 - name: 'command set sysctl.conf'
-  shell: "{{command_shell_set_sysctl}} {{file_path_sysctl_conf}}"
+  shell: "{{command_cmd_set_sysctl}} {{file_path_sysctl_conf}}"
   with_items: "{{sysctl_all + sysctl_dependencies + sysctl_group + sysctl_host}}"
   when: (register_sysctl_conf|changed)
   tags:
