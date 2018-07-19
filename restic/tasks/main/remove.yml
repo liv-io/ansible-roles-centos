@@ -16,6 +16,28 @@
     - restic
 
 #-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'user create restic'
+  user:
+    state: 'absent'
+    name: "{{user_name_restic}}"
+    remove: "{{user_home_remove_restic}}"
+    force: "{{user_home_force_restic}}"
+  tags:
+    - install
+    - restic
+
+- name: 'group create restic'
+  group:
+    state: 'absent'
+    name: "{{group_name_restic}}"
+  tags:
+    - install
+    - restic
+
+#-------------------------------------------------------------------------------
 # FILES
 #-------------------------------------------------------------------------------
 

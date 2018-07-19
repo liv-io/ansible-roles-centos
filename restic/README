@@ -318,6 +318,8 @@ PACKAGES
 ROLES
   common
 
+  bzip2
+
   mailx
 
 VARIABLES
