@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.2 (2018-07-19)
+I: Shell script improvements
+
 * Version 0.2.1 (2018-07-12)
 B: Correct owner and group of backup folder
 
