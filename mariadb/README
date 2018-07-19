@@ -1,0 +1,275 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : mariadb
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+MariaDB is a multi-user, multi-threaded SQL database server. It is a
+client/server implementation consisting of a server daemon (mysqld) and many
+different client programs and libraries. This package contains the MariaDB
+server and some accompanying files and directories. MariaDB is a community
+developed branch of MySQL.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: mariadb
+    vars:
+      mariadb_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: mariadb
+    vars:
+      mariadb_state: 'enable'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: mariadb
+    vars:
+      mariadb_state: 'disable'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: mariadb
+    vars:
+      mariadb_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: mariadb
+    vars:
+      mariadb_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  mariadb_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  mariadb_monitor
+    Description: Control the 'mariadb_monitor' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  mariadb_monitor_mail_recipient
+    Description: Define the 'mariadb_monitor_mail_recipient' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : ["admin@{{ansible_domain}}"]
+    Options    :
+      Examples: ['root@domain.tld'] | ['root@domain.tld', 'admin@domain.tld']
+                ['root@domain.tld', 'admin@domain.tld', 'user@domain.tld']
+
+  mariadb_monitor_mail_sender
+    Description: Define the 'mariadb_monitor_mail_sender' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "root@{{ansible_domain}}"
+    Options    :
+      Examples: 'root@domain.tld' | 'admin@domain.tld' | 'user@domain.tld'
+
+  mariadb_monitor_mail_state
+    Description: Control the 'mariadb_monitor_mail_state' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  mariadb_monitor_mail_subject
+    Description: Define the 'mariadb_monitor_mail_subject' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "mariadb: Run Backup - Error ({{ansible_hostname}})"
+    Options    :
+      Examples: '"mariadb: Run Backup - Error'
+
+  mariadb_root_password: 'mTA_4Vamn.DGrM5p2u8f6ScHm3_g9quA'
+    Description: Define the 'mariadb_root_password' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'mTA_4Vamn.DGrM5p2u8f6ScHm3_g9quA'
+    Options    :
+      Examples: '6q7FMh2w-KGskqDX82B.g3E_3r7LgS2F' | '3X5wBEMtx-uJaj5bfCq.EeDT5Qd2eMTh'
+
+  mariadb_run_backup_day
+    Description: Define the 'mariadb_run_backup_day' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: '1' | '*/2'
+
+  mariadb_run_backup_exclude
+    Description: Define the 'mariadb_run_backup_exclude' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['database01', 'name02', 'db03']
+      None    : []
+
+  mariadb_run_backup_hour
+    Description: Define the 'mariadb_run_backup_hour' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : 2
+    Options    :
+      Examples: '5' | '*/6'
+
+  mariadb_run_backup_minute
+    Description: Define the 'mariadb_run_backup_minute' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : "{{30|random(seed=inventory_hostname)}}"
+    Options    :
+      Examples: '42' | '*/30'
+
+  mariadb_run_backup_month
+    Description: Define the 'mariadb_run_backup_month' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: '10' | '*/1'
+
+  mariadb_run_backup_weekday
+    Description: Define the 'mariadb_run_backup_weekday' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: '6' | 'Saturday'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  mariadb-client
+    Version: >= 5.5
+    Name   :
+      CentOS 7: 'mariadb'
+
+  mariadb-server
+    Version: >= 5.5
+    Name   :
+      CentOS 7: 'mariadb-server'
+
+ROLES
+  common
+
+  mailx
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.5
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Development
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

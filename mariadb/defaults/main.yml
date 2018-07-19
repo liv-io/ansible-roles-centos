@@ -1,0 +1,31 @@
+---
+
+mariadb_state: 'enable'
+
+mariadb_exclude: []
+
+mariadb_monitor: 'false'
+
+mariadb_monitor_mail_recipient: ["admin@{{ansible_domain}}"]
+
+mariadb_monitor_mail_sender: "root@{{ansible_domain}}"
+
+mariadb_monitor_mail_state: 'false'
+
+mariadb_monitor_mail_subject: "mariadb: Run Backup - Error ({{ansible_hostname}})"
+
+mariadb_root_password: 'mTA_4Vamn.DGrM5p2u8f6ScHm3_g9quA'
+
+mariadb_run_backup_day: '*'
+
+mariadb_run_backup_exclude: []
+
+mariadb_run_backup_hour: 2
+
+mariadb_run_backup_keep_days: 2
+
+mariadb_run_backup_minute: "{{30|random(seed=inventory_hostname)}}"
+
+mariadb_run_backup_month: '*'
+
+mariadb_run_backup_weekday: '*'

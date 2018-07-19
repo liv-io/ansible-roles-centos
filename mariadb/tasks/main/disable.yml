@@ -1,0 +1,48 @@
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - disable
+    - mariadb
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'cron create mariadb_run-backup'
+  cron:
+    state: 'present'
+    disabled: 'yes'
+    name: "{{cron_name_mariadb_run_backup}}"
+    cron_file: "{{cron_cron_file_mariadb_run_backup}}"
+    day: "{{cron_day_mariadb_run_backup}}"
+    hour: "{{cron_hour_mariadb_run_backup}}"
+    minute: "{{cron_minute_mariadb_run_backup}}"
+    month: "{{cron_month_mariadb_run_backup}}"
+    weekday: "{{cron_weekday_mariadb_run_backup}}"
+    user: "{{cron_user_mariadb_run_backup}}"
+    job: "{{cron_job_mariadb_run_backup}}"
+  tags:
+    - disable
+    - mariadb
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service stop mariadb'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_mariadb}}"
+  tags:
+    - disable
+    - mariadb
