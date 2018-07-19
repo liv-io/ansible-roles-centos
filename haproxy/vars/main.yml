@@ -26,10 +26,10 @@ file_group_haproxy_cfg: 'root'
 #-------------------------------------------------------------------------------
 
 # check haproxy
-command_shell_check_haproxy: 'haproxy -c -q -f /etc/haproxy/haproxy.cfg'
+command_cmd_check_haproxy: 'haproxy -c -q -f /etc/haproxy/haproxy.cfg'
 
 # generate dhparam
-command_shell_generate_dhparam: "openssl dhparam -dsaparam 4096 -out {{file_path_dhparam_pem}}"
+command_cmd_generate_dhparam: "openssl dhparam -dsaparam 4096 -out {{file_path_dhparam_pem}}"
 
 #-------------------------------------------------------------------------------
 # SYSTEM
