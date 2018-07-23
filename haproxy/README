@@ -106,7 +106,7 @@ ROLE
                            '  mode tcp',
                            '  balance roundrobin',
                            '  server host01 10.10.10.10:8332',
-                           '  server host02 10.20.10.10:8332'}]
+                           '  server host02 10.20.10.10:8332',
                            '  server host02 10.30.10.10:8332'}]
       None: []
 
