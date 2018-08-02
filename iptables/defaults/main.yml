@@ -9,18 +9,17 @@ iptables_filter_all:
   - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'ICMP port unreachable: From any'}
   - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'source-quench', comment: 'ICMP source quench: From any'}
   - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'echo-request', comment: 'ICMP echo request: From any'}
-  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', sources: {'192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'}, port: 'ssh', comment: 'SSH: From private address space (RFC 1918)'}
+  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', sources: {'192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'}, ports: {'ssh'}, comment: 'SSH: From private address space (RFC 1918)'}
   - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'ICMP network unreachable: To any'}
   - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'ICMP host unreachable: To any'}
   - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: To any'}
   - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'ICMP port unreachable: To any'}
   - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'source-quench', comment: 'ICMP source quench: To any'}
   - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'echo-request', comment: 'ICMP echo request: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'domain', comment: 'DNS: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, port: 'domain', comment: 'DNS: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, port: 'ntp', comment: 'NTP: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'http', comment: 'HTTP: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, port: 'https', comment: 'HTTPS: To any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, ports: {'domain'}, comment: 'DNS: To any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, ports: {'domain'}, comment: 'DNS: To any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, ports: {'ntp'}, comment: 'NTP: To any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, ports: {'http', 'https'}, comment: 'HTTP(S): To any'}
 
 iptables_filter_group: []
 

@@ -58,7 +58,10 @@
 -m state --state NEW
 {%- if (all.protocol is defined) and (all.protocol is match('icmp|icmpv4')) %} -m icmp -p icmp {% elif (all.protocol is defined) and (all.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
 {%- if (all.code is defined) and not (all.code == '') %}--icmp-type {{all.code}} {% endif %}
-{%- if (all.port is defined) and not (all.port == []) %}--dport {{all.port}} {% endif %}
+{%- if (all.ports is defined) and not (all.ports == []) %}-m multiport --dports
+{%- for port in all.ports|default([]) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %},{% endif %}
+{% endfor %} {% endif %}
 {%- if (all.action is defined) and (all.action is match('accept')) %}-j ACCEPT {% elif (all.action is defined) and (all.action is match('reject')) %}-j REJECT {% else %}-j DROP {% endif %}
 {%- if (all.comment is defined) and not (all.comment == []) %}-m comment --comment "{{all.comment}}"{% endif %}
 {% if not loop.last %}
@@ -92,7 +95,10 @@
 -m state --state NEW
 {%- if (group.protocol is defined) and (group.protocol is match('icmp|icmpv4')) %} -m icmp -p icmp {% elif (group.protocol is defined) and (group.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
 {%- if (group.code is defined) and not (group.code == '') %}--icmp-type {{group.code}} {% endif %}
-{%- if (group.port is defined) and not (group.port == []) %}--dport {{group.port}} {% endif %}
+{%- if (group.ports is defined) and not (group.ports == []) %}-m multiport --dports
+{%- for port in group.ports|default([]) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %},{% endif %}
+{% endfor %} {% endif %}
 {%- if (group.action is defined) and (group.action is match('accept')) %}-j ACCEPT {% elif (group.action is defined) and (group.action is match('reject')) %}-j REJECT {% else %}-j DROP {% endif %}
 {%- if (group.comment is defined) and not (group.comment == []) %}-m comment --comment "{{group.comment}}"{% endif %}
 {% if not loop.last %}
@@ -126,7 +132,10 @@
 -m state --state NEW
 {%- if (host.protocol is defined) and (host.protocol is match('icmp|icmpv4')) %} -m icmp -p icmp {% elif (host.protocol is defined) and (host.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
 {%- if (host.code is defined) and not (host.code == '') %}--icmp-type {{host.code}} {% endif %}
-{%- if (host.port is defined) and not (host.port == []) %}--dport {{host.port}} {% endif %}
+{%- if (host.ports is defined) and not (host.ports == []) %}-m multiport --dports
+{%- for port in host.ports|default([]) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %},{% endif %}
+{% endfor %} {% endif %}
 {%- if (host.action is defined) and (host.action is match('accept')) %}-j ACCEPT {% elif (host.action is defined) and (host.action is match('reject')) %}-j REJECT {% else %}-j DROP {% endif %}
 {%- if (host.comment is defined) and not (host.comment == []) %}-m comment --comment "{{host.comment}}"{% endif %}
 {% if not loop.last %}
