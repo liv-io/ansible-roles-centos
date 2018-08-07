@@ -3,3 +3,4 @@
 dependencies:
   - {role: common, when: not (mariadb_state is match('false|no|remove|quiesce|inactive'))}
   - {role: mailx, when: (mariadb_monitor_mail_state is match('true|yes|enable'))}
+  - {role: python_mysql, when: not (mariadb_state is match('false|no|remove|quiesce|inactive'))}

@@ -46,3 +46,65 @@
   tags:
     - enable
     - mariadb
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+- name: 'command set mariadb-root-password'
+  mysql_user:
+    state: 'present'
+    user: 'root'
+    password: "{{mariadb_root_password}}"
+    host: 'localhost'
+    login_host: 'localhost'
+    config_file: "{{file_path_credentials_cnf}}"
+    check_implicit_admin: 'yes'
+  notify: 'command flush privileges'
+  tags:
+    - enable
+    - mariadb
+
+- name: 'command remove anonymous-users'
+  command: "{{command_cmd_remove_anonymous_users}}"
+  check_mode: 'no'
+  changed_when: False
+  notify: 'command flush privileges'
+  tags:
+    - enable
+    - mariadb
+
+- name: 'command remove root-remote-access'
+  command: "{{command_cmd_remove_root_remote_access}}"
+  check_mode: 'no'
+  changed_when: False
+  notify: 'command flush privileges'
+  tags:
+    - enable
+    - mariadb
+
+- name: 'command remove test-database'
+  command: "{{command_cmd_remove_test_database}}"
+  check_mode: 'no'
+  changed_when: False
+  tags:
+    - enable
+    - mariadb
+
+- name: 'command remove test-database'
+  command: "{{command_cmd_remove_test_database}}"
+  check_mode: 'no'
+  changed_when: False
+  notify: 'command flush privileges'
+  tags:
+    - enable
+    - mariadb
+
+- name: 'command remove test-database-access'
+  command: "{{command_cmd_remove_test_database_access}}"
+  check_mode: 'no'
+  changed_when: False
+  notify: 'command flush privileges'
+  tags:
+    - enable
+    - mariadb

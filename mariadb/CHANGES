@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2018-08-07)
+F: Add tasks to run initial MySQL installation (mysql_secure_installation)
+
 * Version 0.1.3 (2018-07-19)
 I: Minor configuration file improvement
 

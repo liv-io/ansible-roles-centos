@@ -85,6 +85,25 @@ cron_user_mariadb_run_backup: "{{file_owner_mariadb_run_backup_sh}}"
 cron_job_mariadb_run_backup: "{{file_path_mariadb_run_backup_sh}}"
 
 #-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# flush-privileges
+command_cmd_flush_privileges: "mysql --defaults-file='/{{common_script_dir}}/mariadb/credentials.cnf' -ne 'FLUSH PRIVILEGES'"
+
+# remove-anonymous-users
+command_cmd_remove_anonymous_users: "mysql --defaults-file='/{{common_script_dir}}/mariadb/credentials.cnf' -ne \"DELETE FROM mysql.user WHERE User=''\""
+
+# remove-test-database
+command_cmd_remove_test_database: "mysql --defaults-file='/{{common_script_dir}}/mariadb/credentials.cnf' -ne 'DROP DATABASE IF EXISTS test'"
+
+# remove-test-database-access
+command_cmd_remove_test_database_access: "mysql --defaults-file='/{{common_script_dir}}/mariadb/credentials.cnf' -ne \"DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'\""
+
+# remove-root-remote-access
+command_cmd_remove_root_remote_access: "mysql --defaults-file='/{{common_script_dir}}/mariadb/credentials.cnf' -ne \"DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')\""
+
+#-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
 

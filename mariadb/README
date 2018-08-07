@@ -229,6 +229,8 @@ ROLES
 
   mailx
 
+  python_mysql
+
 VARIABLES
 
 --------------------------------------------------------------------------------
@@ -260,6 +262,9 @@ CONTROL MACHINE
 MANAGED NODE
   Python
     Version: >= 2.4
+
+  Python-MySQL
+    Version: >= 1.2
 
 --------------------------------------------------------------------------------
 SUPPORT
