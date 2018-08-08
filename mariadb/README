@@ -38,6 +38,8 @@ ENABLE
       - role: mariadb
     vars:
       mariadb_state: 'enable'
+      mariadb_root_password: 'fg2RPQ3,hc-V3nQ8_gJNBtN4X_p5Cjq9'
+      mariadb_run_backup_keep_days: 7
 
 DISABLE
   - hosts: all
@@ -45,6 +47,8 @@ DISABLE
       - role: mariadb
     vars:
       mariadb_state: 'disable'
+      mariadb_root_password: 'fg2RPQ3,hc-V3nQ8_gJNBtN4X_p5Cjq9'
+      mariadb_run_backup_keep_days: 7
 
 REMOVE
   - hosts: all
@@ -59,6 +63,45 @@ INACTIVE
       - role: mariadb
     vars:
       mariadb_state: 'inactive'
+
+CONFIG
+  mariadb_database_group:
+    - state: 'true'
+      name: 'db01'
+
+  mariadb_database_host:
+    - state: 'false'
+      name: 'db02'
+
+  mariadb_user_group:
+    - state: 'true'
+      name: 'admin01'
+      host: 'localhost'
+      password: '*56EC0CB80AF97B7EDA3E7A19E10C55B708FC7174'
+      password_encrypted: 'true'
+      privileges: 'db01.*:SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP,CREATE VIEW'
+
+    - state: 'true'
+      name: 'user01'
+      host: 'localhost'
+      password: '*2CACC4AEFC023EF42E02069AAB74A6DCBBBEC11A'
+      password_encrypted: 'true'
+      privileges: 'db01.*:SELECT,INSERT,UPDATE,DELETE'
+
+  mariadb_user_host:
+    - state: 'false'
+      name: 'admin02'
+      host: '%'
+      password: 'd9xXjPoe3nhQoLQcevWCHm,9Hs97T5rf'
+      password_encrypted: 'false'
+      privileges: 'db02.*:ALL'
+
+    - state: 'false'
+      name: 'user02'
+      host: '%'
+      password: 'XFjFXxD5ei_qj267uWsgn2,FJtQood!f'
+      password_encrypted: 'false'
+      privileges: 'db02.*:SELECT,INSERT,UPDATE,DELETE'
 
 --------------------------------------------------------------------------------
 VARIABLES
@@ -78,6 +121,42 @@ ROLE
       Disable : 'stop' | 'off' | 'disable'
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
+
+  mariadb_database_all
+    Description: Define the 'mariadb_database_all' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'db01'},
+                 {state: 'false', name: 'db02'}]
+      None    : []
+
+  mariadb_database_group
+    Description: Define the 'mariadb_database_group' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'db01'},
+                 {state: 'false', name: 'db02'}]
+      None    : []
+
+  mariadb_database_host
+    Description: Define the 'mariadb_database_host' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'db01'},
+                 {state: 'false', name: 'db02'}]
+      None    : []
 
   mariadb_monitor
     Description: Control the 'mariadb_monitor' option.
@@ -202,6 +281,48 @@ ROLE
     Default    : '*'
     Options    :
       Examples: '6' | 'Saturday'
+
+  mariadb_user_all
+    Description: Define the 'mariadb_user_all' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'admin01', host: 'localhost', password: '*56EC0CB80AF97B7EDA3E7A19E10C55B708FC7174', password_encrypted: 'true', privileges: 'db01.*:SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP,CREATE VIEW' },
+                 {state: 'true', name: 'user01', host: 'localhost', password: '*2CACC4AEFC023EF42E02069AAB74A6DCBBBEC11A', password_encrypted: 'true', privileges: 'db01.*:SELECT,INSERT,UPDATE,DELETE' },
+                 {state: 'false', name: 'admin02', host: '%', password: 'd9xXjPoe3nhQoLQcevWCHm,9Hs97T5rf', password_encrypted: 'false', privileges: 'db02.*:ALL' },
+                 {state: 'false', name: 'user02', host: '%', password: 'XFjFXxD5ei_qj267uWsgn2,FJtQood!f', password_encrypted: 'false', privileges: 'db02.*:SELECT,INSERT,UPDATE,DELETE' }]
+      None    : []
+
+  mariadb_user_group
+    Description: Define the 'mariadb_user_group' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'admin01', host: 'localhost', password: '*56EC0CB80AF97B7EDA3E7A19E10C55B708FC7174', password_encrypted: 'true', privileges: 'db01.*:SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP,CREATE VIEW' },
+                 {state: 'true', name: 'user01', host: 'localhost', password: '*2CACC4AEFC023EF42E02069AAB74A6DCBBBEC11A', password_encrypted: 'true', privileges: 'db01.*:SELECT,INSERT,UPDATE,DELETE' },
+                 {state: 'false', name: 'admin02', host: '%', password: 'd9xXjPoe3nhQoLQcevWCHm,9Hs97T5rf', password_encrypted: 'false', privileges: 'db02.*:ALL' },
+                 {state: 'false', name: 'user02', host: '%', password: 'XFjFXxD5ei_qj267uWsgn2,FJtQood!f', password_encrypted: 'false', privileges: 'db02.*:SELECT,INSERT,UPDATE,DELETE' }]
+      None    : []
+
+  mariadb_user_host
+    Description: Define the 'mariadb_user_host' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{state: 'true', name: 'admin01', host: 'localhost', password: '*56EC0CB80AF97B7EDA3E7A19E10C55B708FC7174', password_encrypted: 'true', privileges: 'db01.*:SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP,CREATE VIEW' },
+                 {state: 'true', name: 'user01', host: 'localhost', password: '*2CACC4AEFC023EF42E02069AAB74A6DCBBBEC11A', password_encrypted: 'true', privileges: 'db01.*:SELECT,INSERT,UPDATE,DELETE' },
+                 {state: 'false', name: 'admin02', host: '%', password: 'd9xXjPoe3nhQoLQcevWCHm,9Hs97T5rf', password_encrypted: 'false', privileges: 'db02.*:ALL' },
+                 {state: 'false', name: 'user02', host: '%', password: 'XFjFXxD5ei_qj267uWsgn2,FJtQood!f', password_encrypted: 'false', privileges: 'db02.*:SELECT,INSERT,UPDATE,DELETE' }]
+      None    : []
 
 --------------------------------------------------------------------------------
 CONFLICTS

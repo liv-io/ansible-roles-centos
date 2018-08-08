@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.0 (2018-08-08)
+F: Add options to configure 'databases' and 'users'
+
 * Version 0.2.0 (2018-08-07)
 F: Add tasks to run initial MySQL installation (mysql_secure_installation)
 

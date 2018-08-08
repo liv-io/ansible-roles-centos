@@ -2,6 +2,12 @@
 
 mariadb_state: 'enable'
 
+mariadb_database_all: []
+
+mariadb_database_group: []
+
+mariadb_database_host: []
+
 mariadb_exclude: []
 
 mariadb_monitor: 'false'
@@ -29,3 +35,9 @@ mariadb_run_backup_minute: "{{30|random(seed=inventory_hostname)}}"
 mariadb_run_backup_month: '*'
 
 mariadb_run_backup_weekday: '*'
+
+mariadb_user_all: []
+
+mariadb_user_group: []
+
+mariadb_user_host: []
