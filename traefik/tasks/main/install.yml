@@ -63,7 +63,7 @@
     - install
     - traefik
 
-- name: "url download traefik"
+- name: 'file download traefik'
   get_url:
     url: "{{file_src_traefik_bin}}"
     dest: "{{file_path_traefik_bin}}"
