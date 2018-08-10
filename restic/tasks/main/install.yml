@@ -106,7 +106,7 @@
     - install
     - restic
 
-- name: "url download restic.bz2"
+- name: 'file download restic.bz2'
   get_url:
     url: "{{file_src_restic_bz2}}"
     dest: "{{file_path_restic_bz2}}"
@@ -126,7 +126,7 @@
     - install
     - restic
 
-- name: "file ensure restic"
+- name: 'file ensure restic'
   file:
     state: 'file'
     path: "{{file_path_restic}}"
