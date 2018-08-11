@@ -13,14 +13,14 @@ package_name_mod_security_crs: 'mod_security_crs'
 
 # modsecurity_crs_10_config.conf
 file_src_modsecurity_crs_10_config_conf: "templates/main/modsecurity_crs_10_config.conf.j2"
-file_path_modsecurity_crs_10_config_conf: '/etc/httpd/modsecurity.d/modsecurity_crs_10_config.conf'
+file_dst_modsecurity_crs_10_config_conf: '/etc/httpd/modsecurity.d/modsecurity_crs_10_config.conf'
 file_mode_modsecurity_crs_10_config_conf: '0644'
 file_owner_modsecurity_crs_10_config_conf: 'root'
 file_group_modsecurity_crs_10_config_conf: 'root'
 
 # modsecurity_crs_15_adjust.conf
 file_src_modsecurity_crs_15_adjust_conf: "templates/main/modsecurity_crs_15_adjust.conf.j2"
-file_path_modsecurity_crs_15_adjust_conf: '/etc/httpd/modsecurity.d/modsecurity_crs_15_adjust.conf'
+file_dst_modsecurity_crs_15_adjust_conf: '/etc/httpd/modsecurity.d/modsecurity_crs_15_adjust.conf'
 file_mode_modsecurity_crs_15_adjust_conf: '0644'
 file_owner_modsecurity_crs_15_adjust_conf: 'root'
 file_group_modsecurity_crs_15_adjust_conf: 'root'

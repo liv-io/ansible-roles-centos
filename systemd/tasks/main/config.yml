@@ -22,7 +22,7 @@
 - name: 'template create systemd-config'
   template:
     src: "{{file_src_systemd_config}}"
-    dest: "{{file_path_systemd}}/{{item.mode|default(systemd_mode_default)}}/{{item.name|default(systemd_name_default)}}.{{item.type|default(systemd_type_default)}}"
+    dest: "{{file_dst_systemd}}/{{item.mode|default(systemd_mode_default)}}/{{item.name|default(systemd_name_default)}}.{{item.type|default(systemd_type_default)}}"
     mode: "{{file_mode_systemd_config}}"
     owner: "{{file_owner_systemd_config}}"
     group: "{{file_group_systemd_config}}"
@@ -35,7 +35,7 @@
 - name: 'file remove systemd-config'
   file:
     state: 'absent'
-    dest: "{{file_path_systemd}}/{{item.mode|default(systemd_mode_default)}}/{{item.name|default(systemd_name_default)}}.{{item.type|default(systemd_type_default)}}"
+    dest: "{{file_dst_systemd}}/{{item.mode|default(systemd_mode_default)}}/{{item.name|default(systemd_name_default)}}.{{item.type|default(systemd_type_default)}}"
   with_items: "{{systemd_all + systemd_dependencies + systemd_group + systemd_host}}"
   when: (item.state is match('false|no|remove'))
   tags:

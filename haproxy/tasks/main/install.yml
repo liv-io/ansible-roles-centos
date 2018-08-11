@@ -33,7 +33,7 @@
 
 - name: 'stat file dhparam.pem'
   stat:
-    path: "{{file_path_dhparam_pem}}"
+    path: "{{file_dst_dhparam_pem}}"
   register: register_dhparam_pem
   tags:
     - install

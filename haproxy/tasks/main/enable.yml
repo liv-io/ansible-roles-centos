@@ -22,7 +22,7 @@
 - name: 'template create haproxy.cfg'
   template:
     src: "{{file_src_haproxy_cfg}}"
-    dest: "{{file_path_haproxy_cfg}}"
+    dest: "{{file_dst_haproxy_cfg}}"
     mode: "{{file_mode_haproxy_cfg}}"
     owner: "{{file_owner_haproxy_cfg}}"
     group: "{{file_group_haproxy_cfg}}"

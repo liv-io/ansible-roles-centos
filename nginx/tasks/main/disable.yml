@@ -22,7 +22,7 @@
 - name: 'template create nginx.conf'
   template:
     src: "{{file_src_nginx_conf}}"
-    dest: "{{file_path_nginx_conf}}"
+    dest: "{{file_dst_nginx_conf}}"
     mode: "{{file_mode_nginx_conf}}"
     owner: "{{file_owner_nginx_conf}}"
     group: "{{file_group_nginx_conf}}"

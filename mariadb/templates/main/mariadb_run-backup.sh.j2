@@ -61,14 +61,14 @@ script="$(${basename} $0)[$$]" || { echo "Error: Command invoked cannot execute.
 date_start=$(${date} '+%Y-%m-%dT%H:%M:%S%z')
 time_start=$(${date} '+%s')
 user='{{file_owner_mariadb_run_backup_sh}}'
-lockfile='{{file_path_mariadb_script_dir}}/mariadb_run-backup.lock'
+lockfile='{{file_dst_mariadb_script_dir}}/mariadb_run-backup.lock'
 retval=0
 severity='Debug'
 message='Please check log files for more information.'
 
 mariadb_service_name='{{service_name_mariadb}}'
-credentials_cnf='{{file_path_credentials_cnf}}'
-backup_dir='{{file_path_mariadb_backup_dir}}'
+credentials_cnf='{{file_dst_credentials_cnf}}'
+backup_dir='{{file_dst_mariadb_backup_dir}}'
 backup_timestamp=$(${date} '+%Y%m%d-%H%M%S%z')
 backup_file_owner='{{file_owner_mariadb_backup_file}}'
 backup_file_group='{{file_group_mariadb_backup_file}}'

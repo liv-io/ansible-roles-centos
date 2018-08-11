@@ -34,7 +34,7 @@
 - name: 'file remove ssl.conf'
   file:
     state: 'absent'
-    path: "{{file_path_ssl_conf}}"
+    path: "{{file_dst_ssl_conf}}"
   tags:
     - remove
     - mod_ssl

@@ -22,7 +22,7 @@
 - name: 'template create ssl.conf'
   template:
     src: "{{file_src_ssl_conf}}"
-    dest: "{{file_path_ssl_conf}}"
+    dest: "{{file_dst_ssl_conf}}"
     mode: "{{file_mode_ssl_conf}}"
     owner: "{{file_owner_ssl_conf}}"
     group: "{{file_group_ssl_conf}}"

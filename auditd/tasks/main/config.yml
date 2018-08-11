@@ -22,7 +22,7 @@
 - name: 'template create auditd-config.rules'
   template:
     src: "{{file_src_auditd_config}}"
-    dest: "{{file_path_rules_d}}/{{item.name if (item.name is defined) and not (item.name == '') else auditd_name_default}}.rules"
+    dest: "{{file_dst_rules_d}}/{{item.name if (item.name is defined) and not (item.name == '') else auditd_name_default}}.rules"
     mode: "{{file_mode_auditd_config}}"
     owner: "{{file_owner_auditd_config}}"
     group: "{{file_group_auditd_config}}"
@@ -38,7 +38,7 @@
 - name: 'file remove auditd-config.rules'
   file:
     state: 'absent'
-    path: "{{file_path_rules_d}}/{{item.name if (item.name is defined) and not (item.name == '') else auditd_name_default}}.rules"
+    path: "{{file_dst_rules_d}}/{{item.name if (item.name is defined) and not (item.name == '') else auditd_name_default}}.rules"
   notify:
     - 'command run augenrules'
     - 'command restart auditd'

@@ -22,7 +22,7 @@
 - name: 'file create traefik_app.dir'
   file:
     state: 'directory'
-    path: "{{file_path_traefik_app_dir}}"
+    path: "{{file_dst_traefik_app_dir}}"
     mode: "{{file_mode_traefik_app_dir}}"
     owner: "{{file_owner_traefik_app_dir}}"
     group: "{{file_group_traefik_app_dir}}"
@@ -33,7 +33,7 @@
 - name: 'file create traefik_version.dir'
   file:
     state: 'directory'
-    path: "{{file_path_traefik_version_dir}}"
+    path: "{{file_dst_traefik_version_dir}}"
     mode: "{{file_mode_traefik_version_dir}}"
     owner: "{{file_owner_traefik_version_dir}}"
     group: "{{file_group_traefik_version_dir}}"
@@ -44,7 +44,7 @@
 - name: 'file create traefik_bin.dir'
   file:
     state: 'directory'
-    path: "{{file_path_traefik_bin_dir}}"
+    path: "{{file_dst_traefik_bin_dir}}"
     mode: "{{file_mode_traefik_bin_dir}}"
     owner: "{{file_owner_traefik_bin_dir}}"
     group: "{{file_group_traefik_bin_dir}}"
@@ -55,7 +55,7 @@
 - name: 'file create traefik_conf.dir'
   file:
     state: 'directory'
-    path: "{{file_path_traefik_conf_dir}}"
+    path: "{{file_dst_traefik_conf_dir}}"
     mode: "{{file_mode_traefik_conf_dir}}"
     owner: "{{file_owner_traefik_conf_dir}}"
     group: "{{file_group_traefik_conf_dir}}"
@@ -66,7 +66,7 @@
 - name: 'file download traefik'
   get_url:
     url: "{{file_src_traefik_bin}}"
-    dest: "{{file_path_traefik_bin}}"
+    dest: "{{file_dst_traefik_bin}}"
     mode: "{{file_mode_traefik_bin}}"
     owner: "{{file_owner_traefik_bin}}"
     group: "{{file_group_traefik_bin}}"
@@ -79,7 +79,7 @@
   file:
     state: 'link'
     src: "{{file_src_traefik_current_link}}"
-    path: "{{file_path_traefik_current_link}}"
+    path: "{{file_dst_traefik_current_link}}"
     owner: "{{file_owner_traefik_current_link}}"
     group: "{{file_group_traefik_current_link}}"
   tags:
@@ -89,7 +89,7 @@
 - name: 'template create traefik.service'
   template:
     src: "{{file_src_traefik_service}}"
-    dest: "{{file_path_traefik_service}}"
+    dest: "{{file_dst_traefik_service}}"
     mode: "{{file_mode_traefik_service}}"
     owner: "{{file_owner_traefik_service}}"
     group: "{{file_group_traefik_service}}"

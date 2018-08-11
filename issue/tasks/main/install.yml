@@ -22,7 +22,7 @@
 - name: 'template create issue'
   template:
     src: "{{file_src_issue}}"
-    dest: "{{file_path_issue}}"
+    dest: "{{file_dst_issue}}"
     mode: "{{file_mode_issue}}"
     owner: "{{file_owner_issue}}"
     group: "{{file_group_issue}}"

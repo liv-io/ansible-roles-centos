@@ -54,7 +54,7 @@
 - name: 'file create restic_app.dir'
   file:
     state: 'directory'
-    path: "{{file_path_restic_app_dir}}"
+    path: "{{file_dst_restic_app_dir}}"
     mode: "{{file_mode_restic_app_dir}}"
     owner: "{{file_owner_restic_app_dir}}"
     group: "{{file_group_restic_app_dir}}"
@@ -65,7 +65,7 @@
 - name: 'file create restic_version.dir'
   file:
     state: 'directory'
-    path: "{{file_path_restic_version_dir}}"
+    path: "{{file_dst_restic_version_dir}}"
     mode: "{{file_mode_restic_version_dir}}"
     owner: "{{file_owner_restic_version_dir}}"
     group: "{{file_group_restic_version_dir}}"
@@ -76,7 +76,7 @@
 - name: 'file create restic_bin.dir'
   file:
     state: 'directory'
-    path: "{{file_path_restic_bin_dir}}"
+    path: "{{file_dst_restic_bin_dir}}"
     mode: "{{file_mode_restic_bin_dir}}"
     owner: "{{file_owner_restic_bin_dir}}"
     group: "{{file_group_restic_bin_dir}}"
@@ -87,7 +87,7 @@
 - name: 'file create restic_log.dir'
   file:
     state: 'directory'
-    path: "{{file_path_restic_log_dir}}"
+    path: "{{file_dst_restic_log_dir}}"
     mode: "{{file_mode_restic_log_dir}}"
     owner: "{{file_owner_restic_log_dir}}"
     group: "{{file_group_restic_log_dir}}"
@@ -98,7 +98,7 @@
 - name: 'file create restic_src.dir'
   file:
     state: 'directory'
-    path: "{{file_path_restic_src_dir}}"
+    path: "{{file_dst_restic_src_dir}}"
     mode: "{{file_mode_restic_src_dir}}"
     owner: "{{file_owner_restic_src_dir}}"
     group: "{{file_group_restic_src_dir}}"
@@ -109,7 +109,7 @@
 - name: 'file download restic.bz2'
   get_url:
     url: "{{file_src_restic_bz2}}"
-    dest: "{{file_path_restic_bz2}}"
+    dest: "{{file_dst_restic_bz2}}"
     mode: "{{file_mode_restic_bz2}}"
     owner: "{{file_owner_restic_bz2}}"
     group: "{{file_group_restic_bz2}}"
@@ -129,7 +129,7 @@
 - name: 'file ensure restic'
   file:
     state: 'file'
-    path: "{{file_path_restic}}"
+    path: "{{file_dst_restic}}"
     mode: "{{file_mode_restic}}"
     owner: "{{file_owner_restic}}"
     group: "{{file_group_restic}}"
@@ -141,7 +141,7 @@
   file:
     state: 'link'
     src: "{{file_src_restic_current_link}}"
-    path: "{{file_path_restic_current_link}}"
+    path: "{{file_dst_restic_current_link}}"
     owner: "{{file_owner_restic_current_link}}"
     group: "{{file_group_restic_current_link}}"
   tags:
@@ -151,7 +151,7 @@
 - name: 'file create restic_backup.dir'
   file:
     state: 'directory'
-    path: "{{file_path_restic_backup_dir}}"
+    path: "{{file_dst_restic_backup_dir}}"
     mode: "{{file_mode_restic_backup_dir}}"
     owner: "{{file_owner_restic_backup_dir}}"
     group: "{{file_group_restic_backup_dir}}"
@@ -162,7 +162,7 @@
 - name: 'file create restic_script.dir'
   file:
     state: 'directory'
-    path: "{{file_path_restic_script_dir}}"
+    path: "{{file_dst_restic_script_dir}}"
     mode: "{{file_mode_restic_script_dir}}"
     owner: "{{file_owner_restic_script_dir}}"
     group: "{{file_group_restic_script_dir}}"
@@ -173,7 +173,7 @@
 - name: 'template create exclude.conf'
   template:
     src: "{{file_src_exclude_conf}}"
-    dest: "{{file_path_exclude_conf}}"
+    dest: "{{file_dst_exclude_conf}}"
     mode: "{{file_mode_exclude_conf}}"
     owner: "{{file_owner_exclude_conf}}"
     group: "{{file_group_exclude_conf}}"
@@ -184,7 +184,7 @@
 - name: 'template create include.conf'
   template:
     src: "{{file_src_include_conf}}"
-    dest: "{{file_path_include_conf}}"
+    dest: "{{file_dst_include_conf}}"
     mode: "{{file_mode_include_conf}}"
     owner: "{{file_owner_include_conf}}"
     group: "{{file_group_include_conf}}"
@@ -195,7 +195,7 @@
 - name: 'template create password.conf'
   template:
     src: "{{file_src_password_conf}}"
-    dest: "{{file_path_password_conf}}"
+    dest: "{{file_dst_password_conf}}"
     mode: "{{file_mode_password_conf}}"
     owner: "{{file_owner_password_conf}}"
     group: "{{file_group_password_conf}}"
@@ -207,7 +207,7 @@
   copy:
     content: ''
     force: 'no'
-    dest: "{{file_path_restic_log}}"
+    dest: "{{file_dst_restic_log}}"
     mode: "{{file_mode_restic_log}}"
     owner: "{{file_owner_restic_log}}"
     group: "{{file_group_restic_log}}"
@@ -218,7 +218,7 @@
 - name: 'template create restic_run-backup.sh'
   template:
     src: "{{file_src_restic_run_backup_sh}}"
-    dest: "{{file_path_restic_run_backup_sh}}"
+    dest: "{{file_dst_restic_run_backup_sh}}"
     mode: "{{file_mode_restic_run_backup_sh}}"
     owner: "{{file_owner_restic_run_backup_sh}}"
     group: "{{file_group_restic_run_backup_sh}}"

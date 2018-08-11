@@ -34,7 +34,7 @@
 - name: 'file remove php.ini'
   file:
     state: 'absent'
-    path: "{{file_path_php_ini}}"
+    path: "{{file_dst_php_ini}}"
   tags:
     - remove
     - php

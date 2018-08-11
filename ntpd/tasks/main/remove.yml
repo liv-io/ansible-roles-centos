@@ -43,7 +43,7 @@
 - name: 'file remove ntpd_update-time.sh'
   file:
     state: 'absent'
-    path: "{{file_path_ntpd_update_time_sh}}"
+    path: "{{file_dst_ntpd_update_time_sh}}"
   tags:
     - remove
     - ntpd
@@ -51,7 +51,7 @@
 - name: 'file remove ntpd_script.dir'
   file:
     state: 'absent'
-    path: "{{file_path_ntpd_script_dir}}"
+    path: "{{file_dst_ntpd_script_dir}}"
   tags:
     - remove
     - ntpd
@@ -59,7 +59,7 @@
 - name: 'file remove step-tickers'
   file:
     state: 'absent'
-    path: "{{file_path_step_tickers}}"
+    path: "{{file_dst_step_tickers}}"
   tags:
     - remove
     - ntpd
@@ -67,7 +67,7 @@
 - name: 'file remove ntp.conf'
   file:
     state: 'absent'
-    path: "{{file_path_ntp_conf}}"
+    path: "{{file_dst_ntp_conf}}"
   tags:
     - remove
     - ntpd

@@ -22,7 +22,7 @@
 - name: 'file ensure passwd'
   file:
     state: 'file'
-    dest: "{{file_path_passwd}}"
+    dest: "{{file_dst_passwd}}"
     mode: "{{file_mode_passwd}}"
     owner: "{{file_owner_passwd}}"
     group: "{{file_group_passwd}}"

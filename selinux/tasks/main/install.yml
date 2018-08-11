@@ -22,7 +22,7 @@
 - name: 'template create config'
   template:
     src: "{{file_src_config}}"
-    dest: "{{file_path_config}}"
+    dest: "{{file_dst_config}}"
     mode: "{{file_mode_config}}"
     owner: "{{file_owner_config}}"
     group: "{{file_group_config}}"

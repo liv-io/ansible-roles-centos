@@ -12,11 +12,11 @@ package_name_haproxy: 'haproxy'
 #-------------------------------------------------------------------------------
 
 # dhparam.pem
-file_path_dhparam_pem: '/etc/haproxy/dhparam.pem'
+file_dst_dhparam_pem: '/etc/haproxy/dhparam.pem'
 
 # haproxy.cfg
 file_src_haproxy_cfg: "templates/main/haproxy.cfg.j2"
-file_path_haproxy_cfg: '/etc/haproxy/haproxy.cfg'
+file_dst_haproxy_cfg: '/etc/haproxy/haproxy.cfg'
 file_mode_haproxy_cfg: '0644'
 file_owner_haproxy_cfg: 'root'
 file_group_haproxy_cfg: 'root'
@@ -29,7 +29,7 @@ file_group_haproxy_cfg: 'root'
 command_cmd_check_haproxy: 'haproxy -c -q -f /etc/haproxy/haproxy.cfg'
 
 # generate dhparam
-command_cmd_generate_dhparam: "openssl dhparam -dsaparam 4096 -out {{file_path_dhparam_pem}}"
+command_cmd_generate_dhparam: "openssl dhparam -dsaparam 4096 -out {{file_dst_dhparam_pem}}"
 
 #-------------------------------------------------------------------------------
 # SYSTEM

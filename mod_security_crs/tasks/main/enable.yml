@@ -22,7 +22,7 @@
 - name: 'template create modsecurity_crs_10_config.conf'
   template:
     src: "{{file_src_modsecurity_crs_10_config_conf}}"
-    dest: "{{file_path_modsecurity_crs_10_config_conf}}"
+    dest: "{{file_dst_modsecurity_crs_10_config_conf}}"
     mode: "{{file_mode_modsecurity_crs_10_config_conf}}"
     owner: "{{file_owner_modsecurity_crs_10_config_conf}}"
     group: "{{file_group_modsecurity_crs_10_config_conf}}"
@@ -36,7 +36,7 @@
 - name: 'template create modsecurity_crs_15_adjust.conf'
   template:
     src: "{{file_src_modsecurity_crs_15_adjust_conf}}"
-    dest: "{{file_path_modsecurity_crs_15_adjust_conf}}"
+    dest: "{{file_dst_modsecurity_crs_15_adjust_conf}}"
     mode: "{{file_mode_modsecurity_crs_15_adjust_conf}}"
     owner: "{{file_owner_modsecurity_crs_15_adjust_conf}}"
     group: "{{file_group_modsecurity_crs_15_adjust_conf}}"

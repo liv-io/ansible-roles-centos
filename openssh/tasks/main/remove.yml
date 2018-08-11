@@ -34,7 +34,7 @@
 - name: 'file remove banner'
   file:
     state: 'absent'
-    path: "{{file_path_banner}}"
+    path: "{{file_dst_banner}}"
   tags:
     - remove
     - openssh
@@ -42,7 +42,7 @@
 - name: 'file remove moduli'
   file:
     state: 'absent'
-    path: "{{file_path_moduli}}"
+    path: "{{file_dst_moduli}}"
   tags:
     - remove
     - openssh
@@ -50,7 +50,7 @@
 - name: 'file remove ssh_config'
   file:
     state: 'absent'
-    path: "{{file_path_ssh_config}}"
+    path: "{{file_dst_ssh_config}}"
   tags:
     - remove
     - openssh
@@ -58,7 +58,7 @@
 - name: 'file remove sshd_config'
   file:
     state: 'absent'
-    path: "{{file_path_sshd_config}}"
+    path: "{{file_dst_sshd_config}}"
   tags:
     - remove
     - openssh

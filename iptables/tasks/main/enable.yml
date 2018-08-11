@@ -22,7 +22,7 @@
 - name: 'template create ip6tables-config'
   template:
     src: "{{file_src_ip6tables_config}}"
-    dest: "{{file_path_ip6tables_config}}"
+    dest: "{{file_dst_ip6tables_config}}"
     mode: "{{file_mode_ip6tables_config}}"
     owner: "{{file_owner_ip6tables_config}}"
     group: "{{file_group_ip6tables_config}}"
@@ -34,7 +34,7 @@
 - name: 'template create ipv4-filter_ansible'
   template:
     src: "{{file_src_ipv4_filter_ansible}}"
-    dest: "{{file_path_ipv4_filter_ansible}}"
+    dest: "{{file_dst_ipv4_filter_ansible}}"
     mode: "{{file_mode_ipv4_filter_ansible}}"
     owner: "{{file_owner_ipv4_filter_ansible}}"
     group: "{{file_group_ipv4_filter_ansible}}"
@@ -46,7 +46,7 @@
 - name: 'template create ipv4-nat_ansible'
   template:
     src: "{{file_src_ipv4_nat_ansible}}"
-    dest: "{{file_path_ipv4_nat_ansible}}"
+    dest: "{{file_dst_ipv4_nat_ansible}}"
     mode: "{{file_mode_ipv4_nat_ansible}}"
     owner: "{{file_owner_ipv4_nat_ansible}}"
     group: "{{file_group_ipv4_nat_ansible}}"
@@ -58,7 +58,7 @@
 - name: 'template create ipv6-filter_ansible'
   template:
     src: "{{file_src_ipv6_filter_ansible}}"
-    dest: "{{file_path_ipv6_filter_ansible}}"
+    dest: "{{file_dst_ipv6_filter_ansible}}"
     mode: "{{file_mode_ipv6_filter_ansible}}"
     owner: "{{file_owner_ipv6_filter_ansible}}"
     group: "{{file_group_ipv6_filter_ansible}}"
@@ -70,7 +70,7 @@
 - name: 'template create ipv6-nat_ansible'
   template:
     src: "{{file_src_ipv6_nat_ansible}}"
-    dest: "{{file_path_ipv6_nat_ansible}}"
+    dest: "{{file_dst_ipv6_nat_ansible}}"
     mode: "{{file_mode_ipv6_nat_ansible}}"
     owner: "{{file_owner_ipv6_nat_ansible}}"
     group: "{{file_group_ipv6_nat_ansible}}"
@@ -82,7 +82,7 @@
 - name: 'template create iptables-config'
   template:
     src: "{{file_src_iptables_config}}"
-    dest: "{{file_path_iptables_config}}"
+    dest: "{{file_dst_iptables_config}}"
     mode: "{{file_mode_iptables_config}}"
     owner: "{{file_owner_iptables_config}}"
     group: "{{file_group_iptables_config}}"

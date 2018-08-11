@@ -22,7 +22,7 @@
 - name: 'file ensure shadow'
   file:
     state: 'file'
-    dest: "{{file_path_shadow}}"
+    dest: "{{file_dst_shadow}}"
     mode: "{{file_mode_shadow}}"
     owner: "{{file_owner_shadow}}"
     group: "{{file_group_shadow}}"

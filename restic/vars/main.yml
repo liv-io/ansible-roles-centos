@@ -5,56 +5,56 @@
 #-------------------------------------------------------------------------------
 
 # restic_app.dir
-file_path_restic_app_dir: "/{{common_app_dir}}/restic"
+file_dst_restic_app_dir: "/{{common_app_dir}}/restic"
 file_mode_restic_app_dir: '0755'
 file_owner_restic_app_dir: 'root'
 file_group_restic_app_dir: 'root'
 
 # restic_backup.dir
-file_path_restic_backup_dir: "/{{common_backup_dir}}/restic"
+file_dst_restic_backup_dir: "/{{common_backup_dir}}/restic"
 file_mode_restic_backup_dir: '0700'
 file_owner_restic_backup_dir: 'restic'
 file_group_restic_backup_dir: 'restic'
 
 # restic_version.dir
-file_path_restic_version_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}"
+file_dst_restic_version_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}"
 file_mode_restic_version_dir: '0755'
 file_owner_restic_version_dir: 'root'
 file_group_restic_version_dir: 'root'
 
 # restic-current.link
 file_src_restic_current_link: "/{{common_app_dir}}/restic/restic-{{restic_version}}"
-file_path_restic_current_link: "/{{common_app_dir}}/restic/current"
+file_dst_restic_current_link: "/{{common_app_dir}}/restic/current"
 file_owner_restic_current_link: 'root'
 file_group_restic_current_link: 'root'
 
 # restic_bin.dir
-file_path_restic_bin_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}/bin"
+file_dst_restic_bin_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}/bin"
 file_mode_restic_bin_dir: '0755'
 file_owner_restic_bin_dir: 'root'
 file_group_restic_bin_dir: 'root'
 
 # restic_log.dir
-file_path_restic_log_dir: "/var/log/restic"
+file_dst_restic_log_dir: "/var/log/restic"
 file_mode_restic_log_dir: '0700'
 file_owner_restic_log_dir: 'root'
 file_group_restic_log_dir: 'root'
 
 # restic_script.dir
-file_path_restic_script_dir: "/{{common_script_dir}}/restic"
+file_dst_restic_script_dir: "/{{common_script_dir}}/restic"
 file_mode_restic_script_dir: '0755'
 file_owner_restic_script_dir: 'root'
 file_group_restic_script_dir: 'root'
 
 # restic_src.dir
-file_path_restic_src_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}/src"
+file_dst_restic_src_dir: "/{{common_app_dir}}/restic/restic-{{restic_version}}/src"
 file_mode_restic_src_dir: '0755'
 file_owner_restic_src_dir: 'root'
 file_group_restic_src_dir: 'root'
 
 # restic.bz2
 file_src_restic_bz2: "https://github.com/restic/restic/releases/download/v{{restic_version}}/restic_{{restic_version}}_linux_amd64.bz2"
-file_path_restic_bz2: "/{{common_app_dir}}/restic/restic-{{restic_version}}/src/restic_{{restic_version}}_linux_amd64.bz2"
+file_dst_restic_bz2: "/{{common_app_dir}}/restic/restic-{{restic_version}}/src/restic_{{restic_version}}_linux_amd64.bz2"
 file_mode_restic_bz2: '0644'
 file_owner_restic_bz2: 'root'
 file_group_restic_bz2: 'root'
@@ -65,40 +65,40 @@ command_creates_unarchive_restic_bz2: "/{{common_app_dir}}/restic/restic-{{resti
 
 # include.conf
 file_src_include_conf: "templates/main/include.conf.j2"
-file_path_include_conf: '/{{common_script_dir}}/restic/include.conf'
+file_dst_include_conf: '/{{common_script_dir}}/restic/include.conf'
 file_mode_include_conf: '0600'
 file_owner_include_conf: 'root'
 file_group_include_conf: 'root'
 
 # exclude.conf
 file_src_exclude_conf: "templates/main/exclude.conf.j2"
-file_path_exclude_conf: '/{{common_script_dir}}/restic/exclude.conf'
+file_dst_exclude_conf: '/{{common_script_dir}}/restic/exclude.conf'
 file_mode_exclude_conf: '0600'
 file_owner_exclude_conf: 'root'
 file_group_exclude_conf: 'root'
 
 # password.conf
 file_src_password_conf: "templates/main/password.conf.j2"
-file_path_password_conf: '/{{common_script_dir}}/restic/password.conf'
+file_dst_password_conf: '/{{common_script_dir}}/restic/password.conf'
 file_mode_password_conf: '0600'
 file_owner_password_conf: 'root'
 file_group_password_conf: 'root'
 
 # restic
-file_path_restic: "/{{common_app_dir}}/restic/restic-{{restic_version}}/bin/restic"
+file_dst_restic: "/{{common_app_dir}}/restic/restic-{{restic_version}}/bin/restic"
 file_mode_restic: '0755'
 file_owner_restic: 'root'
 file_group_restic: 'root'
 
 # restic.log
-file_path_restic_log: '/var/log/restic/restic.log'
+file_dst_restic_log: '/var/log/restic/restic.log'
 file_mode_restic_log: '0600'
 file_owner_restic_log: 'root'
 file_group_restic_log: 'root'
 
 # restic_run-backup.sh
 file_src_restic_run_backup_sh: "templates/main/restic_run-backup.sh.j2"
-file_path_restic_run_backup_sh: "/{{common_script_dir}}/restic/restic_run-backup.sh"
+file_dst_restic_run_backup_sh: "/{{common_script_dir}}/restic/restic_run-backup.sh"
 file_mode_restic_run_backup_sh: '0754'
 file_owner_restic_run_backup_sh: 'root'
 file_group_restic_run_backup_sh: 'root'
@@ -112,7 +112,7 @@ cron_minute_restic_run_backup: "{{restic_run_backup_minute}}"
 cron_month_restic_run_backup: "{{restic_run_backup_month}}"
 cron_weekday_restic_run_backup: "{{restic_run_backup_weekday}}"
 cron_user_restic_run_backup: "{{file_owner_restic_run_backup_sh}}"
-cron_job_restic_run_backup: "{{file_path_restic_run_backup_sh}}"
+cron_job_restic_run_backup: "{{file_dst_restic_run_backup_sh}}"
 
 #-------------------------------------------------------------------------------
 # SYSTEM

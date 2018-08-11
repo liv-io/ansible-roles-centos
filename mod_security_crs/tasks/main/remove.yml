@@ -34,7 +34,7 @@
 - name: 'file remove modsecurity_crs_10_config.conf'
   file:
     state: 'absent'
-    path: "{{file_path_modsecurity_crs_10_config_conf}}"
+    path: "{{file_dst_modsecurity_crs_10_config_conf}}"
   tags:
     - remove
     - mod_security_crs
@@ -42,7 +42,7 @@
 - name: 'file remove modsecurity_crs_15_adjust.conf'
   file:
     state: 'absent'
-    path: "{{file_path_modsecurity_crs_15_adjust_conf}}"
+    path: "{{file_dst_modsecurity_crs_15_adjust_conf}}"
   tags:
     - remove
     - mod_security_crs

@@ -34,7 +34,7 @@
 - name: 'file remove config.yml'
   file:
     state: 'absent'
-    path: "{{file_path_config_yml}}"
+    path: "{{file_dst_config_yml}}"
   tags:
     - remove
     - docker_distribution

@@ -34,7 +34,7 @@
 - name: 'file remove mod_security.conf'
   file:
     state: 'absent'
-    path: "{{file_path_mod_security_conf}}"
+    path: "{{file_dst_mod_security_conf}}"
   tags:
     - remove
     - mod_security

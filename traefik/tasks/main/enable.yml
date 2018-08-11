@@ -22,7 +22,7 @@
 - name: 'template create traefik.toml'
   template:
     src: "{{file_src_traefik_toml}}"
-    dest: "{{file_path_traefik_toml}}"
+    dest: "{{file_dst_traefik_toml}}"
     mode: "{{file_mode_traefik_toml}}"
     owner: "{{file_owner_traefik_toml}}"
     group: "{{file_group_traefik_toml}}"

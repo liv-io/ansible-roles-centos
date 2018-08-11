@@ -15,34 +15,34 @@ package_name_mariadb_server: 'mariadb-server'
 #-------------------------------------------------------------------------------
 
 # mariadb_backup.dir
-file_path_mariadb_backup_dir: "/{{common_backup_dir}}/mariadb"
+file_dst_mariadb_backup_dir: "/{{common_backup_dir}}/mariadb"
 file_mode_mariadb_backup_dir: '0700'
 file_owner_mariadb_backup_dir: 'root'
 file_group_mariadb_backup_dir: 'root'
 
 # mariadb_script.dir
-file_path_mariadb_script_dir: "/{{common_script_dir}}/mariadb"
+file_dst_mariadb_script_dir: "/{{common_script_dir}}/mariadb"
 file_mode_mariadb_script_dir: '0700'
 file_owner_mariadb_script_dir: 'root'
 file_group_mariadb_script_dir: 'root'
 
 # client.cnf
 file_src_client_cnf: "templates/main/client.cnf.j2"
-file_path_client_cnf: '/etc/my.cnf.d/client.cnf'
+file_dst_client_cnf: '/etc/my.cnf.d/client.cnf'
 file_mode_client_cnf: '0644'
 file_owner_client_cnf: 'root'
 file_group_client_cnf: 'root'
 
 # credentials.cnf
 file_src_credentials_cnf: "templates/main/credentials.cnf.j2"
-file_path_credentials_cnf: '/{{common_script_dir}}/mariadb/credentials.cnf'
+file_dst_credentials_cnf: '/{{common_script_dir}}/mariadb/credentials.cnf'
 file_mode_credentials_cnf: '0600'
 file_owner_credentials_cnf: 'root'
 file_group_credentials_cnf: 'root'
 
 # my.cnf
 file_src_my_cnf: "templates/main/my.cnf.j2"
-file_path_my_cnf: '/etc/my.cnf'
+file_dst_my_cnf: '/etc/my.cnf'
 file_mode_my_cnf: '0644'
 file_owner_my_cnf: 'root'
 file_group_my_cnf: 'root'
@@ -54,21 +54,21 @@ file_group_mariadb_backup_file: 'root'
 
 # mariadb_run-backup.sh
 file_src_mariadb_run_backup_sh: "templates/main/mariadb_run-backup.sh.j2"
-file_path_mariadb_run_backup_sh: "/{{common_script_dir}}/mariadb/mariadb_run-backup.sh"
+file_dst_mariadb_run_backup_sh: "/{{common_script_dir}}/mariadb/mariadb_run-backup.sh"
 file_mode_mariadb_run_backup_sh: '0700'
 file_owner_mariadb_run_backup_sh: 'root'
 file_group_mariadb_run_backup_sh: 'root'
 
 # mysql-clients.cnf
 file_src_mysql_clients_cnf: "templates/main/mysql-clients.cnf.j2"
-file_path_mysql_clients_cnf: '/etc/my.cnf.d/mysql-clients.cnf'
+file_dst_mysql_clients_cnf: '/etc/my.cnf.d/mysql-clients.cnf'
 file_mode_mysql_clients_cnf: '0644'
 file_owner_mysql_clients_cnf: 'root'
 file_group_mysql_clients_cnf: 'root'
 
 # server.cnf
 file_src_server_cnf: "templates/main/server.cnf.j2"
-file_path_server_cnf: '/etc/my.cnf.d/server.cnf'
+file_dst_server_cnf: '/etc/my.cnf.d/server.cnf'
 file_mode_server_cnf: '0644'
 file_owner_server_cnf: 'root'
 file_group_server_cnf: 'root'
@@ -82,7 +82,7 @@ cron_minute_mariadb_run_backup: "{{mariadb_run_backup_minute}}"
 cron_month_mariadb_run_backup: "{{mariadb_run_backup_month}}"
 cron_weekday_mariadb_run_backup: "{{mariadb_run_backup_weekday}}"
 cron_user_mariadb_run_backup: "{{file_owner_mariadb_run_backup_sh}}"
-cron_job_mariadb_run_backup: "{{file_path_mariadb_run_backup_sh}}"
+cron_job_mariadb_run_backup: "{{file_dst_mariadb_run_backup_sh}}"
 
 #-------------------------------------------------------------------------------
 # COMMANDS

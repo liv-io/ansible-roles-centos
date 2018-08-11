@@ -22,7 +22,7 @@
 - name: 'file remove traefik_app.dir'
   file:
     state: 'absent'
-    path: "{{file_path_traefik_app_dir}}"
+    path: "{{file_dst_traefik_app_dir}}"
   tags:
     - remove
     - traefik
@@ -30,7 +30,7 @@
 - name: 'file remove traefik.service'
   file:
     state: 'absent'
-    path: "{{file_path_traefik_service}}"
+    path: "{{file_dst_traefik_service}}"
   notify: 'command systemctl daemon-reload'
   tags:
     - remove

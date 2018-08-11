@@ -53,7 +53,7 @@
 - name: 'file remove restic_script.dir'
   file:
     state: 'absent'
-    path: "{{file_path_restic_script_dir}}"
+    path: "{{file_dst_restic_script_dir}}"
   tags:
     - remove
     - restic
@@ -61,7 +61,7 @@
 - name: 'file remove restic_app.dir'
   file:
     state: 'absent'
-    path: "{{file_path_restic_app_dir}}"
+    path: "{{file_dst_restic_app_dir}}"
   tags:
     - remove
     - restic

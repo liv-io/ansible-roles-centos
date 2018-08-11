@@ -22,7 +22,7 @@
 - name: 'template create mod_security.conf'
   template:
     src: "{{file_src_mod_security_conf}}"
-    dest: "{{file_path_mod_security_conf}}"
+    dest: "{{file_dst_mod_security_conf}}"
     mode: "{{file_mode_mod_security_conf}}"
     owner: "{{file_owner_mod_security_conf}}"
     group: "{{file_group_mod_security_conf}}"

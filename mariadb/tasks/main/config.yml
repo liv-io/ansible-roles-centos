@@ -24,7 +24,7 @@
     collation: "{{item.collation|default('')}}"
     encoding: "{{item.encoding|default('')}}"
     login_host: 'localhost'
-    config_file: "{{file_path_credentials_cnf}}"
+    config_file: "{{file_dst_credentials_cnf}}"
   with_items: "{{mariadb_database_all + mariadb_database_group + mariadb_database_host}}"
   when: not (item.state is match('false|no|remove'))
   tags:
@@ -36,7 +36,7 @@
     state: 'absent'
     name: "{{item.name}}"
     login_host: 'localhost'
-    config_file: "{{file_path_credentials_cnf}}"
+    config_file: "{{file_dst_credentials_cnf}}"
   with_items: "{{mariadb_database_all + mariadb_database_group + mariadb_database_host}}"
   when: (item.state is match('false|no|remove'))
   tags:
@@ -54,7 +54,7 @@
     priv: "{{item.privileges|default('*.*:ALL')}}"
     append_privs: "{{'yes' if (item.privileges_append|default('false') is match('true|yes|enable')) else 'no'}}"
     login_host: 'localhost'
-    config_file: "{{file_path_credentials_cnf}}"
+    config_file: "{{file_dst_credentials_cnf}}"
   with_items: "{{mariadb_user_all + mariadb_user_group + mariadb_user_host}}"
   when: not (item.state is match('false|no|remove'))
   tags:
@@ -67,7 +67,7 @@
     name: "{{item.name}}"
     host: "{{(item.host|default('localhost'))}}"
     login_host: 'localhost'
-    config_file: "{{file_path_credentials_cnf}}"
+    config_file: "{{file_dst_credentials_cnf}}"
   with_items: "{{mariadb_user_all + mariadb_user_group + mariadb_user_host}}"
   when: (item.state is match('false|no|remove'))
   tags:

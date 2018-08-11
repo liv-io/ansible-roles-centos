@@ -22,7 +22,7 @@
 - name: 'template create autoindex.conf'
   template:
     src: "{{file_src_autoindex_conf}}"
-    dest: "{{file_path_autoindex_conf}}"
+    dest: "{{file_dst_autoindex_conf}}"
     mode: "{{file_mode_autoindex_conf}}"
     owner: "{{file_owner_autoindex_conf}}"
     group: "{{file_group_autoindex_conf}}"
@@ -36,7 +36,7 @@
 - name: 'template create httpd.conf'
   template:
     src: "{{file_src_httpd_conf}}"
-    dest: "{{file_path_httpd_conf}}"
+    dest: "{{file_dst_httpd_conf}}"
     mode: "{{file_mode_httpd_conf}}"
     owner: "{{file_owner_httpd_conf}}"
     group: "{{file_group_httpd_conf}}"
@@ -50,7 +50,7 @@
 - name: 'template create userdir.conf'
   template:
     src: "{{file_src_userdir_conf}}"
-    dest: "{{file_path_userdir_conf}}"
+    dest: "{{file_dst_userdir_conf}}"
     mode: "{{file_mode_userdir_conf}}"
     owner: "{{file_owner_userdir_conf}}"
     group: "{{file_group_userdir_conf}}"
@@ -64,7 +64,7 @@
 - name: 'template create welcome.conf'
   template:
     src: "{{file_src_welcome_conf}}"
-    dest: "{{file_path_welcome_conf}}"
+    dest: "{{file_dst_welcome_conf}}"
     mode: "{{file_mode_welcome_conf}}"
     owner: "{{file_owner_welcome_conf}}"
     group: "{{file_group_welcome_conf}}"

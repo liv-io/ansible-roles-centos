@@ -12,7 +12,7 @@ package_name_systemd: 'systemd'
 #-------------------------------------------------------------------------------
 
 # systemd
-file_path_systemd: '/etc/systemd'
+file_dst_systemd: '/etc/systemd'
 
 # systemd-config
 file_src_systemd_config: "templates/main/systemd-config.j2"

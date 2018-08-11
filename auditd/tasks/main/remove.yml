@@ -34,7 +34,7 @@
 - name: 'file remove auditd.conf'
   file:
     state: 'absent'
-    path: "{{file_path_auditd_conf}}"
+    path: "{{file_dst_auditd_conf}}"
   tags:
     - remove
     - auditd
@@ -42,7 +42,7 @@
 - name: 'file remove syslog.conf'
   file:
     state: 'absent'
-    path: "{{file_path_syslog_conf}}"
+    path: "{{file_dst_syslog_conf}}"
   tags:
     - remove
     - auditd
@@ -50,7 +50,7 @@
 - name: 'file remove audispd.conf'
   file:
     state: 'absent'
-    path: "{{file_path_audispd_conf}}"
+    path: "{{file_dst_audispd_conf}}"
   tags:
     - remove
     - auditd

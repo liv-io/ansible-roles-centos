@@ -34,7 +34,7 @@
 - name: 'file remove haproxy.cfg'
   file:
     state: 'absent'
-    path: "{{file_path_haproxy_cfg}}"
+    path: "{{file_dst_haproxy_cfg}}"
   tags:
     - remove
     - haproxy
@@ -42,7 +42,7 @@
 - name: 'file remove dhparam.pem'
   file:
     state: 'absent'
-    path: "{{file_path_dhparam_pem}}"
+    path: "{{file_dst_dhparam_pem}}"
   tags:
     - remove
     - haproxy

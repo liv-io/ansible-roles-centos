@@ -22,7 +22,7 @@
 - name: 'template create php.ini'
   template:
     src: "{{file_src_php_ini}}"
-    dest: "{{file_path_php_ini}}"
+    dest: "{{file_dst_php_ini}}"
     mode: "{{file_mode_php_ini}}"
     owner: "{{file_owner_php_ini}}"
     group: "{{file_group_php_ini}}"

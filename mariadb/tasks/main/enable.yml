@@ -58,7 +58,7 @@
     password: "{{mariadb_root_password}}"
     host: 'localhost'
     login_host: 'localhost'
-    config_file: "{{file_path_credentials_cnf}}"
+    config_file: "{{file_dst_credentials_cnf}}"
     check_implicit_admin: 'yes'
   notify: 'command flush privileges'
   tags:

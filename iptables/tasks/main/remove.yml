@@ -42,7 +42,7 @@
 - name: 'file remove ip6tables-config'
   file:
     state: 'absent'
-    path: "{{file_path_ip6tables_config}}"
+    path: "{{file_dst_ip6tables_config}}"
   tags:
     - remove
     - iptables
@@ -50,7 +50,7 @@
 - name: 'file remove ip6tables.d'
   file:
     state: 'absent'
-    path: "{{file_path_ip6tables_d}}"
+    path: "{{file_dst_ip6tables_d}}"
   tags:
     - remove
     - iptables
@@ -58,7 +58,7 @@
 - name: 'file remove iptables-config'
   file:
     state: 'absent'
-    path: "{{file_path_iptables_config}}"
+    path: "{{file_dst_iptables_config}}"
   tags:
     - remove
     - iptables
@@ -66,7 +66,7 @@
 - name: 'file remove iptables.d'
   file:
     state: 'absent'
-    path: "{{file_path_iptables_d}}"
+    path: "{{file_dst_iptables_d}}"
   tags:
     - remove
     - iptables
@@ -74,7 +74,7 @@
 - name: 'file remove ipv4-filter_ansible'
   file:
     state: 'absent'
-    path: "{{file_path_ipv4_filter_ansible}}"
+    path: "{{file_dst_ipv4_filter_ansible}}"
   tags:
     - remove
     - iptables
@@ -82,7 +82,7 @@
 - name: 'file remove ipv4-nat_ansible'
   file:
     state: 'absent'
-    path: "{{file_path_ipv4_nat_ansible}}"
+    path: "{{file_dst_ipv4_nat_ansible}}"
   tags:
     - remove
     - iptables
@@ -90,7 +90,7 @@
 - name: 'file remove ipv6-filter_ansible'
   file:
     state: 'absent'
-    path: "{{file_path_ipv6_filter_ansible}}"
+    path: "{{file_dst_ipv6_filter_ansible}}"
   tags:
     - remove
     - iptables
@@ -98,7 +98,7 @@
 - name: 'file remove ipv6-nat_ansible'
   file:
     state: 'absent'
-    path: "{{file_path_ipv6_nat_ansible}}"
+    path: "{{file_dst_ipv6_nat_ansible}}"
   tags:
     - remove
     - iptables

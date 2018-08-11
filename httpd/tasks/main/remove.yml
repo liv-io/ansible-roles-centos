@@ -34,7 +34,7 @@
 - name: 'file remove autoindex.conf'
   file:
     state: 'absent'
-    path: "{{file_path_autoindex_conf}}"
+    path: "{{file_dst_autoindex_conf}}"
   tags:
     - remove
     - httpd
@@ -42,7 +42,7 @@
 - name: 'file remove httpd.conf'
   file:
     state: 'absent'
-    path: "{{file_path_httpd_conf}}"
+    path: "{{file_dst_httpd_conf}}"
   tags:
     - remove
     - httpd
@@ -50,7 +50,7 @@
 - name: 'file remove userdir.conf'
   file:
     state: 'absent'
-    path: "{{file_path_userdir_conf}}"
+    path: "{{file_dst_userdir_conf}}"
   tags:
     - remove
     - httpd
@@ -58,7 +58,7 @@
 - name: 'file remove welcome.conf'
   file:
     state: 'absent'
-    path: "{{file_path_welcome_conf}}"
+    path: "{{file_dst_welcome_conf}}"
   tags:
     - remove
     - httpd
@@ -66,7 +66,7 @@
 - name: 'file remove vhosts.d'
   file:
     state: 'absent'
-    path: "{{file_path_vhosts_d}}"
+    path: "{{file_dst_vhosts_d}}"
   tags:
     - remove
     - httpd

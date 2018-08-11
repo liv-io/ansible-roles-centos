@@ -13,14 +13,14 @@ package_name_opensmtpd: 'opensmtpd'
 
 # aliases
 file_src_aliases: "templates/main/aliases.j2"
-file_path_aliases: '/etc/aliases'
+file_dst_aliases: '/etc/aliases'
 file_mode_aliases: '0644'
 file_owner_aliases: 'root'
 file_group_aliases: 'root'
 
 # smtpd.conf
 file_src_smtpd_conf: "templates/main/smtpd.conf.j2"
-file_path_smtpd_conf: '/etc/opensmtpd/smtpd.conf'
+file_dst_smtpd_conf: '/etc/opensmtpd/smtpd.conf'
 file_mode_smtpd_conf: '0644'
 file_owner_smtpd_conf: 'root'
 file_group_smtpd_conf: 'root'

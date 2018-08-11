@@ -52,7 +52,7 @@
 - name: 'file remove mariadb_script.dir'
   file:
     state: 'absent'
-    path: "{{file_path_mariadb_script_dir}}"
+    path: "{{file_dst_mariadb_script_dir}}"
   tags:
     - remove
     - mariadb
@@ -60,7 +60,7 @@
 - name: 'file remove client.cnf'
   file:
     state: 'absent'
-    path: "{{file_path_client_cnf}}"
+    path: "{{file_dst_client_cnf}}"
   tags:
     - remove
     - mariadb
@@ -68,7 +68,7 @@
 - name: 'file remove credentials.cnf'
   file:
     state: 'absent'
-    path: "{{file_path_credentials_cnf}}"
+    path: "{{file_dst_credentials_cnf}}"
   tags:
     - remove
     - mariadb
@@ -76,7 +76,7 @@
 - name: 'file remove mariadb_run-backup.sh'
   file:
     state: 'absent'
-    path: "{{file_path_mariadb_run_backup_sh}}"
+    path: "{{file_dst_mariadb_run_backup_sh}}"
   tags:
     - remove
     - mariadb
@@ -84,7 +84,7 @@
 - name: 'file remove my.cnf'
   file:
     state: 'absent'
-    path: "{{file_path_my_cnf}}"
+    path: "{{file_dst_my_cnf}}"
   tags:
     - remove
     - mariadb
@@ -92,7 +92,7 @@
 - name: 'file remove mysql-clients.cnf'
   file:
     state: 'absent'
-    path: "{{file_path_mysql_clients_cnf}}"
+    path: "{{file_dst_mysql_clients_cnf}}"
   tags:
     - remove
     - mariadb
@@ -100,7 +100,7 @@
 - name: 'file remove server.cnf'
   file:
     state: 'absent'
-    path: "{{file_path_server_cnf}}"
+    path: "{{file_dst_server_cnf}}"
   tags:
     - remove
     - mariadb

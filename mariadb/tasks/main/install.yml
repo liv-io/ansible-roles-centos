@@ -42,7 +42,7 @@
 - name: 'file create mariadb_backup.dir'
   file:
     state: 'directory'
-    path: "{{file_path_mariadb_backup_dir}}"
+    path: "{{file_dst_mariadb_backup_dir}}"
     mode: "{{file_mode_mariadb_backup_dir}}"
     owner: "{{file_owner_mariadb_backup_dir}}"
     group: "{{file_group_mariadb_backup_dir}}"
@@ -53,7 +53,7 @@
 - name: 'file create mariadb_script.dir'
   file:
     state: 'directory'
-    path: "{{file_path_mariadb_script_dir}}"
+    path: "{{file_dst_mariadb_script_dir}}"
     mode: "{{file_mode_mariadb_script_dir}}"
     owner: "{{file_owner_mariadb_script_dir}}"
     group: "{{file_group_mariadb_script_dir}}"
@@ -64,7 +64,7 @@
 - name: 'template create client.cnf'
   template:
     src: "{{file_src_client_cnf}}"
-    dest: "{{file_path_client_cnf}}"
+    dest: "{{file_dst_client_cnf}}"
     mode: "{{file_mode_client_cnf}}"
     owner: "{{file_owner_client_cnf}}"
     group: "{{file_group_client_cnf}}"
@@ -75,7 +75,7 @@
 - name: 'template create credentials.cnf'
   template:
     src: "{{file_src_credentials_cnf}}"
-    dest: "{{file_path_credentials_cnf}}"
+    dest: "{{file_dst_credentials_cnf}}"
     mode: "{{file_mode_credentials_cnf}}"
     owner: "{{file_owner_credentials_cnf}}"
     group: "{{file_group_credentials_cnf}}"
@@ -86,7 +86,7 @@
 - name: 'template create my.cnf'
   template:
     src: "{{file_src_my_cnf}}"
-    dest: "{{file_path_my_cnf}}"
+    dest: "{{file_dst_my_cnf}}"
     mode: "{{file_mode_my_cnf}}"
     owner: "{{file_owner_my_cnf}}"
     group: "{{file_group_my_cnf}}"
@@ -97,7 +97,7 @@
 - name: 'template create mysql-clients.cnf'
   template:
     src: "{{file_src_mysql_clients_cnf}}"
-    dest: "{{file_path_mysql_clients_cnf}}"
+    dest: "{{file_dst_mysql_clients_cnf}}"
     mode: "{{file_mode_mysql_clients_cnf}}"
     owner: "{{file_owner_mysql_clients_cnf}}"
     group: "{{file_group_mysql_clients_cnf}}"
@@ -108,7 +108,7 @@
 - name: 'template create server.cnf'
   template:
     src: "{{file_src_server_cnf}}"
-    dest: "{{file_path_server_cnf}}"
+    dest: "{{file_dst_server_cnf}}"
     mode: "{{file_mode_server_cnf}}"
     owner: "{{file_owner_server_cnf}}"
     group: "{{file_group_server_cnf}}"
@@ -119,7 +119,7 @@
 - name: 'template create mariadb_run-backup.sh'
   template:
     src: "{{file_src_mariadb_run_backup_sh}}"
-    dest: "{{file_path_mariadb_run_backup_sh}}"
+    dest: "{{file_dst_mariadb_run_backup_sh}}"
     mode: "{{file_mode_mariadb_run_backup_sh}}"
     owner: "{{file_owner_mariadb_run_backup_sh}}"
     group: "{{file_group_mariadb_run_backup_sh}}"

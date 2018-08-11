@@ -34,7 +34,7 @@
 - name: 'file remove smtpd.conf'
   file:
     state: 'absent'
-    path: "{{file_path_smtpd_conf}}"
+    path: "{{file_dst_smtpd_conf}}"
   tags:
     - remove
     - opensmtpd

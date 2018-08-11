@@ -21,7 +21,7 @@ After=syslog.target network.target
 
 [Service]
 Type=notify
-ExecStart={{file_path_traefik_bin_dir}}/traefik --configFile={{file_path_traefik_conf_dir}}/traefik.toml
+ExecStart={{file_dst_traefik_bin_dir}}/traefik --configFile={{file_dst_traefik_conf_dir}}/traefik.toml
 Restart=always
 WatchdogSec=1s
 

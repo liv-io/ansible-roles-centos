@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 # shadow
-file_path_shadow: '/etc/shadow'
+file_dst_shadow: '/etc/shadow'
 file_mode_shadow: '0000'
 file_owner_shadow: 'root'
 file_group_shadow: 'root'

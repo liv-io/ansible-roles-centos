@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 # passwd
-file_path_passwd: '/etc/passwd'
+file_dst_passwd: '/etc/passwd'
 file_mode_passwd: '0644'
 file_owner_passwd: 'root'
 file_group_passwd: 'root'
