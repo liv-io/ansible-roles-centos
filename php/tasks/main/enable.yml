@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create php.ini'
+- name: 'file create php.ini'
   template:
     src: "{{file_src_php_ini}}"
     dest: "{{file_dst_php_ini}}"

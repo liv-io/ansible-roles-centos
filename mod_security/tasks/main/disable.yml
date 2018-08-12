@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create mod_security.conf'
+- name: 'file create mod_security.conf'
   template:
     src: "{{file_src_mod_security_conf}}"
     dest: "{{file_dst_mod_security_conf}}"

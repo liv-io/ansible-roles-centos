@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create ip6tables-config'
+- name: 'file create ip6tables-config'
   template:
     src: "{{file_src_ip6tables_config}}"
     dest: "{{file_dst_ip6tables_config}}"
@@ -30,7 +30,7 @@
     - disable
     - iptables
 
-- name: 'template create iptables-config'
+- name: 'file create iptables-config'
   template:
     src: "{{file_src_iptables_config}}"
     dest: "{{file_dst_iptables_config}}"
@@ -41,7 +41,7 @@
     - disable
     - iptables
 
-- name: 'template create ipv4-filter_ansible'
+- name: 'file create ipv4-filter_ansible'
   template:
     src: "{{file_src_ipv4_filter_ansible}}"
     dest: "{{file_dst_ipv4_filter_ansible}}"
@@ -52,7 +52,7 @@
     - disable
     - iptables
 
-- name: 'template create ipv4-nat_ansible'
+- name: 'file create ipv4-nat_ansible'
   template:
     src: "{{file_src_ipv4_nat_ansible}}"
     dest: "{{file_dst_ipv4_nat_ansible}}"
@@ -63,7 +63,7 @@
     - disable
     - iptables
 
-- name: 'template create ipv6-filter_ansible'
+- name: 'file create ipv6-filter_ansible'
   template:
     src: "{{file_src_ipv6_filter_ansible}}"
     dest: "{{file_dst_ipv6_filter_ansible}}"
@@ -74,7 +74,7 @@
     - disable
     - iptables
 
-- name: 'template create ipv6-nat_ansible'
+- name: 'file create ipv6-nat_ansible'
   template:
     src: "{{file_src_ipv6_nat_ansible}}"
     dest: "{{file_dst_ipv6_nat_ansible}}"

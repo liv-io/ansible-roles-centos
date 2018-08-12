@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create config'
+- name: 'file create config'
   template:
     src: "{{file_src_config}}"
     dest: "{{file_dst_config}}"

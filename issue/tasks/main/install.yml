@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create issue'
+- name: 'file create issue'
   template:
     src: "{{file_src_issue}}"
     dest: "{{file_dst_issue}}"

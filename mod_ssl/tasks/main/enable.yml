@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create ssl.conf'
+- name: 'file create ssl.conf'
   template:
     src: "{{file_src_ssl_conf}}"
     dest: "{{file_dst_ssl_conf}}"

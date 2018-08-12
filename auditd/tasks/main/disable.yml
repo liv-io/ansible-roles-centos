@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create auditd.conf'
+- name: 'file create auditd.conf'
   template:
     src: "{{file_src_auditd_conf}}"
     dest: "{{file_dst_auditd_conf}}"
@@ -30,7 +30,7 @@
     - disable
     - auditd
 
-- name: 'template create audispd.conf'
+- name: 'file create audispd.conf'
   template:
     src: "{{file_src_audispd_conf}}"
     dest: "{{file_dst_audispd_conf}}"
@@ -41,7 +41,7 @@
     - disable
     - auditd
 
-- name: 'template create syslog.conf'
+- name: 'file create syslog.conf'
   template:
     src: "{{file_src_syslog_conf}}"
     dest: "{{file_dst_syslog_conf}}"

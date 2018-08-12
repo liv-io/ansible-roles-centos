@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create haproxy.cfg'
+- name: 'file create haproxy.cfg'
   template:
     src: "{{file_src_haproxy_cfg}}"
     dest: "{{file_dst_haproxy_cfg}}"

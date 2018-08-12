@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create traefik.toml'
+- name: 'file create traefik.toml'
   template:
     src: "{{file_src_traefik_toml}}"
     dest: "{{file_dst_traefik_toml}}"

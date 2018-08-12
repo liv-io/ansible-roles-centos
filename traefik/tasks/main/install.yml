@@ -86,7 +86,7 @@
     - install
     - traefik
 
-- name: 'template create traefik.service'
+- name: 'file create traefik.service'
   template:
     src: "{{file_src_traefik_service}}"
     dest: "{{file_dst_traefik_service}}"

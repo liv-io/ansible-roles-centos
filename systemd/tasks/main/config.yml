@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create systemd-config'
+- name: 'file create systemd-config'
   template:
     src: "{{file_src_systemd_config}}"
     dest: "{{file_dst_systemd}}/{{item.mode|default(systemd_mode_default)}}/{{item.name|default(systemd_name_default)}}.{{item.type|default(systemd_type_default)}}"

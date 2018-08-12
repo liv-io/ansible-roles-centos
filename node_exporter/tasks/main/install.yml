@@ -119,7 +119,7 @@
     - install
     - node_exporter
 
-- name: 'template create node_exporter.service'
+- name: 'file create node_exporter.service'
   template:
     src: "{{file_src_node_exporter_service}}"
     dest: "{{file_dst_node_exporter_service}}"

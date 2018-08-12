@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create modsecurity_crs_10_config.conf'
+- name: 'file create modsecurity_crs_10_config.conf'
   template:
     src: "{{file_src_modsecurity_crs_10_config_conf}}"
     dest: "{{file_dst_modsecurity_crs_10_config_conf}}"
@@ -31,7 +31,7 @@
     - disable
     - mod_security_crs
 
-- name: 'template create modsecurity_crs_15_adjust.conf'
+- name: 'file create modsecurity_crs_15_adjust.conf'
   template:
     src: "{{file_src_modsecurity_crs_15_adjust_conf}}"
     dest: "{{file_dst_modsecurity_crs_15_adjust_conf}}"

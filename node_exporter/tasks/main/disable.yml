@@ -17,7 +17,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create node_exporter.sysconfig'
+- name: 'file create node_exporter.sysconfig'
   template:
     src: "{{file_src_node_exporter_sysconfig}}"
     dest: "{{file_dst_node_exporter_sysconfig}}"

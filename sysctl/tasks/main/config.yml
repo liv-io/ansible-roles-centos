@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create sysctl-config'
+- name: 'file create sysctl-config'
   template:
     src: "{{file_src_sysctl_config}}"
     dest: "{{file_dst_sysctl_d}}/{{item.order if (item.order is defined) else ''}}{{'-' if (item.order is defined) else ''}}{{item.name if (item.name is defined) and not (item.name == '') else sysctl_name_default}}.conf"

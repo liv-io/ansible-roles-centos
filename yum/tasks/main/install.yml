@@ -31,7 +31,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create yum.conf'
+- name: 'file create yum.conf'
   template:
     src: "{{file_src_yum_conf}}"
     dest: "{{file_dst_yum_conf}}"

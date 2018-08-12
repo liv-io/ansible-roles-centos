@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create autoindex.conf'
+- name: 'file create autoindex.conf'
   template:
     src: "{{file_src_autoindex_conf}}"
     dest: "{{file_dst_autoindex_conf}}"
@@ -31,7 +31,7 @@
     - disable
     - httpd
 
-- name: 'template create httpd.conf'
+- name: 'file create httpd.conf'
   template:
     src: "{{file_src_httpd_conf}}"
     dest: "{{file_dst_httpd_conf}}"
@@ -43,7 +43,7 @@
     - disable
     - httpd
 
-- name: 'template create userdir.conf'
+- name: 'file create userdir.conf'
   template:
     src: "{{file_src_userdir_conf}}"
     dest: "{{file_dst_userdir_conf}}"
@@ -55,7 +55,7 @@
     - disable
     - httpd
 
-- name: 'template create welcome.conf'
+- name: 'file create welcome.conf'
   template:
     src: "{{file_src_welcome_conf}}"
     dest: "{{file_dst_welcome_conf}}"

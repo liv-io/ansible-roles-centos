@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'template create auditd-config.rules'
+- name: 'file create auditd-config.rules'
   template:
     src: "{{file_src_auditd_config}}"
     dest: "{{file_dst_rules_d}}/{{item.name if (item.name is defined) and not (item.name == '') else auditd_name_default}}.rules"

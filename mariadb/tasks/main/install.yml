@@ -61,7 +61,7 @@
     - install
     - mariadb
 
-- name: 'template create client.cnf'
+- name: 'file create client.cnf'
   template:
     src: "{{file_src_client_cnf}}"
     dest: "{{file_dst_client_cnf}}"
@@ -72,7 +72,7 @@
     - install
     - mariadb
 
-- name: 'template create credentials.cnf'
+- name: 'file create credentials.cnf'
   template:
     src: "{{file_src_credentials_cnf}}"
     dest: "{{file_dst_credentials_cnf}}"
@@ -83,7 +83,7 @@
     - install
     - mariadb
 
-- name: 'template create my.cnf'
+- name: 'file create my.cnf'
   template:
     src: "{{file_src_my_cnf}}"
     dest: "{{file_dst_my_cnf}}"
@@ -94,7 +94,7 @@
     - install
     - mariadb
 
-- name: 'template create mysql-clients.cnf'
+- name: 'file create mysql-clients.cnf'
   template:
     src: "{{file_src_mysql_clients_cnf}}"
     dest: "{{file_dst_mysql_clients_cnf}}"
@@ -105,7 +105,7 @@
     - install
     - mariadb
 
-- name: 'template create server.cnf'
+- name: 'file create server.cnf'
   template:
     src: "{{file_src_server_cnf}}"
     dest: "{{file_dst_server_cnf}}"
@@ -116,7 +116,7 @@
     - install
     - mariadb
 
-- name: 'template create mariadb_run-backup.sh'
+- name: 'file create mariadb_run-backup.sh'
   template:
     src: "{{file_src_mariadb_run_backup_sh}}"
     dest: "{{file_dst_mariadb_run_backup_sh}}"

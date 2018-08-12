@@ -32,7 +32,7 @@
     - config
     - yum
 
-- name: 'template create yum-repo'
+- name: 'file create yum-repo'
   template:
     src: "{{file_src_yum_config}}"
     dest: "{{file_dst_yum_repos_d}}/{{item.name|default(yum_name_default)}}.repo"
