@@ -1,0 +1,75 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - node_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'user create node_exporter'
+  user:
+    state: 'absent'
+    name: "{{user_name_node_exporter}}"
+    remove: "{{user_home_remove_node_exporter}}"
+    force: "{{user_home_force_node_exporter}}"
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'group create node_exporter'
+  group:
+    state: 'absent'
+    name: "{{group_name_node_exporter}}"
+  tags:
+    - remove
+    - node_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove node_exporter_app.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_node_exporter_app_dir}}"
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'file remove node_exporter_data.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_node_exporter_data_dir}}"
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'file remove node_exporter.sysconfig'
+  file:
+    state: 'absent'
+    path: "{{file_dst_node_exporter_sysconfig}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'file remove node_exporter.service'
+  file:
+    state: 'absent'
+    path: "{{file_dst_node_exporter_service}}"
+  tags:
+    - remove
+    - node_exporter

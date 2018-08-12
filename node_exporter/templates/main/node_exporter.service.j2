@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : node_exporter.service
+# Type   : systemd unit file
+# Role   : node_exporter
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+[Unit]
+Description=Node Exporter
+After=syslog.target network.target
+
+[Service]
+User=node_exporter
+Group=node_exporter
+EnvironmentFile=/etc/sysconfig/node_exporter
+ExecStart={{file_dst_node_exporter_current_link}}/node_exporter $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

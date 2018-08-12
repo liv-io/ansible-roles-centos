@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - {role: common, when: not (node_exporter_state is match('false|no|remove|quiesce|inactive'))}

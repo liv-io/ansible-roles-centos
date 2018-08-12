@@ -1,0 +1,89 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# node_exporter_app.dir
+file_dst_node_exporter_app_dir: "/{{common_app_dir}}/node_exporter"
+file_mode_node_exporter_app_dir: '0755'
+file_owner_node_exporter_app_dir: 'root'
+file_group_node_exporter_app_dir: 'root'
+
+# node_exporter_data.dir
+file_dst_node_exporter_data_dir: "/{{common_data_dir}}/node_exporter"
+file_mode_node_exporter_data_dir: '0755'
+file_owner_node_exporter_data_dir: 'root'
+file_group_node_exporter_data_dir: 'root'
+
+# node_exporter-current.link
+file_src_node_exporter_current_link: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64"
+file_dst_node_exporter_current_link: "/{{common_app_dir}}/node_exporter/current"
+file_owner_node_exporter_current_link: 'root'
+file_group_node_exporter_current_link: 'root'
+
+# textfile_collector.dir
+file_dst_textfile_collector_dir: "/{{common_data_dir}}/node_exporter/textfile_collector"
+file_mode_textfile_collector_dir: '0755'
+file_owner_textfile_collector_dir: 'root'
+file_group_textfile_collector_dir: 'root'
+
+# node_exporter.tar.gz
+file_src_node_exporter_tar_gz: "https://github.com/prometheus/node_exporter/releases/download/v{{node_exporter_version}}/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"
+file_dst_node_exporter_tar_gz: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"
+file_mode_node_exporter_tar_gz: '0644'
+file_owner_node_exporter_tar_gz: 'root'
+file_group_node_exporter_tar_gz: 'root'
+
+# node_exporter
+file_src_node_exporter: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"
+file_dst_node_exporter: "/{{common_app_dir}}/node_exporter"
+file_owner_node_exporter: 'root'
+file_group_node_exporter: 'root'
+file_creates_node_exporter: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64"
+
+# node_exporter.service
+file_src_node_exporter_service: "templates/main/node_exporter.service.j2"
+file_dst_node_exporter_service: "/usr/lib/systemd/system/node_exporter.service"
+file_mode_node_exporter_service: '0644'
+file_owner_node_exporter_service: 'root'
+file_group_node_exporter_service: 'root'
+
+# node_exporter.sysconfig
+file_src_node_exporter_sysconfig: "templates/main/node_exporter.sysconfig.j2"
+file_dst_node_exporter_sysconfig: "/etc/sysconfig/node_exporter"
+file_mode_node_exporter_sysconfig: '0644'
+file_owner_node_exporter_sysconfig: 'root'
+file_group_node_exporter_sysconfig: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# node_exporter
+group_name_node_exporter: 'node_exporter'
+group_system_node_exporter: 'yes'
+
+# node_exporter
+user_name_node_exporter: 'node_exporter'
+user_comment_node_exporter: 'node_exporter backup'
+user_group_node_exporter: 'node_exporter'
+user_append_node_exporter: 'yes'
+user_home_create_node_exporter: 'yes'
+user_home_move_node_exporter: 'no'
+user_home_remove_node_exporter: 'no'
+user_home_force_node_exporter: 'no'
+user_password_node_exporter: '!'
+user_password_update_node_exporter: 'always'
+user_shell_node_exporter: '/bin/bash'
+user_system_node_exporter: 'yes'
+
+# node_exporter
+service_name_node_exporter: 'node_exporter'
