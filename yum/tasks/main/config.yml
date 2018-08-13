@@ -19,7 +19,7 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'copy content gpg-key'
+- name: 'file copy gpg-key'
   copy:
     content: "{{item.gpg_content}}"
     dest: "{{file_dst_rpm_gpg}}/{{item.gpg_name|default(yum_name_default)}}"
