@@ -1825,3 +1825,8 @@ ldap.max_links = -1
 ; Local Variables:
 ; tab-width: 4
 ; End:
+
+[curl]
+{% if (php_curl_cainfo is defined) and not (php_curl_cainfo == '') %}
+curl.cainfo = "{{php_curl_cainfo}}"
+{% endif %}

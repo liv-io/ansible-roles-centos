@@ -86,6 +86,17 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  php_curl_cainfo
+    Description: Define the 'php_curl_cainfo' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: '/etc/pki/ca-trust/source/anchors/ca.domain.tld.crt' | '/data/ca/ca.domain.tld.crt'
+      None    : ''
+
   php_date_timezone
     Description: Define the 'php_date_timezone' option.
     Implemented: 0.1

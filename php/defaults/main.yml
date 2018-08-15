@@ -2,6 +2,8 @@
 
 php_state: 'enable'
 
+php_curl_cainfo: ''
+
 php_date_timezone: 'Europe/Zurich'
 
 php_expose_php: 'false'

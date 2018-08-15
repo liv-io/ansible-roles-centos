@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.0 (2018-08-15)
+F: Add support for 'curl.cainfo' option (php_curl_cainfo)
+
 * Version 0.2.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
