@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.0 (2018-08-16)
+F: Add support for 'max_input_vars' option (php_max_input_vars)
+
 * Version 0.3.0 (2018-08-15)
 F: Add support for 'curl.cainfo' option (php_curl_cainfo)
 

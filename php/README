@@ -118,6 +118,16 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
+  php_max_input_vars
+    Description: Set the 'php_max_input_vars' option.
+    Implemented: 0.4
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer
+    Default    : 1000
+    Options    :
+      Examples: '1000' | '2000' | '3000'
+
   php_memory_limit
     Description: Set the 'php_memory_limit' option.
     Implemented: 0.1
