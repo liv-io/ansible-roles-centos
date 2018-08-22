@@ -1,0 +1,57 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - disable
+    - unbound
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create root.hints'
+  template:
+    src: "{{file_src_root_hints}}"
+    dest: "{{file_dst_root_hints}}"
+    mode: "{{file_mode_root_hints}}"
+    owner: "{{file_owner_root_hints}}"
+    group: "{{file_group_root_hints}}"
+  notify: 'command unbound-checkconf'
+  tags:
+    - disable
+    - unbound
+
+- name: 'file create unbound.conf'
+  template:
+    src: "{{file_src_unbound_conf}}"
+    dest: "{{file_dst_unbound_conf}}"
+    mode: "{{file_mode_unbound_conf}}"
+    owner: "{{file_owner_unbound_conf}}"
+    group: "{{file_group_unbound_conf}}"
+  notify: 'command unbound-checkconf'
+  tags:
+    - disable
+    - unbound
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service stop unbound'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_unbound}}"
+  tags:
+    - disable
+    - unbound
