@@ -12,7 +12,7 @@ package_name_mod_security: 'mod_security'
 #-------------------------------------------------------------------------------
 
 # mod_security.conf
-file_src_mod_security_conf: "templates/main/mod_security.conf.j2"
+file_src_mod_security_conf: 'templates/main/mod_security.conf.j2'
 file_dst_mod_security_conf: '/etc/httpd/conf.d/mod_security.conf'
 file_mode_mod_security_conf: '0644'
 file_owner_mod_security_conf: 'root'

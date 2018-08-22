@@ -43,14 +43,14 @@ file_group_node_exporter: 'root'
 file_creates_node_exporter: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64"
 
 # node_exporter.service
-file_src_node_exporter_service: "templates/main/node_exporter.service.j2"
+file_src_node_exporter_service: 'templates/main/node_exporter.service.j2'
 file_dst_node_exporter_service: "/usr/lib/systemd/system/node_exporter.service"
 file_mode_node_exporter_service: '0644'
 file_owner_node_exporter_service: 'root'
 file_group_node_exporter_service: 'root'
 
 # node_exporter.sysconfig
-file_src_node_exporter_sysconfig: "templates/main/node_exporter.sysconfig.j2"
+file_src_node_exporter_sysconfig: 'templates/main/node_exporter.sysconfig.j2'
 file_dst_node_exporter_sysconfig: "/etc/sysconfig/node_exporter"
 file_mode_node_exporter_sysconfig: '0644'
 file_owner_node_exporter_sysconfig: 'root'

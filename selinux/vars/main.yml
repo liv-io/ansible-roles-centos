@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 # config
-file_src_config: "templates/main/config.j2"
+file_src_config: 'templates/main/config.j2'
 file_dst_config: '/etc/selinux/config'
 file_mode_config: '0644'
 file_owner_config: 'root'

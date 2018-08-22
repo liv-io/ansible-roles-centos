@@ -15,7 +15,7 @@ package_name_systemd: 'systemd'
 file_dst_systemd: '/etc/systemd'
 
 # systemd-config
-file_src_systemd_config: "templates/main/systemd-config.j2"
+file_src_systemd_config: 'templates/main/systemd-config.j2'
 file_mode_systemd_config: '0644'
 file_owner_systemd_config: 'root'
 file_group_systemd_config: 'root'

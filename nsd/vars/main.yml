@@ -12,14 +12,14 @@ package_name_nsd: 'nsd'
 #-------------------------------------------------------------------------------
 
 # nsd.conf
-file_src_nsd_conf: "templates/main/nsd.conf.j2"
+file_src_nsd_conf: 'templates/main/nsd.conf.j2'
 file_dst_nsd_conf: '/etc/nsd/nsd.conf'
 file_mode_nsd_conf: '0644'
 file_owner_nsd_conf: 'root'
 file_group_nsd_conf: 'root'
 
 # zone-config.zone
-file_src_zone_config_zone: "templates/main/zone-config.zone.j2"
+file_src_zone_config_zone: 'templates/main/zone-config.zone.j2'
 file_dst_zone_config_zone: '/etc/nsd'
 file_mode_zone_config_zone: '0644'
 file_owner_zone_config_zone: 'root'

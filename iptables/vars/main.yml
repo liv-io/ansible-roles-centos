@@ -18,7 +18,7 @@ package_name_iptables_utils: 'iptables-utils'
 #-------------------------------------------------------------------------------
 
 # ip6tables-config
-file_src_ip6tables_config: "templates/main/ip6tables-config.j2"
+file_src_ip6tables_config: 'templates/main/ip6tables-config.j2'
 file_dst_ip6tables_config: '/etc/sysconfig/ip6tables-config'
 file_mode_ip6tables_config: '0600'
 file_owner_ip6tables_config: 'root'
@@ -31,7 +31,7 @@ file_owner_ip6tables_d: 'root'
 file_group_ip6tables_d: 'root'
 
 # iptables-config
-file_src_iptables_config: "templates/main/iptables-config.j2"
+file_src_iptables_config: 'templates/main/iptables-config.j2'
 file_dst_iptables_config: '/etc/sysconfig/iptables-config'
 file_mode_iptables_config: '0600'
 file_owner_iptables_config: 'root'
@@ -44,7 +44,7 @@ file_owner_iptables_d: 'root'
 file_group_iptables_d: 'root'
 
 # ipv4-filter_ansible
-file_src_ipv4_filter_ansible: "templates/main/ipv4-filter_ansible.j2"
+file_src_ipv4_filter_ansible: 'templates/main/ipv4-filter_ansible.j2'
 file_dst_ipv4_filter_ansible: '/etc/sysconfig/iptables.d/ipv4-filter_ansible'
 file_mode_ipv4_filter_ansible: '0600'
 file_owner_ipv4_filter_ansible: 'root'
@@ -54,7 +54,7 @@ file_group_ipv4_filter_ansible: 'root'
 file_dst_ipv4_filter_docker: '/etc/sysconfig/iptables.d/ipv4-filter_docker'
 
 # ipv4-nat_ansible
-file_src_ipv4_nat_ansible: "templates/main/ipv4-nat_ansible.j2"
+file_src_ipv4_nat_ansible: 'templates/main/ipv4-nat_ansible.j2'
 file_dst_ipv4_nat_ansible: '/etc/sysconfig/iptables.d/ipv4-nat_ansible'
 file_mode_ipv4_nat_ansible: '0600'
 file_owner_ipv4_nat_ansible: 'root'
@@ -64,7 +64,7 @@ file_group_ipv4_nat_ansible: 'root'
 file_dst_ipv4_nat_docker: '/etc/sysconfig/iptables.d/ipv4-nat_docker'
 
 # ipv6-filter_ansible
-file_src_ipv6_filter_ansible: "templates/main/ipv6-filter_ansible.j2"
+file_src_ipv6_filter_ansible: 'templates/main/ipv6-filter_ansible.j2'
 file_dst_ipv6_filter_ansible: '/etc/sysconfig/ip6tables.d/ipv6-filter_ansible'
 file_mode_ipv6_filter_ansible: '0600'
 file_owner_ipv6_filter_ansible: 'root'
@@ -74,7 +74,7 @@ file_group_ipv6_filter_ansible: 'root'
 file_dst_ipv6_filter_docker: '/etc/sysconfig/ip6tables.d/ipv6-filter_docker'
 
 # ipv6-nat_ansible
-file_src_ipv6_nat_ansible: "templates/main/ipv6-nat_ansible.j2"
+file_src_ipv6_nat_ansible: 'templates/main/ipv6-nat_ansible.j2'
 file_dst_ipv6_nat_ansible: '/etc/sysconfig/ip6tables.d/ipv6-nat_ansible'
 file_mode_ipv6_nat_ansible: '0600'
 file_owner_ipv6_nat_ansible: 'root'
