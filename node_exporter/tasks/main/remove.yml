@@ -61,7 +61,6 @@
   file:
     state: 'absent'
     path: "{{file_dst_node_exporter_sysconfig}}"
-  notify: 'command systemctl daemon-reload'
   tags:
     - remove
     - node_exporter
@@ -70,6 +69,7 @@
   file:
     state: 'absent'
     path: "{{file_dst_node_exporter_service}}"
+  notify: 'command systemctl daemon-reload'
   tags:
     - remove
     - node_exporter

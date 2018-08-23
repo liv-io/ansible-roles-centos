@@ -44,14 +44,14 @@ file_creates_node_exporter: "/{{common_app_dir}}/node_exporter/node_exporter-{{n
 
 # node_exporter.service
 file_src_node_exporter_service: 'templates/main/node_exporter.service.j2'
-file_dst_node_exporter_service: "/usr/lib/systemd/system/node_exporter.service"
+file_dst_node_exporter_service: '/usr/lib/systemd/system/node_exporter.service'
 file_mode_node_exporter_service: '0644'
 file_owner_node_exporter_service: 'root'
 file_group_node_exporter_service: 'root'
 
 # node_exporter.sysconfig
 file_src_node_exporter_sysconfig: 'templates/main/node_exporter.sysconfig.j2'
-file_dst_node_exporter_sysconfig: "/etc/sysconfig/node_exporter"
+file_dst_node_exporter_sysconfig: '/etc/sysconfig/node_exporter'
 file_mode_node_exporter_sysconfig: '0644'
 file_owner_node_exporter_sysconfig: 'root'
 file_group_node_exporter_sysconfig: 'root'
@@ -82,7 +82,7 @@ user_home_remove_node_exporter: 'no'
 user_home_force_node_exporter: 'no'
 user_password_node_exporter: '!'
 user_password_update_node_exporter: 'always'
-user_shell_node_exporter: '/bin/bash'
+user_shell_node_exporter: '/sbin/nologin'
 user_system_node_exporter: 'yes'
 
 # node_exporter
