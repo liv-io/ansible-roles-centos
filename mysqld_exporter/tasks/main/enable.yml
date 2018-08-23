@@ -1,0 +1,55 @@
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - mysqld_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create my.cnf'
+  template:
+    src: "{{file_src_my_cnf}}"
+    dest: "{{file_dst_my_cnf}}"
+    mode: "{{file_mode_my_cnf}}"
+    owner: "{{file_owner_my_cnf}}"
+    group: "{{file_group_my_cnf}}"
+  notify: 'service restart mysqld_exporter'
+  tags:
+    - enable
+    - mysqld_exporter
+
+- name: 'file create mysqld_exporter.sysconfig'
+  template:
+    src: "{{file_src_mysqld_exporter_sysconfig}}"
+    dest: "{{file_dst_mysqld_exporter_sysconfig}}"
+    mode: "{{file_mode_mysqld_exporter_sysconfig}}"
+    owner: "{{file_owner_mysqld_exporter_sysconfig}}"
+    group: "{{file_group_mysqld_exporter_sysconfig}}"
+  notify: 'service restart mysqld_exporter'
+  tags:
+    - enable
+    - mysqld_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start mysqld_exporter'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_mysqld_exporter}}"
+  tags:
+    - enable
+    - mysqld_exporter

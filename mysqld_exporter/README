@@ -1,0 +1,193 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : mysqld_exporter
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+Simple server that scrapes MySQL stats and exports them via HTTP for
+Prometheus consumption.
+
+For proper functioning please also create the following user in MariaDB:
+
+CONFIG
+  vars:
+    mariadb_user_all:
+      - state: 'true'
+        name: 'mysqld_exporter'
+        host: 'localhost'
+        password: 'ruK.JSj23aN,48vbhELQ2-tUAu3.J5sB'
+        password_encrypted: 'false'
+        privileges: '*.*:PROCESS,REPLICATION CLIENT'
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: mysqld_exporter
+    vars:
+      mysqld_exporter_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: mysqld_exporter
+    vars:
+      mysqld_exporter_state: 'enable'
+      mysqld_exporter_mysql_password: 'crFEM2WG+Wt6N3_n5mu+Tewqc3Jxf2A5'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: mysqld_exporter
+    vars:
+      mysqld_exporter_state: 'disable'
+      mysqld_exporter_mysql_password: 'crFEM2WG+Wt6N3_n5mu+Tewqc3Jxf2A5'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: mysqld_exporter
+    vars:
+      mysqld_exporter_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: mysqld_exporter
+    vars:
+      mysqld_exporter_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  mysqld_exporter_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  mysqld_exporter_checksum
+    Description: Define the 'mysqld_exporter_checksum' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'b53ad48ff14aa891eb6a959730ffc626db98160d140d9a66377394714c563acf'
+    Options    :
+      Examples: 'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029' |
+                '2f18a32a7bb1c91307ed776cce50559bbcd66af90a61ea0a22a661ebe79e4fda'
+
+  mysqld_exporter_checksum_algorithm
+    Description: Define the 'mysqld_exporter_checksum_algorithm' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'sha256'
+    Options    :
+      Examples: 'sha256' | 'sha512'
+
+  mysqld_exporter_version
+    Description: Define the 'mysqld_exporter_version' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '0.11.0'
+    Options    :
+      Examples: '0.10.0' | '0.11.0'
+
+  mysqld_exporter_mysql_password
+    Description: Define the 'mysqld_exporter_mysql_password' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'ruK.JSj23aN,48vbhELQ2-tUAu3.J5sB'
+    Options    :
+      Examples: 'DP,BXtNS_Xq3PoN-SudTqBP.tgJMtBAj' | 'crFEM2WG+Wt6N3_n5mu+Tewqc3Jxf2A5'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  mysqld_exporter
+
+ROLES
+  common
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.5
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Development
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

@@ -1,0 +1,142 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - mysqld_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'group create mysqld_exporter'
+  group:
+    state: 'present'
+    name: "{{group_name_mysqld_exporter}}"
+    system: "{{group_system_mysqld_exporter}}"
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: 'user create mysqld_exporter'
+  user:
+    state: 'present'
+    name: "{{user_name_mysqld_exporter}}"
+    comment: "{{user_comment_mysqld_exporter}}"
+    group: "{{user_group_mysqld_exporter}}"
+    append: "{{user_append_mysqld_exporter}}"
+    createhome: "{{user_home_create_mysqld_exporter}}"
+    move_home: "{{user_home_move_mysqld_exporter}}"
+    remove: "{{user_home_remove_mysqld_exporter}}"
+    force: "{{user_home_force_mysqld_exporter}}"
+    password: "{{user_password_mysqld_exporter}}"
+    update_password: "{{user_password_update_mysqld_exporter}}"
+    shell: "{{user_shell_mysqld_exporter}}"
+    system: "{{user_system_mysqld_exporter}}"
+  tags:
+    - install
+    - mysqld_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create mysqld_exporter_app.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_mysqld_exporter_app_dir}}"
+    mode: "{{file_mode_mysqld_exporter_app_dir}}"
+    owner: "{{file_owner_mysqld_exporter_app_dir}}"
+    group: "{{file_group_mysqld_exporter_app_dir}}"
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: "file download mysqld_exporter.tar.gz"
+  get_url:
+    url: "{{file_src_mysqld_exporter_tar_gz}}"
+    dest: "{{file_dst_mysqld_exporter_tar_gz}}"
+    mode: "{{file_mode_mysqld_exporter_tar_gz}}"
+    owner: "{{file_owner_mysqld_exporter_tar_gz}}"
+    group: "{{file_group_mysqld_exporter_tar_gz}}"
+    checksum: "{{mysqld_exporter_checksum_algorithm}}:{{mysqld_exporter_checksum}}"
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: "file unarchive mysqld_exporter"
+  unarchive:
+    src: "{{file_src_mysqld_exporter}}"
+    dest: "{{file_dst_mysqld_exporter}}"
+    owner: "{{file_owner_mysqld_exporter}}"
+    group: "{{file_group_mysqld_exporter}}"
+    creates: "{{file_creates_mysqld_exporter}}"
+    remote_src: 'yes'
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: 'file create mysqld_exporter-current.link'
+  file:
+    state: 'link'
+    src: "{{file_src_mysqld_exporter_current_link}}"
+    path: "{{file_dst_mysqld_exporter_current_link}}"
+    owner: "{{file_owner_mysqld_exporter_current_link}}"
+    group: "{{file_group_mysqld_exporter_current_link}}"
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: 'file create my.cnf'
+  template:
+    src: "{{file_src_my_cnf}}"
+    dest: "{{file_dst_my_cnf}}"
+    mode: "{{file_mode_my_cnf}}"
+    owner: "{{file_owner_my_cnf}}"
+    group: "{{file_group_my_cnf}}"
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: 'file create mysqld_exporter.sysconfig'
+  template:
+    src: "{{file_src_mysqld_exporter_sysconfig}}"
+    dest: "{{file_dst_mysqld_exporter_sysconfig}}"
+    mode: "{{file_mode_mysqld_exporter_sysconfig}}"
+    owner: "{{file_owner_mysqld_exporter_sysconfig}}"
+    group: "{{file_group_mysqld_exporter_sysconfig}}"
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: 'file create mysqld_exporter.service'
+  template:
+    src: "{{file_src_mysqld_exporter_service}}"
+    dest: "{{file_dst_mysqld_exporter_service}}"
+    mode: "{{file_mode_mysqld_exporter_service}}"
+    owner: "{{file_owner_mysqld_exporter_service}}"
+    group: "{{file_group_mysqld_exporter_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - mysqld_exporter
+
+#-------------------------------------------------------------------------------
+# META
+#-------------------------------------------------------------------------------
+
+- name: 'meta flush handlers'
+  meta: 'flush_handlers'
+  tags:
+    - install
+    - mysqld_exporter

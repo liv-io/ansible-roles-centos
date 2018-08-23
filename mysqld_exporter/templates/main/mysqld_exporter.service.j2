@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : mysqld_exporter.service
+# Type   : systemd unit file
+# Role   : mysqld_exporter
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+[Unit]
+Description=MySQL Exporter
+After=syslog.target network.target
+
+[Service]
+User=mysqld_exporter
+Group=mysqld_exporter
+EnvironmentFile=/etc/sysconfig/mysqld_exporter
+ExecStart={{file_dst_mysqld_exporter_current_link}}/mysqld_exporter $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

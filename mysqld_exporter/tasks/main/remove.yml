@@ -1,0 +1,76 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - mysqld_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'user create mysqld_exporter'
+  user:
+    state: 'absent'
+    name: "{{user_name_mysqld_exporter}}"
+    remove: "{{user_home_remove_mysqld_exporter}}"
+    force: "{{user_home_force_mysqld_exporter}}"
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'group create mysqld_exporter'
+  group:
+    state: 'absent'
+    name: "{{group_name_mysqld_exporter}}"
+  tags:
+    - remove
+    - mysqld_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove mysqld_exporter_app.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mysqld_exporter_app_dir}}"
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'file remove mysqld_exporter.sysconfig'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mysqld_exporter_sysconfig}}"
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'file remove mysqld_exporter.service'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mysqld_exporter_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'file remove my.cnf'
+  file:
+    state: 'absent'
+    path: "{{file_dst_my_cnf}}"
+  tags:
+    - remove
+    - mysqld_exporter
+

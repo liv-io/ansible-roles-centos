@@ -1,0 +1,84 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# my.cnf
+file_src_my_cnf: 'templates/main/my.cnf.j2'
+file_dst_my_cnf: '/home/mysqld_exporter/.my.cnf'
+file_mode_my_cnf: '0400'
+file_owner_my_cnf: 'mysqld_exporter'
+file_group_my_cnf: 'mysqld_exporter'
+
+# mysqld_exporter_app.dir
+file_dst_mysqld_exporter_app_dir: "/{{common_app_dir}}/mysqld_exporter"
+file_mode_mysqld_exporter_app_dir: '0755'
+file_owner_mysqld_exporter_app_dir: 'root'
+file_group_mysqld_exporter_app_dir: 'root'
+
+# mysqld_exporter-current.link
+file_src_mysqld_exporter_current_link: "/{{common_app_dir}}/mysqld_exporter/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64"
+file_dst_mysqld_exporter_current_link: "/{{common_app_dir}}/mysqld_exporter/current"
+file_owner_mysqld_exporter_current_link: 'root'
+file_group_mysqld_exporter_current_link: 'root'
+
+# mysqld_exporter.tar.gz
+file_src_mysqld_exporter_tar_gz: "https://github.com/prometheus/mysqld_exporter/releases/download/v{{mysqld_exporter_version}}/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64.tar.gz"
+file_dst_mysqld_exporter_tar_gz: "/{{common_app_dir}}/mysqld_exporter/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64.tar.gz"
+file_mode_mysqld_exporter_tar_gz: '0644'
+file_owner_mysqld_exporter_tar_gz: 'root'
+file_group_mysqld_exporter_tar_gz: 'root'
+
+# mysqld_exporter
+file_src_mysqld_exporter: "/{{common_app_dir}}/mysqld_exporter/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64.tar.gz"
+file_dst_mysqld_exporter: "/{{common_app_dir}}/mysqld_exporter"
+file_owner_mysqld_exporter: 'root'
+file_group_mysqld_exporter: 'root'
+file_creates_mysqld_exporter: "/{{common_app_dir}}/mysqld_exporter/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64"
+
+# mysqld_exporter.service
+file_src_mysqld_exporter_service: 'templates/main/mysqld_exporter.service.j2'
+file_dst_mysqld_exporter_service: '/usr/lib/systemd/system/mysqld_exporter.service'
+file_mode_mysqld_exporter_service: '0644'
+file_owner_mysqld_exporter_service: 'root'
+file_group_mysqld_exporter_service: 'root'
+
+# mysqld_exporter.sysconfig
+file_src_mysqld_exporter_sysconfig: 'templates/main/mysqld_exporter.sysconfig.j2'
+file_dst_mysqld_exporter_sysconfig: '/etc/sysconfig/mysqld_exporter'
+file_mode_mysqld_exporter_sysconfig: '0644'
+file_owner_mysqld_exporter_sysconfig: 'root'
+file_group_mysqld_exporter_sysconfig: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# mysqld_exporter
+group_name_mysqld_exporter: 'mysqld_exporter'
+group_system_mysqld_exporter: 'yes'
+
+# mysqld_exporter
+user_name_mysqld_exporter: 'mysqld_exporter'
+user_comment_mysqld_exporter: 'MySQL Exporter'
+user_group_mysqld_exporter: 'mysqld_exporter'
+user_append_mysqld_exporter: 'yes'
+user_home_create_mysqld_exporter: 'yes'
+user_home_move_mysqld_exporter: 'no'
+user_home_remove_mysqld_exporter: 'no'
+user_home_force_mysqld_exporter: 'no'
+user_password_mysqld_exporter: '!'
+user_password_update_mysqld_exporter: 'always'
+user_shell_mysqld_exporter: '/sbin/nologin'
+user_system_mysqld_exporter: 'yes'
+
+# mysqld_exporter
+service_name_mysqld_exporter: 'mysqld_exporter'
