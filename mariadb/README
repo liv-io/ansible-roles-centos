@@ -212,7 +212,7 @@ ROLE
     Options    :
       Examples: '"mariadb: Run Backup - Error'
 
-  mariadb_root_password: 'mTA_4Vamn.DGrM5p2u8f6ScHm3_g9quA'
+  mariadb_root_password
     Description: Define the 'mariadb_root_password' option.
     Implemented: 0.1
     Required   : False
