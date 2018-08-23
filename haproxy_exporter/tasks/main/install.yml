@@ -62,28 +62,6 @@
     - install
     - haproxy_exporter
 
-- name: 'file create haproxy_exporter_data.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_haproxy_exporter_data_dir}}"
-    mode: "{{file_mode_haproxy_exporter_data_dir}}"
-    owner: "{{file_owner_haproxy_exporter_data_dir}}"
-    group: "{{file_group_haproxy_exporter_data_dir}}"
-  tags:
-    - install
-    - haproxy_exporter
-
-- name: 'file create textfile_collector.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_textfile_collector_dir}}"
-    mode: "{{file_mode_textfile_collector_dir}}"
-    owner: "{{file_owner_textfile_collector_dir}}"
-    group: "{{file_group_textfile_collector_dir}}"
-  tags:
-    - install
-    - haproxy_exporter
-
 - name: "file download haproxy_exporter.tar.gz"
   get_url:
     url: "{{file_src_haproxy_exporter_tar_gz}}"
@@ -119,6 +97,17 @@
     - install
     - haproxy_exporter
 
+- name: 'file create haproxy_exporter.sysconfig'
+  template:
+    src: "{{file_src_haproxy_exporter_sysconfig}}"
+    dest: "{{file_dst_haproxy_exporter_sysconfig}}"
+    mode: "{{file_mode_haproxy_exporter_sysconfig}}"
+    owner: "{{file_owner_haproxy_exporter_sysconfig}}"
+    group: "{{file_group_haproxy_exporter_sysconfig}}"
+  tags:
+    - install
+    - haproxy_exporter
+
 - name: 'file create haproxy_exporter.service'
   template:
     src: "{{file_src_haproxy_exporter_service}}"
@@ -127,6 +116,16 @@
     owner: "{{file_owner_haproxy_exporter_service}}"
     group: "{{file_group_haproxy_exporter_service}}"
   notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - haproxy_exporter
+
+#-------------------------------------------------------------------------------
+# META
+#-------------------------------------------------------------------------------
+
+- name: 'meta flush handlers'
+  meta: 'flush_handlers'
   tags:
     - install
     - haproxy_exporter

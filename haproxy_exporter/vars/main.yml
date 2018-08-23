@@ -10,23 +10,11 @@ file_mode_haproxy_exporter_app_dir: '0755'
 file_owner_haproxy_exporter_app_dir: 'root'
 file_group_haproxy_exporter_app_dir: 'root'
 
-# haproxy_exporter_data.dir
-file_dst_haproxy_exporter_data_dir: "/{{common_data_dir}}/haproxy_exporter"
-file_mode_haproxy_exporter_data_dir: '0755'
-file_owner_haproxy_exporter_data_dir: 'root'
-file_group_haproxy_exporter_data_dir: 'root'
-
 # haproxy_exporter-current.link
 file_src_haproxy_exporter_current_link: "/{{common_app_dir}}/haproxy_exporter/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64"
 file_dst_haproxy_exporter_current_link: "/{{common_app_dir}}/haproxy_exporter/current"
 file_owner_haproxy_exporter_current_link: 'root'
 file_group_haproxy_exporter_current_link: 'root'
-
-# textfile_collector.dir
-file_dst_textfile_collector_dir: "/{{common_data_dir}}/haproxy_exporter/textfile_collector"
-file_mode_textfile_collector_dir: '0755'
-file_owner_textfile_collector_dir: 'root'
-file_group_textfile_collector_dir: 'root'
 
 # haproxy_exporter.tar.gz
 file_src_haproxy_exporter_tar_gz: "https://github.com/prometheus/haproxy_exporter/releases/download/v{{haproxy_exporter_version}}/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64.tar.gz"
@@ -44,14 +32,14 @@ file_creates_haproxy_exporter: "/{{common_app_dir}}/haproxy_exporter/haproxy_exp
 
 # haproxy_exporter.service
 file_src_haproxy_exporter_service: 'templates/main/haproxy_exporter.service.j2'
-file_dst_haproxy_exporter_service: "/usr/lib/systemd/system/haproxy_exporter.service"
+file_dst_haproxy_exporter_service: '/usr/lib/systemd/system/haproxy_exporter.service'
 file_mode_haproxy_exporter_service: '0644'
 file_owner_haproxy_exporter_service: 'root'
 file_group_haproxy_exporter_service: 'root'
 
 # haproxy_exporter.sysconfig
 file_src_haproxy_exporter_sysconfig: 'templates/main/haproxy_exporter.sysconfig.j2'
-file_dst_haproxy_exporter_sysconfig: "/etc/sysconfig/haproxy_exporter"
+file_dst_haproxy_exporter_sysconfig: '/etc/sysconfig/haproxy_exporter'
 file_mode_haproxy_exporter_sysconfig: '0644'
 file_owner_haproxy_exporter_sysconfig: 'root'
 file_group_haproxy_exporter_sysconfig: 'root'
@@ -82,7 +70,7 @@ user_home_remove_haproxy_exporter: 'no'
 user_home_force_haproxy_exporter: 'no'
 user_password_haproxy_exporter: '!'
 user_password_update_haproxy_exporter: 'always'
-user_shell_haproxy_exporter: '/bin/bash'
+user_shell_haproxy_exporter: '/sbin/nologin'
 user_system_haproxy_exporter: 'yes'
 
 # haproxy_exporter
