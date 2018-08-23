@@ -1,0 +1,43 @@
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - haproxy_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create haproxy_exporter.sysconfig'
+  template:
+    src: "{{file_src_haproxy_exporter_sysconfig}}"
+    dest: "{{file_dst_haproxy_exporter_sysconfig}}"
+    mode: "{{file_mode_haproxy_exporter_sysconfig}}"
+    owner: "{{file_owner_haproxy_exporter_sysconfig}}"
+    group: "{{file_group_haproxy_exporter_sysconfig}}"
+  notify: 'service restart haproxy_exporter'
+  tags:
+    - enable
+    - haproxy_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start haproxy_exporter'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_haproxy_exporter}}"
+  tags:
+    - enable
+    - haproxy_exporter

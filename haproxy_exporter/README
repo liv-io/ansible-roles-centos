@@ -1,0 +1,169 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : haproxy_exporter
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+Simple server that scrapes HAProxy stats and exports them via HTTP for
+Prometheus consumption.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: haproxy_exporter
+    vars:
+      haproxy_exporter_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: haproxy_exporter
+    vars:
+      haproxy_exporter_state: 'enable'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: haproxy_exporter
+    vars:
+      haproxy_exporter_state: 'disable'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: haproxy_exporter
+    vars:
+      haproxy_exporter_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: haproxy_exporter
+    vars:
+      haproxy_exporter_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  haproxy_exporter_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  haproxy_exporter_checksum
+    Description: Define the 'haproxy_exporter_checksum' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'b0d1caaaf245d3d16432de9504575b3af1fec14b2206a468372a80843be001a0'
+    Options    :
+      Examples: 'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029' |
+                '2f18a32a7bb1c91307ed776cce50559bbcd66af90a61ea0a22a661ebe79e4fda'
+
+  haproxy_exporter_checksum_algorithm
+    Description: Define the 'haproxy_exporter_checksum_algorithm' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'sha256'
+    Options    :
+      Examples: 'sha256' | 'sha512'
+
+  haproxy_exporter_version
+    Description: Define the 'haproxy_exporter_version' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '0.9.0'
+    Options    :
+      Examples: '0.8.0' | '0.9.0'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  haproxy_exporter
+
+ROLES
+  common
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.5
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Development
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

@@ -1,0 +1,75 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - haproxy_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'user create haproxy_exporter'
+  user:
+    state: 'absent'
+    name: "{{user_name_haproxy_exporter}}"
+    remove: "{{user_home_remove_haproxy_exporter}}"
+    force: "{{user_home_force_haproxy_exporter}}"
+  tags:
+    - remove
+    - haproxy_exporter
+
+- name: 'group create haproxy_exporter'
+  group:
+    state: 'absent'
+    name: "{{group_name_haproxy_exporter}}"
+  tags:
+    - remove
+    - haproxy_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove haproxy_exporter_app.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_haproxy_exporter_app_dir}}"
+  tags:
+    - remove
+    - haproxy_exporter
+
+- name: 'file remove haproxy_exporter_data.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_haproxy_exporter_data_dir}}"
+  tags:
+    - remove
+    - haproxy_exporter
+
+- name: 'file remove haproxy_exporter.sysconfig'
+  file:
+    state: 'absent'
+    path: "{{file_dst_haproxy_exporter_sysconfig}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - haproxy_exporter
+
+- name: 'file remove haproxy_exporter.service'
+  file:
+    state: 'absent'
+    path: "{{file_dst_haproxy_exporter_service}}"
+  tags:
+    - remove
+    - haproxy_exporter

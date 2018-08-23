@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : haproxy_exporter.service
+# Type   : systemd unit file
+# Role   : haproxy_exporter
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+[Unit]
+Description=HAProxy Exporter
+After=syslog.target network.target
+
+[Service]
+User=haproxy_exporter
+Group=haproxy_exporter
+EnvironmentFile=/etc/sysconfig/haproxy_exporter
+ExecStart={{file_dst_haproxy_exporter_current_link}}/haproxy_exporter $OPTIONS
+
+[Install]
+WantedBy=multi-user.target
