@@ -15,6 +15,16 @@ DESCRIPTION
 Simple server that scrapes HAProxy stats and exports them via HTTP for
 Prometheus consumption.
 
+For proper functioning please also define the following settings in HAProxy:
+
+CONFIG
+  vars:
+    haproxy_stats_listen_state: 'enable'
+    haproxy_stats_auth:
+      - username: 'haproxy_exporter'
+        password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7'
+        comment: 'haproxy_exporter'
+
 For more detailed information on the usage and available configuration options
 please consult the following sections.
 
@@ -35,6 +45,8 @@ ENABLE
       - role: haproxy_exporter
     vars:
       haproxy_exporter_state: 'enable'
+      haproxy_exporter_haproxy_scrape_uri:
+        - {address: 'localhost', port: '9000', uri: '/haproxy?stats;csv', username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7'}
 
 DISABLE
   - hosts: all
@@ -42,6 +54,8 @@ DISABLE
       - role: haproxy_exporter
     vars:
       haproxy_exporter_state: 'disable'
+      haproxy_exporter_haproxy_scrape_uri:
+        - {address: 'localhost', port: '9000', uri: '/haproxy?stats;csv', username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7'}
 
 REMOVE
   - hosts: all
@@ -96,6 +110,18 @@ ROLE
     Default    : 'sha256'
     Options    :
       Examples: 'sha256' | 'sha512'
+
+  haproxy_exporter_haproxy_scrape_uri
+    Description: Define the 'haproxy_exporter_haproxy_scrape_uri' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7'}] }
+                [{address: 'localhost', port: '80', uri: '/admin?stats;csv', username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7'}]
+      None    : []
 
   haproxy_exporter_version
     Description: Define the 'haproxy_exporter_version' option.

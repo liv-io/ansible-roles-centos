@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2018-08-24)
+F: Add support for 'haproxy_exporter_haproxy_scrape_uri' option (haproxy.scrape-uri)
+
 * Version 0.1.1 (2018-08-23)
 I: Remove directories 'haproxy_exporter_data.dir' and 'textfile_collector.dir'
 I: Ensure file 'node_exporter.sysconfig' is being create during installation
