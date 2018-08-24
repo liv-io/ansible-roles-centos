@@ -73,13 +73,13 @@ defaults
   stats hide-version
 {% endif %}
 {% if not (haproxy_stats_realm == '') %}
-  stats realm '{{haproxy_stats_realm}}'
+  stats realm {{haproxy_stats_realm}}
 {% endif %}
 {% if not (haproxy_stats_refresh == '') %}
   stats refresh {{haproxy_stats_refresh|int(5)}}
 {% endif %}
 {% if not (haproxy_stats_show_desc == '') %}
-  stats show-desc '{{haproxy_stats_show_desc}}'
+  stats show-desc {{haproxy_stats_show_desc}}
 {% endif %}
 {% if (haproxy_stats_show_legends is match('true|yes|enable')) %}
   stats show-legends
@@ -88,14 +88,14 @@ defaults
   stats show-node {{ansible_hostname}}
 {% endif %}
 {% if not (haproxy_stats_uri == '') %}
-  stats uri '/haproxy?stats'
+  stats uri {{haproxy_stats_uri}}
 {% endif %}
 {% if (haproxy_stats_auth is defined) and not (haproxy_stats_auth == []) %}
 {% for auth in haproxy_stats_auth %}
 {% if (auth.comment is defined) %}
   # Auth: {{auth.comment}}
 {% endif %}
-  stats auth '{{auth.username}}':'{{auth.password}}'
+  stats auth {{auth.username}}:{{auth.password}}
 {% endfor %}
 {% endif %}
 {% endif %}
@@ -114,13 +114,13 @@ listen stats
   stats hide-version
 {% endif %}
 {% if not (haproxy_stats_realm == '') %}
-  stats realm '{{haproxy_stats_realm}}'
+  stats realm {{haproxy_stats_realm}}
 {% endif %}
 {% if not (haproxy_stats_refresh == '') %}
   stats refresh {{haproxy_stats_refresh|int(5)}}
 {% endif %}
 {% if not (haproxy_stats_show_desc == '') %}
-  stats show-desc '{{haproxy_stats_show_desc}}'
+  stats show-desc {{haproxy_stats_show_desc}}
 {% endif %}
 {% if (haproxy_stats_show_legends is match('true|yes|enable')) %}
   stats show-legends
@@ -129,14 +129,14 @@ listen stats
   stats show-node {{ansible_hostname}}
 {% endif %}
 {% if not (haproxy_stats_uri == '') %}
-  stats uri '/haproxy?stats'
+  stats uri {{haproxy_stats_uri}}
 {% endif %}
 {% if (haproxy_stats_auth is defined) and not (haproxy_stats_auth == []) %}
 {% for auth in haproxy_stats_auth %}
 {% if (auth.comment is defined) %}
   # Auth: {{auth.comment}}
 {% endif %}
-  stats auth '{{auth.username}}':'{{auth.password}}'
+  stats auth {{auth.username}}:{{auth.password}}
 {% endfor %}
 {% endif %}
 
