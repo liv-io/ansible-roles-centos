@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2018-08-24)
+B: Remove single quotes from 'haproxy_stats_show_node' option (only digits, letters, hyphen or underscode are supported)
+
 * Version 0.2.0 (2018-08-24)
 F: Add support for 'stats' options
 

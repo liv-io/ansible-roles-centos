@@ -86,7 +86,7 @@ defaults
   stats show-legends
 {% endif %}
 {% if (haproxy_stats_show_node is match('true|yes|enable')) %}
-  stats show-node '{{ansible_hostname}}'
+  stats show-node {{ansible_hostname}}
 {% endif %}
 {% if not (haproxy_stats_uri == '') %}
   stats uri '/admin?stats'
