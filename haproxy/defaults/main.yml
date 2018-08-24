@@ -4,10 +4,13 @@ haproxy_state: 'enable'
 
 haproxy_custom_config: []
 
-haproxy_stats_auth:
-  - {username: 'admin', password: 'vD4.eT6d5PLJu_Ft28q-R.A4J3N,bcWp', comment: 'default admin'}
+haproxy_stats_auth: []
+
+haproxy_stats_defaults_state: 'disable'
 
 haproxy_stats_hide_version: 'true'
+
+haproxy_stats_listen_state: 'disable'
 
 haproxy_stats_realm: 'Haproxy\ Statistics'
 
@@ -19,6 +22,4 @@ haproxy_stats_show_legends: 'true'
 
 haproxy_stats_show_node: 'true'
 
-haproxy_stats_state: 'disable'
-
-haproxy_stats_uri: '/admin?stats'
+haproxy_stats_uri: '/haproxy?stats'

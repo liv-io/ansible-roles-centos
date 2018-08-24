@@ -13,6 +13,13 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.0 (2018-08-24)
+F: Add support for 'haproxy_stats_defaults_state' and 'haproxy_stats_listen_state' options
+F: Remove support for 'haproxy_stats_state' option
+I: Change default 'haproxy_stats_uri' to official default (/haproxy?stats)
+I: Remove default stats user 'admin'
+I: Minor documentation corrections and improvements
+
 * Version 0.2.1 (2018-08-24)
 B: Remove single quotes from 'haproxy_stats_show_node' option (only digits, letters, hyphen or underscode are supported)
 

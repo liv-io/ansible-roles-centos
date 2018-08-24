@@ -45,10 +45,9 @@ ENABLE
       - role: haproxy
     vars:
       haproxy_state: 'enable'
-      haproxy_stats_state: 'enable'
-      haproxy_stats_auth:
+      haproxy_stats_listen_state: 'enable'
+      haproxy_stats_auth
         - {username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7', comment: 'haproxy_exporter'}
-      haproxy_stats_show_desc: 'HAProxy Production 01'
 
 DISABLE
   - hosts: all
@@ -56,10 +55,9 @@ DISABLE
       - role: haproxy
     vars:
       haproxy_state: 'disable'
-      haproxy_stats_state: 'enable'
-      haproxy_stats_auth:
+      haproxy_stats_listen_state: 'enable'
+      haproxy_stats_auth
         - {username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7', comment: 'haproxy_exporter'}
-      haproxy_stats_show_desc: 'HAProxy Production 01'
 
 REMOVE
   - hosts: all
@@ -102,7 +100,7 @@ ROLE
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{comment: 'btc'},
+      Examples: [{comment: 'btc',
                   config: {'frontend btc',
                            '  description btc',
                            '  mode tcp',
@@ -115,7 +113,7 @@ ROLE
                            '  balance roundrobin',
                            '  server host01 10.10.10.10:8332',
                            '  server host02 10.20.10.10:8332',
-                           '  server host02 10.30.10.10:8332'}]
+                           '  server host02 10.30.10.10:8332'}}]
       None: []
 
   haproxy_stats_auth
@@ -124,12 +122,23 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
-    Default    : [{username: 'admin', password: 'vD4.eT6d5PLJu_Ft28q-R.A4J3N,bcWp', comment: 'default admin'}]
+    Default    : []
     Options    :
       Examples: [{username: 'admin', password: 'vD4.eT6d5PLJu_Ft28q-R.A4J3N,bcWp', comment: 'default admin'},
                  {username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7', comment: 'haproxy_exporter'},
                  {username: 'user', password: 'F2R2T_UgE.LtB-3BEHcQxq98wfr2P-GM', comment: 'default user'}]
       None    : []
+
+  haproxy_stats_defaults_state
+    Description: Control the 'haproxy_stats_defaults_state' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'disable'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
 
   haproxy_stats_hide_version
     Description: Control the 'haproxy_stats_hide_version' option.
@@ -138,6 +147,17 @@ ROLE
     Value      : Predetermined
     Type       : String
     Default    : 'true'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  haproxy_stats_listen_state
+    Description: Control the 'haproxy_stats_listen_state' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'disable'
     Options    :
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
@@ -182,17 +202,6 @@ ROLE
     Value      : Predetermined
     Type       : String
     Default    : 'true'
-    Options    :
-      Enable : 'true' | 'yes' | 'enable'
-      Disable: 'false' | 'no' | 'disable'
-
-  haproxy_stats_state
-    Description: Control the 'haproxy_stats_state' option.
-    Implemented: 0.2
-    Required   : False
-    Value      : Predetermined
-    Type       : String
-    Default    : 'disable'
     Options    :
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
