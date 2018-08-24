@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2018-08-24)
+I: Escape 'haproxy.scrape-uri' value
+
 * Version 0.2.0 (2018-08-24)
 F: Add support for 'haproxy_exporter_haproxy_scrape_uri' option (haproxy.scrape-uri)
 
