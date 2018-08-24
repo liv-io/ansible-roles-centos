@@ -212,9 +212,9 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '/admin?stats'
+    Default    : '/haproxy?stats'
     Options    :
-      Examples: '/admin?stats' | '/stats'
+      Examples: '/stats'
       None    : ''
 
 --------------------------------------------------------------------------------

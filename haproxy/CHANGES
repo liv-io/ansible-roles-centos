@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.1 (2018-08-24)
+B: Change default 'haproxy_stats_uri' to official default (/haproxy?stats)
+
 * Version 0.3.0 (2018-08-24)
 F: Add support for 'haproxy_stats_defaults_state' and 'haproxy_stats_listen_state' options
 F: Remove support for 'haproxy_stats_state' option

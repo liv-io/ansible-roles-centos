@@ -88,7 +88,7 @@ defaults
   stats show-node {{ansible_hostname}}
 {% endif %}
 {% if not (haproxy_stats_uri == '') %}
-  stats uri '/admin?stats'
+  stats uri '/haproxy?stats'
 {% endif %}
 {% if (haproxy_stats_auth is defined) and not (haproxy_stats_auth == []) %}
 {% for auth in haproxy_stats_auth %}
@@ -129,7 +129,7 @@ listen stats
   stats show-node {{ansible_hostname}}
 {% endif %}
 {% if not (haproxy_stats_uri == '') %}
-  stats uri '/admin?stats'
+  stats uri '/haproxy?stats'
 {% endif %}
 {% if (haproxy_stats_auth is defined) and not (haproxy_stats_auth == []) %}
 {% for auth in haproxy_stats_auth %}
