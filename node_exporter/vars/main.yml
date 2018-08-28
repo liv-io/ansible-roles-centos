@@ -66,6 +66,9 @@ file_group_node_exporter_sysconfig: 'root'
 # COMMANDS
 #-------------------------------------------------------------------------------
 
+# check service node_exporter
+command_cmd_check_service_node_exporter: 'systemctl cat node_exporter.service > /dev/null 2>&1'
+
 # systemctl daemon-reload
 command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 

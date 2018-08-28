@@ -19,7 +19,27 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'user create node_exporter'
+- name: 'command check service node_exporter'
+  shell: "{{command_cmd_check_service_node_exporter}}"
+  register: register_check_service_node_exporter
+  changed_when: (register_check_service_node_exporter.rc == 0)
+  failed_when: (register_check_service_node_exporter.rc > 1)
+  check_mode: 'no'
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'service stop node_exporter'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_node_exporter}}"
+  when: (register_check_service_node_exporter.rc == 0)
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'user remove node_exporter'
   user:
     state: 'absent'
     name: "{{user_name_node_exporter}}"
@@ -29,7 +49,7 @@
     - remove
     - node_exporter
 
-- name: 'group create node_exporter'
+- name: 'group remove node_exporter'
   group:
     state: 'absent'
     name: "{{group_name_node_exporter}}"
