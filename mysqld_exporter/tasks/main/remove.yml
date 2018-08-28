@@ -19,7 +19,27 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'user create mysqld_exporter'
+- name: 'command check service mysqld_exporter'
+  shell: "{{command_cmd_check_service_mysqld_exporter}}"
+  register: register_check_service_mysqld_exporter
+  changed_when: (register_check_service_mysqld_exporter.rc == 0)
+  failed_when: (register_check_service_mysqld_exporter.rc > 1)
+  check_mode: 'no'
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'service stop mysqld_exporter'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_mysqld_exporter}}"
+  when: (register_check_service_mysqld_exporter.rc == 0)
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'user remove mysqld_exporter'
   user:
     state: 'absent'
     name: "{{user_name_mysqld_exporter}}"
@@ -29,7 +49,7 @@
     - remove
     - mysqld_exporter
 
-- name: 'group create mysqld_exporter'
+- name: 'group remove mysqld_exporter'
   group:
     state: 'absent'
     name: "{{group_name_mysqld_exporter}}"

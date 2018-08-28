@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-08-28)
+B: Fix remove sequence (stop service before removing group and user)
+I: Correct task names
+
 * Version 0.1.1 (2018-08-28)
 I: Reorganize and improve folder structure
 I: Rename and move MySQL credentials file
