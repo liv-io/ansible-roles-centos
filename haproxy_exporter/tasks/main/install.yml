@@ -62,6 +62,17 @@
     - install
     - haproxy_exporter
 
+- name: 'file create haproxy_exporter_bin.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_haproxy_exporter_bin_dir}}"
+    mode: "{{file_mode_haproxy_exporter_bin_dir}}"
+    owner: "{{file_owner_haproxy_exporter_bin_dir}}"
+    group: "{{file_group_haproxy_exporter_bin_dir}}"
+  tags:
+    - install
+    - haproxy_exporter
+
 - name: "file download haproxy_exporter.tar.gz"
   get_url:
     url: "{{file_src_haproxy_exporter_tar_gz}}"

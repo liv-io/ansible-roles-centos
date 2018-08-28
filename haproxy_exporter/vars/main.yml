@@ -10,25 +10,31 @@ file_mode_haproxy_exporter_app_dir: '0755'
 file_owner_haproxy_exporter_app_dir: 'root'
 file_group_haproxy_exporter_app_dir: 'root'
 
+# haproxy_exporter_bin.dir
+file_dst_haproxy_exporter_bin_dir: "/{{common_app_dir}}/haproxy_exporter/bin"
+file_mode_haproxy_exporter_bin_dir: '0755'
+file_owner_haproxy_exporter_bin_dir: 'root'
+file_group_haproxy_exporter_bin_dir: 'root'
+
 # haproxy_exporter-current.link
-file_src_haproxy_exporter_current_link: "/{{common_app_dir}}/haproxy_exporter/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64"
-file_dst_haproxy_exporter_current_link: "/{{common_app_dir}}/haproxy_exporter/current"
+file_src_haproxy_exporter_current_link: "/{{common_app_dir}}/haproxy_exporter/bin/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64"
+file_dst_haproxy_exporter_current_link: "/{{common_app_dir}}/haproxy_exporter/bin/current"
 file_owner_haproxy_exporter_current_link: 'root'
 file_group_haproxy_exporter_current_link: 'root'
 
 # haproxy_exporter.tar.gz
 file_src_haproxy_exporter_tar_gz: "https://github.com/prometheus/haproxy_exporter/releases/download/v{{haproxy_exporter_version}}/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64.tar.gz"
-file_dst_haproxy_exporter_tar_gz: "/{{common_app_dir}}/haproxy_exporter/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64.tar.gz"
+file_dst_haproxy_exporter_tar_gz: "/{{common_app_dir}}/haproxy_exporter/bin/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64.tar.gz"
 file_mode_haproxy_exporter_tar_gz: '0644'
 file_owner_haproxy_exporter_tar_gz: 'root'
 file_group_haproxy_exporter_tar_gz: 'root'
 
 # haproxy_exporter
-file_src_haproxy_exporter: "/{{common_app_dir}}/haproxy_exporter/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64.tar.gz"
-file_dst_haproxy_exporter: "/{{common_app_dir}}/haproxy_exporter"
+file_src_haproxy_exporter: "/{{common_app_dir}}/haproxy_exporter/bin/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64.tar.gz"
+file_dst_haproxy_exporter: "/{{common_app_dir}}/haproxy_exporter/bin"
 file_owner_haproxy_exporter: 'root'
 file_group_haproxy_exporter: 'root'
-file_creates_haproxy_exporter: "/{{common_app_dir}}/haproxy_exporter/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64"
+file_creates_haproxy_exporter: "/{{common_app_dir}}/haproxy_exporter/bin/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64"
 
 # haproxy_exporter.service
 file_src_haproxy_exporter_service: 'templates/main/haproxy_exporter.service.j2'

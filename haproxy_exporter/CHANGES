@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.2 (2018-08-28)
+I: Reorganize and improve folder structure
+
 * Version 0.2.1 (2018-08-24)
 I: Escape 'haproxy.scrape-uri' value
 
