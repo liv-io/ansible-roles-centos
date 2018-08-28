@@ -62,6 +62,28 @@
     - install
     - mysqld_exporter
 
+- name: 'file create mysqld_exporter_bin.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_mysqld_exporter_bin_dir}}"
+    mode: "{{file_mode_mysqld_exporter_bin_dir}}"
+    owner: "{{file_owner_mysqld_exporter_bin_dir}}"
+    group: "{{file_group_mysqld_exporter_bin_dir}}"
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: 'file create mysqld_exporter_conf.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_mysqld_exporter_conf_dir}}"
+    mode: "{{file_mode_mysqld_exporter_conf_dir}}"
+    owner: "{{file_owner_mysqld_exporter_conf_dir}}"
+    group: "{{file_group_mysqld_exporter_conf_dir}}"
+  tags:
+    - install
+    - mysqld_exporter
+
 - name: "file download mysqld_exporter.tar.gz"
   get_url:
     url: "{{file_src_mysqld_exporter_tar_gz}}"
@@ -97,13 +119,13 @@
     - install
     - mysqld_exporter
 
-- name: 'file create my.cnf'
+- name: 'file create credentials.cnf'
   template:
-    src: "{{file_src_my_cnf}}"
-    dest: "{{file_dst_my_cnf}}"
-    mode: "{{file_mode_my_cnf}}"
-    owner: "{{file_owner_my_cnf}}"
-    group: "{{file_group_my_cnf}}"
+    src: "{{file_src_credentials_cnf}}"
+    dest: "{{file_dst_credentials_cnf}}"
+    mode: "{{file_mode_credentials_cnf}}"
+    owner: "{{file_owner_credentials_cnf}}"
+    group: "{{file_group_credentials_cnf}}"
   tags:
     - install
     - mysqld_exporter

@@ -65,12 +65,3 @@
   tags:
     - remove
     - mysqld_exporter
-
-- name: 'file remove my.cnf'
-  file:
-    state: 'absent'
-    path: "{{file_dst_my_cnf}}"
-  tags:
-    - remove
-    - mysqld_exporter
-

@@ -17,13 +17,13 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create my.cnf'
+- name: 'file create credentials.cnf'
   template:
-    src: "{{file_src_my_cnf}}"
-    dest: "{{file_dst_my_cnf}}"
-    mode: "{{file_mode_my_cnf}}"
-    owner: "{{file_owner_my_cnf}}"
-    group: "{{file_group_my_cnf}}"
+    src: "{{file_src_credentials_cnf}}"
+    dest: "{{file_dst_credentials_cnf}}"
+    mode: "{{file_mode_credentials_cnf}}"
+    owner: "{{file_owner_credentials_cnf}}"
+    group: "{{file_group_credentials_cnf}}"
   notify: 'service restart mysqld_exporter'
   tags:
     - enable
