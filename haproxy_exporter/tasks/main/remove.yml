@@ -19,7 +19,27 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'user create haproxy_exporter'
+- name: 'command check service haproxy_exporter'
+  shell: "{{command_cmd_check_service_haproxy_exporter}}"
+  register: register_check_service_haproxy_exporter
+  changed_when: (register_check_service_haproxy_exporter.rc == 0)
+  failed_when: (register_check_service_haproxy_exporter.rc > 1)
+  check_mode: 'no'
+  tags:
+    - remove
+    - haproxy_exporter
+
+- name: 'service stop haproxy_exporter'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_haproxy_exporter}}"
+  when: (register_check_service_haproxy_exporter.rc == 0)
+  tags:
+    - remove
+    - haproxy_exporter
+
+- name: 'user remove haproxy_exporter'
   user:
     state: 'absent'
     name: "{{user_name_haproxy_exporter}}"
@@ -29,7 +49,7 @@
     - remove
     - haproxy_exporter
 
-- name: 'group create haproxy_exporter'
+- name: 'group remove haproxy_exporter'
   group:
     state: 'absent'
     name: "{{group_name_haproxy_exporter}}"
