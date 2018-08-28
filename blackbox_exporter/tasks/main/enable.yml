@@ -1,0 +1,55 @@
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - blackbox_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create config.yml'
+  template:
+    src: "{{file_src_config_yml}}"
+    dest: "{{file_dst_config_yml}}"
+    mode: "{{file_mode_config_yml}}"
+    owner: "{{file_owner_config_yml}}"
+    group: "{{file_group_config_yml}}"
+  notify: 'service restart blackbox_exporter'
+  tags:
+    - enable
+    - blackbox_exporter
+
+- name: 'file create blackbox_exporter.sysconfig'
+  template:
+    src: "{{file_src_blackbox_exporter_sysconfig}}"
+    dest: "{{file_dst_blackbox_exporter_sysconfig}}"
+    mode: "{{file_mode_blackbox_exporter_sysconfig}}"
+    owner: "{{file_owner_blackbox_exporter_sysconfig}}"
+    group: "{{file_group_blackbox_exporter_sysconfig}}"
+  notify: 'service restart blackbox_exporter'
+  tags:
+    - enable
+    - blackbox_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start blackbox_exporter'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_blackbox_exporter}}"
+  tags:
+    - enable
+    - blackbox_exporter

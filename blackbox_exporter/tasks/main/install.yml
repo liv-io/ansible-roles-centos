@@ -1,0 +1,164 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - blackbox_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'group create blackbox_exporter'
+  group:
+    state: 'present'
+    name: "{{group_name_blackbox_exporter}}"
+    system: "{{group_system_blackbox_exporter}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: 'user create blackbox_exporter'
+  user:
+    state: 'present'
+    name: "{{user_name_blackbox_exporter}}"
+    comment: "{{user_comment_blackbox_exporter}}"
+    group: "{{user_group_blackbox_exporter}}"
+    append: "{{user_append_blackbox_exporter}}"
+    createhome: "{{user_home_create_blackbox_exporter}}"
+    move_home: "{{user_home_move_blackbox_exporter}}"
+    remove: "{{user_home_remove_blackbox_exporter}}"
+    force: "{{user_home_force_blackbox_exporter}}"
+    password: "{{user_password_blackbox_exporter}}"
+    update_password: "{{user_password_update_blackbox_exporter}}"
+    shell: "{{user_shell_blackbox_exporter}}"
+    system: "{{user_system_blackbox_exporter}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create blackbox_exporter_app.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_blackbox_exporter_app_dir}}"
+    mode: "{{file_mode_blackbox_exporter_app_dir}}"
+    owner: "{{file_owner_blackbox_exporter_app_dir}}"
+    group: "{{file_group_blackbox_exporter_app_dir}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: 'file create blackbox_exporter_bin.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_blackbox_exporter_bin_dir}}"
+    mode: "{{file_mode_blackbox_exporter_bin_dir}}"
+    owner: "{{file_owner_blackbox_exporter_bin_dir}}"
+    group: "{{file_group_blackbox_exporter_bin_dir}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: 'file create blackbox_exporter_conf.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_blackbox_exporter_conf_dir}}"
+    mode: "{{file_mode_blackbox_exporter_conf_dir}}"
+    owner: "{{file_owner_blackbox_exporter_conf_dir}}"
+    group: "{{file_group_blackbox_exporter_conf_dir}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: "file download blackbox_exporter.tar.gz"
+  get_url:
+    url: "{{file_src_blackbox_exporter_tar_gz}}"
+    dest: "{{file_dst_blackbox_exporter_tar_gz}}"
+    mode: "{{file_mode_blackbox_exporter_tar_gz}}"
+    owner: "{{file_owner_blackbox_exporter_tar_gz}}"
+    group: "{{file_group_blackbox_exporter_tar_gz}}"
+    checksum: "{{blackbox_exporter_checksum_algorithm}}:{{blackbox_exporter_checksum}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: "file unarchive blackbox_exporter"
+  unarchive:
+    src: "{{file_src_blackbox_exporter}}"
+    dest: "{{file_dst_blackbox_exporter}}"
+    owner: "{{file_owner_blackbox_exporter}}"
+    group: "{{file_group_blackbox_exporter}}"
+    creates: "{{file_creates_blackbox_exporter}}"
+    remote_src: 'yes'
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: 'file create blackbox_exporter-current.link'
+  file:
+    state: 'link'
+    src: "{{file_src_blackbox_exporter_current_link}}"
+    path: "{{file_dst_blackbox_exporter_current_link}}"
+    owner: "{{file_owner_blackbox_exporter_current_link}}"
+    group: "{{file_group_blackbox_exporter_current_link}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: 'file create config.yml'
+  template:
+    src: "{{file_src_config_yml}}"
+    dest: "{{file_dst_config_yml}}"
+    mode: "{{file_mode_config_yml}}"
+    owner: "{{file_owner_config_yml}}"
+    group: "{{file_group_config_yml}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: 'file create blackbox_exporter.sysconfig'
+  template:
+    src: "{{file_src_blackbox_exporter_sysconfig}}"
+    dest: "{{file_dst_blackbox_exporter_sysconfig}}"
+    mode: "{{file_mode_blackbox_exporter_sysconfig}}"
+    owner: "{{file_owner_blackbox_exporter_sysconfig}}"
+    group: "{{file_group_blackbox_exporter_sysconfig}}"
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: 'file create blackbox_exporter.service'
+  template:
+    src: "{{file_src_blackbox_exporter_service}}"
+    dest: "{{file_dst_blackbox_exporter_service}}"
+    mode: "{{file_mode_blackbox_exporter_service}}"
+    owner: "{{file_owner_blackbox_exporter_service}}"
+    group: "{{file_group_blackbox_exporter_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - blackbox_exporter
+
+#-------------------------------------------------------------------------------
+# META
+#-------------------------------------------------------------------------------
+
+- name: 'meta flush handlers'
+  meta: 'flush_handlers'
+  tags:
+    - install
+    - blackbox_exporter

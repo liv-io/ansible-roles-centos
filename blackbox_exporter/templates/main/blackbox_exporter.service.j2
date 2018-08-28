@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : blackbox_exporter.service
+# Type   : systemd unit file
+# Role   : blackbox_exporter
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+[Unit]
+Description=Blackbox Exporter
+After=syslog.target network.target
+
+[Service]
+User=blackbox_exporter
+Group=blackbox_exporter
+EnvironmentFile=/etc/sysconfig/blackbox_exporter
+ExecStart={{file_dst_blackbox_exporter_current_link}}/blackbox_exporter $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

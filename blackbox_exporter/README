@@ -1,0 +1,169 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : blackbox_exporter
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS,
+DNS, TCP and ICMP.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: blackbox_exporter
+    vars:
+      blackbox_exporter_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: blackbox_exporter
+    vars:
+      blackbox_exporter_state: 'enable'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: blackbox_exporter
+    vars:
+      blackbox_exporter_state: 'disable'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: blackbox_exporter
+    vars:
+      blackbox_exporter_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: blackbox_exporter
+    vars:
+      blackbox_exporter_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  blackbox_exporter_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  blackbox_exporter_checksum
+    Description: Define the 'blackbox_exporter_checksum' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'c5d8ba7d91101524fa7c3f5e17256d467d44d5e1d243e251fd795e0ab4a83605'
+    Options    :
+      Examples: 'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029' |
+                '2f18a32a7bb1c91307ed776cce50559bbcd66af90a61ea0a22a661ebe79e4fda'
+
+  blackbox_exporter_checksum_algorithm
+    Description: Define the 'blackbox_exporter_checksum_algorithm' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'sha256'
+    Options    :
+      Examples: 'sha256' | 'sha512'
+
+  blackbox_exporter_version
+    Description: Define the 'blackbox_exporter_version' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '0.12.0'
+    Options    :
+      Examples: '0.11.0' | '0.12.0'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  blackbox_exporter
+
+ROLES
+  common
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.5
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Development
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

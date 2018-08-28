@@ -1,0 +1,87 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - blackbox_exporter
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'command check service blackbox_exporter'
+  shell: "{{command_cmd_check_service_blackbox_exporter}}"
+  register: register_check_service_blackbox_exporter
+  changed_when: (register_check_service_blackbox_exporter.rc == 0)
+  failed_when: (register_check_service_blackbox_exporter.rc > 1)
+  check_mode: 'no'
+  tags:
+    - remove
+    - blackbox_exporter
+
+- name: 'service stop blackbox_exporter'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_blackbox_exporter}}"
+  when: (register_check_service_blackbox_exporter.rc == 0)
+  tags:
+    - remove
+    - blackbox_exporter
+
+- name: 'user remove blackbox_exporter'
+  user:
+    state: 'absent'
+    name: "{{user_name_blackbox_exporter}}"
+    remove: "{{user_home_remove_blackbox_exporter}}"
+    force: "{{user_home_force_blackbox_exporter}}"
+  tags:
+    - remove
+    - blackbox_exporter
+
+- name: 'group remove blackbox_exporter'
+  group:
+    state: 'absent'
+    name: "{{group_name_blackbox_exporter}}"
+  tags:
+    - remove
+    - blackbox_exporter
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove blackbox_exporter_bin.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_blackbox_exporter_bin_dir}}"
+  tags:
+    - remove
+    - blackbox_exporter
+
+- name: 'file remove blackbox_exporter.sysconfig'
+  file:
+    state: 'absent'
+    path: "{{file_dst_blackbox_exporter_sysconfig}}"
+  tags:
+    - remove
+    - blackbox_exporter
+
+- name: 'file remove blackbox_exporter.service'
+  file:
+    state: 'absent'
+    path: "{{file_dst_blackbox_exporter_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - blackbox_exporter
