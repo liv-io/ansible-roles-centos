@@ -19,7 +19,7 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'user create restic'
+- name: 'user remove restic'
   user:
     state: 'absent'
     name: "{{user_name_restic}}"
@@ -29,7 +29,7 @@
     - remove
     - restic
 
-- name: 'group create restic'
+- name: 'group remove restic'
   group:
     state: 'absent'
     name: "{{group_name_restic}}"
