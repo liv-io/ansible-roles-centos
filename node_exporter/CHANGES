@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.3 (2018-08-28)
+I: Reorganize and improve folder structure
+
 * Version 0.1.2 (2018-08-23)
 I: Ensure file 'node_exporter.sysconfig' is being create during installation
 I: Flush handlers after installation tasks for file 'node_exporter.service'

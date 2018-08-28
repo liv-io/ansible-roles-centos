@@ -10,37 +10,43 @@ file_mode_node_exporter_app_dir: '0755'
 file_owner_node_exporter_app_dir: 'root'
 file_group_node_exporter_app_dir: 'root'
 
-# node_exporter_data.dir
-file_dst_node_exporter_data_dir: "/{{common_data_dir}}/node_exporter"
-file_mode_node_exporter_data_dir: '0755'
-file_owner_node_exporter_data_dir: 'root'
-file_group_node_exporter_data_dir: 'root'
+# node_exporter_bin.dir
+file_dst_node_exporter_bin_dir: "/{{common_app_dir}}/node_exporter/bin"
+file_mode_node_exporter_bin_dir: '0755'
+file_owner_node_exporter_bin_dir: 'root'
+file_group_node_exporter_bin_dir: 'root'
+
+# node_exporter_conf.dir
+file_dst_node_exporter_conf_dir: "/{{common_app_dir}}/node_exporter/conf"
+file_mode_node_exporter_conf_dir: '0755'
+file_owner_node_exporter_conf_dir: 'root'
+file_group_node_exporter_conf_dir: 'root'
 
 # node_exporter-current.link
-file_src_node_exporter_current_link: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64"
-file_dst_node_exporter_current_link: "/{{common_app_dir}}/node_exporter/current"
+file_src_node_exporter_current_link: "/{{common_app_dir}}/node_exporter/bin/node_exporter-{{node_exporter_version}}.linux-amd64"
+file_dst_node_exporter_current_link: "/{{common_app_dir}}/node_exporter/bin/current"
 file_owner_node_exporter_current_link: 'root'
 file_group_node_exporter_current_link: 'root'
 
 # textfile_collector.dir
-file_dst_textfile_collector_dir: "/{{common_data_dir}}/node_exporter/textfile_collector"
+file_dst_textfile_collector_dir: "/{{common_app_dir}}/node_exporter/conf/textfile_collector"
 file_mode_textfile_collector_dir: '0755'
 file_owner_textfile_collector_dir: 'root'
 file_group_textfile_collector_dir: 'root'
 
 # node_exporter.tar.gz
 file_src_node_exporter_tar_gz: "https://github.com/prometheus/node_exporter/releases/download/v{{node_exporter_version}}/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"
-file_dst_node_exporter_tar_gz: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"
+file_dst_node_exporter_tar_gz: "/{{common_app_dir}}/node_exporter/bin/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"
 file_mode_node_exporter_tar_gz: '0644'
 file_owner_node_exporter_tar_gz: 'root'
 file_group_node_exporter_tar_gz: 'root'
 
 # node_exporter
-file_src_node_exporter: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"
-file_dst_node_exporter: "/{{common_app_dir}}/node_exporter"
+file_src_node_exporter: "/{{common_app_dir}}/node_exporter/bin/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"
+file_dst_node_exporter: "/{{common_app_dir}}/node_exporter/bin"
 file_owner_node_exporter: 'root'
 file_group_node_exporter: 'root'
-file_creates_node_exporter: "/{{common_app_dir}}/node_exporter/node_exporter-{{node_exporter_version}}.linux-amd64"
+file_creates_node_exporter: "/{{common_app_dir}}/node_exporter/bin/node_exporter-{{node_exporter_version}}.linux-amd64"
 
 # node_exporter.service
 file_src_node_exporter_service: 'templates/main/node_exporter.service.j2'
