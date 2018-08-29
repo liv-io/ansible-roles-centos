@@ -119,28 +119,6 @@
     - install
     - mysqld_exporter
 
-- name: 'file create credentials.cnf'
-  template:
-    src: "{{file_src_credentials_cnf}}"
-    dest: "{{file_dst_credentials_cnf}}"
-    mode: "{{file_mode_credentials_cnf}}"
-    owner: "{{file_owner_credentials_cnf}}"
-    group: "{{file_group_credentials_cnf}}"
-  tags:
-    - install
-    - mysqld_exporter
-
-- name: 'file create mysqld_exporter.sysconfig'
-  template:
-    src: "{{file_src_mysqld_exporter_sysconfig}}"
-    dest: "{{file_dst_mysqld_exporter_sysconfig}}"
-    mode: "{{file_mode_mysqld_exporter_sysconfig}}"
-    owner: "{{file_owner_mysqld_exporter_sysconfig}}"
-    group: "{{file_group_mysqld_exporter_sysconfig}}"
-  tags:
-    - install
-    - mysqld_exporter
-
 - name: 'file create mysqld_exporter.service'
   template:
     src: "{{file_src_mysqld_exporter_service}}"
