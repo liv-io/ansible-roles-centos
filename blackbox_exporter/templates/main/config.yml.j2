@@ -15,3 +15,23 @@
 #
 #-------------------------------------------------------------------------------
 
+modules:
+{% for item in blackbox_exporter_config|default('') %}
+{% if (item.name is defined) and not (item.name == '') %}
+  #-----------------------------------------------------------------------------
+  # {{(item.name|upper)}}
+  #-----------------------------------------------------------------------------
+
+{% endif %}
+{% if (item.comment is defined) and not (item.comment == '') %}
+  # {{(item.comment)}}
+{% endif %}
+  {{item.name}}:
+    prober: {{item.prober}}
+    timeout: {{item.timeout|default('5s')}}
+    {{item.prober}}:
+{% for config in item.config %}
+      {{config}}
+{% endfor %}
+
+{% endfor %}

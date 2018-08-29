@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2018-08-29)
+F: Add option to configure 'config.yml' configuration file
+
 * Version 0.1.1 (2018-08-28)
 I: Ensure user's home directory is being removed during remove sequence
 

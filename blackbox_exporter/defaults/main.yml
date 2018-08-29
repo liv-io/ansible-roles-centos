@@ -6,4 +6,6 @@ blackbox_exporter_checksum_algorithm: 'sha256'
 
 blackbox_exporter_checksum: 'c5d8ba7d91101524fa7c3f5e17256d467d44d5e1d243e251fd795e0ab4a83605'
 
+blackbox_exporter_config: []
+
 blackbox_exporter_version: '0.12.0'
