@@ -119,28 +119,6 @@
     - install
     - blackbox_exporter
 
-- name: 'file create config.yml'
-  template:
-    src: "{{file_src_config_yml}}"
-    dest: "{{file_dst_config_yml}}"
-    mode: "{{file_mode_config_yml}}"
-    owner: "{{file_owner_config_yml}}"
-    group: "{{file_group_config_yml}}"
-  tags:
-    - install
-    - blackbox_exporter
-
-- name: 'file create blackbox_exporter.sysconfig'
-  template:
-    src: "{{file_src_blackbox_exporter_sysconfig}}"
-    dest: "{{file_dst_blackbox_exporter_sysconfig}}"
-    mode: "{{file_mode_blackbox_exporter_sysconfig}}"
-    owner: "{{file_owner_blackbox_exporter_sysconfig}}"
-    group: "{{file_group_blackbox_exporter_sysconfig}}"
-  tags:
-    - install
-    - blackbox_exporter
-
 - name: 'file create blackbox_exporter.service'
   template:
     src: "{{file_src_blackbox_exporter_service}}"
