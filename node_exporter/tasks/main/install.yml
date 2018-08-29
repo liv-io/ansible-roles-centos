@@ -130,17 +130,6 @@
     - install
     - node_exporter
 
-- name: 'file create node_exporter.sysconfig'
-  template:
-    src: "{{file_src_node_exporter_sysconfig}}"
-    dest: "{{file_dst_node_exporter_sysconfig}}"
-    mode: "{{file_mode_node_exporter_sysconfig}}"
-    owner: "{{file_owner_node_exporter_sysconfig}}"
-    group: "{{file_group_node_exporter_sysconfig}}"
-  tags:
-    - install
-    - node_exporter
-
 - name: 'file create node_exporter.service'
   template:
     src: "{{file_src_node_exporter_service}}"
