@@ -2,7 +2,7 @@
 
 restic_state: 'enable'
 
-restic_checksum: 'f7f76812fa26ca390029216d1378e5504f18ba5dde790878dfaa84afef29bda7'
+restic_checksum: '1ad8a76a9f966da5f7a319c49a6db071a60ebaa24d69e6d86d53d6f2bcaf11ed'
 
 restic_checksum_algorithm: 'sha256'
 
@@ -58,4 +58,4 @@ restic_run_backup_month: '*'
 
 restic_run_backup_weekday: '*'
 
-restic_version: '0.9.1'
+restic_version: '0.9.2'
