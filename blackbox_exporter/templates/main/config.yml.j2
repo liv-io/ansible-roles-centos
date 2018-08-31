@@ -16,7 +16,7 @@
 #-------------------------------------------------------------------------------
 
 modules:
-{% for item in blackbox_exporter_config|default('') %}
+{% for item in blackbox_exporter_config|default([]) %}
 {% if (item.name is defined) and not (item.name == '') %}
   #-----------------------------------------------------------------------------
   # {{(item.name|upper)}}
