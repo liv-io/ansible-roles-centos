@@ -1,0 +1,43 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - squid
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install squid'
+  package:
+    state: 'present'
+    name: "{{package_name_squid}}"
+  tags:
+    - install
+    - squid
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create acl.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_acl_dir}}"
+    mode: "{{file_mode_acl_dir}}"
+    owner: "{{file_owner_acl_dir}}"
+    group: "{{file_group_acl_dir}}"
+  tags:
+    - install
+    - squid
