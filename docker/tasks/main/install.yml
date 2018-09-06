@@ -26,3 +26,30 @@
   tags:
     - install
     - docker
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create docker.service.d'
+  file:
+    state: 'directory'
+    path: "{{file_dst_docker_service_d}}"
+    mode: "{{file_mode_docker_service_d}}"
+    owner: "{{file_owner_docker_service_d}}"
+    group: "{{file_group_docker_service_d}}"
+  tags:
+    - install
+    - docker
+
+- name: 'file create http-proxy.conf'
+  template:
+    src: "{{file_src_http_proxy_conf}}"
+    dest: "{{file_dst_http_proxy_conf}}"
+    mode: "{{file_mode_http_proxy_conf}}"
+    owner: "{{file_owner_http_proxy_conf}}"
+    group: "{{file_group_http_proxy_conf}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - docker

@@ -82,6 +82,39 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  docker_http_proxy
+    Description: Define the 'docker_http_proxy' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'http://proxy.domain.tld:3128'
+      None    : ''
+
+  docker_https_proxy
+    Description: Define the 'docker_https_proxy' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'http://proxy.domain.tld:3128'
+      None    : ''
+
+  docker_no_proxy
+    Description: Define the 'docker_no_proxy' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8']
+      None    : []
+
 --------------------------------------------------------------------------------
 CONFLICTS
 --------------------------------------------------------------------------------

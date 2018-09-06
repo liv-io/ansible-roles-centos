@@ -13,6 +13,11 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.0 (2018-09-06)
+F: Add support for HTTP_PROXY option (docker_http_proxy)
+F: Add support for HTTPS_PROXY option (docker_https_proxy)
+F: Add support for NO_PROXY option (docker_no_proxy)
+
 * Version 0.2.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
