@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.6.1 (2018-09-07)
+B: Add missing 'export' statement for 'no_proxy' option
+
 * Version 0.6.0 (2018-09-07)
 F: Add support for 'no_proxy' option (shell_no_proxy)
 I: Improve options to define no value (e.g. disable)
