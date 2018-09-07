@@ -101,7 +101,7 @@ ROLE
     Default    : '262144'
     Options    :
       Examples: '32768' | '65536' | '131072' | '262144'
-      Disable : 'false' | 'no' | 'disable'
+      None    : ''
 
   shell_http_proxy
     Description: Define the 'shell_http_proxy' option.
@@ -112,7 +112,7 @@ ROLE
     Default    : 'false'
     Options    :
       Examples: 'http://proxy.domain.tld:3128'
-      Disable : 'false' | 'no' | 'disable'
+      None    : ''
 
   shell_https_proxy
     Description: Define the 'shell_https_proxy' option.
@@ -123,7 +123,7 @@ ROLE
     Default    : 'false'
     Options    :
       Examples: 'http://proxy.domain.tld:3128'
-      Disable : 'false' | 'no' | 'disable'
+      None    : ''
 
   shell_ls_time_style
     Description: Define the time format of the 'ls' command.
@@ -134,7 +134,18 @@ ROLE
     Default    : '%Y-%m-%d %H:%M:%S'
     Options    :
       Examples: '%Y-%m-%d %H:%M:%S' | '+%Y-%m-%d %H:%M:%S'
-      Disable : 'false' | 'no' | 'disable'
+      None    : ''
+
+  shell_no_proxy
+    Description: Define the 'shell_no_proxy' option.
+    Implemented: 0.6
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['example.org', 'example.com']
+      None    : []
 
   shell_pager
     Description: Define the default 'PAGER' variable.
@@ -145,7 +156,7 @@ ROLE
     Default    : 'less'
     Options    :
       Examples: 'less' | 'more' | '/usr/bin/less' | '/usr/bin/more'
-      Disable : 'false' | 'no' | 'disable'
+      None    : ''
 
   shell_safety
     Description: Control the safety of various shell commands
