@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.6.2 (2018-09-09)
+B: Fix YAML syntax error in template
+I: Correct documentation
+
 * Version 0.6.1 (2018-09-07)
 B: Add missing 'export' statement for 'no_proxy' option
 
