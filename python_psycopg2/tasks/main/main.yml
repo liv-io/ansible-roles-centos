@@ -1,0 +1,13 @@
+---
+
+- name: 'task include install'
+  import_tasks: install.yml
+  when: not (python_psycopg2_state is match('false|no|remove|quiesce|inactive'))
+  tags:
+    - python_psycopg2
+
+- name: 'task include remove'
+  import_tasks: remove.yml
+  when: (python_psycopg2_state is match('false|no|remove'))
+  tags:
+    - python_psycopg2
