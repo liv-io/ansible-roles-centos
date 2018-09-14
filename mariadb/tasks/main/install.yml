@@ -79,6 +79,7 @@
     mode: "{{file_mode_credentials_cnf}}"
     owner: "{{file_owner_credentials_cnf}}"
     group: "{{file_group_credentials_cnf}}"
+  no_log: 'true'
   tags:
     - install
     - mariadb

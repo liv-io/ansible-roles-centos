@@ -62,6 +62,7 @@
     login_host: 'localhost'
     config_file: "{{file_dst_credentials_cnf}}"
     check_implicit_admin: 'yes'
+  no_log: 'true'
   notify: 'command flush privileges'
   tags:
     - enable

@@ -57,6 +57,7 @@
     append_privs: "{{'yes' if (item.privileges_append|default('false') is match('true|yes|enable')) else 'no'}}"
     login_host: 'localhost'
     config_file: "{{file_dst_credentials_cnf}}"
+  no_log: 'true'
   with_items: "{{mariadb_user_all + mariadb_user_group + mariadb_user_host}}"
   when: not (item.state is match('false|no|remove'))
   tags:
