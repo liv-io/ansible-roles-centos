@@ -8,8 +8,6 @@ mariadb_database_group: []
 
 mariadb_database_host: []
 
-mariadb_exclude: []
-
 mariadb_monitor: 'false'
 
 mariadb_monitor_mail_recipient: ["admin@{{ansible_domain}}"]
