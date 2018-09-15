@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-09-15)
+B: Correct location of 'file_dst_cache_dir'
+
 * Version 0.1.1 (2018-09-14)
 I: Add 'no_log' parameter to sensitive tasks
 

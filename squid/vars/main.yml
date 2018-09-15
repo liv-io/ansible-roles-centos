@@ -24,7 +24,7 @@ file_owner_acl_dir: 'root'
 file_group_acl_dir: 'wheel'
 
 # cache.dir
-file_dst_cache_dir: '/var/spool/squid/cache/00'
+file_dst_cache_dir: '/var/spool/squid/00'
 
 # dst_domain_allowed.acl
 file_src_dst_domain_allowed_acl: 'templates/main/dst_domain_allowed.acl.j2'
