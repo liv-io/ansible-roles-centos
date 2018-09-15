@@ -208,9 +208,9 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : "mariadb: Run Backup - Error ({{ansible_hostname}})"
+    Default    : "MariaDB: Run Backup - Error ({{ansible_hostname}})"
     Options    :
-      Examples: '"mariadb: Run Backup - Error'
+      Examples: '"MariaDB: Run Backup - Error'
 
   mariadb_root_password
     Description: Define the 'mariadb_root_password' option.
