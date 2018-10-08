@@ -1,0 +1,90 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - postgresql
+
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove postgresql'
+  package:
+    state: 'absent'
+    name: "{{package_name_postgresql}}"
+  tags:
+    - remove
+    - postgresql
+
+- name: 'package remove postgresql-server'
+  package:
+    state: 'absent'
+    name: "{{package_name_postgresql_server}}"
+  tags:
+    - remove
+    - postgresql
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'cron remove postgresql_run-backup'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_postgresql_run_backup}}"
+    cron_file: "{{cron_cron_file_postgresql_run_backup}}"
+  tags:
+    - remove
+    - postgresql
+
+- name: 'file remove postgresql_script.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_postgresql_script_dir}}"
+  tags:
+    - remove
+    - postgresql
+
+- name: 'file remove postgresql.sh'
+  file:
+    state: 'absent'
+    path: "{{file_dst_postgresql_sh}}"
+  tags:
+    - remove
+    - postgresql
+
+- name: 'file remove pg_hba.conf'
+  file:
+    state: 'absent'
+    path: "{{file_dst_pg_hba_conf}}"
+  tags:
+    - remove
+    - postgresql
+
+- name: 'file remove postgresql.conf'
+  file:
+    state: 'absent'
+    path: "{{file_dst_postgresql_conf}}"
+  tags:
+    - remove
+    - postgresql
+
+- name: 'file remove postgresql_run-backup.sh'
+  file:
+    state: 'absent'
+    path: "{{file_dst_postgresql_run_backup_sh}}"
+  tags:
+    - remove
+    - postgresql

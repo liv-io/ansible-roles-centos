@@ -1,0 +1,50 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - postgresql
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'cron create postgresql_run-backup'
+  cron:
+    state: 'present'
+    disabled: 'no'
+    name: "{{cron_name_postgresql_run_backup}}"
+    cron_file: "{{cron_cron_file_postgresql_run_backup}}"
+    day: "{{cron_day_postgresql_run_backup}}"
+    hour: "{{cron_hour_postgresql_run_backup}}"
+    minute: "{{cron_minute_postgresql_run_backup}}"
+    month: "{{cron_month_postgresql_run_backup}}"
+    weekday: "{{cron_weekday_postgresql_run_backup}}"
+    user: "{{cron_user_postgresql_run_backup}}"
+    job: "{{cron_job_postgresql_run_backup}}"
+  tags:
+    - enable
+    - postgresql
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start postgresql'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_postgresql}}"
+  tags:
+    - enable
+    - postgresql

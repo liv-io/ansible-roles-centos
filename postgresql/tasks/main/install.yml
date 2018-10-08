@@ -1,0 +1,126 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - postgresql
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install postgresql'
+  package:
+    state: 'present'
+    name: "{{package_name_postgresql}}"
+  tags:
+    - install
+    - postgresql
+
+- name: 'package install postgresql-server'
+  package:
+    state: 'present'
+    name: "{{package_name_postgresql_server}}"
+  tags:
+    - install
+    - postgresql
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+- name: 'stat file postgresql.conf'
+  stat:
+    path: "{{file_dst_postgresql_conf}}"
+  register: register_postgresql_conf
+  tags:
+    - install
+    - postgresql
+
+- name: 'command initialize database'
+  shell: "{{command_cmd_initialize_database}}"
+  check_mode: 'no'
+  when: (register_postgresql_conf.stat.exists == False)
+  tags:
+    - install
+    - postgresql
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create postgresql_backup.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_postgresql_backup_dir}}"
+    mode: "{{file_mode_postgresql_backup_dir}}"
+    owner: "{{file_owner_postgresql_backup_dir}}"
+    group: "{{file_group_postgresql_backup_dir}}"
+  tags:
+    - install
+    - postgresql
+
+- name: 'file create postgresql_script.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_postgresql_script_dir}}"
+    mode: "{{file_mode_postgresql_script_dir}}"
+    owner: "{{file_owner_postgresql_script_dir}}"
+    group: "{{file_group_postgresql_script_dir}}"
+  tags:
+    - install
+    - postgresql
+
+- name: 'file create postgresql_run-backup.sh'
+  template:
+    src: "{{file_src_postgresql_run_backup_sh}}"
+    dest: "{{file_dst_postgresql_run_backup_sh}}"
+    mode: "{{file_mode_postgresql_run_backup_sh}}"
+    owner: "{{file_owner_postgresql_run_backup_sh}}"
+    group: "{{file_group_postgresql_run_backup_sh}}"
+  tags:
+    - install
+    - postgresql
+
+- name: 'file create postgresql.sh'
+  template:
+    src: "{{file_src_postgresql_sh}}"
+    dest: "{{file_dst_postgresql_sh}}"
+    mode: "{{file_mode_postgresql_sh}}"
+    owner: "{{file_owner_postgresql_sh}}"
+    group: "{{file_group_postgresql_sh}}"
+  tags:
+    - install
+    - postgresql
+
+- name: 'file create pg_hba.conf'
+  template:
+    src: "{{file_src_pg_hba_conf}}"
+    dest: "{{file_dst_pg_hba_conf}}"
+    mode: "{{file_mode_pg_hba_conf}}"
+    owner: "{{file_owner_pg_hba_conf}}"
+    group: "{{file_group_pg_hba_conf}}"
+  tags:
+    - install
+    - postgresql
+
+- name: 'file create postgresql.conf'
+  template:
+    src: "{{file_src_postgresql_conf}}"
+    dest: "{{file_dst_postgresql_conf}}"
+    mode: "{{file_mode_postgresql_conf}}"
+    owner: "{{file_owner_postgresql_conf}}"
+    group: "{{file_group_postgresql_conf}}"
+  tags:
+    - install
+    - postgresql

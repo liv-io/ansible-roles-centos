@@ -1,0 +1,36 @@
+---
+
+postgresql_state: 'enable'
+
+postgresql_connections:
+  - {type: 'local', database: 'all', user: 'all', address: '', method: 'peer', comment: '"local" is for Unix domain socket connections only'}
+  - {type: 'host', database: 'all', user: 'all', address: '127.0.0.1/32', method: 'md5', comment: 'IPv4 local connections:'}
+  - {type: 'host', database: 'all', user: 'all', address: '::1/128', method: 'md5', comment: 'IPv6 local connections:'}
+
+postgresql_listen_addresses: ['localhost']
+
+postgresql_monitor: 'false'
+
+postgresql_monitor_mail_recipient: ["admin@{{ansible_domain}}"]
+
+postgresql_monitor_mail_sender: "root@{{ansible_domain}}"
+
+postgresql_monitor_mail_state: 'false'
+
+postgresql_monitor_mail_subject: "PostgreSQL: Run Backup - Error ({{ansible_hostname}})"
+
+postgresql_postgres_password: '8CxP,3uDc+BH+rG_2Lgc4VfTWgAs.6W5'
+
+postgresql_run_backup_day: '*'
+
+postgresql_run_backup_exclude: ['template0', 'template1']
+
+postgresql_run_backup_hour: 1
+
+postgresql_run_backup_keep_days: 2
+
+postgresql_run_backup_minute: "{{25|random(seed=inventory_hostname)}}"
+
+postgresql_run_backup_month: '*'
+
+postgresql_run_backup_weekday: '*'
