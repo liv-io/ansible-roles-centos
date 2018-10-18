@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2018-10-18)
+F: Add support for 'SSL_ports' option (squid_acl_ssl_ports)
+
 * Version 0.1.2 (2018-09-15)
 B: Correct location of 'file_dst_cache_dir'
 
