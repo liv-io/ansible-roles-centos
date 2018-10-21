@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.0 (2018-10-21)
+F: Update to restic version '0.9.3'
+
 * Version 0.3.1 (2018-09-14)
 I: Add 'no_log' parameter to sensitive tasks
 
