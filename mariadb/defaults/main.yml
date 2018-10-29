@@ -32,6 +32,8 @@ mariadb_run_backup_minute: "{{30|random(seed=inventory_hostname)}}"
 
 mariadb_run_backup_month: '*'
 
+mariadb_run_backup_state: 'enable'
+
 mariadb_run_backup_weekday: '*'
 
 mariadb_user_all: []

@@ -273,6 +273,17 @@ ROLE
     Options    :
       Examples: '10' | '*/1'
 
+  mariadb_run_backup_state
+    Description: Control the 'mariadb_run_backup_state' option.
+    Implemented: 0.4
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   mariadb_run_backup_weekday
     Description: Define the 'mariadb_run_backup_weekday' option.
     Implemented: 0.1

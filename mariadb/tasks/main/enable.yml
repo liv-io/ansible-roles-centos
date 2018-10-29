@@ -22,7 +22,7 @@
 - name: 'cron create mariadb_run-backup'
   cron:
     state: 'present'
-    disabled: 'no'
+    disabled: "{{'yes' if (mariadb_run_backup_state is match('false|no|disable')) else 'no'}}"
     name: "{{cron_name_mariadb_run_backup}}"
     cron_file: "{{cron_cron_file_mariadb_run_backup}}"
     day: "{{cron_day_mariadb_run_backup}}"
