@@ -220,6 +220,17 @@ ROLE
     Options    :
       Examples: '10' | '*/1'
 
+  postgresql_run_backup_state
+    Description: Control the 'postgresql_run_backup_state' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   postgresql_run_backup_weekday
     Description: Define the 'postgresql_run_backup_weekday' option.
     Implemented: 0.1
