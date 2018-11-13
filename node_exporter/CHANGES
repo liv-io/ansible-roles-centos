@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.7 (2018-11-13)
+I: Relocate 'textfile.collector' directory
+
 * Version 0.1.6 (2018-08-29)
 B: Remove configuration files from install sequence (execute notify handler)
 

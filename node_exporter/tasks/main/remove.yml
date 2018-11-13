@@ -61,10 +61,18 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file remove node_exporter_bin.dir'
+- name: 'file remove node_exporter_app.dir'
   file:
     state: 'absent'
-    path: "{{file_dst_node_exporter_bin_dir}}"
+    path: "{{file_dst_node_exporter_app_dir}}"
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'file remove node_exporter_data.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_node_exporter_data_dir}}"
   tags:
     - remove
     - node_exporter
