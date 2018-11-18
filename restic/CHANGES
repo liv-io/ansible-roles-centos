@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.5.0 (2018-11-18)
+F: Add support for 'limit-download' option (restic_limit_download)
+F: Add support for 'limit-upload option (restic_limit_upload)
+
 * Version 0.4.0 (2018-10-21)
 F: Update to restic version '0.9.3'
 
