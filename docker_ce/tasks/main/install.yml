@@ -1,0 +1,55 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - docker_ce
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install docker-ce'
+  package:
+    state: 'present'
+    name: "{{package_name_docker}}"
+  tags:
+    - install
+    - docker_ce
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create docker.service.d'
+  file:
+    state: 'directory'
+    path: "{{file_dst_docker_service_d}}"
+    mode: "{{file_mode_docker_service_d}}"
+    owner: "{{file_owner_docker_service_d}}"
+    group: "{{file_group_docker_service_d}}"
+  tags:
+    - install
+    - docker_ce
+
+- name: 'file create http-proxy.conf'
+  template:
+    src: "{{file_src_http_proxy_conf}}"
+    dest: "{{file_dst_http_proxy_conf}}"
+    mode: "{{file_mode_http_proxy_conf}}"
+    owner: "{{file_owner_http_proxy_conf}}"
+    group: "{{file_group_http_proxy_conf}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - docker_ce

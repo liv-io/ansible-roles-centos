@@ -1,0 +1,39 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# docker-ce
+package_name_docker: 'docker-ce'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# docker.service.d
+file_dst_docker_service_d: '/etc/systemd/system/docker.service.d'
+file_mode_docker_service_d: '0755'
+file_owner_docker_service_d: 'root'
+file_group_docker_service_d: 'root'
+
+# http-proxy.conf
+file_src_http_proxy_conf: 'templates/main/http-proxy.conf.j2'
+file_dst_http_proxy_conf: '/etc/systemd/system/docker.service.d/http-proxy.conf'
+file_mode_http_proxy_conf: '0644'
+file_owner_http_proxy_conf: 'root'
+file_group_http_proxy_conf: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# docker
+service_name_docker: 'docker'

@@ -1,0 +1,9 @@
+---
+
+docker_ce_state: 'enable'
+
+docker_ce_http_proxy: ''
+
+docker_ce_https_proxy: ''
+
+docker_ce_no_proxy: []
