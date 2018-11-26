@@ -11,6 +11,11 @@ package_name_yum: 'yum'
 # FILES
 #-------------------------------------------------------------------------------
 
+# gpg-key
+file_mode_gpg_key: '0644'
+file_owner_gpg_key: 'root'
+file_group_gpg_key: 'root'
+
 # rpm-gpg
 file_dst_rpm_gpg: '/etc/pki/rpm-gpg'
 

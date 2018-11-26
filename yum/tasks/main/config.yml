@@ -23,9 +23,9 @@
   copy:
     content: "{{item.gpg_content}}"
     dest: "{{file_dst_rpm_gpg}}/{{item.gpg_name|default(yum_name_default)}}"
-    mode: "0644"
-    owner: "root"
-    group: "root"
+    mode: "{{file_mode_gpg_key}}"
+    owner: "{{file_owner_gpg_key}}"
+    group: "{{file_group_gpg_key}}"
   with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
   when: not (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
