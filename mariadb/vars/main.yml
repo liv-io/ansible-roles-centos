@@ -74,8 +74,8 @@ file_owner_server_cnf: 'root'
 file_group_server_cnf: 'root'
 
 # mariadb_run-backup
-cron_name_mariadb_run_backup: "mariadb: Run Backup"
-cron_cron_file_mariadb_run_backup: "mariadb_run-backup"
+cron_name_mariadb_run_backup: 'mariadb: Run Backup'
+cron_cron_file_mariadb_run_backup: 'mariadb_run-backup'
 cron_day_mariadb_run_backup: "{{mariadb_run_backup_day}}"
 cron_hour_mariadb_run_backup: "{{mariadb_run_backup_hour}}"
 cron_minute_mariadb_run_backup: "{{mariadb_run_backup_minute}}"

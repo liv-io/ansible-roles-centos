@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.1 (2018-11-27)
+I: Minor style improvements
+
 * Version 0.4.0 (2018-10-29)
 F: Add option to disable MariaDB backups (mariadb_run_backup_state)
 
