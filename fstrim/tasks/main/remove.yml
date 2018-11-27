@@ -1,0 +1,37 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - fstrim
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'cron remove fstrim_discard-blocks'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_fstrim_discard_blocks}}"
+    cron_file: "{{cron_cron_file_fstrim_discard_blocks}}"
+  tags:
+    - remove
+    - fstrim
+
+- name: 'file remove fstrim_script.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_fstrim_script_dir}}"
+  tags:
+    - remove
+    - fstrim
