@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2018-11-27)
+I: Minor style improvements
+
 * Version 0.2.0 (2018-10-29)
 F: Add option to disable PostgreSQL backups (postgresql_run_backup_state)
 

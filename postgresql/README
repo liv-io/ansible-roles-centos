@@ -157,7 +157,7 @@ ROLE
     Type       : String
     Default    : "PostgreSQL: Run Backup - Error ({{ansible_hostname}})"
     Options    :
-      Examples: '"PostgreSQL: Run Backup - Error'
+      Examples: 'PostgreSQL: Run Backup - Error'
 
   postgresql_postgres_password
     Description: Define the 'postgresql_postgres_password' option.

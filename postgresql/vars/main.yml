@@ -62,8 +62,8 @@ file_owner_postgresql_run_backup_sh: 'root'
 file_group_postgresql_run_backup_sh: 'root'
 
 # postgresql_run-backup
-cron_name_postgresql_run_backup: "PostgreSQL: Run Backup"
-cron_cron_file_postgresql_run_backup: "postgresql_run-backup"
+cron_name_postgresql_run_backup: 'PostgreSQL: Run Backup'
+cron_cron_file_postgresql_run_backup: 'postgresql_run-backup'
 cron_day_postgresql_run_backup: "{{postgresql_run_backup_day}}"
 cron_hour_postgresql_run_backup: "{{postgresql_run_backup_hour}}"
 cron_minute_postgresql_run_backup: "{{postgresql_run_backup_minute}}"
