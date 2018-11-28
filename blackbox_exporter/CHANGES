@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.2 (2018-11-28)
+I: Rename configuration file from 'config.yml' to 'blackbox.yml'
+
 * Version 0.2.1 (2018-08-29)
 B: Remove configuration files from install sequence (execute notify handler)
 

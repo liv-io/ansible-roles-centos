@@ -4,6 +4,13 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+# blackbox.yml
+file_src_blackbox_yml: 'templates/main/blackbox.yml.j2'
+file_dst_blackbox_yml: "/{{common_app_dir}}/blackbox_exporter/conf/blackbox.yml"
+file_mode_blackbox_yml: '0644'
+file_owner_blackbox_yml: 'root'
+file_group_blackbox_yml: 'root'
+
 # blackbox_exporter_app.dir
 file_dst_blackbox_exporter_app_dir: "/{{common_app_dir}}/blackbox_exporter"
 file_mode_blackbox_exporter_app_dir: '0755'
@@ -55,13 +62,6 @@ file_dst_blackbox_exporter_sysconfig: '/etc/sysconfig/blackbox_exporter'
 file_mode_blackbox_exporter_sysconfig: '0644'
 file_owner_blackbox_exporter_sysconfig: 'root'
 file_group_blackbox_exporter_sysconfig: 'root'
-
-# config.yml
-file_src_config_yml: 'templates/main/config.yml.j2'
-file_dst_config_yml: "/{{common_app_dir}}/blackbox_exporter/conf/config.yml"
-file_mode_config_yml: '0644'
-file_owner_config_yml: 'root'
-file_group_config_yml: 'root'
 
 #-------------------------------------------------------------------------------
 # COMMANDS
