@@ -1,0 +1,87 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - alertmanager
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'command check service alertmanager'
+  shell: "{{command_cmd_check_service_alertmanager}}"
+  register: register_check_service_alertmanager
+  changed_when: (register_check_service_alertmanager.rc == 0)
+  failed_when: (register_check_service_alertmanager.rc > 1)
+  check_mode: 'no'
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'service stop alertmanager'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_alertmanager}}"
+  when: (register_check_service_alertmanager.rc == 0)
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'user remove alertmanager'
+  user:
+    state: 'absent'
+    name: "{{user_name_alertmanager}}"
+    remove: "{{user_home_remove_alertmanager}}"
+    force: "{{user_home_force_alertmanager}}"
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'group remove alertmanager'
+  group:
+    state: 'absent'
+    name: "{{group_name_alertmanager}}"
+  tags:
+    - remove
+    - alertmanager
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove alertmanager_bin.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_alertmanager_bin_dir}}"
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'file remove alertmanager.sysconfig'
+  file:
+    state: 'absent'
+    path: "{{file_dst_alertmanager_sysconfig}}"
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'file remove alertmanager.service'
+  file:
+    state: 'absent'
+    path: "{{file_dst_alertmanager_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - alertmanager

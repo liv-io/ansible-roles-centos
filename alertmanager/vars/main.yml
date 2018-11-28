@@ -1,0 +1,99 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# alertmanager_app.dir
+file_dst_alertmanager_app_dir: "/{{common_app_dir}}/alertmanager"
+file_mode_alertmanager_app_dir: '0755'
+file_owner_alertmanager_app_dir: 'root'
+file_group_alertmanager_app_dir: 'root'
+
+# alertmanager_bin.dir
+file_dst_alertmanager_bin_dir: "/{{common_app_dir}}/alertmanager/bin"
+file_mode_alertmanager_bin_dir: '0755'
+file_owner_alertmanager_bin_dir: 'root'
+file_group_alertmanager_bin_dir: 'root'
+
+# alertmanager_conf.dir
+file_dst_alertmanager_conf_dir: "/{{common_app_dir}}/alertmanager/conf"
+file_mode_alertmanager_conf_dir: '0755'
+file_owner_alertmanager_conf_dir: 'root'
+file_group_alertmanager_conf_dir: 'root'
+
+# alertmanager-current.link
+file_src_alertmanager_current_link: "/{{common_app_dir}}/alertmanager/bin/alertmanager-{{alertmanager_version}}.linux-amd64"
+file_dst_alertmanager_current_link: "/{{common_app_dir}}/alertmanager/bin/current"
+file_owner_alertmanager_current_link: 'root'
+file_group_alertmanager_current_link: 'root'
+
+# alertmanager.tar.gz
+file_src_alertmanager_tar_gz: "https://github.com/prometheus/alertmanager/releases/download/v{{alertmanager_version}}/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"
+file_dst_alertmanager_tar_gz: "/{{common_app_dir}}/alertmanager/bin/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"
+file_mode_alertmanager_tar_gz: '0644'
+file_owner_alertmanager_tar_gz: 'root'
+file_group_alertmanager_tar_gz: 'root'
+
+# alertmanager
+file_src_alertmanager: "/{{common_app_dir}}/alertmanager/bin/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"
+file_dst_alertmanager: "/{{common_app_dir}}/alertmanager/bin"
+file_owner_alertmanager: 'root'
+file_group_alertmanager: 'root'
+file_creates_alertmanager: "/{{common_app_dir}}/alertmanager/bin/alertmanager-{{alertmanager_version}}.linux-amd64"
+
+# alertmanager.service
+file_src_alertmanager_service: 'templates/main/alertmanager.service.j2'
+file_dst_alertmanager_service: '/usr/lib/systemd/system/alertmanager.service'
+file_mode_alertmanager_service: '0644'
+file_owner_alertmanager_service: 'root'
+file_group_alertmanager_service: 'root'
+
+# alertmanager.sysconfig
+file_src_alertmanager_sysconfig: 'templates/main/alertmanager.sysconfig.j2'
+file_dst_alertmanager_sysconfig: '/etc/sysconfig/alertmanager'
+file_mode_alertmanager_sysconfig: '0644'
+file_owner_alertmanager_sysconfig: 'root'
+file_group_alertmanager_sysconfig: 'root'
+
+# alertmanager.yml
+file_src_alertmanager_yml: 'templates/main/alertmanager.yml.j2'
+file_dst_alertmanager_yml: "/{{common_app_dir}}/alertmanager/conf/alertmanager.yml"
+file_mode_alertmanager_yml: '0644'
+file_owner_alertmanager_yml: 'root'
+file_group_alertmanager_yml: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check service alertmanager
+command_cmd_check_service_alertmanager: 'systemctl cat alertmanager.service > /dev/null 2>&1'
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# alertmanager
+group_name_alertmanager: 'alertmanager'
+group_system_alertmanager: 'yes'
+
+# alertmanager
+user_name_alertmanager: 'alertmanager'
+user_comment_alertmanager: 'Prometheus Alertmanager'
+user_group_alertmanager: 'alertmanager'
+user_append_alertmanager: 'yes'
+user_home_create_alertmanager: 'yes'
+user_home_move_alertmanager: 'no'
+user_home_remove_alertmanager: 'yes'
+user_home_force_alertmanager: 'no'
+user_password_alertmanager: '!'
+user_password_update_alertmanager: 'always'
+user_shell_alertmanager: '/sbin/nologin'
+user_system_alertmanager: 'yes'
+
+# alertmanager
+service_name_alertmanager: 'alertmanager'

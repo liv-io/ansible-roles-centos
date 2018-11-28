@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : alertmanager.service
+# Type   : systemd unit file
+# Role   : alertmanager
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+[Unit]
+Description=Prometheus Alertmanager
+After=syslog.target network.target
+
+[Service]
+User=alertmanager
+Group=alertmanager
+EnvironmentFile=/etc/sysconfig/alertmanager
+ExecStart={{file_dst_alertmanager_current_link}}/alertmanager $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

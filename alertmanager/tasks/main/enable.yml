@@ -1,0 +1,57 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - alertmanager
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create alertmanager.yml'
+  template:
+    src: "{{file_src_alertmanager_yml}}"
+    dest: "{{file_dst_alertmanager_yml}}"
+    mode: "{{file_mode_alertmanager_yml}}"
+    owner: "{{file_owner_alertmanager_yml}}"
+    group: "{{file_group_alertmanager_yml}}"
+  notify: 'service restart alertmanager'
+  tags:
+    - enable
+    - alertmanager
+
+- name: 'file create alertmanager.sysconfig'
+  template:
+    src: "{{file_src_alertmanager_sysconfig}}"
+    dest: "{{file_dst_alertmanager_sysconfig}}"
+    mode: "{{file_mode_alertmanager_sysconfig}}"
+    owner: "{{file_owner_alertmanager_sysconfig}}"
+    group: "{{file_group_alertmanager_sysconfig}}"
+  notify: 'service restart alertmanager'
+  tags:
+    - enable
+    - alertmanager
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start alertmanager'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_alertmanager}}"
+  tags:
+    - enable
+    - alertmanager

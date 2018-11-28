@@ -1,0 +1,32 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : alertmanager.yml
+# Type   : alertmanager configuration file
+# Role   : alertmanager
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+{% if (alertmanager_config is defined) and not (alertmanager_config == []) %}
+{% for item in alertmanager_config %}
+{% if (item.section is defined) and not (item.section == '') %}
+#-------------------------------------------------------------------------------
+# {{(item.section|upper)}}
+#-------------------------------------------------------------------------------
+
+{% endif %}
+{{item.section}}:
+{% for config in item.config %}
+  {{config}}
+{% endfor %}
+
+{% endfor %}
+{% endif %}

@@ -1,0 +1,11 @@
+---
+
+alertmanager_state: 'enable'
+
+alertmanager_checksum_algorithm: 'sha256'
+
+alertmanager_checksum: 'b43fd8aba978f19375e37fb7924bcdc7dd45659b1b0f87a2815860001f100f46'
+
+alertmanager_config: []
+
+alertmanager_version: '0.15.3'

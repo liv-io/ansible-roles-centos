@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - {role: common, when: not (alertmanager_state is match('false|no|remove|quiesce|inactive'))}

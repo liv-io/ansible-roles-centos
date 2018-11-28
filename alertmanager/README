@@ -1,0 +1,218 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : alertmanager
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+The Alertmanager handles alerts sent by client applications such as the
+Prometheus server. It takes care of deduplicating, grouping, and routing them to
+the correct receiver integrations such as email, PagerDuty, or OpsGenie. It also
+takes care of silencing and inhibition of alerts.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: alertmanager
+    vars:
+      alertmanager_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: alertmanager
+    vars:
+      alertmanager_state: 'enable'
+      alertmanager_config:
+        - section: 'global'
+          config:
+            - "smtp_from: 'alertmanager@domain.tld'"
+            - "smtp_smarthost: 'mail.domain.tld:587'"
+            - "smtp_auth_username: 'alertmanager@domain.tld'"
+            - "smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'"
+            - "smtp_require_tls: true"
+
+        - section: 'receivers'
+          config:
+            - "- name: 'itops'"
+            - "  email_configs:"
+            - "  - to: 'user01@domain.tld, user02@domain.tld'"
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: alertmanager
+    vars:
+      alertmanager_state: 'disable'
+      alertmanager_config:
+        - section: 'global'
+          config:
+            - "smtp_from: 'alertmanager@domain.tld'"
+            - "smtp_smarthost: 'mail.domain.tld:587'"
+            - "smtp_auth_username: 'alertmanager@domain.tld'"
+            - "smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'"
+            - "smtp_require_tls: true"
+
+        - section: 'receivers'
+          config:
+            - "- name: 'itops'"
+            - "  email_configs:"
+            - "  - to: 'user01@domain.tld, user02@domain.tld'"
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: alertmanager
+    vars:
+      alertmanager_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: alertmanager
+    vars:
+      alertmanager_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  alertmanager_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  alertmanager_checksum
+    Description: Define the 'alertmanager_checksum' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'b43fd8aba978f19375e37fb7924bcdc7dd45659b1b0f87a2815860001f100f46'
+    Options    :
+      Examples: 'd41101d632ccedd45c49f4bf31d9b247502f75f4950be5584429a2156a8c346f' |
+                '79ee23ab2f0444f592051995728ba9e0a7547cc3b9162301e3152dbeaf568d2e'
+
+  alertmanager_checksum_algorithm
+    Description: Define the 'alertmanager_checksum_algorithm' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'sha256'
+    Options    :
+      Examples: 'sha256' | 'sha512'
+
+  alertmanager_config
+    Description: Define the 'alertmanager_config' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{section: 'global',
+                  config: ["smtp_from: 'alertmanager@domain.tld'",
+                           "smtp_smarthost: 'mail.domain.tld:587'",
+                           "smtp_auth_username: 'alertmanager@domain.tld'",
+                           "smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'",
+                           "smtp_require_tls: true"}
+                 {section: 'receivers',
+                  config: ["- name: 'itops'",
+                           "  email_configs:",
+                           "  - to: 'user01@domain.tld, user02@domain.tld'"]}]
+
+  alertmanager_version
+    Description: Define the 'alertmanager_version' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '0.15.3'
+    Options    :
+      Examples: '0.15.1' | '0.15.2'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  alertmanager
+
+ROLES
+  common
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.5
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Development
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

@@ -1,0 +1,142 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - alertmanager
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'group create alertmanager'
+  group:
+    state: 'present'
+    name: "{{group_name_alertmanager}}"
+    system: "{{group_system_alertmanager}}"
+  tags:
+    - install
+    - alertmanager
+
+- name: 'user create alertmanager'
+  user:
+    state: 'present'
+    name: "{{user_name_alertmanager}}"
+    comment: "{{user_comment_alertmanager}}"
+    group: "{{user_group_alertmanager}}"
+    append: "{{user_append_alertmanager}}"
+    createhome: "{{user_home_create_alertmanager}}"
+    move_home: "{{user_home_move_alertmanager}}"
+    remove: "{{user_home_remove_alertmanager}}"
+    force: "{{user_home_force_alertmanager}}"
+    password: "{{user_password_alertmanager}}"
+    update_password: "{{user_password_update_alertmanager}}"
+    shell: "{{user_shell_alertmanager}}"
+    system: "{{user_system_alertmanager}}"
+  tags:
+    - install
+    - alertmanager
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create alertmanager_app.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_alertmanager_app_dir}}"
+    mode: "{{file_mode_alertmanager_app_dir}}"
+    owner: "{{file_owner_alertmanager_app_dir}}"
+    group: "{{file_group_alertmanager_app_dir}}"
+  tags:
+    - install
+    - alertmanager
+
+- name: 'file create alertmanager_bin.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_alertmanager_bin_dir}}"
+    mode: "{{file_mode_alertmanager_bin_dir}}"
+    owner: "{{file_owner_alertmanager_bin_dir}}"
+    group: "{{file_group_alertmanager_bin_dir}}"
+  tags:
+    - install
+    - alertmanager
+
+- name: 'file create alertmanager_conf.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_alertmanager_conf_dir}}"
+    mode: "{{file_mode_alertmanager_conf_dir}}"
+    owner: "{{file_owner_alertmanager_conf_dir}}"
+    group: "{{file_group_alertmanager_conf_dir}}"
+  tags:
+    - install
+    - alertmanager
+
+- name: "file download alertmanager.tar.gz"
+  get_url:
+    url: "{{file_src_alertmanager_tar_gz}}"
+    dest: "{{file_dst_alertmanager_tar_gz}}"
+    mode: "{{file_mode_alertmanager_tar_gz}}"
+    owner: "{{file_owner_alertmanager_tar_gz}}"
+    group: "{{file_group_alertmanager_tar_gz}}"
+    checksum: "{{alertmanager_checksum_algorithm}}:{{alertmanager_checksum}}"
+  tags:
+    - install
+    - alertmanager
+
+- name: "file unarchive alertmanager"
+  unarchive:
+    src: "{{file_src_alertmanager}}"
+    dest: "{{file_dst_alertmanager}}"
+    owner: "{{file_owner_alertmanager}}"
+    group: "{{file_group_alertmanager}}"
+    creates: "{{file_creates_alertmanager}}"
+    remote_src: 'yes'
+  tags:
+    - install
+    - alertmanager
+
+- name: 'file create alertmanager-current.link'
+  file:
+    state: 'link'
+    src: "{{file_src_alertmanager_current_link}}"
+    path: "{{file_dst_alertmanager_current_link}}"
+    owner: "{{file_owner_alertmanager_current_link}}"
+    group: "{{file_group_alertmanager_current_link}}"
+  tags:
+    - install
+    - alertmanager
+
+- name: 'file create alertmanager.service'
+  template:
+    src: "{{file_src_alertmanager_service}}"
+    dest: "{{file_dst_alertmanager_service}}"
+    mode: "{{file_mode_alertmanager_service}}"
+    owner: "{{file_owner_alertmanager_service}}"
+    group: "{{file_group_alertmanager_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - alertmanager
+
+#-------------------------------------------------------------------------------
+# META
+#-------------------------------------------------------------------------------
+
+- name: 'meta flush handlers'
+  meta: 'flush_handlers'
+  tags:
+    - install
+    - alertmanager
