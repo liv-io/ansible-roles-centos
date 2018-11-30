@@ -13,5 +13,8 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.1 (2018-11-30)
+I: Define default value for 'item.state' parameter
+
 * Version 0.1.0 (2018-08-21)
 F: Initial release
