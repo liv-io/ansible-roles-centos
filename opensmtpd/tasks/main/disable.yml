@@ -30,6 +30,17 @@
     - disable
     - opensmtpd
 
+- name: 'file create secrets'
+  template:
+    src: "{{file_src_secrets}}"
+    dest: "{{file_dst_secrets}}"
+    mode: "{{file_mode_secrets}}"
+    owner: "{{file_owner_secrets}}"
+    group: "{{file_group_secrets}}"
+  tags:
+    - disable
+    - opensmtpd
+
 - name: 'file create smtpd.conf'
   template:
     src: "{{file_src_smtpd_conf}}"

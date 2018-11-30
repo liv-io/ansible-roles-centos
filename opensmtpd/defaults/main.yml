@@ -19,8 +19,15 @@ opensmtpd_listen_host: []
 
 opensmtpd_root_mail_address: "root@{{ansible_domain}}"
 
+opensmtpd_secrets_all: []
+
+opensmtpd_secrets_group: []
+
+opensmtpd_secrets_host: []
+
 opensmtpd_table_all:
   - {config: {'table aliases file:/etc/aliases'}, comment: 'Table: Aliases'}
+  - {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: Secrets'}
 
 opensmtpd_table_group: []
 

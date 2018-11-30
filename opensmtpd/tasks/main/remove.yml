@@ -38,3 +38,11 @@
   tags:
     - remove
     - opensmtpd
+
+- name: 'file remove secrets'
+  file:
+    state: 'absent'
+    path: "{{file_dst_secrets}}"
+  tags:
+    - remove
+    - opensmtpd

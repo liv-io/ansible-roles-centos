@@ -38,10 +38,12 @@ ENABLE
       opensmtpd_state: 'enable'
       opensmtpd_accept_all:
         - {config: {'accept for local alias <aliases> deliver to mbox'}, comment: 'Accept: Aliases'}
-        - {config: {'accept for any relay via tls+auth://mail.domain.tld auth <secrets>'}, comment: 'Accept: Relay'}
+        - {config: {'accept for any relay via tls+auth://user01_auth@mail.domain.tld auth <secrets>'}, comment: 'Accept: Relay'}
+      opensmtpd_secrets_all:
+        - {label: 'user01_auth', username: 'user01', password: 'S6_SD6B,Ybwt+Np-GuGEh+.p-xUeLbH3', comment: 'user01 credentials'}
       opensmtpd_table_all:
         - {config: {'table aliases file:/etc/aliases'}, comment: 'Table: Aliases'}
-        - {config: {'table secrets file:/usr/local/etc/mail/secrets'}, comment: 'Table: Secrets'}
+        - {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: Secrets'}
       opensmtpd_root_mail_address: 'root@domain.tld'
 
 DISABLE
@@ -52,10 +54,12 @@ DISABLE
       opensmtpd_state: 'disable'
       opensmtpd_accept_all:
         - {config: {'accept for local alias <aliases> deliver to mbox'}, comment: 'Accept: Aliases'}
-        - {config: {'accept for any relay via tls+auth://mail.domain.tld auth <secrets>'}, comment: 'Accept: Relay'}
+        - {config: {'accept for any relay via tls+auth://user01_auth@mail.domain.tld auth <secrets>'}, comment: 'Accept: Relay'}
+      opensmtpd_secrets_all:
+        - {label: 'user01_auth', username: 'user01', password: 'S6_SD6B,Ybwt+Np-GuGEh+.p-xUeLbH3', comment: 'user01 credentials'}
       opensmtpd_table_all:
         - {config: {'table aliases file:/etc/aliases'}, comment: 'Table: Aliases'}
-        - {config: {'table secrets file:/usr/local/etc/mail/secrets'}, comment: 'Table: Secrets'}
+        - {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: Secrets'}
       opensmtpd_root_mail_address: 'root@domain.tld'
 
 REMOVE
@@ -170,6 +174,42 @@ ROLE
     Default    : "root@{{ansible_domain}}"
     Options    :
       Examples: 'root@domain.tld' | 'admin@domain.tld' | 'user@domain.tld'
+
+  opensmtpd_secrets_all
+    Description: Define the 'opensmtpd_secrets_all' option.
+    Implemented: 0.4
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{label: 'user01_auth', username: 'user01', password: 'S6_SD6B,Ybwt+Np-GuGEh+.p-xUeLbH3', comment: 'user01 credentials'},
+                 {label: 'user02_auth', username: 'user02', password: 'bvU8tP6!MF9t+hudKa,nkjP,r-oKUfip', comment: 'user02 credentials'}]
+      None    : []
+
+  opensmtpd_secrets_group
+    Description: Define the 'opensmtpd_secrets_group' option.
+    Implemented: 0.4
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{label: 'user01_auth', username: 'user01', password: 'S6_SD6B,Ybwt+Np-GuGEh+.p-xUeLbH3', comment: 'user01 credentials'},
+                 {label: 'user02_auth', username: 'user02', password: 'bvU8tP6!MF9t+hudKa,nkjP,r-oKUfip', comment: 'user02 credentials'}]
+      None    : []
+
+  opensmtpd_secrets_host
+    Description: Define the 'opensmtpd_secrets_host' option.
+    Implemented: 0.4
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{label: 'user01_auth', username: 'user01', password: 'S6_SD6B,Ybwt+Np-GuGEh+.p-xUeLbH3', comment: 'user01 credentials'},
+                 {label: 'user02_auth', username: 'user02', password: 'bvU8tP6!MF9t+hudKa,nkjP,r-oKUfip', comment: 'user02 credentials'}]
+      None    : []
 
   opensmtpd_table_all
     Description: Define the 'opensmtpd_table_all' option.
