@@ -1,0 +1,23 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : config
+# Type   : monit configuration file
+# Role   : monit
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+# {{item.comment}}
+{% if (item.config is defined) and not ((item.config == '') or (item.config == [])) %}
+{% for config in item.config %}
+{{config}}
+{% endfor %}
+{% endif %}
