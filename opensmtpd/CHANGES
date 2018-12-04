@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.2 (2018-12-04)
+I: Add 'no_log' parameter to sensitive tasks
+
 * Version 0.4.1 (2018-12-04)
 B: Remove single quotes from 'secrets' file
 
