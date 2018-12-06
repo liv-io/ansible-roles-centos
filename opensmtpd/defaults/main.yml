@@ -3,15 +3,15 @@
 opensmtpd_state: 'enable'
 
 opensmtpd_accept_all:
-  - {config: {'accept for local alias <aliases> deliver to mbox'}, comment: 'Accept: Aliases'}
-  - {config: {'accept for any relay via smtp://mail'}, comment: 'Accept: Relay'}
+  - {config: {'accept for local alias <aliases> deliver to mbox'}, comment: 'Accept: aliases'}
+  - {config: {'accept for any relay via smtp://mail'}, comment: 'Accept: relay'}
 
 opensmtpd_accept_group: []
 
 opensmtpd_accept_host: []
 
 opensmtpd_listen_all:
-  - {config: {'listen on localhost'}, comment: 'Listen: Localhost'}
+  - {config: {'listen on lo'}, comment: 'Listen: lo'}
 
 opensmtpd_listen_group: []
 
@@ -26,8 +26,8 @@ opensmtpd_secrets_group: []
 opensmtpd_secrets_host: []
 
 opensmtpd_table_all:
-  - {config: {'table aliases file:/etc/aliases'}, comment: 'Table: Aliases'}
-  - {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: Secrets'}
+  - {config: {'table aliases file:/etc/aliases'}, comment: 'Table: aliases'}
+  - {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: secrets'}
 
 opensmtpd_table_group: []
 

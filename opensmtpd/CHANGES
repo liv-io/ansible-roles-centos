@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.3 (2018-12-06)
+I: Improve Ansible role overall
+I: Change default value of 'opensmtpd_listen_all' parameter
+
 * Version 0.4.2 (2018-12-04)
 I: Add 'no_log' parameter to sensitive tasks
 
