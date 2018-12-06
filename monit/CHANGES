@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2018-12-06)
+I: Remove email information from alert message
+
 * Version 0.2.0 (2018-12-06)
 I: Improve 'monit_mail_server' parameter
 I: Redesign 'monit_mail_to' parameter
