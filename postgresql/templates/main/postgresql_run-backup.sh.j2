@@ -117,15 +117,7 @@ SYSTEM
 --------------------------------------------------------------------------------
 
 Hostname    : {{ansible_hostname}}
-FQDN        : {{ansible_fqdn}}
-
---------------------------------------------------------------------------------
-MAIL
---------------------------------------------------------------------------------
-
-Sender      : ${mail_sender}
-Recipient   : ${mail_recipient}
-Subject     : ${mail_subject}"
+FQDN        : {{ansible_fqdn}}"
 
   ${echo} "${mail_body}" | ${mailx} -r "${mail_sender}" -s "${mail_subject}" "${mail_recipient}" > /dev/null 2>&1
 }
