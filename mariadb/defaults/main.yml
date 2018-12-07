@@ -16,8 +16,6 @@ mariadb_monitor_mail_sender: "root@{{ansible_domain}}"
 
 mariadb_monitor_mail_state: 'false'
 
-mariadb_monitor_mail_subject: "MariaDB: Run Backup - Error ({{ansible_hostname}})"
-
 mariadb_root_password: 'mTA_4Vamn.DGrM5p2u8f6ScHm3_g9quA'
 
 mariadb_run_backup_day: '*'
