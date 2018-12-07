@@ -17,8 +17,6 @@ postgresql_monitor_mail_sender: "root@{{ansible_domain}}"
 
 postgresql_monitor_mail_state: 'false'
 
-postgresql_monitor_mail_subject: "PostgreSQL: Run Backup - Error ({{ansible_hostname}})"
-
 postgresql_postgres_password: '8CxP,3uDc+BH+rG_2Lgc4VfTWgAs.6W5'
 
 postgresql_run_backup_day: '*'
