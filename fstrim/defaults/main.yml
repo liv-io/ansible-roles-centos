@@ -19,5 +19,3 @@ fstrim_monitor_mail_recipient: ["admin@{{ansible_domain}}"]
 fstrim_monitor_mail_sender: "root@{{ansible_domain}}"
 
 fstrim_monitor_mail_state: 'false'
-
-fstrim_monitor_mail_subject: "fstrim: Discard Blocks - Error ({{ansible_hostname}})"

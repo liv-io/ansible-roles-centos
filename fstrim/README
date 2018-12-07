@@ -170,16 +170,6 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
-  fstrim_monitor_mail_subject
-    Description: Define the 'fstrim_monitor_mail_subject' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : "fstrim: Discard Blocks - Error ({{ansible_hostname}})"
-    Options    :
-      Examples: 'fstrim: Discard Blocks - Error'
-
 --------------------------------------------------------------------------------
 CONFLICTS
 --------------------------------------------------------------------------------

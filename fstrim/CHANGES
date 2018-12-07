@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-12-07)
+I: Remove 'fstrim_monitor_mail_subject' parameter
+
 * Version 0.1.1 (2018-12-07)
 I: Remove email information from message
 
