@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.2 (2018-12-07)
+I: Remove email information from message
+
 * Version 0.4.1 (2018-11-27)
 I: Minor style improvements
 
