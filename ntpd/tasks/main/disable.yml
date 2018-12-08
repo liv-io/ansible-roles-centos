@@ -41,6 +41,30 @@
     - disable
     - ntpd
 
+- name: 'file create ntpd_check-time.sh'
+  template:
+    src: "{{file_src_ntpd_check_time_sh}}"
+    dest: "{{file_dst_ntpd_check_time_sh}}"
+    mode: "{{file_mode_ntpd_check_time_sh}}"
+    owner: "{{file_owner_ntpd_check_time_sh}}"
+    group: "{{file_group_ntpd_check_time_sh}}"
+  tags:
+    - disable
+    - ntpd
+
+- name: 'cron create ntpd_check-time'
+  cron:
+    state: 'present'
+    disabled: 'yes'
+    name: "{{cron_name_ntpd_check_time}}"
+    cron_file: "{{cron_cron_file_ntpd_check_time}}"
+    minute: "{{cron_minute_ntpd_check_time}}"
+    user: "{{cron_user_ntpd_check_time}}"
+    job: "{{cron_job_ntpd_check_time}}"
+  tags:
+    - disable
+    - ntpd
+
 - name: 'file create ntpd_update-time.sh'
   template:
     src: "{{file_src_ntpd_update_time_sh}}"

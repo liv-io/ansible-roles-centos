@@ -31,6 +31,23 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'cron remove ntpd_check-time'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_ntpd_check_time}}"
+    cron_file: "{{cron_cron_file_ntpd_check_time}}"
+  tags:
+    - remove
+    - ntpd
+
+- name: 'file remove ntpd_check-time.sh'
+  file:
+    state: 'absent'
+    path: "{{file_dst_ntpd_check_time_sh}}"
+  tags:
+    - remove
+    - ntpd
+
 - name: 'cron remove ntpd_update-time'
   cron:
     state: 'absent'
