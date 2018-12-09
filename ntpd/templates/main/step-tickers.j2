@@ -19,7 +19,9 @@
 
 {% if not (ntpd_server == []) %}
 {% for item in ntpd_server %}
+{% if not ((item.comment|default('')) == '') %}
 # {{item.comment}}
+{% endif %}
 {{item.address}}
 
 {% endfor %}
