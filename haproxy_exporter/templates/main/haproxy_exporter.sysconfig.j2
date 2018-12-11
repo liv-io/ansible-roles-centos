@@ -16,9 +16,7 @@
 #-------------------------------------------------------------------------------
 
 OPTIONS="
-{%- if (haproxy_exporter_haproxy_scrape_uri is defined) and not (haproxy_exporter_haproxy_scrape_uri == []) %}
-{% for item in haproxy_exporter_haproxy_scrape_uri %}
---haproxy.scrape-uri='{{item.protocol|default('http://')}}{{item.username}}{% if not (item.username == '') %}:{% endif %}{{item.password}}{% if not (item.username == '') %}@{% endif %}{{item.address|default('localhost')}}:{{item.port|default('9000')}}{{item.uri|default('/haproxy?stats;csv')}}'
+{% for item in (haproxy_exporter_haproxy_scrape_uri|default('')) %}
+--haproxy.scrape-uri='{{(item.protocol|default('http://'))}}{{(item.username|default(''))}}{% if not ((item.username|default('')) == '') %}:{% endif %}{{(item.password|default'')}}{% if not ((item.username|default('')) == '') %}@{% endif %}{{(item.address|default('localhost'))}}:{{(item.port|default('9000'))}}{{(item.uri|default('/haproxy?stats;csv'))}}'
 {%- endfor %}
-{%- endif %}
 "

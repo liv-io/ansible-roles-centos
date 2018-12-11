@@ -97,17 +97,6 @@
     - install
     - haproxy_exporter
 
-- name: 'file create haproxy_exporter-current.link'
-  file:
-    state: 'link'
-    src: "{{file_src_haproxy_exporter_current_link}}"
-    path: "{{file_dst_haproxy_exporter_current_link}}"
-    owner: "{{file_owner_haproxy_exporter_current_link}}"
-    group: "{{file_group_haproxy_exporter_current_link}}"
-  tags:
-    - install
-    - haproxy_exporter
-
 - name: 'file create haproxy_exporter.service'
   template:
     src: "{{file_src_haproxy_exporter_service}}"
