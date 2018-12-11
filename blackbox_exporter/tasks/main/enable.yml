@@ -28,7 +28,7 @@
     group: "{{file_group_blackbox_exporter_current_link}}"
   notify: 'service restart blackbox_exporter'
   tags:
-    - install
+    - enable
     - blackbox_exporter
 
 - name: 'file create blackbox.yml'

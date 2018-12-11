@@ -17,13 +17,13 @@
 
 modules:
 {% for item in blackbox_exporter_config|default([]) %}
-{% if (item.name is defined) and not (item.name == '') %}
+{% if not ((item.name|default('')) == '') %}
   #-----------------------------------------------------------------------------
   # {{(item.name|upper)}}
   #-----------------------------------------------------------------------------
 
 {% endif %}
-{% if (item.comment is defined) and not (item.comment == '') %}
+{% if not ((item.comment|default('')) == '') %}
   # {{(item.comment)}}
 {% endif %}
   {{item.name}}:

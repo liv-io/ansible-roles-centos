@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.3 (2018-12-11)
+B: Correct Ansible tag
+I: Minor Jinja2 syntax improvements
+
 * Version 0.3.2 (2018-12-11)
 I: Move 'blackbox_exporter-current.link' task from 'install' to 'enable'
 
