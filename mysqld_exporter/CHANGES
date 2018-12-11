@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.5 (2018-12-11)
+I: Move 'mysqld_exporter-current.link' task from 'install' to 'enable'
+
 * Version 0.1.4 (2018-08-29)
 B: Remove configuration files from install sequence (execute notify handler)
 
