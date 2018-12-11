@@ -115,6 +115,7 @@
     path: "{{file_dst_blackbox_exporter_current_link}}"
     owner: "{{file_owner_blackbox_exporter_current_link}}"
     group: "{{file_group_blackbox_exporter_current_link}}"
+  notify: 'service restart blackbox_exporter'
   tags:
     - install
     - blackbox_exporter

@@ -22,6 +22,7 @@ After=syslog.target network.target
 [Service]
 User=blackbox_exporter
 Group=blackbox_exporter
+AmbientCapabilities=CAP_NET_RAW
 EnvironmentFile=/etc/sysconfig/blackbox_exporter
 ExecStart={{file_dst_blackbox_exporter_current_link}}/blackbox_exporter $OPTIONS
 

@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.1 (2018-12-11)
+B: Add missing 'CAP_NET_RAW' capability
+I: Restart application when new symlink is being created (i.e. version updates)
+
 * Version 0.3.0 (2018-12-05)
 F: Update 'blackbox_exporter' to version '0.13.0'
 
