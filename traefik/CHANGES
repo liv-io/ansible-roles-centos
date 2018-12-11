@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2018-12-11)
+I: Move 'traefik-current.link' task from 'install' to 'enable'
+
 * Version 0.1.1 (2018-08-23)
 I: Flush handlers after installation tasks for file 'traefik.service'
 

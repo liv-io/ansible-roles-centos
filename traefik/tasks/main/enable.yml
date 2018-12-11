@@ -19,6 +19,18 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file create traefik-current.link'
+  file:
+    state: 'link'
+    src: "{{file_src_traefik_current_link}}"
+    path: "{{file_dst_traefik_current_link}}"
+    owner: "{{file_owner_traefik_current_link}}"
+    group: "{{file_group_traefik_current_link}}"
+  notify: 'service restart traefik'
+  tags:
+    - enable
+    - traefik
+
 - name: 'file create traefik.toml'
   template:
     src: "{{file_src_traefik_toml}}"
