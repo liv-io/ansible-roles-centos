@@ -13,5 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.1 (2018-12-11)
+I: Minor Jinja2 syntax improvements
+I: Move 'alertmanager-current.link' task from 'install' to 'enable'
+
 * Version 0.1.0 (2018-11-28)
 F: Initial release

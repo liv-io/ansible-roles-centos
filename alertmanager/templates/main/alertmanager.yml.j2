@@ -15,9 +15,8 @@
 #
 #-------------------------------------------------------------------------------
 
-{% if (alertmanager_config is defined) and not (alertmanager_config == []) %}
-{% for item in alertmanager_config %}
-{% if (item.section is defined) and not (item.section == '') %}
+{% for item in (alertmanager_config|default([])) %}
+{% if not ((item.section|default('')) == '') %}
 #-------------------------------------------------------------------------------
 # {{(item.section|upper)}}
 #-------------------------------------------------------------------------------
@@ -29,4 +28,3 @@
 {% endfor %}
 
 {% endfor %}
-{% endif %}

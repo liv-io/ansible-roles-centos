@@ -19,6 +19,18 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file create alertmanager-current.link'
+  file:
+    state: 'link'
+    src: "{{file_src_alertmanager_current_link}}"
+    path: "{{file_dst_alertmanager_current_link}}"
+    owner: "{{file_owner_alertmanager_current_link}}"
+    group: "{{file_group_alertmanager_current_link}}"
+  notify: 'service restart alertmanager'
+  tags:
+    - enable
+    - alertmanager
+
 - name: 'file create alertmanager.yml'
   template:
     src: "{{file_src_alertmanager_yml}}"
