@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.2 (2018-12-11)
+I: Move 'blackbox_exporter-current.link' task from 'install' to 'enable'
+
 * Version 0.3.1 (2018-12-11)
 B: Add missing 'CAP_NET_RAW' capability
 I: Restart application when new symlink is being created (i.e. version updates)

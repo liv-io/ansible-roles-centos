@@ -108,18 +108,6 @@
     - install
     - blackbox_exporter
 
-- name: 'file create blackbox_exporter-current.link'
-  file:
-    state: 'link'
-    src: "{{file_src_blackbox_exporter_current_link}}"
-    path: "{{file_dst_blackbox_exporter_current_link}}"
-    owner: "{{file_owner_blackbox_exporter_current_link}}"
-    group: "{{file_group_blackbox_exporter_current_link}}"
-  notify: 'service restart blackbox_exporter'
-  tags:
-    - install
-    - blackbox_exporter
-
 - name: 'file create blackbox_exporter.service'
   template:
     src: "{{file_src_blackbox_exporter_service}}"
