@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.4 (2018-12-11)
+I: Minor Jinja2 syntax improvements
+
 * Version 0.3.3 (2018-12-11)
 B: Correct Ansible tag
 I: Minor Jinja2 syntax improvements

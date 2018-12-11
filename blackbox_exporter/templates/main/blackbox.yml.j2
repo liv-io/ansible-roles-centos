@@ -16,7 +16,7 @@
 #-------------------------------------------------------------------------------
 
 modules:
-{% for item in blackbox_exporter_config|default([]) %}
+{% for item in (blackbox_exporter_config|default([])) %}
 {% if not ((item.name|default('')) == '') %}
   #-----------------------------------------------------------------------------
   # {{(item.name|upper)}}
@@ -28,7 +28,7 @@ modules:
 {% endif %}
   {{item.name}}:
     prober: {{item.prober}}
-    timeout: {{item.timeout|default('5s')}}
+    timeout: {{(item.timeout|default('5s'))}}
     {{item.prober}}:
 {% for config in item.config %}
       {{config}}
