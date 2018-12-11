@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2018-12-11)
+I: Move 'node_exporter-current.link' task from 'install' to 'enable'
+
 * Version 0.2.0 (2018-11-30)
 F: Update 'node_exporter' to version '0.17.0'
 
