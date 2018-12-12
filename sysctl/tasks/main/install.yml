@@ -49,7 +49,7 @@
 - name: 'command set sysctl.conf'
   shell: "{{command_cmd_set_sysctl}} {{file_dst_sysctl_conf}}"
   with_items: "{{sysctl_config_all + sysctl_config_group + sysctl_config_host}}"
-  when: (register_sysctl_conf|changed)
+  when: (register_sysctl_conf is changed)
   tags:
     - config
     - sysctl

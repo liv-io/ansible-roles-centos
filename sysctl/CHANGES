@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.3 (2018-12-12)
+I: Update filters to support Ansible >= 2.9
+
 * Version 1.0.2 (2018-12-12)
 I: Minor Jinja2 style improvement
 
