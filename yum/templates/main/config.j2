@@ -25,7 +25,7 @@
 {% if (item.comment|default('')) %}
 # {{item.comment}}
 {% endif %}
-[{{item.name|default(yum_name_default)}}]
+[{{(item.name|default('config'))}}]
 {% if (item.description|default('')) %}
 name={{item.description}}
 {% endif %}
@@ -52,7 +52,7 @@ exclude={% for exclude in item.exclude %}{{exclude}}{% if not loop.last %} {% en
 includepkgs={% for include in item.include %}{{include}}{% if not loop.last %} {% endif %}{% endfor %}
 {% endif %}
 {% if (item.priority|default('')) %}
-priority={{item.priority|int(80)}}
+priority={{(item.priority|int(80))}}
 {% endif %}
 {% if (item.ssl_verify|default('true') is match('false|no|disable')) %}
 sslverify=0

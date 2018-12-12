@@ -22,7 +22,7 @@
 - name: 'file copy gpg-key'
   copy:
     content: "{{item.gpg_content}}"
-    dest: "{{file_dst_rpm_gpg}}/{{item.gpg_name|default('config')}}"
+    dest: "{{file_dst_rpm_gpg}}/{{(item.gpg_name|default('config'))}}"
     mode: "{{file_mode_gpg_key}}"
     owner: "{{file_owner_gpg_key}}"
     group: "{{file_group_gpg_key}}"
@@ -35,7 +35,7 @@
 - name: 'file create config'
   template:
     src: "{{file_src_config}}"
-    dest: "{{file_dst_yum_repos_d}}/{{item.name|default('config')}}.repo"
+    dest: "{{file_dst_yum_repos_d}}/{{(item.name|default('config'))}}.repo"
     mode: "{{file_mode_config}}"
     owner: "{{file_owner_config}}"
     group: "{{file_group_config}}"
@@ -49,7 +49,7 @@
 - name: 'file remove gpg-key'
   file:
     state: 'absent'
-    path: "{{file_dst_rpm_gpg}}/{{item.gpg_name|default('config')}}"
+    path: "{{file_dst_rpm_gpg}}/{{(item.gpg_name|default('config'))}}"
   with_items: "{{yum_config_all + yum_config_group + yum_config_host}}"
   when: (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
@@ -59,7 +59,7 @@
 - name: 'file remove config'
   file:
     state: 'absent'
-    path: "{{file_dst_yum_repos_d}}/{{item.name|default('config')}}.repo"
+    path: "{{file_dst_yum_repos_d}}/{{(item.name|default('config'))}}.repo"
   notify: 'command clean yum-cache'
   with_items: "{{yum_config_all + yum_config_group + yum_config_host}}"
   when: (item.state|default('false') is match('false|no|remove'))
