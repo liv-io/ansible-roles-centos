@@ -68,12 +68,12 @@ server:
 	# specify 0.0.0.0 and ::0 to bind to all available interfaces.
 	# specify every interface[@port] on a new 'interface:' labelled line.
 	# The listen interfaces are not changed on reload, only on restart.
-{% if (unbound_interface is defined) and not (unbound_interface == []) %}
+{% if not (unbound_interface == []) %}
 {% for interface in unbound_interface %}
-{% if (interface.comment is defined) %}
+{% if not ((interface.comment|default('')) == '') %}
         # {{interface.comment}}
 {% endif %}
-        interface: {{interface.address}}{% if (interface.port is defined) %}@{{interface.port|int(53)}}{% endif %}
+        interface: {{interface.address}}{% if ((interface.port|default('')) == '') %}@{{(interface.port|int(53))}}{% endif %}
 
 {% endfor %}
 {% else %}
@@ -297,12 +297,12 @@ server:
 	# deny_non_local (drop queries unless can be answered from local-data)
 	# refuse_non_local (like deny_non_local but polite error reply).
 {% for access_control in unbound_access_control %}
-{% if (access_control.comment is defined) and not (access_control.comment == '') %}
+{% if not ((access_control.comment|default('')) == '') %}
         # {{access_control.comment}}
 {% endif %}
         access-control:
-{%- if (access_control.address is defined) and not (access_control.address == '') %} {{access_control.address}} {% endif %}
-{%- if (access_control.action is defined) and (access_control.action is match('allow|accept')) %}allow{% else %}refuse{% endif %}
+{%- if not ((access_control.address|default('')) == '') %} {{access_control.address}} {% endif %}
+{%- if (access_control.action is match('allow|accept')) %}allow{% else %}refuse{% endif %}
 
 
 {% endfor %}
@@ -807,12 +807,12 @@ server:
         #-----------------------------------------------------------------------
 
 {% for local_zone in unbound_local_zone %}
-{% if (local_zone.comment is defined) and not (local_zone.comment == '') %}
+{% if not ((local_zone.comment|default('')) == '') %}
         # {{local_zone.comment}}
 {% endif %}
         local-zone:
-{%- if (local_zone.zone is defined) and not (local_zone.zone == '') %} "{{local_zone.zone}}" {% endif %}
-{%- if (local_zone.type is defined) and not (local_zone.type == '') %}"{{local_zone.type}}"{% endif %}
+{%- if not ((local_zone.zone|default('')) == '') %} "{{local_zone.zone}}" {% endif %}
+{%- if not ((local_zone.type|default('')) == '') %}"{{local_zone.type}}"{% endif %}
 
 {% endfor %}
 
@@ -821,10 +821,10 @@ server:
         #-----------------------------------------------------------------------
 
 {% for local_data in unbound_local_data %}
-{% if (local_data.comment is defined) and not (local_data.comment == '') %}
+{% if not ((local_data.comment|default('')) == '') %}
         # {{local_data.comment}}
 {% endif %}
-        local-data: {% if (local_data.record is defined) and not (local_data.record == '') %}"{{local_data.record}}"{% endif %}
+        local-data: {% if not ((local_data.record|default('')) == '') %}"{{local_data.record}}"{% endif %}
 
 {% endfor %}
 
@@ -833,10 +833,10 @@ server:
         #-----------------------------------------------------------------------
 
 {% for local_data_ptr in unbound_local_data_ptr %}
-{% if (local_data_ptr.comment is defined) and not (local_data_ptr.comment == '') %}
+{% if not ((local_data_ptr.comment|default('')) == '') %}
         # {{local_data_ptr.comment}}
 {% endif %}
-        local-data-ptr: {% if (local_data_ptr.record is defined) and not (local_data_ptr.record == '') %}"{{local_data_ptr.record}}"{% endif %}
+        local-data-ptr: {% if not ((local_data_ptr.record|default('')) == '') %}"{{local_data_ptr.record}}"{% endif %}
 
 {% endfor %}
 
@@ -928,7 +928,7 @@ server:
 #-------------------------------------------------------------------------------
 
 {% for include in unbound_include %}
-{% if (include.comment is defined) and not (include.comment == '') %}
+{% if not ((include.comment|default('')) == '') %}
 # {{include.comment}}
 {% endif %}
 include: {{include.file}}
@@ -1008,14 +1008,14 @@ include: /etc/unbound/conf.d/*.conf
 #	name: "example.org"
 #	stub-host: ns.example.com.
 
-{% if (unbound_stub_zone is defined) and not (unbound_stub_zone == []) %}
+{% if not ((unbound_stub_zone|default([])) == []) %}
 {% for stub_zone in unbound_stub_zone %}
-{% if (stub_zone.comment is defined) %}
+{% if not ((stub_zone.comment|default('')) == '') %}
         # {{stub_zone.comment}}
 {% endif %}
 stub-zone:
         name: "{{stub_zone.name}}"
-        stub-addr: {{stub_zone.address}}{% if (stub_zone.port is defined) %}@{{stub_zone.port|int(53)}}{% endif %}
+        stub-addr: {{stub_zone.address}}{% if not ((stub_zone.port|default('')) == '') %}@{{(stub_zone.port|int(53))}}{% endif %}
 
 {% endfor %}
 {% endif %}
