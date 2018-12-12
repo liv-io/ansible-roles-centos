@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-12)
+I: Mark Ansible role as 'stable'
+I: Minor style improvement
+
 * Version 0.2.0 (2018-10-18)
 F: Add support for 'SSL_ports' option (squid_acl_ssl_ports)
 
