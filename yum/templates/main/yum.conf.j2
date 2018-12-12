@@ -29,10 +29,10 @@ bugtracker_url=http://bugs.centos.org/set_project.php?project_id=23&ref=http://b
 distroverpkg=centos-release
 
 {% if (yum_exclude|default([])) %}
-exclude={% for exclude in yum_exclude %}{{exclude}}{% if not loop.last %} {% endif %}{% endfor %}
+exclude={% for item in yum_exclude %}{{item}}{% if not loop.last %} {% endif %}{% endfor %}
 {% endif %}
 {% if (yum_include|default([])) %}
-includepkgs={% for include in yum_include %}{{include}}{% if not loop.last %} {% endif %}{% endfor %}
+includepkgs={% for item in yum_include %}{{item}}{% if not loop.last %} {% endif %}{% endfor %}
 {% endif %}
 {% if (yum_proxy|default('')) %}
 proxy={{yum_proxy}}
