@@ -6,7 +6,7 @@
 # INFORMATION
 #-------------------------------------------------------------------------------
 #
-# Name   : systemd-config
+# Name   : config
 # Type   : systemd configuration file
 # Role   : systemd
 #
@@ -15,13 +15,19 @@
 #
 #-------------------------------------------------------------------------------
 
-{% if (item.comment is defined) and not (item.comment == '') %}
-# {{item.comment}}
+{% if not ((item.name|default('')) == '') %}
+#-----------------------------------------------------------------------------
+# {{(item.name|upper)}}
+#-----------------------------------------------------------------------------
+
+{% endif %}
+{% if not ((item.comment|default('')) == '') %}
+# {{(item.comment)}}
 {% endif %}
 
 {% for option in item.options|default([]) %}
-{% if (option.section is defined) and not (option.section == '') %}[{{option.section|capitalize}}]{% endif %}
-{% if (option.key is defined) and not (option.key == '') %}{{option.key}}{% endif %}
-{%- if (option.value is defined) and not (option.value == '') %}={{option.value}}{% endif %}
+{% if not ((option.section|default('')) == '') %}[{{(option.section|capitalize)}}]{% endif %}
+{% if not ((option.key|default('')) == '') %}{{option.key}}{% endif %}
+{%- if not ((option.value|default('')) == '') %}={{option.value}}{% endif %}
 
 {% endfor %}

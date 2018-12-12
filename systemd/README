@@ -43,7 +43,7 @@ INACTIVE
 
 CONFIG
   vars:
-    systemd_all:
+    systemd_config_all:
       - name: 'ctrl-alt-del'
         state: 'true'
         mode: 'system'
@@ -51,7 +51,6 @@ CONFIG
         comment: "Disable 'ctrl+alt+del' hotkey"
         options: []
 
-    systemd_dependencies:
       - name: 'emergency-net'
         state: 'true'
         mode: 'system'
@@ -68,7 +67,7 @@ CONFIG
           - key: 'AllowIsolate'
             value: 'yes'
 
-    systemd_group:
+    systemd_config_group:
       - name: 'opensmtpd'
         state: 'true'
         mode: 'system'
@@ -95,7 +94,7 @@ CONFIG
           - key: 'WantedBy'
             value: 'multi-user.target'
 
-    systemd_host:
+    systemd_config_host:
       - name: 'crond'
         state: 'true'
         mode: 'system'
@@ -144,7 +143,7 @@ CONFIG
     Required   : True
     Value      : Arbitrary
     Type       : String
-    Default    : "{{systemd_mode_default}}"
+    Default    : 'system'
     Options    :
       Examples: 'system' | 'user'
 
@@ -154,7 +153,7 @@ CONFIG
     Required   : True
     Value      : Arbitrary
     Type       : String
-    Default    : "{{systemd_name_default}}"
+    Default    : 'config'
     Options    :
       Examples: 'opensmtpd' | 'ctrl+alt+del'
 
@@ -195,7 +194,7 @@ CONFIG
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : "{{systemd_type_default}}"
+    Default    : 'target'
     Options    :
       Examples: 'service' | 'socket' | 'target' | 'device' | 'mount' |
                 'automount' | 'snapshot' | 'timer' | 'swap' | 'path' | 'slice' |
@@ -213,8 +212,8 @@ ROLE
       Install : 'true' | 'yes' | 'install'
       Inactive: 'quiesce' | 'inactive'
 
-  systemd_all
-    Description: Define the 'systemd_all' option.
+  systemd_config_all
+    Description: Define the 'systemd_config_all' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -226,8 +225,8 @@ ROLE
                   comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
       None    : []
 
-  systemd_dependencies
-    Description: Define the 'systemd_dependencies' option.
+  systemd_config_group
+    Description: Define the 'systemd_config_group' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -238,8 +237,8 @@ ROLE
                   comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
       None    : []
 
-  systemd_group
-    Description: Define the 'systemd_group' option.
+  systemd_config_host
+    Description: Define the 'systemd_config_host' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -249,50 +248,6 @@ ROLE
       Examples: [{name: 'ctrl-alt-del', state: 'true', mode: 'system', type: 'target',
                   comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
       None    : []
-
-  systemd_host
-    Description: Define the 'systemd_host' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
-    Options    :
-      Examples: [{name: 'ctrl-alt-del', state: 'true', mode: 'system', type: 'target',
-                  comment: "Disable 'ctrl+alt+del' hotkey", options: []}]
-      None    : []
-
-  systemd_mode_default
-    Description: Define the 'systemd_mode_default' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'system'
-    Options    :
-      Examples: 'system' | 'user'
-
-  systemd_name_default
-    Description: Define the 'systemd_name_default' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'dummy' | 'example'
-
-  systemd_type_default
-    Description: Define the 'systemd_type_default' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'target'
-    Options    :
-      Examples: 'service' | 'socket' | 'target' | 'device' | 'mount' |
-                'automount' | 'snapshot' | 'timer' | 'swap' | 'path' | 'slice' |
-                'scope'
 
 --------------------------------------------------------------------------------
 CONFLICTS
@@ -351,7 +306,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Testing
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER
