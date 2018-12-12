@@ -34,8 +34,3 @@ user_password_root: "{{root_password if not (root_password == '') else '!'}}"
 user_password_update_root: 'always'
 user_shell_root: "{{root_shell if not (root_shell == '') else '/bin/bash'}}"
 user_system_root: 'yes'
-
-# root
-authorized_key_user_root: "{{user_name_root if not (user_name_root == '') else 'root'}}"
-authorized_key_key_root: "{{root_authorized_key if not (root_authorized_key == '')}}"
-authorized_key_options_root: ''
