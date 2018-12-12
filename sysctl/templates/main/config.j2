@@ -6,7 +6,7 @@
 # INFORMATION
 #-------------------------------------------------------------------------------
 #
-# Name   : sysctl-config
+# Name   : config
 # Type   : sysctl configuration file
 # Role   : sysctl
 #
@@ -16,10 +16,10 @@
 #-------------------------------------------------------------------------------
 
 {% for sysctl in item.sysctl|default([]) %}
-{% if (sysctl.comment is defined) and not (sysctl.comment == '') %}
+{% if not ((sysctl.comment|default('')) == '') %}
 # {{sysctl.comment}}
 {% endif %}
-{%- if (sysctl.key is defined) and not (sysctl.key == '') %}{{sysctl.key}}{% endif %}=
-{%- if (sysctl.value is defined) and not (sysctl.value == '') %}{{sysctl.value}}{% endif %}
+{%- if not ((sysctl.key|default('')) == '') %}{{sysctl.key}}{% endif %}=
+{%- if not ((sysctl.value|default('')) == '') %}{{sysctl.value}}{% endif %}
 
 {% endfor %}

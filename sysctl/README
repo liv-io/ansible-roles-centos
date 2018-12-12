@@ -39,7 +39,7 @@ INACTIVE
 
 CONFIG
   vars:
-    sysctl_all:
+    sysctl_config_all:
       - name: 'network-hardening'
         order: '10'
         state: 'true'
@@ -60,7 +60,6 @@ CONFIG
             value: '1'
             comment: 'Smurf attack protection'
 
-    sysctl_dependencies:
       - name: 'ip-forwarding'
         order: '10'
         state: 'true'
@@ -72,7 +71,7 @@ CONFIG
             value: '1'
             comment: 'IPv6 forwarding'
 
-    sysctl_group:
+    sysctl_config_group:
       - name: 'kernel-security'
         order: '00'
         state: 'true'
@@ -84,7 +83,7 @@ CONFIG
             value: '1'
             comment: 'ASLR full randomization'
 
-    sysctl_host:
+    sysctl_config_host:
       - name: 'pids'
         order: '10'
         state: 'false'
@@ -109,8 +108,8 @@ ROLE
       Install : 'true' | 'yes' | 'install'
       Inactive: 'quiesce' | 'inactive'
 
-  sysctl_all
-    Description: Define the 'sysctl_all' option.
+  sysctl_config_all
+    Description: Define the 'sysctl_config_all' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -125,8 +124,8 @@ ROLE
                            {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
       None    : []
 
-  sysctl_dependencies
-    Description: Define the 'sysctl_dependencies' option.
+  sysctl_config_group
+    Description: Define the 'sysctl_config_group' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -141,8 +140,8 @@ ROLE
                            {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
       None    : []
 
-  sysctl_group
-    Description: Define the 'sysctl_group' option.
+  sysctl_config_host
+    Description: Define the 'sysctl_config_host' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -156,32 +155,6 @@ ROLE
                            {key: 'net.ipv4.conf.default.rp_filter', value: '1', comment: 'Reverse path filtering'},
                            {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
       None    : []
-
-  sysctl_host
-    Description: Define the 'sysctl_host' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
-    Options    :
-      Examples: [{state: 'true', name: 'network-hardening', order: '10',
-                  sysctl: [{key: 'net.ipv4.tcp_syncookies', value: '1', comment: 'TCP SYN cookie protection'},
-                           {key: 'net.ipv4.tcp_rfc1337', value: '1', comment: 'TCP time-wait assassination hazards'},
-                           {key: 'net.ipv4.conf.all.rp_filter', value: '1', comment: 'Reverse path filtering'},
-                           {key: 'net.ipv4.conf.default.rp_filter', value: '1', comment: 'Reverse path filtering'},
-                           {key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1', comment: 'Smurf attack protection'}]}]
-      None    : []
-
-  sysctl_name_default
-    Description: Define the 'sysctl_name_default' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'dummy' | 'example'
 
 --------------------------------------------------------------------------------
 CONFLICTS
@@ -236,7 +209,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Testing
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER

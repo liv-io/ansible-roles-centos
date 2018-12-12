@@ -4,18 +4,18 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+# config
+file_src_config: 'templates/main/config.j2'
+file_mode_config: '0644'
+file_owner_config: 'root'
+file_group_config: 'root'
+
 # sysctl.conf
 file_src_sysctl_conf: 'templates/main/sysctl.conf.j2'
 file_dst_sysctl_conf: '/etc/sysctl.conf'
 file_mode_sysctl_conf: '0644'
 file_owner_sysctl_conf: 'root'
 file_group_sysctl_conf: 'root'
-
-# sysctl-config
-file_src_sysctl_config: 'templates/main/sysctl-config.j2'
-file_mode_sysctl_config: '0644'
-file_owner_sysctl_config: 'root'
-file_group_sysctl_config: 'root'
 
 # sysctl.d
 file_dst_sysctl_d: '/etc/sysctl.d'
