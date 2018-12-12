@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-12)
+I: Mark Ansible role as 'stable'
+I: Minor style improvement
+
 * Version 0.4.3 (2018-12-06)
 I: Improve Ansible role overall
 I: Change default value of 'opensmtpd_listen_all' parameter
