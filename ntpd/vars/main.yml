@@ -58,7 +58,7 @@ file_group_ntpd_update_time_sh: 'root'
 # ntpd_update-time
 cron_name_ntpd_update_time: "ntpd: Update Time"
 cron_cron_file_ntpd_update_time: "ntpd_update-time"
-cron_minute_ntpd_update_time: "*/{% if ((ntpd_update_time_interval|int(10)) > 59) %}59{% elif ((ntpd_update_time_interval|int(10)) < 1) %}1{% else %}{{(ntpd_update_time_interval|int(10))}}{% endif %}"
+cron_minute_ntpd_update_time: "*/{% if ((ntpd_update_time_interval|int(10))) > 59) %}59{% elif ((ntpd_update_time_interval|int(10)) < 1) %}1{% else %}{{(ntpd_update_time_interval|int(10))}}{% endif %}"
 cron_user_ntpd_update_time: "{{file_owner_ntpd_update_time_sh}}"
 cron_job_ntpd_update_time: "{{file_dst_ntpd_update_time_sh}}"
 

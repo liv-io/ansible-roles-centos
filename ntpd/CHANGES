@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-12)
+I: Mark Ansible role as 'stable'
+I: Minor style improvement
+
 * Version 0.5.0 (2018-12-10)
 F: Add option to set system time offset limit (ntpd_check_time_offset_limit)
 I: Remove needless remove tasks
