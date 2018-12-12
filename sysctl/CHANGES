@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.2 (2018-12-12)
+I: Minor Jinja2 style improvement
+
 * Version 1.0.1 (2018-12-12)
 B: Fix bug introduced with Jinja2 style improvements
 
