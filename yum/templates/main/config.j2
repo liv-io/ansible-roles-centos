@@ -21,7 +21,7 @@
 #-------------------------------------------------------------------------------
 {% endif %}
 
-{% for item in item.repositories|default([]) %}
+{% for item in (item.repositories|default([])) %}
 {% if (item.comment|default('')) %}
 # {{item.comment}}
 {% endif %}
