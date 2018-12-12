@@ -2,7 +2,7 @@
 
 yum_state: 'install'
 
-yum_all:
+yum_config_all:
   - name: 'CentOS-Base'
     state: 'true'
     comment: 'CentOS Base'
@@ -134,17 +134,13 @@ yum_all:
       =hdPa
       -----END PGP PUBLIC KEY BLOCK-----
 
-yum_dependencies: []
+yum_config_group: []
+
+yum_config_host: []
 
 yum_exclude: []
 
-yum_group: []
-
-yum_host: []
-
 yum_include: []
-
-yum_name_default: 'main'
 
 yum_proxy: ''
 

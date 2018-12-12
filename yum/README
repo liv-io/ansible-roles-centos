@@ -39,7 +39,7 @@ INACTIVE
 
 CONFIG
   vars:
-    yum_all:
+    yum_config_all:
       - name: 'CentOS-Base'
         state: 'true'
         comment: 'CentOS Base'
@@ -94,7 +94,7 @@ CONFIG
           =OGYX
           -----END PGP PUBLIC KEY BLOCK-----
 
-    yum_dependencies:
+    yum_config_group:
       - name: 'epel'
         state: 'true'
         comment: 'Extra Packages for Enterprise Linux'
@@ -140,26 +140,13 @@ CONFIG
           =hdPa
           -----END PGP PUBLIC KEY BLOCK-----
 
-    yum_group:
+    yum_config_host:
       - name: 'epel-testing'
         state: 'true'
         comment: 'Extra Packages for Enterprise Linux'
         repositories:
           - name: 'base'
             state: 'true'
-            comment: 'Extra Packages for Enterprise Linux - Testing'
-            description: 'Extra Packages for Enterprise Linux 7 - Testing - $basearch'
-            url: 'baseurl=https://mirrors.kernel.org/fedora-epel/testing/7/$basearch'
-            gpg_check: 'yes'
-            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'
-
-    yum_host:
-      - name: 'epel-testing'
-        state: 'true'
-        comment: 'Extra Packages for Enterprise Linux'
-        repositories:
-          - name: 'base'
-            state: 'false'
             comment: 'Extra Packages for Enterprise Linux - Testing'
             description: 'Extra Packages for Enterprise Linux 7 - Testing - $basearch'
             url: 'baseurl=https://mirrors.kernel.org/fedora-epel/testing/7/$basearch'
@@ -182,8 +169,8 @@ ROLE
       Install : 'true' | 'yes' | 'install'
       Inactive: 'quiesce' | 'inactive'
 
-  yum_all
-    Description: Define the 'yum_all' option.
+  yum_config_all
+    Description: Define the 'yum_config_all' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -212,8 +199,21 @@ ROLE
                      url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
       None    : []
 
-  yum_dependencies
-    Description: Define the 'yum_dependencies' option.
+  yum_config_group
+    Description: Define the 'yum_config_group' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
+                  [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
+                    url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
+      None    : []
+
+  yum_config_host
+    Description: Define the 'yum_config_host' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -236,32 +236,6 @@ ROLE
       Examples: ['systemd*', 'avahi', 'firewalld', 'gnome*']
       None    : []
 
-  yum_group
-    Description: Define the 'yum_dependencies' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
-    Options    :
-      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
-                  [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
-                    url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
-      None    : []
-
-  yum_host
-    Description: Define the 'yum_host' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
-    Options    :
-      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
-                  [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
-                    url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
-      None    : []
-
   yum_include
     Description: Define the 'yum_include' option.
     Implemented: 0.1
@@ -272,16 +246,6 @@ ROLE
     Options    :
       Examples: ['bsd*', 'openntpd', 'opensmtpd', 'tmux']
       None    : []
-
-  yum_name_default
-    Description: Define the 'yum_name_default' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'main'
-    Options    :
-      Examples: 'dummy' | 'example'
 
   yum_proxy
     Description: Define the 'yum_proxy' option.
@@ -373,7 +337,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Testing
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER

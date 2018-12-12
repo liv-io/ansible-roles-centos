@@ -11,6 +11,12 @@ package_name_yum: 'yum'
 # FILES
 #-------------------------------------------------------------------------------
 
+# config
+file_src_config: 'templates/main/config.j2'
+file_mode_config: '0644'
+file_owner_config: 'root'
+file_group_config: 'root'
+
 # gpg-key
 file_mode_gpg_key: '0644'
 file_owner_gpg_key: 'root'
@@ -28,12 +34,6 @@ file_dst_yum_conf: '/etc/yum.conf'
 file_mode_yum_conf: '0644'
 file_owner_yum_conf: 'root'
 file_group_yum_conf: 'root'
-
-# yum-config
-file_src_yum_config: 'templates/main/yum-config.j2'
-file_mode_yum_config: '0644'
-file_owner_yum_config: 'root'
-file_group_yum_config: 'root'
 
 #-------------------------------------------------------------------------------
 # COMMANDS

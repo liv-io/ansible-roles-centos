@@ -22,25 +22,25 @@
 - name: 'file copy gpg-key'
   copy:
     content: "{{item.gpg_content}}"
-    dest: "{{file_dst_rpm_gpg}}/{{item.gpg_name|default(yum_name_default)}}"
+    dest: "{{file_dst_rpm_gpg}}/{{item.gpg_name|default('config')}}"
     mode: "{{file_mode_gpg_key}}"
     owner: "{{file_owner_gpg_key}}"
     group: "{{file_group_gpg_key}}"
-  with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
+  with_items: "{{yum_config_all + yum_config_group + yum_config_host}}"
   when: not (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
     - config
     - yum
 
-- name: 'file create yum-repo'
+- name: 'file create config'
   template:
-    src: "{{file_src_yum_config}}"
-    dest: "{{file_dst_yum_repos_d}}/{{item.name|default(yum_name_default)}}.repo"
-    mode: "{{file_mode_yum_config}}"
-    owner: "{{file_owner_yum_config}}"
-    group: "{{file_group_yum_config}}"
+    src: "{{file_src_config}}"
+    dest: "{{file_dst_yum_repos_d}}/{{item.name|default('config')}}.repo"
+    mode: "{{file_mode_config}}"
+    owner: "{{file_owner_config}}"
+    group: "{{file_group_config}}"
   notify: 'command clean yum-cache'
-  with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
+  with_items: "{{yum_config_all + yum_config_group + yum_config_host}}"
   when: not (item.state|default('false') is match('false|no|remove'))
   tags:
     - config
@@ -49,19 +49,19 @@
 - name: 'file remove gpg-key'
   file:
     state: 'absent'
-    path: "{{file_dst_rpm_gpg}}/{{item.gpg_name|default(yum_name_default)}}"
-  with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
+    path: "{{file_dst_rpm_gpg}}/{{item.gpg_name|default('config')}}"
+  with_items: "{{yum_config_all + yum_config_group + yum_config_host}}"
   when: (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
     - config
     - yum
 
-- name: 'file remove yum-repo'
+- name: 'file remove config'
   file:
     state: 'absent'
-    path: "{{file_dst_yum_repos_d}}/{{item.name|default(yum_name_default)}}.repo"
+    path: "{{file_dst_yum_repos_d}}/{{item.name|default('config')}}.repo"
   notify: 'command clean yum-cache'
-  with_items: "{{yum_all + yum_dependencies + yum_group + yum_host}}"
+  with_items: "{{yum_config_all + yum_config_group + yum_config_host}}"
   when: (item.state|default('false') is match('false|no|remove'))
   tags:
     - config
