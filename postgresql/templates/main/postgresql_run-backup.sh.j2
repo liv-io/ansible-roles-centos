@@ -79,7 +79,7 @@ backup_file_owner='{{file_owner_postgresql_backup_file}}'
 backup_file_group='{{file_group_postgresql_backup_file}}'
 backup_file_mode='{{file_mode_postgresql_backup_file}}'
 backup_exclude="{% if not ((postgresql_run_backup_exclude == '') or (postgresql_run_backup_exclude == [])) %}{% for exclude in postgresql_run_backup_exclude %}{{exclude}}{% if not loop.last %}|{% endif %}{% endfor %}{% else %} {% endif %}"
-keep_days={{postgresql_run_backup_keep_days|int(2)}}
+keep_days={{(postgresql_run_backup_keep_days|int(2))}}
 
 {% if (postgresql_monitor_mail_state is match('true|yes|enable')) %}
 mail_sender='{{postgresql_monitor_mail_sender}}'

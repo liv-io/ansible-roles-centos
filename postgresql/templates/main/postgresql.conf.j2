@@ -74,7 +74,7 @@
 # - Connection Settings -
 
 {% if not (postgresql_listen_addresses == []) %}
-listen_addresses = '{% for listen_addresses in postgresql_listen_addresses %}{{listen_addresses}}{% if not loop.last %},{% endif %}{% endfor %}'		# what IP address(es) to listen on;
+listen_addresses = '{% for item in postgresql_listen_addresses %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}'		# what IP address(es) to listen on;
 {% endif %}
 					# comma-separated list of addresses;
 					# defaults to 'localhost'; use '*' for all

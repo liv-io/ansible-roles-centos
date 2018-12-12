@@ -196,7 +196,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
-    Default    : "{{25|random(seed=inventory_hostname)}}"
+    Default    : "{{(25|random(seed=inventory_hostname))}}"
     Options    :
       Examples: '42' | '*/25'
 

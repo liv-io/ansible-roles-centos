@@ -27,7 +27,7 @@ postgresql_run_backup_hour: 1
 
 postgresql_run_backup_keep_days: 2
 
-postgresql_run_backup_minute: "{{25|random(seed=inventory_hostname)}}"
+postgresql_run_backup_minute: "{{(25|random(seed=inventory_hostname))}}"
 
 postgresql_run_backup_month: '*'
 
