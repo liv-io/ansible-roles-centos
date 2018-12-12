@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.1 (2018-12-12)
+B: Fix bug introduced with Jinja2 style improvements
+
 * Version 1.0.0 (2018-12-12)
 I: Mark Ansible role as 'stable'
 I: Minor style improvement
