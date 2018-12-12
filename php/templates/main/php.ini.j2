@@ -389,7 +389,7 @@ zend.enable_gc = On
 ; threat in any way, but it makes it possible to determine whether you use PHP
 ; on your server or not.
 ; http://php.net/expose-php
-{% if (php_expose_php is defined) and (php_expose_php is match('true|yes|enable')) %}
+{% if (php_expose_php is match('true|yes|enable')) %}
 expose_php = On
 {% else %}
 expose_php = Off
@@ -419,13 +419,13 @@ max_input_time = 60
 ;max_input_nesting_level = 64
 
 ; How many GET/POST/COOKIE input variables may be accepted
-{% if (php_max_input_vars is defined) and not (php_max_input_vars == '') %}
+{% if not (php_max_input_vars == '') %}
 max_input_vars = {{php_max_input_vars}}
 {% endif %}
 
 ; Maximum amount of memory a script may consume (128MB)
 ; http://php.net/memory-limit
-{% if (php_memory_limit is defined) and not (php_memory_limit == '') %}
+{% if not (php_memory_limit == '') %}
 memory_limit = {{php_memory_limit}}
 {% endif %}
 
@@ -694,7 +694,7 @@ auto_globals_jit = On
 ; Its value may be 0 to disable the limit. It is ignored if POST data reading
 ; is disabled through enable_post_data_reading.
 ; http://php.net/post-max-size
-{% if (php_post_max_size is defined) and not (php_post_max_size == '') %}
+{% if not (php_post_max_size == '') %}
 post_max_size = {{php_post_max_size}}
 {% endif %}
 
@@ -824,7 +824,7 @@ file_uploads = On
 
 ; Maximum allowed size for uploaded files.
 ; http://php.net/upload-max-filesize
-{% if (php_upload_max_filesize is defined) and not (php_upload_max_filesize == '') %}
+{% if not (php_upload_max_filesize == '') %}
 upload_max_filesize = {{php_upload_max_filesize}}
 {% endif %}
 
@@ -905,7 +905,7 @@ cli_server.color = On
 ; Defines the default timezone used by the date functions
 ; http://php.net/date.timezone
 ;date.timezone =
-{% if (php_date_timezone is defined) and not (php_date_timezone == '') %}
+{% if not (php_date_timezone == '') %}
 date.timezone = {{php_date_timezone}}
 {% endif %}
 
@@ -1829,6 +1829,6 @@ ldap.max_links = -1
 ; End:
 
 [curl]
-{% if (php_curl_cainfo is defined) and not (php_curl_cainfo == '') %}
+{% if not (php_curl_cainfo == '') %}
 curl.cainfo = "{{php_curl_cainfo}}"
 {% endif %}

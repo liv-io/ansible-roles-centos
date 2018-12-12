@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-12)
+I: Mark Ansible role as 'stable'
+I: Minor style improvement
+
 * Version 0.4.0 (2018-08-16)
 F: Add support for 'max_input_vars' option (php_max_input_vars)
 
