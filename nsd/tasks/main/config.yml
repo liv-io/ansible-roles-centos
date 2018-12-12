@@ -19,13 +19,13 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create zone-config.zone'
+- name: 'file create config.zone'
   template:
-    src: "{{file_src_zone_config_zone}}"
-    dest: "{{file_dst_zone_config_zone}}/{{item.name}}.zone"
-    mode: "{{file_mode_zone_config_zone}}"
-    owner: "{{file_owner_zone_config_zone}}"
-    group: "{{file_group_zone_config_zone}}"
+    src: "{{file_src_config_zone}}"
+    dest: "{{file_dst_config_zone}}/{{item.name}}.zone"
+    mode: "{{file_mode_config_zone}}"
+    owner: "{{file_owner_config_zone}}"
+    group: "{{file_group_config_zone}}"
   with_items: "{{nsd_zone}}"
   notify:
     - 'command nsd-checkconf'
@@ -35,10 +35,10 @@
     - config
     - nsd
 
-- name: 'file remove zone-config.zone'
+- name: 'file remove config.zone'
   file:
     state: 'absent'
-    path: "{{file_dst_zone_config_zone}}/{{item.name}}.zone"
+    path: "{{file_dst_config_zone}}/{{item.name}}.zone"
   with_items: "{{nsd_zone}}"
   notify:
     - 'command nsd-checkconf'
