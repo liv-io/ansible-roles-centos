@@ -24,7 +24,7 @@ modules:
 
 {% endif %}
 {% if not ((item.comment|default('')) == '') %}
-  # {{(item.comment)}}
+  # {{item.comment}}
 {% endif %}
   {{item.name}}:
     prober: {{item.prober}}
