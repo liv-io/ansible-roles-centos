@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-13)
+I: Mark Ansible role as 'stable'
+
 * Version 0.2.1 (2018-12-11)
 I: Move 'node_exporter-current.link' task from 'install' to 'enable'
 
