@@ -11,7 +11,7 @@
 # Set the default policy and zero the packet and byte counters
 
 {% for policy in iptables_filter_policies|default([]) %}
-{%- if (policy.version is defined) and (policy.version is match('ipv6|v6|inet6')) %}
+{%- if (policy.version is defined) and (policy.version is match('ipv6|ip6|inet6')) %}
 {%- if (policy.comment is defined) and not (policy.comment == '') %}
 # {{policy.comment}}
 {% endif %}
@@ -39,7 +39,7 @@
 # ALL
 
 {% for all in iptables_filter_all|default([]) %}
-{%- if (all.version is defined) and (all.version is match('ipv6|v6|inet6')) %}
+{%- if (all.version is defined) and (all.version is match('ipv6|ip6|inet6')) %}
 {%- if (all.comment is defined) and not (all.comment == '') %}
 # {{all.comment}}
 {% endif %}
@@ -56,7 +56,7 @@
 {% endfor %}
 {%- if (all.destinations is defined) and not (all.destinations == []) %} {% endif %}
 -m state --state NEW
-{%- if (all.protocol is defined) and (all.protocol is match('icmp|icmpv6')) %} -m icmpv6 -p icmpv6 {% elif (all.protocol is defined) and (all.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
+{%- if (all.protocol is defined) and (all.protocol is match('icmpv6|icmp6|icmp')) %} -m icmpv6 -p icmpv6 {% elif (all.protocol is defined) and (all.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
 {%- if (all.code is defined) and not (all.code == '') %}--icmpv6-type {{all.code}} {% endif %}
 {%- if (all.ports is defined) and not (all.ports == []) %}-m multiport --dports
 {%- for port in all.ports|default([]) %}
@@ -76,7 +76,7 @@
 # GROUP
 
 {% for group in iptables_filter_group|default([]) %}
-{%- if (group.version is defined) and (group.version is match('ipv6|v6|inet6')) %}
+{%- if (group.version is defined) and (group.version is match('ipv6|ip6|inet6')) %}
 {%- if (group.comment is defined) and not (group.comment == '') %}
 # {{group.comment}}
 {% endif %}
@@ -93,7 +93,7 @@
 {% endfor %}
 {%- if (group.destinations is defined) and not (group.destinations == []) %} {% endif %}
 -m state --state NEW
-{%- if (group.protocol is defined) and (group.protocol is match('icmp|icmpv6')) %} -m icmpv6 -p icmpv6 {% elif (group.protocol is defined) and (group.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
+{%- if (group.protocol is defined) and (group.protocol is match('icmpv6|icmp6|icmp')) %} -m icmpv6 -p icmpv6 {% elif (group.protocol is defined) and (group.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
 {%- if (group.code is defined) and not (group.code == '') %}--icmpv6-type {{group.code}} {% endif %}
 {%- if (group.ports is defined) and not (group.ports == []) %}-m multiport --dports
 {%- for port in group.ports|default([]) %}
@@ -113,7 +113,7 @@
 # HOST
 
 {% for host in iptables_filter_host|default([]) %}
-{%- if (host.version is defined) and (host.version is match('ipv6|v6|inet6')) %}
+{%- if (host.version is defined) and (host.version is match('ipv6|ip6|inet6')) %}
 {%- if (host.comment is defined) and not (host.comment == '') %}
 # {{host.comment}}
 {% endif %}
@@ -130,7 +130,7 @@
 {% endfor %}
 {%- if (host.destinations is defined) and not (host.destinations == []) %} {% endif %}
 -m state --state NEW
-{%- if (host.protocol is defined) and (host.protocol is match('icmp|icmpv6')) %} -m icmpv6 -p icmpv6 {% elif (host.protocol is defined) and (host.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
+{%- if (host.protocol is defined) and (host.protocol is match('icmpv6|icmp6|icmp')) %} -m icmpv6 -p icmpv6 {% elif (host.protocol is defined) and (host.protocol is match('udp')) %} -m udp -p udp {% else %} -m tcp -p tcp {% endif %}
 {%- if (host.code is defined) and not (host.code == '') %}--icmpv6-type {{host.code}} {% endif %}
 {%- if (host.ports is defined) and not (host.ports == []) %}-m multiport --dports
 {%- for port in host.ports|default([]) %}
