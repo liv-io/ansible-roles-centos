@@ -20,9 +20,9 @@
 # the HTTPS port in addition.
 #
 #Listen 443 https
-{% if (mod_ssl_listen is defined) and not (mod_ssl_listen == []) %}
-{% for listen in mod_ssl_listen %}
-Listen {{listen}}
+{% if not (mod_ssl_listen == []) %}
+{% for item in mod_ssl_listen %}
+Listen {{item}}
 {% endfor %}
 {% endif %}
 
