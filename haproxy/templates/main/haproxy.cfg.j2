@@ -76,7 +76,7 @@ defaults
   stats realm {{haproxy_stats_realm}}
 {% endif %}
 {% if not (haproxy_stats_refresh == '') %}
-  stats refresh {{haproxy_stats_refresh|int(5)}}
+  stats refresh {{(haproxy_stats_refresh|int(5))}}
 {% endif %}
 {% if not (haproxy_stats_show_desc == '') %}
   stats show-desc {{haproxy_stats_show_desc}}
@@ -90,12 +90,12 @@ defaults
 {% if not (haproxy_stats_uri == '') %}
   stats uri {{haproxy_stats_uri}}
 {% endif %}
-{% if (haproxy_stats_auth is defined) and not (haproxy_stats_auth == []) %}
-{% for auth in haproxy_stats_auth %}
-{% if (auth.comment is defined) %}
-  # Auth: {{auth.comment}}
+{% if not (haproxy_stats_auth == []) %}
+{% for item in haproxy_stats_auth %}
+{% if not ((item.comment|default('')) == '') %}
+  # Auth: {{item.comment}}
 {% endif %}
-  stats auth {{auth.username}}:{{auth.password}}
+  stats auth {{item.username}}:{{item.password}}
 {% endfor %}
 {% endif %}
 {% endif %}
@@ -117,7 +117,7 @@ listen stats
   stats realm {{haproxy_stats_realm}}
 {% endif %}
 {% if not (haproxy_stats_refresh == '') %}
-  stats refresh {{haproxy_stats_refresh|int(5)}}
+  stats refresh {{(haproxy_stats_refresh|int(5))}}
 {% endif %}
 {% if not (haproxy_stats_show_desc == '') %}
   stats show-desc {{haproxy_stats_show_desc}}
@@ -131,24 +131,24 @@ listen stats
 {% if not (haproxy_stats_uri == '') %}
   stats uri {{haproxy_stats_uri}}
 {% endif %}
-{% if (haproxy_stats_auth is defined) and not (haproxy_stats_auth == []) %}
-{% for auth in haproxy_stats_auth %}
-{% if (auth.comment is defined) %}
-  # Auth: {{auth.comment}}
+{% if not ((haproxy_stats_auth|default([])) == []) %}
+{% for item in haproxy_stats_auth %}
+{% if not ((item.comment|default('')) == '') %}
+  # Auth: {{item.comment}}
 {% endif %}
-  stats auth {{auth.username}}:{{auth.password}}
+  stats auth {{item.username}}:{{item.password}}
 {% endfor %}
 {% endif %}
 
 {% endif %}
 
 #-------------------------------------------------------------------------------
-# CUSTOM CONFIGURATION
+# CONFIG
 #-------------------------------------------------------------------------------
 
-{% if (haproxy_custom_config is defined) and not (haproxy_custom_config == []) %}
-{% for item in haproxy_custom_config %}
-{% if (item.comment is defined) and not (item.comment == '') %}
+{% if not ((haproxy_config|default([])) == []) %}
+{% for item in haproxy_config %}
+{% if not ((item.comment|default('')) == '') %}
 #-------------------------------------------------------------------------------
 # {{(item.comment|upper)}}
 #-------------------------------------------------------------------------------

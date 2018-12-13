@@ -92,8 +92,8 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  haproxy_custom_config
-    Description: Define the 'haproxy_custom_config' option.
+  haproxy_config
+    Description: Define the 'haproxy_config' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -274,7 +274,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Testing
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER
