@@ -249,7 +249,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
-    Default    : "{{30|random(seed=inventory_hostname)}}"
+    Default    : "{{(30|random(seed=inventory_hostname))}}"
     Options    :
       Examples: '42' | '*/30'
 
@@ -396,7 +396,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Development
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER

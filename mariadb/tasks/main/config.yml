@@ -23,8 +23,8 @@
   mysql_db:
     state: 'present'
     name: "{{item.name}}"
-    collation: "{{item.collation|default('')}}"
-    encoding: "{{item.encoding|default('')}}"
+    collation: "{{(item.collation|default(''))}}"
+    encoding: "{{(item.encoding|default(''))}}"
     login_host: 'localhost'
     config_file: "{{file_dst_credentials_cnf}}"
   with_items: "{{mariadb_database_all + mariadb_database_group + mariadb_database_host}}"
@@ -49,11 +49,11 @@
   mysql_user:
     state: 'present'
     name: "{{item.name}}"
-    host: "{{item.host|default('localhost')}}"
+    host: "{{(item.host|default('localhost'))}}"
     password: "{{item.password}}"
     update_password: "{{'on_create' if (item.password_update|default('true') is match('false|no|disable')) else 'always'}}"
     encrypted: "{{'yes' if (item.password_encrypted|default('false') is match('true|yes|enable')) else 'no'}}"
-    priv: "{{item.privileges|default('*.*:ALL')}}"
+    priv: "{{(item.privileges|default('*.*:ALL'))}}"
     append_privs: "{{'yes' if (item.privileges_append|default('false') is match('true|yes|enable')) else 'no'}}"
     login_host: 'localhost'
     config_file: "{{file_dst_credentials_cnf}}"

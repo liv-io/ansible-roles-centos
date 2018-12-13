@@ -73,12 +73,12 @@ backup_timestamp=$(${date} '+%Y%m%d-%H%M%S%z')
 backup_file_owner='{{file_owner_mariadb_backup_file}}'
 backup_file_group='{{file_group_mariadb_backup_file}}'
 backup_file_mode='{{file_mode_mariadb_backup_file}}'
-backup_exclude="{% if not ((mariadb_run_backup_exclude == '') or (mariadb_run_backup_exclude == [])) %}{% for exclude in mariadb_run_backup_exclude %}{{exclude}}{% if not loop.last %}|{% endif %}{% endfor %}{% else %} {% endif %}"
-keep_days={{mariadb_run_backup_keep_days|int(2)}}
+backup_exclude="{% if not (mariadb_run_backup_exclude == []) %}{% for item in mariadb_run_backup_exclude %}{{item}}{% if not loop.last %}|{% endif %}{% endfor %}{% else %} {% endif %}"
+keep_days={{(mariadb_run_backup_keep_days|int(2))}}
 
 {% if (mariadb_monitor_mail_state is match('true|yes|enable')) %}
 mail_sender='{{mariadb_monitor_mail_sender}}'
-mail_recipient='{% for mail_recipient in mariadb_monitor_mail_recipient %}{{mail_recipient}}{% if not loop.last %},{% endif %}{% endfor %}'
+mail_recipient='{% for item in mariadb_monitor_mail_recipient %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}'
 mail_subject='MariaDB: Run Backup - Error ({{ansible_hostname}})'
 {% endif %}
 
