@@ -13,6 +13,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-13)
+I: Mark Ansible role as 'stable'
+
 * Version 0.2.0 (2018-05-24)
 F: Add option 'docker_distribution_root_directory'
 
