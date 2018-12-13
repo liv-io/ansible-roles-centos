@@ -6,7 +6,7 @@
 # INFORMATION
 #-------------------------------------------------------------------------------
 #
-# Name   : auditd-config
+# Name   : config
 # Type   : auditd configuration file
 # Role   : auditd
 #
@@ -15,8 +15,14 @@
 #
 #-------------------------------------------------------------------------------
 
-{% for config in item.config|default([]) %}
-{% if (config.comment is defined) and not (config.comment == '') %}
+{% if not ((item.name|default('')) == '') %}
+#-------------------------------------------------------------------------------
+# {{(item.name|upper)}}
+#-------------------------------------------------------------------------------
+
+{% endif %}
+{% for config in (item.config|default([])) %}
+{% if not ((config.comment|default('')) == '') %}
 # {{config.comment}}
 {% endif %}
 {{config.rule}}

@@ -61,7 +61,7 @@ INACTIVE
 
 CONFIG
   vars:
-    auditd_all:
+    auditd_config_all:
       - name: 'audit'
         state: 'true'
         config:
@@ -75,15 +75,10 @@ CONFIG
             comment: "Watch '/etc/shadow' for changes"
           - rule: '-w /etc/ -p wa'
             comment: "Recursively watch '/etc/' for changes"
-
-    auditd_dependencies:
-      - name: 'app'
-        state: 'true'
-        config:
           - rule: '-a exit,always -S all -F pid=1337'
             comment: 'Log all syscalls made by a specific program'
 
-    auditd_group:
+    auditd_config_group:
       - name: 'audit'
         state: 'true'
         config:
@@ -102,7 +97,7 @@ CONFIG
           - rule: '-e 2'
             comment: 'Make config immutable - reboot required to change ruleset'
 
-    auditd_host:
+    auditd_config_host:
       - name: 'home'
         state: 'true'
         config:
@@ -128,8 +123,8 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  auditd_all:
-    Description: Define the 'auditd_all' option.
+  auditd_config_all:
+    Description: Define the 'auditd_config_all' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -142,8 +137,8 @@ ROLE
       Examples: [{state: 'true', name: 'file', config: [{rule: '-w /etc/shadow -p wa', comment: "Watch '/etc/shadow' for changes"}]
       None    : []
 
-  auditd_dependencies
-    Description: Define the 'auditd_dependencies' option.
+  auditd_config_group
+    Description: Define the 'auditd_config_group' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -153,8 +148,8 @@ ROLE
       Examples: [{state: 'true', name: 'file', config: [{rule: '-w /etc/shadow -p wa', comment: "Watch '/etc/shadow' for changes"}]
       None    : []
 
-  auditd_group
-    Description: Define the 'auditd_group' option.
+  auditd_config_host
+    Description: Define the 'auditd_config_host' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -163,27 +158,6 @@ ROLE
     Options    :
       Examples: [{state: 'true', name: 'file', config: [{rule: '-w /etc/shadow -p wa', comment: "Watch '/etc/shadow' for changes"}]
       None    : []
-
-  auditd_host
-    Description: Define the 'auditd_host' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
-    Options    :
-      Examples: [{state: 'true', name: 'file', config: [{rule: '-w /etc/shadow -p wa', comment: "Watch '/etc/shadow' for changes"}]
-      None    : []
-
-  auditd_name_default
-    Description: Define the 'auditd_name_default' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'audit'
-    Options    :
-      Examples: 'main' | 'example' | 'user' | 'app'
 
 --------------------------------------------------------------------------------
 CONFLICTS
@@ -242,7 +216,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Testing
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER
