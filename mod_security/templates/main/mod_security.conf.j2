@@ -21,28 +21,28 @@
 	IncludeOptional modsecurity.d/activated_rules/*.conf
     
     # Default recommended configuration
-{% if (mod_security_sec_rule_engine is defined) and (mod_security_sec_rule_engine is match('false|no|disable')) %}
+{% if (mod_security_sec_rule_engine is match('false|no|disable')) %}
     SecRuleEngine Off
-{% elif (mod_security_sec_rule_engine is defined) and (mod_security_sec_rule_engine is match('detection|DetectionOnly')) %}
+{% elif (mod_security_sec_rule_engine is match('detection|DetectionOnly')) %}
     SecRuleEngine DetectionOnly
 {% else %}
     SecRuleEngine On
 {% endif %}
-{% if (mod_security_sec_request_body_access is defined) and (mod_security_sec_request_body_access is match('false|no|disable')) %}
+{% if (mod_security_sec_request_body_access is match('false|no|disable')) %}
     SecRequestBodyAccess Off
 {% else %}
     SecRequestBodyAccess On
 {% endif %}
     SecRule REQUEST_HEADERS:Content-Type "text/xml" \
          "id:'200000',phase:1,t:none,t:lowercase,pass,nolog,ctl:requestBodyProcessor=XML"
-{% if (mod_security_sec_request_body_limit is defined) and not (mod_security_sec_request_body_limit == '') %}
+{% if not (mod_security_sec_request_body_limit == '') %}
     SecRequestBodyLimit {{(mod_security_sec_request_body_limit|int(13107200))}}
 {% endif %}
-{% if (mod_security_sec_request_body_no_files_limit is defined) and not (mod_security_sec_request_body_no_files_limit == '') %}
+{% if not (mod_security_sec_request_body_no_files_limit == '') %}
     SecRequestBodyNoFilesLimit {{(mod_security_sec_request_body_no_files_limit|int(13107200))}}
 {% endif %}
     SecRequestBodyInMemoryLimit 131072
-{% if (mod_security_sec_request_body_limit_action is defined) and (mod_security_sec_request_body_limit_action is match('partial|ProcessPartial')) %}
+{% if (mod_security_sec_request_body_limit_action is match('partial|ProcessPartial')) %}
     SecRequestBodyLimitAction ProcessPartial
 {% else %}
     SecRequestBodyLimitAction Reject
@@ -68,25 +68,25 @@
     SecRule MULTIPART_UNMATCHED_BOUNDARY "!@eq 0" \
     "id:'200003',phase:2,t:none,log,deny,status:44,msg:'Multipart parser detected a possible unmatched boundary.'"
 
-{% if (mod_security_sec_pcre_match_limit is defined) and not (mod_security_sec_pcre_match_limit == '') %}
+{% if not (mod_security_sec_pcre_match_limit == '') %}
     SecPcreMatchLimit {{(mod_security_sec_pcre_match_limit|int(1000))}}
 {% endif %}
-{% if (mod_security_sec_pcre_match_limit_recursion is defined) and not (mod_security_sec_pcre_match_limit_recursion == '') %}
+{% if not (mod_security_sec_pcre_match_limit_recursion == '') %}
     SecPcreMatchLimitRecursion {{(mod_security_sec_pcre_match_limit_recursion|int(1000))}}
 {% endif %}
 
     SecRule TX:/^MSC_/ "!@streq 0" \
             "id:'200004',phase:2,t:none,deny,msg:'ModSecurity internal error flagged: %{MATCHED_VAR_NAME}'"
 
-{% if (mod_security_sec_server_signature is defined) and not (mod_security_sec_server_signature == '') %}
+{% if not (mod_security_sec_server_signature == '') %}
     SecServerSignature "{{mod_security_sec_server_signature}}"
 {% endif %}
-{% if (mod_security_sec_response_body_access is defined) and (mod_security_sec_response_body_access is match('true|yes|enable')) %}
+{% if (mod_security_sec_response_body_access is match('true|yes|enable')) %}
     SecResponseBodyAccess On
 {% else %}
     SecResponseBodyAccess Off
 {% endif %}
-{% if (mod_security_sec_response_body_limit_action is defined) and (mod_security_sec_response_body_limit_action is match('partial|ProcessPartial')) %}
+{% if (mod_security_sec_response_body_limit_action is match('partial|ProcessPartial')) %}
     SecResponseBodyLimitAction ProcessPartial
 {% else %}
     SecResponseBodyLimitAction Reject
@@ -95,7 +95,7 @@
     SecDebugLogLevel 0
     SecAuditEngine RelevantOnly
     SecAuditLogRelevantStatus "^(?:5|4(?!04))"
-{% if (mod_security_sec_audit_log_parts is defined) and not (mod_security_sec_audit_log_parts == '') %}
+{% if not (mod_security_sec_audit_log_parts == '') %}
     SecAuditLogParts {{mod_security_sec_audit_log_parts}}
 {% endif %}
     SecAuditLogType Serial
