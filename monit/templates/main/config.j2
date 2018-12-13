@@ -15,13 +15,16 @@
 #
 #-------------------------------------------------------------------------------
 
-{% if not ((item.comment|default('')) == '') %}
+{% if not ((item.name|default('')) == '') %}
 #-------------------------------------------------------------------------------
-# {{(item.comment|upper)}}
+# {{(item.name|upper)}}
 #-------------------------------------------------------------------------------
 
 {% endif %}
 {% if not ((item.config|default([])) == []) %}
+{% if (item.comment|default('')) %}
+# {{item.comment}}
+{% endif %}
 {% for config in item.config %}
 {{config}}
 {% endfor %}
