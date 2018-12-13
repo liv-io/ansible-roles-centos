@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-13)
+I: Mark Ansible role as 'stable'
+I: Minor style improvement
+
 * Version 0.3.0 (2018-09-06)
 F: Add support for HTTP_PROXY option (docker_http_proxy)
 F: Add support for HTTPS_PROXY option (docker_https_proxy)

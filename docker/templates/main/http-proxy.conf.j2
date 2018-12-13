@@ -28,5 +28,5 @@ Environment='HTTPS_PROXY={{docker_https_proxy}}'
 
 {% if not (docker_no_proxy == []) %}
 # NO_PROXY
-Environment='NO_PROXY={% for no_proxy in docker_no_proxy %}{{no_proxy}}{% if not loop.last %},{% endif %}{% endfor %}'
+Environment='NO_PROXY={% for item in docker_no_proxy %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}'
 {% endif %}
