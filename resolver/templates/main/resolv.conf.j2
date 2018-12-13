@@ -22,7 +22,7 @@ domain {{resolver_domain}}
 
 # Search list for host-name lookup
 {% if not (resolver_search == []) %}
-search {% for search in resolver_search %}{{search}}{% if not loop.last %} {% endif %}{% endfor %}
+search {% for item in resolver_search %}{{item}}{% if not loop.last %} {% endif %}{% endfor %}
 
 {% endif %}
 
