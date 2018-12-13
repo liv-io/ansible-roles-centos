@@ -92,14 +92,14 @@
 
 
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
-{% for connection in (postgresql_connections|default([])) %}
-{% if not ((connection.comment|default('')) == '') %}
-# {{connection.comment}}
+{% for item in (postgresql_connections|default([])) %}
+{% if not ((item.comment|default('')) == '') %}
+# {{item.comment}}
 {% endif %}
-{%- if ((connection.type|default('host')) is match('local')) %}local	{% else %}host	{% endif %}
-{%- if not ((connection.database|default('')) == '') %}{{connection.database}}	{% endif %}
-{%- if not ((connection.user|default('')) == '') %}{{connection.user}}   {% endif %}
-{%- if not ((connection.address|default('')) == '') %}{{connection.address}}   {% endif %}
-{%- if not ((connection.method|default('')) == '') %}{{connection.method}}{% endif %}
+{%- if ((item.type|default('host')) is match('local')) %}local	{% else %}host	{% endif %}
+{%- if not ((item.database|default('')) == '') %}{{item.database}}	{% endif %}
+{%- if not ((item.user|default('')) == '') %}{{item.user}}   {% endif %}
+{%- if not ((item.address|default('')) == '') %}{{item.address}}   {% endif %}
+{%- if not ((item.method|default('')) == '') %}{{item.method}}{% endif %}
 
 {% endfor %}

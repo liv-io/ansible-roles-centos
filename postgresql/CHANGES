@@ -13,8 +13,8 @@ F: feature
 
 --------------------------------------------------------------------------------
 
-* Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
+* Version 0.2.4 (2018-12-13)
+I: Minor style improvement
 
 * Version 0.2.3 (2018-12-07)
 I: Remove 'postgresql_monitor_mail_subject' parameter

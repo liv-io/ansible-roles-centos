@@ -78,12 +78,12 @@ backup_timestamp=$(${date} '+%Y%m%d-%H%M%S%z')
 backup_file_owner='{{file_owner_postgresql_backup_file}}'
 backup_file_group='{{file_group_postgresql_backup_file}}'
 backup_file_mode='{{file_mode_postgresql_backup_file}}'
-backup_exclude="{% if not ((postgresql_run_backup_exclude == '') or (postgresql_run_backup_exclude == [])) %}{% for exclude in postgresql_run_backup_exclude %}{{exclude}}{% if not loop.last %}|{% endif %}{% endfor %}{% else %} {% endif %}"
+backup_exclude="{% if not (postgresql_run_backup_exclude == []) %}{% for item in postgresql_run_backup_exclude %}{{item}}{% if not loop.last %}|{% endif %}{% endfor %}{% else %} {% endif %}"
 keep_days={{(postgresql_run_backup_keep_days|int(2))}}
 
 {% if (postgresql_monitor_mail_state is match('true|yes|enable')) %}
 mail_sender='{{postgresql_monitor_mail_sender}}'
-mail_recipient='{% for mail_recipient in postgresql_monitor_mail_recipient %}{{mail_recipient}}{% if not loop.last %},{% endif %}{% endfor %}'
+mail_recipient='{% for item in postgresql_monitor_mail_recipient %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}'
 mail_subject='PostgreSQL: Run Backup - Error ({{ansible_hostname}})'
 {% endif %}
 
