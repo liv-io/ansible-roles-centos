@@ -13,6 +13,11 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-13)
+I: Mark Ansible role as 'stable'
+I: Minor style improvement
+I: Rename config parameters
+
 * Version 0.2.0 (2018-05-21)
 F: Port role to Ansible 2.5
 

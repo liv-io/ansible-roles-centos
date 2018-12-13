@@ -58,13 +58,13 @@ INACTIVE
 
 CONFIG
   vars:
-    httpd_vhost:
+    httpd_config:
       - name: 'host.domain.tld'
         state: 'true'
         listen: '*'
         port: 80
         document_root: '/data/host'
-        custom_config:
+        config:
           - comment: 'ModSecurity'
             config:
               - '# ModSecurity'
@@ -93,7 +93,7 @@ CONFIG
         ssl_certificate: '/etc/ssl/host/host.domain.tld.crt'
         ssl_certificate_key: '/etc/ssl/host/host.domain.tld.key'
         ssl_ca_certificate: '/etc/ssl/host/ca.domain.tld.crt'
-        custom_config:
+        config:
           - comment: 'ModSecurity'
             config:
               - '# ModSecurity'
@@ -139,8 +139,8 @@ CONFIG
       Examples: ['domain.tld', 'www.domain.tld', 'web.domain.tld]
       None    : []
 
-  custom_config
-    Description: Define the 'custom_config' option.
+  config
+    Description: Define the 'config' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -371,22 +371,23 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  httpd_custom_config
-    Description: Define the 'httpd_custom_config' option.
+  httpd_config
+    Description: Define the 'httpd_config' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{comment: 'Server Status'},
-                  config: {'<Location /server-status>',
-                           '  SetHandler server-status',
-                           '  Require all denied',
-                           '  # Localhost'
-                           '  Require ip 127.0.0.1',
-                           '</Location>'}]
-      None: []
+      Examples: [{name: 'host.domain.tld', state: 'true', port: '80',
+                  document_root: '/var/www/host.domain.tld'}] |
+                [{name: 'host.domain.tld', state: 'true', port: '443',
+                  document_root: '/var/www/host.domain.tld', ssl_state: 'true',
+                  ssl_certificate: '/etc/ssl/host/host.domain.tld.crt',
+                  ssl_certificate_key: '/etc/ssl/host/host.domain.tld.key',
+                  ssl_certificate_chain: '/etc/ssl/host/host.domain.tld.chain',
+                  ssl_ca_certificate: '/etc/ssl/host/ca.domain.tld.crt'}]
+      None    : []
 
   httpd_enable_mmap
     Description: Control the 'httpd_enable_mmap' option.
@@ -409,6 +410,23 @@ ROLE
     Options    :
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
+
+  httpd_global_config
+    Description: Define the 'httpd_global_config' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{comment: 'Server Status'},
+                  config: {'<Location /server-status>',
+                           '  SetHandler server-status',
+                           '  Require all denied',
+                           '  # Localhost'
+                           '  Require ip 127.0.0.1',
+                           '</Location>'}]
+      None    : []
 
   httpd_hsts_max_age
     Description: Set the 'httpd_hsts_max_age' option.
@@ -480,24 +498,6 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
-  httpd_vhost
-    Description: Define the 'httpd_vhost' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
-    Options    :
-      Examples: [{name: 'host.domain.tld', state: 'true', port: '80',
-                  document_root: '/var/www/host.domain.tld'}] |
-                [{name: 'host.domain.tld', state: 'true', port: '443',
-                  document_root: '/var/www/host.domain.tld', ssl_state: 'true',
-                  ssl_certificate: '/etc/ssl/host/host.domain.tld.crt',
-                  ssl_certificate_key: '/etc/ssl/host/host.domain.tld.key',
-                  ssl_certificate_chain: '/etc/ssl/host/host.domain.tld.chain',
-                  ssl_ca_certificate: '/etc/ssl/host/ca.domain.tld.crt'}]
-    None      : []
-
   httpd_vhosts_d
     Description: Define the 'httpd_vhosts_d' option.
     Implemented: 0.1
@@ -566,7 +566,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Testing
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER
