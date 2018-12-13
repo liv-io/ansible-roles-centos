@@ -13,6 +13,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2018-12-13)
+I: Mark Ansible role as 'stable'
+I: Minor style improvement
+
 * Version 0.1.2 (2018-12-07)
 I: Remove 'fstrim_monitor_mail_subject' parameter
 

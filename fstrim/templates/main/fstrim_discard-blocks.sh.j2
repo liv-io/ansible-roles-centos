@@ -63,7 +63,7 @@ log_file='{{file_dst_fstrim_log}}'
 
 {% if (fstrim_monitor_mail_state is match('true|yes|enable')) %}
 mail_sender='{{fstrim_monitor_mail_sender}}'
-mail_recipient='{% for mail_recipient in fstrim_monitor_mail_recipient %}{{mail_recipient}}{% if not loop.last %},{% endif %}{% endfor %}'
+mail_recipient='{% for item in fstrim_monitor_mail_recipient %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}'
 mail_subject='fstrim: Discard Blocks - Error ({{ansible_hostname}})'
 {% endif %}
 
