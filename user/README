@@ -86,8 +86,8 @@ CONFIG (user)
     Type       : String
     Default    : 'true'
     Options    :
-      Create: 'true' | 'yes' | 'create'
-      Remove: 'false' | 'no' | 'remove'
+      Install: 'true' | 'yes' | 'install'
+      Remove : 'false' | 'no' | 'remove'
 
   name
     Description: Define the name of the user.
@@ -253,8 +253,8 @@ CONFIG (authorized_key)
     Type       : String
     Default    : 'true'
     Options    :
-      Create: 'true' | 'yes' | 'create'
-      Remove: 'false' | 'no' | 'remove'
+      Install: 'true' | 'yes' | 'install'
+      Remove : 'false' | 'no' | 'remove'
 
   user
     Description: Define the user of the authorized_key.

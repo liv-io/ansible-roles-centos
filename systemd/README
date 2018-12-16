@@ -134,8 +134,8 @@ CONFIG
     Type       : String
     Default    : 'true'
     Options    :
-      Create: 'true' | 'yes' | 'create'
-      Remove: 'false' | 'no' | 'remove'
+      Install: 'true' | 'yes' | 'install'
+      Remove : 'false' | 'no' | 'remove'
 
   mode
     Description: Define the 'mode' of the systemd file.
