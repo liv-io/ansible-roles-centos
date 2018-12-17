@@ -83,16 +83,16 @@ server {
   ssl_prefer_server_ciphers on;
 {% endif %}
   # Cipher suite available for negotiation in SSL handshake
-{% if not ((item.ssl_ciphers|default([])) == []) %}
+{% if not ((item.ssl_ciphers|default('')) == '') %}
   ssl_ciphers '{{item.ssl_ciphers}}';
 {% else %}
   ssl_ciphers 'AES256+EECDH:AES256+EDH';
 {% endif %}
   # ECDHE ciphers curve
-{% if (item.ssl_ecdh_curve is match('false|no|disable')) %}
-  #ssl_ecdh_curve '';
+{% if not ((item.ssl_ecdh_curve|default('')) == '') %}
+  ssl_ecdh_curve '{{item.ssl_ecdh_curve}}';
 {% else %}
-  ssl_ecdh_curve "{{(item.ssl_ecdh_curve|default('secp521r1'))}}";
+  ssl_ecdh_curve 'secp521r1';
 {% endif %}
   # DH parameters for DHE ciphers
 {% if ((item.ssl_dhparam|default('true')) is match('false|no|disable')) %}
