@@ -123,7 +123,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
-    Default    : 6
+    Default    : '*'
     Options    :
       Examples: 6 | 'Saturday'
 
