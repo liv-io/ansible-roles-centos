@@ -68,6 +68,7 @@ server:
 	# specify 0.0.0.0 and ::0 to bind to all available interfaces.
 	# specify every interface[@port] on a new 'interface:' labelled line.
 	# The listen interfaces are not changed on reload, only on restart.
+
 {% if not (unbound_interface == []) %}
 {% for item in unbound_interface %}
 {% if not ((item.comment|default('')) == '') %}
@@ -296,6 +297,7 @@ server:
 	# allow (recursive ok), allow_snoop (recursive and nonrecursive ok)
 	# deny_non_local (drop queries unless can be answered from local-data)
 	# refuse_non_local (like deny_non_local but polite error reply).
+
 {% for item in unbound_access_control %}
 {% if not ((item.comment|default('')) == '') %}
         # {{item.comment}}
