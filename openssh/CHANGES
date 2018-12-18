@@ -8,26 +8,27 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
 
 * Version 0.5.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
 * Version 0.4.3 (2018-04-24)
-I: Simplify role by removing 'template' option
+E: Simplify role by removing 'template' option
 
 * Version 0.4.2 (2018-04-14)
-I: Relocate 'PermitRootLogin' parameter
+E: Relocate 'PermitRootLogin' parameter
 
 * Version 0.4.1 (2018-04-10)
-I: Improve 'Ciphers', 'HostKeyAlgorithms', 'KexAlgorithms' and 'MACs' defaults
+E: Improve 'Ciphers', 'HostKeyAlgorithms', 'KexAlgorithms' and 'MACs' defaults
 
 * Version 0.4.0 (2018-04-09)
 F: Add option to define HostKeyAlgorithms
@@ -36,10 +37,10 @@ F: Add option to define HostKeyAlgorithms
 F: Port role to Ansible 2.4
 
 * Version 0.2.0 (2018-03-13)
-I: Allow additional key exchange algorithms and message authentication codes
+E: Allow additional key exchange algorithms and message authentication codes
 
 * Version 0.1.1 (2018-01-10)
-I: Improve Jinja2 filters
+E: Improve Jinja2 filters
 
 * Version 0.1.0 (2018-01-05)
 F: Initial release

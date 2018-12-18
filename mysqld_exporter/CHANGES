@@ -8,30 +8,31 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
+E: Mark Ansible role as 'stable'
 
 * Version 0.1.5 (2018-12-11)
-I: Move 'mysqld_exporter-current.link' task from 'install' to 'enable'
+E: Move 'mysqld_exporter-current.link' task from 'install' to 'enable'
 
 * Version 0.1.4 (2018-08-29)
 B: Remove configuration files from install sequence (execute notify handler)
 
 * Version 0.1.3 (2018-08-28)
-I: Ensure user's home directory is being removed during remove sequence
+E: Ensure user's home directory is being removed during remove sequence
 
 * Version 0.1.2 (2018-08-28)
 B: Fix remove sequence (stop service before removing group and user)
-I: Correct task names
+E: Correct task names
 
 * Version 0.1.1 (2018-08-28)
-I: Reorganize and improve folder structure
-I: Rename and move MySQL credentials file
+E: Reorganize and improve folder structure
+E: Rename and move MySQL credentials file
 
 * Version 0.1.0 (2018-08-23)
 F: Initial release

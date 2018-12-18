@@ -8,21 +8,22 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
 
 * Version 0.5.0 (2018-12-10)
 F: Add option to set system time offset limit (ntpd_check_time_offset_limit)
-I: Remove needless remove tasks
+E: Remove needless remove tasks
 
 * Version 0.4.1 (2018-12-09)
-I: Minor Jinja2 parameter improvement
+E: Minor Jinja2 parameter improvement
 
 * Version 0.4.0 (2018-12-08)
 F: Redesign 'ntpd_server' parameter
@@ -30,22 +31,22 @@ F: Redesign 'ntpd_restrict' parameter
 F: Add 'ntpd_check-time' health check
 
 * Version 0.3.4 (2018-12-07)
-I: Remove 'ntpd_monitor_mail_subject' parameter
+E: Remove 'ntpd_monitor_mail_subject' parameter
 
 * Version 0.3.3 (2018-12-07)
-I: Remove email information from message
+E: Remove email information from message
 
 * Version 0.3.2 (2018-07-19)
-I: Shell script improvements
+E: Shell script improvements
 
 * Version 0.3.1 (2018-07-12)
-I: Minor role improvements
+E: Minor role improvements
 
 * Version 0.3.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
 * Version 0.2.1 (2018-04-24)
-I: Simplify role by removing 'template' option
+E: Simplify role by removing 'template' option
 
 * Version 0.2.0 (2018-03-30)
 F: Port role to Ansible 2.4
@@ -54,7 +55,7 @@ F: Port role to Ansible 2.4
 B: Add missing 'ntpdate' dependency
 
 * Version 0.1.1 (2018-01-09)
-I: Multiple minor improvements
+E: Multiple minor improvements
 
 * Version 0.1.0 (2018-01-08)
 F: Initial release

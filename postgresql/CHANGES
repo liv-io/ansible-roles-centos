@@ -8,22 +8,23 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 0.2.4 (2018-12-13)
-I: Minor style improvement
+E: Minor style improvement
 
 * Version 0.2.3 (2018-12-07)
-I: Remove 'postgresql_monitor_mail_subject' parameter
+E: Remove 'postgresql_monitor_mail_subject' parameter
 
 * Version 0.2.2 (2018-12-07)
-I: Remove email information from message
+E: Remove email information from message
 
 * Version 0.2.1 (2018-11-27)
-I: Minor style improvements
+E: Minor style improvements
 
 * Version 0.2.0 (2018-10-29)
 F: Add option to disable PostgreSQL backups (postgresql_run_backup_state)

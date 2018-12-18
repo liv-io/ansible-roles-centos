@@ -8,7 +8,8 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
@@ -17,17 +18,17 @@ F: feature
 B: Fix bug introduced with renaming config file
 
 * Version 1.0.2 (2018-12-13)
-I: Rename config file
+E: Rename config file
 
 * Version 1.0.1 (2018-12-13)
-I: Ensure port is set by default
+E: Ensure port is set by default
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
 
 * Version 0.1.1 (2018-11-30)
-I: Define default value for 'item.state' parameter
+E: Define default value for 'item.state' parameter
 
 * Version 0.1.0 (2018-08-21)
 F: Initial release

@@ -8,34 +8,35 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.2 (2018-12-12)
 B: Remove 'yum_name_default' parameter remainings
-I: Minor Jinja2 style improvement
+E: Minor Jinja2 style improvement
 
 * Version 1.0.1 (2018-12-12)
-I: Minor Jinja2 style improvement
+E: Minor Jinja2 style improvement
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
-I: Rename config parameters
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
+E: Rename config parameters
 
 * Version 0.3.1 (2018-11-26)
-I: Minor style correction
+E: Minor style correction
 
 * Version 0.3.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
 * Version 0.2.2 (2018-04-24)
-I: Simplify role by removing 'template' option
+E: Simplify role by removing 'template' option
 
 * Version 0.2.1 (2018-04-19)
-I: Change default URL for EPEL repositories
+E: Change default URL for EPEL repositories
 
 * Version 0.2.0 (2018-03-30)
 F: Port role to Ansible 2.4

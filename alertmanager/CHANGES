@@ -8,17 +8,18 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
+E: Mark Ansible role as 'stable'
 
 * Version 0.1.1 (2018-12-11)
-I: Minor Jinja2 syntax improvements
-I: Move 'alertmanager-current.link' task from 'install' to 'enable'
+E: Minor Jinja2 syntax improvements
+E: Move 'alertmanager-current.link' task from 'install' to 'enable'
 
 * Version 0.1.0 (2018-11-28)
 F: Initial release

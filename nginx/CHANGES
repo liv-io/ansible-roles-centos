@@ -8,7 +8,8 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
@@ -17,12 +18,12 @@ F: feature
 B: Fix Jinja2 template mistakes
 
 * Version 1.0.1 (2018-12-13)
-I: Rename config file
+E: Rename config file
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
-I: Rename config parameters
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
+E: Rename config parameters
 
 * Version 0.3.0 (2018-09-05)
 F: Add options to disable 'ssl_dhparam' and 'ssl_ecdh_curve'
@@ -31,16 +32,16 @@ F: Add options to disable 'ssl_dhparam' and 'ssl_ecdh_curve'
 B: Fix Nginx log path in vhosts template
 
 * Version 0.2.1 (2018-06-01)
-I: Remove needless notify from 'command generate dhparam' task
+E: Remove needless notify from 'command generate dhparam' task
 
 * Version 0.2.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
 * Version 0.1.3 (2018-04-24)
-I: Simplify role by removing 'template' option
+E: Simplify role by removing 'template' option
 
 * Version 0.1.2 (2018-04-16)
-I: Remove needless else statement in Jinja2 template
+E: Remove needless else statement in Jinja2 template
 
 * Version 0.1.1 (2018-04-15)
 B: Add missing package remove task

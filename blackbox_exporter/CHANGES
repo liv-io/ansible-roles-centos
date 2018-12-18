@@ -8,34 +8,35 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
 
 * Version 0.3.4 (2018-12-11)
-I: Minor Jinja2 syntax improvements
+E: Minor Jinja2 syntax improvements
 
 * Version 0.3.3 (2018-12-11)
 B: Correct Ansible tag
-I: Minor Jinja2 syntax improvements
+E: Minor Jinja2 syntax improvements
 
 * Version 0.3.2 (2018-12-11)
-I: Move 'blackbox_exporter-current.link' task from 'install' to 'enable'
+E: Move 'blackbox_exporter-current.link' task from 'install' to 'enable'
 
 * Version 0.3.1 (2018-12-11)
 B: Add missing 'CAP_NET_RAW' capability
-I: Restart application when new symlink is being created (i.e. version updates)
+E: Restart application when new symlink is being created (i.e. version updates)
 
 * Version 0.3.0 (2018-12-05)
 F: Update 'blackbox_exporter' to version '0.13.0'
 
 * Version 0.2.2 (2018-11-28)
-I: Rename configuration file from 'config.yml' to 'blackbox.yml'
+E: Rename configuration file from 'config.yml' to 'blackbox.yml'
 
 * Version 0.2.1 (2018-08-29)
 B: Remove configuration files from install sequence (execute notify handler)
@@ -44,7 +45,7 @@ B: Remove configuration files from install sequence (execute notify handler)
 F: Add option to configure 'config.yml' configuration file
 
 * Version 0.1.1 (2018-08-28)
-I: Ensure user's home directory is being removed during remove sequence
+E: Ensure user's home directory is being removed during remove sequence
 
 * Version 0.1.0 (2018-08-28)
 F: Initial release

@@ -8,27 +8,28 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.1 (2018-12-13)
-I: Minor style improvement
+E: Minor style improvement
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
+E: Mark Ansible role as 'stable'
 
 * Version 0.6.2 (2018-09-09)
 B: Fix YAML syntax error in template
-I: Correct documentation
+E: Correct documentation
 
 * Version 0.6.1 (2018-09-07)
 B: Add missing 'export' statement for 'no_proxy' option
 
 * Version 0.6.0 (2018-09-07)
 F: Add support for 'no_proxy' option (shell_no_proxy)
-I: Improve options to define no value (e.g. disable)
+E: Improve options to define no value (e.g. disable)
 
 * Version 0.5.0 (2018-09-05)
 F: Add support for 'https_proxy' option (shell_https_proxy)
@@ -37,7 +38,7 @@ F: Add support for 'https_proxy' option (shell_https_proxy)
 F: Port role to Ansible 2.5
 
 * Version 0.3.1 (2018-04-24)
-I: Simplify role by removing 'template' option
+E: Simplify role by removing 'template' option
 
 * Version 0.3.0 (2018-03-30)
 F: Port role to Ansible 2.4

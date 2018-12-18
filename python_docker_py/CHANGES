@@ -8,13 +8,14 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
+E: Mark Ansible role as 'stable'
 
 * Version 0.1.0 (2018-05-22)
 F: Initial release

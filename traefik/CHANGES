@@ -8,16 +8,17 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 0.1.2 (2018-12-11)
-I: Move 'traefik-current.link' task from 'install' to 'enable'
+E: Move 'traefik-current.link' task from 'install' to 'enable'
 
 * Version 0.1.1 (2018-08-23)
-I: Flush handlers after installation tasks for file 'traefik.service'
+E: Flush handlers after installation tasks for file 'traefik.service'
 
 * Version 0.1.0 (2018-06-03)
 F: Initial release

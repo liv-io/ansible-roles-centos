@@ -8,16 +8,17 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.1 (2018-12-13)
-I: Minor style improvement
+E: Minor style improvement
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
+E: Mark Ansible role as 'stable'
 
 * Version 0.3.1 (2018-12-10)
 B: Fix Jinja2 templating typo
@@ -26,23 +27,23 @@ B: Fix Jinja2 templating typo
 F: Extend 'monit_mail_server' parameter
 
 * Version 0.2.3 (2018-12-07)
-I: Minor 'monit_mail_subject' improvement
+E: Minor 'monit_mail_subject' improvement
 
 * Version 0.2.2 (2018-12-07)
-I: Remove operating system information from alert message
+E: Remove operating system information from alert message
 
 * Version 0.2.1 (2018-12-06)
-I: Remove email information from alert message
+E: Remove email information from alert message
 
 * Version 0.2.0 (2018-12-06)
-I: Improve 'monit_mail_server' parameter
-I: Redesign 'monit_mail_to' parameter
-I: Extend 'monit_web_server_allow' parameter
-I: Remove 'monit_mail_exclusions' parameter
-I: Remove kernel information from alert message
+E: Improve 'monit_mail_server' parameter
+E: Redesign 'monit_mail_to' parameter
+E: Extend 'monit_web_server_allow' parameter
+E: Remove 'monit_mail_exclusions' parameter
+E: Remove kernel information from alert message
 
 * Version 0.1.2 (2018-12-05)
-I: Minor style improvement
+E: Minor style improvement
 
 * Version 0.1.1 (2018-12-03)
 B: Fix template source

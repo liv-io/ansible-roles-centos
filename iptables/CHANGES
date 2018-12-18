@@ -8,26 +8,27 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.1 (2018-12-13)
-I: Improve IPv4/IPv6 filters
+E: Improve IPv4/IPv6 filters
 
 * Version 1.0.0 (2018-08-02)
 F: Remove support for single port rules
 F: Add support for multiple ports per rule (multiport/dports)
 
 * Version 0.4.1 (2018-05-31)
-I: Correct 'command' variable names
+E: Correct 'command' variable names
 
 * Version 0.4.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
 * Version 0.3.1 (2018-04-24)
-I: Improve regular expressions of Docker exceptions
+E: Improve regular expressions of Docker exceptions
 
 * Version 0.3.0 (2018-04-23)
 F: Add rudimentary support for Docker rules and chains

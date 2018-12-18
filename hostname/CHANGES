@@ -8,16 +8,17 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
+E: Mark Ansible role as 'stable'
 
 * Version 0.4.1 (2018-05-31)
-I: Correct 'command' variable names
+E: Correct 'command' variable names
 
 * Version 0.4.0 (2018-05-21)
 F: Port role to Ansible 2.5
@@ -29,7 +30,7 @@ F: Port role to Ansible 2.4
 F: Redesign role and add support for 'machine-info' (local machine information file)
 
 * Version 0.1.1 (2018-01-10)
-I: Improve Jinja2 filters
+E: Improve Jinja2 filters
 
 * Version 0.1.0 (2018-01-05)
 F: Initial release

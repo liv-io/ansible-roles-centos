@@ -8,39 +8,40 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.3 (2018-12-12)
-I: Update filters to support Ansible >= 2.9
+E: Update filters to support Ansible >= 2.9
 
 * Version 1.0.2 (2018-12-12)
-I: Minor Jinja2 style improvement
+E: Minor Jinja2 style improvement
 
 * Version 1.0.1 (2018-12-12)
 B: Fix bug introduced with Jinja2 style improvements
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
-I: Rename config parameters
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
+E: Rename config parameters
 
 * Version 0.3.1 (2018-05-31)
-I: Correct 'command' variable names
+E: Correct 'command' variable names
 
 * Version 0.3.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
 * Version 0.2.1 (2018-04-24)
-I: Simplify role by removing 'template' option
+E: Simplify role by removing 'template' option
 
 * Version 0.2.0 (2018-03-30)
 F: Port role to Ansible 2.4
 
 * Version 0.1.1 (2018-01-10)
-I: Improve Jinja2 filters
+E: Improve Jinja2 filters
 
 * Version 0.1.0 (2018-01-05)
 F: Initial release

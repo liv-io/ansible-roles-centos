@@ -8,7 +8,8 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
@@ -17,38 +18,38 @@ F: feature
 B: Fix bug introduced with Jinja2 style improvements
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
+E: Mark Ansible role as 'stable'
 
 * Version 0.2.6 (2018-12-11)
-I: Minor Jinja2 syntax improvements
-I: Move 'haproxy_exporter-current.link' task from 'install' to 'enable'
+E: Minor Jinja2 syntax improvements
+E: Move 'haproxy_exporter-current.link' task from 'install' to 'enable'
 
 * Version 0.2.5 (2018-08-29)
 B: Remove configuration files from install sequence (execute notify handler)
 
 * Version 0.2.4 (2018-08-28)
-I: Ensure user's home directory is being removed during remove sequence
+E: Ensure user's home directory is being removed during remove sequence
 
 * Version 0.2.3 (2018-08-28)
 B: Fix remove sequence (stop service before removing group and user)
-I: Correct task names
+E: Correct task names
 
 * Version 0.2.2 (2018-08-28)
-I: Reorganize and improve folder structure
+E: Reorganize and improve folder structure
 
 * Version 0.2.1 (2018-08-24)
-I: Escape 'haproxy.scrape-uri' value
+E: Escape 'haproxy.scrape-uri' value
 
 * Version 0.2.0 (2018-08-24)
 F: Add support for 'haproxy_exporter_haproxy_scrape_uri' option (haproxy.scrape-uri)
 
 * Version 0.1.1 (2018-08-23)
-I: Remove directories 'haproxy_exporter_data.dir' and 'textfile_collector.dir'
-I: Ensure file 'node_exporter.sysconfig' is being create during installation
-I: Flush handlers after installation tasks for file 'haproxy_exporter.service'
-I: Only reload systemd when file 'haproxy_exporter.service' changes
-I: Change login shell to '/sbin/nologin' for service user
-I: Minor YAML syntax improvements
+E: Remove directories 'haproxy_exporter_data.dir' and 'textfile_collector.dir'
+E: Ensure file 'node_exporter.sysconfig' is being create during installation
+E: Flush handlers after installation tasks for file 'haproxy_exporter.service'
+E: Only reload systemd when file 'haproxy_exporter.service' changes
+E: Change login shell to '/sbin/nologin' for service user
+E: Minor YAML syntax improvements
 
 * Version 0.1.0 (2018-08-23)
 F: Initial release

@@ -8,31 +8,32 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
-I: Rename config parameters
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
+E: Rename config parameters
 
 * Version 0.3.0 (2018-05-21)
 F: Port role to Ansible 2.5
 
 * Version 0.2.1 (2018-04-24)
-I: Simplify role by removing 'template' option
+E: Simplify role by removing 'template' option
 
 * Version 0.2.0 (2018-03-30)
 F: Port role to Ansible 2.4
 
 * Version 0.1.2 (2018-01-10)
-I: Improve Jinja2 filters
-I: Add missing 'dependencies' option
+E: Improve Jinja2 filters
+E: Add missing 'dependencies' option
 
 * Version 0.1.1 (2018-01-07)
-I: Improve 'sudo' order and name separation character
+E: Improve 'sudo' order and name separation character
 
 * Version 0.1.0 (2018-01-05)
 F: Initial release

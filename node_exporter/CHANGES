@@ -8,45 +8,46 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
+E: Mark Ansible role as 'stable'
 
 * Version 0.2.1 (2018-12-11)
-I: Move 'node_exporter-current.link' task from 'install' to 'enable'
+E: Move 'node_exporter-current.link' task from 'install' to 'enable'
 
 * Version 0.2.0 (2018-11-30)
 F: Update 'node_exporter' to version '0.17.0'
 
 * Version 0.1.7 (2018-11-13)
-I: Relocate 'textfile.collector' directory
+E: Relocate 'textfile.collector' directory
 
 * Version 0.1.6 (2018-08-29)
 B: Remove configuration files from install sequence (execute notify handler)
 
 * Version 0.1.5 (2018-08-28)
-I: Ensure user's home directory is being removed during remove sequence
+E: Ensure user's home directory is being removed during remove sequence
 
 * Version 0.1.4 (2018-08-28)
 B: Fix remove sequence (stop service before removing group and user)
-I: Correct task names
+E: Correct task names
 
 * Version 0.1.3 (2018-08-28)
-I: Reorganize and improve folder structure
+E: Reorganize and improve folder structure
 
 * Version 0.1.2 (2018-08-23)
-I: Ensure file 'node_exporter.sysconfig' is being create during installation
-I: Flush handlers after installation tasks for file 'node_exporter.service'
-I: Only reload systemd when file 'node_exporter.service' changes
-I: Change login shell to '/sbin/nologin' for service user
-I: Minor YAML syntax improvements
+E: Ensure file 'node_exporter.sysconfig' is being create during installation
+E: Flush handlers after installation tasks for file 'node_exporter.service'
+E: Only reload systemd when file 'node_exporter.service' changes
+E: Change login shell to '/sbin/nologin' for service user
+E: Minor YAML syntax improvements
 
 * Version 0.1.1 (2018-08-23)
-I: Improve comment of user 'node_exporter'
+E: Improve comment of user 'node_exporter'
 
 * Version 0.1.0 (2018-08-12)
 F: Initial release

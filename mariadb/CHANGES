@@ -8,29 +8,30 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-13)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
 
 * Version 0.4.3 (2018-12-07)
-I: Remove 'mariadb_monitor_mail_subject' parameter
+E: Remove 'mariadb_monitor_mail_subject' parameter
 
 * Version 0.4.2 (2018-12-07)
-I: Remove email information from message
+E: Remove email information from message
 
 * Version 0.4.1 (2018-11-27)
-I: Minor style improvements
+E: Minor style improvements
 
 * Version 0.4.0 (2018-10-29)
 F: Add option to disable MariaDB backups (mariadb_run_backup_state)
 
 * Version 0.3.1 (2018-09-14)
-I: Add 'no_log' parameter to sensitive tasks
+E: Add 'no_log' parameter to sensitive tasks
 
 * Version 0.3.0 (2018-08-08)
 F: Add options to configure 'databases' and 'users'
@@ -39,13 +40,13 @@ F: Add options to configure 'databases' and 'users'
 F: Add tasks to run initial MySQL installation (mysql_secure_installation)
 
 * Version 0.1.3 (2018-07-19)
-I: Minor configuration file improvement
+E: Minor configuration file improvement
 
 * Version 0.1.2 (2018-07-19)
-I: Change the default 'file_mode_mariadb_backup_file' permissions
+E: Change the default 'file_mode_mariadb_backup_file' permissions
 
 * Version 0.1.1 (2018-07-19)
-I: Change the default 'mariadb_run_backup_hour'
+E: Change the default 'mariadb_run_backup_hour'
 
 * Version 0.1.0 (2018-07-19)
 F: Initial release

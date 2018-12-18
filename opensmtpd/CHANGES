@@ -8,21 +8,22 @@ to allow easy grepping by scripts.
 
 The fields are:
 B: bug
-I: improvement
+C: change
+E: enhancement
 F: feature
 
 --------------------------------------------------------------------------------
 
 * Version 1.0.0 (2018-12-12)
-I: Mark Ansible role as 'stable'
-I: Minor style improvement
+E: Mark Ansible role as 'stable'
+E: Minor style improvement
 
 * Version 0.4.3 (2018-12-06)
-I: Improve Ansible role overall
-I: Change default value of 'opensmtpd_listen_all' parameter
+E: Improve Ansible role overall
+E: Change default value of 'opensmtpd_listen_all' parameter
 
 * Version 0.4.2 (2018-12-04)
-I: Add 'no_log' parameter to sensitive tasks
+E: Add 'no_log' parameter to sensitive tasks
 
 * Version 0.4.1 (2018-12-04)
 B: Remove single quotes from 'secrets' file
@@ -34,13 +35,13 @@ F: Add support for managing 'secrets'
 F: Port role to Ansible 2.5
 
 * Version 0.2.1 (2018-04-24)
-I: Simplify role by removing 'template' option
+E: Simplify role by removing 'template' option
 
 * Version 0.2.0 (2018-03-30)
 F: Port role to Ansible 2.4
 
 * Version 0.1.1 (2018-01-10)
-I: Improve Jinja2 filters
+E: Improve Jinja2 filters
 
 * Version 0.1.0 (2018-01-05)
 F: Initial release
