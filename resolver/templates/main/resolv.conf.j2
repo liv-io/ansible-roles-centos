@@ -31,5 +31,5 @@ search {% for item in resolver_search %}{{item}}{% if not loop.last %} {% endif 
 {% if not ((item.comment|default('')) == '') %}
 # {{item.comment}}
 {% endif %}
-nameserver {{item.server}}
+nameserver {{item.address}}
 {% endfor %}
