@@ -35,7 +35,6 @@ driftfile /var/lib/ntp/drift
 # Hosts on local network are less restricted.
 #restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
 
-{% if not (ntpd_restrict == []) %}
 {% for item in ntpd_restrict %}
 {% if not ((item.comment|default('')) == '') %}
 # {{item.comment}}
@@ -43,8 +42,6 @@ driftfile /var/lib/ntp/drift
 restrict {{item.address}} {% for option in (item.options|default([])) %}{{option}}{% if not loop.last %} {% endif %}{% endfor %}
 
 {% endfor %}
-{% else %}
-{% endif %}
 
 #-------------------------------------------------------------------------------
 # SERVER
@@ -57,7 +54,6 @@ restrict {{item.address}} {% for option in (item.options|default([])) %}{{option
 #server 2.centos.pool.ntp.org iburst
 #server 3.centos.pool.ntp.org iburst
 
-{% if not (ntpd_server == []) %}
 {% for item in ntpd_server %}
 {% if not ((item.comment|default('')) == '') %}
 # {{item.comment}}
@@ -65,8 +61,6 @@ restrict {{item.address}} {% for option in (item.options|default([])) %}{{option
 server {{item.address}} {% for option in (item.options|default([])) %}{{option}}{% if not loop.last %} {% endif %}{% endfor %}
 
 {% endfor %}
-{% else %}
-{% endif %}
 
 #broadcast 192.168.1.255 autokey	# broadcast server
 #broadcastclient			# broadcast client
