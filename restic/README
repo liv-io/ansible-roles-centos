@@ -102,10 +102,10 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '3c882962fc07f611a6147ada99c9909770d3e519210fd483cde9609c6bdd900c'
+    Default    : '0440b6c1c17b58563c729fa133896199406f29356329ca5d048e4d9dcbf7d6fe'
     Options    :
-      Examples: '1ad8a76a9f966da5f7a319c49a6db071a60ebaa24d69e6d86d53d6f2bcaf11ed |
-                'cf98d9d4666df77644a81827b52bbaa7e4ba5d79c46e8f37cefdbd91af906ec1'
+      Examples: '3c882962fc07f611a6147ada99c9909770d3e519210fd483cde9609c6bdd900c' |
+                '1ad8a76a9f966da5f7a319c49a6db071a60ebaa24d69e6d86d53d6f2bcaf11ed'
 
   restic_checksum_algorithm
     Description: Define the 'restic_checksum_algorithm' option.
@@ -308,9 +308,9 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '0.9.3'
+    Default    : '0.9.4'
     Options    :
-      Examples: '0.9.2' | '0.9.1'
+      Examples: '0.9.3' | '0.9.2'
 
 --------------------------------------------------------------------------------
 CONFLICTS
