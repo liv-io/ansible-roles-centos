@@ -1,0 +1,28 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - moreutils
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install moreutils'
+  package:
+    state: 'present'
+    name: "{{package_name_moreutils}}"
+  tags:
+    - install
+    - moreutils
