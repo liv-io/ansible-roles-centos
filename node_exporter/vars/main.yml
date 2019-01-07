@@ -30,7 +30,7 @@ file_group_node_exporter_current_link: 'root'
 
 # textfile_collector.dir
 file_dst_textfile_collector_dir: "/{{common_data_dir}}/node_exporter/textfile_collector"
-file_mode_textfile_collector_dir: '0755'
+file_mode_textfile_collector_dir: '1777'
 file_owner_textfile_collector_dir: 'root'
 file_group_textfile_collector_dir: 'root'
 
