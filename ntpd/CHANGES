@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.3 (2019-01-09)
+B: Fix issue introduced with improvements to prevent globbing and word splitting
+
 * Version 1.0.2 (2019-01-09)
 B: Improve return value verification and fix unexpected operator/operand issue
 E: Improve Shell script to prevent globbing and word splitting
