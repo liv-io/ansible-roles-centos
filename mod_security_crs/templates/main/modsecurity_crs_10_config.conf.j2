@@ -80,7 +80,7 @@ SecComponentSignature "OWASP_CRS/2.2.9"
 # Ref: http://blog.spiderlabs.com/2010/11/advanced-topic-of-the-week-traditional-vs-anomaly-scoring-detection-modes.html
 # Ref: https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#wiki-SecDefaultAction 
 #
-{% if (mod_security_crs_sec_default_action is defined) and not (mod_security_crs_sec_default_action == '') %}
+{% if not (mod_security_crs_sec_default_action == '') %}
 SecDefaultAction "{{mod_security_crs_sec_default_action}}"
 {% else %}
 SecDefaultAction "phase:1,deny,log"
