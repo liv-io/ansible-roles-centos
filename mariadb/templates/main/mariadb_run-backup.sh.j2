@@ -58,7 +58,6 @@ mysqldump=$(${which} mysqldump) || { echo "Error: Command 'mysqldump' not found.
 
 host=$(${hostname} -s) || { echo "Error: Host name unknown."; exit 68; }
 script="$(${basename} $0)[$$]" || { echo "Error: Command invoked cannot execute."; exit 126; }
-date_start=$(${date} '+%Y-%m-%dT%H:%M:%S%z')
 time_start=$(${date} '+%s')
 user='{{file_owner_mariadb_run_backup_sh}}'
 lockfile='{{file_dst_mariadb_script_dir}}/mariadb_run-backup.lock'
@@ -123,22 +122,22 @@ check_script_user() {
     retval=77
     severity='Error'
     message="Please run script as user '${user}'"
-    ${echo} "$(${date} '+%Y-%m-%dT%H:%M:%S%z') - ${host} - ${script}: "${severity}: ${message}""
-    exit ${retval}
+    ${echo} "$(${date} '+%Y-%m-%dT%H:%M:%S%z') - ${host} - ${script}: ${severity}: ${message}"
+    exit "${retval}"
   fi
 }
 
 create_lockfile() {
-  if [ ! -e ${lockfile} ]; then
-    ${touch} ${lockfile} || log_and_exit_on_error "$?" 'Warning' 'Could not create lockfile. Please investigate.'
+  if [ ! -e "${lockfile}" ]; then
+    ${touch} "${lockfile}" || log_and_exit_on_error "$?" 'Warning' 'Could not create lockfile. Please investigate.'
   else
     log_and_exit_on_error "$?" 'Warning' 'Lockfile does already exist. Please investigate.'
   fi
 }
 
 remove_lockfile() {
-  if [ -e ${lockfile} ]; then
-    ${rm} -f ${lockfile} || log_and_exit_on_error "$?" 'Warning' 'Could not remove lockfile. Please investigate.'
+  if [ -e "${lockfile}" ]; then
+    ${rm} -f "${lockfile}" || log_and_exit_on_error "$?" 'Warning' 'Could not remove lockfile. Please investigate.'
   else
     log_and_exit_on_error "$?" 'Warning' 'Lockfile did not exist. Please investigate.'
   fi
@@ -148,29 +147,28 @@ log_and_exit_on_error() {
   retval=$1
   severity=$2
   message=$3
-  if [ ${retval} -ne 0 ]; then
-    ${rm} -f ${lockfile}
-    ${echo} "$(${date} '+%Y-%m-%dT%H:%M:%S%z') - ${host} - ${script}: "${severity}: ${message}""
-    ${logger} -t ${script} "${severity}: ${message}"
+  if [ "${retval}" -ne 0 ]; then
+    ${rm} -f "${lockfile}"
+    ${echo} "$(${date} '+%Y-%m-%dT%H:%M:%S%z') - ${host} - ${script}: ${severity}: ${message}"
+    ${logger} -t "${script}" "${severity}: ${message}"
 {% if (mariadb_monitor_mail_state is match('true|yes|enable')) %}
-    mail_error ${retval} "${severity}" "${message}"
+    mail_error "${retval}" "${severity}" "${message}"
 {% endif %}
-    exit ${retval}
+    exit "${retval}"
   fi
 }
 
 log_and_exit() {
-  date_end=$(${date} '+%Y-%m-%dT%H:%M:%S%z')
   time_end=$(${date} '+%s')
-  time_exec=$(${expr} ${time_end} - ${time_start})
+  time_exec=$(${expr} "${time_end}" - "${time_start}")
   time_hr=$(${date} -d "1970-01-01 ${time_exec} sec" '+%H:%M:%S')
 
   retval=0
   severity='Info'
   message='Backup created successfully.'
-  ${logger} -t ${script} "${severity}: ${message} Duration: ${time_hr}"
+  ${logger} -t "${script}" "${severity}: ${message} Duration: ${time_hr}"
 
-  exit ${retval}
+  exit "${retval}"
 }
 
 #-------------------------------------------------------------------------------
@@ -191,11 +189,11 @@ log_and_exit_on_error "$?" 'Error' 'Unable to get individual MariaDB databases.'
 
 # Dump and compress individual MariaDB databases
 for db in ${databases} ; do
-  ${mysqldump} --defaults-file=${credentials_cnf} --add-drop-database --add-drop-table --allow-keywords --quote-names --single-transaction --events --routines --log-error="${backup_dir}/${db}_${backup_timestamp}-error.log" ${db} | ${gzip} -c > "${backup_dir}/${db}_${backup_timestamp}.gz"
-  if [ "$?" -eq '0' ]; then
+  ${mysqldump} --defaults-file=${credentials_cnf} --add-drop-database --add-drop-table --allow-keywords --quote-names --single-transaction --events --routines --log-error="${backup_dir}/${db}_${backup_timestamp}-error.log" "${db}" | ${gzip} -c > "${backup_dir}/${db}_${backup_timestamp}.gz"
+  if [ "$?" -eq 0 ]; then
     severity='Info'
     message="'${db}' dumped and compressed."
-    ${logger} -t ${script} "${severity}: ${message}"
+    ${logger} -t "${script}" "${severity}: ${message}"
   else
     log_and_exit_on_error "$?" 'Error' "Unable to dump and compress '${db}'."
   fi
@@ -208,15 +206,15 @@ for db in ${databases} ; do
 done
 
 # Ensure proper file owner and group
-${find} ${backup_dir} -type f -name "${host}_*_${backup_timestamp}.tar" -exec ${chown} ${backup_file_owner}:${backup_file_group} '{}' ';'
+${find} "${backup_dir}" -type f -name "${host}_*_${backup_timestamp}.tar" -exec ${chown} ${backup_file_owner}:${backup_file_group} '{}' ';'
 log_and_exit_on_error "$?" 'Error' 'Unable to ensure proper file owner and group.'
 
 # Ensure proper file permission
-${find} ${backup_dir} -type f -name "${host}_*_${backup_timestamp}.tar" -exec ${chmod} ${backup_file_mode} '{}' ';'
+${find} "${backup_dir}" -type f -name "${host}_*_${backup_timestamp}.tar" -exec ${chmod} ${backup_file_mode} '{}' ';'
 log_and_exit_on_error "$?" 'Error' 'Unable to ensure proper file permission.'
 
 # Remove old MariaDB database dumps
-${find} ${backup_dir} -type f -name "${host}_*.tar" -mtime +${keep_days} -exec ${rm} -f '{}' ';'
+${find} "${backup_dir}" -type f -name "${host}_*.tar" -mtime +${keep_days} -exec ${rm} -f '{}' ';'
 log_and_exit_on_error "$?" 'Error' 'Unable to remove old MariaDB database dumps.'
 
 remove_lockfile
