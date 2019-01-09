@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.6 (2019-01-09)
+E: Minor Shell script improvement to prevent globbing and word splitting
+
 * Version 0.2.5 (2019-01-09)
 E: Improve Shell script to prevent globbing and word splitting
 
