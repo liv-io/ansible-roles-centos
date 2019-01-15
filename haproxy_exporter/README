@@ -96,10 +96,10 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : 'b0d1caaaf245d3d16432de9504575b3af1fec14b2206a468372a80843be001a0'
+    Default    : '08150728e281f813a8fcfff4b336f16dbfe4268a1c7510212c8cff2579b10468'
     Options    :
-      Examples: 'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029' |
-                '2f18a32a7bb1c91307ed776cce50559bbcd66af90a61ea0a22a661ebe79e4fda'
+      Examples: '2f18a32a7bb1c91307ed776cce50559bbcd66af90a61ea0a22a661ebe79e4fda' |
+                'b0d1caaaf245d3d16432de9504575b3af1fec14b2206a468372a80843be001a0'
 
   haproxy_exporter_checksum_algorithm
     Description: Define the 'haproxy_exporter_checksum_algorithm' option.
@@ -129,7 +129,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '0.9.0'
+    Default    : '0.10.0'
     Options    :
       Examples: '0.8.0' | '0.9.0'
 
