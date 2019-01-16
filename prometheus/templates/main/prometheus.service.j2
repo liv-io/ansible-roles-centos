@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : prometheus.service
+# Type   : systemd unit file
+# Role   : prometheus
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+[Unit]
+Description=Prometheus
+After=syslog.target network.target
+
+[Service]
+User=prometheus
+Group=prometheus
+EnvironmentFile=/etc/sysconfig/prometheus
+ExecStart={{file_dst_prometheus_current_link}}/prometheus $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

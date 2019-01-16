@@ -1,0 +1,57 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - enable
+    - prometheus
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create prometheus-current.link'
+  file:
+    state: 'link'
+    src: "{{file_src_prometheus_current_link}}"
+    path: "{{file_dst_prometheus_current_link}}"
+    owner: "{{file_owner_prometheus_current_link}}"
+    group: "{{file_group_prometheus_current_link}}"
+  notify: 'service restart prometheus'
+  tags:
+    - enable
+    - prometheus
+
+- name: 'file create prometheus.sysconfig'
+  template:
+    src: "{{file_src_prometheus_sysconfig}}"
+    dest: "{{file_dst_prometheus_sysconfig}}"
+    mode: "{{file_mode_prometheus_sysconfig}}"
+    owner: "{{file_owner_prometheus_sysconfig}}"
+    group: "{{file_group_prometheus_sysconfig}}"
+  notify: 'service restart prometheus'
+  tags:
+    - enable
+    - prometheus
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start prometheus'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_prometheus}}"
+  tags:
+    - enable
+    - prometheus

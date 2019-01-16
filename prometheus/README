@@ -1,0 +1,181 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : prometheus
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+Prometheus, a Cloud Native Computing Foundation project, is a systems and
+service monitoring system. It collects metrics from configured targets at given
+intervals, evaluates rule expressions, displays the results, and can trigger
+alerts if some condition is observed to be true.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: prometheus
+    vars:
+      prometheus_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: prometheus
+    vars:
+      prometheus_state: 'enable'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: prometheus
+    vars:
+      prometheus_state: 'disable'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: prometheus
+    vars:
+      prometheus_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: prometheus
+    vars:
+      prometheus_state: 'inactive'
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+ROLE
+  prometheus_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  prometheus_checksum
+    Description: Define the 'prometheus_checksum' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'f5b281b72f6c80c4f972a0b75c1f47c1d747e0de6deec9d8ddc60c91c3cbfc30'
+    Options    :
+      Examples: '6f1203c3ec540346bb346641eb43a74fde2992cda23b6c9e0f876f95a646cda1' |
+                '8f1f9ca9dbc06e1dc99200e30526ca8343dfe80c2bd950847d22182953261c6c'
+
+  prometheus_checksum_algorithm
+    Description: Define the 'prometheus_checksum_algorithm' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'sha256'
+    Options    :
+      Examples: 'sha256' | 'sha512'
+
+  prometheus_storage_tsdb_retention
+    Description: Define the 'prometheus_storage_tsdb_retention' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '365d'
+    Options    :
+      Examples: '90d' | '180d' | '365d' | '10y'
+
+  prometheus_version
+    Description: Define the 'prometheus_version' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '2.6.1'
+    Options    :
+      Examples: '2.5.0' | '2.6.0'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  prometheus
+
+ROLES
+  common
+
+VARIABLES
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.5
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Development
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

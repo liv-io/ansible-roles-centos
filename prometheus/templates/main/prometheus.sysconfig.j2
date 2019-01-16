@@ -1,0 +1,18 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : prometheus.sysconfig
+# Type   : service configuration file
+# Role   : prometheus
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+OPTIONS="--config.file='{{file_dst_prometheus_yml}}' --storage.tsdb.path='{{file_dst_prometheus_data_dir}}' --storage.tsdb.retention='{{prometheus_storage_tsdb_retention}}' --web.enable-admin-api"

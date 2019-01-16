@@ -1,0 +1,87 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - prometheus
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'command check service prometheus'
+  shell: "{{command_cmd_check_service_prometheus}}"
+  register: register_check_service_prometheus
+  changed_when: (register_check_service_prometheus.rc == 0)
+  failed_when: (register_check_service_prometheus.rc > 1)
+  check_mode: 'no'
+  tags:
+    - remove
+    - prometheus
+
+- name: 'service stop prometheus'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "{{service_name_prometheus}}"
+  when: (register_check_service_prometheus.rc == 0)
+  tags:
+    - remove
+    - prometheus
+
+- name: 'user remove prometheus'
+  user:
+    state: 'absent'
+    name: "{{user_name_prometheus}}"
+    remove: "{{user_home_remove_prometheus}}"
+    force: "{{user_home_force_prometheus}}"
+  tags:
+    - remove
+    - prometheus
+
+- name: 'group remove prometheus'
+  group:
+    state: 'absent'
+    name: "{{group_name_prometheus}}"
+  tags:
+    - remove
+    - prometheus
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove prometheus_bin.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_prometheus_bin_dir}}"
+  tags:
+    - remove
+    - prometheus
+
+- name: 'file remove prometheus.sysconfig'
+  file:
+    state: 'absent'
+    path: "{{file_dst_prometheus_sysconfig}}"
+  tags:
+    - remove
+    - prometheus
+
+- name: 'file remove prometheus.service'
+  file:
+    state: 'absent'
+    path: "{{file_dst_prometheus_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - prometheus

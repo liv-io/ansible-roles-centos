@@ -1,0 +1,142 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - prometheus
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'group create prometheus'
+  group:
+    state: 'present'
+    name: "{{group_name_prometheus}}"
+    system: "{{group_system_prometheus}}"
+  tags:
+    - install
+    - prometheus
+
+- name: 'user create prometheus'
+  user:
+    state: 'present'
+    name: "{{user_name_prometheus}}"
+    comment: "{{user_comment_prometheus}}"
+    group: "{{user_group_prometheus}}"
+    append: "{{user_append_prometheus}}"
+    createhome: "{{user_home_create_prometheus}}"
+    move_home: "{{user_home_move_prometheus}}"
+    remove: "{{user_home_remove_prometheus}}"
+    force: "{{user_home_force_prometheus}}"
+    password: "{{user_password_prometheus}}"
+    update_password: "{{user_password_update_prometheus}}"
+    shell: "{{user_shell_prometheus}}"
+    system: "{{user_system_prometheus}}"
+  tags:
+    - install
+    - prometheus
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create prometheus_app.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_prometheus_app_dir}}"
+    mode: "{{file_mode_prometheus_app_dir}}"
+    owner: "{{file_owner_prometheus_app_dir}}"
+    group: "{{file_group_prometheus_app_dir}}"
+  tags:
+    - install
+    - prometheus
+
+- name: 'file create prometheus_bin.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_prometheus_bin_dir}}"
+    mode: "{{file_mode_prometheus_bin_dir}}"
+    owner: "{{file_owner_prometheus_bin_dir}}"
+    group: "{{file_group_prometheus_bin_dir}}"
+  tags:
+    - install
+    - prometheus
+
+- name: 'file create prometheus_conf.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_prometheus_conf_dir}}"
+    mode: "{{file_mode_prometheus_conf_dir}}"
+    owner: "{{file_owner_prometheus_conf_dir}}"
+    group: "{{file_group_prometheus_conf_dir}}"
+  tags:
+    - install
+    - prometheus
+
+- name: 'file create prometheus_data.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_prometheus_data_dir}}"
+    mode: "{{file_mode_prometheus_data_dir}}"
+    owner: "{{file_owner_prometheus_data_dir}}"
+    group: "{{file_group_prometheus_data_dir}}"
+  tags:
+    - install
+    - prometheus
+
+- name: "file download prometheus.tar.gz"
+  get_url:
+    url: "{{file_src_prometheus_tar_gz}}"
+    dest: "{{file_dst_prometheus_tar_gz}}"
+    mode: "{{file_mode_prometheus_tar_gz}}"
+    owner: "{{file_owner_prometheus_tar_gz}}"
+    group: "{{file_group_prometheus_tar_gz}}"
+    checksum: "{{prometheus_checksum_algorithm}}:{{prometheus_checksum}}"
+  tags:
+    - install
+    - prometheus
+
+- name: "file unarchive prometheus"
+  unarchive:
+    src: "{{file_src_prometheus}}"
+    dest: "{{file_dst_prometheus}}"
+    owner: "{{file_owner_prometheus}}"
+    group: "{{file_group_prometheus}}"
+    creates: "{{file_creates_prometheus}}"
+    remote_src: 'yes'
+  tags:
+    - install
+    - prometheus
+
+- name: 'file create prometheus.service'
+  template:
+    src: "{{file_src_prometheus_service}}"
+    dest: "{{file_dst_prometheus_service}}"
+    mode: "{{file_mode_prometheus_service}}"
+    owner: "{{file_owner_prometheus_service}}"
+    group: "{{file_group_prometheus_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - prometheus
+
+#-------------------------------------------------------------------------------
+# META
+#-------------------------------------------------------------------------------
+
+- name: 'meta flush handlers'
+  meta: 'flush_handlers'
+  tags:
+    - install
+    - prometheus
