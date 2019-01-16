@@ -92,7 +92,7 @@ CONFIG
       - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', ports: {'submission'}, comment: 'MAIL: From any'}
 
 --------------------------------------------------------------------------------
-VARIABLES
+PARAMETERS
 --------------------------------------------------------------------------------
 
 ROLE
@@ -240,7 +240,7 @@ PACKAGES
 ROLES
   firewalld
 
-VARIABLES
+PARAMETERS
 
 --------------------------------------------------------------------------------
 REQUIREMENTS
