@@ -1,0 +1,28 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - install
+    - grafana
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install grafana'
+  package:
+    state: 'present'
+    name: "{{package_name_grafana}}"
+  tags:
+    - install
+    - grafana
