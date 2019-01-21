@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.2 (2019-01-21)
+E: Improve script and reduce noise by removing echo command from alerting function
+
 * Version 1.0.1 (2019-01-09)
 E: Improve Shell script to prevent globbing and word splitting
 
