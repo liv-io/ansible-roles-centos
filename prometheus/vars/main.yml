@@ -4,9 +4,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-# prometheus.yml
-file_dst_prometheus_yml: "/{{common_app_dir}}/prometheus/conf/prometheus.yml"
-
 # prometheus_app.dir
 file_dst_prometheus_app_dir: "/{{common_app_dir}}/prometheus"
 file_mode_prometheus_app_dir: '0755'
@@ -64,6 +61,13 @@ file_dst_prometheus_sysconfig: '/etc/sysconfig/prometheus'
 file_mode_prometheus_sysconfig: '0644'
 file_owner_prometheus_sysconfig: 'root'
 file_group_prometheus_sysconfig: 'root'
+
+# prometheus.yml
+file_src_prometheus_yml: 'templates/main/prometheus.yml.j2'
+file_dst_prometheus_yml: "/{{common_app_dir}}/prometheus/conf/prometheus.yml"
+file_mode_prometheus_yml: '0644'
+file_owner_prometheus_yml: 'root'
+file_group_prometheus_yml: 'root'
 
 #-------------------------------------------------------------------------------
 # COMMANDS

@@ -6,6 +6,18 @@ prometheus_checksum_algorithm: 'sha256'
 
 prometheus_checksum: 'f5b281b72f6c80c4f972a0b75c1f47c1d747e0de6deec9d8ddc60c91c3cbfc30'
 
+prometheus_global_evaluation_interval: '30s'
+
+prometheus_global_scrape_interval: '30s'
+
+prometheus_scrape_configs:
+  - name: 'prometheus'
+    comment: 'Monitor Prometheus itself'
+    config:
+      - "- targets: ['localhost:9090']"
+      - "  labels:"
+      - "    instance: 'monitoring'"
+
 prometheus_storage_tsdb_retention: '365d'
 
 prometheus_version: '2.6.1'

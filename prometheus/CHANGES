@@ -14,5 +14,11 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2019-01-21)
+C: Manage configuration file 'prometheus.yml'
+F: Add support for 'evaluation_interval' option (prometheus_global_evaluation_interval)
+F: Add support for 'scrape_interval' option (prometheus_global_scrape_interval)
+F: Add support for 'scrape_configs' option (prometheus_scrape_configs)
+
 * Version 0.1.0 (2019-01-16)
 F: Initial release

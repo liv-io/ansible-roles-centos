@@ -69,6 +69,14 @@
     - remove
     - prometheus
 
+- name: 'file remove prometheus.yml'
+  file:
+    state: 'absent'
+    path: "{{file_dst_prometheus_yml}}"
+  tags:
+    - remove
+    - prometheus
+
 - name: 'file remove prometheus.sysconfig'
   file:
     state: 'absent'

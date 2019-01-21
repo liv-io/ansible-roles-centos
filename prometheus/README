@@ -99,6 +99,43 @@ ROLE
     Options    :
       Examples: 'sha256' | 'sha512'
 
+  prometheus_global_evaluation_interval
+    Description: Define the 'prometheus_global_evaluation_interval' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '30s'
+    Options    :
+      Examples: '15s' | '30s' | '60s'
+
+  prometheus_global_scrape_interval
+    Description: Define the 'prometheus_global_scrape_interval' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '30s'
+    Options    :
+      Examples: '15s' | '30s' | '60s'
+
+  prometheus_scrape_configs
+    Description: Define the 'prometheus_scrape_configs' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{name: 'prometheus', comment: 'Monitor Prometheus itself',
+                  config: {"- targets: ['localhost:9090']"},
+                          {"  labels:"},
+                          {"    instance: 'monitoring'"}}]
+    Options    :
+      Examples: [{name: 'prometheus', comment: 'Monitor Prometheus itself',
+                  config: {"- targets: ['localhost:9090']"},
+                          {"  labels:"},
+                          {"    instance: 'monitoring'"}}]
+      None    : []
+
   prometheus_storage_tsdb_retention
     Description: Define the 'prometheus_storage_tsdb_retention' option.
     Implemented: 0.1
