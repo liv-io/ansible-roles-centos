@@ -119,7 +119,7 @@ ROLE
 
   postgresql_monitor_mail_from_address
     Description: Define the 'postgresql_monitor_mail_from_address' option.
-    Implemented: 0.1
+    Implemented: 0.2
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -129,7 +129,7 @@ ROLE
 
   postgresql_monitor_mail_to_address
     Description: Define the 'postgresql_monitor_mail_to_address' option.
-    Implemented: 0.1
+    Implemented: 0.2
     Required   : False
     Value      : Arbitrary
     Type       : Array
