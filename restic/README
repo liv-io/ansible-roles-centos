@@ -212,7 +212,7 @@ ROLE
 
   restic_monitor_mail_from_address
     Description: Define the 'restic_monitor_mail_from_address' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -222,7 +222,7 @@ ROLE
 
   restic_monitor_mail_to_address
     Description: Define the 'restic_monitor_mail_to_address' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
