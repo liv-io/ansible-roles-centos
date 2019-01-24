@@ -170,8 +170,18 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
-  mariadb_monitor_mail_recipient
-    Description: Define the 'mariadb_monitor_mail_recipient' option.
+  mariadb_monitor_mail_from_address
+    Description: Define the 'mariadb_monitor_mail_from_address' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "root@{{ansible_domain}}"
+    Options    :
+      Examples: 'root@domain.tld' | 'admin@domain.tld' | 'user@domain.tld'
+
+  mariadb_monitor_mail_to_address
+    Description: Define the 'mariadb_monitor_mail_to_address' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -180,16 +190,6 @@ ROLE
     Options    :
       Examples: ['root@domain.tld'] | ['root@domain.tld', 'admin@domain.tld']
                 ['root@domain.tld', 'admin@domain.tld', 'user@domain.tld']
-
-  mariadb_monitor_mail_sender
-    Description: Define the 'mariadb_monitor_mail_sender' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : "root@{{ansible_domain}}"
-    Options    :
-      Examples: 'root@domain.tld' | 'admin@domain.tld' | 'user@domain.tld'
 
   mariadb_monitor_mail_state
     Description: Control the 'mariadb_monitor_mail_state' option.
