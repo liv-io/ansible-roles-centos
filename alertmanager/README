@@ -112,10 +112,10 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : 'b43fd8aba978f19375e37fb7924bcdc7dd45659b1b0f87a2815860001f100f46'
+    Default    : 'f62a30bd766091218ecc06512ae5fdd0f99807733a6aec0e3ca83558e56ecf6d'
     Options    :
-      Examples: 'd41101d632ccedd45c49f4bf31d9b247502f75f4950be5584429a2156a8c346f' |
-                '79ee23ab2f0444f592051995728ba9e0a7547cc3b9162301e3152dbeaf568d2e'
+      Examples: '79ee23ab2f0444f592051995728ba9e0a7547cc3b9162301e3152dbeaf568d2e' |
+                'b43fd8aba978f19375e37fb7924bcdc7dd45659b1b0f87a2815860001f100f46'
 
   alertmanager_checksum_algorithm
     Description: Define the 'alertmanager_checksum_algorithm' option.
@@ -152,9 +152,9 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '0.15.3'
+    Default    : '0.16.0'
     Options    :
-      Examples: '0.15.1' | '0.15.2'
+      Examples: '0.15.2' | '0.15.3'
 
 --------------------------------------------------------------------------------
 CONFLICTS
