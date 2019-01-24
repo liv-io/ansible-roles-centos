@@ -79,8 +79,8 @@ backup_exclude="{% if not (postgresql_run_backup_exclude == []) %}{% for item in
 keep_days={{(postgresql_run_backup_keep_days|int(2))}}
 
 {% if (postgresql_monitor_mail_state is match('true|yes|enable')) %}
-mail_sender='{{postgresql_monitor_mail_sender}}'
-mail_recipient='{% for item in postgresql_monitor_mail_recipient %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}'
+mail_from_address='{{postgresql_monitor_mail_from_address}}'
+mail_to_address='{% for item in postgresql_monitor_mail_to_address %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}'
 mail_subject='PostgreSQL: Run Backup - Error ({{ansible_hostname}})'
 {% endif %}
 
@@ -116,7 +116,7 @@ SYSTEM
 Hostname    : {{ansible_hostname}}
 FQDN        : {{ansible_fqdn}}"
 
-  ${echo} "${mail_body}" | ${mailx} -r "${mail_sender}" -s "${mail_subject}" "${mail_recipient}" > /dev/null 2>&1
+  ${echo} "${mail_body}" | ${mailx} -r "${mail_from_address}" -s "${mail_subject}" "${mail_to_address}" > /dev/null 2>&1
 }
 {% endif %}
 
