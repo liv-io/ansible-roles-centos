@@ -12,8 +12,6 @@ fstrim_discard_blocks_month: '*'
 
 fstrim_discard_blocks_weekday: '*'
 
-fstrim_monitor: 'false'
-
 fstrim_monitor_mail_from_address: "root@{{ansible_domain}}"
 
 fstrim_monitor_mail_to_address: ["admin@{{ansible_domain}}"]
