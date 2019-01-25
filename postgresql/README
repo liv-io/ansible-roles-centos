@@ -106,17 +106,6 @@ ROLE
     Options    :
       Examples: ['*'] | ['0.0.0.0'] | ['::'] | ['10.1.1.10', '10.2.2.10']
 
-  postgresql_monitor
-    Description: Control the 'postgresql_monitor' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Predetermined
-    Type       : String
-    Default    : 'false'
-    Options    :
-      Enable : 'true' | 'yes' | 'enable'
-      Disable: 'false' | 'no' | 'disable'
-
   postgresql_monitor_mail_from_address
     Description: Define the 'postgresql_monitor_mail_from_address' option.
     Implemented: 0.2

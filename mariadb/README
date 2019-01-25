@@ -159,17 +159,6 @@ ROLE
                  {state: 'false', name: 'db02'}]
       None    : []
 
-  mariadb_monitor
-    Description: Control the 'mariadb_monitor' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Predetermined
-    Type       : String
-    Default    : 'false'
-    Options    :
-      Enable : 'true' | 'yes' | 'enable'
-      Disable: 'false' | 'no' | 'disable'
-
   mariadb_monitor_mail_from_address
     Description: Define the 'mariadb_monitor_mail_from_address' option.
     Implemented: 2.0
