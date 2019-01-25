@@ -9,8 +9,6 @@ postgresql_connections:
 
 postgresql_listen_addresses: ['localhost']
 
-postgresql_monitor: 'false'
-
 postgresql_monitor_mail_from_address: "root@{{ansible_domain}}"
 
 postgresql_monitor_mail_to_address: ["admin@{{ansible_domain}}"]
