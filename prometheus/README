@@ -84,10 +84,10 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : 'f5b281b72f6c80c4f972a0b75c1f47c1d747e0de6deec9d8ddc60c91c3cbfc30'
+    Default    : '960848f9c2ffb2ce6f295dd0bc7186acd1ac12e74a90a1a9a9fbab0a838f8472'
     Options    :
-      Examples: '6f1203c3ec540346bb346641eb43a74fde2992cda23b6c9e0f876f95a646cda1' |
-                '8f1f9ca9dbc06e1dc99200e30526ca8343dfe80c2bd950847d22182953261c6c'
+      Examples: '8f1f9ca9dbc06e1dc99200e30526ca8343dfe80c2bd950847d22182953261c6c' |
+                'f5b281b72f6c80c4f972a0b75c1f47c1d747e0de6deec9d8ddc60c91c3cbfc30'
 
   prometheus_checksum_algorithm
     Description: Define the 'prometheus_checksum_algorithm' option.
@@ -136,8 +136,8 @@ ROLE
                           {"    instance: 'monitoring'"}}]
       None    : []
 
-  prometheus_storage_tsdb_retention
-    Description: Define the 'prometheus_storage_tsdb_retention' option.
+  prometheus_storage_tsdb_retention_time
+    Description: Define the 'prometheus_storage_tsdb_retention_time' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -152,9 +152,9 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '2.6.1'
+    Default    : '2.7.0'
     Options    :
-      Examples: '2.5.0' | '2.6.0'
+      Examples: '2.6.0' | '2.6.1'
 
 --------------------------------------------------------------------------------
 CONFLICTS
