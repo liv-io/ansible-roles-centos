@@ -1093,7 +1093,11 @@ ibase.timeformat = "%H:%M:%S"
 [MySQL]
 ; Allow accessing, from PHP's perspective, local files with LOAD DATA statements
 ; http://php.net/mysql.allow_local_infile
+{% if (php_mysql_allow_local_infile is match('true|yes|enable')) %}
 mysql.allow_local_infile = On
+{% else %}
+mysql.allow_local_infile = Off
+{% endif %}
 
 ; Allow or prevent persistent links.
 ; http://php.net/mysql.allow-persistent
@@ -1156,7 +1160,11 @@ mysqli.max_persistent = -1
 
 ; Allow accessing, from PHP's perspective, local files with LOAD DATA statements
 ; http://php.net/mysqli.allow_local_infile
-;mysqli.allow_local_infile = On
+{% if (php_mysqli_allow_local_infile is match('true|yes|enable')) %}
+mysqli.allow_local_infile = On
+{% else %}
+mysqli.allow_local_infile = Off
+{% endif %}
 
 ; Allow or prevent persistent links.
 ; http://php.net/mysqli.allow-persistent
