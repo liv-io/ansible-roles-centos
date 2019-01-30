@@ -24,6 +24,9 @@
 
 # this is read by the standalone daemon and embedded servers
 [server]
+{% if not (mariadb_config_server == '') %}
+{{(mariadb_config_server|indent(2, False))}}
+{% endif %}
 
 # this is only for the mysqld standalone daemon
 [mysqld]

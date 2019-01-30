@@ -23,7 +23,7 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'service reload mariadb'
+- name: 'service restart mariadb'
   service:
     state: 'restarted'
     name: "{{service_name_mariadb}}"
