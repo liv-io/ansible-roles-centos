@@ -37,6 +37,92 @@ ENABLE
       - role: prometheus
     vars:
       prometheus_state: 'enable'
+      prometheus_scrape_configs: |
+        #-----------------------------------------------------------------------------
+        # PROMETHEUS
+        #-----------------------------------------------------------------------------
+
+        - job_name: 'prometheus'
+          static_configs:
+
+          - targets: ['localhost:9090']
+            labels:
+              instance: 'prometheus'
+
+        #-----------------------------------------------------------------------------
+        # NODE
+        #-----------------------------------------------------------------------------
+
+        - job_name: 'node'
+          static_configs:
+
+            - targets: ['localhost:9100']
+              labels:
+                instance: 'prometheus'
+
+            - targets: ['host01.domain.tld:9100']
+              labels:
+                instance: 'host01'
+
+        #-----------------------------------------------------------------------------
+        # BLACKBOX
+        #-----------------------------------------------------------------------------
+
+        - job_name: 'http_ip4_basic'
+          metrics_path: /probe
+          params:
+            module: [http_ip4_basic]
+          static_configs:
+            - targets:
+              - https://host01.domain.tld
+              - https://host02.domain.tld
+
+          relabel_configs:
+            - source_labels: [__address__]
+              target_label: __param_target
+            - source_labels: [__param_target]
+              target_label: instance
+            - target_label: __address__
+              replacement: 127.0.0.1:9115
+
+        - job_name: 'icmp_ip4'
+          metrics_path: /probe
+          params:
+            module: [icmp_ip4]
+          static_configs:
+            - targets: ['host01.domain.tld']
+              labels:
+                instance: 'host01'
+
+          relabel_configs:
+            - source_labels: [__address__]
+              target_label: __param_target
+            - source_labels: [__param_target]
+              target_label: instance
+            - target_label: __address__
+              replacement: 127.0.0.1:9115
+
+        #-----------------------------------------------------------------------------
+        # HAPROXY
+        #-----------------------------------------------------------------------------
+
+        - job_name: 'haproxy'
+          static_configs:
+
+          - targets: ['host01.domain.tld:9101']
+            labels:
+              instance: 'host01'
+
+        #-----------------------------------------------------------------------------
+        # MYSQLD
+        #-----------------------------------------------------------------------------
+
+        - job_name: 'mysqld'
+          static_configs:
+
+          - targets: ['host01.domain.tld:9104']
+            labels:
+              instance: 'host01'
 
 DISABLE
   - hosts: all
@@ -84,10 +170,10 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '960848f9c2ffb2ce6f295dd0bc7186acd1ac12e74a90a1a9a9fbab0a838f8472'
+    Default    : '7837cfd6b5af63c07cadfa2b3118f0a43e43e8a6e6d596425cb23b45855b7db0'
     Options    :
-      Examples: '8f1f9ca9dbc06e1dc99200e30526ca8343dfe80c2bd950847d22182953261c6c' |
-                'f5b281b72f6c80c4f972a0b75c1f47c1d747e0de6deec9d8ddc60c91c3cbfc30'
+      Examples: 'f5b281b72f6c80c4f972a0b75c1f47c1d747e0de6deec9d8ddc60c91c3cbfc30' |
+                '960848f9c2ffb2ce6f295dd0bc7186acd1ac12e74a90a1a9a9fbab0a838f8472'
 
   prometheus_checksum_algorithm
     Description: Define the 'prometheus_checksum_algorithm' option.
@@ -121,20 +207,49 @@ ROLE
 
   prometheus_scrape_configs
     Description: Define the 'prometheus_scrape_configs' option.
-    Implemented: 0.2
+    Implemented: 0.4
     Required   : False
     Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : [{name: 'prometheus', comment: 'Monitor Prometheus itself',
-                  config: {"- targets: ['localhost:9090']"},
-                          {"  labels:"},
-                          {"    instance: 'monitoring'"}}]
+    Type       : String
+    Default    : |
+      #-----------------------------------------------------------------------------
+      # PROMETHEUS
+      #-----------------------------------------------------------------------------
+
+      - job_name: 'prometheus'
+        static_configs:
+
+        - targets: ['localhost:9090']
+          labels:
+            instance: 'prometheus'
     Options    :
-      Examples: [{name: 'prometheus', comment: 'Monitor Prometheus itself',
-                  config: {"- targets: ['localhost:9090']"},
-                          {"  labels:"},
-                          {"    instance: 'monitoring'"}}]
-      None    : []
+      Examples: |
+        #-----------------------------------------------------------------------------
+        # PROMETHEUS
+        #-----------------------------------------------------------------------------
+
+        - job_name: 'prometheus'
+          static_configs:
+
+          - targets: ['localhost:9090']
+            labels:
+              instance: 'prometheus'
+
+        #-----------------------------------------------------------------------------
+        # NODE
+        #-----------------------------------------------------------------------------
+
+        - job_name: 'node'
+          static_configs:
+
+            - targets: ['localhost:9100']
+              labels:
+                instance: 'prometheus'
+
+            - targets: ['host01.domain.tld:9100']
+              labels:
+                instance: 'host01'
+      None    : ''
 
   prometheus_storage_tsdb_retention_time
     Description: Define the 'prometheus_storage_tsdb_retention_time' option.
@@ -152,9 +267,9 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '2.7.0'
+    Default    : '2.7.1'
     Options    :
-      Examples: '2.6.0' | '2.6.1'
+      Examples: '2.6.1' | '2.6.0'
 
 --------------------------------------------------------------------------------
 CONFLICTS

@@ -4,20 +4,24 @@ prometheus_state: 'enable'
 
 prometheus_checksum_algorithm: 'sha256'
 
-prometheus_checksum: '960848f9c2ffb2ce6f295dd0bc7186acd1ac12e74a90a1a9a9fbab0a838f8472'
+prometheus_checksum: '7837cfd6b5af63c07cadfa2b3118f0a43e43e8a6e6d596425cb23b45855b7db0'
 
 prometheus_global_evaluation_interval: '30s'
 
 prometheus_global_scrape_interval: '30s'
 
-prometheus_scrape_configs:
-  - name: 'prometheus'
-    comment: 'Monitor Prometheus itself'
-    config:
-      - "- targets: ['localhost:9090']"
-      - "  labels:"
-      - "    instance: 'monitoring'"
+prometheus_scrape_configs: |
+  #-----------------------------------------------------------------------------
+  # PROMETHEUS
+  #-----------------------------------------------------------------------------
+
+  - job_name: 'prometheus'
+    static_configs:
+
+    - targets: ['localhost:9090']
+      labels:
+        instance: 'prometheus'
 
 prometheus_storage_tsdb_retention_time: '365d'
 
-prometheus_version: '2.7.0'
+prometheus_version: '2.7.1'

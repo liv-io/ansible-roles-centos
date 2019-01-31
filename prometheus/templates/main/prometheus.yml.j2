@@ -37,24 +37,7 @@ rule_files:
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
+{% if not (prometheus_scrape_configs == '') %}
 scrape_configs:
-
-{% for item in prometheus_scrape_configs %}
-{% if not ((item.name|default('')) == '') %}
-  #-----------------------------------------------------------------------------
-  # {{(item.name|upper)}}
-  #-----------------------------------------------------------------------------
-
+{{(prometheus_scrape_configs|indent(2, False))}}
 {% endif %}
-{% if not ((item.config|default([])) == []) %}
-{% if (item.comment|default('')) %}
-  # {{item.comment}}
-  - job_name: '{{item.name}}'
-    static_configs:
-
-{% endif %}
-{% for config in item.config %}
-    {{config}}
-{% endfor %}
-{% endif %}
-{% endfor %}
