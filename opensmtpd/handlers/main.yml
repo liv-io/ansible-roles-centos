@@ -23,11 +23,6 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'service start opensmtpd'
-  service:
-    state: 'started'
-    name: "{{service_name_opensmtpd}}"
-
 - name: 'service restart opensmtpd'
   service:
     state: 'restarted'
