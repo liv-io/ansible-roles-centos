@@ -1,9 +1,0 @@
----
-
-traefik_state: 'enable'
-
-traefik_checksum_algorithm: 'sha256'
-
-traefik_checksum: 'cf98d9d4666df77644a81827b52bbaa7e4ba5d79c46e8f37cefdbd91af906ec1'
-
-traefik_version: 'v1.6.2'

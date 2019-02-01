@@ -1,4 +1,0 @@
----
-
-dependencies:
-  - {role: common, when: not (traefik_state is match('false|no|remove|quiesce|inactive'))}
