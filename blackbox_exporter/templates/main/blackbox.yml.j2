@@ -30,8 +30,7 @@ modules:
     prober: {{item.prober}}
     timeout: {{(item.timeout|default('5s'))}}
     {{item.prober}}:
-{% for config in item.config %}
-      {{config}}
-{% endfor %}
-
+{% if not (item.config == '') %}
+{{(item.config|indent(width=6, first=True))}}
+{% endif %}
 {% endfor %}

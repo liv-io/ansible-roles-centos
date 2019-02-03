@@ -39,9 +39,9 @@ ENABLE
         - name: 'icmp_ip4'
           prober: 'icmp'
           timeout: '5s'
-          config:
-            - 'preferred_ip_protocol: "ip4"'
-            - 'source_ip_address: "10.1.1.10"'
+          config: |
+            preferred_ip_protocol: "ip4"
+            source_ip_address: "10.1.1.10"
 
 DISABLE
   - hosts: all
@@ -53,9 +53,9 @@ DISABLE
         - name: 'icmp_ip4'
           prober: 'icmp'
           timeout: '5s'
-          config:
-            - 'preferred_ip_protocol: "ip4"'
-            - 'source_ip_address: "10.1.1.10"'
+          config: |
+            preferred_ip_protocol: "ip4"
+            source_ip_address: "10.1.1.10"
 
 REMOVE
   - hosts: all
@@ -113,38 +113,61 @@ ROLE
 
   blackbox_exporter_config
     Description: Define the 'blackbox_exporter_config' option.
-    Implemented: 0.2
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{name: 'icmp_ip4', prober: 'icmp', timeout: '5s',
-                  config: ['preferred_ip_protocol: "ip4"']},
-                 {name: 'icmp_ip6', prober: 'icmp', timeout: '5s',
-                  config: ['preferred_ip_protocol: "ip6"']},
-                 {name: 'tcp_ip4', prober: 'tcp', timeout: '5s',
-                  config: ['preferred_ip_protocol: "ip4"']},
-                 {name: 'tcp_ip6', prober: 'tcp', timeout: '5s',
-                  config: ['preferred_ip_protocol: "ip6"']},
-                 {name: 'http_ip4_basic', prober: 'http', timeout: '5s',
-                  config: ['valid_http_versions: ["HTTP/1.1", "HTTP/2"]',
-                           'valid_status_codes: [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 301, 400]',
-                           'method: GET',
-                           'no_follow_redirects: false',
-                           'fail_if_ssl: false',
-                           'fail_if_not_ssl: false',
-                           'tls_config: {insecure_skip_verify: true}',
-                           'preferred_ip_protocol: "ip4"']},
-                 {name: 'http_ip6_basic', prober: 'http', timeout: '5s',
-                  config: ['valid_http_versions: ["HTTP/1.1", "HTTP/2"]',
-                           'valid_status_codes: [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 301, 400]',
-                           'method: GET',
-                           'no_follow_redirects: false',
-                           'fail_if_ssl: false',
-                           'fail_if_not_ssl: false',
-                           'tls_config: {insecure_skip_verify: true}',
-                           'preferred_ip_protocol: "ip6"']}]
+      Examples: - name: 'icmp_ip4'
+                  prober: 'icmp'
+                  timeout: '5s'
+                  config: |
+                    preferred_ip_protocol: "ip4"
+
+                - name: 'icmp_ip6'
+                  prober: 'icmp'
+                  timeout: '5s'
+                  config: |
+                    preferred_ip_protocol: "ip6"
+
+                - name: 'tcp_ip4'
+                  prober: 'tcp'
+                  timeout: '5s'
+                  config: |
+                    preferred_ip_protocol: "ip4"
+
+                - name: 'tcp_ip6'
+                  prober: 'tcp'
+                  timeout: '5s'
+                  config: |
+                    preferred_ip_protocol: "ip6"
+
+                - name: 'http_ip4_basic'
+                  prober: 'http'
+                  timeout: '5s'
+                  config: |
+                    valid_http_versions: ["HTTP/1.1", "HTTP/2"]
+                    valid_status_codes: [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 301, 400]
+                    method: GET
+                    no_follow_redirects: false
+                    fail_if_ssl: false
+                    fail_if_not_ssl: false
+                    tls_config: {insecure_skip_verify: true}
+                    preferred_ip_protocol: "ip4"
+
+                - name: 'http_ip6_basic'
+                  prober: 'http'
+                  timeout: '5s'
+                  config: |
+                    valid_http_versions: ["HTTP/1.1", "HTTP/2"]
+                    valid_status_codes: [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 301, 400]
+                    method: GET
+                    no_follow_redirects: false
+                    fail_if_ssl: false
+                    fail_if_not_ssl: false
+                    tls_config: {insecure_skip_verify: true}
+                    preferred_ip_protocol: "ip6"
 
   blackbox_exporter_version
     Description: Define the 'blackbox_exporter_version' option.
