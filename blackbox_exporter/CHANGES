@@ -15,7 +15,7 @@ F: feature
 --------------------------------------------------------------------------------
 
 * Version 2.0.0 (2019-02-03)
-C: Redesign 'blackbox_exporter_config' option
+C: Redesign 'blackbox_exporter_config' option (alter config variable to string)
 
 * Version 1.0.0 (2018-12-13)
 E: Mark Ansible role as 'stable'

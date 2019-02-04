@@ -18,7 +18,7 @@ F: feature
 E: Improve Jinja2 indent filter
 
 * Version 0.4.0 (2019-01-31)
-C: Redesign 'prometheus_scrape_configs' option
+C: Redesign 'prometheus_scrape_configs' option (alter config variable to string)
 F: Update 'prometheus' to version '2.7.1'
 
 * Version 0.3.0 (2019-01-28)
