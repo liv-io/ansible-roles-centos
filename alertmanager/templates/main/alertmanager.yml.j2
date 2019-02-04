@@ -15,7 +15,7 @@
 #
 #-------------------------------------------------------------------------------
 
-{% for item in (alertmanager_config|default([])) %}
+{% for item in alertmanager_config %}
 {% if not ((item.section|default('')) == '') %}
 #-------------------------------------------------------------------------------
 # {{(item.section|upper)}}
@@ -23,8 +23,7 @@
 
 {% endif %}
 {{item.section}}:
-{% for config in item.config %}
-  {{config}}
-{% endfor %}
-
+{% if not ((item.config|default('')) == '') %}
+{{(item.config|indent(width=2, first=True)}}
+{% endif %}
 {% endfor %}

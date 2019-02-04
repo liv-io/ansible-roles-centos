@@ -39,18 +39,18 @@ ENABLE
       alertmanager_state: 'enable'
       alertmanager_config:
         - section: 'global'
-          config:
-            - "smtp_from: 'alertmanager@domain.tld'"
-            - "smtp_smarthost: 'mail.domain.tld:587'"
-            - "smtp_auth_username: 'alertmanager@domain.tld'"
-            - "smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'"
-            - "smtp_require_tls: true"
+          config: |
+            smtp_from: 'alertmanager@domain.tld'
+            smtp_smarthost: 'mail.domain.tld:587'
+            smtp_auth_username: 'alertmanager@domain.tld'
+            smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'
+            smtp_require_tls: true
 
         - section: 'receivers'
-          config:
-            - "- name: 'itops'"
-            - "  email_configs:"
-            - "  - to: 'user01@domain.tld, user02@domain.tld'"
+          config: |
+            - name: 'itops'
+              email_configs:
+              - to: 'user01@domain.tld, user02@domain.tld'
 
 DISABLE
   - hosts: all
@@ -60,18 +60,18 @@ DISABLE
       alertmanager_state: 'disable'
       alertmanager_config:
         - section: 'global'
-          config:
-            - "smtp_from: 'alertmanager@domain.tld'"
-            - "smtp_smarthost: 'mail.domain.tld:587'"
-            - "smtp_auth_username: 'alertmanager@domain.tld'"
-            - "smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'"
-            - "smtp_require_tls: true"
+          config: |
+            smtp_from: 'alertmanager@domain.tld'
+            smtp_smarthost: 'mail.domain.tld:587'
+            smtp_auth_username: 'alertmanager@domain.tld'
+            smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'
+            smtp_require_tls: true
 
         - section: 'receivers'
-          config:
-            - "- name: 'itops'"
-            - "  email_configs:"
-            - "  - to: 'user01@domain.tld, user02@domain.tld'"
+          config: |
+            - name: 'itops'
+              email_configs:
+              - to: 'user01@domain.tld, user02@domain.tld'
 
 REMOVE
   - hosts: all
@@ -135,16 +135,19 @@ ROLE
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{section: 'global',
-                  config: ["smtp_from: 'alertmanager@domain.tld'",
-                           "smtp_smarthost: 'mail.domain.tld:587'",
-                           "smtp_auth_username: 'alertmanager@domain.tld'",
-                           "smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'",
-                           "smtp_require_tls: true"}
-                 {section: 'receivers',
-                  config: ["- name: 'itops'",
-                           "  email_configs:",
-                           "  - to: 'user01@domain.tld, user02@domain.tld'"]}]
+      Examples: section: 'global'
+                config: |
+                  smtp_from: 'alertmanager@domain.tld'
+                  smtp_smarthost: 'mail.domain.tld:587'
+                  smtp_auth_username: 'alertmanager@domain.tld'
+                  smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'
+                  smtp_require_tls: true
+
+                section: 'receivers'
+                config: |
+                  name: 'itops'
+                  email_configs:
+                    - to: 'user01@domain.tld, user02@domain.tld'
 
   alertmanager_version
     Description: Define the 'alertmanager_version' option.
