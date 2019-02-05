@@ -146,17 +146,6 @@ listen stats
 # CONFIG
 #-------------------------------------------------------------------------------
 
-{% if not ((haproxy_config|default([])) == []) %}
-{% for item in haproxy_config %}
-{% if not ((item.comment|default('')) == '') %}
-#-------------------------------------------------------------------------------
-# {{(item.comment|upper)}}
-#-------------------------------------------------------------------------------
-
-{% endif %}
-{% for config in item.config %}
-{{config}}
-{% endfor %}
-
-{% endfor %}
+{% if not (haproxy_config == '') %}
+{{haproxy_config}}
 {% endif %}

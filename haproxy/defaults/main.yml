@@ -2,7 +2,7 @@
 
 haproxy_state: 'enable'
 
-haproxy_config: []
+haproxy_config: ''
 
 haproxy_stats_auth: []
 

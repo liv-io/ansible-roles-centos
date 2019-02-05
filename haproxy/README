@@ -48,6 +48,20 @@ ENABLE
       haproxy_stats_listen_state: 'enable'
       haproxy_stats_auth
         - {username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7', comment: 'haproxy_exporter'}
+      haproxy_config:
+        frontend btc
+          description btc
+          mode tcp
+          bind *:8332
+          default_backend btc_bitcoind
+
+        backend btc_bitcoind
+          description btc_bitcoind
+          mode tcp
+          balance roundrobin
+          server host01 10.10.10.10:8332
+          server host02 10.20.10.10:8332
+          server host02 10.30.10.10:8332
 
 DISABLE
   - hosts: all
@@ -58,6 +72,20 @@ DISABLE
       haproxy_stats_listen_state: 'enable'
       haproxy_stats_auth
         - {username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7', comment: 'haproxy_exporter'}
+      haproxy_config:
+        frontend btc
+          description btc
+          mode tcp
+          bind *:8332
+          default_backend btc_bitcoind
+
+        backend btc_bitcoind
+          description btc_bitcoind
+          mode tcp
+          balance roundrobin
+          server host01 10.10.10.10:8332
+          server host02 10.20.10.10:8332
+          server host02 10.30.10.10:8332
 
 REMOVE
   - hosts: all
@@ -94,27 +122,27 @@ ROLE
 
   haproxy_config
     Description: Define the 'haproxy_config' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
+    Type       : String
+    Default    : ''
     Options    :
-      Examples: [{comment: 'btc',
-                  config: {'frontend btc',
-                           '  description btc',
-                           '  mode tcp',
-                           '  bind *:8332',
-                           '  default_backend btc_bitcoind',
-                           '',
-                           'backend btc_bitcoind',
-                           '  description btc_bitcoind',
-                           '  mode tcp',
-                           '  balance roundrobin',
-                           '  server host01 10.10.10.10:8332',
-                           '  server host02 10.20.10.10:8332',
-                           '  server host02 10.30.10.10:8332'}}]
-      None: []
+      Examples: |
+        frontend btc
+          description btc
+          mode tcp
+          bind *:8332
+          default_backend btc_bitcoind
+
+        backend btc_bitcoind
+          description btc_bitcoind
+          mode tcp
+          balance roundrobin
+          server host01 10.10.10.10:8332
+          server host02 10.20.10.10:8332
+          server host02 10.30.10.10:8332
+      None: ''
 
   haproxy_stats_auth
     Description: Define the 'haproxy_stats_auth' option.
