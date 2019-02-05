@@ -31,6 +31,6 @@ modules:
     timeout: {{(item.timeout|default('5s'))}}
     {{item.prober}}:
 {% if not (item.config == '') %}
-{{(item.config|indent(width=6, first=True))}}
+{{(item.config|indent(width=6, indentfirst=True))}}
 {% endif %}
 {% endfor %}
