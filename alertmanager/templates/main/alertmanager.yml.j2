@@ -24,6 +24,9 @@
 {% endif %}
 {{item.section}}:
 {% if not ((item.config|default('')) == '') %}
-{{(item.config|indent(width=2,indentfirst=True)}}
+{{(item.config|indent(width=2,indentfirst=True))}}
+{% endif %}
+{% if not loop.last %}
+
 {% endif %}
 {% endfor %}
