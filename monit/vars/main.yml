@@ -12,7 +12,7 @@ package_name_monit: 'monit'
 #-------------------------------------------------------------------------------
 
 # monitrc
-file_src_monitrc: 'templates/main//monitrc.j2'
+file_src_monitrc: 'templates/main/monitrc.j2'
 file_dst_monitrc: '/etc/monitrc'
 file_mode_monitrc: '0600'
 file_owner_monitrc: 'root'
