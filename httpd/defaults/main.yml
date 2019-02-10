@@ -8,7 +8,7 @@ httpd_enable_mmap: 'true'
 
 httpd_enable_sendfile: 'true'
 
-httpd_global_config: []
+httpd_global_config: ''
 
 httpd_hsts_max_age: 31536000
 

@@ -450,17 +450,6 @@ ServerSignature On
 # GLOBAL CONFIG
 #-------------------------------------------------------------------------------
 
-{% if not (httpd_global_config == []) %}
-{% for item in httpd_global_config %}
-{% if not ((item.comment|default('')) == '') %}
-#-------------------------------------------------------------------------------
-# {{(item.comment|upper)}}
-#-------------------------------------------------------------------------------
-
-{% endif %}
-{% for config in item.config %}
-{{config}}
-{% endfor %}
-
-{% endfor %}
+{% if not (httpd_global_config == '') %}
+{{httpd_global_config}}
 {% endif %}

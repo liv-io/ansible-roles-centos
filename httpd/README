@@ -64,24 +64,20 @@ CONFIG
         listen: '*'
         port: 80
         document_root: '/data/host'
-        config:
-          - comment: 'ModSecurity'
-            config:
-              - '# ModSecurity'
-              - 'SecRuleEngine On'
-              - '# Debug log'
-              - 'SecDebugLog logs/host.domain.tld-80_modsec_debug.log'
-              - 'SecDebugLogLevel 0'
-              - '# Audit log'
-              - 'SecAuditEngine RelevantOnly'
-              - 'SecAuditLog logs/host.domain.tld-80_modsec_audit.log'
-              - 'SecAuditLogParts ABFHIZ'
-              - 'SecAuditLogRelevantStatus "^(?:5|4(?!04))"'
-              - 'SecAuditLogType Serial'
+        config: |
+          # ModSecurity
+          SecRuleEngine On
+          # Debug log
+          SecDebugLog logs/host.domain.tld-80_modsec_debug.log
+          SecDebugLogLevel 0
+          # Audit log
+          SecAuditEngine RelevantOnly
+          SecAuditLog logs/host.domain.tld-80_modsec_audit.log
+          SecAuditLogParts ABFHIZ
+          SecAuditLogRelevantStatus "^(?:5|4(?!04))"
+          SecAuditLogType Serial
 
-          - comment: 'Redirect'
-            config:
-              - 'Redirect permanent /  https://host.domain.tld/'
+          Redirect permanent /  https://host.domain.tld/
 
       - name: 'host.domain.tld'
         state: 'true'
@@ -93,35 +89,31 @@ CONFIG
         ssl_certificate: '/etc/ssl/host/host.domain.tld.crt'
         ssl_certificate_key: '/etc/ssl/host/host.domain.tld.key'
         ssl_ca_certificate: '/etc/ssl/host/ca.domain.tld.crt'
-        config:
-          - comment: 'ModSecurity'
-            config:
-              - '# ModSecurity'
-              - 'SecRuleEngine On'
-              - '# Debug log'
-              - 'SecDebugLog logs/host.domain.tld-443_modsec_debug.log'
-              - 'SecDebugLogLevel 0'
-              - '# Audit log'
-              - 'SecAuditEngine RelevantOnly'
-              - 'SecAuditLog logs/host.domain.tld-443_modsec_audit.log'
-              - 'SecAuditLogParts ABFHIZ'
-              - 'SecAuditLogRelevantStatus "^(?:5|4(?!04))"'
-              - 'SecAuditLogType Serial'
+        config: |
+          # ModSecurity
+          SecRuleEngine On
+          # Debug log
+          SecDebugLog logs/host.domain.tld-443_modsec_debug.log
+          SecDebugLogLevel 0
+          # Audit log
+          SecAuditEngine RelevantOnly
+          SecAuditLog logs/host.domain.tld-443_modsec_audit.log
+          SecAuditLogParts ABFHIZ
+          SecAuditLogRelevantStatus "^(?:5|4(?!04))"
+          SecAuditLogType Serial
 
-          - comment: 'Document Root'
-            config:
-              - "<Directory '/data/host'>"
-              - '  # DirectoryIndex'
-              - '  DirectoryIndex index.html'
-              - '  # Basic Authentication'
-              - '  AuthType Basic'
-              - '  AuthName "Authentication Required"'
-              - '  AuthUserFile /etc/httpd/conf/htpasswd'
-              - '  Require valid-user'
-              - '  # Client Authentication'
-              - '  SSLOptions +StdEnvVars'
-              - '  SSLVerifyClient require'
-              - '</Directory>'
+          <Directory '/data/host'>
+            # DirectoryIndex
+            DirectoryIndex index.html
+            # Basic Authentication
+            AuthType Basic
+            AuthName "Authentication Required"
+            AuthUserFile /etc/httpd/conf/htpasswd
+            Require valid-user
+            # Client Authentication
+            SSLOptions +StdEnvVars
+            SSLVerifyClient require
+          </Directory>
 
 --------------------------------------------------------------------------------
 PARAMETERS
@@ -141,18 +133,18 @@ CONFIG
 
   config
     Description: Define the 'config' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
+    Type       : String
+    Default    : ''
     Options    :
-      Examples: [{comment: 'Document Root',
-                  config: {'<Directory "/data/host">',
-                           '  AllowOverride none',
-                           '  Require all granted',
-                           '</Directory>'}}]
-      None: []
+      Examples: |
+        <Directory "/data/host">
+          AllowOverride none
+          Require all granted
+        </Directory>
+      None: ''
 
   document_root
     Description: Define the 'document_root' option.
@@ -373,7 +365,7 @@ ROLE
 
   httpd_config
     Description: Define the 'httpd_config' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -413,20 +405,20 @@ ROLE
 
   httpd_global_config
     Description: Define the 'httpd_global_config' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
-    Type       : Array/Hash
-    Default    : []
+    Type       : String
+    Default    : ''
     Options    :
-      Examples: [{comment: 'Server Status'},
-                  config: {'<Location /server-status>',
-                           '  SetHandler server-status',
-                           '  Require all denied',
-                           '  # Localhost'
-                           '  Require ip 127.0.0.1',
-                           '</Location>'}]
-      None    : []
+      Examples: |
+        <Location /server-status>
+          SetHandler server-status
+          Require all denied
+          # Localhost
+          Require ip 127.0.0.1
+        </Location>
+      None    : ''
 
   httpd_hsts_max_age
     Description: Set the 'httpd_hsts_max_age' option.
