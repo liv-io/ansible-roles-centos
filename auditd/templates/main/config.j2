@@ -21,10 +21,9 @@
 #-------------------------------------------------------------------------------
 
 {% endif %}
-{% for config in (item.config|default([])) %}
-{% if not ((config.comment|default('')) == '') %}
-# {{config.comment}}
+{% if (item.comment|default('')) %}
+# {{item.comment}}
 {% endif %}
-{{config.rule}}
-
-{% endfor %}
+{% if not ((item.config|default('')) == '') %}
+{{item.config}}
+{% endif %}

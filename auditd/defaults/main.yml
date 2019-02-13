@@ -3,7 +3,15 @@
 auditd_state: 'enable'
 
 auditd_config_all:
-  - {state: 'true', name: 'audit', config: [{rule: '-D', comment: 'First rule - delete all'}, {rule: '-b 8192', comment: 'Increase the buffers to survive stress events.'}, {rule: '-f 1', comment: 'Set failure mode to syslog'}]}
+  - state: 'true'
+    name: 'audit'
+    config: |
+      # First rule - delete all
+      -D
+      # Increase the buffers to survive stress events.
+      -b 8192
+      # Set failure mode to syslog
+      -f 1
 
 auditd_config_group: []
 

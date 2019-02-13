@@ -64,45 +64,45 @@ CONFIG
     auditd_config_all:
       - name: 'audit'
         state: 'true'
-        config:
-          - rule: '-D'
-            comment: 'First rule - delete all'
-          - rule: '-b 8192'
-            comment: 'Increase the buffers to survive stress events.'
-          - rule: '-f 1'
-            comment: 'Set failure mode to syslog'
-          - rule: '-w /etc/shadow -p wa'
-            comment: "Watch '/etc/shadow' for changes"
-          - rule: '-w /etc/ -p wa'
-            comment: "Recursively watch '/etc/' for changes"
-          - rule: '-a exit,always -S all -F pid=1337'
-            comment: 'Log all syscalls made by a specific program'
+        config: |
+          # First rule - delete all
+          -D
+          # Increase the buffers to survive stress events.
+          -b 8192
+          # Set failure mode to syslog
+          -f 1
+          # Watch '/etc/shadow' for changes
+          -w /etc/shadow -p wa
+          # Recursively watch '/etc/' for changes
+          -w /etc/ -p wa
+          # Log all syscalls made by a specific program
+          -a exit,always -S all -F pid=1337
 
     auditd_config_group:
       - name: 'audit'
         state: 'true'
-        config:
-          - rule: '-D'
-            comment: 'First rule - delete all'
-          - rule: '-b 8192'
-            comment: 'Increase the buffers to survive stress events.'
-          - rule: '-f 1'
-            comment: 'Set failure mode to syslog'
-          - rule: '-a exit,always -F arch=b32 -S execve -k auditcmd'
-            comment: 'Log all commands (32-bit)'
-          - rule: '-a exit,always -F arch=b64 -S execve -k auditcmd'
-            comment: 'Log all commands (64-bit)'
-          - rule: '-e 1'
-            comment: 'Enable auditd'
-          - rule: '-e 2'
-            comment: 'Make config immutable - reboot required to change ruleset'
+        config: |
+          # First rule - delete all
+          -D
+          # Increase the buffers to survive stress events.
+          -b 8192
+          # Set failure mode to syslog
+          -f 1
+          # Log all commands (32-bit)
+          -a exit,always -F arch=b32 -S execve -k auditcmd
+          # Log all commands (64-bit)
+          -a exit,always -F arch=b64 -S execve -k auditcmd
+          # Enable auditd
+          -e 1
+          # Make config immutable - reboot required to change ruleset
+          -e 2
 
     auditd_config_host:
       - name: 'home'
         state: 'true'
-        config:
-          - rule: '-a exit,always -F dir=/home/ -F uid=0 -C auid!=obj_uid'
-            comment: 'Log if an admin is accessing files of other users'
+        config: |
+          # Log if an admin is accessing files of other users
+          -a exit,always -F dir=/home/ -F uid=0 -C auid!=obj_uid
 
 --------------------------------------------------------------------------------
 PARAMETERS
@@ -125,38 +125,55 @@ ROLE
 
   auditd_config_all:
     Description: Define the 'auditd_config_all' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
-    Default    : [{state: 'true', name: 'audit',
-                  config: [{rule: '-D', comment: 'First rule - delete all'},
-                           {rule: '-b 8192', comment: 'Increase the buffers to survive stress events.'},
-                           {rule: '-f 1', comment: 'Set failure mode to syslog'}]}]
+    Default    : - state: 'true'
+                   name: 'audit'
+                   config: |
+                     # First rule - delete all
+                     -D
+                     # Increase the buffers to survive stress events.
+                     -b 8192
+                     # Set failure mode to syslog
+                     -f 1
     Options    :
-      Examples: [{state: 'true', name: 'file', config: [{rule: '-w /etc/shadow -p wa', comment: "Watch '/etc/shadow' for changes"}]
+      Examples: - state: 'true'
+                  name: 'file'
+                  config: |
+                    # Watch '/etc/shadow' for changes
+                    -w /etc/shadow -p wa
       None    : []
 
   auditd_config_group
     Description: Define the 'auditd_config_group' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{state: 'true', name: 'file', config: [{rule: '-w /etc/shadow -p wa', comment: "Watch '/etc/shadow' for changes"}]
+      Examples: - state: 'true'
+                  name: 'file'
+                  config: |
+                    # Watch '/etc/shadow' for changes
+                    -w /etc/shadow -p wa
       None    : []
 
   auditd_config_host
     Description: Define the 'auditd_config_host' option.
-    Implemented: 0.1
+    Implemented: 2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{state: 'true', name: 'file', config: [{rule: '-w /etc/shadow -p wa', comment: "Watch '/etc/shadow' for changes"}]
+      Examples: - state: 'true'
+                  name: 'file'
+                  config: |
+                    # Watch '/etc/shadow' for changes
+                    -w /etc/shadow -p wa
       None    : []
 
 --------------------------------------------------------------------------------
