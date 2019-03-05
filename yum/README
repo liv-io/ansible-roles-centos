@@ -194,7 +194,7 @@ ROLE
                      url: 'https://mirrors.kernel.org/fedora-epel/7/SRPMS', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7'}],
                     gpg_name: 'RPM-GPG-KEY-EPEL-7', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'}]
     Options    :
-      Examples: [[{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
+      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories:
                    [{name: 'base', state: 'true', comment: 'CentOS - Base', description: 'CentOS-$releasever - Base',
                      url: 'http://mirror.centos.org/centos/$releasever/os/$basearch/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7'}]]
       None    : []
