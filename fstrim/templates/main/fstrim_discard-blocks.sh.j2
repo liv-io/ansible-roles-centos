@@ -59,6 +59,7 @@ severity='Debug'
 message='Please check log files for more information.'
 
 log_file='{{file_dst_fstrim_log}}'
+textfile_collector='{{fstrim_monitor_prom_textfile_collector}}'
 
 {% if (fstrim_monitor_mail_state is match('true|yes|enable')) %}
 mail_from_address='{{fstrim_monitor_mail_from_address}}'
@@ -102,6 +103,36 @@ FQDN        : {{ansible_fqdn}}"
 }
 {% endif %}
 
+{% if (fstrim_monitor_prom_state is match('true|yes|enable')) %}
+update_prom() {
+  retval="$1"
+  time_start="$2"
+  time_exec="$3"
+
+  if [ -w "${textfile_collector}" ]; then
+    ${echo} -e "# HELP fstrim_discard_blocks_exit The script's exit code.\n"\
+"# TYPE fstrim_discard_blocks_exit counter\n"\
+"fstrim_discard_blocks_exit ${retval}" > "${textfile_collector}/fstrim_discard_blocks_exit.prom"
+
+    if [ -z "${time_start}" ] ; then
+      ${rm} -f "${textfile_collector}/fstrim_discard_blocks_start.prom"
+    else
+      ${echo} -e "# HELP fstrim_discard_blocks_start The script's start time in epoch.\n"\
+"# TYPE fstrim_discard_blocks_start counter\n"\
+"fstrim_discard_blocks_start ${time_start}" > "${textfile_collector}/fstrim_discard_blocks_start.prom"
+    fi
+
+    if [ -z "${time_exec}" ] ; then
+      ${rm} -f "${textfile_collector}/fstrim_discard_blocks_duration.prom"
+    else
+      ${echo} -e "# HELP fstrim_discard_blocks_duration The script's execution duration in seconds.\n"\
+"# TYPE fstrim_discard_blocks_duration counter\n"\
+"fstrim_discard_blocks_duration ${time_exec}" > "${textfile_collector}/fstrim_discard_blocks_duration.prom"
+    fi
+  fi
+}
+{% endif %}
+
 check_script_user() {
   if [ "$(${whoami})" != "${user}" ]; then
     retval=77
@@ -134,14 +165,23 @@ log_and_exit_on_error() {
   message="$3"
   if [ "${retval}" -ne 0 ]; then
     ${rm} -f "${lockfile}"
+
     if [ -t 1 ] ; then
       ${echo} "$(${date} '+%Y-%m-%dT%H:%M:%S%z') - ${host} - ${script}: ${severity}: ${message}"
     fi
+
     ${logger} -t "${script}" "${severity}: ${message}"
+
 {% if (fstrim_monitor_mail_state is match('true|yes|enable')) %}
     mail_error "${retval}" "${severity}" "${message}"
 {% endif %}
+
+{% if (fstrim_monitor_prom_state is match('true|yes|enable')) %}
+    update_prom "${retval}" "${time_start}" "${time_exec}"
+{% endif %}
+
     add_log_header 'fstrim failed'
+
     exit "${retval}"
   fi
 }
@@ -154,6 +194,11 @@ log_and_exit() {
   severity='Info'
   message='Unused blocks discarded successfully.'
   ${logger} -t "${script}" "${severity}: ${message} Duration: ${time_hr}"
+
+{% if (fstrim_monitor_prom_state is match('true|yes|enable')) %}
+  update_prom "${retval}" "${time_start}" "${time_exec}"
+{% endif %}
+
   exit "${retval}"
 }
 
