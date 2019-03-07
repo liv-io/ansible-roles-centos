@@ -174,6 +174,27 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
+  ntpd_monitor_prom_state
+    Description: Control the 'ntpd_monitor_prom_state' option.
+    Implemented: 2.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  ntpd_monitor_prom_textfile_collector
+    Description: Define the 'ntpd_monitor_prom_textfile_collector' option.
+    Implemented: 2.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "/{{common_data_dir}}/node_exporter/textfile_collector"
+    Options    :
+      Examples: '/data/node_exporter/textfile_collector'
+
   ntpd_restrict
     Description: Define the 'ntpd_restrict' option.
     Implemented: 0.4
