@@ -16,6 +16,10 @@ mariadb_monitor_mail_to_address: ["admin@{{ansible_domain}}"]
 
 mariadb_monitor_mail_state: 'false'
 
+mariadb_monitor_prom_state: 'false'
+
+mariadb_monitor_prom_textfile_collector: "/{{common_data_dir}}/node_exporter/textfile_collector"
+
 mariadb_root_password: 'mTA_4Vamn.DGrM5p2u8f6ScHm3_g9quA'
 
 mariadb_run_backup_day: '*'
