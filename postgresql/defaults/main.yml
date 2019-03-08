@@ -15,6 +15,10 @@ postgresql_monitor_mail_to_address: ["admin@{{ansible_domain}}"]
 
 postgresql_monitor_mail_state: 'false'
 
+postgresql_monitor_prom_state: 'false'
+
+postgresql_monitor_prom_textfile_collector: "/{{common_data_dir}}/node_exporter/textfile_collector"
+
 postgresql_postgres_password: '8CxP,3uDc+BH+rG_2Lgc4VfTWgAs.6W5'
 
 postgresql_run_backup_day: '*'
