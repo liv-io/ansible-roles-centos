@@ -2,6 +2,18 @@
 
 yum_state: 'install'
 
+yum_check_update_day: '*'
+
+yum_check_update_hour: '5'
+
+yum_check_update_minute: "{{(30|random(seed=inventory_hostname))}}"
+
+yum_check_update_month: '*'
+
+yum_check_update_state: 'enable'
+
+yum_check_update_weekday: '*'
+
 yum_config_all:
   - name: 'CentOS-Base'
     state: 'true'
@@ -141,6 +153,16 @@ yum_config_host: []
 yum_exclude: []
 
 yum_include: []
+
+yum_monitor_mail_from_address: "root@{{ansible_domain}}"
+
+yum_monitor_mail_to_address: ["admin@{{ansible_domain}}"]
+
+yum_monitor_mail_state: 'false'
+
+yum_monitor_prom_state: 'false'
+
+yum_monitor_prom_textfile_collector: "/{{common_data_dir}}/node_exporter/textfile_collector"
 
 yum_proxy: ''
 

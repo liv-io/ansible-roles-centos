@@ -11,3 +11,9 @@
   when: not (yum_state is match('false|no|remove|quiesce|inactive'))
   tags:
     - yum
+
+- name: 'task include remove'
+  import_tasks: remove.yml
+  when: (yum_state is match('false|no|remove'))
+  tags:
+    - yum

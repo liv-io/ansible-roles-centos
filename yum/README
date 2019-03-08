@@ -169,6 +169,67 @@ ROLE
       Install : 'true' | 'yes' | 'install'
       Inactive: 'quiesce' | 'inactive'
 
+  yum_check_update_day
+    Description: Define the 'yum_check_update_day' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: '1' | '*/2'
+
+  yum_check_update_hour
+    Description: Define the 'yum_check_update_hour' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '5'
+    Options    :
+      Examples: '5' | '*/6'
+
+  yum_check_update_minute
+    Description: Define the 'yum_check_update_minute' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : "{{(30|random(seed=inventory_hostname))}}"
+    Options    :
+      Examples: '42' | '*/30'
+
+  yum_check_update_month
+    Description: Define the 'yum_check_update_month' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: '10' | '*/1'
+
+  yum_check_update_state
+    Description: Control the 'yum_check_update_state' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  yum_check_update_weekday
+    Description: Define the 'yum_check_update_weekday' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: 6 | 'Saturday'
+
   yum_config_all
     Description: Define the 'yum_config_all' option.
     Implemented: 0.1
@@ -246,6 +307,59 @@ ROLE
     Options    :
       Examples: ['bsd*', 'openntpd', 'opensmtpd', 'tmux']
       None    : []
+
+  yum_monitor_mail_from_address
+    Description: Define the 'yum_monitor_mail_from_address' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "root@{{ansible_domain}}"
+    Options    :
+      Examples: 'root@domain.tld' | 'admin@domain.tld' | 'user@domain.tld'
+
+  yum_monitor_mail_to_address
+    Description: Define the 'yum_monitor_mail_to_address' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : ["admin@{{ansible_domain}}"]
+    Options    :
+      Examples: ['root@domain.tld'] | ['root@domain.tld', 'admin@domain.tld']
+                ['root@domain.tld', 'admin@domain.tld', 'user@domain.tld']
+
+  yum_monitor_mail_state
+    Description: Control the 'yum_monitor_mail_state' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  yum_monitor_prom_state
+    Description: Control the 'yum_monitor_prom_state' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  yum_monitor_prom_textfile_collector
+    Description: Define the 'yum_monitor_prom_textfile_collector' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "/{{common_data_dir}}/node_exporter/textfile_collector"
+    Options    :
+      Examples: '/data/node_exporter/textfile_collector'
 
   yum_proxy
     Description: Define the 'yum_proxy' option.

@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.1.0 (2019-03-08)
+F: Add 'yum_check-update' script
+
 * Version 1.0.2 (2018-12-12)
 B: Remove 'yum_name_default' parameter remainings
 E: Minor Jinja2 style improvement

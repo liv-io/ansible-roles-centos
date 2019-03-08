@@ -1,0 +1,37 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      skip: 'true'
+  tags:
+    - remove
+    - yum
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'cron remove yum_check-update'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_yum_check_update}}"
+    cron_file: "{{cron_cron_file_yum_check_update}}"
+  tags:
+    - remove
+    - yum
+
+- name: 'file remove yum_script.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_yum_script_dir}}"
+  tags:
+    - remove
+    - yum

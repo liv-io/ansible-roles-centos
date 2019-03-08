@@ -41,3 +41,42 @@
   tags:
     - install
     - yum
+
+- name: 'file create yum_script.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_yum_script_dir}}"
+    mode: "{{file_mode_yum_script_dir}}"
+    owner: "{{file_owner_yum_script_dir}}"
+    group: "{{file_group_yum_script_dir}}"
+  tags:
+    - install
+    - yum
+
+- name: 'file create yum_check-update.sh'
+  template:
+    src: "{{file_src_yum_check_update_sh}}"
+    dest: "{{file_dst_yum_check_update_sh}}"
+    mode: "{{file_mode_yum_check_update_sh}}"
+    owner: "{{file_owner_yum_check_update_sh}}"
+    group: "{{file_group_yum_check_update_sh}}"
+  tags:
+    - install
+    - yum
+
+- name: 'cron create yum_check-update'
+  cron:
+    state: 'present'
+    disabled: "{{'yes' if (yum_check_update_state is match('false|no|disable')) else 'no'}}"
+    name: "{{cron_name_yum_check_update}}"
+    cron_file: "{{cron_cron_file_yum_check_update}}"
+    day: "{{cron_day_yum_check_update}}"
+    hour: "{{cron_hour_yum_check_update}}"
+    minute: "{{cron_minute_yum_check_update}}"
+    month: "{{cron_month_yum_check_update}}"
+    weekday: "{{cron_weekday_yum_check_update}}"
+    user: "{{cron_user_yum_check_update}}"
+    job: "{{cron_job_yum_check_update}}"
+  tags:
+    - install
+    - yum
