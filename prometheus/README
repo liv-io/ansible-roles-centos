@@ -166,11 +166,11 @@ ROLE
 
   prometheus_checksum
     Description: Define the 'prometheus_checksum' option.
-    Implemented: 0.5
+    Implemented: 0.1
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : 'fca1b17bef8bd19c2ad90caf13d7ffa85e8c4655aa03315fb5e228bd06c4e0ae'
+    Default    : 'b8649bc6317af31fd3c998648ef0aa8bc0099fece24952fd1aca1bff665e9216'
     Options    :
       Examples: 'f5b281b72f6c80c4f972a0b75c1f47c1d747e0de6deec9d8ddc60c91c3cbfc30' |
                 '960848f9c2ffb2ce6f295dd0bc7186acd1ac12e74a90a1a9a9fbab0a838f8472'
@@ -263,11 +263,11 @@ ROLE
 
   prometheus_version
     Description: Define the 'prometheus_version' option.
-    Implemented: 0.5
+    Implemented: 0.1
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '2.7.2'
+    Default    : '2.8.0'
     Options    :
       Examples: '2.6.1' | '2.6.0'
 
