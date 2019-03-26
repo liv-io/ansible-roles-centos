@@ -14,8 +14,11 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.3 (2019-03-26)
+E: Extend processor information (sockets and cores)
+
 * Version 1.0.2 (2019-03-26)
-E: Improve processor information
+E: Improve processor information (cores instead of sockets)
 
 * Version 1.0.1 (2018-12-27)
 E: Improve environment filter
