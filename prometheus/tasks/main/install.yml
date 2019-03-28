@@ -95,7 +95,7 @@
     - install
     - prometheus
 
-- name: "file download prometheus.tar.gz"
+- name: 'file download prometheus.tar.gz'
   get_url:
     url: "{{file_src_prometheus_tar_gz}}"
     dest: "{{file_dst_prometheus_tar_gz}}"
@@ -107,7 +107,7 @@
     - install
     - prometheus
 
-- name: "file unarchive prometheus"
+- name: 'file unarchive prometheus'
   unarchive:
     src: "{{file_src_prometheus}}"
     dest: "{{file_dst_prometheus}}"

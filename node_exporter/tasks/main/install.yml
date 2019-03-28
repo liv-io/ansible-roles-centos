@@ -95,7 +95,7 @@
     - install
     - node_exporter
 
-- name: "file download node_exporter.tar.gz"
+- name: 'file download node_exporter.tar.gz'
   get_url:
     url: "{{file_src_node_exporter_tar_gz}}"
     dest: "{{file_dst_node_exporter_tar_gz}}"
@@ -107,7 +107,7 @@
     - install
     - node_exporter
 
-- name: "file unarchive node_exporter"
+- name: 'file unarchive node_exporter'
   unarchive:
     src: "{{file_src_node_exporter}}"
     dest: "{{file_dst_node_exporter}}"
