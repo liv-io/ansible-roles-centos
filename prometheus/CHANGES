@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.7.0 (2019-03-29)
+F: Update 'prometheus' to version '2.8.1'
+
 * Version 0.6.0 (2019-03-12)
 F: Update 'prometheus' to version '2.8.0'
 
