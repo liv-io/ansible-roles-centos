@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.2.0 (2019-04-23)
+F: Update to restic version '0.9.5'
+
 * Version 2.1.0 (2019-03-08)
 F: Add support for monitoring via Prometheus node_exporter (textfile_collector)
 
