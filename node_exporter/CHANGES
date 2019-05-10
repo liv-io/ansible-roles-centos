@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.1.0 (2019-05-10)
+F: Update 'node_exporter' to version '0.18.0'
+
 * Version 1.0.2 (2019-01-07)
 E: Change POSIX permissions for 'textfile_collector' directory
 
