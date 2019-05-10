@@ -11,6 +11,13 @@ package_name_docker: 'docker-ce'
 # FILES
 #-------------------------------------------------------------------------------
 
+# daemon.json
+file_src_daemon_json: 'templates/main/daemon.json.j2'
+file_dst_daemon_json: '/etc/docker/daemon.json'
+file_mode_daemon_json: '0644'
+file_owner_daemon_json: 'root'
+file_group_daemon_json: 'root'
+
 # docker.service.d
 file_dst_docker_service_d: '/etc/systemd/system/docker.service.d'
 file_mode_docker_service_d: '0755'

@@ -31,6 +31,17 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file create daemon.json'
+  template:
+    src: "{{file_src_daemon_json}}"
+    dest: "{{file_dst_daemon_json}}"
+    mode: "{{file_mode_daemon_json}}"
+    owner: "{{file_owner_daemon_json}}"
+    group: "{{file_group_daemon_json}}"
+  tags:
+    - install
+    - docker_ce
+
 - name: 'file create docker.service.d'
   file:
     state: 'directory'
