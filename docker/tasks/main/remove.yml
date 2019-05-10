@@ -38,3 +38,11 @@
   tags:
     - remove
     - docker
+
+- name: 'file remove daemon.json'
+  file:
+    state: 'absent'
+    path: "{{file_dst_daemon_json}}"
+  tags:
+    - remove
+    - docker

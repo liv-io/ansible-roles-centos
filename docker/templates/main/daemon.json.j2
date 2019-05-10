@@ -1,0 +1,5 @@
+{
+{% if not (docker_max_concurrent_uploads == '') %}
+  "max-concurrent-uploads" : {{(docker_max_concurrent_uploads|int(1))}}
+{% endif %}
+}

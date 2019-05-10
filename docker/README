@@ -115,6 +115,17 @@ ROLE
       Examples: ['192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8']
       None    : []
 
+  docker_max_concurrent_uploads
+    Description: Set the 'docker_max_concurrent_uploads' option.
+    Implemented: 1.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer
+    Default    : 1
+    Options    :
+      Examples: 1 | 2 | 4
+      None    : ''
+
 --------------------------------------------------------------------------------
 CONFLICTS
 --------------------------------------------------------------------------------

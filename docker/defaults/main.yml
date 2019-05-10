@@ -6,4 +6,6 @@ docker_http_proxy: ''
 
 docker_https_proxy: ''
 
+docker_max_concurrent_uploads: 1
+
 docker_no_proxy: []
