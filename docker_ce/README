@@ -82,6 +82,17 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  docker_ce_daemon
+    Description: Define the 'docker_ce_daemon' option.
+    Implemented: 2.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Hash
+    Default    : {max-concurrent-downloads: 1, max-concurrent-uploads: 1}
+    Options    :
+      Examples: {max-concurrent-downloads: 1, max-concurrent-uploads: 1}
+      None    : {}
+
   docker_ce_http_proxy
     Description: Define the 'docker_ce_http_proxy' option.
     Implemented: 0.3
@@ -114,28 +125,6 @@ ROLE
     Options    :
       Examples: ['192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8']
       None    : []
-
-  docker_ce_max_concurrent_downloads
-    Description: Set the 'docker_ce_max_concurrent_downloads' option.
-    Implemented: 1.2
-    Required   : False
-    Value      : Arbitrary
-    Type       : Integer
-    Default    : 1
-    Options    :
-      Examples: 1 | 2 | 4
-      None    : ''
-
-  docker_ce_max_concurrent_uploads
-    Description: Set the 'docker_ce_max_concurrent_uploads' option.
-    Implemented: 1.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : Integer
-    Default    : 1
-    Options    :
-      Examples: 1 | 2 | 4
-      None    : ''
 
 --------------------------------------------------------------------------------
 CONFLICTS
