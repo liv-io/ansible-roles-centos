@@ -1,8 +1,8 @@
 {
-{% if not (docker_max_concurrent_downloads == '') %}
-  "max-concurrent-downloads" : {{(docker_max_concurrent_downloads|int(1))}}
-{% endif %}
-{% if not (docker_max_concurrent_uploads == '') %}
-  "max-concurrent-uploads" : {{(docker_max_concurrent_uploads|int(1))}}
+{% if not (docker_daemon == []) %}
+{% for key, value in docker_daemon.items() %}
+  "{{key}}": "{{value}}"{% if not loop.last %},{% endif %}
+
+{% endfor %}
 {% endif %}
 }

@@ -2,12 +2,12 @@
 
 docker_state: 'enable'
 
+docker_daemon:
+  max-concurrent-downloads: 1
+  max-concurrent-uploads: 1
+
 docker_http_proxy: ''
 
 docker_https_proxy: ''
-
-docker_max_concurrent_downloads: 1
-
-docker_max_concurrent_uploads: 1
 
 docker_no_proxy: []

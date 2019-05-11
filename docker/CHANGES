@@ -14,6 +14,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.0.0 (2019-05-11)
+C: Remove docker_max_concurrent_downloads and docker_max_concurrent_uploads options
+F: Add docker_daemon option to configure daemon.json
+
 * Version 1.2.0 (2019-05-10)
 F: Add support for max-concurrent-downloads option (docker_max_concurrent_downloads)
 
