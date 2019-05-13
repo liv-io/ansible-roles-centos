@@ -1,7 +1,7 @@
 {
 {% if not (docker_daemon == []) %}
 {% for key, value in docker_daemon.items() %}
-  "{{key}}": "{{value}}"{% if not loop.last %},{% endif %}
+  "{{key}}": {{value}}{% if not loop.last %},{% endif %}
 
 {% endfor %}
 {% endif %}
