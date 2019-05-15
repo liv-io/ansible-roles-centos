@@ -47,7 +47,7 @@ REMOVE
     roles:
       - role: sysstat
     vars:
-      sysstat_state: 'sysstat'
+      sysstat_state: 'remove'
 
 INACTIVE
   - hosts: all

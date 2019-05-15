@@ -34,7 +34,7 @@ REMOVE
     roles:
       - role: bzip2
     vars:
-      bzip2_state: 'bzip2'
+      bzip2_state: 'remove'
 
 INACTIVE
   - hosts: all

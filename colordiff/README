@@ -34,7 +34,7 @@ REMOVE
     roles:
       - role: colordiff
     vars:
-      colordiff_state: 'colordiff'
+      colordiff_state: 'remove'
 
 INACTIVE
   - hosts: all

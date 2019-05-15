@@ -35,7 +35,7 @@ REMOVE
     roles:
       - role: zip
     vars:
-      zip_state: 'zip'
+      zip_state: 'remove'
 
 INACTIVE
   - hosts: all

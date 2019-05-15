@@ -35,7 +35,7 @@ REMOVE
     roles:
       - role: mailx
     vars:
-      mailx_state: 'mailx'
+      mailx_state: 'remove'
 
 INACTIVE
   - hosts: all

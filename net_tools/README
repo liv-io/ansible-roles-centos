@@ -35,7 +35,7 @@ REMOVE
     roles:
       - role: net_tools
     vars:
-      net_tools_state: 'net_tools'
+      net_tools_state: 'remove'
 
 INACTIVE
   - hosts: all

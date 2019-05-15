@@ -36,7 +36,7 @@ REMOVE
     roles:
       - role: gdisk
     vars:
-      gdisk_state: 'gdisk'
+      gdisk_state: 'remove'
 
 INACTIVE
   - hosts: all
