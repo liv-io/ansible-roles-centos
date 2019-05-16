@@ -1,0 +1,13 @@
+---
+
+- name: 'task include install'
+  import_tasks: install.yml
+  when: not (docker_compose_state is match('false|no|remove|quiesce|inactive'))
+  tags:
+    - docker_compose
+
+- name: 'task include remove'
+  import_tasks: remove.yml
+  when: (docker_compose_state is match('false|no|remove'))
+  tags:
+    - docker_compose
