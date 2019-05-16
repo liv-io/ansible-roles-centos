@@ -6,3 +6,6 @@
 
 # docker-compose
 package_name_docker_compose: 'docker-compose'
+
+# docker-compose
+pip_name_docker_compose: 'docker-compose'

@@ -26,3 +26,11 @@
   tags:
     - remove
     - docker_compose
+
+- name: 'pip remove docker-compose'
+  pip:
+    state: 'absent'
+    name: "{{pip_name_docker_compose}}"
+  tags:
+    - install
+    - docker_compose

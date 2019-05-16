@@ -26,3 +26,11 @@
   tags:
     - install
     - docker_compose
+
+- name: 'pip install docker-compose'
+  pip:
+    state: 'present'
+    name: "{{pip_name_docker_compose}}"
+  tags:
+    - install
+    - docker_compose
