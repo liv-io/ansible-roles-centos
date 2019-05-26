@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.2.0 (2019-05-26)
+F: Port role to Ansible 2.8
+
 * Version 1.1.0 (2019-03-08)
 F: Add 'yum_check-update' script
 
