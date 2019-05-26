@@ -10,7 +10,7 @@
     - files:
       - "vars/{{ansible_distribution_major_version}}.yml"
       - 'vars/main.yml'
-      skip: 'true'
+      errors: 'ignore'
   tags:
     - remove
     - fstrim
@@ -24,6 +24,7 @@
     state: 'absent'
     name: "{{cron_name_fstrim_discard_blocks}}"
     cron_file: "{{cron_cron_file_fstrim_discard_blocks}}"
+    user: "{{cron_user_fstrim_discard_blocks}}"
   tags:
     - remove
     - fstrim
