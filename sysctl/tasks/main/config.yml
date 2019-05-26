@@ -10,7 +10,7 @@
     - files:
       - "vars/{{ansible_distribution_major_version}}.yml"
       - 'vars/main.yml'
-      skip: 'true'
+      errors: 'ignore'
   tags:
     - config
     - sysctl
