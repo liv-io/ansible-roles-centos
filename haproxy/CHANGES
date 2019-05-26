@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.1.0 (2019-05-26)
+F: Port role to Ansible 2.8
+
 * Version 2.0.0 (2019-02-05)
 C: Redesign 'haproxy_config' option (alter config variable to string)
 
