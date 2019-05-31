@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.1.1 (2019-05-31)
+B: Create Docker configuration directory
+
 * Version 2.1.0 (2019-05-26)
 F: Port role to Ansible 2.8
 
