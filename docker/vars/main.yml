@@ -11,6 +11,12 @@ package_name_docker: 'docker'
 # FILES
 #-------------------------------------------------------------------------------
 
+# docker.dir
+file_dst_docker_dir: '/etc/docker'
+file_mode_docker_dir: '0755'
+file_owner_docker_dir: 'root'
+file_group_docker_dir: 'root'
+
 # daemon.json
 file_src_daemon_json: 'templates/main/daemon.json.j2'
 file_dst_daemon_json: '/etc/docker/daemon.json'
