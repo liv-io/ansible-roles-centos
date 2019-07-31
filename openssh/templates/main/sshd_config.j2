@@ -336,7 +336,7 @@ Match {{item.type}} {{item.name}}
 #-------------------------------------------------------------------------------
 
 {% if not (openssh_authentication_methods == []) %}
-AuthenticationMethods {% for item in authentication_methods %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}
+AuthenticationMethods {% for item in openssh_authentication_methods %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}
 
 {% endif %}
 
