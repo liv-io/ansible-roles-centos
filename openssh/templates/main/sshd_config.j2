@@ -192,8 +192,11 @@ PasswordAuthentication yes
 PermitEmptyPasswords no
 
 # Change to no to disable s/key passwords
-#ChallengeResponseAuthentication yes
+{% if (openssh_challenge_response_authentication is match('true|yes|enable')) %}
+ChallengeResponseAuthentication yes
+{% else %}
 ChallengeResponseAuthentication no
+{% endif %}
 
 # Kerberos options
 #KerberosAuthentication no
@@ -326,6 +329,15 @@ Match {{item.type}} {{item.name}}
 #	AllowTcpForwarding no
 #	PermitTTY no
 #	ForceCommand cvs server
+{% endif %}
+
+#-------------------------------------------------------------------------------
+# AUTHENTICATION METHODS
+#-------------------------------------------------------------------------------
+
+{% if not (openssh_authentication_methods == []) %}
+AuthenticationMethods {% for item in authentication_methods %}{{item}}{% if not loop.last %},{% endif %}{% endfor %}
+
 {% endif %}
 
 #-------------------------------------------------------------------------------

@@ -123,6 +123,17 @@ ROLE
       Examples: ['user1', 'user2', 'user3']
       None    : []
 
+  openssh_authentication_methods
+    Description: Define the 'openssh_authentication_methods' option.
+    Implemented: 1.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['gssapi-with-mic', 'hostbased', 'keyboard-interactive', 'none']
+      None    : []
+
   openssh_banner
     Description: Control the 'openssh_banner' option.
     Implemented: 0.1
@@ -130,6 +141,17 @@ ROLE
     Value      : Predetermined
     Type       : String
     Default    : 'enable'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  openssh_challenge_response_authentication
+    Description: Control the 'openssh_challenge_response_authentication' option.
+    Implemented: 1.2
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'no'
     Options    :
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'

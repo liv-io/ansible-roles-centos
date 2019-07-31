@@ -8,7 +8,11 @@ openssh_allow_groups: []
 
 openssh_allow_users: []
 
+openssh_authentication_methods: []
+
 openssh_banner: 'enable'
+
+openssh_challenge_response_authentication: 'no'
 
 openssh_ciphers: ['aes256-ctr', 'aes192-ctr']
 
