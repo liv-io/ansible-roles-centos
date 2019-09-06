@@ -4,8 +4,8 @@ alertmanager_state: 'enable'
 
 alertmanager_checksum_algorithm: 'sha256'
 
-alertmanager_checksum: '5f17155d669a8d2243b0d179fa46e609e0566876afd0afb09311a8bc7987ab15'
+alertmanager_checksum: '6191788f8b91a05955fcdc2ab4bc7d0edf70e5039f3acffb284d75745cc80d67'
 
 alertmanager_config: []
 
-alertmanager_version: '0.18.0'
+alertmanager_version: '0.19.0'
