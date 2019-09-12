@@ -4,8 +4,8 @@ blackbox_exporter_state: 'enable'
 
 blackbox_exporter_checksum_algorithm: 'sha256'
 
-blackbox_exporter_checksum: 'a2918a059023045cafb911272c88a9eb83cdac9a8a5e8e74844b5d6d27f19117'
+blackbox_exporter_checksum: '3bdd8d94776a0bb747920d7aae6992918c5a7afa5aafb2e187362fea51e02257'
 
 blackbox_exporter_config: []
 
-blackbox_exporter_version: '0.14.0'
+blackbox_exporter_version: '0.15.0'
