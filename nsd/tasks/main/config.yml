@@ -27,9 +27,7 @@
     owner: "{{file_owner_config}}"
     group: "{{file_group_config}}"
   with_items: "{{nsd_zone}}"
-  notify:
-    - 'command nsd-checkconf'
-    - 'service restart nsd'
+  notify: 'service restart nsd'
   when: not (item.state|default('true') is match('false|no|remove'))
   tags:
     - config
@@ -40,9 +38,7 @@
     state: 'absent'
     path: "{{file_dst_config}}/{{item.name}}.zone"
   with_items: "{{nsd_zone}}"
-  notify:
-    - 'command nsd-checkconf'
-    - 'service restart nsd'
+  notify: 'service restart nsd'
   when: (item.state|default('true') is match('false|no|remove'))
   tags:
     - config

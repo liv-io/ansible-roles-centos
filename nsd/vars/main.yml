@@ -24,13 +24,7 @@ file_dst_nsd_conf: '/etc/nsd/nsd.conf'
 file_mode_nsd_conf: '0644'
 file_owner_nsd_conf: 'root'
 file_group_nsd_conf: 'root'
-
-#-------------------------------------------------------------------------------
-# COMMANDS
-#-------------------------------------------------------------------------------
-
-# nsd-checkconf
-command_cmd_nsd_checkconf: 'nsd-checkconf /etc/nsd/nsd.conf'
+file_validate_nsd_conf: 'nsd-checkconf %s'
 
 #-------------------------------------------------------------------------------
 # SYSTEM
