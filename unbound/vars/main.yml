@@ -17,6 +17,7 @@ file_dst_root_hints: '/etc/unbound/root.hints'
 file_mode_root_hints: '0644'
 file_owner_root_hints: 'root'
 file_group_root_hints: 'root'
+file_validate_root_hints: 'unbound-checkconf'
 
 # unbound.conf
 file_src_unbound_conf: 'templates/main/unbound.conf.j2'
@@ -24,13 +25,7 @@ file_dst_unbound_conf: '/etc/unbound/unbound.conf'
 file_mode_unbound_conf: '0644'
 file_owner_unbound_conf: 'root'
 file_group_unbound_conf: 'root'
-
-#-------------------------------------------------------------------------------
-# COMMANDS
-#-------------------------------------------------------------------------------
-
-# unbound-checkconf
-command_cmd_unbound_checkconf: 'unbound-checkconf'
+file_validate_unbound_conf: 'unbound-checkconf'
 
 #-------------------------------------------------------------------------------
 # SYSTEM
