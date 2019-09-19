@@ -20,13 +20,11 @@ file_dst_haproxy_cfg: '/etc/haproxy/haproxy.cfg'
 file_mode_haproxy_cfg: '0644'
 file_owner_haproxy_cfg: 'root'
 file_group_haproxy_cfg: 'root'
+file_validate_haproxy_cfg: 'haproxy -c -q -f %s'
 
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
-
-# check haproxy
-command_cmd_check_haproxy: 'haproxy -c -q -f /etc/haproxy/haproxy.cfg'
 
 # generate dhparam
 command_cmd_generate_dhparam: "openssl dhparam -dsaparam 4096 -out {{file_dst_dhparam_pem}}"

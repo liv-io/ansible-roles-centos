@@ -26,9 +26,8 @@
     mode: "{{file_mode_haproxy_cfg}}"
     owner: "{{file_owner_haproxy_cfg}}"
     group: "{{file_group_haproxy_cfg}}"
-  notify:
-    - 'command check haproxy'
-    - 'service reload haproxy'
+    validate: "{{file_validate_haproxy_cfg}}"
+  notify: 'service reload haproxy'
   tags:
     - enable
     - haproxy
