@@ -26,7 +26,6 @@
     mode: "{{file_mode_root_hints}}"
     owner: "{{file_owner_root_hints}}"
     group: "{{file_group_root_hints}}"
-    validate: "{{file_validate_root_hints}}"
   tags:
     - disable
     - unbound

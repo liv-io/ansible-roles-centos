@@ -16,7 +16,7 @@
 #-------------------------------------------------------------------------------
 
 #
-# See unbound.conf(5) man page.
+# See unbound.conf(5) man page
 #
 # this is a comment.
 
@@ -123,7 +123,8 @@ server:
 
 	# permit unbound to use this port number or port range for
 	# making outgoing queries, using an outgoing interface.
-	# outgoing-port-permit: 32768-65535
+	# Only ephemeral ports are allowed by SElinux
+	outgoing-port-permit: 32768-60999
 
 	# deny unbound the use this of port number or port range for
 	# making outgoing queries, using an outgoing interface.
@@ -132,7 +133,8 @@ server:
 	# IANA-assigned port numbers.
 	# If multiple outgoing-port-permit and outgoing-port-avoid options
 	# are present, they are processed in order.
-	# outgoing-port-avoid: 0-32767
+	# Our SElinux policy does not allow non-ephemeral ports to be used
+	outgoing-port-avoid: 0-32767
 
 	# number of outgoing simultaneous tcp buffers to hold per thread.
 	# outgoing-num-tcp: 10
@@ -169,7 +171,7 @@ server:
 	# Suggested values are 512 to 4096. Default is 4096. 65536 disables it.
 	# 3072 causes +dnssec any isc.org queries to need TC=1.
 	# Helps mitigating DDOS
-	# max-udp-size: 3072
+	max-udp-size: 3072
 
 	# buffer size for handling DNS data. No messages larger than this
 	# size can be sent or received, by UDP or TCP. In bytes.
@@ -274,6 +276,10 @@ server:
 	# useful for tunneling scenarios, default no.
 	# tcp-upstream: no
 
+	# upstream connections also use UDP (even if do-udp is no).
+	# useful if if you want UDP upstream, but don't provide UDP downstream.
+	# udp-upstream-without-downstream: no
+
 	# Maximum segment size (MSS) of TCP socket on which the server
 	# responds to queries. Default is 0, system default MSS.
 	# tcp-mss: 0
@@ -281,6 +287,10 @@ server:
 	# Maximum segment size (MSS) of TCP socket for outgoing queries.
 	# Default is 0, system default MSS.
 	# outgoing-tcp-mss: 0
+
+	# Fedora note: do not activate this - can cause a crash
+	# Use systemd socket activation for UDP, TCP, and control sockets.
+	# use-systemd: no
 
 	# Detach from the terminal, run in background, "yes" or "no".
 	# Set the value to "no" when unbound runs as systemd service.
@@ -294,7 +304,8 @@ server:
 	# to this server. Specify classless netblocks with /size and action.
 	# By default everything is refused, except for localhost.
 	# Choose deny (drop message), refuse (polite error reply),
-	# allow (recursive ok), allow_snoop (recursive and nonrecursive ok)
+	# allow (recursive ok), allow_setrd (recursive ok, rd bit is forced on),
+	# allow_snoop (recursive and nonrecursive ok)
 	# deny_non_local (drop queries unless can be answered from local-data)
 	# refuse_non_local (like deny_non_local but polite error reply).
 
@@ -369,7 +380,7 @@ server:
 	# logfile: ""
 
 	# Log to syslog(3) if yes. The log facility LOG_DAEMON is used to
-	# log to, with identity "unbound". If yes, it overrides the logfile.
+	# log to. If yes, it overrides the logfile.
 	# use-syslog: yes
  
 	# Log identity to report. if empty, defaults to the name of argv[0]
@@ -392,6 +403,17 @@ server:
 	# file to read root hints from.
 	# get one from https://www.internic.net/domain/named.cache
         root-hints: "{{file_dst_root_hints}}"
+
+        #-----------------------------------------------------------------------
+        # TRUSTANCHOR
+        #-----------------------------------------------------------------------
+
+	# enable to not answer trustanchor.unbound queries.
+{% if (unbound_hide_trustanchor is match('false|no|disable')) %}
+        hide-trustanchor: no
+{% else %}
+        hide-trustanchor: yes
+{% endif %}
 
         #-----------------------------------------------------------------------
         # IDENTITY
@@ -423,17 +445,6 @@ server:
 	# the version to report. Leave "" or default to return package version.
 {% if not (unbound_version == '') %}
         version: "{{unbound_version}}"
-{% endif %}
-
-        #-----------------------------------------------------------------------
-        # TRUSTANCHOR
-        #-----------------------------------------------------------------------
-
-	# enable to not answer trustanchor.unbound queries.
-{% if (unbound_hide_trustanchor is match('false|no|disable')) %}
-        hide-trustanchor: no
-{% else %}
-        hide-trustanchor: yes
 {% endif %}
 
 	# the target fetch policy.
@@ -510,13 +521,17 @@ server:
 	# Sent minimum amount of information to upstream servers to enhance
 	# privacy. Only sent minimum required labels of the QNAME and set QTYPE
 	# to NS when possible.
-	# qname-minimisation: no
+	qname-minimisation: yes
 
 	# QNAME minimisation in strict mode. Do not fall-back to sending full
 	# QNAME to potentially broken nameservers. A lot of domains will not be
 	# resolvable when this option in enabled.
 	# This option only has effect when qname-minimisation is enabled.
 	# qname-minimisation-strict: no
+
+	# Aggressive NSEC uses the DNSSEC NSEC chain to synthesize NXDOMAIN
+	# and other denials, using information from previous NXDOMAINs answers.
+	aggressive-nsec: yes
 
 	# Use 0x20-encoded random bits in the query to foil spoof attempts.
 	# This feature is an experimental implementation of draft dns-0x20.
@@ -582,7 +597,6 @@ server:
 
 	# module configuration of the server. A string with identifiers
 	# separated by spaces. Syntax: "[dns64] [validator] iterator"
-	# module-config: "validator iterator"
 	module-config: "ipsecmod validator iterator"
 
 	# File with trusted keys, kept uptodate using RFC5011 probes,
@@ -597,6 +611,9 @@ server:
 
 	# trust anchor signaling sends a RFC8145 key tag query after priming.
 	trust-anchor-signaling: yes
+
+	# Root key trust anchor sentinel (draft-ietf-dnsop-kskroll-sentinel)
+	root-key-sentinel: yes
 
 	# File with DLV trusted keys. Same format as trust-anchor-file.
 	# There can be only one DLV configured, it is trusted from root down.
@@ -665,7 +682,7 @@ server:
 
 	# Serve expired responses from cache, with TTL 0 in the response,
 	# and then attempt to fetch the data afresh.
-	# serve-expired: no
+	serve-expired: yes
 
 	# Have the validator log failed validations for your diagnosis.
 	# 0: off. 1: A line per failed user query. 2: With reason and bad IP.
@@ -760,10 +777,6 @@ server:
 	# these zones, as if they were all listed as domain-insecure.
 	# insecure-lan-zones: no
 
-	# The insecure-lan-zones option disables validation for
-	# these zones, as if they were all listed as domain-insecure.
-	# insecure-lan-zones: no
-
 	# a number of locally served zones can be configured.
 	# 	local-zone: <zone> <type>
 	# 	local-data: "<resource record string>"
@@ -774,10 +787,11 @@ server:
 	# o redirect serves the zone data for any subdomain in the zone.
 	# o nodefault can be used to normally resolve AS112 zones.
 	# o typetransparent resolves normally for other types and other names
-	# o inform resolves normally, but logs client IP address
+	# o inform acts like transparent, but logs client IP address
 	# o inform_deny drops queries and logs client IP address
 	# o always_transparent, always_refuse, always_nxdomain, resolve in
-	#   that way but ignore local data for that name.
+	#   that way but ignore local data for that name
+	# o noview breaks out of that view towards global local-zones.
 	#
 	# defaults are localhost address, reverse for 127.0.0.1 and ::1
 	# and nxdomain for AS112 zones. If you configure one of these zones
@@ -853,13 +867,22 @@ server:
 	# service clients over SSL (on the TCP sockets), with plain DNS inside
 	# the SSL stream.  Give the certificate to use and private key.
 	# default is "" (disabled).  requires restart to take effect.
-	# ssl-service-key: "/etc/unbound/unbound_server.key"
-	# ssl-service-pem: "/etc/unbound/unbound_server.pem"
-	# ssl-port: 443
+	# tls-service-key: "/etc/unbound/unbound_server.key"
+	# tls-service-pem: "/etc/unbound/unbound_server.pem"
+	# tls-port: 853
 	#
 	# request upstream over SSL (with plain DNS inside the SSL stream).
 	# Default is no.  Can be turned on and off with unbound-control.
-	# ssl-upstream: no
+	# tls-upstream: no
+
+	# Certificates used to authenticate connections made upstream.
+	# tls-cert-bundle: ""
+
+	# Add system certs to the cert bundle, from the Windows Cert Store
+	# tls-win-cert: no
+
+	# Also serve tls on these port numbers (eg. 443, ...), by listing
+	# tls-additional-ports: portno for each of the port numbers.
 
 	# DNS64 prefix. Must be specified when DNS64 is use.
 	# Enable dns64 in module-config.  Used to synthesize IPv6 from IPv4.
@@ -877,6 +900,12 @@ server:
 
 	# 0 blocks when ratelimited, otherwise let 1/xth traffic through
 	# ratelimit-factor: 10
+
+	# what is considered a low rtt (ping time for upstream server), in msec
+	# low-rtt: 45
+	# select low rtt this many times out of 1000. 0 means the fast server
+	# select is disabled.  prefetches are not sped up.
+	# low-rtt-permil: 0
 
 	# override the ratelimit for a specific domain name.
 	# give this setting multiple times to have multiple overrides.
@@ -898,17 +927,20 @@ server:
 	# 0 blocks when ip is ratelimited, otherwise let 1/xth traffic through
 	# ip-ratelimit-factor: 10
 
-	# Specific options for ipsecmod.
+	# Specific options for ipsecmod. unbound needs to be configured with
+	# --enable-ipsecmod for these to take effect.
 	#
 	# Enable or disable ipsecmod (it still needs to be defined in
 	# module-config above). Can be used when ipsecmod needs to be
 	# enabled/disabled via remote-control(below).
+	# Fedora: module will be enabled on-demand by libreswan
 	ipsecmod-enabled: no
-	#
+
 	# Path to executable external hook. It must be defined when ipsecmod is
 	# listed in module-config (above).
-	ipsecmod-hook: "/usr/libexec/ipsec/_unbound-hook"
-	#
+	# ipsecmod-hook: "./my_executable"
+	ipsecmod-hook:/usr/libexec/ipsec/_unbound-hook
+
 	# When enabled unbound will reply with SERVFAIL if the return value of
 	# the ipsecmod-hook is not 0.
 	# ipsecmod-strict: no
@@ -922,7 +954,7 @@ server:
 	#
 	# Domains for which ipsecmod will be triggered. If not defined (default)
 	# all domains are treated as being whitelisted.
-	# ipsecmod-whitelist: "example.com"
+	# ipsecmod-whitelist: "libreswan.org"
 	# ipsecmod-whitelist: "nlnetlabs.nl"
 
 #-------------------------------------------------------------------------------
@@ -954,7 +986,6 @@ remote-control:
 	# Enable remote control with unbound-control(8) here.
 	# set up the keys and certificates with unbound-control-setup.
 	# Note: required for unbound-munin package
-remote-control:
 {% if (unbound_control_enable is match('true|yes|enable')) %}
         control-enable: yes
 {% else %}
@@ -1005,7 +1036,7 @@ include: /etc/unbound/conf.d/*.conf
 #	stub-addr: 192.0.2.68
 #	stub-prime: no
 #	stub-first: no
-#	stub-ssl-upstream: no
+#	stub-tls-upstream: no
 # stub-zone:
 #	name: "example.org"
 #	stub-host: ns.example.com.
@@ -1041,7 +1072,7 @@ stub-zone:
 # 	forward-addr: 192.0.2.68
 # 	forward-addr: 192.0.2.73@5355  # forward to port 5355.
 # 	forward-first: no
-# 	forward-ssl-upstream: no
+# 	forward-tls-upstream: no
 # forward-zone:
 # 	name: "example.org"
 # 	forward-host: fwd.example.com
@@ -1049,6 +1080,30 @@ stub-zone:
 # You can now also dynamically create and delete forward-zone's using
 # unbound-control forward_add domain.com 1.2.3.4 5.6.7.8
 # unbound-control forward_remove domain.com 1.2.3.4 5.6.7.8
+
+# Authority zones
+# The data for these zones is kept locally, from a file or downloaded.
+# The data can be served to downstream clients, or used instead of the
+# upstream (which saves a lookup to the upstream).  The first example
+# has a copy of the root for local usage.  The second serves example.org
+# authoritatively.  zonefile: reads from file (and writes to it if you also
+# download it), master: fetches with AXFR and IXFR, or url to zonefile.
+auth-zone:
+	name: "."
+	for-downstream: no
+	for-upstream: yes
+	fallback-enabled: yes
+	master: b.root-servers.net
+	master: c.root-servers.net
+	master: e.root-servers.net
+	master: f.root-servers.net
+	master: g.root-servers.net
+	master: k.root-servers.net
+# auth-zone:
+#	name: "example.org"
+#	for-downstream: yes
+#	for-upstream: yes
+#	zonefile: "example.org.zone"
 
 #-------------------------------------------------------------------------------
 # VIEWS
@@ -1071,3 +1126,42 @@ stub-zone:
 #	name: "anotherview"
 #	local-zone: "example.com" refuse
 
+# Fedora: DNSCrypt support not enabled since it requires linking to
+#         another crypto library
+#
+# DNSCrypt
+# Caveats:
+# 1. the keys/certs cannot be produced by unbound. You can use dnscrypt-wrapper
+#   for this: https://github.com/cofyc/dnscrypt-wrapper/blob/master/README.md#usage
+# 2. dnscrypt channel attaches to an interface. you MUST set interfaces to
+#   listen on `dnscrypt-port` with the follo0wing snippet:
+# server:
+#     interface: 0.0.0.0@443
+#     interface: ::0@443
+#
+# Finally, `dnscrypt` config has its own section.
+# dnscrypt:
+#     dnscrypt-enable: yes
+#     dnscrypt-port: 443
+#     dnscrypt-provider: 2.dnscrypt-cert.example.com.
+#     dnscrypt-secret-key: /path/unbound-conf/keys1/1.key
+#     dnscrypt-secret-key: /path/unbound-conf/keys2/1.key
+#     dnscrypt-provider-cert: /path/unbound-conf/keys1/1.cert
+#     dnscrypt-provider-cert: /path/unbound-conf/keys2/1.cert
+
+# CacheDB
+# Enable external backend DB as auxiliary cache.  Specify the backend name
+# (default is "testframe", which has no use other than for debugging and
+# testing) and backend-specific options.  The 'cachedb' module must be
+# included in module-config.
+# cachedb:
+#     backend: "testframe"
+#     # secret seed string to calculate hashed keys
+#     secret-seed: "default"
+#     # For "redis" backend:
+#     # redis server's IP address or host name
+#     redis-server-host: 127.0.0.1
+#     # redis server's TCP port
+#     redis-server-port: 6379
+#     # timeout (in ms) for communication with the redis server
+#     redis-timeout: 100
