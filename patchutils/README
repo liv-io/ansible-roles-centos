@@ -77,6 +77,7 @@ PACKAGES
     Version: >= 0.3
     Name   :
       CentOS 7: 'patchutils'
+      CentOS 8: 'patchutils'
 
 ROLES
 
@@ -119,6 +120,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
