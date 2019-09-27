@@ -75,6 +75,7 @@ PACKAGES
     Version: >= 0.10
     Name   :
       CentOS 7: 'telnet'
+      CentOS 8: 'telnet'
 
 ROLES
 
@@ -117,6 +118,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
