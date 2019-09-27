@@ -78,6 +78,7 @@ PACKAGES
     Version: >= 6.0
     Name   :
       CentOS 7: 'unzip'
+      CentOS 8: 'unzip'
 
 ROLES
 
@@ -120,6 +121,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
