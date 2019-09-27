@@ -79,6 +79,7 @@ PACKAGES
     Version: >= 7.2
     Name   :
       CentOS 7: 'vim'
+      CentOS 8: 'vim'
 
 ROLES
 
@@ -121,6 +122,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
