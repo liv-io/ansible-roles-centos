@@ -396,6 +396,7 @@ PACKAGES
     Version: >= 3.5
     Name   :
       CentOS 7: 'squid'
+      CentOS 8: 'squid'
 
 ROLES
 
@@ -438,6 +439,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------

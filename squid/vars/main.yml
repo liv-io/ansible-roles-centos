@@ -55,7 +55,7 @@ file_owner_dst_network_blocked_acl: 'root'
 file_group_dst_network_blocked_acl: 'wheel'
 
 # squid.conf
-file_src_squid_conf: 'templates/main/squid.conf.j2'
+file_src_squid_conf: "templates/{{ansible_distribution_major_version}}/squid.conf.j2"
 file_dst_squid_conf: '/etc/squid/squid.conf'
 file_mode_squid_conf: '0644'
 file_owner_squid_conf: 'root'
