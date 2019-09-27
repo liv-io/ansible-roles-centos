@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 # profile
-file_src_profile: 'templates/main/profile.j2'
+file_src_profile: "templates/{{ansible_distribution_major_version}}/profile.j2"
 file_dst_profile: '/etc/profile'
 file_mode_profile: '0644'
 file_owner_profile: 'root'
