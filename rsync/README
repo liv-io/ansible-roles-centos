@@ -79,6 +79,7 @@ PACKAGES
     Version: >= 3.0
     Name   :
       CentOS 7: 'rsync'
+      CentOS 8: 'rsync'
 
 ROLES
 
@@ -121,6 +122,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
