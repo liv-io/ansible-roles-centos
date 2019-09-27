@@ -76,6 +76,7 @@ PACKAGES
     Version: >= 1.3
     Name   :
       CentOS 7: 'zip'
+      CentOS 8: 'zip'
 
 ROLES
 
@@ -118,6 +119,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
