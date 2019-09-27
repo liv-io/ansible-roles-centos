@@ -78,6 +78,7 @@ PACKAGES
     Version: >= 1.7
     Name   :
       CentOS 7: 'socat'
+      CentOS 8: 'socat'
 
 ROLES
 
@@ -120,6 +121,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
