@@ -253,6 +253,7 @@ PACKAGES
     Version: >= 1.8
     Name   :
       CentOS 7: 'sudo'
+      CentOS 8: 'sudo'
 
 ROLES
 
@@ -295,6 +296,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
