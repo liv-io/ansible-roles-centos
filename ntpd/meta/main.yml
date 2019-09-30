@@ -3,4 +3,3 @@
 dependencies:
   - {role: common, when: (ntpd_state is match('cron|cronjob'))}
   - {role: mailx, when: (ntpd_monitor_mail_state is match('true|yes|enable'))}
-  - {role: ntpdate, when: (ntpd_state is match('cron|cronjob'))}
