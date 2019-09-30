@@ -91,6 +91,7 @@ PACKAGES
     Version: >= 10.0
     Name   :
       CentOS 7: 'open-vm-tools'
+      CentOS 8: 'open-vm-tools'
 
 ROLES
 
@@ -133,6 +134,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
