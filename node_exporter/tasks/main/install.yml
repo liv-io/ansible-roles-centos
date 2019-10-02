@@ -114,7 +114,20 @@
     owner: "{{file_owner_node_exporter}}"
     group: "{{file_group_node_exporter}}"
     creates: "{{file_creates_node_exporter}}"
+    exclude: "{{file_exclude_node_exporter}}"
+    extra_opts: "{{file_extra_opts_node_exporter}}"
     remote_src: 'yes'
+  tags:
+    - install
+    - node_exporter
+
+- name: 'file create node_exporter.link'
+  file:
+    state: 'link'
+    src: "{{file_src_node_exporter_link}}"
+    path: "{{file_dst_node_exporter_link}}"
+    owner: "{{file_owner_node_exporter_link}}"
+    group: "{{file_group_node_exporter_link}}"
   tags:
     - install
     - node_exporter

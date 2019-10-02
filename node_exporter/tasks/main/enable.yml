@@ -19,18 +19,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create node_exporter-current.link'
-  file:
-    state: 'link'
-    src: "{{file_src_node_exporter_current_link}}"
-    path: "{{file_dst_node_exporter_current_link}}"
-    owner: "{{file_owner_node_exporter_current_link}}"
-    group: "{{file_group_node_exporter_current_link}}"
-  notify: 'service restart node_exporter'
-  tags:
-    - enable
-    - node_exporter
-
 - name: 'file create node_exporter.sysconfig'
   template:
     src: "{{file_src_node_exporter_sysconfig}}"
