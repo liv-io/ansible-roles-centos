@@ -83,6 +83,7 @@ PACKAGES
     Version: >= 5.51
     Name   :
       CentOS 7: 'nmap'
+      CentOS 8: 'nmap'
 
 ROLES
 
@@ -125,6 +126,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
