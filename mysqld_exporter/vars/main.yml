@@ -29,25 +29,27 @@ file_mode_credentials_cnf: '0400'
 file_owner_credentials_cnf: 'mysqld_exporter'
 file_group_credentials_cnf: 'mysqld_exporter'
 
-# mysqld_exporter-current.link
-file_src_mysqld_exporter_current_link: "/{{common_app_dir}}/mysqld_exporter/bin/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64"
-file_dst_mysqld_exporter_current_link: "/{{common_app_dir}}/mysqld_exporter/bin/current"
-file_owner_mysqld_exporter_current_link: 'root'
-file_group_mysqld_exporter_current_link: 'root'
-
 # mysqld_exporter.tar.gz
 file_src_mysqld_exporter_tar_gz: "https://github.com/prometheus/mysqld_exporter/releases/download/v{{mysqld_exporter_version}}/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64.tar.gz"
-file_dst_mysqld_exporter_tar_gz: "/{{common_app_dir}}/mysqld_exporter/bin/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64.tar.gz"
+file_dst_mysqld_exporter_tar_gz: "/{{common_app_dir}}/mysqld_exporter/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64.tar.gz"
 file_mode_mysqld_exporter_tar_gz: '0644'
 file_owner_mysqld_exporter_tar_gz: 'root'
 file_group_mysqld_exporter_tar_gz: 'root'
 
 # mysqld_exporter
-file_src_mysqld_exporter: "/{{common_app_dir}}/mysqld_exporter/bin/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64.tar.gz"
-file_dst_mysqld_exporter: "/{{common_app_dir}}/mysqld_exporter/bin"
+file_src_mysqld_exporter: "/{{common_app_dir}}/mysqld_exporter/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64.tar.gz"
+file_dst_mysqld_exporter: '/usr/local/bin'
 file_owner_mysqld_exporter: 'root'
 file_group_mysqld_exporter: 'root'
-file_creates_mysqld_exporter: "/{{common_app_dir}}/mysqld_exporter/bin/mysqld_exporter-{{mysqld_exporter_version}}.linux-amd64"
+file_creates_mysqld_exporter: '/usr/local/bin/mysqld_exporter'
+file_exclude_mysqld_exporter: ['LICENSE', 'NOTICE']
+file_extra_opts_mysqld_exporter: ['--strip-components=1']
+
+# mysqld_exporter.link
+file_src_mysqld_exporter_link: '/usr/local/bin/mysqld_exporter'
+file_dst_mysqld_exporter_link: "/{{common_app_dir}}/mysqld_exporter/bin/mysqld_exporter"
+file_owner_mysqld_exporter_link: 'root'
+file_group_mysqld_exporter_link: 'root'
 
 # mysqld_exporter.service
 file_src_mysqld_exporter_service: 'templates/main/mysqld_exporter.service.j2'

@@ -19,18 +19,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create mysqld_exporter-current.link'
-  file:
-    state: 'link'
-    src: "{{file_src_mysqld_exporter_current_link}}"
-    path: "{{file_dst_mysqld_exporter_current_link}}"
-    owner: "{{file_owner_mysqld_exporter_current_link}}"
-    group: "{{file_group_mysqld_exporter_current_link}}"
-  notify: 'service restart mysqld_exporter'
-  tags:
-    - enable
-    - mysqld_exporter
-
 - name: 'file create credentials.cnf'
   template:
     src: "{{file_src_credentials_cnf}}"

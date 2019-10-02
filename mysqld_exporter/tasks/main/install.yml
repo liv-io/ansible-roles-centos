@@ -103,7 +103,20 @@
     owner: "{{file_owner_mysqld_exporter}}"
     group: "{{file_group_mysqld_exporter}}"
     creates: "{{file_creates_mysqld_exporter}}"
+    exclude: "{{file_exclude_mysqld_exporter}}"
+    extra_opts: "{{file_extra_opts_mysqld_exporter}}"
     remote_src: 'yes'
+  tags:
+    - install
+    - mysqld_exporter
+
+- name: 'file create mysqld_exporter.link'
+  file:
+    state: 'link'
+    src: "{{file_src_mysqld_exporter_link}}"
+    path: "{{file_dst_mysqld_exporter_link}}"
+    owner: "{{file_owner_mysqld_exporter_link}}"
+    group: "{{file_group_mysqld_exporter_link}}"
   tags:
     - install
     - mysqld_exporter
