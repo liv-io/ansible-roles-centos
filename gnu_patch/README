@@ -77,6 +77,7 @@ PACKAGES
     Version: >= 2.7
     Name   :
       CentOS 7: 'patch'
+      CentOS 8: 'patch'
 
 ROLES
 
@@ -119,6 +120,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
