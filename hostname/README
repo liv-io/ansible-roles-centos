@@ -139,6 +139,7 @@ PACKAGES
     Version: >= 3.0
     Name   :
       CentOS 7: 'hostname'
+      CentOS 8: 'hostname'
 
 ROLES
 
@@ -181,6 +182,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
