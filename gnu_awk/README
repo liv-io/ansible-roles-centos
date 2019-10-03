@@ -70,6 +70,7 @@ PACKAGES
     Version: >= 4.1
     Name   :
       CentOS 7: 'gawk'
+      CentOS 8: 'gawk'
 
 ROLES
 
@@ -112,6 +113,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
