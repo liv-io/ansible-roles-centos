@@ -68,6 +68,7 @@ PACKAGES
     Version: >= 2.6
     Name   :
       CentOS 7: 'grep'
+      CentOS 8: 'grep'
 
 ROLES
 
@@ -110,6 +111,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
