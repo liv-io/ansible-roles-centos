@@ -71,6 +71,7 @@ PACKAGES
     Version: >= 4.2
     Name   :
       CentOS 7: 'sed'
+      CentOS 8: 'sed'
 
 ROLES
 
@@ -113,6 +114,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
