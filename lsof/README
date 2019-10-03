@@ -75,6 +75,7 @@ PACKAGES
     Version: >= 4.8
     Name   :
       CentOS 7: 'lsof'
+      CentOS 8: 'lsof'
 
 ROLES
 
@@ -117,6 +118,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
