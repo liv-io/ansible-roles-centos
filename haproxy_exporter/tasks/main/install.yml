@@ -92,7 +92,20 @@
     owner: "{{file_owner_haproxy_exporter}}"
     group: "{{file_group_haproxy_exporter}}"
     creates: "{{file_creates_haproxy_exporter}}"
+    exclude: "{{file_exclude_haproxy_exporter}}"
+    extra_opts: "{{file_extra_opts_haproxy_exporter}}"
     remote_src: 'yes'
+  tags:
+    - install
+    - haproxy_exporter
+
+- name: 'file create haproxy_exporter.link'
+  file:
+    state: 'link'
+    src: "{{file_src_haproxy_exporter_link}}"
+    path: "{{file_dst_haproxy_exporter_link}}"
+    owner: "{{file_owner_haproxy_exporter_link}}"
+    group: "{{file_group_haproxy_exporter_link}}"
   tags:
     - install
     - haproxy_exporter
