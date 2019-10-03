@@ -29,25 +29,27 @@ file_mode_blackbox_exporter_conf_dir: '0755'
 file_owner_blackbox_exporter_conf_dir: 'root'
 file_group_blackbox_exporter_conf_dir: 'root'
 
-# blackbox_exporter-current.link
-file_src_blackbox_exporter_current_link: "/{{common_app_dir}}/blackbox_exporter/bin/blackbox_exporter-{{blackbox_exporter_version}}.linux-amd64"
-file_dst_blackbox_exporter_current_link: "/{{common_app_dir}}/blackbox_exporter/bin/current"
-file_owner_blackbox_exporter_current_link: 'root'
-file_group_blackbox_exporter_current_link: 'root'
-
 # blackbox_exporter.tar.gz
 file_src_blackbox_exporter_tar_gz: "https://github.com/prometheus/blackbox_exporter/releases/download/v{{blackbox_exporter_version}}/blackbox_exporter-{{blackbox_exporter_version}}.linux-amd64.tar.gz"
-file_dst_blackbox_exporter_tar_gz: "/{{common_app_dir}}/blackbox_exporter/bin/blackbox_exporter-{{blackbox_exporter_version}}.linux-amd64.tar.gz"
+file_dst_blackbox_exporter_tar_gz: "/{{common_app_dir}}/blackbox_exporter/blackbox_exporter-{{blackbox_exporter_version}}.linux-amd64.tar.gz"
 file_mode_blackbox_exporter_tar_gz: '0644'
 file_owner_blackbox_exporter_tar_gz: 'root'
 file_group_blackbox_exporter_tar_gz: 'root'
 
 # blackbox_exporter
-file_src_blackbox_exporter: "/{{common_app_dir}}/blackbox_exporter/bin/blackbox_exporter-{{blackbox_exporter_version}}.linux-amd64.tar.gz"
-file_dst_blackbox_exporter: "/{{common_app_dir}}/blackbox_exporter/bin"
+file_src_blackbox_exporter: "/{{common_app_dir}}/blackbox_exporter/blackbox_exporter-{{blackbox_exporter_version}}.linux-amd64.tar.gz"
+file_dst_blackbox_exporter: '/usr/local/bin'
 file_owner_blackbox_exporter: 'root'
 file_group_blackbox_exporter: 'root'
-file_creates_blackbox_exporter: "/{{common_app_dir}}/blackbox_exporter/bin/blackbox_exporter-{{blackbox_exporter_version}}.linux-amd64"
+file_creates_blackbox_exporter: '/usr/local/bin/blackbox_exporter'
+file_exclude_blackbox_exporter: ['LICENSE', 'NOTICE']
+file_extra_opts_blackbox_exporter: ['--strip-components=1']
+
+# blackbox_exporter.link
+file_src_blackbox_exporter_link: '/usr/local/bin/blackbox_exporter'
+file_dst_blackbox_exporter_link: "/{{common_app_dir}}/blackbox_exporter/bin/blackbox_exporter"
+file_owner_blackbox_exporter_link: 'root'
+file_group_blackbox_exporter_link: 'root'
 
 # blackbox_exporter.service
 file_src_blackbox_exporter_service: 'templates/main/blackbox_exporter.service.j2'

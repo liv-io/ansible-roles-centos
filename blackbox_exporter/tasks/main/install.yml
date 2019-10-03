@@ -103,7 +103,20 @@
     owner: "{{file_owner_blackbox_exporter}}"
     group: "{{file_group_blackbox_exporter}}"
     creates: "{{file_creates_blackbox_exporter}}"
+    exclude: "{{file_exclude_blackbox_exporter}}"
+    extra_opts: "{{file_extra_opts_blackbox_exporter}}"
     remote_src: 'yes'
+  tags:
+    - install
+    - blackbox_exporter
+
+- name: 'file create blackbox_exporter.link'
+  file:
+    state: 'link'
+    src: "{{file_src_blackbox_exporter_link}}"
+    path: "{{file_dst_blackbox_exporter_link}}"
+    owner: "{{file_owner_blackbox_exporter_link}}"
+    group: "{{file_group_blackbox_exporter_link}}"
   tags:
     - install
     - blackbox_exporter
