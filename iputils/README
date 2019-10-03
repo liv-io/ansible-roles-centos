@@ -69,6 +69,7 @@ PACKAGES
     Version: >= 20071127
     Name   :
       CentOS 7: 'iputils'
+      CentOS 8: 'iputils'
 
 ROLES
 
@@ -111,6 +112,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
