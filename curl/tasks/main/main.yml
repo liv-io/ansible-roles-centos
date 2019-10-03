@@ -5,9 +5,3 @@
   when: not (curl_state is match('false|no|remove|quiesce|inactive'))
   tags:
     - curl
-
-- name: 'task include remove'
-  import_tasks: remove.yml
-  when: (curl_state is match('false|no|remove'))
-  tags:
-    - curl

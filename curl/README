@@ -79,6 +79,7 @@ PACKAGES
     Version: >= 7.19
     Name   :
       CentOS 7: 'curl'
+      CentOS 8: 'curl'
 
 ROLES
 
@@ -121,6 +122,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
