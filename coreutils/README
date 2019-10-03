@@ -75,6 +75,7 @@ PACKAGES
     Version: >= 8.2
     Name   :
       CentOS 7: 'coreutils'
+      CentOS 8: 'coreutils'
 
 ROLES
 
@@ -117,6 +118,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
