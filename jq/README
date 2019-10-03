@@ -84,6 +84,7 @@ PACKAGES
     Version: >= 1.5
     Name   :
       CentOS 7: 'jq'
+      CentOS 8: 'jq'
 
 ROLES
 
@@ -126,6 +127,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
