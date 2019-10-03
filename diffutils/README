@@ -71,6 +71,7 @@ PACKAGES
     Version: >= 3.3
     Name   :
       CentOS 7: 'diffutils'
+      CentOS 8: 'diffutils'
 
 ROLES
 
@@ -113,6 +114,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
