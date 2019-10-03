@@ -76,6 +76,7 @@ PACKAGES
     Version: >= 3.0
     Name   :
       CentOS 7: 'iperf3'
+      CentOS 8: 'iperf3'
 
 ROLES
 
@@ -118,6 +119,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
