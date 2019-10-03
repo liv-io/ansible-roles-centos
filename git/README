@@ -76,6 +76,8 @@ PACKAGES
     Version: >= 1.7
     Name   :
       CentOS 7: 'git'
+      CentOS 8: 'git'
+
 ROLES
 
 PARAMETERS
@@ -116,7 +118,11 @@ SUPPORT
 
 OPERATING SYSTEMS
   CentOS
-    Version: 3.7-*
+    Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
