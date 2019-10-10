@@ -70,6 +70,7 @@ PACKAGES
     Version: >= 4.4
     Name   :
       CentOS 7: 'findutils'
+      CentOS 8: 'findutils'
 
 ROLES
 
@@ -112,6 +113,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
