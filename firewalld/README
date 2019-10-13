@@ -75,11 +75,13 @@ PACKAGES
     Version: >= 0.4
     Name   :
       CentOS 7: 'firewalld'
+      CentOS 8: 'firewalld'
 
   firewalld-filesystem
     Version: >= 0.4
     Name   :
       CentOS 7: 'firewalld-filesystem'
+      CentOS 8: 'firewalld-filesystem'
 
 ROLES
 
@@ -122,6 +124,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
