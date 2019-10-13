@@ -260,6 +260,7 @@ PACKAGES
     Version: >= 1.5
     Name   :
       CentOS 7: 'haproxy'
+      CentOS 8: 'haproxy'
 
 ROLES
 
@@ -302,6 +303,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------

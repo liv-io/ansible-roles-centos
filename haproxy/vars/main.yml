@@ -15,7 +15,7 @@ package_name_haproxy: 'haproxy'
 file_dst_dhparam_pem: '/etc/haproxy/dhparam.pem'
 
 # haproxy.cfg
-file_src_haproxy_cfg: 'templates/main/haproxy.cfg.j2'
+file_src_haproxy_cfg: "templates/{{ansible_distribution_major_version}}/haproxy.cfg.j2"
 file_dst_haproxy_cfg: '/etc/haproxy/haproxy.cfg'
 file_mode_haproxy_cfg: '0644'
 file_owner_haproxy_cfg: 'root'
