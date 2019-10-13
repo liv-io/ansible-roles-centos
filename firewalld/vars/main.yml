@@ -8,4 +8,4 @@
 package_name_firewalld: 'firewalld'
 
 # firewalld-filesystem
-package_name_firewalld_filesystem: 'firewalld_filesystem'
+package_name_firewalld_filesystem: 'firewalld-filesystem'
