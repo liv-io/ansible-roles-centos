@@ -21,7 +21,7 @@ file_owner_config: 'root'
 file_group_config: 'root'
 
 # autoindex.conf
-file_src_autoindex_conf: 'templates/main/autoindex.conf.j2'
+file_src_autoindex_conf: "templates/{{ansible_distribution_major_version}}/autoindex.conf.j2"
 file_dst_autoindex_conf: '/etc/httpd/conf.d/autoindex.conf'
 file_mode_autoindex_conf: '0644'
 file_owner_autoindex_conf: 'root'
@@ -48,7 +48,7 @@ file_owner_vhosts_d: 'root'
 file_group_vhosts_d: 'root'
 
 # welcome.conf
-file_src_welcome_conf: 'templates/main/welcome.conf.j2'
+file_src_welcome_conf: "templates/{{ansible_distribution_major_version}}/welcome.conf.j2"
 file_dst_welcome_conf: '/etc/httpd/conf.d/welcome.conf'
 file_mode_welcome_conf: '0644'
 file_owner_welcome_conf: 'root'

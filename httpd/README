@@ -515,6 +515,7 @@ PACKAGES
     Version: >= 2.4
     Name   :
       CentOS 7: 'httpd'
+      CentOS 8: 'httpd'
 
 ROLES
   mod_ssl
@@ -558,6 +559,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
