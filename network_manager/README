@@ -77,6 +77,7 @@ PACKAGES
     Version: >= 1.0
     Name   :
       CentOS 7: 'NetworkManager'
+      CentOS 8: 'NetworkManager'
 
 ROLES
 
@@ -119,6 +120,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
