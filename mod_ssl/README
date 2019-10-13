@@ -102,6 +102,7 @@ PACKAGES
     Version: >= 2.4
     Name   :
       CentOS 7: 'mod_ssl'
+      CentOS 8: 'mod_ssl'
 
 ROLES
 
@@ -144,6 +145,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
