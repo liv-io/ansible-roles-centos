@@ -37,6 +37,7 @@
     mode: "{{file_mode_audispd_conf}}"
     owner: "{{file_owner_audispd_conf}}"
     group: "{{file_group_audispd_conf}}"
+  when: (ansible_distribution_major_version is match('7'))
   tags:
     - disable
     - auditd
@@ -48,6 +49,7 @@
     mode: "{{file_mode_syslog_conf}}"
     owner: "{{file_owner_syslog_conf}}"
     group: "{{file_group_syslog_conf}}"
+  when: (ansible_distribution_major_version is match('7'))
   tags:
     - disable
     - auditd

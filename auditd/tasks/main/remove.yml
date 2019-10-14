@@ -43,6 +43,7 @@
   file:
     state: 'absent'
     path: "{{file_dst_syslog_conf}}"
+  when: (ansible_distribution_major_version is match('7'))
   tags:
     - remove
     - auditd
@@ -51,6 +52,7 @@
   file:
     state: 'absent'
     path: "{{file_dst_audispd_conf}}"
+  when: (ansible_distribution_major_version is match('7'))
   tags:
     - remove
     - auditd

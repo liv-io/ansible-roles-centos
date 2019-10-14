@@ -191,6 +191,7 @@ PACKAGES
     Version: >= 2.0
     Name   :
       CentOS 7: 'audit'
+      CentOS 8: 'audit'
 
 ROLES
 
@@ -233,6 +234,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
       Status: Stable
 
 --------------------------------------------------------------------------------
