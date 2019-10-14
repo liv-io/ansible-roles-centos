@@ -1,0 +1,13 @@
+---
+
+- name: 'task include install'
+  import_tasks: install.yml
+  when: not (python_pymysql_state is match('false|no|remove|quiesce|inactive'))
+  tags:
+    - python_pymysql
+
+- name: 'task include remove'
+  import_tasks: remove.yml
+  when: (python_pymysql_state is match('false|no|remove'))
+  tags:
+    - python_pymysql
