@@ -1,0 +1,38 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      errors: 'ignore'
+  tags:
+    - remove
+    - dnf
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'cron remove dnf_check-update'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_dnf_check_update}}"
+    cron_file: "{{cron_cron_file_dnf_check_update}}"
+    user: "{{cron_user_dnf_check_update}}"
+  tags:
+    - remove
+    - dnf
+
+- name: 'file remove dnf_script.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_dnf_script_dir}}"
+  tags:
+    - remove
+    - dnf

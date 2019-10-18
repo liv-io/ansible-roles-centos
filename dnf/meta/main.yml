@@ -1,0 +1,5 @@
+---
+
+dependencies:
+  - {role: common, when: not (dnf_state is match('false|no|remove|quiesce|inactive'))}
+  - {role: mailx, when: (dnf_monitor_mail_state is match('true|yes|enable'))}

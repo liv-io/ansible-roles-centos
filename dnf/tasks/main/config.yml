@@ -1,0 +1,68 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      errors: 'ignore'
+  tags:
+    - config
+    - dnf
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file copy gpg-key'
+  copy:
+    content: "{{item.gpg_content}}"
+    dest: "{{file_dst_rpm_gpg}}/{{(item.gpg_name|default('config'))}}"
+    mode: "{{file_mode_gpg_key}}"
+    owner: "{{file_owner_gpg_key}}"
+    group: "{{file_group_gpg_key}}"
+  with_items: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
+  when: not (item.gpg_state|default('false') is match('false|no|remove'))
+  tags:
+    - config
+    - dnf
+
+- name: 'file create config'
+  template:
+    src: "{{file_src_config}}"
+    dest: "{{file_dst_dnf_repos_d}}/{{(item.name|default('config'))}}.repo"
+    mode: "{{file_mode_config}}"
+    owner: "{{file_owner_config}}"
+    group: "{{file_group_config}}"
+  notify: 'command clean dnf-cache'
+  with_items: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
+  when: not (item.state|default('false') is match('false|no|remove'))
+  tags:
+    - config
+    - dnf
+
+- name: 'file remove gpg-key'
+  file:
+    state: 'absent'
+    path: "{{file_dst_rpm_gpg}}/{{(item.gpg_name|default('config'))}}"
+  with_items: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
+  when: (item.gpg_state|default('false') is match('false|no|remove'))
+  tags:
+    - config
+    - dnf
+
+- name: 'file remove config'
+  file:
+    state: 'absent'
+    path: "{{file_dst_dnf_repos_d}}/{{(item.name|default('config'))}}.repo"
+  notify: 'command clean dnf-cache'
+  with_items: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
+  when: (item.state|default('false') is match('false|no|remove'))
+  tags:
+    - config
+    - dnf

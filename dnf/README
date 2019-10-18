@@ -1,0 +1,483 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : dnf
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+Utility that allows users to manage packages on their systems. It supports RPMs,
+modules and comps groups & environments.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - dnf: all
+    roles:
+      - role: dnf
+    vars:
+      dnf_state: 'install'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: dnf
+    vars:
+      dnf_state: 'inactive'
+
+CONFIG
+  vars:
+    dnf_config_all:
+      - name: 'CentOS-AppStream'
+        state: 'true'
+        comment: 'CentOS AppStream'
+        repositories:
+          - name: 'AppStream'
+            state: 'true'
+            comment: 'CentOS AppStream'
+            description: 'CentOS-$releasever - AppStream'
+            url: 'http://mirror.centos.org/$contentdir/$releasever/AppStream/$basearch/os/'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+      - name: 'CentOS-Base'
+        state: 'true'
+        comment: 'CentOS Base'
+        repositories:
+          - name: 'Base'
+            state: 'true'
+            comment: 'CentOS Base'
+            description: 'CentOS-$releasever - Base'
+            url: 'http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+        gpg_name: 'RPM-GPG-KEY-centosofficial'
+        gpg_state: 'true'
+        gpg_content: |
+          -----BEGIN PGP PUBLIC KEY BLOCK-----
+          Version: GnuPG v2.0.22 (GNU/Linux)
+
+          mQINBFzMWxkBEADHrskpBgN9OphmhRkc7P/YrsAGSvvl7kfu+e9KAaU6f5MeAVyn
+          rIoM43syyGkgFyWgjZM8/rur7EMPY2yt+2q/1ZfLVCRn9856JqTIq0XRpDUe4nKQ
+          8BlA7wDVZoSDxUZkSuTIyExbDf0cpw89Tcf62Mxmi8jh74vRlPy1PgjWL5494b3X
+          5fxDidH4bqPZyxTBqPrUFuo+EfUVEqiGF94Ppq6ZUvrBGOVo1V1+Ifm9CGEK597c
+          aevcGc1RFlgxIgN84UpuDjPR9/zSndwJ7XsXYvZ6HXcKGagRKsfYDWGPkA5cOL/e
+          f+yObOnC43yPUvpggQ4KaNJ6+SMTZOKikM8yciyBwLqwrjo8FlJgkv8Vfag/2UR7
+          JINbyqHHoLUhQ2m6HXSwK4YjtwidF9EUkaBZWrrskYR3IRZLXlWqeOi/+ezYOW0m
+          vufrkcvsh+TKlVVnuwmEPjJ8mwUSpsLdfPJo1DHsd8FS03SCKPaXFdD7ePfEjiYk
+          nHpQaKE01aWVSLUiygn7F7rYemGqV9Vt7tBw5pz0vqSC72a5E3zFzIIuHx6aANry
+          Gat3aqU3qtBXOrA/dPkX9cWE+UR5wo/A2UdKJZLlGhM2WRJ3ltmGT48V9CeS6N9Y
+          m4CKdzvg7EWjlTlFrd/8WJ2KoqOE9leDPeXRPncubJfJ6LLIHyG09h9kKQARAQAB
+          tDpDZW50T1MgKENlbnRPUyBPZmZpY2lhbCBTaWduaW5nIEtleSkgPHNlY3VyaXR5
+          QGNlbnRvcy5vcmc+iQI3BBMBAgAhBQJczFsZAhsDBgsJCAcDAgYVCAIJCgsDFgIB
+          Ah4BAheAAAoJEAW1VbOEg8ZdjOsP/2ygSxH9jqffOU9SKyJDlraL2gIutqZ3B8pl
+          Gy/Qnb9QD1EJVb4ZxOEhcY2W9VJfIpnf3yBuAto7zvKe/G1nxH4Bt6WTJQCkUjcs
+          N3qPWsx1VslsAEz7bXGiHym6Ay4xF28bQ9XYIokIQXd0T2rD3/lNGxNtORZ2bKjD
+          vOzYzvh2idUIY1DgGWJ11gtHFIA9CvHcW+SMPEhkcKZJAO51ayFBqTSSpiorVwTq
+          a0cB+cgmCQOI4/MY+kIvzoexfG7xhkUqe0wxmph9RQQxlTbNQDCdaxSgwbF2T+gw
+          byaDvkS4xtR6Soj7BKjKAmcnf5fn4C5Or0KLUqMzBtDMbfQQihn62iZJN6ZZ/4dg
+          q4HTqyVpyuzMXsFpJ9L/FqH2DJ4exGGpBv00ba/Zauy7GsqOc5PnNBsYaHCply0X
+          407DRx51t9YwYI/ttValuehq9+gRJpOTTKp6AjZn/a5Yt3h6jDgpNfM/EyLFIY9z
+          V6CXqQQ/8JRvaik/JsGCf+eeLZOw4koIjZGEAg04iuyNTjhx0e/QHEVcYAqNLhXG
+          rCTTbCn3NSUO9qxEXC+K/1m1kaXoCGA0UWlVGZ1JSifbbMx0yxq/brpEZPUYm+32
+          o8XfbocBWljFUJ+6aljTvZ3LQLKTSPW7TFO+GXycAOmCGhlXh2tlc6iTc41PACqy
+          yy+mHmSv
+          =kkH7
+          -----END PGP PUBLIC KEY BLOCK-----
+
+      - name: 'CentOS-CR'
+        state: 'true'
+        comment: 'CentOS CR'
+        repositories:
+          - name: 'cr'
+            state: 'true'
+            comment: 'CentOS CR'
+            description: 'CentOS-$releasever - cr'
+            url: 'http://mirror.centos.org/$contentdir/$releasever/cr/$basearch/os/'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+      - name: 'CentOS-Extras'
+        state: 'true'
+        comment: 'CentOS Extras'
+        repositories:
+          - name: 'extras'
+            state: 'true'
+            comment: 'CentOS Extras'
+            description: 'CentOS-$releasever - Extras'
+            url: 'http://mirror.centos.org/$contentdir/$releasever/extras/$basearch/os/'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+    dnf_config_group:
+      - name: 'epel'
+        state: 'true'
+        comment: 'Extra Packages for Enterprise Linux'
+        repositories:
+          - name: 'epel'
+            state: 'true'
+            comment: 'Extra Packages for Enterprise Linux'
+            description: 'Extra Packages for Enterprise Linux $releasever - $basearch'
+            url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Everything/$basearch'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
+
+        gpg_name: 'RPM-GPG-KEY-EPEL-8'
+        gpg_state: 'true'
+        gpg_content: |
+          -----BEGIN PGP PUBLIC KEY BLOCK-----
+
+          mQINBFz3zvsBEADJOIIWllGudxnpvJnkxQz2CtoWI7godVnoclrdl83kVjqSQp+2
+          dgxuG5mUiADUfYHaRQzxKw8efuQnwxzU9kZ70ngCxtmbQWGmUmfSThiapOz00018
+          +eo5MFabd2vdiGo1y+51m2sRDpN8qdCaqXko65cyMuLXrojJHIuvRA/x7iqOrRfy
+          a8x3OxC4PEgl5pgDnP8pVK0lLYncDEQCN76D9ubhZQWhISF/zJI+e806V71hzfyL
+          /Mt3mQm/li+lRKU25Usk9dWaf4NH/wZHMIPAkVJ4uD4H/uS49wqWnyiTYGT7hUbi
+          ecF7crhLCmlRzvJR8mkRP6/4T/F3tNDPWZeDNEDVFUkTFHNU6/h2+O398MNY/fOh
+          yKaNK3nnE0g6QJ1dOH31lXHARlpFOtWt3VmZU0JnWLeYdvap4Eff9qTWZJhI7Cq0
+          Wm8DgLUpXgNlkmquvE7P2W5EAr2E5AqKQoDbfw/GiWdRvHWKeNGMRLnGI3QuoX3U
+          pAlXD7v13VdZxNydvpeypbf/AfRyrHRKhkUj3cU1pYkM3DNZE77C5JUe6/0nxbt4
+          ETUZBTgLgYJGP8c7PbkVnO6I/KgL1jw+7MW6Az8Ox+RXZLyGMVmbW/TMc8haJfKL
+          MoUo3TVk8nPiUhoOC0/kI7j9ilFrBxBU5dUtF4ITAWc8xnG6jJs/IsvRpQARAQAB
+          tChGZWRvcmEgRVBFTCAoOCkgPGVwZWxAZmVkb3JhcHJvamVjdC5vcmc+iQI4BBMB
+          AgAiBQJc9877AhsPBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRAh6kWrL4bW
+          oWagD/4xnLWws34GByVDQkjprk0fX7Iyhpm/U7BsIHKspHLL+Y46vAAGY/9vMvdE
+          0fcr9Ek2Zp7zE1RWmSCzzzUgTG6BFoTG1H4Fho/7Z8BXK/jybowXSZfqXnTOfhSF
+          alwDdwlSJvfYNV9MbyvbxN8qZRU1z7PEWZrIzFDDToFRk0R71zHpnPTNIJ5/YXTw
+          NqU9OxII8hMQj4ufF11040AJQZ7br3rzerlyBOB+Jd1zSPVrAPpeMyJppWFHSDAI
+          WK6x+am13VIInXtqB/Cz4GBHLFK5d2/IYspVw47Solj8jiFEtnAq6+1Aq5WH3iB4
+          bE2e6z00DSF93frwOyWN7WmPIoc2QsNRJhgfJC+isGQAwwq8xAbHEBeuyMG8GZjz
+          xohg0H4bOSEujVLTjH1xbAG4DnhWO/1VXLX+LXELycO8ZQTcjj/4AQKuo4wvMPrv
+          9A169oETG+VwQlNd74VBPGCvhnzwGXNbTK/KH1+WRH0YSb+41flB3NKhMSU6dGI0
+          SGtIxDSHhVVNmx2/6XiT9U/znrZsG5Kw8nIbbFz+9MGUUWgJMsd1Zl9R8gz7V9fp
+          n7L7y5LhJ8HOCMsY/Z7/7HUs+t/A1MI4g7Q5g5UuSZdgi0zxukiWuCkLeAiAP4y7
+          zKK4OjJ644NDcWCHa36znwVmkz3ixL8Q0auR15Oqq2BjR/fyog==
+          =84m8
+          -----END PGP PUBLIC KEY BLOCK-----
+
+    dnf_config_host:
+      - name: 'epel-testing'
+        state: 'true'
+        comment: 'Extra Packages for Enterprise Linux - Testing'
+        repositories:
+          - name: 'epel'
+            state: 'true'
+            comment: 'Extra Packages for Enterprise Linux - Testing'
+            description: 'Extra Packages for Enterprise Linux $releasever - Testing - $basearch'
+            url: 'http://mirrors.kernel.org/fedora-epel/testing/$releasever/Everything/$basearch'
+            gpg_check: 'yes'
+            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
+
+--------------------------------------------------------------------------------
+PARAMETERS
+--------------------------------------------------------------------------------
+
+ROLE
+  dnf_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'install'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Inactive: 'quiesce' | 'inactive'
+
+  dnf_check_update_day
+    Description: Define the 'dnf_check_update_day' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: '1' | '*/2'
+
+  dnf_check_update_hour
+    Description: Define the 'dnf_check_update_hour' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '5'
+    Options    :
+      Examples: '5' | '*/6'
+
+  dnf_check_update_minute
+    Description: Define the 'dnf_check_update_minute' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : "{{(30|random(seed=inventory_hostname))}}"
+    Options    :
+      Examples: '42' | '*/30'
+
+  dnf_check_update_month
+    Description: Define the 'dnf_check_update_month' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: '10' | '*/1'
+
+  dnf_check_update_state
+    Description: Control the 'dnf_check_update_state' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  dnf_check_update_weekday
+    Description: Define the 'dnf_check_update_weekday' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '*'
+    Options    :
+      Examples: 6 | 'Saturday'
+
+  dnf_config_all
+    Description: Define the 'dnf_config_all' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{name: 'CentOS-AppStream', state: 'true', comment: 'CentOS AppStream', repositories:
+                   [{name: 'AppStream', state: 'true', comment: 'CentOS AppStream', description: 'CentOS-$releasever - AppStream',
+                     url: 'http://mirror.centos.org/$contentdir/$releasever/AppStream/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
+                    {name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories: [{name: 'Base', state: 'true', comment: 'CentOS Base', description: 'CentOS-$releasever - Base',
+                     url: 'http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
+                    gpg_name: 'RPM-GPG-KEY-centosofficial', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'},
+                    {name: 'CentOS-CR', state: 'true', comment: 'CentOS CR', repositories: [{name: 'cr', state: 'true', comment: 'CentOS CR', description: 'CentOS-$releasever - cr',
+                     url: 'http://mirror.centos.org/$contentdir/$releasever/cr/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
+                    {name: 'CentOS-Extras', state: 'true', comment: 'CentOS Extras', repositories: [{name: 'extras', state: 'true', comment: 'CentOS Extras', description: 'CentOS-$releasever - Extras',
+                     url: 'http://mirror.centos.org/$contentdir/$releasever/extras/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
+                    {name: 'epel', state: 'true', comment: 'Extra Packages for Enterprise Linux', repositories: [{name: 'epel', state: 'true', comment: 'Extra Packages for Enterprise Linux', description: 'Extra Packages for Enterprise Linux $releasever - $basearch',
+                     url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Everything/$basearch', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
+                    gpg_name: 'RPM-GPG-KEY-centosofficial', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'}]
+    Options    :
+      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories: [{name: 'Base', state: 'true', comment: 'CentOS Base', description: 'CentOS-$releasever - Base',
+                  url: 'http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
+                 gpg_name: 'RPM-GPG-KEY-centosofficial', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'}]
+      None    : []
+
+  dnf_config_group
+    Description: Define the 'dnf_config_group' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories: [{name: 'Base', state: 'true', comment: 'CentOS Base', description: 'CentOS-$releasever - Base',
+                  url: 'http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
+                 gpg_name: 'RPM-GPG-KEY-centosofficial', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'}]
+      None    : []
+
+  dnf_config_host
+    Description: Define the 'dnf_config_host' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories: [{name: 'Base', state: 'true', comment: 'CentOS Base', description: 'CentOS-$releasever - Base',
+                  url: 'http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
+                 gpg_name: 'RPM-GPG-KEY-centosofficial', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'}]
+      None    : []
+
+  dnf_exclude
+    Description: Define the 'dnf_exclude' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['systemd*', 'avahi', 'firewalld', 'gnome*']
+      None    : []
+
+  dnf_include
+    Description: Define the 'dnf_include' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['bsd*', 'openntpd', 'opensmtpd', 'tmux']
+      None    : []
+
+  dnf_monitor_mail_from_address
+    Description: Define the 'dnf_monitor_mail_from_address' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "root@{{ansible_domain}}"
+    Options    :
+      Examples: 'root@domain.tld' | 'admin@domain.tld' | 'user@domain.tld'
+
+  dnf_monitor_mail_to_address
+    Description: Define the 'dnf_monitor_mail_to_address' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : ["admin@{{ansible_domain}}"]
+    Options    :
+      Examples: ['root@domain.tld'] | ['root@domain.tld', 'admin@domain.tld']
+                ['root@domain.tld', 'admin@domain.tld', 'user@domain.tld']
+
+  dnf_monitor_mail_state
+    Description: Control the 'dnf_monitor_mail_state' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  dnf_monitor_prom_state
+    Description: Control the 'dnf_monitor_prom_state' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  dnf_monitor_prom_textfile_collector
+    Description: Define the 'dnf_monitor_prom_textfile_collector' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "/{{common_data_dir}}/node_exporter/textfile_collector"
+    Options    :
+      Examples: '/data/node_exporter/textfile_collector'
+
+  dnf_proxy
+    Description: Define the 'dnf_proxy' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'http://proxy.domain.tld:3128'
+      None    : ''
+
+  dnf_proxy_password
+    Description: Define the 'dnf_proxy_password' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'Kd7TN_eL2upGV9Y63w-M9.3tf' | 'B47Y.TShmg_Z6C5s8e-Uv+wPb'
+      None    : ''
+
+  dnf_proxy_username
+    Description: Define the 'dnf_proxy_username' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : ''
+    Options    :
+      Examples: 'user' | 'dnf-user'
+      None    : ''
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  dnf
+    Version: >= 4.0
+    Name   :
+      CentOS 8: 'dnf'
+
+ROLES
+
+PARAMETERS
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.8
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Unsupported
+
+  CentOS
+    Version: 8
+      Status: Stable
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

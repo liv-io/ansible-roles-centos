@@ -1,0 +1,87 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : config
+# Type   : dnf configuration file
+# Role   : dnf
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+{% if not ((item.comment|default('')) == '') %}
+#-------------------------------------------------------------------------------
+# {{(item.comment|upper)}}
+#-------------------------------------------------------------------------------
+{% endif %}
+
+{% for item in (item.repositories|default([])) %}
+{% if (item.comment|default('')) %}
+# {{item.comment}}
+{% endif %}
+[{{(item.name|default('config'))}}]
+{% if (item.description|default('')) %}
+name={{item.description}}
+{% endif %}
+{% if (item.state|default('true') is match('false|no|disable')) %}
+enabled=0
+{% else %}
+enabled=1
+{% endif %}
+{% if (item.url|default('')) %}
+baseurl={{item.url}}
+{% endif %}
+{% if (item.gpg_check|default('true') is match('false|no|disable')) %}
+gpgcheck=0
+{% else %}
+gpgcheck=1
+{% endif %}
+{% if (item.gpg_key|default('')) %}
+gpgkey={{item.gpg_key}}
+{% endif %}
+{% if (item.exclude|default([])) %}
+exclude={% for exclude in item.exclude %}{{exclude}}{% if not loop.last %} {% endif %}{% endfor %}
+{% endif %}
+{% if (item.include|default([])) %}
+includepkgs={% for include in item.include %}{{include}}{% if not loop.last %} {% endif %}{% endfor %}
+{% endif %}
+{% if (item.priority|default('')) %}
+priority={{(item.priority|int(80))}}
+{% endif %}
+{% if (item.ssl_verify|default('true') is match('false|no|disable')) %}
+sslverify=0
+{% endif %}
+{% if (item.ssl_ca_cert|default('')) %}
+sslcacert={{item.ssl_ca_cert}}
+{% endif %}
+{% if (item.ssl_client_cert|default('')) %}
+sslclientcert={{item.ssl_client_cert}}
+{% endif %}
+{% if (item.ssl_client_key|default('')) %}
+sslclientkey={{item.ssl_client_key}}
+{% endif %}
+{% if (item.username|default('')) %}
+username={{item.username}}
+{% endif %}
+{% if (item.password|default('')) %}
+password={{item.password}}
+{% endif %}
+{% if (item.proxy|default('')) %}
+proxy={{item.proxy}}
+{% endif %}
+{% if (item.proxy_username|default('')) %}
+proxy_username={{item.proxy_username}}
+{% endif %}
+{% if (item.proxy_password|default('')) %}
+proxy_password={{item.proxy_password}}
+{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}

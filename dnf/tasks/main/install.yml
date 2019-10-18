@@ -1,0 +1,82 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      errors: 'ignore'
+  tags:
+    - install
+    - dnf
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install dnf'
+  package:
+    state: 'present'
+    name: "{{package_name_dnf}}"
+  tags:
+    - install
+    - dnf
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create dnf.conf'
+  template:
+    src: "{{file_src_dnf_conf}}"
+    dest: "{{file_dst_dnf_conf}}"
+    mode: "{{file_mode_dnf_conf}}"
+    owner: "{{file_owner_dnf_conf}}"
+    group: "{{file_group_dnf_conf}}"
+  tags:
+    - install
+    - dnf
+
+- name: 'file create dnf_script.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_dnf_script_dir}}"
+    mode: "{{file_mode_dnf_script_dir}}"
+    owner: "{{file_owner_dnf_script_dir}}"
+    group: "{{file_group_dnf_script_dir}}"
+  tags:
+    - install
+    - dnf
+
+- name: 'file create dnf_check-update.sh'
+  template:
+    src: "{{file_src_dnf_check_update_sh}}"
+    dest: "{{file_dst_dnf_check_update_sh}}"
+    mode: "{{file_mode_dnf_check_update_sh}}"
+    owner: "{{file_owner_dnf_check_update_sh}}"
+    group: "{{file_group_dnf_check_update_sh}}"
+  tags:
+    - install
+    - dnf
+
+- name: 'cron create dnf_check-update'
+  cron:
+    state: 'present'
+    disabled: "{{'yes' if (dnf_check_update_state is match('false|no|disable')) else 'no'}}"
+    name: "{{cron_name_dnf_check_update}}"
+    cron_file: "{{cron_cron_file_dnf_check_update}}"
+    day: "{{cron_day_dnf_check_update}}"
+    hour: "{{cron_hour_dnf_check_update}}"
+    minute: "{{cron_minute_dnf_check_update}}"
+    month: "{{cron_month_dnf_check_update}}"
+    weekday: "{{cron_weekday_dnf_check_update}}"
+    user: "{{cron_user_dnf_check_update}}"
+    job: "{{cron_job_dnf_check_update}}"
+  tags:
+    - install
+    - dnf

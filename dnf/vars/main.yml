@@ -1,0 +1,67 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# dnf
+package_name_dnf: 'dnf'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# config
+file_src_config: 'templates/main/config.j2'
+file_mode_config: '0644'
+file_owner_config: 'root'
+file_group_config: 'root'
+
+# gpg-key
+file_mode_gpg_key: '0644'
+file_owner_gpg_key: 'root'
+file_group_gpg_key: 'root'
+
+# rpm-gpg
+file_dst_rpm_gpg: '/etc/pki/rpm-gpg'
+
+# yum.repos.d
+file_dst_dnf_repos_d: '/etc/yum.repos.d'
+
+# dnf.conf
+file_src_dnf_conf: 'templates/main/dnf.conf.j2'
+file_dst_dnf_conf: '/etc/dnf/dnf.conf'
+file_mode_dnf_conf: '0644'
+file_owner_dnf_conf: 'root'
+file_group_dnf_conf: 'root'
+
+# dnf_script.dir
+file_dst_dnf_script_dir: "/{{common_script_dir}}/dnf"
+file_mode_dnf_script_dir: '0755'
+file_owner_dnf_script_dir: 'root'
+file_group_dnf_script_dir: 'root'
+
+# dnf_check-update.sh
+file_src_dnf_check_update_sh: 'templates/main/dnf_check-update.sh.j2'
+file_dst_dnf_check_update_sh: "/{{common_script_dir}}/dnf/dnf_check-update.sh"
+file_mode_dnf_check_update_sh: '0754'
+file_owner_dnf_check_update_sh: 'root'
+file_group_dnf_check_update_sh: 'root'
+
+# dnf_check-update
+cron_name_dnf_check_update: 'dnf: Check Update'
+cron_cron_file_dnf_check_update: 'dnf_check-update'
+cron_day_dnf_check_update: "{{dnf_check_update_day}}"
+cron_hour_dnf_check_update: "{{dnf_check_update_hour}}"
+cron_minute_dnf_check_update: "{{dnf_check_update_minute}}"
+cron_month_dnf_check_update: "{{dnf_check_update_month}}"
+cron_weekday_dnf_check_update: "{{dnf_check_update_weekday}}"
+cron_user_dnf_check_update: "{{file_owner_dnf_check_update_sh}}"
+cron_job_dnf_check_update: "{{file_dst_dnf_check_update_sh}}"
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# clean dnf-cache
+command_cmd_clean_dnf_cache: 'dnf clean dbcache expire-cache metadata packages'
