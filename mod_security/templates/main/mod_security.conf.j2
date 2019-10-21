@@ -16,7 +16,7 @@
 #-------------------------------------------------------------------------------
 
 <IfModule mod_security2.c>
-    # ModSecurity Core Rules Set configuration
+    # ModSecurity Core Rules Set and Local configuration
 	IncludeOptional modsecurity.d/*.conf
 	IncludeOptional modsecurity.d/activated_rules/*.conf
     
@@ -50,7 +50,7 @@
     SecRule REQBODY_ERROR "!@eq 0" \
     "id:'200001', phase:2,t:none,log,deny,status:400,msg:'Failed to parse request body.',logdata:'%{reqbody_error_msg}',severity:2"
     SecRule MULTIPART_STRICT_ERROR "!@eq 0" \
-    "id:'200002',phase:2,t:none,log,deny,status:44,msg:'Multipart request body \
+    "id:'200002',phase:2,t:none,log,deny,status:400,msg:'Multipart request body \
     failed strict validation: \
     PE %{REQBODY_PROCESSOR_ERROR}, \
     BQ %{MULTIPART_BOUNDARY_QUOTED}, \
@@ -66,7 +66,7 @@
     FL %{MULTIPART_FILE_LIMIT_EXCEEDED}'"
 
     SecRule MULTIPART_UNMATCHED_BOUNDARY "!@eq 0" \
-    "id:'200003',phase:2,t:none,log,deny,status:44,msg:'Multipart parser detected a possible unmatched boundary.'"
+    "id:'200003',phase:2,t:none,log,deny,status:400,msg:'Multipart parser detected a possible unmatched boundary.'"
 
 {% if not (mod_security_sec_pcre_match_limit == '') %}
     SecPcreMatchLimit {{(mod_security_sec_pcre_match_limit|int(1000))}}
