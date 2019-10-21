@@ -166,6 +166,7 @@ PACKAGES
     Version: >= 5.0
     Name   :
       CentOS 7: 'grafana'
+      CentOS 8: 'grafana'
 
 ROLES
 
@@ -208,6 +209,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Testing
+
+  CentOS
+    Version: 8
       Status: Testing
 
 --------------------------------------------------------------------------------
