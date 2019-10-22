@@ -301,7 +301,9 @@ ROLE
     Required   : False
     Value      : Predetermined
     Type       : String
-    Default    : 'yes'
+    Default    :
+      CentOS 7: 'yes'
+      Other   : 'no'
     Options    :
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
