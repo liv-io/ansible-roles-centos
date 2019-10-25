@@ -226,19 +226,16 @@ PACKAGES
     Version: >= 1.0
     Name   :
       CentOS 7: 'iptables'
-      CentOS 8: 'iptables'
 
   iptables-services
     Version: >= 1.0
     Name   :
       CentOS 7: 'iptables-services'
-      CentOS 8: 'iptables-services'
 
   iptables-utils
     Version: >= 1.0
     Name   :
       CentOS 7: 'iptables-utils'
-      CentOS 8: 'iptables-utils'
 
 ROLES
   firewalld
@@ -286,7 +283,7 @@ OPERATING SYSTEMS
 
   CentOS
     Version: 8
-      Status: Testing
+      Status: Unsupported
 
 --------------------------------------------------------------------------------
 OTHER
