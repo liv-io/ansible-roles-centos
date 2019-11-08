@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.2.1 (2019-11-08)
+B: Fix 'config.j2' template location
+
 * Version 2.2.0 (2019-10-13)
 F: Add support for CentOS 8
 
