@@ -23,7 +23,7 @@ After=syslog.target network.target
 User=blackbox_exporter
 Group=blackbox_exporter
 AmbientCapabilities=CAP_NET_RAW
-EnvironmentFile=/etc/sysconfig/blackbox_exporter
+EnvironmentFile={{file_dst_blackbox_exporter_sysconfig}}
 ExecStart={{file_dst_blackbox_exporter}}/blackbox_exporter $OPTIONS
 
 [Install]
