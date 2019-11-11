@@ -22,7 +22,7 @@ After=syslog.target network.target
 [Service]
 User=prometheus
 Group=prometheus
-EnvironmentFile=/etc/sysconfig/prometheus
+EnvironmentFile={{file_dst_prometheus_sysconfig}}
 ExecStart={{file_dst_prometheus_current_link}}/prometheus $OPTIONS
 
 [Install]
