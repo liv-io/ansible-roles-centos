@@ -22,7 +22,7 @@ After=syslog.target network.target
 [Service]
 User=alertmanager
 Group=alertmanager
-EnvironmentFile=/etc/sysconfig/alertmanager
+EnvironmentFile={{file_dst_alertmanager_sysconfig}}
 ExecStart={{file_dst_alertmanager_current_link}}/alertmanager $OPTIONS
 
 [Install]
