@@ -22,7 +22,7 @@ After=syslog.target network.target
 [Service]
 User=haproxy_exporter
 Group=haproxy_exporter
-EnvironmentFile=/etc/sysconfig/haproxy_exporter
+EnvironmentFile={{file_dst_haproxy_exporter_sysconfig}}
 ExecStart={{file_dst_haproxy_exporter}}/haproxy_exporter $OPTIONS
 
 [Install]
