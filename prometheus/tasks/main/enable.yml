@@ -26,7 +26,7 @@
     path: "{{file_dst_prometheus_current_link}}"
     owner: "{{file_owner_prometheus_current_link}}"
     group: "{{file_group_prometheus_current_link}}"
-  notify: 'service restart prometheus'
+  notify: 'service reload prometheus'
   tags:
     - enable
     - prometheus
@@ -38,7 +38,7 @@
     mode: "{{file_mode_prometheus_sysconfig}}"
     owner: "{{file_owner_prometheus_sysconfig}}"
     group: "{{file_group_prometheus_sysconfig}}"
-  notify: 'service restart prometheus'
+  notify: 'service reload prometheus'
   tags:
     - enable
     - prometheus
@@ -50,7 +50,7 @@
     mode: "{{file_mode_prometheus_yml}}"
     owner: "{{file_owner_prometheus_yml}}"
     group: "{{file_group_prometheus_yml}}"
-  notify: 'service restart prometheus'
+  notify: 'service reload prometheus'
   tags:
     - enable
     - prometheus

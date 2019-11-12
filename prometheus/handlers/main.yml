@@ -23,7 +23,7 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'service restart prometheus'
+- name: 'service reload prometheus'
   service:
-    state: 'restarted'
+    state: 'reloaded'
     name: "{{service_name_prometheus}}"
