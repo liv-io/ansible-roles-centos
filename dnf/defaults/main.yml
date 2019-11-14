@@ -97,14 +97,14 @@ dnf_config_all:
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
 
-  - name: 'CentOS-Debug'
+  - name: 'CentOS-Debuginfo'
     state: 'true'
-    comment: 'CentOS Debug'
+    comment: 'CentOS Debuginfo'
     repositories:
       - name: 'base-debuginfo'
         state: 'false'
         comment: 'CentOS-$releasever - Debuginfo'
-        description: 'CentOS Debug'
+        description: 'CentOS Debuginfo'
         url: 'http://debuginfo.centos.org/$releasever/$basearch/'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'

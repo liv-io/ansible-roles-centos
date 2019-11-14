@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2019-11-14)
+B: Correct filename of CentOS Debuginfo repository
+
 * Version 0.1.1 (2019-10-24)
 B: Remove conflicting package task before configuring proxy and repositories
 
