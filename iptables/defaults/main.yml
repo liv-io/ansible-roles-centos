@@ -3,32 +3,32 @@
 iptables_state: 'enable'
 
 iptables_filter_all:
-  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'ICMP network unreachable: From any'}
-  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'ICMP host unreachable: From any'}
-  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: From any'}
-  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'ICMP port unreachable: From any'}
-  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'source-quench', comment: 'ICMP source quench: From any'}
-  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'echo-request', comment: 'ICMP echo request: From any'}
-  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', sources: {'192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'}, ports: {'ssh'}, comment: 'SSH: From private address space (RFC 1918)'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'ICMP network unreachable: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'ICMP host unreachable: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'ICMP protocol unreachable: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'ICMP port unreachable: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'source-quench', comment: 'ICMP source quench: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'echo-request', comment: 'ICMP echo request: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, ports: {'domain'}, comment: 'DNS: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, ports: {'domain'}, comment: 'DNS: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, ports: {'ntp'}, comment: 'NTP: To any'}
-  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, ports: {'http', 'https'}, comment: 'HTTP(S): To any'}
+  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'icmp network unreachable from any'}
+  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'icmp host unreachable from any'}
+  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'icmp protocol unreachable from any'}
+  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'icmp port unreachable from any'}
+  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'source-quench', comment: 'icmp source quench from any'}
+  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'icmp', sources: {'0.0.0.0/0'}, code: 'echo-request', comment: 'icmp echo request from any'}
+  - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', sources: {'192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'}, ports: {'ssh'}, comment: 'ssh from private address space (RFC 1918)'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'network-unreachable', comment: 'icmp network unreachable to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'host-unreachable', comment: 'icmp host unreachable to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'protocol-unreachable', comment: 'icmp protocol unreachable to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'port-unreachable', comment: 'icmp port unreachable to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'source-quench', comment: 'icmp source quench to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'icmp', destinations: {'0.0.0.0/0'}, code: 'echo-request', comment: 'icmp echo request to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, ports: {'domain'}, comment: 'dns to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, ports: {'domain'}, comment: 'dns to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'udp', destinations: {'0.0.0.0/0'}, ports: {'ntp'}, comment: 'ntp to any'}
+  - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'0.0.0.0/0'}, ports: {'http', 'https'}, comment: 'http, https to any'}
 
 iptables_filter_group: []
 
 iptables_filter_host: []
 
 iptables_filter_policies:
-  - {action: 'drop', direction: 'input', version: 'ipv4', comment: 'Default IPv4 input policy'}
-  - {action: 'drop', direction: 'forward', version: 'ipv4', comment: 'Default IPv4 forward policy'}
-  - {action: 'drop', direction: 'output', version: 'ipv4', comment: 'Default IPv4 output policy'}
-  - {action: 'drop', direction: 'input', version: 'ipv6', comment: 'Default IPv6 input policy'}
-  - {action: 'drop', direction: 'forward', version: 'ipv6', comment: 'Default IPv6 forward policy'}
-  - {action: 'drop', direction: 'output', version: 'ipv6', comment: 'Default IPv6 output policy'}
+  - {action: 'drop', direction: 'input', version: 'ipv4', comment: 'Default ipv4 input policy'}
+  - {action: 'drop', direction: 'forward', version: 'ipv4', comment: 'Default ipv4 forward policy'}
+  - {action: 'drop', direction: 'output', version: 'ipv4', comment: 'Default ipv4 output policy'}
+  - {action: 'drop', direction: 'input', version: 'ipv6', comment: 'Default ipv6 input policy'}
+  - {action: 'drop', direction: 'forward', version: 'ipv6', comment: 'Default ipv6 forward policy'}
+  - {action: 'drop', direction: 'output', version: 'ipv6', comment: 'Default ipv6 output policy'}
