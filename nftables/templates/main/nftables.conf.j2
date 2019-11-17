@@ -1,0 +1,31 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : nftables.conf
+# Type   : nftables configuration file
+# Role   : nftables
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+#
+# This this will contain your nftables rules and
+# is read by the systemd service when restarting
+#
+# These provide an iptables like set of filters
+# (uncomment to include)
+# include "/etc/nftables/bridge-filter.nft"
+# include "/etc/nftables/inet-filter.nft"
+include "/etc/nftables/ipv4-filter.nft"
+# include "/etc/nftables/ipv4-mangle.nft"
+include "/etc/nftables/ipv4-nat.nft"
+include "/etc/nftables/ipv6-filter.nft"
+# include "/etc/nftables/ipv6-mangle.nft"
+include "/etc/nftables/ipv6-nat.nft"

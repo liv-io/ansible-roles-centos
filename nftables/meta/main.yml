@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - {role: firewalld, vars: [firewalld_state: 'remove'], when: not (nftables_state is match('false|no|remove|quiesce|inactive'))}

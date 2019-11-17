@@ -1,0 +1,32 @@
+#!/usr/sbin/nft -f
+
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : ipv6-nat.nft
+# Type   : nftables configuration file
+# Role   : nftables
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+table ip6 nat {
+  chain PREROUTING { type nat hook prerouting priority -100; policy accept;
+  }
+
+  chain INPUT { type nat hook input priority 100; policy accept;
+  }
+
+  chain OUTPUT { type nat hook output priority -100; policy accept;
+  }
+
+  chain POSTROUTING { type nat hook postrouting priority 100; policy accept;
+  }
+}

@@ -1,0 +1,72 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      errors: 'ignore'
+  tags:
+    - remove
+    - nftables
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove nftables'
+  package:
+    state: 'absent'
+    name: "{{package_name_nftables}}"
+  tags:
+    - remove
+    - nftables
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove nftables.conf'
+  file:
+    state: 'absent'
+    path: "{{file_dst_nftables_conf}}"
+  tags:
+    - remove
+    - nftables
+
+- name: 'file remove ipv4-filter.nft'
+  file:
+    state: 'absent'
+    path: "{{file_dst_ipv4_filter_nft}}"
+  tags:
+    - remove
+    - nftables
+
+- name: 'file remove ipv4-nat.nft'
+  file:
+    state: 'absent'
+    path: "{{file_dst_ipv4_nat_nft}}"
+  tags:
+    - remove
+    - nftables
+
+- name: 'file remove ipv6-filter.nft'
+  file:
+    state: 'absent'
+    path: "{{file_dst_ipv6_filter_nft}}"
+  tags:
+    - remove
+    - nftables
+
+- name: 'file remove ipv6-nat.nft'
+  file:
+    state: 'absent'
+    path: "{{file_dst_ipv6_nat_nft}}"
+  tags:
+    - remove
+    - nftables
