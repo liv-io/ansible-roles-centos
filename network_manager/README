@@ -56,7 +56,9 @@ ROLE
     Required   : False
     Value      : Predetermined
     Type       : String
-    Default    : 'remove'
+    Default    :
+      CentOS 7: 'remove'
+      Other   : 'install'
     Options    :
       Install : 'true' | 'yes' | 'install'
       Remove  : 'false' | 'no' | 'remove'
