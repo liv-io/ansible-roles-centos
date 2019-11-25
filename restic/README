@@ -102,7 +102,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '08cd75e56a67161e9b16885816f04b2bf1fb5b03bc0677b0ccf3812781c1a2ec'
+    Default    : 'a88ca09d1dd051d470965667a224a2b81930c6628a0566b7b17868be40207dc8'
     Options    :
       Examples: '3c882962fc07f611a6147ada99c9909770d3e519210fd483cde9609c6bdd900c' |
                 '1ad8a76a9f966da5f7a319c49a6db071a60ebaa24d69e6d86d53d6f2bcaf11ed'
@@ -318,7 +318,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '0.9.5'
+    Default    : '0.9.6'
     Options    :
       Examples: '0.9.3' | '0.9.2'
 
