@@ -164,6 +164,17 @@ ROLE
     Options    :
       Examples: 53 | 5300
 
+  nsd_hide_identity
+    Description: Control the 'nsd_hide_identity' option.
+    Implemented: 1.2
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'true'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   nsd_hide_version
     Description: Control the 'nsd_hide_version' option.
     Implemented: 0.1
@@ -324,7 +335,7 @@ OPERATING SYSTEMS
 
   CentOS
     Version: 8
-      Status: Planned
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER

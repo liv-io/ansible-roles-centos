@@ -67,8 +67,19 @@ server:
 	# use the reuseport socket option for performance. Default no.
 	# reuseport: no
 
+	# override maximum socket send buffer size.  Default of 0 results in
+	# send buffer size being set to 1048576 (bytes).
+	# send-buffer-size: 1048576
+
+	# override maximum socket receive buffer size. Default of 0 results in
+	# receive buffer size being set to 1048576 (bytes).
+	# receive-buffer-size: 1048576
+
 	# enable debug mode, does not fork daemon process into the background.
 	# debug-mode: no
+
+	# use systemd for readiness signalling.
+	use-systemd: yes
 
         #-----------------------------------------------------------------------
         # INTERNET-PROTOCOL
@@ -124,7 +135,7 @@ server:
 	# logfile: "/var/log/nsd.log"
 
 	# File to store pid for nsd in.
-	# pidfile: "/var/run/nsd/nsd.pid"
+	# pidfile: "/run/nsd/nsd.pid"
 
 	# The file where secondary zone refresh and expire timeouts are kept.
 	# If you delete this file, all secondary zones are forced to be
@@ -155,6 +166,13 @@ server:
         # IDENTITY
         #-----------------------------------------------------------------------
 
+	# don't answer HOSTNAME.BIND and ID.SERVER CHAOS class queries
+{% if (nsd_hide_identity is match('false|no|disable')) %}
+        hide-identity: no
+{% else %}
+        hide-identity: yes
+{% endif %}
+
 	# identify the server (CH TXT ID.SERVER entry).
 {% if not (nsd_identity == '') %}
         identity: "{{nsd_identity}}"
@@ -165,6 +183,11 @@ server:
 
 	# Maximum number of concurrent TCP connections per server.
 	# tcp-count: 100
+
+	# Accept (and immediately close) TCP connections after maximum number
+	# of connections is reached to prevent kernel connection queue from
+	# growing.
+	# tcp-reject-overflow: no
 
 	# Maximum number of queries served on a single TCP connection.
 	# By default 0, which means no maximum.
@@ -248,8 +271,28 @@ server:
 	# Optional local server config
 	include: "/etc/nsd/server.d/*.conf"
 
-	# Include optional local configs.
-	include: "/etc/nsd/conf.d/*.conf"
+# Include optional local configs.
+include: "/etc/nsd/conf.d/*.conf"
+
+# Fedora: DNSTAP not yet enabled
+# dnstap:
+	# set this to yes and set one or more of dnstap-log-..-messages to yes.
+	# dnstap-enable: no
+	# dnstap-socket-path: "/var/run/dnstap.sock"
+	# dnstap-send-identity: no
+	# dnstap-send-version: no
+	# dnstap-identity: ""
+	# dnstap-version: ""
+	# dnstap-log-auth-query-messages: no
+	# dnstap-log-auth-response-messages: no
+
+	# Service clients over TLS (on the TCP sockets), with plain DNS inside
+	# the TLS stream. Give the certificate to use and private key.
+	# Default is "" (disabled). Requires restart to take effect.
+	# tls-service-key: "path/to/privatekeyfile.key"
+	# tls-service-pem: "path/to/publiccertfile.pem"
+	# tls-service-ocsp: "path/to/ocsp.pem"
+	# tls-port: 853
 
 #-------------------------------------------------------------------------------
 # REMOTE CONTROL
@@ -266,8 +309,11 @@ remote-control:
 {% endif %}
 
 	# what interfaces are listened to for control, default is on localhost.
+	# with an absolute path, a unix local named pipe is used for control
+	# (and key and cert files are not needed, use directory permissions).
 	# control-interface: 127.0.0.1
 	# control-interface: ::1
+	control-interface: /run/nsd/nsd.ctl
 
 	# port number for remote control operations (uses TLS over TCP).
 	# control-port: 8952
@@ -287,7 +333,6 @@ remote-control:
 #-------------------------------------------------------------------------------
 # KEY
 #-------------------------------------------------------------------------------
-
 
 # Secret keys for TSIGs that secure zone transfers.
 # You could include: "secret.keys" and put the 'key:' statements in there,
