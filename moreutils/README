@@ -91,6 +91,7 @@ PACKAGES
     Version: >= 0.49
     Name   :
       CentOS 7: 'moreutils'
+      CentOS 8: 'moreutils'
 
 ROLES
 
@@ -137,7 +138,7 @@ OPERATING SYSTEMS
 
   CentOS
     Version: 8
-      Status: Planned
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER
