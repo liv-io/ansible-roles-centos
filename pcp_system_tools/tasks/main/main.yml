@@ -1,0 +1,13 @@
+---
+
+- name: 'task include install'
+  import_tasks: install.yml
+  when: not (pcp_system_tools_state is match('false|no|remove|quiesce|inactive'))
+  tags:
+    - pcp_system_tools
+
+- name: 'task include remove'
+  import_tasks: remove.yml
+  when: (pcp_system_tools_state is match('false|no|remove'))
+  tags:
+    - pcp_system_tools
