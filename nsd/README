@@ -289,6 +289,7 @@ PACKAGES
     Version: >= 4.0
     Name   :
       CentOS 7: 'nsd'
+      CentOS 8: 'nsd'
 
 ROLES
 
