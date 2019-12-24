@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.21.0 (2019-12-24)
+F: Update 'prometheus' to version '2.15.0'
+
 * Version 0.20.1 (2019-11-13)
 E: Add service reload capability
 
