@@ -97,18 +97,6 @@ CONFIG
           =kkH7
           -----END PGP PUBLIC KEY BLOCK-----
 
-      - name: 'CentOS-CR'
-        state: 'true'
-        comment: 'CentOS CR'
-        repositories:
-          - name: 'cr'
-            state: 'true'
-            comment: 'CentOS CR'
-            description: 'CentOS-$releasever - cr'
-            url: 'http://mirror.centos.org/$contentdir/$releasever/cr/$basearch/os/'
-            gpg_check: 'yes'
-            gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
-
       - name: 'CentOS-Extras'
         state: 'true'
         comment: 'CentOS Extras'
@@ -268,8 +256,6 @@ ROLE
                     {name: 'CentOS-Base', state: 'true', comment: 'CentOS Base', repositories: [{name: 'Base', state: 'true', comment: 'CentOS Base', description: 'CentOS-$releasever - Base',
                      url: 'http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
                     gpg_name: 'RPM-GPG-KEY-centosofficial', gpg_state: 'true', gpg_content: '...PGP PUBLIC KEY BLOCK...'},
-                    {name: 'CentOS-CR', state: 'true', comment: 'CentOS CR', repositories: [{name: 'cr', state: 'true', comment: 'CentOS CR', description: 'CentOS-$releasever - cr',
-                     url: 'http://mirror.centos.org/$contentdir/$releasever/cr/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
                     {name: 'CentOS-Extras', state: 'true', comment: 'CentOS Extras', repositories: [{name: 'extras', state: 'true', comment: 'CentOS Extras', description: 'CentOS-$releasever - Extras',
                      url: 'http://mirror.centos.org/$contentdir/$releasever/extras/$basearch/os/', gpg_check: 'yes', gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'}],
                     {name: 'epel', state: 'true', comment: 'Extra Packages for Enterprise Linux', repositories: [{name: 'epel', state: 'true', comment: 'Extra Packages for Enterprise Linux', description: 'Extra Packages for Enterprise Linux $releasever - $basearch',
