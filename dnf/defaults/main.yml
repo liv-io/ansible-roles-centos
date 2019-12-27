@@ -90,7 +90,7 @@ dnf_config_all:
     comment: 'CentOS CR'
     repositories:
       - name: 'cr'
-        state: 'true'
+        state: 'false'
         comment: 'CentOS CR'
         description: 'CentOS-$releasever - cr'
         url: 'http://mirror.centos.org/$contentdir/$releasever/cr/$basearch/os/'
