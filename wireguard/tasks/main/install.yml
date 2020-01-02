@@ -1,0 +1,51 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      errors: 'ignore'
+  tags:
+    - install
+    - wireguard
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install wireguard-dkms'
+  package:
+    state: 'present'
+    name: "{{package_name_wireguard_dkms}}"
+  tags:
+    - install
+    - wireguard
+
+- name: 'package install wireguard-tools'
+  package:
+    state: 'present'
+    name: "{{package_name_wireguard_tools}}"
+  tags:
+    - install
+    - wireguard
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create wireguard'
+  file:
+    state: 'directory'
+    path: "{{file_dst_wireguard}}"
+    mode: "{{file_mode_wireguard}}"
+    owner: "{{file_owner_wireguard}}"
+    group: "{{file_group_wireguard}}"
+  tags:
+    - install
+    - wireguard

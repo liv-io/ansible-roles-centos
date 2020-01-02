@@ -1,0 +1,63 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : config
+# Type   : wireguard configuration file
+# Role   : wireguard
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INTERFACE
+#-------------------------------------------------------------------------------
+
+[Interface]
+PrivateKey = {{item.private_key}}
+{% for addr in item.address %}
+Address = {{addr}}
+{% endfor %}
+ListenPort = {{(item.port|default('51820'))}}
+
+{% if not ((item.dns|default([])) == []) %}
+{% for server in item.dns %}
+DNS = {{server}}
+{% endfor %}
+{% endif %}
+{% if not ((item.post_up|default([])) == []) %}
+{% for up in item.post_up %}
+PostUp = {{up}}
+{% endfor %}
+{% endif %}
+{% if not ((item.post_down|default([])) == []) %}
+{% for down in item.post_down %}
+PostDown = {{down}}
+{% endfor %}
+{% endif %}
+
+#-------------------------------------------------------------------------------
+# PEERS
+#-------------------------------------------------------------------------------
+
+{% if not ((item.peers|default([])) == []) %}
+{% for peer in item.peers %}
+[Peer]
+PublicKey = {{peer.public_key}}
+{% if not ((peer.preshared_key|default([])) == []) %}
+PresharedKey = {{peer.preshared_key}}
+{% endif %}
+{% if not ((peer.allowed_ips|default([])) == []) %}
+{% for allowed_ip in peer.allowed_ips %}
+AllowedIPs = {{allowed_ip}}
+{% endfor %}
+{% endif %}
+PersistentKeepalive = {{(peer.keep_alive|default('25'))}}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,173 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : wireguard
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+WireGuard is a novel VPN that runs inside the Linux Kernel and uses
+state-of-the-art cryptography (the "Noise" protocol). It aims to be faster,
+simpler, leaner, and more useful than IPSec, while avoiding the massive
+headache. It intends to be considerably more performant than OpenVPN. WireGuard
+is designed as a general purpose VPN for running on embedded interfaces and
+super computers alike, fit for many different circumstances. It runs over UDP.
+
+For more detailed information on the usage and available configuration options
+please consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: wireguard
+    vars:
+      wireguard_state: 'install'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: wireguard
+    vars:
+      wireguard_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: wireguard
+    vars:
+      wireguard_state: 'inactive'
+
+CONFIG
+  vars:
+    wireguard_config:
+      - interface: 'wg0'
+        state: 'enable'
+        private_key: 'oA4JLblMvwlMkYsED/B7B8k1vkQKoTX9vvsEQgsco38='
+        address: ['10.1.5.1/32']
+        listen_port: 51820
+        post_up:
+          - 'iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT ; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE'
+        post_down:
+          - 'iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT ; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE'
+        peers:
+          - {public_key: 'rQjDz4GJJpM38GwXvRKj5Y33O/nP+mQ/DJYavK5wmwA=', allowed_ips: ['10.1.5.0/24'], keep_alive: 25}
+          - {public_key: 'RzliOD4VZja7aa8XPVye0fXxq5FT7pEGJudFs1ar0XQ=', allowed_ips: ['10.1.5.0/24'], keep_alive: 25}
+          - {public_key: 'AUnSwuXP/Ky2yj2iUeWiG5szxZhFvJPsjY23Mb4kNEI=', allowed_ips: ['10.1.5.0/24'], keep_alive: 25}
+
+--------------------------------------------------------------------------------
+PARAMETERS
+--------------------------------------------------------------------------------
+
+ROLE
+  wireguard_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  wireguard_config
+    Description: Define the 'wireguard_config' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{interface: 'wg0', state: 'enable', private_key: 'oA4JLblMvwlMkYsED/B7B8k1vkQKoTX9vvsEQgsco38=',
+                  address: ['10.1.5.1/32'], listen_port: 51820,
+                  post_up: ['iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT ; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE'],
+                  post_down: ['iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT ; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE'],
+                  peers: {public_key: 'rQjDz4GJJpM38GwXvRKj5Y33O/nP+mQ/DJYavK5wmwA=', allowed_ips: ['10.1.5.0/24'], keep_alive: 25},
+                         {public_key: 'RzliOD4VZja7aa8XPVye0fXxq5FT7pEGJudFs1ar0XQ=', allowed_ips: ['10.1.5.0/24'], keep_alive: 25},
+                         {public_key: 'AUnSwuXP/Ky2yj2iUeWiG5szxZhFvJPsjY23Mb4kNEI=', allowed_ips: ['10.1.5.0/24'], keep_alive: 25}}]
+    None      : []
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  wireguard-dkms
+    Version: >= 0.0.2
+    Name   :
+      CentOS 7: 'wireguard-dkms'
+      CentOS 8: 'wireguard-dkms'
+
+  wireguard-tools
+    Version: >= 1.0.0
+    Name   :
+      CentOS 7: 'wireguard-tools'
+      CentOS 8: 'wireguard-tools'
+
+ROLES
+
+PARAMETERS
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.8
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Stable
+
+  CentOS
+    Version: 8
+      Status: Stable
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

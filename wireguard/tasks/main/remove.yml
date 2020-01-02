@@ -1,0 +1,48 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      errors: 'ignore'
+  tags:
+    - remove
+    - wireguard
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove wireguard-dkms'
+  package:
+    state: 'absent'
+    name: "{{package_name_wireguard_dkms}}"
+  tags:
+    - remove
+    - wireguard
+
+- name: 'package remove wireguard-tools'
+  package:
+    state: 'absent'
+    name: "{{package_name_wireguard_tools}}"
+  tags:
+    - remove
+    - wireguard
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove wireguard'
+  file:
+    state: 'absent'
+    path: "{{file_dst_wireguard}}"
+  tags:
+    - remove
+    - wireguard

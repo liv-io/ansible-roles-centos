@@ -1,0 +1,83 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      errors: 'ignore'
+  tags:
+    - config
+    - wireguard
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create config'
+  template:
+    src: "{{file_src_config}}"
+    dest: "{{file_dst_config}}/{{item.interface}}.conf"
+    mode: "{{file_mode_config}}"
+    owner: "{{file_owner_config}}"
+    group: "{{file_group_config}}"
+  no_log: 'true'
+  with_items: "{{wireguard_config}}"
+  register: register_create_config
+  when: not (item.state is match('false|no|remove'))
+  tags:
+    - config
+    - wireguard
+
+- name: 'file remove config'
+  file:
+    state: 'absent'
+    path: "{{file_dst_config}}/{{item.interface}}.conf"
+  no_log: 'true'
+  with_items: "{{wireguard_config}}"
+  when: (item.state is match('false|no|remove'))
+  tags:
+    - config
+    - wireguard
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start wg-quick@config'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "wg-quick@{{item.interface}}"
+  with_items: "{{wireguard_config}}"
+  when: (item.state is match('enable|up|start'))
+  tags:
+    - config
+    - wireguard
+
+- name: 'service restart wg-quick@config'
+  service:
+    state: 'restarted'
+    enabled: 'yes'
+    name: "wg-quick@{{item.interface}}"
+  with_items: "{{wireguard_config}}"
+  when: (register_create_config.changed) and (item.state is match('enable|up|start'))
+  tags:
+    - config
+    - wireguard
+
+- name: 'service stop config'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "wg-quick@{{item.interface}}"
+  with_items: "{{wireguard_config}}"
+  when: (item.state is match('disable|down|stop'))
+  tags:
+    - config
+    - wireguard
