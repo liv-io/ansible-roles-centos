@@ -75,7 +75,7 @@ ROLE
     Required   : False
     Value      : Predetermined
     Type       : String
-    Default    : 'enable'
+    Default    : 'install'
     Options    :
       Install : 'true' | 'yes' | 'install'
       Remove  : 'false' | 'no' | 'remove'

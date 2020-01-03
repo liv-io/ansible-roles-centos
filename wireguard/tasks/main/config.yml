@@ -29,7 +29,7 @@
   no_log: 'true'
   with_items: "{{wireguard_config}}"
   register: register_create_config
-  when: not (item.state is match('false|no|remove'))
+  when: not ((item.state|default('enable')) is match('false|no|remove'))
   tags:
     - config
     - wireguard
@@ -40,7 +40,7 @@
     path: "{{file_dst_config}}/{{item.interface}}.conf"
   no_log: 'true'
   with_items: "{{wireguard_config}}"
-  when: (item.state is match('false|no|remove'))
+  when: ((item.state|default('enable')) is match('false|no|remove'))
   tags:
     - config
     - wireguard
@@ -55,7 +55,7 @@
     enabled: 'yes'
     name: "wg-quick@{{item.interface}}"
   with_items: "{{wireguard_config}}"
-  when: (item.state is match('enable|up|start'))
+  when: ((item.state|default('enable')) is match('enable|up|start'))
   tags:
     - config
     - wireguard
@@ -66,7 +66,7 @@
     enabled: 'yes'
     name: "wg-quick@{{item.interface}}"
   with_items: "{{wireguard_config}}"
-  when: (register_create_config.changed) and (item.state is match('enable|up|start'))
+  when: (register_create_config.changed) and ((item.state|default('enable')) is match('enable|up|start'))
   tags:
     - config
     - wireguard
@@ -77,7 +77,7 @@
     enabled: 'no'
     name: "wg-quick@{{item.interface}}"
   with_items: "{{wireguard_config}}"
-  when: (item.state is match('disable|down|stop'))
+  when: ((item.state|default('enable')) is match('disable|down|stop'))
   tags:
     - config
     - wireguard

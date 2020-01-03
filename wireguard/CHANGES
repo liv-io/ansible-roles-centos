@@ -14,5 +14,8 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.1 (2020-01-03)
+E: Define default state (enable) for config
+
 * Version 0.1.0 (2020-01-02)
 F: Initial release
