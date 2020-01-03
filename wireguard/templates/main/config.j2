@@ -27,7 +27,6 @@ PrivateKey = {{item.private_key}}
 Address = {{addr}}
 {% endfor %}
 ListenPort = {{(item.port|default('51820'))}}
-
 {% if not ((item.dns|default([])) == []) %}
 {% for server in item.dns %}
 DNS = {{server}}
