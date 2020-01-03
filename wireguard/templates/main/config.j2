@@ -21,6 +21,8 @@
 
 [Interface]
 PrivateKey = {{item.private_key}}
+# For reference only (invalid configuration option in this section)
+#PublicKey = {{(item.private_key|default(''))}}
 {% for addr in item.address %}
 Address = {{addr}}
 {% endfor %}

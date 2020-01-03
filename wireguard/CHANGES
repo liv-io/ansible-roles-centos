@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.3 (2020-01-03)
+E: Add optional configuration option to specify the server's PublicKey
+
 * Version 0.1.2 (2020-01-03)
 B: Add 'no_log' option to service tasks (Ansible output leaks private key)
 
