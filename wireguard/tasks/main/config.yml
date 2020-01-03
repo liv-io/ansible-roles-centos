@@ -54,6 +54,7 @@
     state: 'started'
     enabled: 'yes'
     name: "wg-quick@{{item.interface}}"
+  no_log: 'true'
   with_items: "{{wireguard_config}}"
   when: ((item.state|default('enable')) is match('enable|up|start'))
   tags:
@@ -65,6 +66,7 @@
     state: 'restarted'
     enabled: 'yes'
     name: "wg-quick@{{item.interface}}"
+  no_log: 'true'
   with_items: "{{wireguard_config}}"
   when: (register_create_config.changed) and ((item.state|default('enable')) is match('enable|up|start'))
   tags:
@@ -76,6 +78,7 @@
     state: 'stopped'
     enabled: 'no'
     name: "wg-quick@{{item.interface}}"
+  no_log: 'true'
   with_items: "{{wireguard_config}}"
   when: ((item.state|default('enable')) is match('disable|down|stop'))
   tags:

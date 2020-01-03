@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.2 (2020-01-03)
+B: Add 'no_log' option to service tasks (Ansible output leaks private key)
+
 * Version 0.1.1 (2020-01-03)
 E: Define default state (enable) for config
 
