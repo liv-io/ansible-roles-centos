@@ -16,8 +16,8 @@ DESCRIPTION
 available are those listed under /proc/sys/. Procfs is required for sysctl
 support in Linux. You can use sysctl to both read and write sysctl data.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

@@ -16,8 +16,8 @@ The net-tools package contains basic networking tools, including ifconfig,
 netstat, route, and others. Most of them are obsolete. For replacement check
 iproute package.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

@@ -14,8 +14,8 @@ DESCRIPTION
 
 The contents of '/etc/issue' are displayed by login before a successful login.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

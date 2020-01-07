@@ -25,8 +25,8 @@ CONFIG
         password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7'
         comment: 'haproxy_exporter'
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

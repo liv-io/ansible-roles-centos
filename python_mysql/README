@@ -14,8 +14,8 @@ DESCRIPTION
 
 MySQLdb is an interface to the popular MySQL database server for Python.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

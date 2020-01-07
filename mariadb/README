@@ -18,8 +18,8 @@ different client programs and libraries. This package contains the MariaDB
 server and some accompanying files and directories. MariaDB is a community
 developed branch of MySQL.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

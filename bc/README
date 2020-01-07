@@ -16,8 +16,8 @@ The bc package includes bc and dc. Bc is an arbitrary precision numeric
 processing arithmetic language. Dc is an interactive arbitrary precision stack
 based calculator, which can be used as a text mode calculator.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

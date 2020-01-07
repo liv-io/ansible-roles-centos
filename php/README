@@ -19,8 +19,8 @@ management systems, so writing a database-enabled webpage with PHP is fairly
 simple. The most common use of PHP coding is probably as a replacement for CGI
 scripts.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

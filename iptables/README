@@ -16,8 +16,8 @@ The iptables utility controls the network packet filtering code in the Linux
 kernel. If you need to set up firewalls and/or IP masquerading, you should
 install this package.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

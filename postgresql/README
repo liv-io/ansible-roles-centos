@@ -17,8 +17,8 @@ The postgresql-server package contains the programs needed to create and run a
 PostgreSQL server, which will in turn allow you to create and maintain
 PostgreSQL databases.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

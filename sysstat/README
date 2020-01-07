@@ -28,8 +28,8 @@ The pidstat command reports statistics for Linux tasks (processes).
 The nfsiostat-sysstat command reports I/O statistics for network file systems.
 The cifsiostat command reports I/O statistics for CIFS file systems.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

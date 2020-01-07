@@ -19,8 +19,8 @@ headache. It intends to be considerably more performant than OpenVPN. WireGuard
 is designed as a general purpose VPN for running on embedded interfaces and
 super computers alike, fit for many different circumstances. It runs over UDP.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

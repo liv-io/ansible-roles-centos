@@ -17,8 +17,8 @@ service monitoring system. It collects metrics from configured targets at given
 intervals, evaluates rule expressions, displays the results, and can trigger
 alerts if some condition is observed to be true.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

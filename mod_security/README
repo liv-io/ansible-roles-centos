@@ -16,8 +16,8 @@ ModSecurity is an open source intrusion detection and prevention engine for web
 applications. It operates embedded into the web server, acting as a powerful
 umbrella - shielding web applications from attacks.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

@@ -15,8 +15,8 @@ DESCRIPTION
 Utility that allows users to manage packages on their systems. It supports RPMs,
 modules and comps groups & environments.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

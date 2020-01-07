@@ -17,8 +17,8 @@ interface, fairly direct manipulation of partition table structures, recovery
 tools to help you deal with corrupt partition tables, and the ability to convert
 MBR disks to GPT format.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

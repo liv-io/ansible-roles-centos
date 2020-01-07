@@ -15,8 +15,8 @@ DESCRIPTION
 The mod_ssl module provides strong cryptography for the Apache Web server via
 the Secure Sockets Layer (SSL) and Transport Layer Security (TLS) protocols.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

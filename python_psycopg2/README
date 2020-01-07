@@ -16,8 +16,8 @@ Psycopg is the most popular PostgreSQL adapter for the Python programming
 language. At its core it fully implements the Python DB API 2.0 specifications.
 Several extensions allow access to many of the features offered by PostgreSQL.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

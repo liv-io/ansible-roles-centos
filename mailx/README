@@ -16,8 +16,8 @@ Mailx is an enhanced mail command, which provides the functionality of the
 POSIX mailx command, as well as SysV mail and Berkeley Mail (from which it is
 derived).
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

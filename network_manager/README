@@ -17,8 +17,8 @@ connections based on user or automatic configuration. It supports Ethernet,
 Bridge, Bond, VLAN, Team, InfiniBand, Wi-Fi, mobile broadband (WWAN), PPPoE and
 other devices, and supports a variety of different VPN services.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE

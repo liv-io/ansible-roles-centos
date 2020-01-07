@@ -20,8 +20,8 @@ restoring of the system state, maintains mount and automount points and
 implements an elaborate transactional dependency-based service control logic. It
 can work as a drop-in replacement for sysvinit.
 
-For more detailed information on the usage and available configuration options
-please consult the following sections.
+For more information on the usage and available configuration options,
+consult the following sections.
 
 --------------------------------------------------------------------------------
 USAGE
