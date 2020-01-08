@@ -28,19 +28,19 @@ installonly_limit=5
 bugtracker_url=http://bugs.centos.org/set_project.php?project_id=23&ref=http://bugs.centos.org/bug_report_page.php?category=yum
 distroverpkg=centos-release
 
-{% if (yum_exclude|default([])) %}
+{% if not ((yum_exclude|default([])) == []) %}
 exclude={% for item in yum_exclude %}{{item}}{% if not loop.last %} {% endif %}{% endfor %}
 {% endif %}
-{% if (yum_include|default([])) %}
+{% if not ((yum_include|default([])) == []) %}
 includepkgs={% for item in yum_include %}{{item}}{% if not loop.last %} {% endif %}{% endfor %}
 {% endif %}
-{% if (yum_proxy|default('')) %}
+{% if not ((yum_proxy|default('')) == '') %}
 proxy={{yum_proxy}}
 {% endif %}
-{% if (yum_proxy_username|default('')) %}
+{% if not ((yum_proxy_username|default('')) == '') %}
 proxy_username={{yum_proxy_username}}
 {% endif %}
-{% if (yum_proxy_password|default('')) %}
+{% if not ((yum_proxy_password|default('')) == '') %}
 proxy_password={{yum_proxy_password}}
 {% endif %}
 
