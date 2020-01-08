@@ -21,18 +21,18 @@ installonly_limit=3
 clean_requirements_on_remove=True
 best=True
 
-{% if (dnf_exclude|default([])) %}
+{% if not ((dnf_exclude|default([])) == []) %}
 exclude={% for item in dnf_exclude %}{{item}}{% if not loop.last %} {% endif %}{% endfor %}
 {% endif %}
-{% if (dnf_include|default([])) %}
+{% if not ((dnf_include|default([])) == []) %}
 includepkgs={% for item in dnf_include %}{{item}}{% if not loop.last %} {% endif %}{% endfor %}
 {% endif %}
-{% if (dnf_proxy|default('')) %}
+{% if not ((dnf_proxy|default('')) == '') %}
 proxy={{dnf_proxy}}
 {% endif %}
-{% if (dnf_proxy_username|default('')) %}
+{% if not ((dnf_proxy_username|default('')) == '') %}
 proxy_username={{dnf_proxy_username}}
 {% endif %}
-{% if (dnf_proxy_password|default('')) %}
+{% if not ((dnf_proxy_password|default('')) == '') %}
 proxy_password={{dnf_proxy_password}}
 {% endif %}
