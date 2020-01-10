@@ -41,7 +41,7 @@ file_owner_credentials_cnf: 'root'
 file_group_credentials_cnf: 'root'
 
 # my.cnf
-file_src_my_cnf: 'templates/main/my.cnf.j2'
+file_src_my_cnf: "templates/{{ansible_distribution_major_version}}/my.cnf.j2"
 file_dst_my_cnf: '/etc/my.cnf'
 file_mode_my_cnf: '0644'
 file_owner_my_cnf: 'root'
@@ -59,6 +59,13 @@ file_mode_mariadb_run_backup_sh: '0700'
 file_owner_mariadb_run_backup_sh: 'root'
 file_group_mariadb_run_backup_sh: 'root'
 
+# mariadb-server.cnf
+file_src_mariadb_server_cnf: "templates/{{ansible_distribution_major_version}}/mariadb-server.cnf.j2"
+file_dst_mariadb_server_cnf: '/etc/my.cnf.d/mariadb-server.cnf'
+file_mode_mariadb_server_cnf: '0644'
+file_owner_mariadb_server_cnf: 'root'
+file_group_mariadb_server_cnf: 'root'
+
 # mysql-clients.cnf
 file_src_mysql_clients_cnf: 'templates/main/mysql-clients.cnf.j2'
 file_dst_mysql_clients_cnf: '/etc/my.cnf.d/mysql-clients.cnf'
@@ -67,7 +74,7 @@ file_owner_mysql_clients_cnf: 'root'
 file_group_mysql_clients_cnf: 'root'
 
 # server.cnf
-file_src_server_cnf: 'templates/main/server.cnf.j2'
+file_src_server_cnf: "templates/{{ansible_distribution_major_version}}/server.cnf.j2"
 file_dst_server_cnf: '/etc/my.cnf.d/server.cnf'
 file_mode_server_cnf: '0644'
 file_owner_server_cnf: 'root'
@@ -90,6 +97,9 @@ cron_job_mariadb_run_backup: "{{file_dst_mariadb_run_backup_sh}}"
 
 # flush-privileges
 command_cmd_flush_privileges: "mysql --defaults-file='/{{common_script_dir}}/mariadb/credentials.cnf' -ne 'FLUSH PRIVILEGES'"
+
+# mariadb-root-password
+command_cmd_mariadb_root_password: "mysql --password='' -ne \"ALTER USER 'root'@'localhost' IDENTIFIED BY '{{mariadb_root_password}}'\""
 
 # remove-anonymous-users
 command_cmd_remove_anonymous_users: "mysql --defaults-file='/{{common_script_dir}}/mariadb/credentials.cnf' -ne \"DELETE FROM mysql.user WHERE User=''\""

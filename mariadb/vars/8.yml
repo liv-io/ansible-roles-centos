@@ -1,0 +1,8 @@
+---
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# mariadb-root-password
+command_cmd_mariadb_root_password: "mysql --password='' -ne \"ALTER USER 'root'@'localhost' IDENTIFIED BY '{{mariadb_root_password}}'\""

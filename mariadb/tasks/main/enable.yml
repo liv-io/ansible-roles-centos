@@ -55,6 +55,19 @@
     - enable
     - mariadb
 
+- name: 'file create mariadb-server.cnf'
+  template:
+    src: "{{file_src_mariadb_server_cnf}}"
+    dest: "{{file_dst_mariadb_server_cnf}}"
+    mode: "{{file_mode_mariadb_server_cnf}}"
+    owner: "{{file_owner_mariadb_server_cnf}}"
+    group: "{{file_group_mariadb_server_cnf}}"
+  notify: 'service restart mariadb'
+  when: (ansible_distribution_major_version is match('8'))
+  tags:
+    - enable
+    - mariadb
+
 - name: 'file create server.cnf'
   template:
     src: "{{file_src_server_cnf}}"
@@ -63,6 +76,7 @@
     owner: "{{file_owner_server_cnf}}"
     group: "{{file_group_server_cnf}}"
   notify: 'service restart mariadb'
+  when: (ansible_distribution_major_version is match('7'))
   tags:
     - enable
     - mariadb
@@ -101,17 +115,13 @@
 # COMMANDS
 #-------------------------------------------------------------------------------
 
+# NOTE: Revert to 'mysql_user' module once both MariaDB 5.x and 10.x (or higher)
+#        are properly supported
 - name: 'command set mariadb-root-password'
-  mysql_user:
-    state: 'present'
-    user: 'root'
-    password: "{{mariadb_root_password}}"
-    host: 'localhost'
-    login_host: 'localhost'
-    config_file: "{{file_dst_credentials_cnf}}"
-    check_implicit_admin: 'yes'
-  no_log: 'true'
+  command: "{{command_cmd_mariadb_root_password}}"
+  check_mode: 'no'
   notify: 'command flush privileges'
+  when: (register_package_install_mariadb_server is changed)
   tags:
     - enable
     - mariadb

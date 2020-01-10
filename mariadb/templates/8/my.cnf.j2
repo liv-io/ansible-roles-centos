@@ -1,0 +1,28 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : my.cnf
+# Type   : MariaDB configuration file
+# Role   : mariadb
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+

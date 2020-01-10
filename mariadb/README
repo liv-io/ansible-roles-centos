@@ -372,11 +372,13 @@ PACKAGES
     Version: >= 5.5
     Name   :
       CentOS 7: 'mariadb'
+      CentOS 8: 'mariadb'
 
   mariadb-server
     Version: >= 5.5
     Name   :
       CentOS 7: 'mariadb-server'
+      CentOS 8: 'mariadb-server'
 
 ROLES
   common
@@ -384,6 +386,8 @@ ROLES
   mailx
 
   python_mysql
+
+  python_pymysql
 
 PARAMETERS
 
@@ -427,7 +431,11 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Stable
+      Status: Development
+
+  CentOS
+    Version: 8
+      Status: Development
 
 --------------------------------------------------------------------------------
 OTHER

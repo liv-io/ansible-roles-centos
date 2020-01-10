@@ -97,10 +97,20 @@
     - remove
     - mariadb
 
+- name: 'file remove mariadb-server.cnf'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mariadb_server_cnf}}"
+  when: (ansible_distribution_major_version is match('8'))
+  tags:
+    - remove
+    - mariadb
+
 - name: 'file remove server.cnf'
   file:
     state: 'absent'
     path: "{{file_dst_server_cnf}}"
+  when: (ansible_distribution_major_version is match('7'))
   tags:
     - remove
     - mariadb

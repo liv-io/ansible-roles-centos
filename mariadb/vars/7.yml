@@ -1,0 +1,8 @@
+---
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# mariadb-root-password
+command_cmd_mariadb_root_password: "mysql --password='' -ne \"SET PASSWORD FOR 'root'@'localhost' = PASSWORD('{{mariadb_root_password}}')\""

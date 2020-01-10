@@ -31,6 +31,7 @@
   package:
     state: 'present'
     name: "{{package_name_mariadb_server}}"
+  register: register_package_install_mariadb_server
   tags:
     - install
     - mariadb
