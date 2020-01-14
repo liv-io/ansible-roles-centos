@@ -44,7 +44,7 @@ file_group_vhosts_d: 'root'
 command_cmd_check_nginx: 'nginx -t'
 
 # generate dhparam
-command_cmd_generate_dhparam: "openssl dhparam -dsaparam 4096 -out {{file_dst_dhparam_pem}}"
+command_cmd_generate_dhparam: "openssl dhparam -dsaparam -out {{file_dst_dhparam_pem}} 4096"
 
 #-------------------------------------------------------------------------------
 # SYSTEM

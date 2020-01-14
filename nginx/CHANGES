@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.2.1 (2020-01-14)
+B: Update OpenSSL command to generate dhparam on CentOS 8
+
 * Version 2.2.0 (2019-10-13)
 F: Add support for CentOS 8
 
