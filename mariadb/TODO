@@ -20,14 +20,14 @@ BUGS
 IMPROVEMENTS
 --------------------------------------------------------------------------------
 
- - Revert to 'mysql_user' module once both MariaDB 5.x and 10.x (or higher)
-   are properly supported
+- Revert to 'mysql_user' module once both MariaDB 5.x and 10.x (or higher)
+  are properly supported
 
 --------------------------------------------------------------------------------
 FEATURES
 --------------------------------------------------------------------------------
 
- - Add function to change MariaDB root password
+- Add function to change MariaDB root password
 
 --------------------------------------------------------------------------------
 OTHER

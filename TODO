@@ -16,7 +16,7 @@ BUGS
 IMPROVEMENTS
 --------------------------------------------------------------------------------
 
- - Rethink, redesign or rectify 'dependencies' parameter
+- Rethink, redesign or rectify 'dependencies' parameter
 
 --------------------------------------------------------------------------------
 FEATURES
@@ -26,7 +26,7 @@ FEATURES
 ROLES
 --------------------------------------------------------------------------------
 
- - ca_trust
- - logrotate
- - networking
- - rsyslog
+- ca_trust
+- logrotate
+- networking
+- rsyslog
