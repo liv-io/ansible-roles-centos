@@ -49,6 +49,9 @@ PostDown = {{down}}
 
 {% if not ((item.peers|default([])) == []) %}
 {% for peer in item.peers %}
+{% if not ((peer.comment|default('')) == '') %}
+# {{peer.comment}}
+{% endif %}
 [Peer]
 PublicKey = {{peer.public_key}}
 {% if not ((peer.preshared_key|default([])) == []) %}
@@ -60,5 +63,8 @@ AllowedIPs = {{allowed_ip}}
 {% endfor %}
 {% endif %}
 PersistentKeepalive = {{(peer.keep_alive|default('25'))}}
+{% if not loop.last %}
+
+{% endif %}
 {% endfor %}
 {% endif %}
