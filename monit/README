@@ -485,6 +485,7 @@ PACKAGES
     Version: >= 5.2
     Name   :
       CentOS 7: 'monit'
+      CentOS 8: 'monit'
 
 ROLES
 
@@ -531,7 +532,7 @@ OPERATING SYSTEMS
 
   CentOS
     Version: 8
-      Status: Planned
+      Status: Stable
 
 --------------------------------------------------------------------------------
 OTHER
