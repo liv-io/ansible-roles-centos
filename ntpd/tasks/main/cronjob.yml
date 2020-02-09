@@ -59,7 +59,7 @@
     state: 'absent'
     name: "{{cron_name_ntpd_check_time}}"
     cron_file: "{{cron_cron_file_ntpd_check_time}}"
-    user: "{{cron_user_ntpd_update_time}}"
+    user: "{{cron_user_ntpd_check_time}}"
   tags:
     - cronjob
     - ntpd
