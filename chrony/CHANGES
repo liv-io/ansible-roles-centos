@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2020-02-09)
+E: Remove needless Shell command 'tr'
+
 * Version 0.2.0 (2020-02-09)
 F: Add support for CentOS 7
 
