@@ -256,6 +256,8 @@ CONFLICTS
 --------------------------------------------------------------------------------
 
 ROLES
+  ntpd
+
   openntpd
 
 --------------------------------------------------------------------------------
@@ -266,6 +268,7 @@ PACKAGES
   chrony
     Version: >= 3.0
     Name   :
+      CentOS 7: 'chrony'
       CentOS 8: 'chrony'
 
 ROLES
@@ -312,7 +315,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Unsupported
+      Status: Testing
 
   CentOS
     Version: 8
