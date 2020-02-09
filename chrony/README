@@ -214,6 +214,17 @@ ROLE
     Options    :
       Examples: '/data/node_exporter/textfile_collector'
 
+  chrony_pool
+    Description: Define the 'chrony_pool' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{address: 'pool.domain.tld', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}]
+      None    : []
+
   chrony_server
     Description: Define the 'chrony_server' option.
     Implemented: 0.1
@@ -245,7 +256,7 @@ CONFLICTS
 --------------------------------------------------------------------------------
 
 ROLES
-  openchrony
+  openntpd
 
 --------------------------------------------------------------------------------
 DEPENDENCIES

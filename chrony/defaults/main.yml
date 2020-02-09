@@ -23,9 +23,9 @@ chrony_monitor_prom_state: 'false'
 
 chrony_monitor_prom_textfile_collector: "/{{common_data_dir}}/node_exporter/textfile_collector"
 
+chrony_pool: []
+
 chrony_server:
   - {address: "ntp.{{ansible_domain}}", options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Default NTP server'}
-
-chrony_pool: []
 
 chrony_update_time_interval: 10
