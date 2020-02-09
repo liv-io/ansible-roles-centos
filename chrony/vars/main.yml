@@ -1,0 +1,63 @@
+---
+
+# chronyd
+chronyd: 'chronyd -q'
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# chrony
+package_name_chrony: 'chrony'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# chrony.conf
+file_src_chrony_conf: 'templates/main/chrony.conf.j2'
+file_dst_chrony_conf: '/etc/chrony.conf'
+file_mode_chrony_conf: '0644'
+file_owner_chrony_conf: 'root'
+file_group_chrony_conf: 'root'
+
+# chrony_script.dir
+file_dst_chrony_script_dir: "/{{common_script_dir}}/chrony"
+file_mode_chrony_script_dir: '0755'
+file_owner_chrony_script_dir: 'root'
+file_group_chrony_script_dir: 'root'
+
+# chrony_check-time.sh
+file_src_chrony_check_time_sh: 'templates/main/chrony_check-time.sh.j2'
+file_dst_chrony_check_time_sh: "{{file_dst_chrony_script_dir}}/chrony_check-time.sh"
+file_mode_chrony_check_time_sh: '0754'
+file_owner_chrony_check_time_sh: 'root'
+file_group_chrony_check_time_sh: 'root'
+
+# chrony_check-time
+cron_name_chrony_check_time: "chrony: Check Time"
+cron_cron_file_chrony_check_time: "chrony_check-time"
+cron_minute_chrony_check_time: "*/{% if ((chrony_check_time_interval|int(10)) > 59) %}59{% elif ((chrony_check_time_interval|int(10)) < 5) %}5{% else %}{{(chrony_check_time_interval|int(10))}}{% endif %}"
+cron_user_chrony_check_time: "{{file_owner_chrony_check_time_sh}}"
+cron_job_chrony_check_time: "{{file_dst_chrony_check_time_sh}}"
+
+# chrony_update-time.sh
+file_src_chrony_update_time_sh: 'templates/main/chrony_update-time.sh.j2'
+file_dst_chrony_update_time_sh: "{{file_dst_chrony_script_dir}}/chrony_update-time.sh"
+file_mode_chrony_update_time_sh: '0754'
+file_owner_chrony_update_time_sh: 'root'
+file_group_chrony_update_time_sh: 'root'
+
+# chrony_update-time
+cron_name_chrony_update_time: "chrony: Update Time"
+cron_cron_file_chrony_update_time: "chrony_update-time"
+cron_minute_chrony_update_time: "*/{% if ((chrony_update_time_interval|int(10)) > 59) %}59{% elif ((chrony_update_time_interval|int(10)) < 1) %}1{% else %}{{(chrony_update_time_interval|int(10))}}{% endif %}"
+cron_user_chrony_update_time: "{{file_owner_chrony_update_time_sh}}"
+cron_job_chrony_update_time: "{{file_dst_chrony_update_time_sh}}"
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# chronyd
+service_name_chronyd: 'chronyd'

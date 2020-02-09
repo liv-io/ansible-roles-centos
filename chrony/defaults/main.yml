@@ -1,0 +1,31 @@
+---
+
+chrony_state: 'enable'
+
+chrony_access:
+  - {action: 'deny', source: 'all', comment: 'Deny from all'}
+
+chrony_bind_address: []
+
+chrony_check_time_interval: 10
+
+chrony_check_time_offset_limit: 1000
+
+chrony_check_time_state: 'enable'
+
+chrony_monitor_mail_from_address: "root@{{ansible_domain}}"
+
+chrony_monitor_mail_to_address: ["admin@{{ansible_domain}}"]
+
+chrony_monitor_mail_state: 'false'
+
+chrony_monitor_prom_state: 'false'
+
+chrony_monitor_prom_textfile_collector: "/{{common_data_dir}}/node_exporter/textfile_collector"
+
+chrony_server:
+  - {address: "ntp.{{ansible_domain}}", options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Default NTP server'}
+
+chrony_pool: []
+
+chrony_update_time_interval: 10

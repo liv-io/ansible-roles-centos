@@ -1,0 +1,312 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : chrony
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+chrony is a versatile implementation of the Network Time Protocol (NTP). It can
+synchronise the system clock with NTP servers, reference clocks (e.g. GPS
+receiver), and manual input using wristwatch and keyboard. It can also operate
+as an NTPv4 (RFC 5905) server and peer to provide a time service to other
+computers in the network.
+
+For more information on the usage and available configuration options,
+consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: chrony
+    vars:
+      chrony_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: chrony
+    vars:
+      chrony_state: 'enable'
+      chrony_server:
+        - {address: "{{ansible_default_ipv4.gateway}}", options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Default IPv4 gateway'}
+      chrony_check_time_interval: 10
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: chrony
+    vars:
+      chrony_state: 'disable'
+      chrony_server:
+        - {address: "{{ansible_default_ipv4.gateway}}", options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Default IPv4 gateway'}
+      chrony_check_time_interval: 10
+
+CRONJOB
+  - hosts: all
+    roles:
+      - role: chrony
+    vars:
+      chrony_state: 'cronjob'
+      chrony_server:
+        - {address: '162.23.41.55', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
+        - {address: '162.23.41.56', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
+        - {address: '162.23.41.10', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
+        - {address: '192.33.96.101', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'}
+        - {address: '192.33.96.102', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'}
+      chrony_update_time_interval: 15
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: chrony
+    vars:
+      chrony_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: chrony
+    vars:
+      chrony_state: 'inactive'
+
+--------------------------------------------------------------------------------
+PARAMETERS
+--------------------------------------------------------------------------------
+
+ROLE
+  chrony_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Cronjob : 'cron' | 'cronjob'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  chrony_access
+    Description: Define the 'chrony_access' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{action: 'deny', source: 'all', comment: 'Deny from all'}]
+    Options    :
+      Examples: [{action: 'allow', source: '10.0.0.0/24', comment: '10.0.0.0/24'},
+                 {action: 'allow', source: '10.0.1.0/24', comment: '10.0.1.0/24'},
+                 {action: 'allow', source: '127.0.0.1', comment: 'IPv4 localhost'},
+                 {action: 'allow', source: '::1', comment: 'IPv6 localhost'}] |
+                [{action: 'allow', source: '2001:0db8:85a3:08d3:1319:8a2e:0370:7347', comment: 'IPv6 host'},
+                 {action: 'allow', source: '2001:0ec9:96b4:19e4:2421:9b3f:1480:8458', comment: 'IPv6 host'},
+                 {action: 'allow', source: '127.0.0.1', comment: 'IPv4 localhost'},
+                 {action: 'allow', source: '-6 ::1', comment: 'IPv6 localhost'}]
+
+  chrony_bind_address
+    Description: Define the 'chrony_bind_address' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : []
+    Options    :
+      Examples: ['0.0.0.0'] | ['127.0.0.1', '::1'] |
+                ['192.168.1.1', '2001:0ec9:96b4:19e4:2421:9b3f:1480:8458']
+      None    : []
+
+  chrony_check_time_interval
+    Description: Set the 'chrony_check_time_interval' option.
+                 Specify a value between 5-59.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary (5-59)
+    Type       : Integer
+    Default    : 10
+    Options    :
+      Examples: 5 | 11 | 15 | 20 | 23
+
+  chrony_check_time_offset_limit
+    Description: Set the 'chrony_check_time_offset_limit' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer
+    Default    : 1000
+    Options    :
+      Examples: 200 | 500 | 1000 | 1500
+
+  chrony_check_time_state
+    Description: Control the 'chrony_check_time_state' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  chrony_monitor_mail_from_address
+    Description: Define the 'chrony_monitor_mail_from_address' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "root@{{ansible_domain}}"
+    Options    :
+      Examples: 'root@domain.tld' | 'admin@domain.tld' | 'user@domain.tld'
+
+  chrony_monitor_mail_to_address
+    Description: Define the 'chrony_monitor_mail_to_address' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : ["admin@{{ansible_domain}}"]
+    Options    :
+      Examples: ['root@domain.tld'] | ['root@domain.tld', 'admin@domain.tld']
+                ['root@domain.tld', 'admin@domain.tld', 'user@domain.tld']
+
+  chrony_monitor_mail_state
+    Description: Control the 'chrony_monitor_mail_state' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  chrony_monitor_prom_state
+    Description: Control the 'chrony_monitor_prom_state' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  chrony_monitor_prom_textfile_collector
+    Description: Define the 'chrony_monitor_prom_textfile_collector' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "/{{common_data_dir}}/node_exporter/textfile_collector"
+    Options    :
+      Examples: '/data/node_exporter/textfile_collector'
+
+  chrony_server
+    Description: Define the 'chrony_server' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{address: "chrony.{{ansible_domain}}", options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Default NTP server'}]
+    Options    :
+      Examples: [{address: '162.23.41.55', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
+                 {address: '162.23.41.56', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
+                 {address: '162.23.41.10', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
+                 {address: '192.33.96.101', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'},
+                 {address: '192.33.96.102', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'}]
+      None    : []
+
+  chrony_update_time_interval
+    Description: Set the 'chrony_update_time_interval' option.
+                 Specify a value between 1-59.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary (1-59)
+    Type       : Integer
+    Default    : 10
+    Options    :
+      Examples: 5 | 11 | 15 | 20 | 23
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+  openchrony
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  chrony
+    Version: >= 3.0
+    Name   :
+      CentOS 8: 'chrony'
+
+ROLES
+  common
+
+  mailx
+
+PARAMETERS
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.8
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Unsupported
+
+  CentOS
+    Version: 8
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

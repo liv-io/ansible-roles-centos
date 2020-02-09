@@ -1,0 +1,5 @@
+---
+
+dependencies:
+  - {role: common, when: (chrony_state is match('cron|cronjob'))}
+  - {role: mailx, when: (chrony_monitor_mail_state is match('true|yes|enable'))}
