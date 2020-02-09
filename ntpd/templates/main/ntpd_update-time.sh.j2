@@ -210,7 +210,8 @@ create_lockfile
 
 # Update the system time by polling NTP servers
 for ntpd_server in ${ntpd_servers} ; do
-  if [ "$(${ntpd} ${ntpd_server} > /dev/null 2>&1)" -eq 0 ]; then
+  ${ntpd} ${ntpd_server} > /dev/null 2>&1
+  if [ "$?" -eq 0 ]; then
     ntpd_status=0
     break;
   else

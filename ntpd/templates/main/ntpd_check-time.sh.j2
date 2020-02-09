@@ -44,7 +44,6 @@ ntpstat=$(${which} ntpstat) || { echo "Error: Command 'ntpstat' not found."; exi
 rm=$(${which} rm) || { echo "Error: Command 'rm' not found."; exit 127; }
 sed=$(${which} sed) || { echo "Error: Command 'sed' not found."; exit 127; }
 sleep=$(${which} sleep) || { echo "Error: Command 'sleep' not found."; exit 127; }
-tr=$(${which} tr) || { echo "Error: Command 'tr' not found."; exit 127; }
 touch=$(${which} touch) || { echo "Error: Command 'touch' not found."; exit 127; }
 whoami=$(${which} whoami) || { echo "Error: Command 'whoami' not found."; exit 127; }
 
@@ -246,7 +245,7 @@ offset_raw=$(${ntpq} -c rv | ${sed} -n 's@.*offset=\([-0-9.]*\).*@\1@p')
 log_and_exit_on_error "$?" 'Error' 'Unable to get system time offset.'
 
 # Convert system time offset
-offset=$(${echo} "${offset_raw}" | ${sed} -n 's@[.].*@@p' | ${tr} -d '-')
+offset=$(${echo} "${offset_raw}" | ${sed} -n 's@[.].*@@p' | ${sed} 's@[+-]@@g')
 log_and_exit_on_error "$?" 'Error' 'Unable to convert system time offset.'
 
 # Check system time offset

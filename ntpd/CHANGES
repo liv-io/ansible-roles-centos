@@ -14,6 +14,11 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.2.3 (2020-02-09)
+E: Minor script improvement
+B: Fix Jinja2 statement
+B: Fix Bash statement
+
 * Version 2.2.2 (2020-02-09)
 B: Correct cron user parameter
 
