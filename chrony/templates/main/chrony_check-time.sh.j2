@@ -31,6 +31,7 @@ PATH='/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin'
 which='/usr/bin/which' && [ -x ${which} ] || { echo "Error: Command 'which' not found."; exit 127; }
 awk=$(${which} awk) || { echo "Error: Command 'awk' not found."; exit 127; }
 basename=$(${which} basename) || { echo "Error: Command 'basename' not found."; exit 127; }
+bc=$(${which} bc) || { echo "Error: Command 'bc' not found."; exit 127; }
 date=$(${which} date) || { echo "Error: Command 'date' not found."; exit 127; }
 chronyc=$(${which} chronyc) || { echo "Error: Command 'chronyc' not found."; exit 127; }
 echo=$(${which} echo) || { echo "Error: Command 'echo' not found."; exit 127; }
@@ -251,8 +252,8 @@ log_and_exit_on_error "$?" 'Error' 'Unable to convert system time offset.'
 # Check system time offset
 if [ -z "${offset}" ] ; then
   log_and_exit_on_error '1' 'Error' 'System time is not synchronized with any peer.'
-elif [ "${offset}" -ge "${offset_limit}" ]; then
-  log_and_exit_on_error '1' 'Error' "System time offset limit exceeded (${offset} ms / ${offset_limit} ms)."
+elif [ $(${echo} "${offset} >= ${offset_limit}" | ${bc} -l) -ne 0 ]; then
+  log_and_exit_on_error '1' 'Error' "System time offset limit exceeded (${offset} s / ${offset_limit} s)."
 fi
 
 remove_lockfile
