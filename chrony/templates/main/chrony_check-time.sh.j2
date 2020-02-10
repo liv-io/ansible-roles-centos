@@ -242,11 +242,11 @@ time_initial=0
 watch_and_wait_for_change "${chronyc} tracking" 'Not synchronised' '' '2' '32'
 
 # Get system time offset
-offset_raw=$(${chronyc} tracking | ${grep} 'Last offset' | ${awk} -F': ' '{print $2}' | ${awk} -F' ' '{print $1}' | ${sed} 's@[+-]@@g')
+offset_raw=$(${chronyc} tracking | ${grep} 'Last offset' | ${awk} -F': ' '{print $2}' | ${awk} -F' ' '{print $1}' | ${sed} 's@\.@@g' | ${cut} -c1-5)
 log_and_exit_on_error "$?" 'Error' 'Unable to get system time offset.'
 
 # Convert system time offset
-offset=$(${echo} "${offset_raw}" | ${sed} 's@\.@@g' | ${cut} -c1-4)
+offset=$(${echo} "${offset_raw}" | ${sed} 's@[+-]@@g')
 log_and_exit_on_error "$?" 'Error' 'Unable to convert system time offset.'
 
 # Check system time offset
