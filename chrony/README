@@ -146,9 +146,9 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Integer
-    Default    : 1000
+    Default    : 1
     Options    :
-      Examples: 200 | 500 | 1000 | 1500
+      Examples: 0.2 | 0.5 | 1 | 1.5
 
   chrony_check_time_state
     Description: Control the 'chrony_check_time_state' option.

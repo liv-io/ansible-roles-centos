@@ -33,7 +33,6 @@ awk=$(${which} awk) || { echo "Error: Command 'awk' not found."; exit 127; }
 basename=$(${which} basename) || { echo "Error: Command 'basename' not found."; exit 127; }
 date=$(${which} date) || { echo "Error: Command 'date' not found."; exit 127; }
 chronyc=$(${which} chronyc) || { echo "Error: Command 'chronyc' not found."; exit 127; }
-cut=$(${which} cut) || { echo "Error: Command 'cut' not found."; exit 127; }
 echo=$(${which} echo) || { echo "Error: Command 'echo' not found."; exit 127; }
 expr=$(${which} expr) || { echo "Error: Command 'expr' not found."; exit 127; }
 grep=$(${which} grep) || { echo "Error: Command 'grep' not found."; exit 127; }
@@ -136,7 +135,7 @@ update_prom() {
     if [ -z "${offset_raw}" ] ; then
       ${rm} -f "${textfile_collector}/chrony_check_time_offset.prom"
     else
-      ${echo} -e "# HELP chrony_check_time_offset The system time offset in milliseconds.\n"\
+      ${echo} -e "# HELP chrony_check_time_offset The system time offset in seconds.\n"\
 "# TYPE chrony_check_time_offset counter\n"\
 "chrony_check_time_offset{limit=\"${offset_limit}\"} ${offset_raw}" > "${textfile_collector}/chrony_check_time_offset.prom"
     fi
@@ -242,11 +241,11 @@ time_initial=0
 watch_and_wait_for_change "${chronyc} tracking" 'Not synchronised' '' '2' '32'
 
 # Get system time offset
-offset_raw=$(${chronyc} tracking | ${grep} 'Last offset' | ${awk} -F': ' '{print $2}' | ${awk} -F' ' '{print $1}' | ${sed} 's@\.@@g' | ${cut} -c1-5)
+offset_raw=$(${chronyc} tracking | ${grep} 'Last offset' | ${awk} -F': ' '{print $2}' | ${awk} -F' ' '{print $1}' | ${sed} 's@[+]@@g')
 log_and_exit_on_error "$?" 'Error' 'Unable to get system time offset.'
 
 # Convert system time offset
-offset=$(${echo} "${offset_raw}" | ${sed} 's@[+-]@@g')
+offset=$(${echo} "${offset_raw}" | ${sed} 's@[-]@@g')
 log_and_exit_on_error "$?" 'Error' 'Unable to convert system time offset.'
 
 # Check system time offset

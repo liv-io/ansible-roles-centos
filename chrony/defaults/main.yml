@@ -9,7 +9,7 @@ chrony_bind_address: []
 
 chrony_check_time_interval: 10
 
-chrony_check_time_offset_limit: 1000
+chrony_check_time_offset_limit: 1
 
 chrony_check_time_state: 'enable'
 
