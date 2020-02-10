@@ -272,6 +272,8 @@ PACKAGES
       CentOS 8: 'chrony'
 
 ROLES
+  bc
+
   common
 
   mailx
