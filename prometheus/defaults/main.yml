@@ -4,7 +4,7 @@ prometheus_state: 'enable'
 
 prometheus_checksum_algorithm: 'sha256'
 
-prometheus_checksum: '579f800ec3ec2dc9a36d2d513e7800552cf6b0898f87a8abafd54e73b53f8ad0'
+prometheus_checksum: 'c04e631d18e186b66a51cac3062157298e037ffae784f35ccaaf29e496d65d3f'
 
 prometheus_global_evaluation_interval: '30s'
 
@@ -24,4 +24,4 @@ prometheus_scrape_configs: |
 
 prometheus_storage_tsdb_retention_time: '365d'
 
-prometheus_version: '2.15.2'
+prometheus_version: '2.16.0'
