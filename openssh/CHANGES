@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.3.2 (2020-02-24)
+E: Use Ansible module copy instead of template for static moduli file
+
 * Version 1.3.1 (2019-10-22)
 B: Disable PrintMotd on CentOS 8 by default
 
