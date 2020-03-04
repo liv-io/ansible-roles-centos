@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.3.0 (2020-03-04)
+F: Add support for CAA record type
+
 * Version 1.2.0 (2019-11-27)
 F: Add support for CentOS 8
 
