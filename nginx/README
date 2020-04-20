@@ -207,9 +207,11 @@ CONFIG
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : 'AES256+EECDH:AES256+EDH'
+    Default    :
+      CentOS 7: 'AES256+EECDH'
+      CentOS 8: 'TLS13-AES-256-GCM-SHA384:AES256+EECDH'
     Options    :
-      Examples: 'AES256+EECDH:AES256+EDH'
+      Examples: 'TLS13-AES-256-GCM-SHA384'
 
   ssl_client_certificate
     Description: Define the 'ssl_client_certificate' option.
@@ -249,9 +251,11 @@ CONFIG
     Required   : False
     Value      : Arbitrary
     Type       : Array
-    Default    : ['TLSv1.2']
+    Default    :
+      CentOS 7: ['TLSv1.2']
+      CentOS 8: ['TLSv1.2', 'TLSv1.3']
     Options    :
-      Examples: ['TLSv1', 'TLSv1.1', 'TLSv1.2']
+      Examples: ['TLSv1.3']
 
   ssl_state
     Description: Control the 'ssl_state' option.

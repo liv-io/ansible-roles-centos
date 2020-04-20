@@ -73,8 +73,10 @@ server {
   # SSL/TLS protocol versions
 {% if not ((item.ssl_protocols|default([])) == []) %}
   ssl_protocols {% for ssl_protocols in item.ssl_protocols %}{{ssl_protocols}}{% if not loop.last %} {% endif %}{% endfor %};
-{% else %}
+{% elif (ansible_distribution_major_version is match('7')) %}
   ssl_protocols TLSv1.2;
+{% else %}
+  ssl_protocols TLSv1.2 TLSv1.3;
 {% endif %}
   # Prefer the server ciphers over client ciphers
 {% if ((item.ssl_prefer_server_ciphers|default('true')) is match('false|no|disable')) %}
@@ -85,8 +87,10 @@ server {
   # Cipher suite available for negotiation in SSL handshake
 {% if not ((item.ssl_ciphers|default('')) == '') %}
   ssl_ciphers '{{item.ssl_ciphers}}';
+{% elif (ansible_distribution_major_version is match('7')) %}
+  ssl_ciphers 'AES256+EECDH';
 {% else %}
-  ssl_ciphers 'AES256+EECDH:AES256+EDH';
+  ssl_ciphers 'TLS13-AES-256-GCM-SHA384:AES256+EECDH';
 {% endif %}
   # ECDHE ciphers curve
 {% if not ((item.ssl_ecdh_curve|default('secp521r1')) == '') %}
