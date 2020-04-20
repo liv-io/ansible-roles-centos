@@ -279,9 +279,11 @@ CONFIG
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : 'AES256+EECDH:AES256+EDH'
+    Default    :
+      CentOS 7: 'AES256+EECDH'
+      CentOS 8: 'TLS_AES_256_GCM_SHA384:AES256+EECDH'
     Options    :
-      Examples: 'AES256+EECDH:AES256+EDH'
+      Examples: 'TLS_AES_256_GCM_SHA384'
 
   ssl_compression
     Description: Control the 'ssl_compression' option.
@@ -311,9 +313,11 @@ CONFIG
     Required   : False
     Value      : Arbitrary
     Type       : Array
-    Default    : ['-ALL', '+TLSv1.2']
+    Default    :
+      CentOS 7: ['-ALL', '+TLSv1.2']
+      CentOS 8: ['-ALL', '+TLSv1.2', '+TLSv1.3']
     Options    :
-      Examples: ['-ALL', '+TLSv1', '+TLSv1.1', '+TLSv1.2']
+      Examples: ['-ALL', '+TLSv1.3']
 
   ssl_session_tickets
     Description: Control the 'ssl_session_tickets' option.

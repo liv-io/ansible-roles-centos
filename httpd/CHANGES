@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.2.2 (2020-04-20)
+E: Enable TLS version 1.3 by default
+
 * Version 2.2.1 (2019-11-08)
 B: Fix 'config.j2' template location
 
