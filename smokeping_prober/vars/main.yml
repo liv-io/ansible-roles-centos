@@ -1,0 +1,100 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# smokeping_prober_app.dir
+file_dst_smokeping_prober_app_dir: "/{{common_app_dir}}/smokeping_prober"
+file_mode_smokeping_prober_app_dir: '0755'
+file_owner_smokeping_prober_app_dir: 'root'
+file_group_smokeping_prober_app_dir: 'root'
+
+# smokeping_prober_bin.dir
+file_dst_smokeping_prober_bin_dir: "/{{common_app_dir}}/smokeping_prober/bin"
+file_mode_smokeping_prober_bin_dir: '0755'
+file_owner_smokeping_prober_bin_dir: 'root'
+file_group_smokeping_prober_bin_dir: 'root'
+
+# smokeping_prober_data.dir
+file_dst_smokeping_prober_data_dir: "/{{common_data_dir}}/smokeping_prober"
+file_mode_smokeping_prober_data_dir: '0755'
+file_owner_smokeping_prober_data_dir: 'root'
+file_group_smokeping_prober_data_dir: 'root'
+
+# textfile_collector.dir
+file_dst_textfile_collector_dir: "/{{common_data_dir}}/smokeping_prober/textfile_collector"
+file_mode_textfile_collector_dir: '1777'
+file_owner_textfile_collector_dir: 'root'
+file_group_textfile_collector_dir: 'root'
+
+# smokeping_prober.tar.gz
+file_src_smokeping_prober_tar_gz: "https://github.com/SuperQ/smokeping_prober/releases/download/v{{smokeping_prober_version}}/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"
+file_dst_smokeping_prober_tar_gz: "/{{common_app_dir}}/smokeping_prober/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"
+file_mode_smokeping_prober_tar_gz: '0644'
+file_owner_smokeping_prober_tar_gz: 'root'
+file_group_smokeping_prober_tar_gz: 'root'
+
+# smokeping_prober
+file_src_smokeping_prober: "/{{common_app_dir}}/smokeping_prober/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"
+file_dst_smokeping_prober: '/usr/local/bin'
+file_owner_smokeping_prober: 'root'
+file_group_smokeping_prober: 'root'
+file_creates_smokeping_prober: '/usr/local/bin/smokeping_prober'
+file_exclude_smokeping_prober: ['LICENSE']
+file_extra_opts_smokeping_prober: ['--strip-components=1']
+
+# smokeping_prober.link
+file_src_smokeping_prober_link: '/usr/local/bin/smokeping_prober'
+file_dst_smokeping_prober_link: "/{{common_app_dir}}/smokeping_prober/bin/smokeping_prober"
+file_owner_smokeping_prober_link: 'root'
+file_group_smokeping_prober_link: 'root'
+
+# smokeping_prober.service
+file_src_smokeping_prober_service: 'templates/main/smokeping_prober.service.j2'
+file_dst_smokeping_prober_service: '/usr/lib/systemd/system/smokeping_prober.service'
+file_mode_smokeping_prober_service: '0644'
+file_owner_smokeping_prober_service: 'root'
+file_group_smokeping_prober_service: 'root'
+
+# smokeping_prober.sysconfig
+file_src_smokeping_prober_sysconfig: 'templates/main/smokeping_prober.sysconfig.j2'
+file_dst_smokeping_prober_sysconfig: '/etc/sysconfig/smokeping_prober'
+file_mode_smokeping_prober_sysconfig: '0644'
+file_owner_smokeping_prober_sysconfig: 'root'
+file_group_smokeping_prober_sysconfig: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check service smokeping_prober
+command_cmd_check_service_smokeping_prober: 'systemctl cat smokeping_prober.service > /dev/null 2>&1'
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# smokeping_prober
+group_name_smokeping_prober: 'smokeping_prober'
+group_system_smokeping_prober: 'yes'
+
+# smokeping_prober
+user_name_smokeping_prober: 'smokeping_prober'
+user_comment_smokeping_prober: 'Smokeping Prober'
+user_group_smokeping_prober: 'smokeping_prober'
+user_append_smokeping_prober: 'yes'
+user_home_create_smokeping_prober: 'yes'
+user_home_move_smokeping_prober: 'no'
+user_home_remove_smokeping_prober: 'yes'
+user_home_force_smokeping_prober: 'no'
+user_password_smokeping_prober: '!'
+user_password_update_smokeping_prober: 'always'
+user_shell_smokeping_prober: '/sbin/nologin'
+user_system_smokeping_prober: 'yes'
+
+# smokeping_prober
+service_name_smokeping_prober: 'smokeping_prober'

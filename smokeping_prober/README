@@ -1,0 +1,172 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : smokeping_prober
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+Prometheus style "smokeping" prober.
+
+For more information on the usage and available configuration options,
+consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: smokeping_prober
+    vars:
+      smokeping_prober_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: smokeping_prober
+    vars:
+      smokeping_prober_state: 'enable'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: smokeping_prober
+    vars:
+      smokeping_prober_state: 'disable'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: smokeping_prober
+    vars:
+      smokeping_prober_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: smokeping_prober
+    vars:
+      smokeping_prober_state: 'inactive'
+
+--------------------------------------------------------------------------------
+PARAMETERS
+--------------------------------------------------------------------------------
+
+ROLE
+  smokeping_prober_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  smokeping_prober_checksum
+    Description: Define the 'smokeping_prober_checksum' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '3ff505954e48979289732327e0f33703a6c02ee331e97fe958b52b8faf0ae6d8'
+    Options    :
+      Examples: 'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029' |
+                '2f18a32a7bb1c91307ed776cce50559bbcd66af90a61ea0a22a661ebe79e4fda'
+
+  smokeping_prober_checksum_algorithm
+    Description: Define the 'smokeping_prober_checksum_algorithm' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'sha256'
+    Options    :
+      Examples: 'sha256' | 'sha512'
+
+  smokeping_prober_version
+    Description: Define the 'smokeping_prober_version' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '0.3.0'
+    Options    :
+      Examples: '0.1.0' | '0.2.0'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  smokeping_prober
+
+ROLES
+  common
+
+PARAMETERS
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.8
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Testing
+
+  CentOS
+    Version: 8
+      Status: Testing
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

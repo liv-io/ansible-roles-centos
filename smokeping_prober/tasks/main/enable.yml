@@ -1,0 +1,45 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{item}}"
+  with_first_found:
+    - files:
+      - "vars/{{ansible_distribution_major_version}}.yml"
+      - 'vars/main.yml'
+      errors: 'ignore'
+  tags:
+    - enable
+    - smokeping_prober
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create smokeping_prober.sysconfig'
+  template:
+    src: "{{file_src_smokeping_prober_sysconfig}}"
+    dest: "{{file_dst_smokeping_prober_sysconfig}}"
+    mode: "{{file_mode_smokeping_prober_sysconfig}}"
+    owner: "{{file_owner_smokeping_prober_sysconfig}}"
+    group: "{{file_group_smokeping_prober_sysconfig}}"
+  notify: 'service restart smokeping_prober'
+  tags:
+    - enable
+    - smokeping_prober
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start smokeping_prober'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_smokeping_prober}}"
+  tags:
+    - enable
+    - smokeping_prober

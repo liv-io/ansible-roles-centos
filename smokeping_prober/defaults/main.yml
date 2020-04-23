@@ -1,0 +1,9 @@
+---
+
+smokeping_prober_state: 'enable'
+
+smokeping_prober_checksum_algorithm: 'sha256'
+
+smokeping_prober_checksum: '3ff505954e48979289732327e0f33703a6c02ee331e97fe958b52b8faf0ae6d8'
+
+smokeping_prober_version: '0.3.0'
