@@ -14,5 +14,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2020-04-23)
+F: Add option to specify hosts (smokeping_prober_hosts)
+B: Ensure 'cap_net_raw' capability is set
+B: Correct default service parameters
+
 * Version 0.1.0 (2020-04-23)
 F: Initial release

@@ -117,6 +117,7 @@
     exclude: "{{file_exclude_smokeping_prober}}"
     extra_opts: "{{file_extra_opts_smokeping_prober}}"
     remote_src: 'yes'
+  register: register_file_unarchive_smokeping_prober
   tags:
     - install
     - smokeping_prober
@@ -140,6 +141,18 @@
     owner: "{{file_owner_smokeping_prober_service}}"
     group: "{{file_group_smokeping_prober_service}}"
   notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - smokeping_prober
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+- name: 'command set capability'
+  shell: "{{command_cmd_set_capability}}"
+  check_mode: 'no'
+  when: (register_file_unarchive_smokeping_prober is changed)
   tags:
     - install
     - smokeping_prober

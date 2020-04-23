@@ -74,6 +74,9 @@ command_cmd_check_service_smokeping_prober: 'systemctl cat smokeping_prober.serv
 # systemctl daemon-reload
 command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 
+# set capability
+command_cmd_set_capability: "setcap cap_net_raw=+ep /usr/local/bin/smokeping_prober"
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
