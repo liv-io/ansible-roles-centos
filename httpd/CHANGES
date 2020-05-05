@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.3.1 (2020-05-05)
+E: Minor cosmetic change
+
 * Version 2.3.0 (2020-05-05)
 F: Add option to define log_format combined (httpd_log_format_combined)
 F: Add option to define log_format combinedio (httpd_log_format_combined_io)

@@ -79,7 +79,7 @@
 
 {% if ((item.xss_protection_state|default('false')) is match('true|yes|enable')) %}
   # X-Frame-Options: Disable frame embedding (phishing, clickjacking prevention)
-  Header always set X-Frame-Options 'DENY'
+  Header always set X-Frame-Options 'deny'
   # X-Content-Type-Options: Disable MIME-sniffing (drive-by download attacks prevention)
   Header always set X-Content-Type-Options 'nosniff'
   # X-XSS-Protection: Enable XSS filter (cross-site scripting prevention)
