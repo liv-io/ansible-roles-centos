@@ -49,7 +49,7 @@
 
 {% if ((item.ssl_state|default('false')) is match('true|yes|enable')) %}
   # Combined Log Format (CLF) + SSL/TLS Information
-  LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %{SSL_PROTOCOL}x %{SSL_CIPHER}x" combinedssl
+  LogFormat "{{httpd_log_format_combined_ssl}}" combinedssl
 {% endif %}
 
   # Logging options

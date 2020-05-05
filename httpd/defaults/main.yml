@@ -14,6 +14,14 @@ httpd_hsts_max_age: 31536000
 
 httpd_listen: ['80']
 
+httpd_log_format_combined: '%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"'
+
+httpd_log_format_combined_io: '%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O'
+
+httpd_log_format_combined_ssl: '%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %{SSL_PROTOCOL}x %{SSL_CIPHER}x'
+
+httpd_log_format_common: '%h %l %u %t \"%r\" %>s %b'
+
 httpd_server_admin: "admin@{{ansible_domain}}"
 
 httpd_server_signature: 'true'
