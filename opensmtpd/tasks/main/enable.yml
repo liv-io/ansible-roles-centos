@@ -16,18 +16,6 @@
     - opensmtpd
 
 #-------------------------------------------------------------------------------
-# SYSTEM
-#-------------------------------------------------------------------------------
-
-- name: 'service start opensmtpd'
-  service:
-    state: 'started'
-    name: "{{service_name_opensmtpd}}"
-  tags:
-    - enable
-    - opensmtpd
-
-#-------------------------------------------------------------------------------
 # FILES
 #-------------------------------------------------------------------------------
 
@@ -39,6 +27,7 @@
     owner: "{{file_owner_aliases}}"
     group: "{{file_group_aliases}}"
   notify:
+    - 'service start opensmtpd'
     - 'command smtpctl aliases'
     - 'service restart opensmtpd'
   tags:

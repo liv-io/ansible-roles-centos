@@ -15,6 +15,8 @@
 #
 #-------------------------------------------------------------------------------
 
+#	$OpenBSD: smtpd.conf,v 1.10 2018/05/24 11:40:17 gilles Exp $
+
 # This is the smtpd server system-wide configuration file.
 # See smtpd.conf(5) for more information.
 
@@ -107,13 +109,13 @@
 {% endif %}
 
 #-------------------------------------------------------------------------------
-# ACCEPT
+# ACTION
 #-------------------------------------------------------------------------------
 
 # ALL
 
-{% if not (opensmtpd_accept_all == []) %}
-{% for item in opensmtpd_accept_all %}
+{% if not (opensmtpd_action_all == []) %}
+{% for item in opensmtpd_action_all %}
 # {{item.comment}}
 {% for config in item.config %}
 {{config}}
@@ -126,8 +128,8 @@
 
 # GROUP
 
-{% if not (opensmtpd_accept_group == []) %}
-{% for item in opensmtpd_accept_group %}
+{% if not (opensmtpd_action_group == []) %}
+{% for item in opensmtpd_action_group %}
 # {{item.comment}}
 {% for config in item.config %}
 {{config}}
@@ -140,8 +142,52 @@
 
 # HOST
 
-{% if not (opensmtpd_accept_host == []) %}
-{% for item in opensmtpd_accept_host %}
+{% if not (opensmtpd_action_host == []) %}
+{% for item in opensmtpd_action_host %}
+# {{item.comment}}
+{% for config in item.config %}
+{{config}}
+{% endfor %}
+
+{% endfor %}
+{% endif %}
+
+#-------------------------------------------------------------------------------
+# MATCH
+#-------------------------------------------------------------------------------
+
+# ALL
+
+{% if not (opensmtpd_match_all == []) %}
+{% for item in opensmtpd_match_all %}
+# {{item.comment}}
+{% for config in item.config %}
+{{config}}
+{% endfor %}
+
+{% endfor %}
+{% endif %}
+
+#-------------------------------------------------------------------------------
+
+# GROUP
+
+{% if not (opensmtpd_match_group == []) %}
+{% for item in opensmtpd_match_group %}
+# {{item.comment}}
+{% for config in item.config %}
+{{config}}
+{% endfor %}
+
+{% endfor %}
+{% endif %}
+
+#-------------------------------------------------------------------------------
+
+# HOST
+
+{% if not (opensmtpd_match_host == []) %}
+{% for item in opensmtpd_match_host %}
 # {{item.comment}}
 {% for config in item.config %}
 {{config}}
