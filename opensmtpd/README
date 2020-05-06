@@ -43,8 +43,8 @@ ENABLE
       opensmtpd_secrets_all:
         - {label: 'user01_auth', username: 'user01', password: 'S6_SD6B,Ybwt+Np-GuGEh+.p-xUeLbH3', comment: 'user01 credentials'}
       opensmtpd_table_all:
-        - {config: {'table aliases file:/etc/mail/aliases'}, comment: 'Table: aliases'}
-        - {config: {'table secrets file:/etc/mail/secrets'}, comment: 'Table: secrets'}
+        - {config: {'table aliases file:/etc/aliases'}, comment: 'Table: aliases'}
+        - {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: secrets'}
 
 DISABLE
   - hosts: all
@@ -59,8 +59,8 @@ DISABLE
       opensmtpd_secrets_all:
         - {label: 'user01_auth', username: 'user01', password: 'S6_SD6B,Ybwt+Np-GuGEh+.p-xUeLbH3', comment: 'user01 credentials'}
       opensmtpd_table_all:
-        - {config: {'table aliases file:/etc/mail/aliases'}, comment: 'Table: aliases'}
-        - {config: {'table secrets file:/etc/mail/secrets'}, comment: 'Table: secrets'}
+        - {config: {'table aliases file:/etc/aliases'}, comment: 'Table: aliases'}
+        - {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: secrets'}
 
 REMOVE
   - hosts: all
@@ -254,11 +254,11 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
-    Default    : [{config: {'table aliases file:/etc/mail/aliases'}, comment: 'Table: aliases'},
-                  {config: {'table secrets file:/etc/mail/secrets'}, comment: 'Table: secrets'}]
+    Default    : [{config: {'table aliases file:/etc/aliases'}, comment: 'Table: aliases'},
+                  {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: secrets'}]
     Options    :
-      Examples: [{config: {'table aliases file:/etc/mail/aliases'}, comment: 'Table: aliases'},
-                 {config: {'table secrets file:/etc/mail/secrets'}, comment: 'Table: secrets'}]
+      Examples: [{config: {'table aliases file:/etc/aliases'}, comment: 'Table: aliases'},
+                 {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: secrets'}]
       None    : []
 
   opensmtpd_table_group
@@ -269,8 +269,8 @@ ROLE
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{config: {'table aliases file:/etc/mail/aliases'}, comment: 'Table: aliases'},
-                 {config: {'table secrets file:/etc/mail/secrets'}, comment: 'Table: secrets'}]
+      Examples: [{config: {'table aliases file:/etc/aliases'}, comment: 'Table: aliases'},
+                 {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: secrets'}]
       None    : []
 
   opensmtpd_table_host
@@ -281,8 +281,8 @@ ROLE
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{config: {'table aliases file:/etc/mail/aliases'}, comment: 'Table: aliases'},
-                 {config: {'table secrets file:/etc/mail/secrets'}, comment: 'Table: secrets'}]
+      Examples: [{config: {'table aliases file:/etc/aliases'}, comment: 'Table: aliases'},
+                 {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: secrets'}]
       None    : []
 
 --------------------------------------------------------------------------------

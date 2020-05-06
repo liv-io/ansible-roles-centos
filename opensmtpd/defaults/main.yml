@@ -34,8 +34,8 @@ opensmtpd_secrets_group: []
 opensmtpd_secrets_host: []
 
 opensmtpd_table_all:
-  - {config: {'table aliases file:/etc/mail/aliases'}, comment: 'Table: aliases'}
-  - {config: {'table secrets file:/etc/mail/secrets'}, comment: 'Table: secrets'}
+  - {config: {'table aliases file:/etc/aliases'}, comment: 'Table: aliases'}
+  - {config: {'table secrets file:/etc/opensmtpd/secrets'}, comment: 'Table: secrets'}
 
 opensmtpd_table_group: []
 
