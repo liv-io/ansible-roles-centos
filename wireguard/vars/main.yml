@@ -4,6 +4,9 @@
 # PACKAGING
 #-------------------------------------------------------------------------------
 
+# kmod-wireguard
+package_name_kmod_wireguard: 'kmod-wireguard'
+
 # wireguard-dkms
 package_name_wireguard_dkms: 'wireguard-dkms'
 

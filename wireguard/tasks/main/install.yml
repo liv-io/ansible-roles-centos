@@ -19,10 +19,19 @@
 # PACKAGING
 #-------------------------------------------------------------------------------
 
+- name: 'package install kmod-wireguard'
+  package:
+    state: 'present'
+    name: "{{package_name_kmod_wireguard}}"
+  tags: (ansible_distribution_major_version is match('8'))
+    - install
+    - wireguard
+
 - name: 'package install wireguard-dkms'
   package:
     state: 'present'
     name: "{{package_name_wireguard_dkms}}"
+  when: (ansible_distribution_major_version is match('7'))
   tags:
     - install
     - wireguard
