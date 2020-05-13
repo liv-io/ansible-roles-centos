@@ -57,9 +57,9 @@ CONFIG
         address: ['10.1.5.1/32']
         listen_port: 51820
         post_up:
-          - 'nft add rule filter FORWARD meta iifname %i accept ; nft add rule filter FORWARD oifname %i accept ; nft add rule nat POSTROUTING oifname ens18 masquerade'
+          - 'nft add rule filter FORWARD iif %i accept ; nft add rule filter FORWARD oif %i accept ; nft add rule nat POSTROUTING oif ens18 masquerade'
         post_down:
-          - 'nft delete rule filter filter FORWARD iifname %i accept ; nft delete rule filter FORWARD oifname %i accept ; nft delete rule nat POSTROUTING oifname ens18 masquerade'
+          - 'nft delete rule filter filter FORWARD iif %i accept ; nft delete rule filter FORWARD oif %i accept ; nft delete rule nat POSTROUTING oif ens18 masquerade'
         peers:
           - {public_key: 'rQjDz4GJJpM38GwXvRKj5Y33O/nP+mQ/DJYavK5wmwA=', preshared_key: 'BvOJ33YU20GUb9lboc+U9D/2nFOercTbrYSOi4Nmc5w=', allowed_ips: ['10.1.5.100'], keep_alive: 25, comment: 'user01 notebook'}
           - {public_key: 'RzliOD4VZja7aa8XPVye0fXxq5FT7pEGJudFs1ar0XQ=', preshared_key: 'WwodZqqmimZQWvX7cKTj3VvE+thMXjWy1VxH1f4qdFg=', allowed_ips: ['10.1.5.101'], keep_alive: 25, comment: 'user02 computer'}
@@ -94,8 +94,8 @@ ROLE
                   private_key: '+FiZIC3yn7umJKjX7VuzF+nnWrFoM4USWJo5jg+ChG0=',
                   public_key: 'Jodyz/z2nMi+MLIpJtovbJy6qLISMtnIem68y3aAMmo=',
                   address: ['10.1.5.1/32'], listen_port: 51820,
-                  post_up: ['nft add rule filter FORWARD meta iifname %i accept ; nft add rule filter FORWARD oifname %i accept ; nft add rule nat POSTROUTING oifname ens18 masquerade'],
-                  post_down: ['nft delete rule filter filter FORWARD iifname %i accept ; nft delete rule filter FORWARD oifname %i accept ; nft delete rule nat POSTROUTING oifname ens18 masquerade'],
+                  post_up: ['nft add rule filter FORWARD iif %i accept ; nft add rule filter FORWARD oif %i accept ; nft add rule nat POSTROUTING oif ens18 masquerade'],
+                  post_down: ['nft delete rule filter filter FORWARD iif %i accept ; nft delete rule filter FORWARD oif %i accept ; nft delete rule nat POSTROUTING oif ens18 masquerade'],
                   peers: {public_key: 'rQjDz4GJJpM38GwXvRKj5Y33O/nP+mQ/DJYavK5wmwA=', preshared_key: 'BvOJ33YU20GUb9lboc+U9D/2nFOercTbrYSOi4Nmc5w=', allowed_ips: ['10.1.5.100'], keep_alive: 25, comment: 'user01 notebook'},
                          {public_key: 'RzliOD4VZja7aa8XPVye0fXxq5FT7pEGJudFs1ar0XQ=', preshared_key: 'WwodZqqmimZQWvX7cKTj3VvE+thMXjWy1VxH1f4qdFg=', allowed_ips: ['10.1.5.101'], keep_alive: 25, comment: 'user02 computer'},
                          {public_key: 'AUnSwuXP/Ky2yj2iUeWiG5szxZhFvJPsjY23Mb4kNEI=', preshared_key: '3cFq3GDac7xwNmOLARje2fY07h8U77sd8XI7b+PCaz8=', allowed_ips: ['10.1.5.102'], keep_alive: 25, comment: 'user03 smartphone'}}] |
