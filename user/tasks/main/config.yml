@@ -5,13 +5,13 @@
 #-------------------------------------------------------------------------------
 
 - name: 'include variables'
-  include_vars: "{{item}}"
-  with_first_found:
-    - files:
-      - "vars/{{ansible_distribution_major_version}}.yml"
-      - 'vars/main.yml'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
       skip: 'true'
-      errors: 'ignore'
   tags:
     - config
     - user
