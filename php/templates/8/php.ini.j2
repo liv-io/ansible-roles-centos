@@ -1683,7 +1683,9 @@ ldap.max_links = -1
 [curl]
 ; A default value for the CURLOPT_CAINFO option. This is required to be an
 ; absolute path.
-;curl.cainfo =
+{% if not (php_curl_cainfo == '') %}
+curl.cainfo = "{{php_curl_cainfo}}"
+{% endif %}
 
 [openssl]
 ; The location of a Certificate Authority (CA) file on the local filesystem
@@ -1706,8 +1708,3 @@ ldap.max_links = -1
 ; Local Variables:
 ; tab-width: 4
 ; End:
-
-[curl]
-{% if not (php_curl_cainfo == '') %}
-curl.cainfo = "{{php_curl_cainfo}}"
-{% endif %}
