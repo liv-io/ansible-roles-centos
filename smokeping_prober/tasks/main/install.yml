@@ -113,7 +113,6 @@
     dest: "{{file_dst_smokeping_prober}}"
     owner: "{{file_owner_smokeping_prober}}"
     group: "{{file_group_smokeping_prober}}"
-    creates: "{{file_creates_smokeping_prober}}"
     exclude: "{{file_exclude_smokeping_prober}}"
     extra_opts: "{{file_extra_opts_smokeping_prober}}"
     remote_src: 'yes'
