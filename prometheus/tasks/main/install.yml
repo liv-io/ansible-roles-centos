@@ -113,7 +113,6 @@
     dest: "{{file_dst_prometheus}}"
     owner: "{{file_owner_prometheus}}"
     group: "{{file_group_prometheus}}"
-    creates: "{{file_creates_prometheus}}"
     remote_src: 'yes'
   tags:
     - install
