@@ -102,7 +102,6 @@
     dest: "{{file_dst_mysqld_exporter}}"
     owner: "{{file_owner_mysqld_exporter}}"
     group: "{{file_group_mysqld_exporter}}"
-    creates: "{{file_creates_mysqld_exporter}}"
     exclude: "{{file_exclude_mysqld_exporter}}"
     extra_opts: "{{file_extra_opts_mysqld_exporter}}"
     remote_src: 'yes'
