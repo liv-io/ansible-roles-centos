@@ -4,6 +4,6 @@ node_exporter_state: 'enable'
 
 node_exporter_checksum_algorithm: 'sha256'
 
-node_exporter_checksum: 'b2503fd932f85f4e5baf161268854bf5d22001869b84f00fd2d1f57b51b72424'
+node_exporter_checksum: 'fae88be0aa33c8ae22340723f9b4a4e519e67d2969da7a27751e755db7e75788'
 
-node_exporter_version: '0.18.1'
+node_exporter_version: '1.0.0'
