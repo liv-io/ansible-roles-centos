@@ -102,7 +102,6 @@
     dest: "{{file_dst_alertmanager}}"
     owner: "{{file_owner_alertmanager}}"
     group: "{{file_group_alertmanager}}"
-    creates: "{{file_creates_alertmanager}}"
     remote_src: 'yes'
   tags:
     - install
