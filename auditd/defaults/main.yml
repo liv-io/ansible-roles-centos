@@ -16,3 +16,5 @@ auditd_config_all:
 auditd_config_group: []
 
 auditd_config_host: []
+
+auditd_syslog_active: 'true'

@@ -23,7 +23,11 @@
 # logged to. Valid options are LOG_LOCAL0 through 7, LOG_AUTH,
 # LOG_AUTHPRIV, LOG_DAEMON, LOG_SYSLOG, and LOG_USER.
 
+{% if (auditd_syslog_active is match('false|no|disable')) %}
+active = no
+{% else %}
 active = yes
+{% endif %}
 direction = out
 path = builtin_syslog
 type = builtin 

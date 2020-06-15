@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.4.0 (2020-06-15)
+F: Add option to manage syslog state (auditd_syslog_active)
+
 * Version 2.3.0 (2020-06-15)
 F: Add dependency 'audispd_plugins'
 F: Manage 'syslog.conf' file on CentOS 8

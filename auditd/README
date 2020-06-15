@@ -176,6 +176,17 @@ ROLE
                     -w /etc/shadow -p wa
       None    : []
 
+  auditd_syslog_active
+    Description: Control the 'auditd_syslog_active' option.
+    Implemented: 2.4
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'true'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
 --------------------------------------------------------------------------------
 CONFLICTS
 --------------------------------------------------------------------------------
