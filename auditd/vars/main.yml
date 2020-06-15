@@ -39,7 +39,7 @@ file_group_rules_d: 'root'
 
 # syslog.conf
 file_src_syslog_conf: "templates/{{ansible_distribution_major_version}}/syslog.conf.j2"
-file_dst_syslog_conf: '/etc/audisp/plugins.d/syslog.conf'
+file_dst_syslog_conf: '/etc/audit/plugins.d/syslog.conf'
 file_mode_syslog_conf: '0640'
 file_owner_syslog_conf: 'root'
 file_group_syslog_conf: 'root'

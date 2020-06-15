@@ -194,6 +194,7 @@ PACKAGES
       CentOS 8: 'audit'
 
 ROLES
+  audispd_plugins
 
 PARAMETERS
 

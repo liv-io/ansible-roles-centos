@@ -52,7 +52,6 @@
     owner: "{{file_owner_syslog_conf}}"
     group: "{{file_group_syslog_conf}}"
   notify: 'command restart auditd'
-  when: (ansible_distribution_major_version is match('7'))
   tags:
     - enable
     - auditd
