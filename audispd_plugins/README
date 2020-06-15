@@ -73,7 +73,7 @@ DEPENDENCIES
 
 PACKAGES
   audispd-plugins
-    Version: >= 3.0
+    Version: >= 2.0
     Name   :
       CentOS 7: 'audispd-plugins'
       CentOS 8: 'audispd-plugins'
