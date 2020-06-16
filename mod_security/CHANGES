@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.2.1 (2020-06-16)
+E: Separate CentOS 7 and CentOS 8 configuration files
+
 * Version 1.2.0 (2019-10-21)
 F: Add support for CentOS 8
 
