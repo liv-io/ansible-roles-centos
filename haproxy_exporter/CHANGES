@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.1.0 (2020-06-21)
+C: Update 'haproxy_exporter' to version '0.11.0'
+
 * Version 2.0.2 (2020-05-27)
 B: Remove 'creates' Ansible parameter (make unarchive override files)
 
