@@ -61,14 +61,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file remove node_exporter_app.dir'
-  file:
-    state: 'absent'
-    path: "{{file_dst_node_exporter_app_dir}}"
-  tags:
-    - remove
-    - node_exporter
-
 - name: 'file remove node_exporter_data.dir'
   file:
     state: 'absent'
@@ -90,6 +82,22 @@
     state: 'absent'
     path: "{{file_dst_node_exporter_service}}"
   notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'file remove node_exporter'
+  file:
+    state: 'absent'
+    path: "{{file_creates_node_exporter}}"
+  tags:
+    - remove
+    - node_exporter
+
+- name: 'file remove node_exporter.tar.gz'
+  file:
+    state: 'absent'
+    path: "{{file_dst_node_exporter_tar_gz}}"
   tags:
     - remove
     - node_exporter

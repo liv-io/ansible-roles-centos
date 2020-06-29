@@ -121,7 +121,6 @@ PACKAGES
   node_exporter
 
 ROLES
-  common
 
 PARAMETERS
 
