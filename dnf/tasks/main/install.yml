@@ -41,13 +41,13 @@
     - install
     - dnf
 
-- name: 'file create dnf_check-update.sh'
+- name: 'file create dnf_check-update'
   template:
-    src: "{{file_src_dnf_check_update_sh}}"
-    dest: "{{file_dst_dnf_check_update_sh}}"
-    mode: "{{file_mode_dnf_check_update_sh}}"
-    owner: "{{file_owner_dnf_check_update_sh}}"
-    group: "{{file_group_dnf_check_update_sh}}"
+    src: "{{file_src_dnf_check_update}}"
+    dest: "{{file_dst_dnf_check_update}}"
+    mode: "{{file_mode_dnf_check_update}}"
+    owner: "{{file_owner_dnf_check_update}}"
+    group: "{{file_group_dnf_check_update}}"
   tags:
     - install
     - dnf

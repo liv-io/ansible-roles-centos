@@ -205,6 +205,34 @@ dnf_config_all:
       =84m8
       -----END PGP PUBLIC KEY BLOCK-----
 
+  - name: 'epel-modular'
+    state: 'true'
+    comment: 'Extra Packages for Enterprise Linux Modular'
+    repositories:
+      - name: 'epel-modular'
+        state: 'false'
+        comment: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch'
+        description: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch'
+        url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Modular/$basearch'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
+
+      - name: 'epel-modular-debuginfo'
+        state: 'false'
+        comment: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch - Debug'
+        description: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch - Debug'
+        url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Modular/$basearch/debug'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
+
+      - name: 'epel-modular-source'
+        state: 'false'
+        comment: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch - Source'
+        description: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch - Source'
+        url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Modular/SRPMS'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
+
 dnf_config_group: []
 
 dnf_config_host: []
@@ -221,7 +249,7 @@ dnf_monitor_mail_state: 'false'
 
 dnf_monitor_prom_state: 'false'
 
-dnf_monitor_prom_textfile_collector: "/{{common_data_dir}}/node_exporter/textfile_collector"
+dnf_monitor_prom_textfile_collector: '/data/node_exporter/textfile_collector'
 
 dnf_proxy: ''
 
