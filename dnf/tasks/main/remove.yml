@@ -29,10 +29,10 @@
     - remove
     - dnf
 
-- name: 'file remove dnf_script.dir'
+- name: 'file remove dnf_check-update'
   file:
     state: 'absent'
-    path: "{{file_dst_dnf_script_dir}}"
+    path: "{{file_dst_dnf_check_update}}"
   tags:
     - remove
     - dnf

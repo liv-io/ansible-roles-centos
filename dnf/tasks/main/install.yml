@@ -30,13 +30,13 @@
     - install
     - dnf
 
-- name: 'file create dnf_script.dir'
+- name: 'file create local_sbin.dir'
   file:
     state: 'directory'
-    path: "{{file_dst_dnf_script_dir}}"
-    mode: "{{file_mode_dnf_script_dir}}"
-    owner: "{{file_owner_dnf_script_dir}}"
-    group: "{{file_group_dnf_script_dir}}"
+    path: "{{file_dst_local_sbin_dir}}"
+    mode: "{{file_mode_local_sbin_dir}}"
+    owner: "{{file_owner_local_sbin_dir}}"
+    group: "{{file_group_local_sbin_dir}}"
   tags:
     - install
     - dnf
