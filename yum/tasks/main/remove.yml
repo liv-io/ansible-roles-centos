@@ -29,10 +29,10 @@
     - remove
     - yum
 
-- name: 'file remove yum_script.dir'
+- name: 'file remove yum_check-update'
   file:
     state: 'absent'
-    path: "{{file_dst_yum_script_dir}}"
+    path: "{{file_dst_yum_check_update}}"
   tags:
     - remove
     - yum

@@ -30,13 +30,13 @@
     - install
     - yum
 
-- name: 'file create yum_script.dir'
+- name: 'file create local_sbin.dir'
   file:
     state: 'directory'
-    path: "{{file_dst_yum_script_dir}}"
-    mode: "{{file_mode_yum_script_dir}}"
-    owner: "{{file_owner_yum_script_dir}}"
-    group: "{{file_group_yum_script_dir}}"
+    path: "{{file_dst_local_sbin_dir}}"
+    mode: "{{file_mode_local_sbin_dir}}"
+    owner: "{{file_owner_local_sbin_dir}}"
+    group: "{{file_group_local_sbin_dir}}"
   tags:
     - install
     - yum
