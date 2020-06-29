@@ -29,14 +29,14 @@ file_owner_dnf_conf: 'root'
 file_group_dnf_conf: 'root'
 
 # local_sbin.dir
-file_dst_local_sbin_dir: "/usr/local/sbin"
+file_dst_local_sbin_dir: '/usr/local/sbin'
 file_mode_local_sbin_dir: '0755'
 file_owner_local_sbin_dir: 'root'
 file_group_local_sbin_dir: 'root'
 
 # dnf_check-update
 file_src_dnf_check_update: 'templates/main/dnf_check-update.j2'
-file_dst_dnf_check_update: "/usr/local/sbin/dnf_check-update"
+file_dst_dnf_check_update: '/usr/local/sbin/dnf_check-update'
 file_mode_dnf_check_update: '0754'
 file_owner_dnf_check_update: 'root'
 file_group_dnf_check_update: 'root'
