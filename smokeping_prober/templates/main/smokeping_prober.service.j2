@@ -23,7 +23,7 @@ After=syslog.target network.target
 User=smokeping_prober
 Group=smokeping_prober
 EnvironmentFile={{file_dst_smokeping_prober_sysconfig}}
-ExecStart={{file_dst_smokeping_prober}}/smokeping_prober $OPTIONS
+ExecStart={{file_creates_smokeping_prober}} $OPTIONS
 CapabilityBoundingSet=CAP_NET_RAW
 
 [Install]

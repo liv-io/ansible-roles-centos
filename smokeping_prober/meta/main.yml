@@ -1,4 +1,3 @@
 ---
 
-dependencies:
-  - {role: common, when: not (smokeping_prober_state is match('false|no|remove|quiesce|inactive'))}
+dependencies: []

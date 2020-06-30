@@ -51,50 +51,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create smokeping_prober_app.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_smokeping_prober_app_dir}}"
-    mode: "{{file_mode_smokeping_prober_app_dir}}"
-    owner: "{{file_owner_smokeping_prober_app_dir}}"
-    group: "{{file_group_smokeping_prober_app_dir}}"
-  tags:
-    - install
-    - smokeping_prober
-
-- name: 'file create smokeping_prober_bin.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_smokeping_prober_bin_dir}}"
-    mode: "{{file_mode_smokeping_prober_bin_dir}}"
-    owner: "{{file_owner_smokeping_prober_bin_dir}}"
-    group: "{{file_group_smokeping_prober_bin_dir}}"
-  tags:
-    - install
-    - smokeping_prober
-
-- name: 'file create smokeping_prober_data.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_smokeping_prober_data_dir}}"
-    mode: "{{file_mode_smokeping_prober_data_dir}}"
-    owner: "{{file_owner_smokeping_prober_data_dir}}"
-    group: "{{file_group_smokeping_prober_data_dir}}"
-  tags:
-    - install
-    - smokeping_prober
-
-- name: 'file create textfile_collector.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_textfile_collector_dir}}"
-    mode: "{{file_mode_textfile_collector_dir}}"
-    owner: "{{file_owner_textfile_collector_dir}}"
-    group: "{{file_group_textfile_collector_dir}}"
-  tags:
-    - install
-    - smokeping_prober
-
 - name: 'file download smokeping_prober.tar.gz'
   get_url:
     url: "{{file_src_smokeping_prober_tar_gz}}"
@@ -117,17 +73,6 @@
     extra_opts: "{{file_extra_opts_smokeping_prober}}"
     remote_src: 'yes'
   register: register_file_unarchive_smokeping_prober
-  tags:
-    - install
-    - smokeping_prober
-
-- name: 'file create smokeping_prober.link'
-  file:
-    state: 'link'
-    src: "{{file_src_smokeping_prober_link}}"
-    path: "{{file_dst_smokeping_prober_link}}"
-    owner: "{{file_owner_smokeping_prober_link}}"
-    group: "{{file_group_smokeping_prober_link}}"
   tags:
     - install
     - smokeping_prober

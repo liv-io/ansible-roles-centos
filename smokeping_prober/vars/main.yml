@@ -4,51 +4,21 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-# smokeping_prober_app.dir
-file_dst_smokeping_prober_app_dir: "/{{common_app_dir}}/smokeping_prober"
-file_mode_smokeping_prober_app_dir: '0755'
-file_owner_smokeping_prober_app_dir: 'root'
-file_group_smokeping_prober_app_dir: 'root'
-
-# smokeping_prober_bin.dir
-file_dst_smokeping_prober_bin_dir: "/{{common_app_dir}}/smokeping_prober/bin"
-file_mode_smokeping_prober_bin_dir: '0755'
-file_owner_smokeping_prober_bin_dir: 'root'
-file_group_smokeping_prober_bin_dir: 'root'
-
-# smokeping_prober_data.dir
-file_dst_smokeping_prober_data_dir: "/{{common_data_dir}}/smokeping_prober"
-file_mode_smokeping_prober_data_dir: '0755'
-file_owner_smokeping_prober_data_dir: 'root'
-file_group_smokeping_prober_data_dir: 'root'
-
-# textfile_collector.dir
-file_dst_textfile_collector_dir: "/{{common_data_dir}}/smokeping_prober/textfile_collector"
-file_mode_textfile_collector_dir: '1777'
-file_owner_textfile_collector_dir: 'root'
-file_group_textfile_collector_dir: 'root'
-
 # smokeping_prober.tar.gz
 file_src_smokeping_prober_tar_gz: "https://github.com/SuperQ/smokeping_prober/releases/download/v{{smokeping_prober_version}}/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"
-file_dst_smokeping_prober_tar_gz: "/{{common_app_dir}}/smokeping_prober/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"
+file_dst_smokeping_prober_tar_gz: "/usr/local/src/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"
 file_mode_smokeping_prober_tar_gz: '0644'
 file_owner_smokeping_prober_tar_gz: 'root'
 file_group_smokeping_prober_tar_gz: 'root'
 
 # smokeping_prober
-file_src_smokeping_prober: "/{{common_app_dir}}/smokeping_prober/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"
+file_src_smokeping_prober: "/usr/local/src/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"
 file_dst_smokeping_prober: '/usr/local/bin'
 file_owner_smokeping_prober: 'root'
 file_group_smokeping_prober: 'root'
 file_creates_smokeping_prober: '/usr/local/bin/smokeping_prober'
 file_exclude_smokeping_prober: ['LICENSE']
 file_extra_opts_smokeping_prober: ['--strip-components=1']
-
-# smokeping_prober.link
-file_src_smokeping_prober_link: '/usr/local/bin/smokeping_prober'
-file_dst_smokeping_prober_link: "/{{common_app_dir}}/smokeping_prober/bin/smokeping_prober"
-file_owner_smokeping_prober_link: 'root'
-file_group_smokeping_prober_link: 'root'
 
 # smokeping_prober.service
 file_src_smokeping_prober_service: 'templates/main/smokeping_prober.service.j2'
