@@ -51,35 +51,13 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create mysqld_exporter_app.dir'
+- name: 'file create mysqld_exporter_etc.dir'
   file:
     state: 'directory'
-    path: "{{file_dst_mysqld_exporter_app_dir}}"
-    mode: "{{file_mode_mysqld_exporter_app_dir}}"
-    owner: "{{file_owner_mysqld_exporter_app_dir}}"
-    group: "{{file_group_mysqld_exporter_app_dir}}"
-  tags:
-    - install
-    - mysqld_exporter
-
-- name: 'file create mysqld_exporter_bin.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_mysqld_exporter_bin_dir}}"
-    mode: "{{file_mode_mysqld_exporter_bin_dir}}"
-    owner: "{{file_owner_mysqld_exporter_bin_dir}}"
-    group: "{{file_group_mysqld_exporter_bin_dir}}"
-  tags:
-    - install
-    - mysqld_exporter
-
-- name: 'file create mysqld_exporter_conf.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_mysqld_exporter_conf_dir}}"
-    mode: "{{file_mode_mysqld_exporter_conf_dir}}"
-    owner: "{{file_owner_mysqld_exporter_conf_dir}}"
-    group: "{{file_group_mysqld_exporter_conf_dir}}"
+    path: "{{file_dst_mysqld_exporter_etc_dir}}"
+    mode: "{{file_mode_mysqld_exporter_etc_dir}}"
+    owner: "{{file_owner_mysqld_exporter_etc_dir}}"
+    group: "{{file_group_mysqld_exporter_etc_dir}}"
   tags:
     - install
     - mysqld_exporter
@@ -105,17 +83,6 @@
     exclude: "{{file_exclude_mysqld_exporter}}"
     extra_opts: "{{file_extra_opts_mysqld_exporter}}"
     remote_src: 'yes'
-  tags:
-    - install
-    - mysqld_exporter
-
-- name: 'file create mysqld_exporter.link'
-  file:
-    state: 'link'
-    src: "{{file_src_mysqld_exporter_link}}"
-    path: "{{file_dst_mysqld_exporter_link}}"
-    owner: "{{file_owner_mysqld_exporter_link}}"
-    group: "{{file_group_mysqld_exporter_link}}"
   tags:
     - install
     - mysqld_exporter

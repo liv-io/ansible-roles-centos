@@ -145,7 +145,6 @@ PACKAGES
   mysqld_exporter
 
 ROLES
-  common
 
 PARAMETERS
 

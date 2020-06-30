@@ -23,7 +23,7 @@ After=syslog.target network.target
 User=mysqld_exporter
 Group=mysqld_exporter
 EnvironmentFile={{file_dst_mysqld_exporter_sysconfig}}
-ExecStart={{file_dst_mysqld_exporter}}/mysqld_exporter $OPTIONS
+ExecStart={{file_creates_mysqld_exporter}} $OPTIONS
 
 [Install]
 WantedBy=multi-user.target

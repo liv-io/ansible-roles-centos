@@ -61,14 +61,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file remove mysqld_exporter_app.dir'
-  file:
-    state: 'absent'
-    path: "{{file_dst_mysqld_exporter_app_dir}}"
-  tags:
-    - remove
-    - mysqld_exporter
-
 - name: 'file remove mysqld_exporter.sysconfig'
   file:
     state: 'absent'
@@ -82,6 +74,30 @@
     state: 'absent'
     path: "{{file_dst_mysqld_exporter_service}}"
   notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'file remove mysqld_exporter_etc.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mysqld_exporter_etc_dir}}"
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'file remove mysqld_exporter'
+  file:
+    state: 'absent'
+    path: "{{file_creates_mysqld_exporter}}"
+  tags:
+    - remove
+    - mysqld_exporter
+
+- name: 'file remove mysqld_exporter.tar.gz'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mysqld_exporter_tar_gz}}"
   tags:
     - remove
     - mysqld_exporter
