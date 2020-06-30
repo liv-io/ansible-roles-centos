@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.2 (2020-06-30)
+E: Do not manage directory local_sbin.dir (/usr/local/sbin)
+
 * Version 1.0.1 (2020-06-29)
 B: Only remove script file and not directory
 E: Rename script directory variable name

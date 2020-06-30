@@ -30,17 +30,6 @@
     - install
     - dnf
 
-- name: 'file create local_sbin.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_local_sbin_dir}}"
-    mode: "{{file_mode_local_sbin_dir}}"
-    owner: "{{file_owner_local_sbin_dir}}"
-    group: "{{file_group_local_sbin_dir}}"
-  tags:
-    - install
-    - dnf
-
 - name: 'file create dnf_check-update'
   template:
     src: "{{file_src_dnf_check_update}}"
