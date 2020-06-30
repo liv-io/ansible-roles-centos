@@ -24,7 +24,7 @@ User=blackbox_exporter
 Group=blackbox_exporter
 AmbientCapabilities=CAP_NET_RAW
 EnvironmentFile={{file_dst_blackbox_exporter_sysconfig}}
-ExecStart={{file_dst_blackbox_exporter}}/blackbox_exporter $OPTIONS
+ExecStart={{file_creates_blackbox_exporter}} $OPTIONS
 
 [Install]
 WantedBy=multi-user.target

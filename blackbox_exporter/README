@@ -193,7 +193,6 @@ PACKAGES
   blackbox_exporter
 
 ROLES
-  common
 
 PARAMETERS
 
