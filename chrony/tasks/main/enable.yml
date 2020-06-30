@@ -31,13 +31,13 @@
     - enable
     - chrony
 
-- name: 'file create chrony_check-time.sh'
+- name: 'file create chrony_check-time'
   template:
-    src: "{{file_src_chrony_check_time_sh}}"
-    dest: "{{file_dst_chrony_check_time_sh}}"
-    mode: "{{file_mode_chrony_check_time_sh}}"
-    owner: "{{file_owner_chrony_check_time_sh}}"
-    group: "{{file_group_chrony_check_time_sh}}"
+    src: "{{file_src_chrony_check_time}}"
+    dest: "{{file_dst_chrony_check_time}}"
+    mode: "{{file_mode_chrony_check_time}}"
+    owner: "{{file_owner_chrony_check_time}}"
+    group: "{{file_group_chrony_check_time}}"
   tags:
     - enable
     - chrony
@@ -65,10 +65,10 @@
     - enable
     - chrony
 
-- name: 'file remove chrony_update-time.sh'
+- name: 'file remove chrony_update-time'
   file:
     state: 'absent'
-    path: "{{file_dst_chrony_update_time_sh}}"
+    path: "{{file_dst_chrony_update_time}}"
   tags:
     - enable
     - chrony

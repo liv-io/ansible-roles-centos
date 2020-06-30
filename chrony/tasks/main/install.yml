@@ -26,18 +26,3 @@
   tags:
     - install
     - chrony
-
-#-------------------------------------------------------------------------------
-# FILES
-#-------------------------------------------------------------------------------
-
-- name: 'file create chrony_script.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_chrony_script_dir}}"
-    mode: "{{file_mode_chrony_script_dir}}"
-    owner: "{{file_owner_chrony_script_dir}}"
-    group: "{{file_group_chrony_script_dir}}"
-  tags:
-    - install
-    - chrony

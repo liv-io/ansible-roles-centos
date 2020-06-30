@@ -2,5 +2,4 @@
 
 dependencies:
   - {role: bc, when: not (chrony_state is match('false|no|remove|quiesce|inactive'))}
-  - {role: common, when: (chrony_state is match('cron|cronjob'))}
   - {role: mailx, when: (chrony_monitor_mail_state is match('true|yes|enable'))}

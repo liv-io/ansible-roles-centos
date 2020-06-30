@@ -51,10 +51,18 @@
     - remove
     - chrony
 
-- name: 'file remove chrony_script.dir'
+- name: 'file remove chrony_check-time'
   file:
     state: 'absent'
-    path: "{{file_dst_chrony_script_dir}}"
+    path: "{{file_dst_chrony_check_time}}"
+  tags:
+    - remove
+    - chrony
+
+- name: 'file remove chrony_update-time'
+  file:
+    state: 'absent'
+    path: "{{file_dst_chrony_update_time}}"
   tags:
     - remove
     - chrony
