@@ -8,7 +8,7 @@
 # INFORMATION
 #-------------------------------------------------------------------------------
 #
-# Name   : fstrim_discard-blocks.sh
+# Name   : fstrim_discard-blocks
 # Type   : Shell script
 # Role   : fstrim
 #
@@ -52,8 +52,8 @@ fstrim=$(${which} fstrim) || { echo "Error: Command 'fstrim' not found."; exit 1
 host=$(${hostname} -s) || { echo "Error: Host name unknown."; exit 68; }
 script="$(${basename} $0)[$$]" || { echo "Error: Command invoked cannot execute."; exit 126; }
 time_start=$(${date} '+%s')
-user='{{file_owner_fstrim_discard_blocks_sh}}'
-lockfile='{{file_dst_fstrim_script_dir}}/fstrim_discard-blocks.lock'
+user='{{file_owner_fstrim_discard_blocks}}'
+lockfile='/var/tmp/fstrim_discard-blocks.lock'
 retval=0
 severity='Debug'
 message='Please check log files for more information.'
@@ -88,7 +88,7 @@ Date & Time : $(${date} '+%Y-%m-%dT%H:%M:%S%z')
 SCRIPT
 --------------------------------------------------------------------------------
 
-Name        : fstrim_discard-blocks.sh
+Name        : fstrim_discard-blocks
 Type        : Shell script
 PID         : $$
 

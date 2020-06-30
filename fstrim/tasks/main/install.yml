@@ -30,17 +30,6 @@
     - install
     - fstrim
 
-- name: 'file create fstrim_script.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_fstrim_script_dir}}"
-    mode: "{{file_mode_fstrim_script_dir}}"
-    owner: "{{file_owner_fstrim_script_dir}}"
-    group: "{{file_group_fstrim_script_dir}}"
-  tags:
-    - install
-    - fstrim
-
 - name: 'file create fstrim.log'
   copy:
     content: ''
@@ -53,13 +42,13 @@
     - install
     - fstrim
 
-- name: 'file create fstrim_discard-blocks.sh'
+- name: 'file create fstrim_discard-blocks'
   template:
-    src: "{{file_src_fstrim_discard_blocks_sh}}"
-    dest: "{{file_dst_fstrim_discard_blocks_sh}}"
-    mode: "{{file_mode_fstrim_discard_blocks_sh}}"
-    owner: "{{file_owner_fstrim_discard_blocks_sh}}"
-    group: "{{file_group_fstrim_discard_blocks_sh}}"
+    src: "{{file_src_fstrim_discard_blocks}}"
+    dest: "{{file_dst_fstrim_discard_blocks}}"
+    mode: "{{file_mode_fstrim_discard_blocks}}"
+    owner: "{{file_owner_fstrim_discard_blocks}}"
+    group: "{{file_group_fstrim_discard_blocks}}"
   tags:
     - install
     - fstrim

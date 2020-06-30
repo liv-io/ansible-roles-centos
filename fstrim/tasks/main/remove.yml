@@ -29,10 +29,10 @@
     - remove
     - fstrim
 
-- name: 'file remove fstrim_script.dir'
+- name: 'file remove fstrim_discard-blocks'
   file:
     state: 'absent'
-    path: "{{file_dst_fstrim_script_dir}}"
+    path: "{{file_dst_fstrim_discard_blocks}}"
   tags:
     - remove
     - fstrim
