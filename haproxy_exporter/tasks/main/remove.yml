@@ -61,14 +61,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file remove haproxy_exporter_app.dir'
-  file:
-    state: 'absent'
-    path: "{{file_dst_haproxy_exporter_app_dir}}"
-  tags:
-    - remove
-    - haproxy_exporter
-
 - name: 'file remove haproxy_exporter.sysconfig'
   file:
     state: 'absent'
@@ -82,6 +74,22 @@
     state: 'absent'
     path: "{{file_dst_haproxy_exporter_service}}"
   notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - haproxy_exporter
+
+- name: 'file remove haproxy_exporter'
+  file:
+    state: 'absent'
+    path: "{{file_creates_haproxy_exporter}}"
+  tags:
+    - remove
+    - haproxy_exporter
+
+- name: 'file remove haproxy_exporter.tar.gz'
+  file:
+    state: 'absent'
+    path: "{{file_dst_haproxy_exporter_tar_gz}}"
   tags:
     - remove
     - haproxy_exporter
