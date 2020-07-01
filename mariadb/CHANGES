@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 3.0.2 (2020-07-01)
+B: Rename broken variable name
+
 * Version 3.0.1 (2020-07-01)
 B: Ensure script file is being removed
 
