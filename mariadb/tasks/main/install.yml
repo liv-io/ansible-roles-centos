@@ -85,13 +85,13 @@
     - install
     - mariadb
 
-- name: 'file create mariadb_run-backup.sh'
+- name: 'file create mariadb_run-backup'
   template:
-    src: "{{file_src_mariadb_run_backup_sh}}"
-    dest: "{{file_dst_mariadb_run_backup_sh}}"
-    mode: "{{file_mode_mariadb_run_backup_sh}}"
-    owner: "{{file_owner_mariadb_run_backup_sh}}"
-    group: "{{file_group_mariadb_run_backup_sh}}"
+    src: "{{file_src_mariadb_run_backup}}"
+    dest: "{{file_dst_mariadb_run_backup}}"
+    mode: "{{file_mode_mariadb_run_backup}}"
+    owner: "{{file_owner_mariadb_run_backup}}"
+    group: "{{file_group_mariadb_run_backup}}"
   tags:
     - install
     - mariadb
