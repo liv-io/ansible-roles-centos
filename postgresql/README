@@ -155,7 +155,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : "/{{common_data_dir}}/node_exporter/textfile_collector"
+    Default    : '/data/node_exporter/textfile_collector'
     Options    :
       Examples: '/data/node_exporter/textfile_collector'
 
@@ -263,8 +263,6 @@ PACKAGES
       CentOS 7: 'postgresql-server'
 
 ROLES
-  common
-
   mailx
 
   python_psycopg2

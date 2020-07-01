@@ -17,13 +17,13 @@ package_name_postgresql_server: 'postgresql-server'
 #-------------------------------------------------------------------------------
 
 # postgresql_backup.dir
-file_dst_postgresql_backup_dir: "/{{common_backup_dir}}/postgresql"
+file_dst_postgresql_backup_dir: '/backup/postgresql'
 file_mode_postgresql_backup_dir: '0700'
 file_owner_postgresql_backup_dir: 'postgres'
 file_group_postgresql_backup_dir: 'postgres'
 
 # postgresql_script.dir
-file_dst_postgresql_script_dir: "/{{common_script_dir}}/postgresql"
+file_dst_postgresql_script_dir: '/script/postgresql'
 file_mode_postgresql_script_dir: '0700'
 file_owner_postgresql_script_dir: 'root'
 file_group_postgresql_script_dir: 'root'
@@ -54,12 +54,12 @@ file_mode_postgresql_backup_file: '0600'
 file_owner_postgresql_backup_file: 'postgres'
 file_group_postgresql_backup_file: 'postgres'
 
-# postgresql_run-backup.sh
-file_src_postgresql_run_backup_sh: 'templates/main/postgresql_run-backup.sh.j2'
-file_dst_postgresql_run_backup_sh: "/{{common_script_dir}}/postgresql/postgresql_run-backup.sh"
-file_mode_postgresql_run_backup_sh: '0700'
-file_owner_postgresql_run_backup_sh: 'root'
-file_group_postgresql_run_backup_sh: 'root'
+# postgresql_run-backup
+file_src_postgresql_run_backup: 'templates/main/postgresql_run-backup.j2'
+file_dst_postgresql_run_backup: '/usr/local/sbin/postgresql_run-backup'
+file_mode_postgresql_run_backup: '0700'
+file_owner_postgresql_run_backup: 'root'
+file_group_postgresql_run_backup: 'root'
 
 # postgresql_run-backup
 cron_name_postgresql_run_backup: 'PostgreSQL: Run Backup'
@@ -69,8 +69,8 @@ cron_hour_postgresql_run_backup: "{{postgresql_run_backup_hour}}"
 cron_minute_postgresql_run_backup: "{{postgresql_run_backup_minute}}"
 cron_month_postgresql_run_backup: "{{postgresql_run_backup_month}}"
 cron_weekday_postgresql_run_backup: "{{postgresql_run_backup_weekday}}"
-cron_user_postgresql_run_backup: "{{file_owner_postgresql_run_backup_sh}}"
-cron_job_postgresql_run_backup: "{{file_dst_postgresql_run_backup_sh}}"
+cron_user_postgresql_run_backup: "{{file_owner_postgresql_run_backup}}"
+cron_job_postgresql_run_backup: "{{file_dst_postgresql_run_backup}}"
 
 #-------------------------------------------------------------------------------
 # COMMANDS

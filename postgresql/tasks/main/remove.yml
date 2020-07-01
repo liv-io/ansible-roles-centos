@@ -57,10 +57,18 @@
     - remove
     - postgresql
 
-- name: 'file remove postgresql.sh'
+- name: 'file remove postgresql_run-backup'
   file:
     state: 'absent'
-    path: "{{file_dst_postgresql_sh}}"
+    path: "{{file_dst_postgresql_run_backup}}"
+  tags:
+    - remove
+    - postgresql
+
+- name: 'file remove postgresql'
+  file:
+    state: 'absent'
+    path: "{{file_dst_postgresql}}"
   tags:
     - remove
     - postgresql
@@ -81,10 +89,10 @@
     - remove
     - postgresql
 
-- name: 'file remove postgresql_run-backup.sh'
+- name: 'file remove postgresql_run-backup'
   file:
     state: 'absent'
-    path: "{{file_dst_postgresql_run_backup_sh}}"
+    path: "{{file_dst_postgresql_run_backup}}"
   tags:
     - remove
     - postgresql

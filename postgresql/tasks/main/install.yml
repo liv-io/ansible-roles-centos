@@ -81,24 +81,24 @@
     - install
     - postgresql
 
-- name: 'file create postgresql_run-backup.sh'
+- name: 'file create postgresql_run-backup'
   template:
-    src: "{{file_src_postgresql_run_backup_sh}}"
-    dest: "{{file_dst_postgresql_run_backup_sh}}"
-    mode: "{{file_mode_postgresql_run_backup_sh}}"
-    owner: "{{file_owner_postgresql_run_backup_sh}}"
-    group: "{{file_group_postgresql_run_backup_sh}}"
+    src: "{{file_src_postgresql_run_backup}}"
+    dest: "{{file_dst_postgresql_run_backup}}"
+    mode: "{{file_mode_postgresql_run_backup}}"
+    owner: "{{file_owner_postgresql_run_backup}}"
+    group: "{{file_group_postgresql_run_backup}}"
   tags:
     - install
     - postgresql
 
-- name: 'file create postgresql.sh'
+- name: 'file create postgresql'
   template:
-    src: "{{file_src_postgresql_sh}}"
-    dest: "{{file_dst_postgresql_sh}}"
-    mode: "{{file_mode_postgresql_sh}}"
-    owner: "{{file_owner_postgresql_sh}}"
-    group: "{{file_group_postgresql_sh}}"
+    src: "{{file_src_postgresql}}"
+    dest: "{{file_dst_postgresql}}"
+    mode: "{{file_mode_postgresql}}"
+    owner: "{{file_owner_postgresql}}"
+    group: "{{file_group_postgresql}}"
   tags:
     - install
     - postgresql
