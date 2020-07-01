@@ -18,7 +18,7 @@ ntpd_monitor_mail_state: 'false'
 
 ntpd_monitor_prom_state: 'false'
 
-ntpd_monitor_prom_textfile_collector: "/{{common_data_dir}}/node_exporter/textfile_collector"
+ntpd_monitor_prom_textfile_collector: '/data/node_exporter/textfile_collector'
 
 ntpd_restrict:
   - {address: 'default', options: {'kod', 'nomodify', 'notrap', 'nopeer', 'noquery'}, comment: 'Default IPv4'}

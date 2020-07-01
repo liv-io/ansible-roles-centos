@@ -43,13 +43,13 @@
     - enable
     - ntpd
 
-- name: 'file create ntpd_check-time.sh'
+- name: 'file create ntpd_check-time'
   template:
-    src: "{{file_src_ntpd_check_time_sh}}"
-    dest: "{{file_dst_ntpd_check_time_sh}}"
-    mode: "{{file_mode_ntpd_check_time_sh}}"
-    owner: "{{file_owner_ntpd_check_time_sh}}"
-    group: "{{file_group_ntpd_check_time_sh}}"
+    src: "{{file_src_ntpd_check_time}}"
+    dest: "{{file_dst_ntpd_check_time}}"
+    mode: "{{file_mode_ntpd_check_time}}"
+    owner: "{{file_owner_ntpd_check_time}}"
+    group: "{{file_group_ntpd_check_time}}"
   tags:
     - enable
     - ntpd
@@ -77,10 +77,10 @@
     - enable
     - ntpd
 
-- name: 'file remove ntpd_update-time.sh'
+- name: 'file remove ntpd_update-time'
   file:
     state: 'absent'
-    path: "{{file_dst_ntpd_update_time_sh}}"
+    path: "{{file_dst_ntpd_update_time}}"
   tags:
     - enable
     - ntpd
