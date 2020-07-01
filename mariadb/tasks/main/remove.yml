@@ -57,6 +57,14 @@
     - remove
     - mariadb
 
+- name: 'file remove mariadb_run-backup'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mariadb_run_backup}}"
+  tags:
+    - remove
+    - mariadb
+
 - name: 'file remove client.cnf'
   file:
     state: 'absent'
