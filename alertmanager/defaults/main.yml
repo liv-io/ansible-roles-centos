@@ -4,8 +4,10 @@ alertmanager_state: 'enable'
 
 alertmanager_checksum_algorithm: 'sha256'
 
-alertmanager_checksum: '3a826321ee90a5071abf7ba199ac86f77887b7a4daa8761400310b4191ab2819'
+alertmanager_checksum: '9ccd863937436fd6bfe650e22521a7f2e6a727540988eef515dde208f9aef232'
 
 alertmanager_config: []
 
-alertmanager_version: '0.20.0'
+alertmanager_version: '0.21.0'
+
+alertmanager_web_external_url: "https://alertmanager.{{ansible_domain}}"

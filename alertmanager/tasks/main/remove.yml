@@ -61,14 +61,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file remove alertmanager_bin.dir'
-  file:
-    state: 'absent'
-    path: "{{file_dst_alertmanager_bin_dir}}"
-  tags:
-    - remove
-    - alertmanager
-
 - name: 'file remove alertmanager.sysconfig'
   file:
     state: 'absent'
@@ -82,6 +74,38 @@
     state: 'absent'
     path: "{{file_dst_alertmanager_service}}"
   notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'file remove alertmanager_etc.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_alertmanager_etc_dir}}"
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'file remove alertmanager'
+  file:
+    state: 'absent'
+    path: "{{file_creates_alertmanager}}"
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'file remove alertmanager.tar.gz'
+  file:
+    state: 'absent'
+    path: "{{file_dst_alertmanager_tar_gz}}"
+  tags:
+    - remove
+    - alertmanager
+
+- name: 'file remove amtool'
+  file:
+    state: 'absent'
+    path: "{{file_dst_amtool}}"
   tags:
     - remove
     - alertmanager

@@ -23,7 +23,7 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'service restart alertmanager'
+- name: 'service reload alertmanager'
   service:
-    state: 'restarted'
+    state: 'reloaded'
     name: "{{service_name_alertmanager}}"

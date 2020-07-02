@@ -19,18 +19,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create alertmanager-current.link'
-  file:
-    state: 'link'
-    src: "{{file_src_alertmanager_current_link}}"
-    path: "{{file_dst_alertmanager_current_link}}"
-    owner: "{{file_owner_alertmanager_current_link}}"
-    group: "{{file_group_alertmanager_current_link}}"
-  notify: 'service restart alertmanager'
-  tags:
-    - enable
-    - alertmanager
-
 - name: 'file create alertmanager.yml'
   template:
     src: "{{file_src_alertmanager_yml}}"
@@ -38,7 +26,7 @@
     mode: "{{file_mode_alertmanager_yml}}"
     owner: "{{file_owner_alertmanager_yml}}"
     group: "{{file_group_alertmanager_yml}}"
-  notify: 'service restart alertmanager'
+  notify: 'service reload alertmanager'
   tags:
     - enable
     - alertmanager
@@ -50,7 +38,7 @@
     mode: "{{file_mode_alertmanager_sysconfig}}"
     owner: "{{file_owner_alertmanager_sysconfig}}"
     group: "{{file_group_alertmanager_sysconfig}}"
-  notify: 'service restart alertmanager'
+  notify: 'service reload alertmanager'
   tags:
     - enable
     - alertmanager

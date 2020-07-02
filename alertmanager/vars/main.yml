@@ -4,43 +4,33 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-# alertmanager_app.dir
-file_dst_alertmanager_app_dir: "/{{common_app_dir}}/alertmanager"
-file_mode_alertmanager_app_dir: '0755'
-file_owner_alertmanager_app_dir: 'root'
-file_group_alertmanager_app_dir: 'root'
+# alertmanager_data.dir
+file_dst_alertmanager_data_dir: '/data/alertmanager'
+file_mode_alertmanager_data_dir: '0750'
+file_owner_alertmanager_data_dir: 'alertmanager'
+file_group_alertmanager_data_dir: 'alertmanager'
 
-# alertmanager_bin.dir
-file_dst_alertmanager_bin_dir: "/{{common_app_dir}}/alertmanager/bin"
-file_mode_alertmanager_bin_dir: '0755'
-file_owner_alertmanager_bin_dir: 'root'
-file_group_alertmanager_bin_dir: 'root'
-
-# alertmanager_conf.dir
-file_dst_alertmanager_conf_dir: "/{{common_app_dir}}/alertmanager/conf"
-file_mode_alertmanager_conf_dir: '0755'
-file_owner_alertmanager_conf_dir: 'root'
-file_group_alertmanager_conf_dir: 'root'
-
-# alertmanager-current.link
-file_src_alertmanager_current_link: "/{{common_app_dir}}/alertmanager/bin/alertmanager-{{alertmanager_version}}.linux-amd64"
-file_dst_alertmanager_current_link: "/{{common_app_dir}}/alertmanager/bin/current"
-file_owner_alertmanager_current_link: 'root'
-file_group_alertmanager_current_link: 'root'
+# alertmanager_etc.dir
+file_dst_alertmanager_etc_dir: '/etc/alertmanager'
+file_mode_alertmanager_etc_dir: '0755'
+file_owner_alertmanager_etc_dir: 'root'
+file_group_alertmanager_etc_dir: 'root'
 
 # alertmanager.tar.gz
 file_src_alertmanager_tar_gz: "https://github.com/prometheus/alertmanager/releases/download/v{{alertmanager_version}}/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"
-file_dst_alertmanager_tar_gz: "/{{common_app_dir}}/alertmanager/bin/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"
+file_dst_alertmanager_tar_gz: "/usr/local/src/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"
 file_mode_alertmanager_tar_gz: '0644'
 file_owner_alertmanager_tar_gz: 'root'
 file_group_alertmanager_tar_gz: 'root'
 
 # alertmanager
-file_src_alertmanager: "/{{common_app_dir}}/alertmanager/bin/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"
-file_dst_alertmanager: "/{{common_app_dir}}/alertmanager/bin"
+file_src_alertmanager: "/usr/local/src/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"
+file_dst_alertmanager: '/usr/local/bin'
 file_owner_alertmanager: 'root'
 file_group_alertmanager: 'root'
-file_creates_alertmanager: "/{{common_app_dir}}/alertmanager/bin/alertmanager-{{alertmanager_version}}.linux-amd64"
+file_creates_alertmanager: '/usr/local/bin/alertmanager'
+file_exclude_alertmanager: ['LICENSE', 'NOTICE', 'alertmanager.yml']
+file_extra_opts_alertmanager: ['--strip-components=1']
 
 # alertmanager.service
 file_src_alertmanager_service: 'templates/main/alertmanager.service.j2'
@@ -58,10 +48,13 @@ file_group_alertmanager_sysconfig: 'root'
 
 # alertmanager.yml
 file_src_alertmanager_yml: 'templates/main/alertmanager.yml.j2'
-file_dst_alertmanager_yml: "/{{common_app_dir}}/alertmanager/conf/alertmanager.yml"
+file_dst_alertmanager_yml: '/etc/alertmanager/alertmanager.yml'
 file_mode_alertmanager_yml: '0644'
 file_owner_alertmanager_yml: 'root'
 file_group_alertmanager_yml: 'root'
+
+# amtool
+file_dst_amtool: '/usr/local/bin/amtool'
 
 #-------------------------------------------------------------------------------
 # COMMANDS

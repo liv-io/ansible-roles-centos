@@ -46,6 +46,26 @@ ENABLE
             smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'
             smtp_require_tls: true
 
+        - section: 'route'
+          config: |
+            receiver: 'itops'
+            group_by: ['instance', 'alert']
+            group_wait: 1m
+            group_interval: 30m
+            repeat_interval: 150m
+            routes:
+            - match:
+                severity: 'critical'
+                receiver: 'itops'
+
+        - section: 'inhibit_rules'
+          config: |
+            - source_match:
+                severity: 'critical'
+              target_match:
+                severity: 'warning'
+              equal: ['alertname']
+
         - section: 'receivers'
           config: |
             - name: 'itops'
@@ -66,6 +86,26 @@ DISABLE
             smtp_auth_username: 'alertmanager@domain.tld'
             smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'
             smtp_require_tls: true
+
+        - section: 'route'
+          config: |
+            receiver: 'itops'
+            group_by: ['instance', 'alert']
+            group_wait: 1m
+            group_interval: 30m
+            repeat_interval: 150m
+            routes:
+            - match:
+                severity: 'critical'
+                receiver: 'itops'
+
+        - section: 'inhibit_rules'
+          config: |
+            - source_match:
+                severity: 'critical'
+              target_match:
+                severity: 'warning'
+              equal: ['alertname']
 
         - section: 'receivers'
           config: |
@@ -112,7 +152,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '3a826321ee90a5071abf7ba199ac86f77887b7a4daa8761400310b4191ab2819'
+    Default    : '9ccd863937436fd6bfe650e22521a7f2e6a727540988eef515dde208f9aef232'
     Options    :
       Examples: 'b43fd8aba978f19375e37fb7924bcdc7dd45659b1b0f87a2815860001f100f46' |
                 'f62a30bd766091218ecc06512ae5fdd0f99807733a6aec0e3ca83558e56ecf6d'
@@ -155,9 +195,19 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '0.20.0'
+    Default    : '0.21.0'
     Options    :
       Examples: '0.15.3' | '0.16.0'
+
+  alertmanager_web_external_url
+    Description: Define the 'alertmanager_web_external_url' option.
+    Implemented: 3.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "https://alertmanager.{{ansible_domain}}"
+    Options    :
+      Examples: 'https://host.domain.tld'
 
 --------------------------------------------------------------------------------
 CONFLICTS
@@ -173,7 +223,6 @@ PACKAGES
   alertmanager
 
 ROLES
-  common
 
 PARAMETERS
 

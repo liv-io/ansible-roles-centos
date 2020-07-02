@@ -51,35 +51,24 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create alertmanager_app.dir'
+- name: 'file create alertmanager_data.dir'
   file:
     state: 'directory'
-    path: "{{file_dst_alertmanager_app_dir}}"
-    mode: "{{file_mode_alertmanager_app_dir}}"
-    owner: "{{file_owner_alertmanager_app_dir}}"
-    group: "{{file_group_alertmanager_app_dir}}"
+    path: "{{file_dst_alertmanager_data_dir}}"
+    mode: "{{file_mode_alertmanager_data_dir}}"
+    owner: "{{file_owner_alertmanager_data_dir}}"
+    group: "{{file_group_alertmanager_data_dir}}"
   tags:
     - install
     - alertmanager
 
-- name: 'file create alertmanager_bin.dir'
+- name: 'file create alertmanager_etc.dir'
   file:
     state: 'directory'
-    path: "{{file_dst_alertmanager_bin_dir}}"
-    mode: "{{file_mode_alertmanager_bin_dir}}"
-    owner: "{{file_owner_alertmanager_bin_dir}}"
-    group: "{{file_group_alertmanager_bin_dir}}"
-  tags:
-    - install
-    - alertmanager
-
-- name: 'file create alertmanager_conf.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_alertmanager_conf_dir}}"
-    mode: "{{file_mode_alertmanager_conf_dir}}"
-    owner: "{{file_owner_alertmanager_conf_dir}}"
-    group: "{{file_group_alertmanager_conf_dir}}"
+    path: "{{file_dst_alertmanager_etc_dir}}"
+    mode: "{{file_mode_alertmanager_etc_dir}}"
+    owner: "{{file_owner_alertmanager_etc_dir}}"
+    group: "{{file_group_alertmanager_etc_dir}}"
   tags:
     - install
     - alertmanager
@@ -102,6 +91,8 @@
     dest: "{{file_dst_alertmanager}}"
     owner: "{{file_owner_alertmanager}}"
     group: "{{file_group_alertmanager}}"
+    exclude: "{{file_exclude_alertmanager}}"
+    extra_opts: "{{file_extra_opts_alertmanager}}"
     remote_src: 'yes'
   tags:
     - install
