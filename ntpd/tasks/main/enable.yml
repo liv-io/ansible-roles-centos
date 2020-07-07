@@ -59,20 +59,13 @@
     state: 'present'
     disabled: "{{'yes' if (ntpd_check_time_state is match('false|no|disable')) else 'no'}}"
     name: "{{cron_name_ntpd_check_time}}"
-    cron_file: "{{cron_cron_file_ntpd_check_time}}"
+    day: "{{cron_day_ntpd_check_time}}"
+    hour: "{{cron_hour_ntpd_check_time}}"
     minute: "{{cron_minute_ntpd_check_time}}"
+    month: "{{cron_month_ntpd_check_time}}"
+    weekday: "{{cron_weekday_ntpd_check_time}}"
     user: "{{cron_user_ntpd_check_time}}"
     job: "{{cron_job_ntpd_check_time}}"
-  tags:
-    - enable
-    - ntpd
-
-- name: 'cron remove ntpd_update-time'
-  cron:
-    state: 'absent'
-    name: "{{cron_name_ntpd_update_time}}"
-    cron_file: "{{cron_cron_file_ntpd_update_time}}"
-    user: "{{cron_user_ntpd_update_time}}"
   tags:
     - enable
     - ntpd
@@ -81,6 +74,15 @@
   file:
     state: 'absent'
     path: "{{file_dst_ntpd_update_time}}"
+  tags:
+    - enable
+    - ntpd
+
+- name: 'cron remove ntpd_update-time'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_ntpd_update_time}}"
+    user: "{{cron_user_ntpd_update_time}}"
   tags:
     - enable
     - ntpd
