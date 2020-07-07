@@ -15,7 +15,6 @@ F: feature
 --------------------------------------------------------------------------------
 
 * Version 4.0.0 (2020-07-07)
-C: Redesign cron tasks (use Ansible cron module)
 C: Remove option 'ntpd_check_time_interval'
 C: Remove option 'ntpd_update_time_interval'
 C: Add option 'ntpd_check_time_minute' to specify interval (Default: '*/10')
