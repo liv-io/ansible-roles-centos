@@ -61,7 +61,6 @@ CRONJOB
         - {address: '162.23.41.10', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
         - {address: '192.33.96.101', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'}
         - {address: '192.33.96.102', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'}
-      ntpd_update_time_interval: 15
 
 REMOVE
   - hosts: all
