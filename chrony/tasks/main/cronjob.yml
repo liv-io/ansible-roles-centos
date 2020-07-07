@@ -43,20 +43,19 @@
     - cronjob
     - chrony
 
-- name: 'cron remove chrony_check-time'
-  cron:
-    state: 'absent'
-    name: "{{cron_name_chrony_check_time}}"
-    cron_file: "{{cron_cron_file_chrony_check_time}}"
-    user: "{{cron_user_chrony_check_time}}"
-  tags:
-    - cronjob
-    - chrony
-
 - name: 'file remove chrony_check-time'
   file:
     state: 'absent'
     path: "{{file_dst_chrony_check_time}}"
+  tags:
+    - cronjob
+    - chrony
+
+- name: 'cron remove chrony_check-time'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_chrony_check_time}}"
+    user: "{{cron_user_chrony_check_time}}"
   tags:
     - cronjob
     - chrony
@@ -77,8 +76,11 @@
     state: 'present'
     disabled: 'no'
     name: "{{cron_name_chrony_update_time}}"
-    cron_file: "{{cron_cron_file_chrony_update_time}}"
+    day: "{{cron_day_chrony_update_time}}"
+    hour: "{{cron_hour_chrony_update_time}}"
     minute: "{{cron_minute_chrony_update_time}}"
+    month: "{{cron_month_chrony_update_time}}"
+    weekday: "{{cron_weekday_chrony_update_time}}"
     user: "{{cron_user_chrony_update_time}}"
     job: "{{cron_job_chrony_update_time}}"
   tags:

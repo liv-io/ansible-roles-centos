@@ -14,6 +14,13 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.0 (2020-07-07)
+C: Redesign cron tasks (use Ansible cron module)
+C: Remove option 'chrony_check_time_interval'
+C: Remove option 'chrony_update_time_interval'
+C: Add option 'chrony_check_time_minute' to specify interval (Default: '*/10')
+C: Add option 'chrony_update_time_minute' to specify interval (Default: '*/10')
+
 * Version 0.3.0 (2020-06-30)
 C: Redesign role to support SELinux
 

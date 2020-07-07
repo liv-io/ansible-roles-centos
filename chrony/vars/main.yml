@@ -28,13 +28,6 @@ file_mode_chrony_check_time: '0754'
 file_owner_chrony_check_time: 'root'
 file_group_chrony_check_time: 'root'
 
-# chrony_check-time
-cron_name_chrony_check_time: "chrony: Check Time"
-cron_cron_file_chrony_check_time: "chrony_check-time"
-cron_minute_chrony_check_time: "*/{% if ((chrony_check_time_interval|int(10)) > 59) %}59{% elif ((chrony_check_time_interval|int(10)) < 5) %}5{% else %}{{(chrony_check_time_interval|int(10))}}{% endif %}"
-cron_user_chrony_check_time: "{{file_owner_chrony_check_time}}"
-cron_job_chrony_check_time: "{{file_dst_chrony_check_time}}"
-
 # chrony_update-time
 file_src_chrony_update_time: 'templates/main/chrony_update-time.j2'
 file_dst_chrony_update_time: '/usr/local/sbin/chrony_update-time'
@@ -42,10 +35,23 @@ file_mode_chrony_update_time: '0754'
 file_owner_chrony_update_time: 'root'
 file_group_chrony_update_time: 'root'
 
+# chrony_check-time
+cron_name_chrony_check_time: 'chrony: Check Time'
+cron_day_chrony_check_time: "{{chrony_check_time_day}}"
+cron_hour_chrony_check_time: "{{chrony_check_time_hour}}"
+cron_minute_chrony_check_time: "{{chrony_check_time_minute}}"
+cron_month_chrony_check_time: "{{chrony_check_time_month}}"
+cron_weekday_chrony_check_time: "{{chrony_check_time_weekday}}"
+cron_user_chrony_check_time: "{{file_owner_chrony_check_time}}"
+cron_job_chrony_check_time: "{{file_dst_chrony_check_time}}"
+
 # chrony_update-time
-cron_name_chrony_update_time: "chrony: Update Time"
-cron_cron_file_chrony_update_time: "chrony_update-time"
-cron_minute_chrony_update_time: "*/{% if ((chrony_update_time_interval|int(10)) > 59) %}59{% elif ((chrony_update_time_interval|int(10)) < 1) %}1{% else %}{{(chrony_update_time_interval|int(10))}}{% endif %}"
+cron_name_chrony_update_time: 'chrony: Update Time'
+cron_day_chrony_update_time: "{{chrony_update_time_day}}"
+cron_hour_chrony_update_time: "{{chrony_update_time_hour}}"
+cron_minute_chrony_update_time: "{{chrony_update_time_minute}}"
+cron_month_chrony_update_time: "{{chrony_update_time_month}}"
+cron_weekday_chrony_update_time: "{{chrony_update_time_weekday}}"
 cron_user_chrony_update_time: "{{file_owner_chrony_update_time}}"
 cron_job_chrony_update_time: "{{file_dst_chrony_update_time}}"
 

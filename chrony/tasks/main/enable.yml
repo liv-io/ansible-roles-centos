@@ -47,20 +47,13 @@
     state: 'present'
     disabled: "{{'yes' if (chrony_check_time_state is match('false|no|disable')) else 'no'}}"
     name: "{{cron_name_chrony_check_time}}"
-    cron_file: "{{cron_cron_file_chrony_check_time}}"
+    day: "{{cron_day_chrony_check_time}}"
+    hour: "{{cron_hour_chrony_check_time}}"
     minute: "{{cron_minute_chrony_check_time}}"
+    month: "{{cron_month_chrony_check_time}}"
+    weekday: "{{cron_weekday_chrony_check_time}}"
     user: "{{cron_user_chrony_check_time}}"
     job: "{{cron_job_chrony_check_time}}"
-  tags:
-    - enable
-    - chrony
-
-- name: 'cron remove chrony_update-time'
-  cron:
-    state: 'absent'
-    name: "{{cron_name_chrony_update_time}}"
-    cron_file: "{{cron_cron_file_chrony_update_time}}"
-    user: "{{cron_user_chrony_update_time}}"
   tags:
     - enable
     - chrony
@@ -69,6 +62,15 @@
   file:
     state: 'absent'
     path: "{{file_dst_chrony_update_time}}"
+  tags:
+    - enable
+    - chrony
+
+- name: 'cron remove chrony_update-time'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_chrony_update_time}}"
+    user: "{{cron_user_chrony_update_time}}"
   tags:
     - enable
     - chrony

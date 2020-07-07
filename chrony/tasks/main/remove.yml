@@ -35,18 +35,7 @@
   cron:
     state: 'absent'
     name: "{{cron_name_chrony_check_time}}"
-    cron_file: "{{cron_cron_file_chrony_check_time}}"
     user: "{{cron_user_chrony_check_time}}"
-  tags:
-    - remove
-    - chrony
-
-- name: 'cron remove chrony_update-time'
-  cron:
-    state: 'absent'
-    name: "{{cron_name_chrony_update_time}}"
-    cron_file: "{{cron_cron_file_chrony_update_time}}"
-    user: "{{cron_user_chrony_update_time}}"
   tags:
     - remove
     - chrony
@@ -55,6 +44,15 @@
   file:
     state: 'absent'
     path: "{{file_dst_chrony_check_time}}"
+  tags:
+    - remove
+    - chrony
+
+- name: 'cron remove chrony_update-time'
+  cron:
+    state: 'absent'
+    name: "{{cron_name_chrony_update_time}}"
+    user: "{{cron_user_chrony_update_time}}"
   tags:
     - remove
     - chrony
