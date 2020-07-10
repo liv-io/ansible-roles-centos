@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 4.0.1 (2020-07-10)
+B: Update missing script paths
+
 * Version 4.0.0 (2020-07-10)
 C: Change script destination directory
 
