@@ -59,28 +59,6 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create postgresql_backup.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_postgresql_backup_dir}}"
-    mode: "{{file_mode_postgresql_backup_dir}}"
-    owner: "{{file_owner_postgresql_backup_dir}}"
-    group: "{{file_group_postgresql_backup_dir}}"
-  tags:
-    - install
-    - postgresql
-
-- name: 'file create postgresql_script.dir'
-  file:
-    state: 'directory'
-    path: "{{file_dst_postgresql_script_dir}}"
-    mode: "{{file_mode_postgresql_script_dir}}"
-    owner: "{{file_owner_postgresql_script_dir}}"
-    group: "{{file_group_postgresql_script_dir}}"
-  tags:
-    - install
-    - postgresql
-
 - name: 'file create postgresql_run-backup'
   template:
     src: "{{file_src_postgresql_run_backup}}"
@@ -88,17 +66,6 @@
     mode: "{{file_mode_postgresql_run_backup}}"
     owner: "{{file_owner_postgresql_run_backup}}"
     group: "{{file_group_postgresql_run_backup}}"
-  tags:
-    - install
-    - postgresql
-
-- name: 'file create postgresql'
-  template:
-    src: "{{file_src_postgresql}}"
-    dest: "{{file_dst_postgresql}}"
-    mode: "{{file_mode_postgresql}}"
-    owner: "{{file_owner_postgresql}}"
-    group: "{{file_group_postgresql}}"
   tags:
     - install
     - postgresql

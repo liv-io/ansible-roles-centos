@@ -70,7 +70,7 @@ postgresql_host='localhost'
 postgresql_username='postgres'
 postgresql_password='{{postgresql_postgres_password}}'
 
-backup_dir='{{file_dst_postgresql_backup_dir}}'
+backup_dir='/var/lib/pgsql/backups'
 backup_timestamp=$(${date} '+%Y%m%d-%H%M%S%z')
 backup_file_owner='{{file_owner_postgresql_backup_file}}'
 backup_file_group='{{file_group_postgresql_backup_file}}'
@@ -237,7 +237,7 @@ log_and_exit_on_error "$?" 'Error' 'Unable to get individual PostgreSQL database
 
 # Dump and compress individual PostgreSQL databases
 for db in ${databases} ; do
-  ${su} ${postgresql_username} -c "PGPASSWORD=${postgresql_password} ${pg_dump} -h ${postgresql_host} -U ${postgresql_username} -Fp ${db} | ${gzip} -c > ${backup_dir}/${host}_${db}_${backup_timestamp}.gz"
+  ${su} ${postgresql_username} -c "PGPASSWORD=${postgresql_password} ${pg_dump} -h ${postgresql_host} -U ${postgresql_username} -Fc ${db} | ${gzip} -c > ${backup_dir}/${host}_${db}_${backup_timestamp}.gz"
   if [ "$?" -eq 0 ]; then
     severity='Info'
     message="'${db}' dumped and compressed."

@@ -1,7 +1,5 @@
 ---
 
-postgresql_data_dir: '/var/lib/pgsql/data'
-
 #-------------------------------------------------------------------------------
 # PACKAGING
 #-------------------------------------------------------------------------------
@@ -16,38 +14,19 @@ package_name_postgresql_server: 'postgresql-server'
 # FILES
 #-------------------------------------------------------------------------------
 
-# postgresql_backup.dir
-file_dst_postgresql_backup_dir: '/backup/postgresql'
-file_mode_postgresql_backup_dir: '0700'
-file_owner_postgresql_backup_dir: 'postgres'
-file_group_postgresql_backup_dir: 'postgres'
-
-# postgresql_script.dir
-file_dst_postgresql_script_dir: '/script/postgresql'
-file_mode_postgresql_script_dir: '0700'
-file_owner_postgresql_script_dir: 'root'
-file_group_postgresql_script_dir: 'root'
-
 # pg_hba.conf
-file_src_pg_hba_conf: 'templates/main/pg_hba.conf.j2'
+file_src_pg_hba_conf: "templates/{{ansible_distribution_major_version}}/pg_hba.conf.j2"
 file_dst_pg_hba_conf: '/var/lib/pgsql/data/pg_hba.conf'
 file_mode_pg_hba_conf: '0600'
 file_owner_pg_hba_conf: 'postgres'
 file_group_pg_hba_conf: 'postgres'
 
 # postgresql.conf
-file_src_postgresql_conf: 'templates/main/postgresql.conf.j2'
+file_src_postgresql_conf: "templates/{{ansible_distribution_major_version}}/postgresql.conf.j2"
 file_dst_postgresql_conf: '/var/lib/pgsql/data/postgresql.conf'
 file_mode_postgresql_conf: '0600'
 file_owner_postgresql_conf: 'postgres'
 file_group_postgresql_conf: 'postgres'
-
-# postgresql.sh
-file_src_postgresql_sh: 'templates/main/postgresql.sh.j2'
-file_dst_postgresql_sh: '/var/lib/pgsql/data/postgresql.sh'
-file_mode_postgresql_sh: '0644'
-file_owner_postgresql_sh: 'root'
-file_group_postgresql_sh: 'root'
 
 # postgresql_backup-file
 file_mode_postgresql_backup_file: '0600'

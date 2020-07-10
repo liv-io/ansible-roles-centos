@@ -256,11 +256,13 @@ PACKAGES
     Version: >= 9.2
     Name   :
       CentOS 7: 'postgresql'
+      CentOS 8: 'postgresql'
 
   postgresql-server
     Version: >= 9.2
     Name   :
       CentOS 7: 'postgresql-server'
+      CentOS 8: 'postgresql-server'
 
 ROLES
   mailx
@@ -309,6 +311,10 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
+      Status: Development
+
+  CentOS
+    Version: 8
       Status: Development
 
 --------------------------------------------------------------------------------

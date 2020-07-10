@@ -49,14 +49,6 @@
     - remove
     - postgresql
 
-- name: 'file remove postgresql_script.dir'
-  file:
-    state: 'absent'
-    path: "{{file_dst_postgresql_script_dir}}"
-  tags:
-    - remove
-    - postgresql
-
 - name: 'file remove postgresql_run-backup'
   file:
     state: 'absent'
