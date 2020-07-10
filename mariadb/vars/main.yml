@@ -20,11 +20,11 @@ file_mode_mariadb_backup_dir: '0700'
 file_owner_mariadb_backup_dir: 'root'
 file_group_mariadb_backup_dir: 'root'
 
-# mariadb_script.dir
-file_dst_mariadb_script_dir: '/script/mariadb'
-file_mode_mariadb_script_dir: '0700'
-file_owner_mariadb_script_dir: 'root'
-file_group_mariadb_script_dir: 'root'
+# mariadb_etc.dir
+file_dst_mariadb_etc_dir: '/etc/mariadb'
+file_mode_mariadb_etc_dir: '0700'
+file_owner_mariadb_etc_dir: 'root'
+file_group_mariadb_etc_dir: 'root'
 
 # client.cnf
 file_src_client_cnf: 'templates/main/client.cnf.j2'
@@ -35,7 +35,7 @@ file_group_client_cnf: 'root'
 
 # credentials.cnf
 file_src_credentials_cnf: 'templates/main/credentials.cnf.j2'
-file_dst_credentials_cnf: '/script/mariadb/credentials.cnf'
+file_dst_credentials_cnf: '/etc/mariadb/credentials.cnf'
 file_mode_credentials_cnf: '0600'
 file_owner_credentials_cnf: 'root'
 file_group_credentials_cnf: 'root'

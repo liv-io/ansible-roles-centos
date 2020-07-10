@@ -51,13 +51,13 @@
     - install
     - mariadb
 
-- name: 'file create mariadb_script.dir'
+- name: 'file create mariadb_etc.dir'
   file:
     state: 'directory'
-    path: "{{file_dst_mariadb_script_dir}}"
-    mode: "{{file_mode_mariadb_script_dir}}"
-    owner: "{{file_owner_mariadb_script_dir}}"
-    group: "{{file_group_mariadb_script_dir}}"
+    path: "{{file_dst_mariadb_etc_dir}}"
+    mode: "{{file_mode_mariadb_etc_dir}}"
+    owner: "{{file_owner_mariadb_etc_dir}}"
+    group: "{{file_group_mariadb_etc_dir}}"
   tags:
     - install
     - mariadb

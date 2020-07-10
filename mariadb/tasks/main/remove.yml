@@ -49,10 +49,10 @@
     - remove
     - mariadb
 
-- name: 'file remove mariadb_script.dir'
+- name: 'file remove mariadb_etc.dir'
   file:
     state: 'absent'
-    path: "{{file_dst_mariadb_script_dir}}"
+    path: "{{file_dst_mariadb_etc_dir}}"
   tags:
     - remove
     - mariadb
