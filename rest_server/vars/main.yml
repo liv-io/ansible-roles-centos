@@ -1,0 +1,84 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# backup.dir
+file_dst_backup_dir: '/backup'
+file_mode_backup_dir: '0755'
+file_owner_backup_dir: 'root'
+file_group_backup_dir: 'root'
+
+# rest-server_backup.dir
+file_dst_rest_server_backup_dir: '/backup/rest-server'
+file_mode_rest_server_backup_dir: '0755'
+file_owner_rest_server_backup_dir: 'root'
+file_group_rest_server_backup_dir: 'root'
+
+# rest-server.gz
+file_src_rest_server_gz: "https://github.com/restic/rest-server/releases/download/v{{rest_server_version}}/rest-server-{{rest_server_version}}-linux-amd64.gz"
+file_dst_rest_server_gz: "/usr/local/src/rest-server-{{rest_server_version}}-linux-amd64.gz"
+file_mode_rest_server_gz: '0644'
+file_owner_rest_server_gz: 'root'
+file_group_rest_server_gz: 'root'
+
+# unarchive-rest_server.gz
+command_cmd_unarchive_rest_server_gz: "gunzip -kq /usr/local/src/rest-server-{{rest_server_version}}-linux-amd64.gz"
+command_creates_unarchive_rest_server_gz: "/usr/local/src/rest-server-{{rest_server_version}}-linux-amd64"
+
+# rest-server
+file_src_rest_server: "/usr/local/src/rest-server-{{rest_server_version}}-linux-amd64"
+file_dst_rest_server: "/usr/local/bin/rest-server"
+file_mode_rest_server: '0755'
+file_owner_rest_server: 'root'
+file_group_rest_server: 'root'
+
+# rest-server.service
+file_src_rest_server_service: 'templates/main/rest-server.service.j2'
+file_dst_rest_server_service: '/usr/lib/systemd/system/rest-server.service'
+file_mode_rest_server_service: '0644'
+file_owner_rest_server_service: 'root'
+file_group_rest_server_service: 'root'
+
+# rest-server.sysconfig
+file_src_rest_server_sysconfig: 'templates/main/rest-server.sysconfig.j2'
+file_dst_rest_server_sysconfig: '/etc/sysconfig/rest-server'
+file_mode_rest_server_sysconfig: '0644'
+file_owner_rest_server_sysconfig: 'root'
+file_group_rest_server_sysconfig: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check service rest-server
+command_cmd_check_service_rest_server: 'systemctl cat rest-server.service > /dev/null 2>&1'
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# rest-server
+group_name_rest_server: 'rest-server'
+group_system_rest_server: 'yes'
+
+# rest-server
+user_name_rest_server: 'rest-server'
+user_comment_rest_server: 'Rest Server'
+user_group_rest_server: 'rest-server'
+user_append_rest_server: 'yes'
+user_home_create_rest_server: 'yes'
+user_home_move_rest_server: 'no'
+user_home_remove_rest_server: 'yes'
+user_home_force_rest_server: 'no'
+user_password_rest_server: '!'
+user_password_update_rest_server: 'always'
+user_shell_rest_server: '/sbin/nologin'
+user_system_rest_server: 'yes'
+
+# rest-server
+service_name_rest_server: 'rest-server'

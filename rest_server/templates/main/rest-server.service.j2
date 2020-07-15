@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------
+#                             ANSIBLE MANAGED FILE
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# INFORMATION
+#-------------------------------------------------------------------------------
+#
+# Name   : rest-server.service
+# Type   : systemd unit file
+# Role   : rest_server
+#
+# Authors: liv community
+# License: Simplified BSD License
+#
+#-------------------------------------------------------------------------------
+
+[Unit]
+Description=Rest Server
+After=syslog.target network.target
+
+[Service]
+User=rest-server
+Group=rest-server
+EnvironmentFile={{file_dst_rest_server_sysconfig}}
+ExecStart={{file_dst_rest_server}} $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

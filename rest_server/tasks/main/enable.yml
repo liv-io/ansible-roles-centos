@@ -1,0 +1,45 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - enable
+    - rest_server
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create rest-server.sysconfig'
+  template:
+    src: "{{file_src_rest_server_sysconfig}}"
+    dest: "{{file_dst_rest_server_sysconfig}}"
+    mode: "{{file_mode_rest_server_sysconfig}}"
+    owner: "{{file_owner_rest_server_sysconfig}}"
+    group: "{{file_group_rest_server_sysconfig}}"
+  notify: 'service restart rest-server'
+  tags:
+    - enable
+    - rest_server
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start rest-server'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_rest_server}}"
+  tags:
+    - enable
+    - rest_server
