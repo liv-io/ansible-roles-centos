@@ -1,5 +1,8 @@
 ---
 
+# backups
+backup_dir: '/var/lib/pgsql/backups'
+
 #-------------------------------------------------------------------------------
 # PACKAGING
 #-------------------------------------------------------------------------------
@@ -49,7 +52,7 @@ cron_minute_postgresql_run_backup: "{{postgresql_run_backup_minute}}"
 cron_month_postgresql_run_backup: "{{postgresql_run_backup_month}}"
 cron_weekday_postgresql_run_backup: "{{postgresql_run_backup_weekday}}"
 cron_user_postgresql_run_backup: "{{file_owner_postgresql_run_backup}}"
-cron_job_postgresql_run_backup: "{{file_dst_postgresql_run_backup}}"
+cron_job_postgresql_run_backup: "cd {{backup_dir}} ; {{file_dst_postgresql_run_backup}}"
 
 #-------------------------------------------------------------------------------
 # COMMANDS

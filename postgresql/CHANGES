@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.6.1 (2020-07-17)
+E: Change working directory while creating backup to avoid error message (could not change directory to "/root": Permission denied)
+
 * Version 0.6.0 (2020-07-10)
 C: Change backup destination directory
 F: Add CentOS 8 support
