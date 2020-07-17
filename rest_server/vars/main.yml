@@ -12,9 +12,9 @@ file_group_data_dir: 'root'
 
 # rest-server_data.dir
 file_dst_rest_server_data_dir: '/data/rest-server'
-file_mode_rest_server_data_dir: '0755'
-file_owner_rest_server_data_dir: 'root'
-file_group_rest_server_data_dir: 'root'
+file_mode_rest_server_data_dir: '0750'
+file_owner_rest_server_data_dir: 'rest-server'
+file_group_rest_server_data_dir: 'rest-server'
 
 # rest-server.gz
 file_src_rest_server_gz: "https://github.com/restic/rest-server/releases/download/v{{rest_server_version}}/rest-server-{{rest_server_version}}-linux-amd64.gz"
