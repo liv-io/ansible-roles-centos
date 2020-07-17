@@ -103,9 +103,9 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Array
-    Default    : ['--path /backup/rest-server', '--prometheus']
+    Default    : ['--path /data/rest-server', '--prometheus']
     Options    :
-      Examples: ['--prometheus'] | ['--path /backup/restic', '--prometheus']
+      Examples: ['--prometheus'] | ['--path /data/restic', '--prometheus']
       None    : []
 
   rest_server_version
