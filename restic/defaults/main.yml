@@ -6,10 +6,6 @@ restic_checksum: 'a88ca09d1dd051d470965667a224a2b81930c6628a0566b7b17868be40207d
 
 restic_checksum_algorithm: 'sha256'
 
-restic_backup_server: "backup.{{ansible_domain}}"
-
-restic_backup_user: 'restic'
-
 restic_exclude:
   - '/data/restic'
   - '/data/rest-server'
@@ -62,5 +58,13 @@ restic_run_backup_minute: "{{(10|random(seed=inventory_hostname))}}"
 restic_run_backup_month: '*'
 
 restic_run_backup_weekday: '*'
+
+restic_server_address: "backup.{{ansible_domain}}"
+
+restic_server_password: 'GV4ajws_aG4nKR.7bgn3'
+
+restic_server_port: '443'
+
+restic_server_username: 'restic'
 
 restic_version: '0.9.6'

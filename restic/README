@@ -76,26 +76,6 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  restic_backup_server
-    Description: Define the 'restic_backup_server' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : "backup.{{ansible_domain}}"
-    Options    :
-      Examples: 'backup.domain.tld' | 'restic.domain.tld'
-
-  restic_backup_user
-    Description: Define the 'restic_backup_user' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'restic'
-    Options    :
-      Examples: 'restic' | 'backup'
-
   restic_checksum
     Description: Define the 'restic_checksum' option.
     Implemented: 0.1
@@ -311,6 +291,46 @@ ROLE
     Default    : '*'
     Options    :
       Examples: '6' | 'Saturday'
+
+  restic_server_address
+    Description: Define the 'restic_server_address' option.
+    Implemented: 4.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "backup.{{ansible_domain}}"
+    Options    :
+      Examples: 'backup.domain.tld' | 'restic.domain.tld'
+
+  restic_server_password
+    Description: Define the 'restic_server_password' option.
+    Implemented: 4.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'GV4ajws_aG4nKR.7bgn3'
+    Options    :
+      Examples: 'vHK.kQ9bsWrL4ePaDn_5' | 'm2wL.E57MdnrSgFSP_AC'
+
+  restic_server_port
+    Description: Define the 'restic_server_port' option.
+    Implemented: 4.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Integer, String
+    Default    : '443'
+    Options    :
+      Examples: '443' | '8000'
+
+  restic_server_username
+    Description: Define the 'restic_server_username' option.
+    Implemented: 4.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : 'restic'
+    Options    :
+      Examples: 'restic' | 'backup'
 
   restic_version
     Description: Define the 'restic_version' option.
