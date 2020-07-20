@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 4.0.1 (2020-07-20)
+E: Remove 'restic' POSIX user and group
+
 * Version 4.0.0 (2020-07-17)
 C: Replace SFTP protocol by REST (Rest Server)
 C: Deprecate options restic_backup_server, restic_backup_user
