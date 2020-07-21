@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.5 (2020-07-21)
+E: Move service user's home directory to '/var/empty/rest-server'
+
 * Version 0.1.4 (2020-07-17)
 B: Correct POSIX owner and group of rest-server data directory
 E: Improve POSIX permissions of rest-server data directory

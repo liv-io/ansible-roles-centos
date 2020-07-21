@@ -35,6 +35,7 @@
     comment: "{{user_comment_rest_server}}"
     group: "{{user_group_rest_server}}"
     append: "{{user_append_rest_server}}"
+    home: "{{user_home_rest_server}}"
     createhome: "{{user_home_create_rest_server}}"
     move_home: "{{user_home_move_rest_server}}"
     remove: "{{user_home_remove_rest_server}}"
