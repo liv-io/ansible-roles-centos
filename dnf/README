@@ -242,7 +242,7 @@ ROLE
     Type       : Integer, String
     Default    : '*'
     Options    :
-      Examples: 6 | 'Saturday'
+      Examples: '6' | 'Saturday'
 
   dnf_config_all
     Description: Define the 'dnf_config_all' option.

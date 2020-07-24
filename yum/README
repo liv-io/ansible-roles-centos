@@ -228,7 +228,7 @@ ROLE
     Type       : Integer, String
     Default    : '*'
     Options    :
-      Examples: 6 | 'Saturday'
+      Examples: '6' | 'Saturday'
 
   yum_config_all
     Description: Define the 'yum_config_all' option.

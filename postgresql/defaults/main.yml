@@ -25,7 +25,7 @@ postgresql_run_backup_day: '*'
 
 postgresql_run_backup_exclude: ['template0', 'template1']
 
-postgresql_run_backup_hour: 1
+postgresql_run_backup_hour: '1'
 
 postgresql_run_backup_keep_days: 2
 

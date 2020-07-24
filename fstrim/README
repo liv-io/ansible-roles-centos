@@ -34,7 +34,7 @@ ENABLE
       - role: fstrim
     vars:
       fstrim_state: 'enable'
-      fstrim_discard_blocks_weekday: 5
+      fstrim_discard_blocks_weekday: '5'
 
 DISABLE
   - hosts: all
@@ -42,7 +42,7 @@ DISABLE
       - role: fstrim
     vars:
       fstrim_state: 'disable'
-      fstrim_discard_blocks_weekday: 5
+      fstrim_discard_blocks_weekday: '5'
 
 REMOVE
   - hosts: all
@@ -93,7 +93,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
-    Default    : 1
+    Default    : '1'
     Options    :
       Examples: '5' | '*/6'
 
@@ -125,7 +125,7 @@ ROLE
     Type       : Integer, String
     Default    : '*'
     Options    :
-      Examples: 6 | 'Saturday'
+      Examples: '6' | 'Saturday'
 
   fstrim_monitor_mail_from_address
     Description: Define the 'fstrim_monitor_mail_from_address' option.

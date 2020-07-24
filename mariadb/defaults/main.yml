@@ -26,7 +26,7 @@ mariadb_run_backup_day: '*'
 
 mariadb_run_backup_exclude: []
 
-mariadb_run_backup_hour: 1
+mariadb_run_backup_hour: '1'
 
 mariadb_run_backup_keep_days: 2
 

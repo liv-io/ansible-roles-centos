@@ -196,7 +196,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
-    Default    : 1
+    Default    : '1'
     Options    :
       Examples: '5' | '*/6'
 
