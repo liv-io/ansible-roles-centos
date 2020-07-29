@@ -32,7 +32,7 @@ file_owner_audispd_conf: 'root'
 file_group_audispd_conf: 'root'
 
 # rules.d
-file_dst_rules_d: '/etc/audit/rules.d/'
+file_dst_rules_d: '/etc/audit/rules.d'
 file_mode_rules_d: '0750'
 file_owner_rules_d: 'root'
 file_group_rules_d: 'root'
