@@ -2,6 +2,8 @@
 
 restic_state: 'enable'
 
+restic_cacert: ''
+
 restic_checksum: 'a88ca09d1dd051d470965667a224a2b81930c6628a0566b7b17868be40207dc8'
 
 restic_checksum_algorithm: 'sha256'
