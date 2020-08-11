@@ -4,49 +4,56 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+# app.dir
+file_dst_app_dir: '/app'
+file_mode_app_dir: '0755'
+file_owner_app_dir: 'root'
+file_group_app_dir: 'root'
+
 # prometheus_app.dir
-file_dst_prometheus_app_dir: "/{{common_app_dir}}/prometheus"
+file_dst_prometheus_app_dir: '/app/prometheus'
 file_mode_prometheus_app_dir: '0755'
 file_owner_prometheus_app_dir: 'root'
 file_group_prometheus_app_dir: 'root'
 
-# prometheus_bin.dir
-file_dst_prometheus_bin_dir: "/{{common_app_dir}}/prometheus/bin"
-file_mode_prometheus_bin_dir: '0755'
-file_owner_prometheus_bin_dir: 'root'
-file_group_prometheus_bin_dir: 'root'
+# prometheus_etc.dir
+file_dst_prometheus_etc_dir: '/etc/prometheus'
+file_mode_prometheus_etc_dir: '0755'
+file_owner_prometheus_etc_dir: 'root'
+file_group_prometheus_etc_dir: 'root'
 
-# prometheus_conf.dir
-file_dst_prometheus_conf_dir: "/{{common_app_dir}}/prometheus/conf"
-file_mode_prometheus_conf_dir: '0755'
-file_owner_prometheus_conf_dir: 'root'
-file_group_prometheus_conf_dir: 'root'
+# data.dir
+file_dst_data_dir: '/data'
+file_mode_data_dir: '0755'
+file_owner_data_dir: 'root'
+file_group_data_dir: 'root'
 
 # prometheus_data.dir
-file_dst_prometheus_data_dir: "/{{common_data_dir}}/prometheus"
-file_mode_prometheus_data_dir: '0755'
+file_dst_prometheus_data_dir: '/data/prometheus'
+file_mode_prometheus_data_dir: '0750'
 file_owner_prometheus_data_dir: 'prometheus'
 file_group_prometheus_data_dir: 'prometheus'
 
-# prometheus-current.link
-file_src_prometheus_current_link: "/{{common_app_dir}}/prometheus/bin/prometheus-{{prometheus_version}}.linux-amd64"
-file_dst_prometheus_current_link: "/{{common_app_dir}}/prometheus/bin/current"
-file_owner_prometheus_current_link: 'root'
-file_group_prometheus_current_link: 'root'
-
 # prometheus.tar.gz
 file_src_prometheus_tar_gz: "https://github.com/prometheus/prometheus/releases/download/v{{prometheus_version}}/prometheus-{{prometheus_version}}.linux-amd64.tar.gz"
-file_dst_prometheus_tar_gz: "/{{common_app_dir}}/prometheus/bin/prometheus-{{prometheus_version}}.linux-amd64.tar.gz"
+file_dst_prometheus_tar_gz: "/usr/local/src/prometheus-{{prometheus_version}}.linux-amd64.tar.gz"
 file_mode_prometheus_tar_gz: '0644'
 file_owner_prometheus_tar_gz: 'root'
 file_group_prometheus_tar_gz: 'root'
 
 # prometheus
-file_src_prometheus: "/{{common_app_dir}}/prometheus/bin/prometheus-{{prometheus_version}}.linux-amd64.tar.gz"
-file_dst_prometheus: "/{{common_app_dir}}/prometheus/bin"
+file_src_prometheus: "/usr/local/src/prometheus-{{prometheus_version}}.linux-amd64.tar.gz"
+file_dst_prometheus: '/app/prometheus'
 file_owner_prometheus: 'root'
 file_group_prometheus: 'root'
-file_creates_prometheus: "/{{common_app_dir}}/prometheus/bin/prometheus-{{prometheus_version}}.linux-amd64"
+file_creates_prometheus: "/app/prometheus/prometheus-{{prometheus_version}}.linux-amd64"
+file_exclude_prometheus: ['LICENSE', 'NOTICE', 'prometheus.yml']
+
+# prometheus-current.link
+file_src_prometheus_current_link: "/app/prometheus/prometheus-{{prometheus_version}}.linux-amd64"
+file_dst_prometheus_current_link: '/app/prometheus/current'
+file_owner_prometheus_current_link: 'root'
+file_group_prometheus_current_link: 'root'
 
 # prometheus.service
 file_src_prometheus_service: 'templates/main/prometheus.service.j2'
@@ -64,10 +71,17 @@ file_group_prometheus_sysconfig: 'root'
 
 # prometheus.yml
 file_src_prometheus_yml: 'templates/main/prometheus.yml.j2'
-file_dst_prometheus_yml: "/{{common_app_dir}}/prometheus/conf/prometheus.yml"
+file_dst_prometheus_yml: '/etc/prometheus/prometheus.yml'
 file_mode_prometheus_yml: '0644'
 file_owner_prometheus_yml: 'root'
 file_group_prometheus_yml: 'root'
+
+# alerting_rules.yml
+file_src_alerting_rules_yml: 'templates/main/alerting_rules.yml.j2'
+file_dst_alerting_rules_yml: '/etc/prometheus/alerting_rules.yml'
+file_mode_alerting_rules_yml: '0644'
+file_owner_alerting_rules_yml: 'root'
+file_group_alerting_rules_yml: 'root'
 
 #-------------------------------------------------------------------------------
 # COMMANDS

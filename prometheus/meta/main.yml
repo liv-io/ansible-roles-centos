@@ -1,4 +1,4 @@
 ---
 
 dependencies:
-  - {role: common, when: not (prometheus_state is match('false|no|remove|quiesce|inactive'))}
+  - {role: alertmanager, when: (prometheus_state is match('true|yes|enable'))}

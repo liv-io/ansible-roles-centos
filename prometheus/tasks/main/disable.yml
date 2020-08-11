@@ -30,6 +30,17 @@
     - disable
     - prometheus
 
+- name: 'file create alerting_rules.yml'
+  template:
+    src: "{{file_src_alerting_rules_yml}}"
+    dest: "{{file_dst_alerting_rules_yml}}"
+    mode: "{{file_mode_alerting_rules_yml}}"
+    owner: "{{file_owner_alerting_rules_yml}}"
+    group: "{{file_group_alerting_rules_yml}}"
+  tags:
+    - disable
+    - prometheus
+
 - name: 'file create prometheus.yml'
   template:
     src: "{{file_src_prometheus_yml}}"

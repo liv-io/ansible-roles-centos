@@ -37,92 +37,10 @@ ENABLE
       - role: prometheus
     vars:
       prometheus_state: 'enable'
-      prometheus_scrape_configs: |
-        #-----------------------------------------------------------------------------
-        # PROMETHEUS
-        #-----------------------------------------------------------------------------
-
-        - job_name: 'prometheus'
-          static_configs:
-
-          - targets: ['localhost:9090']
-            labels:
-              instance: 'prometheus'
-
-        #-----------------------------------------------------------------------------
-        # NODE
-        #-----------------------------------------------------------------------------
-
-        - job_name: 'node'
-          static_configs:
-
-            - targets: ['localhost:9100']
-              labels:
-                instance: 'prometheus'
-
-            - targets: ['host01.domain.tld:9100']
-              labels:
-                instance: 'host01'
-
-        #-----------------------------------------------------------------------------
-        # BLACKBOX
-        #-----------------------------------------------------------------------------
-
-        - job_name: 'http_ip4_basic'
-          metrics_path: /probe
-          params:
-            module: [http_ip4_basic]
-          static_configs:
-            - targets:
-              - https://host01.domain.tld
-              - https://host02.domain.tld
-
-          relabel_configs:
-            - source_labels: [__address__]
-              target_label: __param_target
-            - source_labels: [__param_target]
-              target_label: instance
-            - target_label: __address__
-              replacement: 127.0.0.1:9115
-
-        - job_name: 'icmp_ip4'
-          metrics_path: /probe
-          params:
-            module: [icmp_ip4]
-          static_configs:
-            - targets: ['host01.domain.tld']
-              labels:
-                instance: 'host01'
-
-          relabel_configs:
-            - source_labels: [__address__]
-              target_label: __param_target
-            - source_labels: [__param_target]
-              target_label: instance
-            - target_label: __address__
-              replacement: 127.0.0.1:9115
-
-        #-----------------------------------------------------------------------------
-        # HAPROXY
-        #-----------------------------------------------------------------------------
-
-        - job_name: 'haproxy'
-          static_configs:
-
-          - targets: ['host01.domain.tld:9101']
-            labels:
-              instance: 'host01'
-
-        #-----------------------------------------------------------------------------
-        # MYSQLD
-        #-----------------------------------------------------------------------------
-
-        - job_name: 'mysqld'
-          static_configs:
-
-          - targets: ['host01.domain.tld:9104']
-            labels:
-              instance: 'host01'
+      prometheus_node_exporter_custom_targets:
+        - {address: '10.1.3.11', hostname: 'ns01'}
+        - {address: '10.1.3.13', hostname: 'rp01'}
+        - {address: '10.1.3.15', hostname: 'ws01'}
 
 DISABLE
   - hosts: all
@@ -130,6 +48,10 @@ DISABLE
       - role: prometheus
     vars:
       prometheus_state: 'disable'
+      prometheus_node_exporter_custom_targets:
+        - {address: '10.1.3.11', hostname: 'ns01'}
+        - {address: '10.1.3.13', hostname: 'rp01'}
+        - {address: '10.1.3.15', hostname: 'ws01'}
 
 REMOVE
   - hosts: all
@@ -170,7 +92,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '3c8592717e918edfde4beb59780bfd338a290c0945265bc56d09dba57b06b596'
+    Default    : '8fb248b579b8b9a88dd9b1686f7f68db7071960a45b28619145d3a4037375dcb'
     Options    :
       Examples: 'f5b281b72f6c80c4f972a0b75c1f47c1d747e0de6deec9d8ddc60c91c3cbfc30' |
                 '960848f9c2ffb2ce6f295dd0bc7186acd1ac12e74a90a1a9a9fbab0a838f8472'
@@ -205,51 +127,17 @@ ROLE
     Options    :
       Examples: '15s' | '30s' | '60s'
 
-  prometheus_scrape_configs
-    Description: Define the 'prometheus_scrape_configs' option.
-    Implemented: 0.4
+  prometheus_node_exporter_custom_targets
+    Description: Define the 'prometheus_node_exporter_custom_targets' option.
+    Implemented: 1.0
     Required   : False
     Value      : Arbitrary
-    Type       : String
-    Default    : |
-      #-----------------------------------------------------------------------------
-      # PROMETHEUS
-      #-----------------------------------------------------------------------------
-
-      - job_name: 'prometheus'
-        static_configs:
-
-        - targets: ['localhost:9090']
-          labels:
-            instance: 'prometheus'
+    Type       : Array/Hash
+    Default    : []
     Options    :
-      Examples: |
-        #-----------------------------------------------------------------------------
-        # PROMETHEUS
-        #-----------------------------------------------------------------------------
-
-        - job_name: 'prometheus'
-          static_configs:
-
-          - targets: ['localhost:9090']
-            labels:
-              instance: 'prometheus'
-
-        #-----------------------------------------------------------------------------
-        # NODE
-        #-----------------------------------------------------------------------------
-
-        - job_name: 'node'
-          static_configs:
-
-            - targets: ['localhost:9100']
-              labels:
-                instance: 'prometheus'
-
-            - targets: ['host01.domain.tld:9100']
-              labels:
-                instance: 'host01'
-      None    : ''
+      Examples: [{address: '10.1.3.11', hostname: 'ns01'},
+                 {address: '10.1.3.13', hostname: 'rp01'},
+                 {address: '10.1.3.15', hostname: 'ws01'}]
 
   prometheus_storage_tsdb_retention_time
     Description: Define the 'prometheus_storage_tsdb_retention_time' option.
@@ -267,7 +155,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : String
-    Default    : '2.20.0'
+    Default    : '2.20.1'
     Options    :
       Examples: '2.6.1' | '2.6.0'
 
@@ -285,7 +173,7 @@ PACKAGES
   prometheus
 
 ROLES
-  common
+  alertmanager
 
 PARAMETERS
 

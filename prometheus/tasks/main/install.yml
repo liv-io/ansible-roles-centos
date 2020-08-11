@@ -51,6 +51,17 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file create app.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_app_dir}}"
+    mode: "{{file_mode_app_dir}}"
+    owner: "{{file_owner_app_dir}}"
+    group: "{{file_group_app_dir}}"
+  tags:
+    - install
+    - prometheus
+
 - name: 'file create prometheus_app.dir'
   file:
     state: 'directory'
@@ -62,24 +73,24 @@
     - install
     - prometheus
 
-- name: 'file create prometheus_bin.dir'
+- name: 'file create prometheus_etc.dir'
   file:
     state: 'directory'
-    path: "{{file_dst_prometheus_bin_dir}}"
-    mode: "{{file_mode_prometheus_bin_dir}}"
-    owner: "{{file_owner_prometheus_bin_dir}}"
-    group: "{{file_group_prometheus_bin_dir}}"
+    path: "{{file_dst_prometheus_etc_dir}}"
+    mode: "{{file_mode_prometheus_etc_dir}}"
+    owner: "{{file_owner_prometheus_etc_dir}}"
+    group: "{{file_group_prometheus_etc_dir}}"
   tags:
     - install
     - prometheus
 
-- name: 'file create prometheus_conf.dir'
+- name: 'file create data.dir'
   file:
     state: 'directory'
-    path: "{{file_dst_prometheus_conf_dir}}"
-    mode: "{{file_mode_prometheus_conf_dir}}"
-    owner: "{{file_owner_prometheus_conf_dir}}"
-    group: "{{file_group_prometheus_conf_dir}}"
+    path: "{{file_dst_data_dir}}"
+    mode: "{{file_mode_data_dir}}"
+    owner: "{{file_owner_data_dir}}"
+    group: "{{file_group_data_dir}}"
   tags:
     - install
     - prometheus
@@ -113,6 +124,7 @@
     dest: "{{file_dst_prometheus}}"
     owner: "{{file_owner_prometheus}}"
     group: "{{file_group_prometheus}}"
+    exclude: "{{file_exclude_prometheus}}"
     remote_src: 'yes'
   tags:
     - install

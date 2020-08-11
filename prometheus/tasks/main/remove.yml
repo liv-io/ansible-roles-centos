@@ -61,18 +61,18 @@
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file remove prometheus_bin.dir'
+- name: 'file remove prometheus_app.dir'
   file:
     state: 'absent'
-    path: "{{file_dst_prometheus_bin_dir}}"
+    path: "{{file_dst_prometheus_app_dir}}"
   tags:
     - remove
     - prometheus
 
-- name: 'file remove prometheus.yml'
+- name: 'file remove prometheus_etc.dir'
   file:
     state: 'absent'
-    path: "{{file_dst_prometheus_yml}}"
+    path: "{{file_dst_prometheus_etc_dir}}"
   tags:
     - remove
     - prometheus

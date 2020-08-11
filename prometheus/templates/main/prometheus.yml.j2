@@ -37,7 +37,58 @@ rule_files:
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
-{% if not (prometheus_scrape_configs == '') %}
 scrape_configs:
-{{(prometheus_scrape_configs|indent(width=2, indentfirst=True))}}
+
+  #-----------------------------------------------------------------------------
+  # ALERTMANAGER
+  #-----------------------------------------------------------------------------
+
+  - job_name: 'alertmanager'
+    static_configs:
+
+  # Localhost
+    - targets: ['localhost:9093']
+      labels:
+        instance: '{{ansible_hostname}}'
+
+  #-----------------------------------------------------------------------------
+  # PROMETHEUS
+  #-----------------------------------------------------------------------------
+
+  - job_name: 'prometheus'
+    static_configs:
+
+  # Localhost
+    - targets: ['localhost:9090']
+      labels:
+        instance: '{{ansible_hostname}}'
+
+  #-----------------------------------------------------------------------------
+  # NODE_EXPORTER
+  #-----------------------------------------------------------------------------
+
+  - job_name: 'node'
+    static_configs:
+
+  # Localhost
+    - targets: ['localhost:9100']
+      labels:
+        instance: '{{ansible_hostname}}'
+
+  # Custom Targets
+{% if not (prometheus_node_exporter_custom_targets == []) %}
+{% for item in prometheus_node_exporter_custom_targets %}
+    - targets: ['{{item.address}}:9100']
+      labels:
+        instance: '{{item.hostname}}'
+
+{% endfor %}
 {% endif %}
+
+  # Playbook Targets
+{% for item in (groups['all']|sort) %}
+    - targets: ['{{hostvars[item].inventory_hostname}}:9100']
+      labels:
+        instance: '{{hostvars[item].inventory_hostname_short}}'
+
+{% endfor %}
