@@ -6,6 +6,30 @@ blackbox_exporter_checksum_algorithm: 'sha256'
 
 blackbox_exporter_checksum: '6ebe26d1e97d26ee08d0cd6d37a34f2f67c8414ea5e40407eadc0ac950ed518e'
 
-blackbox_exporter_config: []
+blackbox_exporter_config:
+  - name: 'icmp_ip4'
+    prober: 'icmp'
+    timeout: '5s'
+    config: |
+      preferred_ip_protocol: "ip4"
+
+  - name: 'tcp_ip4'
+    prober: 'tcp'
+    timeout: '5s'
+    config: |
+      preferred_ip_protocol: "ip4"
+
+  - name: 'http_ip4_basic'
+    prober: 'http'
+    timeout: '5s'
+    config: |
+      valid_http_versions: ["HTTP/1.1", "HTTP/2"]
+      valid_status_codes: [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 301, 400, 401]
+      method: GET
+      no_follow_redirects: false
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      tls_config: {insecure_skip_verify: true}
+      preferred_ip_protocol: "ip4"
 
 blackbox_exporter_version: '0.17.0'
