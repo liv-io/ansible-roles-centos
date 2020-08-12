@@ -14,6 +14,23 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.0.0 (2020-08-12)
+C: Rename option prometheus_node_exporter_custom_targets to prometheus_node_exporter_target_manual_hosts
+F: Add option prometheus_alertmanager_state
+F: Add option prometheus_blackbox_exporter_state
+F: Add option prometheus_blackbox_exporter_http_ip4_basic_manual_hosts
+F: Add option prometheus_blackbox_exporter_icmp_ip4_ansible_groups
+F: Add option prometheus_blackbox_exporter_icmp_ip4_manual_hosts
+F: Add option prometheus_haproxy_exporter_target_ansible_groups
+F: Add option prometheus_haproxy_exporter_target_manual_hosts
+F: Add option prometheus_mysqld_exporter_target_ansible_groups
+F: Add option prometheus_mysqld_exporter_target_manual_hosts
+F: Add option prometheus_node_exporter_target_ansible_groups
+F: Add option prometheus_node_exporter_target_manual_hosts
+F: Add option prometheus_smokeping_prober_state
+F: Add option prometheus_smokeping_prober_target_ansible_groups
+F: Add option prometheus_smokeping_prober_target_manual_hosts
+
 * Version 0.30.0 (2020-08-11)
 C: Completely redesign role and parameters
 F: Update 'prometheus' to version '2.20.1'

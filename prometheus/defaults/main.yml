@@ -2,6 +2,8 @@
 
 prometheus_state: 'enable'
 
+prometheus_alertmanager_state: 'true'
+
 prometheus_alerting_rules: |
   groups:
     - name: common
@@ -15,6 +17,14 @@ prometheus_alerting_rules: |
             summary: "{% raw %} {{ $labels.instance }} {% endraw %} has been down for two minutes."
             description: "blackbox_exporter ICMPv4 ping failed. {% raw %} {{ $labels.instance }} {% endraw %} has been down for two minutes."
 
+prometheus_blackbox_exporter_state: 'true'
+
+prometheus_blackbox_exporter_http_ip4_basic_manual_hosts: []
+
+prometheus_blackbox_exporter_icmp_ip4_ansible_groups: ['all']
+
+prometheus_blackbox_exporter_icmp_ip4_manual_hosts: []
+
 prometheus_checksum_algorithm: 'sha256'
 
 prometheus_checksum: '8fb248b579b8b9a88dd9b1686f7f68db7071960a45b28619145d3a4037375dcb'
@@ -23,7 +33,23 @@ prometheus_global_evaluation_interval: '30s'
 
 prometheus_global_scrape_interval: '30s'
 
-prometheus_node_exporter_custom_targets: []
+prometheus_haproxy_exporter_target_ansible_groups: []
+
+prometheus_haproxy_exporter_target_manual_hosts: []
+
+prometheus_mysqld_exporter_target_ansible_groups: []
+
+prometheus_mysqld_exporter_target_manual_hosts: []
+
+prometheus_node_exporter_target_ansible_groups: ['all']
+
+prometheus_node_exporter_target_manual_hosts: []
+
+prometheus_smokeping_prober_state: 'false'
+
+prometheus_smokeping_prober_target_ansible_groups: []
+
+prometheus_smokeping_prober_target_manual_hosts: []
 
 prometheus_storage_tsdb_retention_time: '365d'
 

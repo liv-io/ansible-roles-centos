@@ -37,10 +37,10 @@ ENABLE
       - role: prometheus
     vars:
       prometheus_state: 'enable'
-      prometheus_node_exporter_custom_targets:
-        - {address: '10.1.3.11', hostname: 'ns01'}
-        - {address: '10.1.3.13', hostname: 'rp01'}
-        - {address: '10.1.3.15', hostname: 'ws01'}
+      prometheus_node_exporter_target_manual_hosts:
+        - {address: '10.1.1.11', hostname: 'host01'}
+        - {address: '10.1.1.13', hostname: 'host02'}
+        - {address: '10.1.1.15', hostname: 'host03'}
 
 DISABLE
   - hosts: all
@@ -48,10 +48,10 @@ DISABLE
       - role: prometheus
     vars:
       prometheus_state: 'disable'
-      prometheus_node_exporter_custom_targets:
-        - {address: '10.1.3.11', hostname: 'ns01'}
-        - {address: '10.1.3.13', hostname: 'rp01'}
-        - {address: '10.1.3.15', hostname: 'ws01'}
+      prometheus_node_exporter_target_manual_hosts:
+        - {address: '10.1.1.11', hostname: 'host01'}
+        - {address: '10.1.1.13', hostname: 'host02'}
+        - {address: '10.1.1.15', hostname: 'host03'}
 
 REMOVE
   - hosts: all
@@ -85,6 +85,65 @@ ROLE
       Disable : 'stop' | 'off' | 'disable'
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
+
+  prometheus_alertmanager_state
+    Description: Control the 'prometheus_alertmanager_state' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'true'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  prometheus_blackbox_exporter_state
+    Description: Control the 'prometheus_blackbox_exporter_state' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'true'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  prometheus_blackbox_exporter_http_ip4_basic_manual_hosts
+    Description: Define the 'prometheus_blackbox_exporter_http_ip4_basic_manual_hosts' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{address: 'https://host01.domain.tld', hostname: 'host01'},
+                 {address: 'https://host02.domain.tld', hostname: 'host02'},
+                 {address: 'https://host03.domain.tld', hostname: 'host03'}]
+      None    : []
+
+  prometheus_blackbox_exporter_icmp_ip4_ansible_groups
+    Description: Define the 'prometheus_blackbox_exporter_icmp_ip4_ansible_groups' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: ['all'] | ['group01', 'group02', 'group03']
+      None    : []
+
+  prometheus_blackbox_exporter_icmp_ip4_manual_hosts
+    Description: Define the 'prometheus_blackbox_exporter_icmp_ip4_manual_hosts' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{address: '10.1.1.11', hostname: 'host01'},
+                 {address: '10.1.1.13', hostname: 'host02'},
+                 {address: '10.1.1.15', hostname: 'host03'}]
+      None    : []
 
   prometheus_checksum
     Description: Define the 'prometheus_checksum' option.
@@ -127,17 +186,112 @@ ROLE
     Options    :
       Examples: '15s' | '30s' | '60s'
 
-  prometheus_node_exporter_custom_targets
-    Description: Define the 'prometheus_node_exporter_custom_targets' option.
+  prometheus_haproxy_exporter_target_ansible_groups
+    Description: Define the 'prometheus_haproxy_exporter_target_ansible_groups' option.
     Implemented: 1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
     Default    : []
     Options    :
-      Examples: [{address: '10.1.3.11', hostname: 'ns01'},
-                 {address: '10.1.3.13', hostname: 'rp01'},
-                 {address: '10.1.3.15', hostname: 'ws01'}]
+      Examples: ['all'] | ['group01', 'group02', 'group03']
+      None    : []
+
+  prometheus_haproxy_exporter_target_manual_hosts
+    Description: Define the 'prometheus_haproxy_exporter_target_manual_hosts' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{address: '10.1.1.11', hostname: 'host01'},
+                 {address: '10.1.1.13', hostname: 'host02'},
+                 {address: '10.1.1.15', hostname: 'host03'}]
+      None    : []
+
+  prometheus_mysqld_exporter_target_ansible_groups
+    Description: Define the 'prometheus_mysqld_exporter_target_ansible_groups' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: ['all'] | ['group01', 'group02', 'group03']
+      None    : []
+
+  prometheus_mysqld_exporter_target_manual_hosts
+    Description: Define the 'prometheus_mysqld_exporter_target_manual_hosts' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{address: '10.1.1.11', hostname: 'host01'},
+                 {address: '10.1.1.13', hostname: 'host02'},
+                 {address: '10.1.1.15', hostname: 'host03'}]
+      None    : []
+
+  prometheus_node_exporter_target_ansible_groups
+    Description: Define the 'prometheus_node_exporter_target_ansible_groups' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : ['all']
+    Options    :
+      Examples: ['all'] | ['group01', 'group02', 'group03']
+      None    : []
+
+  prometheus_node_exporter_target_manual_hosts
+    Description: Define the 'prometheus_node_exporter_target_manual_hosts' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{address: '10.1.1.11', hostname: 'host01'},
+                 {address: '10.1.1.13', hostname: 'host02'},
+                 {address: '10.1.1.15', hostname: 'host03'}]
+      None    : []
+
+  prometheus_smokeping_prober_state
+    Description: Control the 'prometheus_smokeping_prober_state' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
+  prometheus_smokeping_prober_target_ansible_groups
+    Description: Define the 'prometheus_smokeping_prober_target_ansible_groups' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: ['all'] | ['group01', 'group02', 'group03']
+      None    : []
+
+  prometheus_smokeping_prober_target_manual_hosts
+    Description: Define the 'prometheus_smokeping_prober_target_manual_hosts' option.
+    Implemented: 1.0
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{address: '10.1.1.11', hostname: 'host01'},
+                 {address: '10.1.1.13', hostname: 'host02'},
+                 {address: '10.1.1.15', hostname: 'host03'}]
+      None    : []
 
   prometheus_storage_tsdb_retention_time
     Description: Define the 'prometheus_storage_tsdb_retention_time' option.
@@ -174,6 +328,10 @@ PACKAGES
 
 ROLES
   alertmanager
+
+  blackbox_exporter
+
+  smokeping_prober
 
 PARAMETERS
 
@@ -214,11 +372,11 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Development
+      Status: Testing
 
   CentOS
     Version: 8
-      Status: Development
+      Status: Testing
 
 --------------------------------------------------------------------------------
 OTHER

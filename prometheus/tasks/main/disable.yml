@@ -37,6 +37,7 @@
     mode: "{{file_mode_alerting_rules_yml}}"
     owner: "{{file_owner_alerting_rules_yml}}"
     group: "{{file_group_alerting_rules_yml}}"
+  when: (prometheus_alertmanager_state is match('true|yes|enable'))
   tags:
     - disable
     - prometheus

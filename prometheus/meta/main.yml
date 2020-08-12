@@ -1,4 +1,6 @@
 ---
 
 dependencies:
-  - {role: alertmanager, when: (prometheus_state is match('true|yes|enable'))}
+  - {role: alertmanager, when: (prometheus_alertmanager_state is match('true|yes|enable'))}
+  - {role: blackbox_exporter, when: (prometheus_blackbox_exporter_state is match('true|yes|enable'))}
+  - {role: smokeping_prober, when: (prometheus_smokeping_prober_state is match('true|yes|enable'))}
