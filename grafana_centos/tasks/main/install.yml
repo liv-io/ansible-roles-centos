@@ -12,29 +12,17 @@
         - "vars/{{ansible_distribution_major_version}}.yml"
         - 'vars/main.yml'
   tags:
-    - remove
-    - grafana
+    - install
+    - grafana_centos
 
 #-------------------------------------------------------------------------------
 # PACKAGING
 #-------------------------------------------------------------------------------
 
-- name: 'package remove grafana'
+- name: 'package install grafana'
   package:
-    state: 'absent'
+    state: 'present'
     name: "{{package_name_grafana}}"
   tags:
-    - remove
-    - grafana
-
-#-------------------------------------------------------------------------------
-# FILES
-#-------------------------------------------------------------------------------
-
-- name: 'file remove grafana.ini'
-  file:
-    state: 'absent'
-    path: "{{file_dst_grafana_ini}}"
-  tags:
-    - remove
-    - grafana
+    - install
+    - grafana_centos

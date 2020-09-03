@@ -25,44 +25,44 @@ USAGE
 INSTALL
   - hosts: all
     roles:
-      - role: grafana
+      - role: grafana_centos
     vars:
-      grafana_state: 'install'
+      grafana_centos_state: 'install'
 
 ENABLE
   - hosts: all
     roles:
-      - role: grafana
+      - role: grafana_centos
     vars:
-      grafana_state: 'enable'
+      grafana_centos_state: 'enable'
 
 DISABLE
   - hosts: all
     roles:
-      - role: grafana
+      - role: grafana_centos
     vars:
-      grafana_state: 'disable'
+      grafana_centos_state: 'disable'
 
 REMOVE
   - hosts: all
     roles:
-      - role: grafana
+      - role: grafana_centos
     vars:
-      grafana_state: 'remove'
+      grafana_centos_state: 'remove'
 
 INACTIVE
   - hosts: all
     roles:
-      - role: grafana
+      - role: grafana_centos
     vars:
-      grafana_state: 'inactive'
+      grafana_centos_state: 'inactive'
 
 --------------------------------------------------------------------------------
 PARAMETERS
 --------------------------------------------------------------------------------
 
 ROLE
-  grafana_state
+  grafana_centos_state
     Description: Control the state of the role.
     Implemented: 0.1
     Required   : False
@@ -76,8 +76,8 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  grafana_smtp_from_address
-    Description: Define the 'grafana_smtp_from_address' option.
+  grafana_centos_smtp_from_address
+    Description: Define the 'grafana_centos_smtp_from_address' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -86,8 +86,8 @@ ROLE
     Options    :
       Examples: 'root@domain.tld' | 'admin@domain.tld' | 'user@domain.tld'
 
-  grafana_smtp_from_name
-    Description: Define the 'grafana_smtp_from_name' option.
+  grafana_centos_smtp_from_name
+    Description: Define the 'grafana_centos_smtp_from_name' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -96,8 +96,8 @@ ROLE
     Options    :
       Examples: 'Grafana Monitoring' | 'Monitoring'
 
-  grafana_smtp_host
-    Description: Define the 'grafana_smtp_host' option.
+  grafana_centos_smtp_host
+    Description: Define the 'grafana_centos_smtp_host' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -107,8 +107,8 @@ ROLE
       Examples: 'localhost' | 'host' | 'host@domain.tld'
       None    : ''
 
-  grafana_smtp_password
-    Description: Define the 'grafana_smtp_password' option.
+  grafana_centos_smtp_password
+    Description: Define the 'grafana_centos_smtp_password' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -118,8 +118,8 @@ ROLE
       Examples: '6q7FMh2w-KGskqDX82B.g3E_3r7LgS2F' | '3X5wBEMtx-uJaj5bfCq.EeDT5Qd2eMTh'
       None    : ''
 
-  grafana_smtp_port
-    Description: Set the 'grafana_smtp_port' option.
+  grafana_centos_smtp_port
+    Description: Set the 'grafana_centos_smtp_port' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -129,8 +129,8 @@ ROLE
       Examples: 25 | 465
       None    : ''
 
-  grafana_smtp_state
-    Description: Control the 'grafana_smtp_state' option.
+  grafana_centos_smtp_state
+    Description: Control the 'grafana_centos_smtp_state' option.
     Implemented: 0.1
     Required   : False
     Value      : Predetermined
@@ -140,8 +140,8 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
-  grafana_smtp_user
-    Description: Define the 'grafana_smtp_user' option.
+  grafana_centos_smtp_user
+    Description: Define the 'grafana_centos_smtp_user' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary
@@ -163,7 +163,7 @@ DEPENDENCIES
 
 PACKAGES
   grafana
-    Version: >= 5.0
+    Version: >= 6.0
     Name   :
       CentOS 7: 'grafana'
       CentOS 8: 'grafana'
