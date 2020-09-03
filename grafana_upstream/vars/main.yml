@@ -1,0 +1,37 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# grafana
+package_name_grafana: 'grafana'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+file_src_rpm_gpg_key_grafana: 'files/main/RPM-GPG-KEY-grafana'
+file_dst_rpm_gpg_key_grafana: '/etc/pki/rpm-gpg/RPM-GPG-KEY-grafana'
+file_mode_rpm_gpg_key_grafana: '0644'
+file_owner_rpm_gpg_key_grafana: 'root'
+file_group_rpm_gpg_key_grafana: 'root'
+
+file_src_grafana_repo: 'files/main/grafana.repo'
+file_dst_grafana_repo: '/etc/yum.repos.d/grafana.repo'
+file_mode_grafana_repo: '0644'
+file_owner_grafana_repo: 'root'
+file_group_grafana_repo: 'root'
+
+file_src_grafana_ini: 'templates/main/grafana.ini.j2'
+file_dst_grafana_ini: '/etc/grafana/grafana.ini'
+file_mode_grafana_ini: '0640'
+file_owner_grafana_ini: 'root'
+file_group_grafana_ini: 'grafana'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# grafana-server
+service_name_grafana: 'grafana-server'

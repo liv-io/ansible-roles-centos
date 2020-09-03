@@ -1,0 +1,17 @@
+---
+
+grafana_upstream_state: 'enable'
+
+grafana_upstream_smtp_from_address: "grafana@{{ansible_domain}}"
+
+grafana_upstream_smtp_from_name: 'Grafana'
+
+grafana_upstream_smtp_host: ''
+
+grafana_upstream_smtp_password: ''
+
+grafana_upstream_smtp_port: ''
+
+grafana_upstream_smtp_state: 'false'
+
+grafana_upstream_smtp_user: ''

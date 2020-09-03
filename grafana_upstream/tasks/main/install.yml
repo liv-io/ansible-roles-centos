@@ -1,0 +1,54 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - install
+    - grafana_upstream
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file copy RPM-GPG-KEY-grafana'
+  copy:
+    src: "{{file_src_rpm_gpg_key_grafana}}"
+    dest: "{{file_dst_rpm_gpg_key_grafana}}"
+    mode: "{{file_mode_rpm_gpg_key_grafana}}"
+    owner: "{{file_owner_rpm_gpg_key_grafana}}"
+    group: "{{file_group_rpm_gpg_key_grafana}}"
+  tags:
+    - install
+    - grafana_upstream
+
+- name: 'file copy grafana.repo'
+  copy:
+    src: "{{file_src_grafana_repo}}"
+    dest: "{{file_dst_grafana_repo}}"
+    mode: "{{file_mode_grafana_repo}}"
+    owner: "{{file_owner_grafana_repo}}"
+    group: "{{file_group_grafana_repo}}"
+  tags:
+    - install
+    - grafana_upstream
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package install grafana'
+  package:
+    state: 'present'
+    name: "{{package_name_grafana}}"
+  tags:
+    - install
+    - grafana_upstream

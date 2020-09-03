@@ -1,0 +1,56 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - remove
+    - grafana_upstream
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove grafana'
+  package:
+    state: 'absent'
+    name: "{{package_name_grafana}}"
+  tags:
+    - remove
+    - grafana_upstream
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove RPM-GPG-KEY-grafana'
+  file:
+    state: 'absent'
+    path: "{{file_dst_rpm_gpg_key_grafana}}"
+  tags:
+    - remove
+    - grafana_upstream
+
+- name: 'file remove grafana.repo'
+  file:
+    state: 'absent'
+    path: "{{file_dst_grafana_repo}}"
+  tags:
+    - remove
+    - grafana_upstream
+
+- name: 'file remove grafana.ini'
+  file:
+    state: 'absent'
+    path: "{{file_dst_grafana_ini}}"
+  tags:
+    - remove
+    - grafana_upstream
