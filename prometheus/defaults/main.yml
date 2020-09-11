@@ -27,7 +27,7 @@ prometheus_blackbox_exporter_icmp_ip4_manual_hosts: []
 
 prometheus_checksum_algorithm: 'sha256'
 
-prometheus_checksum: '8fb248b579b8b9a88dd9b1686f7f68db7071960a45b28619145d3a4037375dcb'
+prometheus_checksum: 'f1f2eeabbf7822572dce67565dc96ffaa2dd1897dd1d844562552b11123f151a'
 
 prometheus_global_evaluation_interval: '30s'
 
@@ -53,4 +53,4 @@ prometheus_smokeping_prober_target_manual_hosts: []
 
 prometheus_storage_tsdb_retention_time: '365d'
 
-prometheus_version: '2.20.1'
+prometheus_version: '2.21.0'
