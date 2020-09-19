@@ -49,14 +49,14 @@
     owner: "{{file_owner_restic_bz2}}"
     group: "{{file_group_restic_bz2}}"
     checksum: "{{restic_checksum_algorithm}}:{{restic_checksum}}"
+  register: register_file_download_restic_bz2
   tags:
     - install
     - restic
 
 - name: 'command unarchive restic.bz2'
   shell: "{{command_cmd_unarchive_restic_bz2}}"
-  args:
-    creates: "{{command_creates_unarchive_restic_bz2}}"
+  when: register_file_download_restic_bz2.changed
   tags:
     - install
     - restic
