@@ -39,6 +39,7 @@ ENABLE
       - role: suricata
     vars:
       suricata_state: 'enable'
+      suricata_home_net: '[10.0.0.0/8]'
       suricata_interface: 'em0'
 
 DISABLE
@@ -47,6 +48,7 @@ DISABLE
       - role: suricata
     vars:
       suricata_state: 'disable'
+      suricata_home_net: '[10.0.0.0/8]'
       suricata_interface: 'em0'
 
 REMOVE
@@ -81,6 +83,26 @@ ROLE
       Disable : 'stop' | 'off' | 'disable'
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
+
+  suricata_external_net
+    Description: Define the 'suricata_external_net' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '!$HOME_NET'
+    Options    :
+      Examples: 'any' | '1.2.3.4/32'
+
+  suricata_home_net
+    Description: Define the 'suricata_home_net' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '[192.168.0.0/16,172.16.0.0/12,10.0.0.0/8]'
+    Options    :
+      Examples: 'any' | '[10.0.0.0/8]'
 
   suricata_interface
     Description: Define the 'suricata_interface' option.
