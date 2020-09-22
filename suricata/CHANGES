@@ -14,5 +14,8 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2020-09-22)
+F: Add systemd service unit file to manage promiscuous mode
+
 * Version 0.1.0 (2020-09-22)
 F: Initial release

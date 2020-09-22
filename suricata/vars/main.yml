@@ -11,6 +11,13 @@ package_name_suricata: 'suricata'
 # FILES
 #-------------------------------------------------------------------------------
 
+# promiscuous_mode@.service
+file_src_promiscuous_mode_service: 'templates/main/promiscuous_mode.service.j2'
+file_dst_promiscuous_mode_service: '/usr/lib/systemd/system/promiscuous_mode@.service'
+file_mode_promiscuous_mode_service: '0644'
+file_owner_promiscuous_mode_service: 'root'
+file_group_promiscuous_mode_service: 'root'
+
 # suricata.rules
 file_dst_suricata_rules: '/etc/suricata/rules/suricata.rules'
 
@@ -35,6 +42,9 @@ file_validate_suricata_yaml: 'suricata -T -c %s'
 
 # update suricata
 command_cmd_update_suricata: 'suricata-update --output /etc/suricata/rules/ --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101"'
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 
 #-------------------------------------------------------------------------------
 # SYSTEM

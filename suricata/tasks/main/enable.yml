@@ -48,6 +48,15 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
+- name: 'service start promiscuous_mode@.service'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "promiscuous_mode@{{suricata_interface}}"
+  tags:
+    - enable
+    - suricata
+
 - name: 'service start suricata'
   service:
     state: 'started'

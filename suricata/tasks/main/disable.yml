@@ -54,3 +54,12 @@
   tags:
     - disable
     - suricata
+
+- name: 'service stop promiscuous_mode@.service'
+  service:
+    state: 'stopped'
+    enabled: 'no'
+    name: "promiscuous_mode@{{suricata_interface}}"
+  tags:
+    - disable
+    - suricata

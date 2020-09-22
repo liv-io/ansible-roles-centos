@@ -54,3 +54,12 @@
   tags:
     - remove
     - suricata
+
+- name: 'file remove promiscuous_mode@.service'
+  file:
+    state: 'absent'
+    path: "{{file_dst_promiscuous_mode_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - remove
+    - suricata

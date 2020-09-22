@@ -39,6 +39,18 @@
     - install
     - suricata
 
+- name: 'file create promiscuous_mode@.service'
+  template:
+    src: "{{file_src_promiscuous_mode_service}}"
+    dest: "{{file_dst_promiscuous_mode_service}}"
+    mode: "{{file_mode_promiscuous_mode_service}}"
+    owner: "{{file_owner_promiscuous_mode_service}}"
+    group: "{{file_group_promiscuous_mode_service}}"
+  notify: 'command systemctl daemon-reload'
+  tags:
+    - install
+    - suricata
+
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
