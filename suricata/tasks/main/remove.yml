@@ -1,0 +1,56 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - remove
+    - suricata
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove suricata'
+  package:
+    state: 'absent'
+    name: "{{package_name_suricata}}"
+  tags:
+    - remove
+    - suricata
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove suricata.yaml'
+  file:
+    state: 'absent'
+    path: "{{file_dst_suricata_yaml}}"
+  tags:
+    - remove
+    - suricata
+
+- name: 'file remove suricata.rules'
+  file:
+    state: 'absent'
+    path: "{{file_dst_suricata_rules}}"
+  tags:
+    - remove
+    - suricata
+
+- name: 'file remove suricata.sysconfig'
+  file:
+    state: 'absent'
+    path: "{{file_dst_suricata_sysconfig}}"
+  tags:
+    - remove
+    - suricata

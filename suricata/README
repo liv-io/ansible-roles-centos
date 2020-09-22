@@ -1,0 +1,160 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : suricata
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+The Suricata Engine is an Open Source Next Generation Intrusion Detection and
+Prevention Engine. This engine is not intended to just replace or emulate the
+existing tools in the industry, but will bring new ideas and technologies to the
+field. This new Engine supports Multi-threading, Automatic Protocol Detection
+(IP, TCP, UDP, ICMP, HTTP, TLS, FTP and SMB! ), Gzip Decompression, Fast IP
+Matching, and GeoIP identification.
+
+For more information on the usage and available configuration options,
+consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: suricata
+    vars:
+      suricata_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: suricata
+    vars:
+      suricata_state: 'enable'
+      suricata_interface: 'em0'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: suricata
+    vars:
+      suricata_state: 'disable'
+      suricata_interface: 'em0'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: suricata
+    vars:
+      suricata_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: suricata
+    vars:
+      suricata_state: 'inactive'
+
+--------------------------------------------------------------------------------
+PARAMETERS
+--------------------------------------------------------------------------------
+
+ROLE
+  suricata_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  suricata_interface
+    Description: Define the 'suricata_interface' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : "{{ansible_default_ipv4.interface}}"
+    Options    :
+      Examples: 'eth0' | 'em0' | 'eno1' | 'ens18'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  suricata
+    Version: >= 5.0
+    Name   :
+      CentOS 8: 'suricata'
+
+ROLES
+
+PARAMETERS
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.8
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Unsupported
+
+  CentOS
+    Version: 8
+      Status: Development
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

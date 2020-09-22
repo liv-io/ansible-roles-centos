@@ -1,0 +1,58 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - enable
+    - suricata
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create suricata.sysconfig'
+  template:
+    src: "{{file_src_suricata_sysconfig}}"
+    dest: "{{file_dst_suricata_sysconfig}}"
+    mode: "{{file_mode_suricata_sysconfig}}"
+    owner: "{{file_owner_suricata_sysconfig}}"
+    group: "{{file_group_suricata_sysconfig}}"
+  notify: 'service reload suricata'
+  tags:
+    - enable
+    - suricata
+
+- name: 'file create suricata.yaml'
+  template:
+    src: "{{file_src_suricata_yaml}}"
+    dest: "{{file_dst_suricata_yaml}}"
+    mode: "{{file_mode_suricata_yaml}}"
+    owner: "{{file_owner_suricata_yaml}}"
+    group: "{{file_group_suricata_yaml}}"
+    validate: "{{file_validate_suricata_yaml}}"
+  notify: 'service reload suricata'
+  tags:
+    - enable
+    - suricata
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start suricata'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_suricata}}"
+  tags:
+    - enable
+    - suricata
