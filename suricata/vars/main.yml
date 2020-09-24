@@ -41,7 +41,7 @@ file_validate_suricata_yaml: 'suricata -T -c %s'
 #-------------------------------------------------------------------------------
 
 # update suricata
-command_cmd_update_suricata: 'suricata-update --output /etc/suricata/rules/ --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101"'
+command_cmd_update_suricata: 'suricata-update --output /etc/suricata/rules/ --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 Edg/85.0.564.63"'
 
 # systemctl daemon-reload
 command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'

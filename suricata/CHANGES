@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.1 (2020-09-24)
+E: Change Suricata user-agent
+
 * Version 0.3.0 (2020-09-22)
 F: Add option to define EXTERNAL_NET (suricata_external_net)
 F: Add option to define HOME_NET (suricata_home_net)
