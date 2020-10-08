@@ -6,6 +6,12 @@
   tags:
     - suricata
 
+- name: 'task include config'
+  import_tasks: config.yml
+  when: not (suricata_state is match('false|no|remove|quiesce|inactive'))
+  tags:
+    - suricata
+
 - name: 'task include enable'
   import_tasks: enable.yml
   when: (suricata_state is match('start|on|enable'))

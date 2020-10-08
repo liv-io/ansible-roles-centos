@@ -16,6 +16,9 @@
 # COMMANDS
 #-------------------------------------------------------------------------------
 
+- name: 'command update suricata'
+  shell: "{{command_cmd_update_suricata}}"
+
 - name: 'command systemctl daemon-reload'
   command: "{{command_cmd_systemctl_daemon_reload}}"
 

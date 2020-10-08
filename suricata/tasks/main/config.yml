@@ -1,0 +1,47 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - config
+    - suricata
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create config'
+  template:
+    src: "{{file_src_config}}"
+    dest: "{{file_dst_config}}/{{item.name}}.rules"
+    mode: "{{file_mode_config}}"
+    owner: "{{file_owner_config}}"
+    group: "{{file_group_config}}"
+  with_items: "{{suricata_config}}"
+  notify:
+    - 'command update suricata'
+    - 'service reload suricata'
+  when: not (item.state|default('true') is match('false|no|remove'))
+  tags:
+    - config
+    - suricata
+
+- name: 'file remove config'
+  file:
+    state: 'absent'
+    path: "{{file_dst_config}}/{{item.name}}.rules"
+  with_items: "{{suricata_config}}"
+  notify: 'service reload suricata'
+  when: (item.state|default('true') is match('false|no|remove'))
+  tags:
+    - config
+    - suricata
