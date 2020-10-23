@@ -13,7 +13,7 @@ package_name_suricata: 'suricata'
 
 # config
 file_src_config: 'templates/main/config.j2'
-file_dst_config: '/etc/suricata/rules/'
+file_dst_config: '/etc/suricata/rules'
 file_mode_config: '0640'
 file_owner_config: 'root'
 file_group_config: 'suricata'
