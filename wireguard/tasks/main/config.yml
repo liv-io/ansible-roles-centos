@@ -27,7 +27,7 @@
     owner: "{{file_owner_config}}"
     group: "{{file_group_config}}"
   no_log: 'true'
-  with_items: "{{wireguard_config}}"
+  loop: "{{wireguard_config}}"
   register: register_create_config
   when: not ((item.state|default('enable')) is match('false|no|remove'))
   tags:
@@ -39,7 +39,7 @@
     state: 'absent'
     path: "{{file_dst_config}}/{{item.interface}}.conf"
   no_log: 'true'
-  with_items: "{{wireguard_config}}"
+  loop: "{{wireguard_config}}"
   when: ((item.state|default('enable')) is match('false|no|remove'))
   tags:
     - config
@@ -55,7 +55,7 @@
     enabled: 'yes'
     name: "wg-quick@{{item.interface}}"
   no_log: 'true'
-  with_items: "{{wireguard_config}}"
+  loop: "{{wireguard_config}}"
   when: ((item.state|default('enable')) is match('enable|up|start'))
   tags:
     - config
@@ -67,7 +67,7 @@
     enabled: 'yes'
     name: "wg-quick@{{item.interface}}"
   no_log: 'true'
-  with_items: "{{wireguard_config}}"
+  loop: "{{wireguard_config}}"
   when: (register_create_config.changed) and ((item.state|default('enable')) is match('enable|up|start'))
   tags:
     - config
@@ -79,7 +79,7 @@
     enabled: 'no'
     name: "wg-quick@{{item.interface}}"
   no_log: 'true'
-  with_items: "{{wireguard_config}}"
+  loop: "{{wireguard_config}}"
   when: ((item.state|default('enable')) is match('disable|down|stop'))
   tags:
     - config

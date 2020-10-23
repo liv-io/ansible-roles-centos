@@ -27,7 +27,7 @@
     owner: "{{file_owner_config}}"
     group: "{{file_group_config}}"
   register: register_config
-  with_items: "{{sysctl_config_all + sysctl_config_group + sysctl_config_host}}"
+  loop: "{{sysctl_config_all + sysctl_config_group + sysctl_config_host}}"
   when: not (item.state is match('false|no|remove'))
   tags:
     - config
@@ -37,7 +37,7 @@
   file:
     state: 'absent'
     dest: "{{file_dst_sysctl_d}}/{{(item.order|default(''))}}{{'-' if not ((item.order|default('')) == '') else ''}}{{(item.name|default('config'))}}.conf"
-  with_items: "{{sysctl_config_all + sysctl_config_group + sysctl_config_host}}"
+  loop: "{{sysctl_config_all + sysctl_config_group + sysctl_config_host}}"
   when: (item.state is match('false|no|remove'))
   tags:
     - config
@@ -49,7 +49,7 @@
 
 - name: 'command set config'
   shell: "{{command_cmd_set_sysctl}} {{file_dst_sysctl_d}}/{{(item.order|default(''))}}{{'-' if not ((item.order|default('')) == '') else ''}}{{(item.name|default('config'))}}.conf"
-  with_items: "{{sysctl_config_all + sysctl_config_group + sysctl_config_host}}"
+  loop: "{{sysctl_config_all + sysctl_config_group + sysctl_config_host}}"
   when: (register_config is changed)
   tags:
     - config

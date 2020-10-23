@@ -26,7 +26,7 @@
     mode: "{{file_mode_gpg_key}}"
     owner: "{{file_owner_gpg_key}}"
     group: "{{file_group_gpg_key}}"
-  with_items: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
+  loop: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
   when: not (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
     - config
@@ -40,7 +40,7 @@
     owner: "{{file_owner_config}}"
     group: "{{file_group_config}}"
   notify: 'command clean dnf-cache'
-  with_items: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
+  loop: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
   when: not (item.state|default('false') is match('false|no|remove'))
   tags:
     - config
@@ -50,7 +50,7 @@
   file:
     state: 'absent'
     path: "{{file_dst_rpm_gpg}}/{{(item.gpg_name|default('config'))}}"
-  with_items: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
+  loop: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
   when: (item.gpg_state|default('false') is match('false|no|remove'))
   tags:
     - config
@@ -61,7 +61,7 @@
     state: 'absent'
     path: "{{file_dst_dnf_repos_d}}/{{(item.name|default('config'))}}.repo"
   notify: 'command clean dnf-cache'
-  with_items: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
+  loop: "{{dnf_config_all + dnf_config_group + dnf_config_host}}"
   when: (item.state|default('false') is match('false|no|remove'))
   tags:
     - config

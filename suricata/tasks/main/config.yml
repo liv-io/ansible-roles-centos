@@ -26,7 +26,7 @@
     mode: "{{file_mode_config}}"
     owner: "{{file_owner_config}}"
     group: "{{file_group_config}}"
-  with_items: "{{suricata_config}}"
+  loop: "{{suricata_config}}"
   notify:
     - 'command update suricata'
     - 'service reload suricata'
@@ -39,7 +39,7 @@
   file:
     state: 'absent'
     path: "{{file_dst_config}}/{{item.name}}.rules"
-  with_items: "{{suricata_config}}"
+  loop: "{{suricata_config}}"
   notify: 'service reload suricata'
   when: (item.state|default('true') is match('false|no|remove'))
   tags:
