@@ -9,5 +9,6 @@ rest_server_checksum: '603336314d6f71a68933a0da925911d70adce3d7c57bde655c5adc2e6
 rest_server_options:
   - '--path /data/rest-server'
   - '--prometheus'
+  - '--no-auth'
 
 rest_server_version: '0.10.0'

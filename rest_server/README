@@ -103,7 +103,7 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Array
-    Default    : ['--path /data/rest-server', '--prometheus']
+    Default    : ['--path /data/rest-server', '--prometheus', '--no-auth']
     Options    :
       Examples: ['--prometheus'] | ['--path /data/restic', '--prometheus']
       None    : []
