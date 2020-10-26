@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.2 (2020-10-26)
+B: Correct remove tasks
+
 * Version 0.2.1 (2020-10-26)
 C: Set '--no-auth' by default (to activate, create: /data/rest-server/.htpasswd)
 B: Update file name to upstream naming
