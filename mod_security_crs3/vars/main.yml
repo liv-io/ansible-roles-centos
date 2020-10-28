@@ -1,0 +1,29 @@
+---
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+# mod_security_crs
+package_name_mod_security_crs: 'mod_security_crs'
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# crs-setup.conf
+file_src_crs_setup_conf: 'templates/main/crs-setup.conf.j2'
+file_dst_crs_setup_conf: '/etc/httpd/modsecurity.d/crs-setup.conf'
+file_mode_crs_setup_conf: '0644'
+file_owner_crs_setup_conf: 'root'
+file_group_crs_setup_conf: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check httpd
+command_cmd_check_httpd: 'apachectl configtest'
+
+# reload httpd
+command_cmd_reload_httpd: 'apachectl graceful'

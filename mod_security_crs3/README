@@ -1,0 +1,162 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : mod_security_crs
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+The base rules for mod_security.
+
+For more information on the usage and available configuration options,
+consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: mod_security_crs
+    vars:
+      mod_security_crs_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: mod_security_crs
+    vars:
+      mod_security_crs_state: 'enable'
+      mod_security_crs_sec_default_action:
+        - "phase:1,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
+          "phase:2,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: mod_security_crs
+    vars:
+      mod_security_crs_state: 'disable'
+      mod_security_crs_sec_default_action:
+        - "phase:1,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
+          "phase:2,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: mod_security_crs
+    vars:
+      mod_security_crs_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: mod_security_crs
+    vars:
+      mod_security_crs_state: 'inactive'
+
+--------------------------------------------------------------------------------
+PARAMETERS
+--------------------------------------------------------------------------------
+
+ROLE
+  mod_security_crs_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  mod_security_crs_sec_default_action
+    Description: Define the 'mod_security_crs_sec_default_action' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array
+    Default    : ['phase:1,log,auditlog,deny,status:403', 'phase:2,log,auditlog,deny,status:403']
+    Options    :
+      Examples: ['phase:1,log,auditlog,pass', 'phase:2,log,auditlog,pass'] |
+                ['phase:1,log,auditlog,deny,status:403', 'phase:2,log,auditlog,deny,status:403'] |
+                ["phase:1,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'",
+                 "phase:2,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"]
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  mod_security_crs
+    Version: >= 3.0
+    Name   :
+      CentOS 8: 'mod_security_crs'
+
+ROLES
+
+PARAMETERS
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL MACHINE
+  Ansible
+    Version: >= 2.8
+
+  Python
+    Version: >= 2.4
+
+  Python-Crypto
+    Version: >= 2.0
+
+  Python-Jinja2
+    Version: >= 2.0
+
+  Python-Paramiko
+    Version: >= 1.0
+
+  Python-YAML
+    Version: >= 3.0
+
+  sshpass
+    Version: >= 1.0
+
+MANAGED NODE
+  Python
+    Version: >= 2.4
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Unsupported
+
+  CentOS
+    Version: 8
+      Status: Stable
+
+--------------------------------------------------------------------------------
+OTHER
+--------------------------------------------------------------------------------

@@ -1,0 +1,40 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - remove
+    - mod_security_crs3
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove mod_security_crs'
+  package:
+    state: 'absent'
+    name: "{{package_name_mod_security_crs}}"
+  tags:
+    - remove
+    - mod_security_crs3
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file remove crs-setup.conf'
+  file:
+    state: 'absent'
+    path: "{{file_dst_crs_setup_conf}}"
+  tags:
+    - remove
+    - mod_security_crs3
