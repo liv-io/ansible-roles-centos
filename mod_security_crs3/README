@@ -36,7 +36,7 @@ ENABLE
       mod_security_crs3_state: 'enable'
       mod_security_crs3_sec_default_action:
         - "phase:1,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
-          "phase:2,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
+        - "phase:2,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
 
 DISABLE
   - hosts: all
@@ -46,7 +46,7 @@ DISABLE
       mod_security_crs3_state: 'disable'
       mod_security_crs3_sec_default_action:
         - "phase:1,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
-          "phase:2,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
+        - "phase:2,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
 
 REMOVE
   - hosts: all
