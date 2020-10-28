@@ -16,10 +16,6 @@
 #-------------------------------------------------------------------------------
 
 <IfModule mod_security2.c>
-    # ModSecurity Core Rules Set and Local configuration
-	IncludeOptional modsecurity.d/*.conf
-	IncludeOptional modsecurity.d/activated_rules/*.conf
-    
     # Default recommended configuration
 {% if (mod_security_sec_rule_engine is match('false|no|disable')) %}
     SecRuleEngine Off
@@ -109,5 +105,5 @@
 	IncludeOptional modsecurity.d/*.conf
 	IncludeOptional modsecurity.d/activated_rules/*.conf
 	IncludeOptional modsecurity.d/local_rules/*.conf
-
+    
 </IfModule>
