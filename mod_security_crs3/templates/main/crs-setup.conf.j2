@@ -8,7 +8,7 @@
 #
 # Name   : crs-setup.conf
 # Type   : mod_security_crs configuration file
-# Role   : mod_security_crs
+# Role   : mod_security_crs3
 #
 # Authors: liv community
 # License: Simplified BSD License
@@ -142,7 +142,7 @@
 # SecDefaultAction "phase:1,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
 # SecDefaultAction "phase:2,log,auditlog,redirect:'http://%{request_headers.host}/',tag:'Host: %{request_headers.host}'"
 
-{% for item in mod_security_crs_sec_default_action %}
+{% for item in mod_security_crs3_sec_default_action %}
 SecDefaultAction "{{item}}"
 {% endfor %}
 
