@@ -4,22 +4,22 @@
   import_tasks: install.yml
   when: not (mod_security_crs_state is match('false|no|remove|quiesce|inactive'))
   tags:
-    - mod_security_crs
+    - mod_security_crs2
 
 - name: 'task include enable'
   import_tasks: enable.yml
   when: (mod_security_crs_state is match('start|on|enable'))
   tags:
-    - mod_security_crs
+    - mod_security_crs2
 
 - name: 'task include disable'
   import_tasks: disable.yml
   when: (mod_security_crs_state is match('stop|off|disable'))
   tags:
-    - mod_security_crs
+    - mod_security_crs2
 
 - name: 'task include remove'
   import_tasks: remove.yml
   when: (mod_security_crs_state is match('false|no|remove'))
   tags:
-    - mod_security_crs
+    - mod_security_crs2

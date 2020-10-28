@@ -13,7 +13,7 @@
         - 'vars/main.yml'
   tags:
     - enable
-    - mod_security_crs
+    - mod_security_crs2
 
 #-------------------------------------------------------------------------------
 # FILES
@@ -31,7 +31,7 @@
     - 'command reload httpd'
   tags:
     - enable
-    - mod_security_crs
+    - mod_security_crs2
 
 - name: 'file create modsecurity_crs_15_adjust.conf'
   template:
@@ -45,4 +45,4 @@
     - 'command reload httpd'
   tags:
     - enable
-    - mod_security_crs
+    - mod_security_crs2

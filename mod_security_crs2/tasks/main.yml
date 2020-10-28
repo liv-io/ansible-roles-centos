@@ -4,4 +4,4 @@
   import_tasks: main/main.yml
   when: ((ansible_distribution == 'CentOS') and (ansible_distribution_major_version is match('7')))
   tags:
-    - mod_security_crs
+    - mod_security_crs2

@@ -13,7 +13,7 @@
         - 'vars/main.yml'
   tags:
     - disable
-    - mod_security_crs
+    - mod_security_crs2
 
 #-------------------------------------------------------------------------------
 # FILES
@@ -29,7 +29,7 @@
   notify: 'command check httpd'
   tags:
     - disable
-    - mod_security_crs
+    - mod_security_crs2
 
 - name: 'file create modsecurity_crs_15_adjust.conf'
   template:
@@ -41,4 +41,4 @@
   notify: 'command check httpd'
   tags:
     - disable
-    - mod_security_crs
+    - mod_security_crs2
