@@ -18,15 +18,206 @@
 #-------------------------------------------------------------------------------
 
 table nat {
-  chain PREROUTING { type nat hook prerouting priority -100; policy accept;
+  chain PREROUTING {
+    type nat hook prerouting priority -100; policy
+{%- for item in nftables_nat_policies %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('pre|prerouting')) %}
+{%- if ((item.action|default('drop')) is match('accept')) %} accept{% else %} drop{% endif %};
+{% endif %}
+{% endfor %}
+
+{% for item in nftables_nat_all %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('pre|prerouting')) %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+{%- if not ((item.sources|default([])) == []) %}
+ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
+{%- if not ((item.dports|default([])) == []) %} dport {
+{%- for port in (item.dports|default([])) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %}, {% endif %}
+{% endfor %} }{% endif %}
+{%- if ((item.action|default('')) is match('redirect|rdr')) %} redirect{% endif %}
+{%- if not ((item.port|default('')) == '') %} to {{item.port}}{% endif %}
+{%- if not ((item.dnat|default('')) == '') %} dnat ip to {{item.dnat}}{% endif %}
+{% for type in (item.types|default([])) %}
+{% if loop.first %} {% endif %}{{type}}{% if not loop.last %},{% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.types|default([])) == []) %} {% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for item in nftables_nat_group %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('pre|prerouting')) %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+{%- if not ((item.sources|default([])) == []) %}
+ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
+{%- if not ((item.dports|default([])) == []) %} dport {
+{%- for port in (item.dports|default([])) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %}, {% endif %}
+{% endfor %} }{% endif %}
+{%- if ((item.action|default('')) is match('redirect|rdr')) %} redirect{% endif %}
+{%- if not ((item.port|default('')) == '') %} to {{item.port}}{% endif %}
+{%- if not ((item.dnat|default('')) == '') %} dnat ip to {{item.dnat}}{% endif %}
+{% for type in (item.types|default([])) %}
+{% if loop.first %} {% endif %}{{type}}{% if not loop.last %},{% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.types|default([])) == []) %} {% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for item in nftables_nat_host %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('pre|prerouting')) %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+{%- if not ((item.sources|default([])) == []) %}
+ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
+{%- if not ((item.dports|default([])) == []) %} dport {
+{%- for port in (item.dports|default([])) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %}, {% endif %}
+{% endfor %} }{% endif %}
+{%- if ((item.action|default('')) is match('redirect|rdr')) %} redirect{% endif %}
+{%- if not ((item.port|default('')) == '') %} to {{item.port}}{% endif %}
+{%- if not ((item.dnat|default('')) == '') %} dnat ip to {{item.dnat}}{% endif %}
+{% for type in (item.types|default([])) %}
+{% if loop.first %} {% endif %}{{type}}{% if not loop.last %},{% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.types|default([])) == []) %} {% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
   }
 
-  chain INPUT { type nat hook input priority 100; policy accept;
+  chain INPUT {
+    type nat hook input priority 100; policy
+{%- for item in nftables_nat_policies %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('in|input')) %}
+{%- if ((item.action|default('drop')) is match('accept')) %} accept{% else %} drop{% endif %};
+{% endif %}
+{% endfor %}
   }
 
-  chain OUTPUT { type nat hook output priority -100; policy accept;
+  chain OUTPUT {
+    type nat hook output priority -100; policy
+{%- for item in nftables_nat_policies %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('out|output')) %}
+{%- if ((item.action|default('drop')) is match('accept')) %} accept{% else %} drop{% endif %};
+{% endif %}
+{% endfor %}
   }
 
-  chain POSTROUTING { type nat hook postrouting priority 100; policy accept;
+  chain POSTROUTING {
+    type nat hook postrouting priority 100; policy
+{%- for item in nftables_nat_policies %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('post|postrouting')) %}
+{%- if ((item.action|default('drop')) is match('accept')) %} accept{% else %} drop{% endif %};
+{% endif %}
+{% endfor %}
+
+{% for item in nftables_nat_all %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('post|postrouting')) %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+{%- if not ((item.sources|default([])) == []) %}
+ ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if ((item.action|default('')) is match('masquerade')) %} masquerade{% endif %}
+{%- if not ((item.port|default('')) == '') %} to {{item.port}}{% endif %}
+{%- if not ((item.snat|default('')) == '') %} snat {{item.snat}}{% endif %}
+{% for type in (item.types|default([])) %}
+{% if loop.first %} {% endif %}{{type}}{% if not loop.last %},{% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.types|default([])) == []) %} {% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for item in nftables_nat_group %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('post|postrouting')) %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+{%- if not ((item.sources|default([])) == []) %}
+ ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if ((item.action|default('')) is match('masquerade')) %} masquerade{% endif %}
+{%- if not ((item.port|default('')) == '') %} to {{item.port}}{% endif %}
+{%- if not ((item.snat|default('')) == '') %} snat {{item.snat}}{% endif %}
+{% for type in (item.types|default([])) %}
+{% if loop.first %} {% endif %}{{type}}{% if not loop.last %},{% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.types|default([])) == []) %} {% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for item in nftables_nat_host %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('')) is match('post|postrouting')) %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+{%- if not ((item.sources|default([])) == []) %}
+ ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if ((item.action|default('')) is match('masquerade')) %} masquerade{% endif %}
+{%- if not ((item.port|default('')) == '') %} to {{item.port}}{% endif %}
+{%- if not ((item.snat|default('')) == '') %} snat {{item.snat}}{% endif %}
+{% for type in (item.types|default([])) %}
+{% if loop.first %} {% endif %}{{type}}{% if not loop.last %},{% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.types|default([])) == []) %} {% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
   }
 }

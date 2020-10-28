@@ -27,3 +27,19 @@ nftables_filter_policies:
   - {action: 'drop', direction: 'input', version: 'ipv6', comment: 'default ipv6 input policy'}
   - {action: 'drop', direction: 'forward', version: 'ipv6', comment: 'default ipv6 forward policy'}
   - {action: 'drop', direction: 'output', version: 'ipv6', comment: 'default ipv6 output policy'}
+
+nftables_nat_all: []
+
+nftables_nat_group: []
+
+nftables_nat_host: []
+
+nftables_nat_policies:
+  - {action: 'accept', direction: 'prerouting', version: 'ipv4', comment: 'default ipv4 prerouting policy'}
+  - {action: 'accept', direction: 'input', version: 'ipv4', comment: 'default ipv4 input policy'}
+  - {action: 'accept', direction: 'output', version: 'ipv4', comment: 'default ipv4 output policy'}
+  - {action: 'accept', direction: 'postrouting', version: 'ipv4', comment: 'default ipv4 postrouting policy'}
+  - {action: 'accept', direction: 'prerouting', version: 'ipv6', comment: 'default ipv6 prerouting policy'}
+  - {action: 'accept', direction: 'input', version: 'ipv6', comment: 'default ipv6 input policy'}
+  - {action: 'accept', direction: 'output', version: 'ipv6', comment: 'default ipv6 output policy'}
+  - {action: 'accept', direction: 'postrouting', version: 'ipv6', comment: 'default ipv6 postrouting policy'}

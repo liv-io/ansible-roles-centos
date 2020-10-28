@@ -57,6 +57,8 @@ table filter {
 {% endfor %}
 {%- if not ((item.destinations|default([])) == []) %}} {% endif %}
 {% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
  ct state { new }
 {%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
 {%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}
@@ -92,6 +94,8 @@ table filter {
 {% endfor %}
 {%- if not ((item.destinations|default([])) == []) %}} {% endif %}
 {% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
  ct state { new }
 {%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
 {%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}
@@ -127,6 +131,8 @@ table filter {
 {% endfor %}
 {%- if not ((item.destinations|default([])) == []) %}} {% endif %}
 {% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
  ct state { new }
 {%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
 {%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}
@@ -147,8 +153,127 @@ table filter {
   chain FORWARD {
     type filter hook forward priority 0; policy
 {%- for item in nftables_filter_policies %}
-{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('out')) is match('fw|forward')) %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('out')) is match('fw|forward|fwd')) %}
 {%- if ((item.action|default('drop')) is match('accept')) %} accept{% else %} drop{% endif %};
+{% endif %}
+{% endfor %}
+
+    #---------------------------------------------------------------------------
+
+    # Established and related connections
+    ct state { invalid } drop comment "drop invalid connections"
+    ct state { established, related } accept comment "accept established, related connections"
+
+    #---------------------------------------------------------------------------
+
+{% for item in nftables_filter_all %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('out')) is match('fw|forward|fwd')) %}
+{%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %}
+    ip protocol icmp
+{%- else %}
+{%- if not ((item.sources|default([])) == []) %}
+    ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}
+    ip daddr {
+{%- endif %}
+{% for destination in (item.destinations|default(['0.0.0.0/0'])) %}
+{% if loop.first %} {% endif %}{{destination}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}} {% endif %}
+{% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+ ct state { new }
+{%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
+{%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}
+{%- if not ((item.ports|default([])) == []) %} dport {
+{%- for port in (item.ports|default([])) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %}, {% endif %}
+{% endfor %} }{% endif %}
+{%- if ((item.action|default('accept')) is match('accept')) %} accept{% else %} drop{% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for item in nftables_filter_group %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('out')) is match('fw|forward|fwd')) %}
+{%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %}
+    ip protocol icmp
+{%- else %}
+{%- if not ((item.sources|default([])) == []) %}
+    ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}
+    ip daddr {
+{%- endif %}
+{% for destination in (item.destinations|default(['0.0.0.0/0'])) %}
+{% if loop.first %} {% endif %}{{destination}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}} {% endif %}
+{% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+ ct state { new }
+{%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
+{%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}
+{%- if not ((item.ports|default([])) == []) %} dport {
+{%- for port in (item.ports|default([])) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %}, {% endif %}
+{% endfor %} }{% endif %}
+{%- if ((item.action|default('accept')) is match('accept')) %} accept{% else %} drop{% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for item in nftables_filter_host %}
+{%- if ((item.version|default('')) is match('ipv4|ip4|inet')) and ((item.direction|default('out')) is match('fw|forward|fwd')) %}
+{%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %}
+    ip protocol icmp
+{%- else %}
+{%- if not ((item.sources|default([])) == []) %}
+    ip saddr {
+{%- endif %}
+{% for source in (item.sources|default([])) %}
+{% if loop.first %} {% endif %}{{source}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.sources|default([])) == []) %}} {% endif %}
+{%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}
+    ip daddr {
+{%- endif %}
+{% for destination in (item.destinations|default(['0.0.0.0/0'])) %}
+{% if loop.first %} {% endif %}{{destination}}{% if not loop.last %}, {% else %} {% endif %}
+{% endfor %}
+{%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}} {% endif %}
+{% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
+ ct state { new }
+{%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
+{%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}
+{%- if not ((item.ports|default([])) == []) %} dport {
+{%- for port in (item.ports|default([])) %}
+{% if loop.first %} {% endif %}{{port}}{% if not loop.last %}, {% endif %}
+{% endfor %} }{% endif %}
+{%- if ((item.action|default('accept')) is match('accept')) %} accept{% else %} drop{% endif %}
+{%- if not ((item.comment|default('')) == '') %} comment "{{item.comment}}"{% endif %}
+{% if not loop.last %}
+
+{% endif %}
 {% endif %}
 {% endfor %}
 
@@ -193,6 +318,8 @@ table filter {
 {% endfor %}
 {%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}} {% endif %}
 {% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
  ct state { new }
 {%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
 {%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}
@@ -228,6 +355,8 @@ table filter {
 {% endfor %}
 {%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}} {% endif %}
 {% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
  ct state { new }
 {%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
 {%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}
@@ -263,6 +392,8 @@ table filter {
 {% endfor %}
 {%- if not ((item.destinations|default(['0.0.0.0/0'])) == []) %}} {% endif %}
 {% endif %}
+{%- if not ((item.iif|default('')) == '') %} iif {{item.iif}} {% endif %}
+{%- if not ((item.oif|default('')) == '') %} oif {{item.oif}} {% endif %}
  ct state { new }
 {%- if ((item.protocol|default('')) is match('icmpv4|icmp4|icmp')) %} icmp type{% elif ((item.protocol|default('')) is match('udp')) %} udp{% elif ((item.protocol|default('')) is match('tcp')) %} tcp{% endif %}
 {%- if not ((item.code|default('')) == '') %} {{item.code}}{% endif %}

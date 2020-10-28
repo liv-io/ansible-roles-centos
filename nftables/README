@@ -83,6 +83,11 @@ CONFIG
       - {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'}
       - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', ports: {'smtp'}, comment: 'mail from any'}
       - {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', ports: {'submission'}, comment: 'mail from any'}
+      - {action: 'accept', direction: 'forward', iif: 'wg0', version: 'ipv4', comment: 'WireGuard forwarding'}
+      - {action: 'accept', direction: 'forward', oif: 'wg0', version: 'ipv4', comment: 'WireGuard forwarding'}
+
+    nftables_nat_all:
+      - {action: 'masquerade', direction: 'postrouting', version: 'ipv4', oif: 'ens18', comment: 'WireGuard masquerading'}
 
 --------------------------------------------------------------------------------
 PARAMETERS
@@ -159,7 +164,7 @@ ROLE
     Type       : Array/Hash
     Default    : []
     Options    :
-                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'},
+      Examples: [{action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'},
                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, ports: {'http', 'https'}, comment: 'http, https to n_dmz, n_int'}]
       None    : []
 
@@ -171,7 +176,7 @@ ROLE
     Type       : Array/Hash
     Default    : []
     Options    :
-                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'},
+      Examples: [{action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'},
                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, ports: {'http', 'https'}, comment: 'http, https to n_dmz, n_int'}]
       None    : []
 
@@ -194,7 +199,87 @@ ROLE
                  {action: 'drop', direction: 'input', version: 'ipv6', comment: 'Default ipv6 input policy'},
                  {action: 'drop', direction: 'forward', version: 'ipv6', comment: 'Default ipv6 forward policy'},
                  {action: 'accept', direction: 'output', version: 'ipv6', comment: 'Default ipv6 output policy'}]
+
+  nftables_nat_all
+    Description: Define the 'nftables_nat_all' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+    Options    :
+      Examples: [{action: 'redirect', direction: 'prerouting', version: 'ipv4', comment: 'dnat redirect to local machine'}] |
+                [{action: 'redirect', direction: 'prerouting', version: 'ipv4', protocol: 'tcp', dports: {'22'}, port: '222', comment: 'dnat redirect port 22 to 222'}] |
+                [{direction: 'prerouting', version: 'ipv4', dnat: '10.11.1.11', comment: 'dnat to host'}] |
+                [{direction: 'prerouting', version: 'ipv4', iif: 'eth0', protocol: 'tcp', dports: {'80'}, dnat: '10.11.1.11:80', comment: 'dnat port 80 to host on port 80'}] |
+                [{direction: 'prerouting', version: 'ipv4', iif: 'eth0', protocol: 'tcp', dports: {'80', '443'}, dnat: '10.11.1.11', comment: 'dnat port 80, 443 to host'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', comment: 'masquerade', comment: 'snat masquerade source to address of output interface'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', types: {'fully-random'}, comment: 'snat masquerade source to address of output interface and port randomization'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', oif: 'eth0', sources: {'10.10.1.0/24'}, comment: 'snat masquerade sources on interface'}] |
+                [{direction: 'postrouting', version: 'ipv4', oif: 'eth0', sources: {'10.10.1.0/24'}, snat: '1.2.3.4', types: {'fully-random'}, comment: 'snat sources on interface via address and port randomization'}]
       None    : []
+
+  nftables_nat_group
+    Description: Define the 'nftables_nat_group' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{action: 'redirect', direction: 'prerouting', version: 'ipv4', comment: 'dnat redirect to local machine'}] |
+                [{action: 'redirect', direction: 'prerouting', version: 'ipv4', protocol: 'tcp', dports: {'22'}, port: '222', comment: 'dnat redirect port 22 to 222'}] |
+                [{direction: 'prerouting', version: 'ipv4', dnat: '10.11.1.11', comment: 'dnat to host'}] |
+                [{direction: 'prerouting', version: 'ipv4', iif: 'eth0', protocol: 'tcp', dports: {'80'}, dnat: '10.11.1.11:80', comment: 'dnat port 80 to host on port 80'}] |
+                [{direction: 'prerouting', version: 'ipv4', iif: 'eth0', protocol: 'tcp', dports: {'80', '443'}, dnat: '10.11.1.11', comment: 'dnat port 80, 443 to host'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', comment: 'masquerade', comment: 'snat masquerade source to address of output interface'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', types: {'fully-random'}, comment: 'snat masquerade source to address of output interface and port randomization'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', oif: 'eth0', sources: {'10.10.1.0/24'}, comment: 'snat masquerade sources on interface'}] |
+                [{direction: 'postrouting', version: 'ipv4', oif: 'eth0', sources: {'10.10.1.0/24'}, snat: '1.2.3.4', types: {'fully-random'}, comment: 'snat sources on interface via address and port randomization'}]
+      None    : []
+
+  nftables_nat_host
+    Description: Define the 'nftables_nat_host' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{action: 'redirect', direction: 'prerouting', version: 'ipv4', comment: 'dnat redirect to local machine'}] |
+                [{action: 'redirect', direction: 'prerouting', version: 'ipv4', protocol: 'tcp', dports: {'22'}, port: '222', comment: 'dnat redirect port 22 to 222'}] |
+                [{direction: 'prerouting', version: 'ipv4', dnat: '10.11.1.11', comment: 'dnat to host'}] |
+                [{direction: 'prerouting', version: 'ipv4', iif: 'eth0', protocol: 'tcp', dports: {'80'}, dnat: '10.11.1.11:80', comment: 'dnat port 80 to host on port 80'}] |
+                [{direction: 'prerouting', version: 'ipv4', iif: 'eth0', protocol: 'tcp', dports: {'80', '443'}, dnat: '10.11.1.11', comment: 'dnat port 80, 443 to host'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', comment: 'masquerade', comment: 'snat masquerade source to address of output interface'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', types: {'fully-random'}, comment: 'snat masquerade source to address of output interface and port randomization'}] |
+                [{action: 'masquerade', direction: 'postrouting', version: 'ipv4', oif: 'eth0', sources: {'10.10.1.0/24'}, comment: 'snat masquerade sources on interface'}] |
+                [{direction: 'postrouting', version: 'ipv4', oif: 'eth0', sources: {'10.10.1.0/24'}, snat: '1.2.3.4', types: {'fully-random'}, comment: 'snat sources on interface via address and port randomization'}]
+      None    : []
+
+  nftables_nat_policies
+    Description: Define the 'nftables_nat_policies' option.
+    Implemented: 0.2
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{action: 'accept', direction: 'prerouting', version: 'ipv4', comment: 'default ipv4 prerouting policy'},
+                  {action: 'accept', direction: 'input', version: 'ipv4', comment: 'default ipv4 input policy'},
+                  {action: 'accept', direction: 'output', version: 'ipv4', comment: 'default ipv4 output policy'},
+                  {action: 'accept', direction: 'postrouting', version: 'ipv4', comment: 'default ipv4 postrouting policy'},
+                  {action: 'accept', direction: 'prerouting', version: 'ipv6', comment: 'default ipv6 prerouting policy'},
+                  {action: 'accept', direction: 'input', version: 'ipv6', comment: 'default ipv6 input policy'},
+                  {action: 'accept', direction: 'output', version: 'ipv6', comment: 'default ipv6 output policy'},
+                  {action: 'accept', direction: 'postrouting', version: 'ipv6', comment: 'default ipv6 postrouting policy'}]
+    Options    : [{action: 'accept', direction: 'prerouting', version: 'ipv4', comment: 'default ipv4 prerouting policy'},
+                  {action: 'accept', direction: 'input', version: 'ipv4', comment: 'default ipv4 input policy'},
+                  {action: 'accept', direction: 'output', version: 'ipv4', comment: 'default ipv4 output policy'},
+                  {action: 'accept', direction: 'postrouting', version: 'ipv4', comment: 'default ipv4 postrouting policy'},
+                  {action: 'drop', direction: 'prerouting', version: 'ipv6', comment: 'default ipv6 prerouting policy'},
+                  {action: 'drop', direction: 'input', version: 'ipv6', comment: 'default ipv6 input policy'},
+                  {action: 'drop', direction: 'output', version: 'ipv6', comment: 'default ipv6 output policy'},
+                  {action: 'drop', direction: 'postrouting', version: 'ipv6', comment: 'default ipv6 postrouting policy'}]
 
 --------------------------------------------------------------------------------
 CONFLICTS

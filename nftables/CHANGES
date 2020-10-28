@@ -14,5 +14,8 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2020-10-28)
+F: Add support for IPv4 NAT (nftables_nat_(all|group|nat), nftables_nat_policies)
+
 * Version 0.1.0 (2019-11-17)
 F: Initial release
