@@ -174,7 +174,7 @@ ROLE
     Type       : Array/Hash
     Default    : []
     Options    :
-                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'},
+      Examples: [{action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'},
                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, ports: {'http', 'https'}, comment: 'http, https to n_dmz, n_int'}]
       None    : []
 
@@ -186,7 +186,7 @@ ROLE
     Type       : Array/Hash
     Default    : []
     Options    :
-                 {action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'},
+      Examples: [{action: 'accept', direction: 'in', version: 'ipv4', protocol: 'tcp', ports: {'http', 'https'}, comment: 'http, https from any'},
                  {action: 'accept', direction: 'out', version: 'ipv4', protocol: 'tcp', destinations: {'10.1.1.0/24', '10.2.1.0/24'}, ports: {'http', 'https'}, comment: 'http, https to n_dmz, n_int'}]
       None    : []
 
@@ -209,7 +209,6 @@ ROLE
                  {action: 'drop', direction: 'input', version: 'ipv6', comment: 'Default ipv6 input policy'},
                  {action: 'drop', direction: 'forward', version: 'ipv6', comment: 'Default ipv6 forward policy'},
                  {action: 'accept', direction: 'output', version: 'ipv6', comment: 'Default ipv6 output policy'}]
-      None    : []
 
 --------------------------------------------------------------------------------
 CONFLICTS
