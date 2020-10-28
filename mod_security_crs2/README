@@ -2,7 +2,7 @@
 INFORMATION
 --------------------------------------------------------------------------------
 
-Name   : mod_security_crs
+Name   : mod_security_crs2
 Type   : Ansible role
 
 Authors: liv community
@@ -24,44 +24,44 @@ USAGE
 INSTALL
   - hosts: all
     roles:
-      - role: mod_security_crs
+      - role: mod_security_crs2
     vars:
-      mod_security_crs_state: 'install'
+      mod_security_crs2_state: 'install'
 
 ENABLE
   - hosts: all
     roles:
-      - role: mod_security_crs
+      - role: mod_security_crs2
     vars:
-      mod_security_crs_state: 'enable'
+      mod_security_crs2_state: 'enable'
 
 DISABLE
   - hosts: all
     roles:
-      - role: mod_security_crs
+      - role: mod_security_crs2
     vars:
-      mod_security_crs_state: 'disable'
+      mod_security_crs2_state: 'disable'
 
 REMOVE
   - hosts: all
     roles:
-      - role: mod_security_crs
+      - role: mod_security_crs2
     vars:
-      mod_security_crs_state: 'remove'
+      mod_security_crs2_state: 'remove'
 
 INACTIVE
   - hosts: all
     roles:
-      - role: mod_security_crs
+      - role: mod_security_crs2
     vars:
-      mod_security_crs_state: 'inactive'
+      mod_security_crs2_state: 'inactive'
 
 --------------------------------------------------------------------------------
 PARAMETERS
 --------------------------------------------------------------------------------
 
 ROLE
-  mod_security_crs_state
+  mod_security_crs2_state
     Description: Control the state of the role.
     Implemented: 0.1
     Required   : False
@@ -75,8 +75,8 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  mod_security_crs_sec_default_action
-    Description: Define the 'mod_security_crs_sec_default_action' option.
+  mod_security_crs2_sec_default_action
+    Description: Define the 'mod_security_crs2_sec_default_action' option.
     Implemented: 0.1
     Required   : False
     Value      : Arbitrary

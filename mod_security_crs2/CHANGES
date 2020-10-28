@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.0.2 (2020-10-28)
+B: Correct Ansible role parameter prefix and documentation
+
 * Version 2.0.1 (2020-10-28)
 B: Update 'mod_security_crs2' tags
 
@@ -36,7 +39,7 @@ F: Port role to Ansible 2.5
 E: Simplify role by removing 'template' option
 
 * Version 0.1.1 (2018-04-17)
-E: Improve default value of 'mod_security_crs_sec_default_action'
+E: Improve default value of 'mod_security_crs2_sec_default_action'
 
 * Version 0.1.0 (2018-04-16)
 F: Initial release

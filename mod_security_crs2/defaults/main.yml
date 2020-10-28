@@ -1,5 +1,5 @@
 ---
 
-mod_security_crs_state: 'enable'
+mod_security_crs2_state: 'enable'
 
-mod_security_crs_sec_default_action: 'phase:2,pass,log'
+mod_security_crs2_sec_default_action: 'phase:2,pass,log'
