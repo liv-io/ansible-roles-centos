@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.1 (2020-10-30)
+E: Simplify Ansible file header (ansible_managed)
+
 * Version 0.4.0 (2020-07-07)
 C: Redesign cron tasks (use Ansible cron module)
 C: Remove option 'chrony_check_time_interval'
