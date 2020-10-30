@@ -58,7 +58,7 @@
     mode: "{{file_mode_smokeping_prober_tar_gz}}"
     owner: "{{file_owner_smokeping_prober_tar_gz}}"
     group: "{{file_group_smokeping_prober_tar_gz}}"
-    checksum: "{{smokeping_prober_checksum_algorithm}}:{{smokeping_prober_checksum}}"
+    checksum: "{{file_checksum_smokeping_prober_tar_gz}}"
   tags:
     - install
     - smokeping_prober

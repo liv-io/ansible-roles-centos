@@ -10,6 +10,7 @@ file_dst_smokeping_prober_tar_gz: "/usr/local/src/smokeping_prober-{{smokeping_p
 file_mode_smokeping_prober_tar_gz: '0644'
 file_owner_smokeping_prober_tar_gz: 'root'
 file_group_smokeping_prober_tar_gz: 'root'
+file_checksum_smokeping_prober_tar_gz: "sha256:https://github.com/SuperQ/smokeping_prober/releases/download/v{{smokeping_prober_version}}/sha256sums.txt"
 
 # smokeping_prober
 file_src_smokeping_prober: "/usr/local/src/smokeping_prober-{{smokeping_prober_version}}.linux-amd64.tar.gz"

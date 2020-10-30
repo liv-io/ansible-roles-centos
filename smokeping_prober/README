@@ -75,27 +75,6 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  smokeping_prober_checksum
-    Description: Define the 'smokeping_prober_checksum' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : '3ff505954e48979289732327e0f33703a6c02ee331e97fe958b52b8faf0ae6d8'
-    Options    :
-      Examples: 'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029' |
-                '2f18a32a7bb1c91307ed776cce50559bbcd66af90a61ea0a22a661ebe79e4fda'
-
-  smokeping_prober_checksum_algorithm
-    Description: Define the 'smokeping_prober_checksum_algorithm' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'sha256'
-    Options    :
-      Examples: 'sha256' | 'sha512'
-
   smokeping_prober_hosts
     Description: Define the 'smokeping_prober_hosts' option.
     Implemented: 0.2
