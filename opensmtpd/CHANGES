@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.0.2 (2020-10-30)
+E: Simplify Ansible file header (ansible_managed)
+
 * Version 2.0.1 (2020-05-06)
 B: Correct default aliases and secret path
 
