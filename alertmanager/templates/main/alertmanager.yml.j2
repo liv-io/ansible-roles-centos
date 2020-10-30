@@ -1,19 +1,4 @@
-#-------------------------------------------------------------------------------
-#                             ANSIBLE MANAGED FILE
-#-------------------------------------------------------------------------------
-
-#-------------------------------------------------------------------------------
-# INFORMATION
-#-------------------------------------------------------------------------------
-#
-# Name   : alertmanager.yml
-# Type   : alertmanager configuration file
-# Role   : alertmanager
-#
-# Authors: liv community
-# License: Simplified BSD License
-#
-#-------------------------------------------------------------------------------
+{{ansible_managed|comment(decoration='#')}}
 
 {% for item in alertmanager_config %}
 {% if not ((item.section|default('')) == '') %}
