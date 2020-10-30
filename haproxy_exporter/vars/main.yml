@@ -10,6 +10,7 @@ file_dst_haproxy_exporter_tar_gz: "/usr/local/src/haproxy_exporter-{{haproxy_exp
 file_mode_haproxy_exporter_tar_gz: '0644'
 file_owner_haproxy_exporter_tar_gz: 'root'
 file_group_haproxy_exporter_tar_gz: 'root'
+file_checksum_haproxy_exporter_tar_gz: "sha256:https://github.com/prometheus/haproxy_exporter/releases/download/v{{haproxy_exporter_version}}/sha256sums.txt"
 
 # haproxy_exporter
 file_src_haproxy_exporter: "/usr/local/src/haproxy_exporter-{{haproxy_exporter_version}}.linux-amd64.tar.gz"

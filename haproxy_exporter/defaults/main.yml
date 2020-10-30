@@ -2,10 +2,6 @@
 
 haproxy_exporter_state: 'enable'
 
-haproxy_exporter_checksum_algorithm: 'sha256'
-
-haproxy_exporter_checksum: '525ec4684b33a7fd1b23fe39e5c378e09cbc52b56fb3e203cffa26e09d22d10d'
-
 haproxy_exporter_haproxy_scrape_uri: []
 
 haproxy_exporter_version: '0.11.0'

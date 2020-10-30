@@ -90,27 +90,6 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  haproxy_exporter_checksum
-    Description: Define the 'haproxy_exporter_checksum' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : '525ec4684b33a7fd1b23fe39e5c378e09cbc52b56fb3e203cffa26e09d22d10d'
-    Options    :
-      Examples: '2f18a32a7bb1c91307ed776cce50559bbcd66af90a61ea0a22a661ebe79e4fda' |
-                'b0d1caaaf245d3d16432de9504575b3af1fec14b2206a468372a80843be001a0'
-
-  haproxy_exporter_checksum_algorithm
-    Description: Define the 'haproxy_exporter_checksum_algorithm' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'sha256'
-    Options    :
-      Examples: 'sha256' | 'sha512'
-
   haproxy_exporter_haproxy_scrape_uri
     Description: Define the 'haproxy_exporter_haproxy_scrape_uri' option.
     Implemented: 0.2

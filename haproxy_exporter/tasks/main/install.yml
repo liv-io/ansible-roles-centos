@@ -58,7 +58,7 @@
     mode: "{{file_mode_haproxy_exporter_tar_gz}}"
     owner: "{{file_owner_haproxy_exporter_tar_gz}}"
     group: "{{file_group_haproxy_exporter_tar_gz}}"
-    checksum: "{{haproxy_exporter_checksum_algorithm}}:{{haproxy_exporter_checksum}}"
+    checksum: "{{file_checksum_haproxy_exporter_tar_gz}}"
   tags:
     - install
     - haproxy_exporter
