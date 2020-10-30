@@ -1,19 +1,4 @@
-#-------------------------------------------------------------------------------
-#                             ANSIBLE MANAGED FILE
-#-------------------------------------------------------------------------------
-
-#-------------------------------------------------------------------------------
-# INFORMATION
-#-------------------------------------------------------------------------------
-#
-# Name   : haproxy_exporter.sysconfig
-# Type   : service configuration file
-# Role   : haproxy_exporter
-#
-# Authors: liv community
-# License: Simplified BSD License
-#
-#-------------------------------------------------------------------------------
+{{ansible_managed|comment(decoration='#')}}
 
 OPTIONS="
 {%- for item in (haproxy_exporter_haproxy_scrape_uri|default('')) %}
