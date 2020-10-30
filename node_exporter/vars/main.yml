@@ -28,6 +28,7 @@ file_dst_node_exporter_tar_gz: "/usr/local/src/node_exporter-{{node_exporter_ver
 file_mode_node_exporter_tar_gz: '0644'
 file_owner_node_exporter_tar_gz: 'root'
 file_group_node_exporter_tar_gz: 'root'
+file_checksum_node_exporter_tar_gz: "sha256:https://github.com/prometheus/node_exporter/releases/download/v{{node_exporter_version}}/sha256sums.txt"
 
 # node_exporter
 file_src_node_exporter: "/usr/local/src/node_exporter-{{node_exporter_version}}.linux-amd64.tar.gz"

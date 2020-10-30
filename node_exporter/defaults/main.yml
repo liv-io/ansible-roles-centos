@@ -2,8 +2,4 @@
 
 node_exporter_state: 'enable'
 
-node_exporter_checksum_algorithm: 'sha256'
-
-node_exporter_checksum: '3369b76cd2b0ba678b6d618deab320e565c3d93ccb5c2a0d5db51a53857768ae'
-
 node_exporter_version: '1.0.1'

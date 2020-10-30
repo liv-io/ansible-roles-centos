@@ -91,7 +91,7 @@
     mode: "{{file_mode_node_exporter_tar_gz}}"
     owner: "{{file_owner_node_exporter_tar_gz}}"
     group: "{{file_group_node_exporter_tar_gz}}"
-    checksum: "{{node_exporter_checksum_algorithm}}:{{node_exporter_checksum}}"
+    checksum: "{{file_checksum_node_exporter_tar_gz}}"
   tags:
     - install
     - node_exporter
