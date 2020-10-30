@@ -113,7 +113,7 @@
     mode: "{{file_mode_prometheus_tar_gz}}"
     owner: "{{file_owner_prometheus_tar_gz}}"
     group: "{{file_group_prometheus_tar_gz}}"
-    checksum: "{{prometheus_checksum_algorithm}}:{{prometheus_checksum}}"
+    checksum: "{{file_checksum_prometheus_tar_gz}}"
   tags:
     - install
     - prometheus

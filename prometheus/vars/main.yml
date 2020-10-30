@@ -40,6 +40,7 @@ file_dst_prometheus_tar_gz: "/usr/local/src/prometheus-{{prometheus_version}}.li
 file_mode_prometheus_tar_gz: '0644'
 file_owner_prometheus_tar_gz: 'root'
 file_group_prometheus_tar_gz: 'root'
+file_checksum_prometheus_tar_gz: "sha256:https://github.com/prometheus/prometheus/releases/download/v{{prometheus_version}}/sha256sums.txt"
 
 # prometheus
 file_src_prometheus: "/usr/local/src/prometheus-{{prometheus_version}}.linux-amd64.tar.gz"

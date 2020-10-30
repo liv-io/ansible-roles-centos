@@ -25,10 +25,6 @@ prometheus_blackbox_exporter_icmp_ip4_ansible_groups: ['all']
 
 prometheus_blackbox_exporter_icmp_ip4_manual_hosts: []
 
-prometheus_checksum_algorithm: 'sha256'
-
-prometheus_checksum: 'b9894d2bf7fae235c924c7dadda0fbc214ffc18a2bb3e9306f6fbecb589d5263'
-
 prometheus_global_evaluation_interval: '30s'
 
 prometheus_global_scrape_interval: '30s'
