@@ -1,18 +1,3 @@
-#-------------------------------------------------------------------------------
-#                             ANSIBLE MANAGED FILE
-#-------------------------------------------------------------------------------
-
-#-------------------------------------------------------------------------------
-# INFORMATION
-#-------------------------------------------------------------------------------
-#
-# Name   : smokeping_prober.sysconfig
-# Type   : service configuration file
-# Role   : smokeping_prober
-#
-# Authors: liv community
-# License: Simplified BSD License
-#
-#-------------------------------------------------------------------------------
+{{ansible_managed|comment(decoration='#')}}
 
 OPTIONS="--privileged {% for item in smokeping_prober_hosts %}{{item}}{% if not loop.last %} {% endif %}{% endfor %}"
