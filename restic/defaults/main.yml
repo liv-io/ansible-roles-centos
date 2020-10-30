@@ -4,10 +4,6 @@ restic_state: 'enable'
 
 restic_cacert: ''
 
-restic_checksum: '41d47f100f61c503c462f53069e5c2aaad4dafec461e56b85b1de7730e4f9c4d'
-
-restic_checksum_algorithm: 'sha256'
-
 restic_exclude:
   - '/data/restic'
   - '/data/rest-server'

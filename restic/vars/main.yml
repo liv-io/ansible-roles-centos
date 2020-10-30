@@ -22,6 +22,7 @@ file_dst_restic_bz2: "/usr/local/src/restic_{{restic_version}}_linux_amd64.bz2"
 file_mode_restic_bz2: '0644'
 file_owner_restic_bz2: 'root'
 file_group_restic_bz2: 'root'
+file_checksum_restic_bz2: "sha256:https://github.com/restic/restic/releases/download/v{{restic_version}}/SHA256SUMS"
 
 # unarchive-restic.bz2
 command_cmd_unarchive_restic_bz2: "bzip2 -qcdk /usr/local/src/restic_{{restic_version}}_linux_amd64.bz2 > /usr/local/sbin/restic"

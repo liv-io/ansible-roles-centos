@@ -87,27 +87,6 @@ ROLE
       Examples: '/etc/pki/file.crt' | '/etc/ssl/file.crt'
       None    : ''
 
-  restic_checksum
-    Description: Define the 'restic_checksum' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : '41d47f100f61c503c462f53069e5c2aaad4dafec461e56b85b1de7730e4f9c4d'
-    Options    :
-      Examples: '3c882962fc07f611a6147ada99c9909770d3e519210fd483cde9609c6bdd900c' |
-                '1ad8a76a9f966da5f7a319c49a6db071a60ebaa24d69e6d86d53d6f2bcaf11ed'
-
-  restic_checksum_algorithm
-    Description: Define the 'restic_checksum_algorithm' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'sha256'
-    Options    :
-      Examples: 'sha256' | 'sha512'
-
   restic_exclude
     Description: Define the 'restic_exclude' option.
     Implemented: 0.1

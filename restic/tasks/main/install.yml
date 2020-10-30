@@ -48,7 +48,7 @@
     mode: "{{file_mode_restic_bz2}}"
     owner: "{{file_owner_restic_bz2}}"
     group: "{{file_group_restic_bz2}}"
-    checksum: "{{restic_checksum_algorithm}}:{{restic_checksum}}"
+    checksum: "{{file_checksum_restic_bz2}}"
   register: register_file_download_restic_bz2
   tags:
     - install
