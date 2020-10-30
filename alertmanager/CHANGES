@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.7.1 (2020-10-30)
+E: Simplify checksum verification
+
 * Version 2.7.0 (2020-07-02)
 C: Redesign role to support SELinux
 F: Update 'alertmanager' to version '0.21.0'

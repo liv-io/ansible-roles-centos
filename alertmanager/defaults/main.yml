@@ -2,10 +2,6 @@
 
 alertmanager_state: 'enable'
 
-alertmanager_checksum_algorithm: 'sha256'
-
-alertmanager_checksum: '9ccd863937436fd6bfe650e22521a7f2e6a727540988eef515dde208f9aef232'
-
 alertmanager_config: []
 
 alertmanager_version: '0.21.0'

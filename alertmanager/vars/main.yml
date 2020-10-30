@@ -22,6 +22,7 @@ file_dst_alertmanager_tar_gz: "/usr/local/src/alertmanager-{{alertmanager_versio
 file_mode_alertmanager_tar_gz: '0644'
 file_owner_alertmanager_tar_gz: 'root'
 file_group_alertmanager_tar_gz: 'root'
+file_checksum_alertmanager_tar_gz: "sha256:https://github.com/prometheus/alertmanager/releases/download/v{{alertmanager_version}}/sha256sums.txt"
 
 # alertmanager
 file_src_alertmanager: "/usr/local/src/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz"

@@ -80,7 +80,7 @@
     mode: "{{file_mode_alertmanager_tar_gz}}"
     owner: "{{file_owner_alertmanager_tar_gz}}"
     group: "{{file_group_alertmanager_tar_gz}}"
-    checksum: "{{alertmanager_checksum_algorithm}}:{{alertmanager_checksum}}"
+    checksum: "{{file_checksum_alertmanager_tar_gz}}"
   tags:
     - install
     - alertmanager

@@ -41,6 +41,7 @@ ENABLE
         - section: 'global'
           config: |
             smtp_from: 'alertmanager@domain.tld'
+            smtp_hello: 'ms.domain.tld'
             smtp_smarthost: 'mail.domain.tld:587'
             smtp_auth_username: 'alertmanager@domain.tld'
             smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'
@@ -82,6 +83,7 @@ DISABLE
         - section: 'global'
           config: |
             smtp_from: 'alertmanager@domain.tld'
+            smtp_hello: 'ms.example.com'
             smtp_smarthost: 'mail.domain.tld:587'
             smtp_auth_username: 'alertmanager@domain.tld'
             smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'
@@ -146,27 +148,6 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  alertmanager_checksum
-    Description: Define the 'alertmanager_checksum' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : '9ccd863937436fd6bfe650e22521a7f2e6a727540988eef515dde208f9aef232'
-    Options    :
-      Examples: 'b43fd8aba978f19375e37fb7924bcdc7dd45659b1b0f87a2815860001f100f46' |
-                'f62a30bd766091218ecc06512ae5fdd0f99807733a6aec0e3ca83558e56ecf6d'
-
-  alertmanager_checksum_algorithm
-    Description: Define the 'alertmanager_checksum_algorithm' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'sha256'
-    Options    :
-      Examples: 'sha256' | 'sha512'
-
   alertmanager_config
     Description: Define the 'alertmanager_config' option.
     Implemented: 0.1
@@ -178,6 +159,7 @@ ROLE
       Examples: section: 'global'
                 config: |
                   smtp_from: 'alertmanager@domain.tld'
+                  smtp_hello: 'ms.domain.tld'
                   smtp_smarthost: 'mail.domain.tld:587'
                   smtp_auth_username: 'alertmanager@domain.tld'
                   smtp_auth_password: 'TFvPtx-64pUMmBH2HMp5MRW.r_VYx45q'
