@@ -69,7 +69,7 @@
     mode: "{{file_mode_mysqld_exporter_tar_gz}}"
     owner: "{{file_owner_mysqld_exporter_tar_gz}}"
     group: "{{file_group_mysqld_exporter_tar_gz}}"
-    checksum: "{{mysqld_exporter_checksum_algorithm}}:{{mysqld_exporter_checksum}}"
+    checksum: "{{file_checksum_mysqld_exporter_tar_gz}}"
   tags:
     - install
     - mysqld_exporter
