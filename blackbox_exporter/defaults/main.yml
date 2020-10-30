@@ -2,10 +2,6 @@
 
 blackbox_exporter_state: 'enable'
 
-blackbox_exporter_checksum_algorithm: 'sha256'
-
-blackbox_exporter_checksum: 'a87f9530e31e2b20d03a6d941f6f051c57ee724f24b38f2615b8580ca63966dc'
-
 blackbox_exporter_config:
   - name: 'icmp_ip4'
     prober: 'icmp'

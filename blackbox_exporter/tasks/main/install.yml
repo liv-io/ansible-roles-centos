@@ -69,7 +69,7 @@
     mode: "{{file_mode_blackbox_exporter_tar_gz}}"
     owner: "{{file_owner_blackbox_exporter_tar_gz}}"
     group: "{{file_group_blackbox_exporter_tar_gz}}"
-    checksum: "{{blackbox_exporter_checksum_algorithm}}:{{blackbox_exporter_checksum}}"
+    checksum: "{{file_checksum_blackbox_exporter_tar_gz}}"
   tags:
     - install
     - blackbox_exporter

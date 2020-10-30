@@ -23,6 +23,7 @@ file_dst_blackbox_exporter_tar_gz: "/usr/local/src/blackbox_exporter-{{blackbox_
 file_mode_blackbox_exporter_tar_gz: '0644'
 file_owner_blackbox_exporter_tar_gz: 'root'
 file_group_blackbox_exporter_tar_gz: 'root'
+file_checksum_blackbox_exporter_tar_gz: "sha256:https://github.com/prometheus/blackbox_exporter/releases/download/v{{blackbox_exporter_version}}/sha256sums.txt"
 
 # blackbox_exporter
 file_src_blackbox_exporter: "/usr/local/src/blackbox_exporter-{{blackbox_exporter_version}}.linux-amd64.tar.gz"

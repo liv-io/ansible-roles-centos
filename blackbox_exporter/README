@@ -90,27 +90,6 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  blackbox_exporter_checksum
-    Description: Define the 'blackbox_exporter_checksum' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'a87f9530e31e2b20d03a6d941f6f051c57ee724f24b38f2615b8580ca63966dc'
-    Options    :
-      Examples: 'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029' |
-                'c5d8ba7d91101524fa7c3f5e17256d467d44d5e1d243e251fd795e0ab4a83605'
-
-  blackbox_exporter_checksum_algorithm
-    Description: Define the 'blackbox_exporter_checksum_algorithm' option.
-    Implemented: 0.1
-    Required   : False
-    Value      : Arbitrary
-    Type       : String
-    Default    : 'sha256'
-    Options    :
-      Examples: 'sha256' | 'sha512'
-
   blackbox_exporter_config
     Description: Define the 'blackbox_exporter_config' option.
     Implemented: 2.0
