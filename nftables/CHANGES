@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.1 (2020-10-30)
+E: Simplify Ansible file header (ansible_managed)
+
 * Version 0.2.0 (2020-10-28)
 F: Add support for IPv4 NAT (nftables_nat_(all|group|nat), nftables_nat_policies)
 
