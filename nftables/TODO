@@ -32,7 +32,3 @@ FEATURES
 - Add parameter 'nftables_filter_dependencies'
 - Add parameter to configure logging
 - Add dependency to configure sysctl parameters: 'net.ipv4.ip_forward', 'net.ipv6.conf.all.forwarding'
-
---------------------------------------------------------------------------------
-OTHER
---------------------------------------------------------------------------------

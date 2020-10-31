@@ -39,7 +39,3 @@ FEATURES
 - Add parameter to define log prefix (--log-prefix)
 - Add parameter to define log level (--log-level)
 - Add dependency to configure sysctl parameters: 'net.ipv4.ip_forward', 'net.ipv6.conf.all.forwarding'
-
---------------------------------------------------------------------------------
-OTHER
---------------------------------------------------------------------------------
