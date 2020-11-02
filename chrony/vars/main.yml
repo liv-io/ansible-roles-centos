@@ -15,21 +15,21 @@ package_name_chrony: 'chrony'
 #-------------------------------------------------------------------------------
 
 # chrony.conf
-file_src_chrony_conf: 'templates/main/chrony.conf.j2'
+file_src_chrony_conf: 'templates/main/chrony.conf'
 file_dst_chrony_conf: '/etc/chrony.conf'
 file_mode_chrony_conf: '0644'
 file_owner_chrony_conf: 'root'
 file_group_chrony_conf: 'root'
 
 # chrony_check-time
-file_src_chrony_check_time: 'templates/main/chrony_check-time.j2'
+file_src_chrony_check_time: 'templates/main/chrony_check-time'
 file_dst_chrony_check_time: '/usr/local/sbin/chrony_check-time'
 file_mode_chrony_check_time: '0754'
 file_owner_chrony_check_time: 'root'
 file_group_chrony_check_time: 'root'
 
 # chrony_update-time
-file_src_chrony_update_time: 'templates/main/chrony_update-time.j2'
+file_src_chrony_update_time: 'templates/main/chrony_update-time'
 file_dst_chrony_update_time: '/usr/local/sbin/chrony_update-time'
 file_mode_chrony_update_time: '0754'
 file_owner_chrony_update_time: 'root'

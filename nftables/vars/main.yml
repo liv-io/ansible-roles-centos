@@ -12,35 +12,35 @@ package_name_nftables: 'nftables'
 #-------------------------------------------------------------------------------
 
 # ipv4-filter.nft
-file_src_ipv4_filter_nft: 'templates/main/ipv4-filter.nft.j2'
+file_src_ipv4_filter_nft: 'templates/main/ipv4-filter.nft'
 file_dst_ipv4_filter_nft: '/etc/nftables/ipv4-filter.nft'
 file_mode_ipv4_filter_nft: '0600'
 file_owner_ipv4_filter_nft: 'root'
 file_group_ipv4_filter_nft: 'root'
 
 # ipv4-nat.nft
-file_src_ipv4_nat_nft: 'templates/main/ipv4-nat.nft.j2'
+file_src_ipv4_nat_nft: 'templates/main/ipv4-nat.nft'
 file_dst_ipv4_nat_nft: '/etc/nftables/ipv4-nat.nft'
 file_mode_ipv4_nat_nft: '0600'
 file_owner_ipv4_nat_nft: 'root'
 file_group_ipv4_nat_nft: 'root'
 
 # ipv6-filter.nft
-file_src_ipv6_filter_nft: 'templates/main/ipv6-filter.nft.j2'
+file_src_ipv6_filter_nft: 'templates/main/ipv6-filter.nft'
 file_dst_ipv6_filter_nft: '/etc/nftables/ipv6-filter.nft'
 file_mode_ipv6_filter_nft: '0600'
 file_owner_ipv6_filter_nft: 'root'
 file_group_ipv6_filter_nft: 'root'
 
 # ipv6-nat.nft
-file_src_ipv6_nat_nft: 'templates/main/ipv6-nat.nft.j2'
+file_src_ipv6_nat_nft: 'templates/main/ipv6-nat.nft'
 file_dst_ipv6_nat_nft: '/etc/nftables/ipv6-nat.nft'
 file_mode_ipv6_nat_nft: '0600'
 file_owner_ipv6_nat_nft: 'root'
 file_group_ipv6_nat_nft: 'root'
 
 # nftables.conf
-file_src_nftables_conf: 'templates/main/nftables.conf.j2'
+file_src_nftables_conf: 'templates/main/nftables.conf'
 file_dst_nftables_conf: '/etc/sysconfig/nftables.conf'
 file_mode_nftables_conf: '0644'
 file_owner_nftables_conf: 'root'

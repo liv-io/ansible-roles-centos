@@ -30,7 +30,7 @@ F: Add option to define log_format common (httpd_log_format_common)
 E: Enable TLS version 1.3 by default
 
 * Version 2.2.1 (2019-11-08)
-B: Fix 'config.j2' template location
+B: Fix 'config' template location
 
 * Version 2.2.0 (2019-10-13)
 F: Add support for CentOS 8

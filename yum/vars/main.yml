@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 # config
-file_src_config: 'templates/main/config.j2'
+file_src_config: 'templates/main/config'
 file_mode_config: '0644'
 file_owner_config: 'root'
 file_group_config: 'root'
@@ -22,14 +22,14 @@ file_dst_rpm_gpg: '/etc/pki/rpm-gpg'
 file_dst_yum_repos_d: '/etc/yum.repos.d'
 
 # yum.conf
-file_src_yum_conf: 'templates/main/yum.conf.j2'
+file_src_yum_conf: 'templates/main/yum.conf'
 file_dst_yum_conf: '/etc/yum.conf'
 file_mode_yum_conf: '0644'
 file_owner_yum_conf: 'root'
 file_group_yum_conf: 'root'
 
 # yum_check-update
-file_src_yum_check_update: 'templates/main/yum_check-update.j2'
+file_src_yum_check_update: 'templates/main/yum_check-update'
 file_dst_yum_check_update: '/usr/local/sbin/yum_check-update'
 file_mode_yum_check_update: '0754'
 file_owner_yum_check_update: 'root'

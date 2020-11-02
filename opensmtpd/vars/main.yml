@@ -12,21 +12,21 @@ package_name_opensmtpd: 'opensmtpd'
 #-------------------------------------------------------------------------------
 
 # aliases
-file_src_aliases: 'templates/main/aliases.j2'
+file_src_aliases: 'templates/main/aliases'
 file_dst_aliases: '/etc/aliases'
 file_mode_aliases: '0644'
 file_owner_aliases: 'root'
 file_group_aliases: 'root'
 
 # secrets
-file_src_secrets: 'templates/main/secrets.j2'
+file_src_secrets: 'templates/main/secrets'
 file_dst_secrets: '/etc/opensmtpd/secrets'
 file_mode_secrets: '0640'
 file_owner_secrets: 'root'
 file_group_secrets: 'smtpd'
 
 # smtpd.conf
-file_src_smtpd_conf: 'templates/main/smtpd.conf.j2'
+file_src_smtpd_conf: 'templates/main/smtpd.conf'
 file_dst_smtpd_conf: '/etc/opensmtpd/smtpd.conf'
 file_mode_smtpd_conf: '0644'
 file_owner_smtpd_conf: 'root'

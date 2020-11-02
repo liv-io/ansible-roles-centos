@@ -12,7 +12,7 @@ package_name_mod_ssl: 'mod_ssl'
 #-------------------------------------------------------------------------------
 
 # ssl.conf
-file_src_ssl_conf: "templates/{{ansible_distribution_major_version}}/ssl.conf.j2"
+file_src_ssl_conf: "templates/{{ansible_distribution_major_version}}/ssl.conf"
 file_dst_ssl_conf: '/etc/httpd/conf.d/ssl.conf'
 file_mode_ssl_conf: '0644'
 file_owner_ssl_conf: 'root'

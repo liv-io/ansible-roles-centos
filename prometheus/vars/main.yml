@@ -57,28 +57,28 @@ file_owner_prometheus_current_link: 'root'
 file_group_prometheus_current_link: 'root'
 
 # prometheus.service
-file_src_prometheus_service: 'templates/main/prometheus.service.j2'
+file_src_prometheus_service: 'templates/main/prometheus.service'
 file_dst_prometheus_service: '/usr/lib/systemd/system/prometheus.service'
 file_mode_prometheus_service: '0644'
 file_owner_prometheus_service: 'root'
 file_group_prometheus_service: 'root'
 
 # prometheus.sysconfig
-file_src_prometheus_sysconfig: 'templates/main/prometheus.sysconfig.j2'
+file_src_prometheus_sysconfig: 'templates/main/prometheus.sysconfig'
 file_dst_prometheus_sysconfig: '/etc/sysconfig/prometheus'
 file_mode_prometheus_sysconfig: '0644'
 file_owner_prometheus_sysconfig: 'root'
 file_group_prometheus_sysconfig: 'root'
 
 # prometheus.yml
-file_src_prometheus_yml: 'templates/main/prometheus.yml.j2'
+file_src_prometheus_yml: 'templates/main/prometheus.yml'
 file_dst_prometheus_yml: '/etc/prometheus/prometheus.yml'
 file_mode_prometheus_yml: '0644'
 file_owner_prometheus_yml: 'root'
 file_group_prometheus_yml: 'root'
 
 # alerting_rules.yml
-file_src_alerting_rules_yml: 'templates/main/alerting_rules.yml.j2'
+file_src_alerting_rules_yml: 'templates/main/alerting_rules.yml'
 file_dst_alerting_rules_yml: '/etc/prometheus/alerting_rules.yml'
 file_mode_alerting_rules_yml: '0644'
 file_owner_alerting_rules_yml: 'root'

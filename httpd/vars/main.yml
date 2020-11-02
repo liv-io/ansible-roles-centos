@@ -12,27 +12,27 @@ package_name_httpd: 'httpd'
 #-------------------------------------------------------------------------------
 
 # config
-file_src_config: 'templates/main/config.j2'
+file_src_config: 'templates/main/config'
 file_mode_config: '0644'
 file_owner_config: 'root'
 file_group_config: 'root'
 
 # autoindex.conf
-file_src_autoindex_conf: "templates/{{ansible_distribution_major_version}}/autoindex.conf.j2"
+file_src_autoindex_conf: "templates/{{ansible_distribution_major_version}}/autoindex.conf"
 file_dst_autoindex_conf: '/etc/httpd/conf.d/autoindex.conf'
 file_mode_autoindex_conf: '0644'
 file_owner_autoindex_conf: 'root'
 file_group_autoindex_conf: 'root'
 
 # httpd.conf
-file_src_httpd_conf: 'templates/main/httpd.conf.j2'
+file_src_httpd_conf: 'templates/main/httpd.conf'
 file_dst_httpd_conf: '/etc/httpd/conf/httpd.conf'
 file_mode_httpd_conf: '0644'
 file_owner_httpd_conf: 'root'
 file_group_httpd_conf: 'root'
 
 # userdir.conf
-file_src_userdir_conf: 'templates/main/userdir.conf.j2'
+file_src_userdir_conf: 'templates/main/userdir.conf'
 file_dst_userdir_conf: '/etc/httpd/conf.d/userdir.conf'
 file_mode_userdir_conf: '0644'
 file_owner_userdir_conf: 'root'
@@ -45,7 +45,7 @@ file_owner_vhosts_d: 'root'
 file_group_vhosts_d: 'root'
 
 # welcome.conf
-file_src_welcome_conf: "templates/{{ansible_distribution_major_version}}/welcome.conf.j2"
+file_src_welcome_conf: "templates/{{ansible_distribution_major_version}}/welcome.conf"
 file_dst_welcome_conf: '/etc/httpd/conf.d/welcome.conf'
 file_mode_welcome_conf: '0644'
 file_owner_welcome_conf: 'root'

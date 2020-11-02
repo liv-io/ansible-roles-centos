@@ -12,7 +12,7 @@ package_name_openssh: 'openssh'
 #-------------------------------------------------------------------------------
 
 # banner
-file_src_banner: 'templates/main/banner.j2'
+file_src_banner: 'templates/main/banner'
 file_dst_banner: '/etc/ssh/banner'
 file_mode_banner: '0644'
 file_owner_banner: 'root'
@@ -26,14 +26,14 @@ file_owner_moduli: 'root'
 file_group_moduli: 'root'
 
 # ssh_config
-file_src_ssh_config: "templates/{{ansible_distribution_major_version}}/ssh_config.j2"
+file_src_ssh_config: "templates/{{ansible_distribution_major_version}}/ssh_config"
 file_dst_ssh_config: '/etc/ssh/ssh_config'
 file_mode_ssh_config: '0644'
 file_owner_ssh_config: 'root'
 file_group_ssh_config: 'root'
 
 # sshd_config
-file_src_sshd_config: "templates/{{ansible_distribution_major_version}}/sshd_config.j2"
+file_src_sshd_config: "templates/{{ansible_distribution_major_version}}/sshd_config"
 file_dst_sshd_config: '/etc/ssh/sshd_config'
 file_mode_sshd_config: '0600'
 file_owner_sshd_config: 'root'

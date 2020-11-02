@@ -34,21 +34,21 @@ file_exclude_alertmanager: ['LICENSE', 'NOTICE', 'alertmanager.yml']
 file_extra_opts_alertmanager: ['--strip-components=1']
 
 # alertmanager.service
-file_src_alertmanager_service: 'templates/main/alertmanager.service.j2'
+file_src_alertmanager_service: 'templates/main/alertmanager.service'
 file_dst_alertmanager_service: '/usr/lib/systemd/system/alertmanager.service'
 file_mode_alertmanager_service: '0644'
 file_owner_alertmanager_service: 'root'
 file_group_alertmanager_service: 'root'
 
 # alertmanager.sysconfig
-file_src_alertmanager_sysconfig: 'templates/main/alertmanager.sysconfig.j2'
+file_src_alertmanager_sysconfig: 'templates/main/alertmanager.sysconfig'
 file_dst_alertmanager_sysconfig: '/etc/sysconfig/alertmanager'
 file_mode_alertmanager_sysconfig: '0644'
 file_owner_alertmanager_sysconfig: 'root'
 file_group_alertmanager_sysconfig: 'root'
 
 # alertmanager.yml
-file_src_alertmanager_yml: 'templates/main/alertmanager.yml.j2'
+file_src_alertmanager_yml: 'templates/main/alertmanager.yml'
 file_dst_alertmanager_yml: '/etc/alertmanager/alertmanager.yml'
 file_mode_alertmanager_yml: '0644'
 file_owner_alertmanager_yml: 'root'

@@ -22,14 +22,14 @@ file_exclude_smokeping_prober: ['LICENSE']
 file_extra_opts_smokeping_prober: ['--strip-components=1']
 
 # smokeping_prober.service
-file_src_smokeping_prober_service: 'templates/main/smokeping_prober.service.j2'
+file_src_smokeping_prober_service: 'templates/main/smokeping_prober.service'
 file_dst_smokeping_prober_service: '/usr/lib/systemd/system/smokeping_prober.service'
 file_mode_smokeping_prober_service: '0644'
 file_owner_smokeping_prober_service: 'root'
 file_group_smokeping_prober_service: 'root'
 
 # smokeping_prober.sysconfig
-file_src_smokeping_prober_sysconfig: 'templates/main/smokeping_prober.sysconfig.j2'
+file_src_smokeping_prober_sysconfig: 'templates/main/smokeping_prober.sysconfig'
 file_dst_smokeping_prober_sysconfig: '/etc/sysconfig/smokeping_prober'
 file_mode_smokeping_prober_sysconfig: '0644'
 file_owner_smokeping_prober_sysconfig: 'root'

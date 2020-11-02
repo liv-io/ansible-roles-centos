@@ -12,7 +12,7 @@ package_name_grafana: 'grafana'
 #-------------------------------------------------------------------------------
 
 # grafana.ini
-file_src_grafana_ini: 'templates/main/grafana.ini.j2'
+file_src_grafana_ini: 'templates/main/grafana.ini'
 file_dst_grafana_ini: '/etc/grafana/grafana.ini'
 file_mode_grafana_ini: '0640'
 file_owner_grafana_ini: 'root'

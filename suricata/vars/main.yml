@@ -12,7 +12,7 @@ package_name_suricata: 'suricata'
 #-------------------------------------------------------------------------------
 
 # config
-file_src_config: 'templates/main/config.j2'
+file_src_config: 'templates/main/config'
 file_dst_config: '/etc/suricata/rules'
 file_mode_config: '0640'
 file_owner_config: 'root'
@@ -37,7 +37,7 @@ file_owner_stats_log: 'suricata'
 file_group_stats_log: 'suricata'
 
 # promiscuous_mode@.service
-file_src_promiscuous_mode_service: 'templates/main/promiscuous_mode.service.j2'
+file_src_promiscuous_mode_service: 'templates/main/promiscuous_mode.service'
 file_dst_promiscuous_mode_service: '/usr/lib/systemd/system/promiscuous_mode@.service'
 file_mode_promiscuous_mode_service: '0644'
 file_owner_promiscuous_mode_service: 'root'
@@ -47,14 +47,14 @@ file_group_promiscuous_mode_service: 'root'
 file_dst_suricata_rules: '/var/lib/suricata/rules/suricata.rules'
 
 # suricata.sysconfig
-file_src_suricata_sysconfig: "templates/{{ansible_distribution_major_version}}/suricata.sysconfig.j2"
+file_src_suricata_sysconfig: "templates/{{ansible_distribution_major_version}}/suricata.sysconfig"
 file_dst_suricata_sysconfig: '/etc/sysconfig/suricata'
 file_mode_suricata_sysconfig: '0640'
 file_owner_suricata_sysconfig: 'root'
 file_group_suricata_sysconfig: 'suricata'
 
 # suricata.yaml
-file_src_suricata_yaml: "templates/{{ansible_distribution_major_version}}/suricata.yaml.j2"
+file_src_suricata_yaml: "templates/{{ansible_distribution_major_version}}/suricata.yaml"
 file_dst_suricata_yaml: '/etc/suricata/suricata.yaml'
 file_mode_suricata_yaml: '0640'
 file_owner_suricata_yaml: 'root'

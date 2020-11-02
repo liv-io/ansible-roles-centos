@@ -18,14 +18,14 @@ package_name_postgresql_server: 'postgresql-server'
 #-------------------------------------------------------------------------------
 
 # pg_hba.conf
-file_src_pg_hba_conf: "templates/{{ansible_distribution_major_version}}/pg_hba.conf.j2"
+file_src_pg_hba_conf: "templates/{{ansible_distribution_major_version}}/pg_hba.conf"
 file_dst_pg_hba_conf: '/var/lib/pgsql/data/pg_hba.conf'
 file_mode_pg_hba_conf: '0600'
 file_owner_pg_hba_conf: 'postgres'
 file_group_pg_hba_conf: 'postgres'
 
 # postgresql.conf
-file_src_postgresql_conf: "templates/{{ansible_distribution_major_version}}/postgresql.conf.j2"
+file_src_postgresql_conf: "templates/{{ansible_distribution_major_version}}/postgresql.conf"
 file_dst_postgresql_conf: '/var/lib/pgsql/data/postgresql.conf'
 file_mode_postgresql_conf: '0600'
 file_owner_postgresql_conf: 'postgres'
@@ -37,7 +37,7 @@ file_owner_postgresql_backup_file: 'postgres'
 file_group_postgresql_backup_file: 'postgres'
 
 # postgresql_run-backup
-file_src_postgresql_run_backup: 'templates/main/postgresql_run-backup.j2'
+file_src_postgresql_run_backup: 'templates/main/postgresql_run-backup'
 file_dst_postgresql_run_backup: '/usr/local/sbin/postgresql_run-backup'
 file_mode_postgresql_run_backup: '0700'
 file_owner_postgresql_run_backup: 'root'

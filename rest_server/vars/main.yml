@@ -34,14 +34,14 @@ file_exclude_rest_server: ['CHANGELOG.md', 'LICENSE', 'README.md']
 file_extra_opts_rest_server: ['--strip-components=1']
 
 # rest-server.service
-file_src_rest_server_service: 'templates/main/rest-server.service.j2'
+file_src_rest_server_service: 'templates/main/rest-server.service'
 file_dst_rest_server_service: '/usr/lib/systemd/system/rest-server.service'
 file_mode_rest_server_service: '0644'
 file_owner_rest_server_service: 'root'
 file_group_rest_server_service: 'root'
 
 # rest-server.sysconfig
-file_src_rest_server_sysconfig: 'templates/main/rest-server.sysconfig.j2'
+file_src_rest_server_sysconfig: 'templates/main/rest-server.sysconfig'
 file_dst_rest_server_sysconfig: '/etc/sysconfig/rest-server'
 file_mode_rest_server_sysconfig: '0644'
 file_owner_rest_server_sysconfig: 'root'

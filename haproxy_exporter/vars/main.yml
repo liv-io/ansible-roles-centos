@@ -22,14 +22,14 @@ file_exclude_haproxy_exporter: ['LICENSE', 'NOTICE']
 file_extra_opts_haproxy_exporter: ['--strip-components=1']
 
 # haproxy_exporter.service
-file_src_haproxy_exporter_service: 'templates/main/haproxy_exporter.service.j2'
+file_src_haproxy_exporter_service: 'templates/main/haproxy_exporter.service'
 file_dst_haproxy_exporter_service: '/usr/lib/systemd/system/haproxy_exporter.service'
 file_mode_haproxy_exporter_service: '0644'
 file_owner_haproxy_exporter_service: 'root'
 file_group_haproxy_exporter_service: 'root'
 
 # haproxy_exporter.sysconfig
-file_src_haproxy_exporter_sysconfig: 'templates/main/haproxy_exporter.sysconfig.j2'
+file_src_haproxy_exporter_sysconfig: 'templates/main/haproxy_exporter.sysconfig'
 file_dst_haproxy_exporter_sysconfig: '/etc/sysconfig/haproxy_exporter'
 file_mode_haproxy_exporter_sysconfig: '0644'
 file_owner_haproxy_exporter_sysconfig: 'root'

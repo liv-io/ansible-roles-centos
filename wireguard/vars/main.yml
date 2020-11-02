@@ -18,7 +18,7 @@ package_name_wireguard_tools: 'wireguard-tools'
 #-------------------------------------------------------------------------------
 
 # config
-file_src_config: 'templates/main/config.j2'
+file_src_config: 'templates/main/config'
 file_dst_config: '/etc/wireguard'
 file_mode_config: '0640'
 file_owner_config: 'root'
