@@ -14,5 +14,8 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.1 (2020-11-05)
+B: Correct node_exporter textfile_collector syntax
+
 * Version 0.1.0 (2020-11-05)
 F: Initial release

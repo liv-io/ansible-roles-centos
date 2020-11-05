@@ -98,24 +98,24 @@ update_prom() {
   time_exec="$3"
 
   if [ -w "${textfile_collector}" ]; then
-    ${echo} "# HELP unbound_adblock_update_list_exit The script's exit code.
-# TYPE unbound_adblock_update_list_exit counter
-unbound_adblock_update_list_exit ${retval}" > "${textfile_collector}/unbound_adblock_update_list_exit.prom"
+    ${echo} -e "# HELP unbound_adblock_update_list_exit The script's exit code.\n"\
+"# TYPE unbound_adblock_update_list_exit counter\n"\
+"unbound_adblock_update_list_exit ${retval}" > "${textfile_collector}/unbound_adblock_update_list_exit.prom"
 
     if [ -z "${time_start}" ] ; then
       ${rm} -f "${textfile_collector}/unbound_adblock_update_list_start.prom"
     else
-      ${echo} "# HELP unbound_adblock_update_list_start The script's start time in epoch.
-# TYPE unbound_adblock_update_list_start counter
-unbound_adblock_update_list_start ${time_start}" > "${textfile_collector}/unbound_adblock_update_list_start.prom"
+      ${echo} -e "# HELP unbound_adblock_update_list_start The script's start time in epoch.\n"\
+"# TYPE unbound_adblock_update_list_start counter\n"\
+"unbound_adblock_update_list_start ${time_start}" > "${textfile_collector}/unbound_adblock_update_list_start.prom"
     fi
 
     if [ -z "${time_exec}" ] ; then
       ${rm} -f "${textfile_collector}/unbound_adblock_update_list_duration.prom"
     else
-      ${echo} "# HELP unbound_adblock_update_list_duration The script's execution duration in seconds.
-# TYPE unbound_adblock_update_list_duration counter
-unbound_adblock_update_list_duration ${time_exec}" > "${textfile_collector}/unbound_adblock_update_list_duration.prom"
+      ${echo} -e "# HELP unbound_adblock_update_list_duration The script's execution duration in seconds.\n"\
+"# TYPE unbound_adblock_update_list_duration counter\n"\
+"unbound_adblock_update_list_duration ${time_exec}" > "${textfile_collector}/unbound_adblock_update_list_duration.prom"
     fi
 
   fi
@@ -169,7 +169,6 @@ log_and_exit_on_error() {
     exit "${retval}"
   fi
 }
-
 
 log_and_exit() {
   time_end=$(${date} '+%s')
