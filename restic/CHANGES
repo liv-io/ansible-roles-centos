@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 4.3.0 (2020-11-05)
+F: Update to restic version '0.11.0'
+
 * Version 4.2.3 (2020-10-30)
 E: Simplify Ansible file header (ansible_managed)
 
