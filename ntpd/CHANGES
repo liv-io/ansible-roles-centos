@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 4.0.2 (2020-11-05)
+E: Limit PATH environment variable in script
+
 * Version 4.0.1 (2020-10-30)
 E: Simplify Ansible file header (ansible_managed)
 
