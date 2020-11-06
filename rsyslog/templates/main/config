@@ -1,0 +1,16 @@
+{{ansible_managed|comment(decoration='#')}}
+
+{% for item in rsyslog_config_all %}
+{% if ((item.section|default('')) is match('input|in')) %}
+input(
+{%- for key, value in item.config.items() %}
+{{key}}="{{value}}"
+{% if loop.last %}
+)
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
