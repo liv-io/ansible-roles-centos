@@ -1,0 +1,57 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - enable
+    - promtail
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create promtail.sysconfig'
+  template:
+    src: "{{file_src_promtail_sysconfig}}"
+    dest: "{{file_dst_promtail_sysconfig}}"
+    mode: "{{file_mode_promtail_sysconfig}}"
+    owner: "{{file_owner_promtail_sysconfig}}"
+    group: "{{file_group_promtail_sysconfig}}"
+  notify: 'service restart promtail'
+  tags:
+    - enable
+    - promtail
+
+- name: 'file create promtail.yaml'
+  template:
+    src: "{{file_src_promtail_yaml}}"
+    dest: "{{file_dst_promtail_yaml}}"
+    mode: "{{file_mode_promtail_yaml}}"
+    owner: "{{file_owner_promtail_yaml}}"
+    group: "{{file_group_promtail_yaml}}"
+  notify: 'service restart promtail'
+  tags:
+    - enable
+    - promtail
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start promtail'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_promtail}}"
+  tags:
+    - enable
+    - promtail

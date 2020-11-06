@@ -1,0 +1,184 @@
+--------------------------------------------------------------------------------
+INFORMATION
+--------------------------------------------------------------------------------
+
+Name   : promtail
+Type   : Ansible role
+
+Authors: liv community
+License: Simplified BSD License
+
+--------------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+
+Promtail is an agent which ships the contents of local logs to a private Loki
+instance or Grafana Cloud. It is usually deployed to every machine that has
+applications needed to be monitored.
+
+For more information on the usage and available configuration options,
+consult the following sections.
+
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
+
+INSTALL
+  - hosts: all
+    roles:
+      - role: promtail
+    vars:
+      promtail_state: 'install'
+
+ENABLE
+  - hosts: all
+    roles:
+      - role: promtail
+    vars:
+      promtail_state: 'enable'
+
+DISABLE
+  - hosts: all
+    roles:
+      - role: promtail
+    vars:
+      promtail_state: 'disable'
+
+REMOVE
+  - hosts: all
+    roles:
+      - role: promtail
+    vars:
+      promtail_state: 'remove'
+
+INACTIVE
+  - hosts: all
+    roles:
+      - role: promtail
+    vars:
+      promtail_state: 'inactive'
+
+--------------------------------------------------------------------------------
+PARAMETERS
+--------------------------------------------------------------------------------
+
+ROLE
+  promtail_state
+    Description: Control the state of the role.
+    Implemented: 0.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'enable'
+    Options    :
+      Install : 'true' | 'yes' | 'install'
+      Enable  : 'start' | 'on' | 'enable'
+      Disable : 'stop' | 'off' | 'disable'
+      Remove  : 'false' | 'no' | 'remove'
+      Inactive: 'quiesce' | 'inactive'
+
+  promtail_pipeline_stages
+    Description: Define the 'promtail_pipeline_stages' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : |
+      {% raw %}
+      # Get SSH user and source IP and create Prometheus metric
+      - match:
+          selector: '{job="syslog"}'
+          stages:
+          - regex:
+              expression: 'Accepted\spublickey\sfor\s(?P<ssh_user>(\w+))\sfrom\s(?P<ssh_source_ip>(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3})'
+          - labels:
+              ssh_user:
+              ssh_source_ip:
+          - metrics:
+              ssh_login:
+                type: Counter
+                description: "SSH login counter"
+                source: ssh_user
+                config:
+                  action: inc
+  
+      # Get SSH user and session status (opened or closed)
+      - match:
+          selector: '{job="syslog"}'
+          stages:
+          - regex:
+              expression: 'sshd.*session\s(?P<ssh_session_state>(\w+))\sfor user\s(?P<ssh_session_user>(\w+)).*'
+          - labels:
+              ssh_session_user:
+              ssh_session_state:
+          - metrics:
+              ssh_session:
+                type: Counter
+                description: "SSH login/logout counter"
+                source: ssh_session_state
+                config:
+                  action: inc
+  
+      # Get name for users called su or sudo
+      - match:
+          selector: '{job="syslog"}'
+          stages:
+          - regex:
+              expression: "su.*session\\sopened\\sfor\\suser\\sroot\\sby\\s(?P<root_login_user>(\\w+))\\("
+          - labels:
+              root_login_user:
+      {% endraw %}
+    Options    :
+      Examples: ''
+
+  promtail_version
+    Description: Define the 'promtail_version' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '2.0.0'
+    Options    :
+      Examples: '1.5.0' | '1.6.0'
+
+--------------------------------------------------------------------------------
+CONFLICTS
+--------------------------------------------------------------------------------
+
+ROLES
+
+--------------------------------------------------------------------------------
+DEPENDENCIES
+--------------------------------------------------------------------------------
+
+PACKAGES
+  promtail
+
+ROLES
+
+PARAMETERS
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+
+CONTROL NODE
+  Ansible
+    Version: >= 2.8
+
+MANAGED NODE
+  Python
+    Version: >= 2.7
+
+--------------------------------------------------------------------------------
+SUPPORT
+--------------------------------------------------------------------------------
+
+OPERATING SYSTEMS
+  CentOS
+    Version: 7
+      Status: Development
+
+  CentOS
+    Version: 8
+      Status: Development

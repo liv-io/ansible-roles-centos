@@ -1,0 +1,82 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# promtail_etc.dir
+file_dst_promtail_etc_dir: '/etc/promtail'
+file_mode_promtail_etc_dir: '0755'
+file_owner_promtail_etc_dir: 'root'
+file_group_promtail_etc_dir: 'root'
+
+# promtail.zip
+file_src_promtail_zip: "https://github.com/grafana/loki/releases/download/v{{promtail_version}}/promtail-linux-amd64.zip"
+file_dst_promtail_zip: '/usr/local/src/promtail-linux-amd64.zip'
+file_mode_promtail_zip: '0644'
+file_owner_promtail_zip: 'root'
+file_group_promtail_zip: 'root'
+file_checksum_promtail_zip: "sha256:https://github.com/grafana/loki/releases/download/v{{promtail_version}}/SHA256SUMS"
+
+# promtail
+file_src_promtail: "/usr/local/src/promtail-linux-amd64.zip"
+file_dst_promtail: '/usr/local/bin'
+file_owner_promtail: 'root'
+file_group_promtail: 'root'
+file_creates_promtail: '/usr/local/bin/promtail-linux-amd64'
+
+# promtail.service
+file_src_promtail_service: 'templates/main/promtail.service'
+file_dst_promtail_service: '/usr/lib/systemd/system/promtail.service'
+file_mode_promtail_service: '0644'
+file_owner_promtail_service: 'root'
+file_group_promtail_service: 'root'
+
+# promtail.sysconfig
+file_src_promtail_sysconfig: 'templates/main/promtail.sysconfig'
+file_dst_promtail_sysconfig: '/etc/sysconfig/promtail'
+file_mode_promtail_sysconfig: '0644'
+file_owner_promtail_sysconfig: 'root'
+file_group_promtail_sysconfig: 'root'
+
+# promtail.yaml
+file_src_promtail_yaml: 'templates/main/promtail.yaml'
+file_dst_promtail_yaml: '/etc/promtail/promtail.yaml'
+file_mode_promtail_yaml: '0644'
+file_owner_promtail_yaml: 'root'
+file_group_promtail_yaml: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check service promtail
+command_cmd_check_service_promtail: 'systemctl cat promtail.service > /dev/null 2>&1'
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# promtail
+group_name_promtail: 'promtail'
+group_system_promtail: 'yes'
+
+# promtail
+user_name_promtail: 'promtail'
+user_comment_promtail: 'Promtail'
+user_group_promtail: 'promtail'
+user_append_promtail: 'yes'
+user_home_create_promtail: 'yes'
+user_home_move_promtail: 'no'
+user_home_remove_promtail: 'yes'
+user_home_force_promtail: 'no'
+user_password_promtail: '!'
+user_password_update_promtail: 'always'
+user_shell_promtail: '/sbin/nologin'
+user_system_promtail: 'yes'
+
+# promtail
+service_name_promtail: 'promtail'
