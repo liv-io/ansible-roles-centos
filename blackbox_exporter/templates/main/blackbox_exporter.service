@@ -10,6 +10,7 @@ Group=blackbox_exporter
 AmbientCapabilities=CAP_NET_RAW
 EnvironmentFile={{file_dst_blackbox_exporter_sysconfig}}
 ExecStart={{file_creates_blackbox_exporter}} $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
