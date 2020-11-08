@@ -10,6 +10,7 @@ Type=oneshot
 RemainAfterExit=yes
 ExecStart=/usr/sbin/ip link set promisc on dev %i
 ExecStop=/usr/sbin/ip link set promisc off dev %i
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
