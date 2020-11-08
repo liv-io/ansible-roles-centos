@@ -9,6 +9,7 @@ User=node_exporter
 Group=node_exporter
 EnvironmentFile={{file_dst_node_exporter_sysconfig}}
 ExecStart={{file_creates_node_exporter}} $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
