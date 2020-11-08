@@ -9,6 +9,7 @@ User=haproxy_exporter
 Group=haproxy_exporter
 EnvironmentFile={{file_dst_haproxy_exporter_sysconfig}}
 ExecStart={{file_creates_haproxy_exporter}} $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
