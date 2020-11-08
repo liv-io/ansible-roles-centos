@@ -14,5 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.1.1 (2020-11-08)
+B: Correct default listen port
+E: Add reload capability to systemd service unit file
+
 * Version 0.1.0 (2020-11-06)
 F: Initial release

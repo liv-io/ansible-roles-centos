@@ -9,6 +9,7 @@ User=promtail
 Group=promtail
 EnvironmentFile={{file_dst_promtail_sysconfig}}
 ExecStart={{file_creates_promtail}} $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
