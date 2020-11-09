@@ -64,22 +64,18 @@ CONFIG
   vars:
     rsyslog_config_all:
       - name: "httpd"
+        comment: "Apache HTTPD"
         section: "input"
         config:
-          "type": "imfile"
-          "File": "/var/log/httpd/*access_log"
-          "Tag": "httpd"
-          "Severity": "info"
-          "Facility": "local6"
+          - {type: imfile, File: /var/log/httpd/*access_log, Tag: httpd, Severity: info, Facility: local6}
+          - {type: imfile, File: /var/log/httpd/*error_log, Tag: httpd, Severity: info, Facility: local6}
 
-      - name: "httpd"
-        section: "input"
+      - name: nginx
+        comment: Nginx
+        section: input
         config:
-          "type": "imfile"
-          "File": "/var/log/httpd/*error_log"
-          "Tag": "httpd"
-          "Severity": "info"
-          "Facility": "local6"
+          - {type: imfile, File: /var/log/nginx/*_access.log, Tag: nginx, Severity: info, Facility: local6}
+          - {type: imfile, File: /var/log/nginx/*_error.log, Tag: nginx, Severity: info, Facility: local6}]
 
 --------------------------------------------------------------------------------
 PARAMETERS
@@ -102,38 +98,35 @@ ROLE
 
   rsyslog_config_all
     Description: Define the 'rsyslog_config_all' option.
-    Implemented: 0.1
+    Implemented: 0.2
     Required   : False
     Value      : Arbitrary
     Type       : Array
     Default    : []
     Options    :
-      Examples: [{name: 'nginx', section: 'input', config: {'type': 'imfile', 'File': '/var/log/nginx/*_access.log', 'Tag': 'nginx', 'Severity': 'info', 'Facility': 'local6'}},
-                 {name: 'nginx', section: 'input', config: {'type': 'imfile', 'File': '/var/log/nginx/*_error.log', 'Tag': 'nginx', 'Severity': 'info', 'Facility': 'local6'}}]
+      Examples: [{name: httpd, comment: Apache HTTPD, section: input, config: [{type: imfile, File: /var/log/httpd/*access_log, Tag: httpd, Severity: info, Facility: local6}, {type: imfile, File: /var/log/httpd/*error_log, Tag: httpd, Severity: info, Facility: local6}]}]
       None    : []
 
   rsyslog_config_group
     Description: Define the 'rsyslog_config_group' option.
-    Implemented: 0.1
+    Implemented: 0.2
     Required   : False
     Value      : Arbitrary
     Type       : Array
     Default    : []
     Options    :
-      Examples: [{name: 'nginx', section: 'input', config: {'type': 'imfile', 'File': '/var/log/nginx/*_access.log', 'Tag': 'nginx', 'Severity': 'info', 'Facility': 'local6'}},
-                 {name: 'nginx', section: 'input', config: {'type': 'imfile', 'File': '/var/log/nginx/*_error.log', 'Tag': 'nginx', 'Severity': 'info', 'Facility': 'local6'}}]
+      Examples: [{name: httpd, comment: Apache HTTPD, section: input, config: [{type: imfile, File: /var/log/httpd/*access_log, Tag: httpd, Severity: info, Facility: local6}, {type: imfile, File: /var/log/httpd/*error_log, Tag: httpd, Severity: info, Facility: local6}]}]
       None    : []
 
   rsyslog_config_host
     Description: Define the 'rsyslog_config_host' option.
-    Implemented: 0.1
+    Implemented: 0.2
     Required   : False
     Value      : Arbitrary
     Type       : Array
     Default    : []
     Options    :
-      Examples: [{name: 'nginx', section: 'input', config: {'type': 'imfile', 'File': '/var/log/nginx/*_access.log', 'Tag': 'nginx', 'Severity': 'info', 'Facility': 'local6'}},
-                 {name: 'nginx', section: 'input', config: {'type': 'imfile', 'File': '/var/log/nginx/*_error.log', 'Tag': 'nginx', 'Severity': 'info', 'Facility': 'local6'}}]
+      Examples: [{name: httpd, comment: Apache HTTPD, section: input, config: [{type: imfile, File: /var/log/httpd/*access_log, Tag: httpd, Severity: info, Facility: local6}, {type: imfile, File: /var/log/httpd/*error_log, Tag: httpd, Severity: info, Facility: local6}]}]
       None    : []
 
   rsyslog_role

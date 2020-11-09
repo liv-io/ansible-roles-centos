@@ -14,5 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2020-11-09)
+C: Redesign config syntax (rsyslog_config_(all|group|host))
+B: Fix parameters rsyslog_config_group, rsyslog_config_host
+
 * Version 0.1.0 (2020-11-06)
 F: Initial release
