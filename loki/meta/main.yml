@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - {role: alertmanager, when: (loki_alertmanager_state is match('true|yes|enable'))}

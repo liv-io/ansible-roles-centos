@@ -1,0 +1,130 @@
+---
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+# boltdb-shipper-active.dir
+file_dst_boltdb_shipper_active_dir: '/data/loki/boltdb-shipper-active'
+file_mode_boltdb_shipper_active_dir: '0750'
+file_owner_boltdb_shipper_active_dir: 'loki'
+file_group_boltdb_shipper_active_dir: 'loki'
+
+# boltdb-shipper-cache.dir
+file_dst_boltdb_shipper_cache_dir: '/data/loki/boltdb-shipper-cache'
+file_mode_boltdb_shipper_cache_dir: '0755'
+file_owner_boltdb_shipper_cache_dir: 'loki'
+file_group_boltdb_shipper_cache_dir: 'loki'
+
+# boltdb-shipper-compactor.dir
+file_dst_boltdb_shipper_compactor_dir: '/data/loki/boltdb-shipper-compactor'
+file_mode_boltdb_shipper_compactor_dir: '0750'
+file_owner_boltdb_shipper_compactor_dir: 'loki'
+file_group_boltdb_shipper_compactor_dir: 'loki'
+
+# chunks.dir
+file_dst_chunks_dir: '/data/loki/chunks'
+file_mode_chunks_dir: '0750'
+file_owner_chunks_dir: 'loki'
+file_group_chunks_dir: 'loki'
+
+# data.dir
+file_dst_data_dir: '/data'
+file_mode_data_dir: '0755'
+file_owner_data_dir: 'root'
+file_group_data_dir: 'root'
+
+# loki_data.dir
+file_dst_loki_data_dir: '/data/loki'
+file_mode_loki_data_dir: '0750'
+file_owner_loki_data_dir: 'loki'
+file_group_loki_data_dir: 'loki'
+
+# loki_etc.dir
+file_dst_loki_etc_dir: '/etc/loki'
+file_mode_loki_etc_dir: '0755'
+file_owner_loki_etc_dir: 'root'
+file_group_loki_etc_dir: 'root'
+
+# loki.zip
+file_src_loki_zip: "https://github.com/grafana/loki/releases/download/v{{loki_version}}/loki-linux-amd64.zip"
+file_dst_loki_zip: '/usr/local/src/loki-linux-amd64.zip'
+file_mode_loki_zip: '0644'
+file_owner_loki_zip: 'root'
+file_group_loki_zip: 'root'
+file_checksum_loki_zip: "sha256:https://github.com/grafana/loki/releases/download/v{{loki_version}}/SHA256SUMS"
+
+# loki
+file_src_loki: "/usr/local/src/loki-linux-amd64.zip"
+file_dst_loki: '/usr/local/bin'
+file_owner_loki: 'root'
+file_group_loki: 'root'
+file_creates_loki: '/usr/local/bin/loki-linux-amd64'
+
+# loki.service
+file_src_loki_service: 'templates/main/loki.service'
+file_dst_loki_service: '/usr/lib/systemd/system/loki.service'
+file_mode_loki_service: '0644'
+file_owner_loki_service: 'root'
+file_group_loki_service: 'root'
+
+# loki.sysconfig
+file_src_loki_sysconfig: 'templates/main/loki.sysconfig'
+file_dst_loki_sysconfig: '/etc/sysconfig/loki'
+file_mode_loki_sysconfig: '0644'
+file_owner_loki_sysconfig: 'root'
+file_group_loki_sysconfig: 'root'
+
+# loki.yaml
+file_src_loki_yaml: 'templates/main/loki.yaml'
+file_dst_loki_yaml: '/etc/loki/loki.yaml'
+file_mode_loki_yaml: '0644'
+file_owner_loki_yaml: 'root'
+file_group_loki_yaml: 'root'
+
+# rules.dir
+file_dst_rules_dir: '/data/loki/rules'
+file_mode_rules_dir: '0750'
+file_owner_rules_dir: 'loki'
+file_group_rules_dir: 'loki'
+
+# rules-temp.dir
+file_dst_rules_temp_dir: '/data/loki/rules-temp'
+file_mode_rules_temp_dir: '0750'
+file_owner_rules_temp_dir: 'loki'
+file_group_rules_temp_dir: 'loki'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check service loki
+command_cmd_check_service_loki: 'systemctl cat loki.service > /dev/null 2>&1'
+
+# systemctl daemon-reload
+command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+# loki
+group_name_loki: 'loki'
+group_system_loki: 'yes'
+
+# loki
+user_name_loki: 'loki'
+user_comment_loki: 'Loki'
+user_group_loki: 'loki'
+user_append_loki: 'yes'
+user_home_create_loki: 'yes'
+user_home_move_loki: 'no'
+user_home_remove_loki: 'yes'
+user_home_force_loki: 'no'
+user_password_loki: '!'
+user_password_update_loki: 'always'
+user_shell_loki: '/sbin/nologin'
+user_system_loki: 'yes'
+
+# loki
+service_name_loki: 'loki'

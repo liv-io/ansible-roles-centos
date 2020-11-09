@@ -1,0 +1,57 @@
+---
+
+#-------------------------------------------------------------------------------
+# VARIABLES
+#-------------------------------------------------------------------------------
+
+- name: 'include variables'
+  include_vars: "{{lookup('first_found', params)}}"
+  vars:
+    params:
+      files:
+        - "vars/{{ansible_distribution_major_version}}.yml"
+        - 'vars/main.yml'
+  tags:
+    - enable
+    - loki
+
+#-------------------------------------------------------------------------------
+# FILES
+#-------------------------------------------------------------------------------
+
+- name: 'file create loki.sysconfig'
+  template:
+    src: "{{file_src_loki_sysconfig}}"
+    dest: "{{file_dst_loki_sysconfig}}"
+    mode: "{{file_mode_loki_sysconfig}}"
+    owner: "{{file_owner_loki_sysconfig}}"
+    group: "{{file_group_loki_sysconfig}}"
+  notify: 'service restart loki'
+  tags:
+    - enable
+    - loki
+
+- name: 'file create loki.yaml'
+  template:
+    src: "{{file_src_loki_yaml}}"
+    dest: "{{file_dst_loki_yaml}}"
+    mode: "{{file_mode_loki_yaml}}"
+    owner: "{{file_owner_loki_yaml}}"
+    group: "{{file_group_loki_yaml}}"
+  notify: 'service restart loki'
+  tags:
+    - enable
+    - loki
+
+#-------------------------------------------------------------------------------
+# SYSTEM
+#-------------------------------------------------------------------------------
+
+- name: 'service start loki'
+  service:
+    state: 'started'
+    enabled: 'yes'
+    name: "{{service_name_loki}}"
+  tags:
+    - enable
+    - loki

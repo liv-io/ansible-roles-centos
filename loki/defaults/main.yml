@@ -1,0 +1,9 @@
+---
+
+loki_state: 'enable'
+
+loki_alertmanager_state: 'true'
+
+loki_retention_period: '365d'
+
+loki_version: '2.0.0'
