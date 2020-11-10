@@ -43,6 +43,18 @@
     - enable
     - loki
 
+- name: 'file create loki_datasource.yaml'
+  template:
+    src: "{{file_src_loki_datasource_yaml}}"
+    dest: "{{file_dst_loki_datasource_yaml}}"
+    mode: "{{file_mode_loki_datasource_yaml}}"
+    owner: "{{file_owner_loki_datasource_yaml}}"
+    group: "{{file_group_loki_datasource_yaml}}"
+  notify: 'service restart grafana'
+  tags:
+    - enable
+    - loki
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------

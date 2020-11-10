@@ -14,5 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.2.0 (2020-11-10)
+F: Add 'grafana' Ansible role dependency
+F: Add Loki datasource to Grafana
+
 * Version 0.1.0 (2020-11-09)
 F: Initial release

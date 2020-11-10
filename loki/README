@@ -123,6 +123,9 @@ PACKAGES
   loki
 
 ROLES
+  alertmanager
+
+  grafana
 
 PARAMETERS
 

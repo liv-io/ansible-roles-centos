@@ -40,6 +40,13 @@ file_mode_loki_data_dir: '0750'
 file_owner_loki_data_dir: 'loki'
 file_group_loki_data_dir: 'loki'
 
+# loki_datasource.yaml
+file_src_loki_datasource_yaml: 'templates/main/loki_datasource.yaml'
+file_dst_loki_datasource_yaml: '/etc/grafana/provisioning/datasources/loki_datasource.yaml'
+file_mode_loki_datasource_yaml: '0640'
+file_owner_loki_datasource_yaml: 'root'
+file_group_loki_datasource_yaml: 'grafana'
+
 # loki_etc.dir
 file_dst_loki_etc_dir: '/etc/loki'
 file_mode_loki_etc_dir: '0755'
@@ -107,6 +114,9 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
+
+# grafana-server
+service_name_grafana: 'grafana-server'
 
 # loki
 group_name_loki: 'loki'
