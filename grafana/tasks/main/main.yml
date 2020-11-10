@@ -6,6 +6,12 @@
   tags:
     - grafana
 
+- name: 'task include config'
+  import_tasks: config.yml
+  when: not (grafana_state is match('false|no|remove|quiesce|inactive'))
+  tags:
+    - grafana
+
 - name: 'task include enable'
   import_tasks: enable.yml
   when: (grafana_state is match('start|on|enable'))

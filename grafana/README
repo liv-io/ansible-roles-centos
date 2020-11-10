@@ -76,6 +76,45 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  grafana_plugins_all
+    Description: Define the 'grafana_plugins_all' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'}]
+    Options    :
+      Examples: [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'},
+                 {name: 'grafana-clock-panel', state: 'true', version: '1.0.0'},
+                 {name: 'grafana-obsolete', state: 'false'}]
+      None    : []
+
+  grafana_plugins_group
+    Description: Define the 'grafana_plugins_group' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'},
+                 {name: 'grafana-clock-panel', state: 'true', version: '1.0.0'},
+                 {name: 'grafana-obsolete', state: 'false'}]
+      None    : []
+
+  grafana_plugins_host
+    Description: Define the 'grafana_plugins_host' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : []
+    Options    :
+      Examples: [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'},
+                 {name: 'grafana-clock-panel', state: 'true', version: '1.0.0'},
+                 {name: 'grafana-obsolete', state: 'false'}]
+      None    : []
+
   grafana_smtp_from_address
     Description: Define the 'grafana_smtp_from_address' option.
     Implemented: 0.1
