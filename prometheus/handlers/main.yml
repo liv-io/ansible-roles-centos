@@ -23,6 +23,11 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
+- name: 'service restart grafana'
+  service:
+    state: 'restarted'
+    name: "{{service_name_grafana}}"
+
 - name: 'service restart prometheus'
   service:
     state: 'restarted'

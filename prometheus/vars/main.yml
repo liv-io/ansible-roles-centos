@@ -56,6 +56,13 @@ file_dst_prometheus_current_link: '/app/prometheus/current'
 file_owner_prometheus_current_link: 'root'
 file_group_prometheus_current_link: 'root'
 
+# prometheus_datasource.yaml
+file_src_prometheus_datasource_yaml: 'templates/main/prometheus_datasource.yaml'
+file_dst_prometheus_datasource_yaml: '/etc/grafana/provisioning/datasources/prometheus_datasource.yaml'
+file_mode_prometheus_datasource_yaml: '0640'
+file_owner_prometheus_datasource_yaml: 'root'
+file_group_prometheus_datasource_yaml: 'grafana'
+
 # prometheus.service
 file_src_prometheus_service: 'templates/main/prometheus.service'
 file_dst_prometheus_service: '/usr/lib/systemd/system/prometheus.service'
@@ -97,6 +104,9 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
+
+# grafana-server
+service_name_grafana: 'grafana-server'
 
 # prometheus
 group_name_prometheus: 'prometheus'

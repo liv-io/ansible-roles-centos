@@ -310,6 +310,8 @@ ROLES
 
   blackbox_exporter
 
+  grafana
+
   smokeping_prober
 
 PARAMETERS

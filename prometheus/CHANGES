@@ -14,6 +14,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.4.0 (2020-11-10)
+F: Add 'grafana' Ansible role dependency
+F: Add Prometheus datasource to Grafana
+
 * Version 1.3.0 (2020-10-15)
 F: Update 'prometheus' to version '2.22.1'
 
