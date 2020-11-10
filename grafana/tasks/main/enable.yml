@@ -12,8 +12,8 @@
         - "vars/{{ansible_distribution_major_version}}.yml"
         - 'vars/main.yml'
   tags:
-    - disable
-    - grafana_upstream
+    - enable
+    - grafana
 
 #-------------------------------------------------------------------------------
 # FILES
@@ -26,19 +26,20 @@
     mode: "{{file_mode_grafana_ini}}"
     owner: "{{file_owner_grafana_ini}}"
     group: "{{file_group_grafana_ini}}"
+  notify: 'service restart grafana'
   tags:
-    - disable
-    - grafana_upstream
+    - enable
+    - grafana
 
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'service stop grafana'
+- name: 'service start grafana'
   service:
-    state: 'stopped'
-    enabled: 'no'
+    state: 'started'
+    enabled: 'yes'
     name: "{{service_name_grafana}}"
   tags:
-    - disable
-    - grafana_upstream
+    - enable
+    - grafana

@@ -13,7 +13,7 @@
         - 'vars/main.yml'
   tags:
     - install
-    - grafana_upstream
+    - grafana
 
 #-------------------------------------------------------------------------------
 # FILES
@@ -28,7 +28,7 @@
     group: "{{file_group_rpm_gpg_key_grafana}}"
   tags:
     - install
-    - grafana_upstream
+    - grafana
 
 - name: 'file copy grafana.repo'
   copy:
@@ -39,7 +39,7 @@
     group: "{{file_group_grafana_repo}}"
   tags:
     - install
-    - grafana_upstream
+    - grafana
 
 #-------------------------------------------------------------------------------
 # PACKAGING
@@ -51,4 +51,4 @@
     name: "{{package_name_grafana}}"
   tags:
     - install
-    - grafana_upstream
+    - grafana

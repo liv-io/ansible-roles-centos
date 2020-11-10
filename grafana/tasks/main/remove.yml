@@ -12,34 +12,45 @@
         - "vars/{{ansible_distribution_major_version}}.yml"
         - 'vars/main.yml'
   tags:
-    - enable
-    - grafana_upstream
+    - remove
+    - grafana
+
+#-------------------------------------------------------------------------------
+# PACKAGING
+#-------------------------------------------------------------------------------
+
+- name: 'package remove grafana'
+  package:
+    state: 'absent'
+    name: "{{package_name_grafana}}"
+  tags:
+    - remove
+    - grafana
 
 #-------------------------------------------------------------------------------
 # FILES
 #-------------------------------------------------------------------------------
 
-- name: 'file create grafana.ini'
-  template:
-    src: "{{file_src_grafana_ini}}"
-    dest: "{{file_dst_grafana_ini}}"
-    mode: "{{file_mode_grafana_ini}}"
-    owner: "{{file_owner_grafana_ini}}"
-    group: "{{file_group_grafana_ini}}"
-  notify: 'service restart grafana'
+- name: 'file remove RPM-GPG-KEY-grafana'
+  file:
+    state: 'absent'
+    path: "{{file_dst_rpm_gpg_key_grafana}}"
   tags:
-    - enable
-    - grafana_upstream
+    - remove
+    - grafana
 
-#-------------------------------------------------------------------------------
-# SYSTEM
-#-------------------------------------------------------------------------------
-
-- name: 'service start grafana'
-  service:
-    state: 'started'
-    enabled: 'yes'
-    name: "{{service_name_grafana}}"
+- name: 'file remove grafana.repo'
+  file:
+    state: 'absent'
+    path: "{{file_dst_grafana_repo}}"
   tags:
-    - enable
-    - grafana_upstream
+    - remove
+    - grafana
+
+- name: 'file remove grafana.ini'
+  file:
+    state: 'absent'
+    path: "{{file_dst_grafana_ini}}"
+  tags:
+    - remove
+    - grafana
