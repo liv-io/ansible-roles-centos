@@ -31,6 +31,14 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove suricata.logrotate'
+  file:
+    state: 'absent'
+    path: "{{file_dst_suricata_logrotate}}"
+  tags:
+    - remove
+    - suricata
+
 - name: 'file remove suricata.yaml'
   file:
     state: 'absent'

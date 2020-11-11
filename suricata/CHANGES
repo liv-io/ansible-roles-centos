@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.3 (2020-11-11)
+B: Fix (upstream) broken Suricata logrotate configuration
+
 * Version 0.4.2 (2020-11-08)
 E: Add reload capability to systemd service unit file
 

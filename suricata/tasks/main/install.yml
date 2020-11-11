@@ -67,6 +67,17 @@
     - install
     - suricata
 
+- name: 'file create suricata.logrotate'
+  template:
+    src: "{{file_src_suricata_logrotate}}"
+    dest: "{{file_dst_suricata_logrotate}}"
+    mode: "{{file_mode_suricata_logrotate}}"
+    owner: "{{file_owner_suricata_logrotate}}"
+    group: "{{file_group_suricata_logrotate}}"
+  tags:
+    - install
+    - suricata
+
 - name: 'stat file suricata.rules'
   stat:
     path: "{{file_dst_suricata_rules}}"

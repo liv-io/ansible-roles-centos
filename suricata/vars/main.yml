@@ -43,6 +43,13 @@ file_mode_promiscuous_mode_service: '0644'
 file_owner_promiscuous_mode_service: 'root'
 file_group_promiscuous_mode_service: 'root'
 
+# suricata.logrotate
+file_src_suricata_logrotate: "templates/{{ansible_distribution_major_version}}/suricata.logrotate"
+file_dst_suricata_logrotate: '/etc/logrotate.d/suricata'
+file_mode_suricata_logrotate: '0644'
+file_owner_suricata_logrotate: 'root'
+file_group_suricata_logrotate: 'root'
+
 # suricata.rules
 file_dst_suricata_rules: '/var/lib/suricata/rules/suricata.rules'
 
