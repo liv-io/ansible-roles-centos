@@ -19,8 +19,16 @@ scrape_configs:
       labels:
         job: "syslog"
     pipeline_stages:
-{% if not (promtail_pipeline_stages == '') %}
-    {{promtail_pipeline_stages|indent(width=4)}}
+{% if not (promtail_pipeline_stages_all == '') %}
+    {{promtail_pipeline_stages_all|indent(width=4)}}
+{% endif %}
+
+{% if not (promtail_pipeline_stages_group == '') %}
+    {{promtail_pipeline_stages_group|indent(width=4)}}
+{% endif %}
+
+{% if not (promtail_pipeline_stages_host == '') %}
+    {{promtail_pipeline_stages_host|indent(width=4)}}
 {% endif %}
 
     relabel_configs:
