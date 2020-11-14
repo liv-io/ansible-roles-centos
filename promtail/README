@@ -138,21 +138,21 @@ ROLE
             - regex:
                 expression: '\[\d{1,10}:(?P<suricata_sid>(\d{1,10})):\d{1,10}\]'
             - regex:
-                expression: '\[\d{1,10}:\d{1,10}:\d{1,10}\]\s(?P<suricata_msg>(.+?))\s\['
+                expression: '(?:.+\[\d{1,10}:\d{1,10}:\d{1,10}\]\s)(?P<suricata_msg>(.+?))\s\['
             - regex:
-                expression: '\[Classification:\s(?P<suricata_class>(.+?))\]\s\['
+                expression: '(?:.+\[\d{1,10}:\d{1,10}:\d{1,10}\])(?:.+\[Classification:\s)(?P<suricata_class>(.+?))\]\s\['
             - regex:
-                expression: '\[Priority:\s(?P<suricata_priority>([1-3]))\]\s\{'
+                expression: '(?:.+\[\d{1,10}:\d{1,10}:\d{1,10}\])(?:.+\[Priority:\s)(?P<suricata_priority>([1-4]))\]\s\{'
             - regex:
-                expression: '\]\s\{(?P<suricata_protocol>(.+?))\}\s'
+                expression: '(?:.+\[\d{1,10}:\d{1,10}:\d{1,10}\])(?:.+\]\s\{)(?P<suricata_protocol>(.+?))\}\s'
             - regex:
-                expression: '\}\s(?P<suricata_src_ip>((?:[0-9]{1,3}\.){3}[0-9]{1,3})):[0-9]+\s->\s'
+                expression: '(?:.+\[\d{1,10}:\d{1,10}:\d{1,10}\])(?:.+\}\s)(?P<suricata_src_ip>((?:[0-9]{1,3}\.){3}[0-9]{1,3})):[0-9]+\s->\s'
             - regex:
-                expression: '\}\s(?:[0-9]{1,3}\.){3}[0-9]{1,3}:(?P<suricata_src_port>([0-9]+))\s->\s'
+                expression: '(?:.+\[\d{1,10}:\d{1,10}:\d{1,10}\])(?:.+\}\s)(?:[0-9]{1,3}\.){3}[0-9]{1,3}:(?P<suricata_src_port>([0-9]+))\s->\s'
             - regex:
-                expression: '\s->\s(?P<suricata_dst_ip>((?:[0-9]{1,3}\.){3}[0-9]{1,3})):[0-9]+'
+                expression: '(?:.+\[\d{1,10}:\d{1,10}:\d{1,10}\])(?:.+\s->\s)(?P<suricata_dst_ip>((?:[0-9]{1,3}\.){3}[0-9]{1,3})):[0-9]+'
             - regex:
-                expression: '\s->\s(?:[0-9]{1,3}\.){3}[0-9]{1,3}:(?P<suricata_dst_port>([0-9]+))$'
+                expression: '(?:.+\[\d{1,10}:\d{1,10}:\d{1,10}\])(?:.+\s->\s(?:[0-9]{1,3}\.){3}[0-9]{1,3}:)(?P<suricata_dst_port>([0-9]+))'
             - labels:
                 suricata_sid:
                 suricata_msg:
