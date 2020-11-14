@@ -4,6 +4,7 @@ grafana_state: 'enable'
 
 grafana_plugins_all:
   - {name: 'grafana-piechart-panel', state: 'true', version: 'latest'}
+  - {name: 'grafana-worldmap-panel', state: 'true', version: 'latest'}
 
 grafana_plugins_group: []
 

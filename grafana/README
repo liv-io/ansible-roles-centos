@@ -82,7 +82,8 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
-    Default    : [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'}]
+    Default    : [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'},
+                  {name: 'grafana-worldmap-panel', state: 'true', version: 'latest'}]
     Options    :
       Examples: [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'},
                  {name: 'grafana-clock-panel', state: 'true', version: '1.0.0'},
