@@ -41,6 +41,10 @@ ENABLE
       suricata_state: 'enable'
       suricata_home_net: '[10.0.0.0/8]'
       suricata_interface: 'em0'
+      suricata_ruleset:
+        - {state: 'enable', name: 'et/open'}
+        - {state: 'enable', name: 'oisf/trafficid'}
+        - {state: 'install', name: 'hunting', link: 'https://github.com/travisbgreen/hunting-rules/blob/master/hunting.rules'}
       suricata_config:
         - name: 'liv'
           state: 'true'
@@ -71,6 +75,10 @@ DISABLE
       suricata_state: 'disable'
       suricata_home_net: '[10.0.0.0/8]'
       suricata_interface: 'em0'
+      suricata_ruleset:
+        - {state: 'enable', name: 'et/open'}
+        - {state: 'enable', name: 'oisf/trafficid'}
+        - {state: 'install', name: 'hunting', link: 'https://github.com/travisbgreen/hunting-rules/blob/master/hunting.rules'}
       suricata_config:
         - name: 'liv'
           state: 'true'
@@ -166,6 +174,20 @@ ROLE
     Default    : "{{ansible_default_ipv4.interface}}"
     Options    :
       Examples: 'eth0' | 'em0' | 'eno1' | 'ens18'
+
+  suricata_ruleset
+    Description: Define the 'suricata_ruleset' option.
+    Implemented: 0.5
+    Required   : False
+    Value      : Arbitrary
+    Type       : Array/Hash
+    Default    : [{state: 'enable', name: 'et/open'},
+                  {state: 'enable', name: 'oisf/trafficid'}]
+    Options    :
+      Examples: [{state: 'enable', name: 'et/open'},
+                 {state: 'remove', name: 'oisf/trafficid'},
+                 {state: 'install', name: 'hunting', link: 'https://github.com/travisbgreen/hunting-rules/blob/master/hunting.rules'}]
+      None    : []
 
 --------------------------------------------------------------------------------
 CONFLICTS

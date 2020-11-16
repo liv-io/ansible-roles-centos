@@ -36,6 +36,9 @@ file_mode_stats_log: '0640'
 file_owner_stats_log: 'suricata'
 file_group_stats_log: 'suricata'
 
+# sources.dir
+file_dst_sources_dir: '/var/lib/suricata/update/sources/'
+
 # promiscuous_mode@.service
 file_src_promiscuous_mode_service: 'templates/main/promiscuous_mode.service'
 file_dst_promiscuous_mode_service: '/usr/lib/systemd/system/promiscuous_mode@.service'
@@ -71,6 +74,18 @@ file_validate_suricata_yaml: 'suricata -T -c %s'
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
+
+# enable ruleset
+command_cmd_enable_ruleset: 'suricata-update enable-source'
+
+# install ruleset
+command_cmd_install_ruleset: 'suricata-update add-source'
+
+# list enabled rulesets
+command_cmd_list_enabled_rulesets: 'suricata-update list-enabled-sources'
+
+# remove ruleset
+command_cmd_remove_ruleset: 'suricata-update remove-source'
 
 # update suricata
 command_cmd_update_suricata: 'suricata-update --local /etc/suricata/rules/ --output /var/lib/suricata/rules/ --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 Edg/85.0.564.63"'
