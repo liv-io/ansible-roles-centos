@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.0 (2020-11-23)
+F: Add support for Monit service monitoring (rsyslog_monitor_monit_state)
+
 * Version 0.2.1 (2020-11-09)
 B: Load module 'imfile' by default
 
