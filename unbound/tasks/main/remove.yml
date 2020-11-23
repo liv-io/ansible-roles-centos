@@ -31,6 +31,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove unbound.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_unbound_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - unbound
+
 - name: 'file remove unbound.conf'
   file:
     state: 'absent'

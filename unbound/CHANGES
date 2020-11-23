@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.3.0 (2020-11-23)
+F: Add support for Monit service monitoring (unbound_monitor_monit_state)
+
 * Version 1.2.4 (2020-10-30)
 E: Simplify Ansible file header (ansible_managed)
 
