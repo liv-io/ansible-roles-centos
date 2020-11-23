@@ -176,6 +176,17 @@ ROLE
                     -w /etc/shadow -p wa
       None    : []
 
+  auditd_monitor_monit_state
+    Description: Control the 'auditd_monitor_monit_state' option.
+    Implemented: 2.5
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   auditd_syslog_active
     Description: Control the 'auditd_syslog_active' option.
     Implemented: 2.4

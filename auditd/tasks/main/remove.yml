@@ -31,6 +31,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove auditd.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_auditd_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - auditd
+
 - name: 'file remove auditd.conf'
   file:
     state: 'absent'

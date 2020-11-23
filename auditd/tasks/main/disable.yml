@@ -54,6 +54,19 @@
     - disable
     - auditd
 
+- name: 'file create auditd.cfg'
+  template:
+    src: "{{file_src_auditd_cfg}}"
+    dest: "{{file_dst_auditd_cfg}}"
+    mode: "{{file_mode_auditd_cfg}}"
+    owner: "{{file_owner_auditd_cfg}}"
+    group: "{{file_group_auditd_cfg}}"
+  notify: 'service reload monit'
+  when: (auditd_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - disable
+    - auditd
+
 #-------------------------------------------------------------------------------
 # COMMAND
 #-------------------------------------------------------------------------------

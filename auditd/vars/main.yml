@@ -44,9 +44,25 @@ file_mode_syslog_conf: '0640'
 file_owner_syslog_conf: 'root'
 file_group_syslog_conf: 'root'
 
+# monit.d
+file_dst_monit_d: '/etc/monit.d'
+file_mode_monit_d: '0750'
+file_owner_monit_d: 'root'
+file_group_monit_d: 'root'
+
+# auditd.cfg
+file_src_auditd_cfg: 'templates/main/auditd.cfg'
+file_dst_auditd_cfg: '/etc/monit.d/auditd.cfg'
+file_mode_auditd_cfg: '0640'
+file_owner_auditd_cfg: 'root'
+file_group_auditd_cfg: 'root'
+
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
+
+# check service monit
+command_cmd_check_service_monit: 'systemctl cat monit.service > /dev/null 2>&1'
 
 # NOTE: systemd refuses to stop and restart 'auditd' service. RedHat bug: 1026648
 
@@ -71,3 +87,6 @@ command_cmd_stop_auditd: 'service auditd stop'
 
 # auditd
 service_name_auditd: 'auditd'
+
+# monit
+service_name_monit: 'monit'
