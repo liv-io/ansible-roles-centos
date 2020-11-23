@@ -61,6 +61,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove node_exporter.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_node_exporter_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - node_exporter
+
 - name: 'file remove node_exporter_data.dir'
   file:
     state: 'absent'

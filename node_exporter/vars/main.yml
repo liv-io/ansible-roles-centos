@@ -53,9 +53,25 @@ file_mode_node_exporter_sysconfig: '0644'
 file_owner_node_exporter_sysconfig: 'root'
 file_group_node_exporter_sysconfig: 'root'
 
+# monit.d
+file_dst_monit_d: '/etc/monit.d'
+file_mode_monit_d: '0750'
+file_owner_monit_d: 'root'
+file_group_monit_d: 'root'
+
+# node_exporter.cfg
+file_src_node_exporter_cfg: 'templates/main/node_exporter.cfg'
+file_dst_node_exporter_cfg: '/etc/monit.d/node_exporter.cfg'
+file_mode_node_exporter_cfg: '0640'
+file_owner_node_exporter_cfg: 'root'
+file_group_node_exporter_cfg: 'root'
+
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
+
+# check service monit
+command_cmd_check_service_monit: 'systemctl cat monit.service > /dev/null 2>&1'
 
 # check service node_exporter
 command_cmd_check_service_node_exporter: 'systemctl cat node_exporter.service > /dev/null 2>&1'
@@ -66,6 +82,9 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
+
+# monit
+service_name_monit: 'monit'
 
 # node_exporter
 group_name_node_exporter: 'node_exporter'
