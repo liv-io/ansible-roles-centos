@@ -31,6 +31,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove openssh.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_openssh_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - openssh
+
 - name: 'file remove banner'
   file:
     state: 'absent'
