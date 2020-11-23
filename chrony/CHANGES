@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.5.0 (2020-11-23)
+F: Add support for Monit service monitoring (chrony_monitor_monit_state)
+
 * Version 0.4.2 (2020-11-05)
 E: Limit PATH environment variable in script
 

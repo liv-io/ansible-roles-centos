@@ -55,9 +55,32 @@ cron_weekday_chrony_update_time: "{{chrony_update_time_weekday}}"
 cron_user_chrony_update_time: "{{file_owner_chrony_update_time}}"
 cron_job_chrony_update_time: "{{file_dst_chrony_update_time}}"
 
+# monit.d
+file_dst_monit_d: '/etc/monit.d'
+file_mode_monit_d: '0750'
+file_owner_monit_d: 'root'
+file_group_monit_d: 'root'
+
+# chronyd.cfg
+file_src_chronyd_cfg: 'templates/main/chronyd.cfg'
+file_dst_chronyd_cfg: '/etc/monit.d/chronyd.cfg'
+file_mode_chronyd_cfg: '0640'
+file_owner_chronyd_cfg: 'root'
+file_group_chronyd_cfg: 'root'
+
+#-------------------------------------------------------------------------------
+# COMMANDS
+#-------------------------------------------------------------------------------
+
+# check service monit
+command_cmd_check_service_monit: 'systemctl cat monit.service > /dev/null 2>&1'
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
 
 # chronyd
 service_name_chronyd: 'chronyd'
+
+# monit
+service_name_monit: 'monit'

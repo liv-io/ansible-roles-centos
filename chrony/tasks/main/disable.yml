@@ -71,6 +71,19 @@
     - disable
     - chrony
 
+- name: 'file create chronyd.cfg'
+  template:
+    src: "{{file_src_chronyd_cfg}}"
+    dest: "{{file_dst_chronyd_cfg}}"
+    mode: "{{file_mode_chronyd_cfg}}"
+    owner: "{{file_owner_chronyd_cfg}}"
+    group: "{{file_group_chronyd_cfg}}"
+  notify: 'service reload monit'
+  when: (chrony_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - disable
+    - chrony
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------

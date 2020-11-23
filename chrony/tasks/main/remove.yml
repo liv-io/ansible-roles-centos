@@ -31,6 +31,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove chronyd.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_chronyd_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - chrony
+
 - name: 'cron remove chrony_check-time'
   cron:
     state: 'absent'

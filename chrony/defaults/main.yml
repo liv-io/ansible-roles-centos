@@ -27,6 +27,8 @@ chrony_monitor_mail_to_address: ["admin@{{ansible_domain}}"]
 
 chrony_monitor_mail_state: 'false'
 
+chrony_monitor_monit_state: 'false'
+
 chrony_monitor_prom_state: 'false'
 
 chrony_monitor_prom_textfile_collector: '/data/node_exporter/textfile_collector'
