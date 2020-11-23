@@ -31,6 +31,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove nsd.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_nsd_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - nsd
+
 - name: 'file remove nsd.conf'
   file:
     state: 'absent'
