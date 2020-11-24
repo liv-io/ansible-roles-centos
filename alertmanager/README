@@ -171,6 +171,17 @@ ROLE
                   email_configs:
                     - to: 'user01@domain.tld, user02@domain.tld'
 
+  alertmanager_monitor_monit_state
+    Description: Control the 'alertmanager_monitor_monit_state' option.
+    Implemented: 2.8
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   alertmanager_version
     Description: Define the 'alertmanager_version' option.
     Implemented: 0.1

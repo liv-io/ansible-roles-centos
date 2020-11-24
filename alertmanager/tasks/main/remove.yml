@@ -61,6 +61,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove alertmanager.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_alertmanager_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - alertmanager
+
 - name: 'file remove alertmanager.sysconfig'
   file:
     state: 'absent'
