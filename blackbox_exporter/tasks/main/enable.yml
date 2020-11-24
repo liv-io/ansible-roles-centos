@@ -43,6 +43,19 @@
     - enable
     - blackbox_exporter
 
+- name: 'file create blackbox_exporter.cfg'
+  template:
+    src: "{{file_src_blackbox_exporter_cfg}}"
+    dest: "{{file_dst_blackbox_exporter_cfg}}"
+    mode: "{{file_mode_blackbox_exporter_cfg}}"
+    owner: "{{file_owner_blackbox_exporter_cfg}}"
+    group: "{{file_group_blackbox_exporter_cfg}}"
+  notify: 'service reload monit'
+  when: (blackbox_exporter_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - enable
+    - blackbox_exporter
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------

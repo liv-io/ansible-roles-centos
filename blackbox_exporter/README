@@ -172,6 +172,17 @@ ROLE
                     tls_config: {insecure_skip_verify: true}
                     preferred_ip_protocol: "ip6"
 
+  blackbox_exporter_monitor_monit_state
+    Description: Control the 'blackbox_exporter_monitor_monit_state' option.
+    Implemented: 4.2
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   blackbox_exporter_version
     Description: Define the 'blackbox_exporter_version' option.
     Implemented: 0.1

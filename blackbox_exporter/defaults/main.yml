@@ -28,4 +28,6 @@ blackbox_exporter_config:
       tls_config: {insecure_skip_verify: true}
       preferred_ip_protocol: "ip4"
 
+blackbox_exporter_monitor_monit_state: 'false'
+
 blackbox_exporter_version: '0.18.0'
