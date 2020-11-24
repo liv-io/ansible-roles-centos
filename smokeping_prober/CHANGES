@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.4.0 (2020-11-23)
+F: Add support for Monit service monitoring (smokeping_prober_monitor_monit_state)
+
 * Version 0.3.3 (2020-11-08)
 E: Add reload capability to systemd service unit file
 

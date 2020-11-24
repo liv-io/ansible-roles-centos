@@ -61,6 +61,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove smokeping_prober.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_smokeping_prober_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - smokeping_prober
+
 - name: 'file remove smokeping_prober.sysconfig'
   file:
     state: 'absent'

@@ -30,6 +30,19 @@
     - disable
     - smokeping_prober
 
+- name: 'file create smokeping_prober.cfg'
+  template:
+    src: "{{file_src_smokeping_prober_cfg}}"
+    dest: "{{file_dst_smokeping_prober_cfg}}"
+    mode: "{{file_mode_smokeping_prober_cfg}}"
+    owner: "{{file_owner_smokeping_prober_cfg}}"
+    group: "{{file_group_smokeping_prober_cfg}}"
+  notify: 'service reload monit'
+  when: (smokeping_prober_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - disable
+    - smokeping_prober
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
