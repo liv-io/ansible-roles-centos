@@ -77,6 +77,17 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  promtail_monitor_monit_state
+    Description: Control the 'promtail_monitor_monit_state' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   promtail_pipeline_stages_all
     Description: Define the 'promtail_pipeline_stages_all' option.
     Implemented: 0.2

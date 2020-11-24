@@ -46,9 +46,25 @@ file_mode_promtail_yaml: '0644'
 file_owner_promtail_yaml: 'root'
 file_group_promtail_yaml: 'root'
 
+# monit.d
+file_dst_monit_d: '/etc/monit.d'
+file_mode_monit_d: '0750'
+file_owner_monit_d: 'root'
+file_group_monit_d: 'root'
+
+# promtail.cfg
+file_src_promtail_cfg: 'templates/main/promtail.cfg'
+file_dst_promtail_cfg: '/etc/monit.d/promtail.cfg'
+file_mode_promtail_cfg: '0640'
+file_owner_promtail_cfg: 'root'
+file_group_promtail_cfg: 'root'
+
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
+
+# check service monit
+command_cmd_check_service_monit: 'systemctl cat monit.service > /dev/null 2>&1'
 
 # check service promtail
 command_cmd_check_service_promtail: 'systemctl cat promtail.service > /dev/null 2>&1'
@@ -59,6 +75,9 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
+
+# monit
+service_name_monit: 'monit'
 
 # promtail
 group_name_promtail: 'promtail'

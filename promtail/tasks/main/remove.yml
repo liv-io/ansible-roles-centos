@@ -61,6 +61,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove promtail.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_promtail_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - promtail
+
 - name: 'file remove promtail_etc.dir'
   file:
     state: 'absent'

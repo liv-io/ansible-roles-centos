@@ -2,6 +2,8 @@
 
 promtail_state: 'enable'
 
+promtail_monitor_monit_state: 'false'
+
 promtail_pipeline_stages_all: |
   {% raw %}
   # Extract SSH user and source IP address and generate metrics
