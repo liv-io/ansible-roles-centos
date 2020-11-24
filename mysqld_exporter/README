@@ -90,15 +90,16 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
-  mysqld_exporter_version
-    Description: Define the 'mysqld_exporter_version' option.
-    Implemented: 0.1
+  mysqld_exporter_monitor_monit_state
+    Description: Control the 'mysqld_exporter_monitor_monit_state' option.
+    Implemented: 3.1
     Required   : False
-    Value      : Arbitrary
+    Value      : Predetermined
     Type       : String
-    Default    : '0.12.1'
+    Default    : 'false'
     Options    :
-      Examples: '0.10.0' | '0.11.0'
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
 
   mysqld_exporter_mysql_password
     Description: Define the 'mysqld_exporter_mysql_password' option.
@@ -109,6 +110,16 @@ ROLE
     Default    : 'ruK.JSj23aN,48vbhELQ2-tUAu3.J5sB'
     Options    :
       Examples: 'DP,BXtNS_Xq3PoN-SudTqBP.tgJMtBAj' | 'crFEM2WG+Wt6N3_n5mu+Tewqc3Jxf2A5'
+
+  mysqld_exporter_version
+    Description: Define the 'mysqld_exporter_version' option.
+    Implemented: 0.1
+    Required   : False
+    Value      : Arbitrary
+    Type       : String
+    Default    : '0.12.1'
+    Options    :
+      Examples: '0.10.0' | '0.11.0'
 
 --------------------------------------------------------------------------------
 CONFLICTS

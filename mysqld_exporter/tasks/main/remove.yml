@@ -61,6 +61,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove mysqld_exporter.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mysqld_exporter_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - mysqld_exporter
+
 - name: 'file remove mysqld_exporter.sysconfig'
   file:
     state: 'absent'

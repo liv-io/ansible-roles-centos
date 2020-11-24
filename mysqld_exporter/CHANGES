@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 3.1.0 (2020-11-24)
+F: Add support for Monit service monitoring (mysqld_exporter_monitor_monit_state)
+
 * Version 3.0.3 (2020-11-08)
 E: Add reload capability to systemd service unit file
 
