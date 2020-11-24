@@ -31,6 +31,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove grafana.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_grafana_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - grafana
+
 - name: 'file remove RPM-GPG-KEY-grafana'
   file:
     state: 'absent'

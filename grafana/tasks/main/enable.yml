@@ -31,6 +31,19 @@
     - enable
     - grafana
 
+- name: 'file create grafana.cfg'
+  template:
+    src: "{{file_src_grafana_cfg}}"
+    dest: "{{file_dst_grafana_cfg}}"
+    mode: "{{file_mode_grafana_cfg}}"
+    owner: "{{file_owner_grafana_cfg}}"
+    group: "{{file_group_grafana_cfg}}"
+  notify: 'service reload monit'
+  when: (grafana_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - enable
+    - grafana
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------

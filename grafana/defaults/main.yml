@@ -2,6 +2,8 @@
 
 grafana_state: 'enable'
 
+grafana_monitor_monit_state: 'false'
+
 grafana_plugins_all:
   - {name: 'grafana-piechart-panel', state: 'true', version: 'latest'}
   - {name: 'grafana-worldmap-panel', state: 'true', version: 'latest'}

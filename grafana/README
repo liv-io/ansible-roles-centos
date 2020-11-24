@@ -76,6 +76,17 @@ ROLE
       Remove  : 'false' | 'no' | 'remove'
       Inactive: 'quiesce' | 'inactive'
 
+  grafana_monitor_monit_state
+    Description: Control the 'grafana_monitor_monit_state' option.
+    Implemented: 0.5
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   grafana_plugins_all
     Description: Define the 'grafana_plugins_all' option.
     Implemented: 0.3
