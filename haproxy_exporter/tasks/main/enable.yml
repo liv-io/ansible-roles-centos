@@ -31,6 +31,19 @@
     - enable
     - haproxy_exporter
 
+- name: 'file create haproxy_exporter.cfg'
+  template:
+    src: "{{file_src_haproxy_exporter_cfg}}"
+    dest: "{{file_dst_haproxy_exporter_cfg}}"
+    mode: "{{file_mode_haproxy_exporter_cfg}}"
+    owner: "{{file_owner_haproxy_exporter_cfg}}"
+    group: "{{file_group_haproxy_exporter_cfg}}"
+  notify: 'service reload monit'
+  when: (haproxy_exporter_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - enable
+    - haproxy_exporter
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------

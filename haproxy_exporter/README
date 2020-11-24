@@ -102,6 +102,17 @@ ROLE
                 [{address: 'localhost', port: '80', uri: '/admin?stats;csv', username: 'haproxy_exporter', password: 'WjA+bU_E2PdA5w9.F5n3CEH,8WG-S3k7'}]
       None    : []
 
+  haproxy_exporter_monitor_monit_state
+    Description: Control the 'haproxy_exporter_monitor_monit_state' option.
+    Implemented: 3.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   haproxy_exporter_version
     Description: Define the 'haproxy_exporter_version' option.
     Implemented: 0.1

@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 3.1.0 (2020-11-24)
+F: Add support for Monit service monitoring (haproxy_exporter_monitor_monit_state)
+
 * Version 3.0.3 (2020-11-08)
 E: Add reload capability to systemd service unit file
 
@@ -76,7 +79,7 @@ F: Add support for 'haproxy_exporter_haproxy_scrape_uri' option (haproxy.scrape-
 
 * Version 0.1.1 (2018-08-23)
 E: Remove directories 'haproxy_exporter_data.dir' and 'textfile_collector.dir'
-E: Ensure file 'node_exporter.sysconfig' is being create during installation
+E: Ensure file 'haproxy_exporter.sysconfig' is being create during installation
 E: Flush handlers after installation tasks for file 'haproxy_exporter.service'
 E: Only reload systemd when file 'haproxy_exporter.service' changes
 E: Change login shell to '/sbin/nologin' for service user
