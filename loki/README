@@ -89,6 +89,17 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
+  loki_monitor_monit_state
+    Description: Control the 'loki_monitor_monit_state' option.
+    Implemented: 0.3
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   loki_retention_period
     Description: Define the 'loki_retention_period' option.
     Implemented: 0.1

@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.3.0 (2020-11-24)
+F: Add support for Monit service monitoring (loki_monitor_monit_state)
+
 * Version 0.2.1 (2020-11-11)
 B: Mark Loki datasource as default
 

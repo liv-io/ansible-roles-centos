@@ -57,6 +57,15 @@
     - remove
     - loki
 
+- name: 'file remove loki.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_loki_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - loki
+
 #-------------------------------------------------------------------------------
 # FILES
 #-------------------------------------------------------------------------------

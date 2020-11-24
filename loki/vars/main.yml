@@ -101,12 +101,28 @@ file_mode_rules_temp_dir: '0750'
 file_owner_rules_temp_dir: 'loki'
 file_group_rules_temp_dir: 'loki'
 
+# monit.d
+file_dst_monit_d: '/etc/monit.d'
+file_mode_monit_d: '0750'
+file_owner_monit_d: 'root'
+file_group_monit_d: 'root'
+
+# loki.cfg
+file_src_loki_cfg: 'templates/main/loki.cfg'
+file_dst_loki_cfg: '/etc/monit.d/loki.cfg'
+file_mode_loki_cfg: '0640'
+file_owner_loki_cfg: 'root'
+file_group_loki_cfg: 'root'
+
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
 
 # check service loki
 command_cmd_check_service_loki: 'systemctl cat loki.service > /dev/null 2>&1'
+
+# check service monit
+command_cmd_check_service_monit: 'systemctl cat monit.service > /dev/null 2>&1'
 
 # systemctl daemon-reload
 command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
@@ -138,3 +154,6 @@ user_system_loki: 'yes'
 
 # loki
 service_name_loki: 'loki'
+
+# monit
+service_name_monit: 'monit'
