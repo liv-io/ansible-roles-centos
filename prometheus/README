@@ -189,6 +189,17 @@ ROLE
                  {address: '10.1.1.15', hostname: 'host03'}]
       None    : []
 
+  prometheus_monitor_monit_state
+    Description: Control the 'prometheus_monitor_monit_state' option.
+    Implemented: 1.6
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   prometheus_mysqld_exporter_target_ansible_groups
     Description: Define the 'prometheus_mysqld_exporter_target_ansible_groups' option.
     Implemented: 1.0

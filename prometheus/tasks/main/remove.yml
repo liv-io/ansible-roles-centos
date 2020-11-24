@@ -61,6 +61,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove prometheus.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_prometheus_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - prometheus
+
 - name: 'file remove prometheus_datasource.yaml'
   file:
     state: 'absent'

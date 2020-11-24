@@ -64,6 +64,19 @@
     - disable
     - prometheus
 
+- name: 'file create prometheus.cfg'
+  template:
+    src: "{{file_src_prometheus_cfg}}"
+    dest: "{{file_dst_prometheus_cfg}}"
+    mode: "{{file_mode_prometheus_cfg}}"
+    owner: "{{file_owner_prometheus_cfg}}"
+    group: "{{file_group_prometheus_cfg}}"
+  notify: 'service reload monit'
+  when: (prometheus_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - disable
+    - prometheus
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------

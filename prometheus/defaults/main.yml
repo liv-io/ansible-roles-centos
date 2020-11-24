@@ -33,6 +33,8 @@ prometheus_haproxy_exporter_target_ansible_groups: []
 
 prometheus_haproxy_exporter_target_manual_hosts: []
 
+prometheus_monitor_monit_state: 'false'
+
 prometheus_mysqld_exporter_target_ansible_groups: []
 
 prometheus_mysqld_exporter_target_manual_hosts: []

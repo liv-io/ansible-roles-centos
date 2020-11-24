@@ -91,9 +91,25 @@ file_mode_alerting_rules_yml: '0644'
 file_owner_alerting_rules_yml: 'root'
 file_group_alerting_rules_yml: 'root'
 
+# monit.d
+file_dst_monit_d: '/etc/monit.d'
+file_mode_monit_d: '0750'
+file_owner_monit_d: 'root'
+file_group_monit_d: 'root'
+
+# prometheus.cfg
+file_src_prometheus_cfg: 'templates/main/prometheus.cfg'
+file_dst_prometheus_cfg: '/etc/monit.d/prometheus.cfg'
+file_mode_prometheus_cfg: '0640'
+file_owner_prometheus_cfg: 'root'
+file_group_prometheus_cfg: 'root'
+
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
+
+# check service monit
+command_cmd_check_service_monit: 'systemctl cat monit.service > /dev/null 2>&1'
 
 # check service prometheus
 command_cmd_check_service_prometheus: 'systemctl cat prometheus.service > /dev/null 2>&1'
@@ -107,6 +123,9 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 
 # grafana-server
 service_name_grafana: 'grafana-server'
+
+# monit
+service_name_monit: 'monit'
 
 # prometheus
 group_name_prometheus: 'prometheus'

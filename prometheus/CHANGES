@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.6.0 (2020-11-24)
+F: Add support for Monit service monitoring (prometheus_monitor_monit_state)
+
 * Version 1.5.0 (2020-11-16)
 F: Update 'prometheus' to version '2.22.2'
 
