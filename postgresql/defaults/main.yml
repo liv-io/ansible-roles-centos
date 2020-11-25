@@ -15,7 +15,7 @@ postgresql_monitor_mail_to_address: ["admin@{{ansible_domain}}"]
 
 postgresql_monitor_mail_state: 'false'
 
-postgresql_monitor_monit_state: 'true'
+postgresql_monitor_monit_state: 'false'
 
 postgresql_monitor_prom_state: 'false'
 
