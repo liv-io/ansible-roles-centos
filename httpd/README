@@ -485,6 +485,17 @@ ROLE
     Options    :
       Examples: 'remote_addr:%h %l remote_user:%u %t request:\"%r\" status:%>s %b'
 
+  httpd_monitor_monit_state
+    Description: Control the 'httpd_monitor_monit_state' option.
+    Implemented: 2.4
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   httpd_server_admin
     Description: Define the 'httpd_server_admin' option.
     Implemented: 0.1

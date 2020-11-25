@@ -22,6 +22,8 @@ httpd_log_format_combined_ssl: '%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{Us
 
 httpd_log_format_common: '%h %l %u %t \"%r\" %>s %b'
 
+httpd_monitor_monit_state: 'false'
+
 httpd_server_admin: "admin@{{ansible_domain}}"
 
 httpd_server_signature: 'true'

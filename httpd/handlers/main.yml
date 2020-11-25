@@ -21,3 +21,9 @@
 
 - name: 'command reload httpd'
   command: "{{command_cmd_reload_httpd}}"
+
+- name: 'service reload monit'
+  service:
+    state: 'reloaded'
+    name: "{{service_name_monit}}"
+  when: (register_check_service_monit.rc == 0)

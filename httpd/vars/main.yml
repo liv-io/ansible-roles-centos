@@ -51,6 +51,19 @@ file_mode_welcome_conf: '0644'
 file_owner_welcome_conf: 'root'
 file_group_welcome_conf: 'root'
 
+# monit.d
+file_dst_monit_d: '/etc/monit.d'
+file_mode_monit_d: '0750'
+file_owner_monit_d: 'root'
+file_group_monit_d: 'root'
+
+# httpd.cfg
+file_src_httpd_cfg: 'templates/main/httpd.cfg'
+file_dst_httpd_cfg: '/etc/monit.d/httpd.cfg'
+file_mode_httpd_cfg: '0640'
+file_owner_httpd_cfg: 'root'
+file_group_httpd_cfg: 'root'
+
 #-------------------------------------------------------------------------------
 # COMMANDS
 #-------------------------------------------------------------------------------
@@ -61,9 +74,15 @@ command_cmd_check_httpd: 'apachectl configtest'
 # reload httpd
 command_cmd_reload_httpd: 'apachectl graceful'
 
+# check service monit
+command_cmd_check_service_monit: 'systemctl cat monit.service > /dev/null 2>&1'
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
 
 # httpd
 service_name_httpd: 'httpd'
+
+# monit
+service_name_monit: 'monit'

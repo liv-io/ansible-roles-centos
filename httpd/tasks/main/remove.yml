@@ -31,6 +31,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove httpd.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_httpd_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - httpd
+
 - name: 'file remove autoindex.conf'
   file:
     state: 'absent'

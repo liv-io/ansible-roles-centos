@@ -75,6 +75,19 @@
     - enable
     - httpd
 
+- name: 'file create httpd.cfg'
+  template:
+    src: "{{file_src_httpd_cfg}}"
+    dest: "{{file_dst_httpd_cfg}}"
+    mode: "{{file_mode_httpd_cfg}}"
+    owner: "{{file_owner_httpd_cfg}}"
+    group: "{{file_group_httpd_cfg}}"
+  notify: 'service reload monit'
+  when: (httpd_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - enable
+    - httpd
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------
