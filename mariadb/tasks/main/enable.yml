@@ -98,6 +98,19 @@
     - enable
     - mariadb
 
+- name: 'file create mariadb.cfg'
+  template:
+    src: "{{file_src_mariadb_cfg}}"
+    dest: "{{file_dst_mariadb_cfg}}"
+    mode: "{{file_mode_mariadb_cfg}}"
+    owner: "{{file_owner_mariadb_cfg}}"
+    group: "{{file_group_mariadb_cfg}}"
+  notify: 'service reload monit'
+  when: (mariadb_monitor_monit_state is match('true|yes|enable'))
+  tags:
+    - enable
+    - mariadb
+
 #-------------------------------------------------------------------------------
 # SYSTEM
 #-------------------------------------------------------------------------------

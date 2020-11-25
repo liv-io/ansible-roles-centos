@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 4.1.0 (2020-11-25)
+F: Add support for Monit service monitoring (mariadb_monitor_monit_state)
+
 * Version 4.0.2 (2020-10-30)
 E: Simplify Ansible file header (ansible_managed)
 

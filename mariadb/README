@@ -212,6 +212,17 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
+  mariadb_monitor_monit_state
+    Description: Control the 'mariadb_monitor_monit_state' option.
+    Implemented: 4.1
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   mariadb_monitor_prom_state
     Description: Control the 'mariadb_monitor_prom_state' option.
     Implemented: 2.2

@@ -39,6 +39,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove mariadb.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_mariadb_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - mariadb
+
 - name: 'cron remove mariadb_run-backup'
   cron:
     state: 'absent'
