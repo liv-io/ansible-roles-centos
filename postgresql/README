@@ -138,6 +138,17 @@ ROLE
       Enable : 'true' | 'yes' | 'enable'
       Disable: 'false' | 'no' | 'disable'
 
+  postgresql_monitor_monit_state
+    Description: Control the 'postgresql_monitor_monit_state' option.
+    Implemented: 0.7
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   postgresql_monitor_prom_state
     Description: Control the 'postgresql_monitor_prom_state' option.
     Implemented: 0.3

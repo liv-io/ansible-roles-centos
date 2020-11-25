@@ -1,0 +1,3 @@
+---
+
+postgresql_process: '/usr/bin/postgres'
