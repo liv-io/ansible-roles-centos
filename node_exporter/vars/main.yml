@@ -83,9 +83,6 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-# monit
-service_name_monit: 'monit'
-
 # node_exporter
 group_name_node_exporter: 'node_exporter'
 group_system_node_exporter: 'yes'
@@ -103,6 +100,9 @@ user_password_node_exporter: '!'
 user_password_update_node_exporter: 'always'
 user_shell_node_exporter: '/sbin/nologin'
 user_system_node_exporter: 'yes'
+
+# monit
+service_name_monit: 'monit'
 
 # node_exporter
 service_name_node_exporter: 'node_exporter'

@@ -76,9 +76,6 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-# monit
-service_name_monit: 'monit'
-
 # promtail
 group_name_promtail: 'promtail'
 group_system_promtail: 'yes'
@@ -96,6 +93,9 @@ user_password_promtail: '!'
 user_password_update_promtail: 'always'
 user_shell_promtail: '/sbin/nologin'
 user_system_promtail: 'yes'
+
+# monit
+service_name_monit: 'monit'
 
 # promtail
 service_name_promtail: 'promtail'

@@ -68,9 +68,6 @@ command_cmd_set_capability: "setcap cap_net_raw=+ep /usr/local/bin/smokeping_pro
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-# monit
-service_name_monit: 'monit'
-
 # smokeping_prober
 group_name_smokeping_prober: 'smokeping_prober'
 group_system_smokeping_prober: 'yes'
@@ -88,6 +85,9 @@ user_password_smokeping_prober: '!'
 user_password_update_smokeping_prober: 'always'
 user_shell_smokeping_prober: '/sbin/nologin'
 user_system_smokeping_prober: 'yes'
+
+# monit
+service_name_monit: 'monit'
 
 # smokeping_prober
 service_name_smokeping_prober: 'smokeping_prober'

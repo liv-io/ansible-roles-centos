@@ -77,9 +77,6 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-# monit
-service_name_monit: 'monit'
-
 # rest-server
 group_name_rest_server: 'rest-server'
 group_system_rest_server: 'yes'
@@ -98,6 +95,9 @@ user_password_rest_server: '!'
 user_password_update_rest_server: 'always'
 user_shell_rest_server: '/sbin/nologin'
 user_system_rest_server: 'yes'
+
+# monit
+service_name_monit: 'monit'
 
 # rest-server
 service_name_rest_server: 'rest-server'

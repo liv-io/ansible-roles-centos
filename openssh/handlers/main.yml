@@ -23,13 +23,13 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'service reload openssh'
-  service:
-    state: 'reloaded'
-    name: "{{service_name_openssh}}"
-
 - name: 'service reload monit'
   service:
     state: 'reloaded'
     name: "{{service_name_monit}}"
   when: (register_check_service_monit.rc == 0)
+
+- name: 'service reload openssh'
+  service:
+    state: 'reloaded'
+    name: "{{service_name_openssh}}"

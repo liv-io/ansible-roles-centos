@@ -131,9 +131,6 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-# grafana-server
-service_name_grafana: 'grafana-server'
-
 # loki
 group_name_loki: 'loki'
 group_system_loki: 'yes'
@@ -151,6 +148,9 @@ user_password_loki: '!'
 user_password_update_loki: 'always'
 user_shell_loki: '/sbin/nologin'
 user_system_loki: 'yes'
+
+# grafana-server
+service_name_grafana: 'grafana-server'
 
 # loki
 service_name_loki: 'loki'

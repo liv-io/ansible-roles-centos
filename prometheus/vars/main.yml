@@ -121,12 +121,6 @@ command_cmd_systemctl_daemon_reload: 'systemctl daemon-reload'
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-# grafana-server
-service_name_grafana: 'grafana-server'
-
-# monit
-service_name_monit: 'monit'
-
 # prometheus
 group_name_prometheus: 'prometheus'
 group_system_prometheus: 'yes'
@@ -144,6 +138,12 @@ user_password_prometheus: '!'
 user_password_update_prometheus: 'always'
 user_shell_prometheus: '/sbin/nologin'
 user_system_prometheus: 'yes'
+
+# grafana-server
+service_name_grafana: 'grafana-server'
+
+# monit
+service_name_monit: 'monit'
 
 # prometheus
 service_name_prometheus: 'prometheus'

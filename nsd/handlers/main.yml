@@ -16,13 +16,13 @@
 # SYSTEM
 #-------------------------------------------------------------------------------
 
-- name: 'service restart nsd'
-  service:
-    state: 'restarted'
-    name: "{{service_name_nsd}}"
-
 - name: 'service reload monit'
   service:
     state: 'reloaded'
     name: "{{service_name_monit}}"
   when: (register_check_service_monit.rc == 0)
+
+- name: 'service restart nsd'
+  service:
+    state: 'restarted'
+    name: "{{service_name_nsd}}"
