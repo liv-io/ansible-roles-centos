@@ -14,11 +14,14 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.7.0 (2020-11-26)
+F: Update Prometheus to version 2.23.0
+
 * Version 1.6.0 (2020-11-24)
 F: Add support for Monit service monitoring (prometheus_monitor_monit_state)
 
 * Version 1.5.0 (2020-11-16)
-F: Update 'prometheus' to version '2.22.2'
+F: Update Prometheus to version 2.22.2
 
 * Version 1.4.1 (2020-11-11)
 B: Mark Prometheus datasource as default
@@ -28,7 +31,7 @@ F: Add 'grafana' Ansible role dependency
 F: Add Prometheus datasource to Grafana
 
 * Version 1.3.0 (2020-10-15)
-F: Update 'prometheus' to version '2.22.1'
+F: Update Prometheus to version 2.22.1
 
 * Version 1.2.4 (2020-10-30)
 E: Simplify Ansible file header (ansible_managed)
@@ -43,10 +46,10 @@ B: Activate hardcoded alerting rule file 'alerting_rules.yml'
 B: Correct Alertmanager address
 
 * Version 1.2.0 (2020-10-15)
-F: Update 'prometheus' to version '2.22.0'
+F: Update Prometheus to version 2.22.0
 
 * Version 1.1.0 (2020-09-11)
-F: Update 'prometheus' to version '2.21.0'
+F: Update Prometheus to version 2.21.0
 
 * Version 1.0.0 (2020-08-12)
 C: Rename option prometheus_node_exporter_custom_targets to prometheus_node_exporter_target_manual_hosts
@@ -67,43 +70,43 @@ F: Add option prometheus_smokeping_prober_target_manual_hosts
 
 * Version 0.30.0 (2020-08-11)
 C: Completely redesign role and parameters
-F: Update 'prometheus' to version '2.20.1'
+F: Update Prometheus to version 2.20.1
 
 * Version 0.29.0 (2020-07-23)
-F: Update 'prometheus' to version '2.20.0'
+F: Update Prometheus to version 2.20.0
 
 * Version 0.28.0 (2020-06-10)
-F: Update 'prometheus' to version '2.19.0'
+F: Update Prometheus to version 2.19.0
 
 * Version 0.27.1 (2020-05-27)
 B: Remove 'creates' Ansible parameter (make unarchive override files)
 
 * Version 0.27.0 (2020-05-06)
-F: Update 'prometheus' to version '2.18.0'
+F: Update Prometheus to version 2.18.0
 
 * Version 0.26.0 (2020-04-21)
-F: Update 'prometheus' to version '2.17.2'
+F: Update Prometheus to version 2.17.2
 
 * Version 0.25.0 (2020-03-25)
-F: Update 'prometheus' to version '2.17.0'
+F: Update Prometheus to version 2.17.0
 
 * Version 0.24.0 (2020-02-14)
-F: Update 'prometheus' to version '2.16.0'
+F: Update Prometheus to version 2.16.0
 
 * Version 0.23.0 (2020-01-07)
-F: Update 'prometheus' to version '2.15.2'
+F: Update Prometheus to version 2.15.2
 
 * Version 0.22.0 (2019-12-25)
-F: Update 'prometheus' to version '2.15.1'
+F: Update Prometheus to version 2.15.1
 
 * Version 0.21.0 (2019-12-24)
-F: Update 'prometheus' to version '2.15.0'
+F: Update Prometheus to version 2.15.0
 
 * Version 0.20.1 (2019-11-13)
 E: Add service reload capability
 
 * Version 0.20.0 (2019-11-11)
-F: Update 'prometheus' to version '2.14.0'
+F: Update Prometheus to version 2.14.0
 
 * Version 0.19.1 (2019-11-11)
 E: Minor template improvement (dynamic path)
@@ -112,46 +115,46 @@ E: Minor template improvement (dynamic path)
 F: Add support for CentOS 8
 
 * Version 0.18.0 (2019-10-18)
-F: Update 'prometheus' to version '2.13.1'
+F: Update Prometheus to version 2.13.1
 
 * Version 0.17.0 (2019-10-09)
-F: Update 'prometheus' to version '2.13.0'
+F: Update Prometheus to version 2.13.0
 
 * Version 0.16.0 (2019-08-19)
-F: Update 'prometheus' to version '2.12.0'
+F: Update Prometheus to version 2.12.0
 
 * Version 0.15.0 (2019-08-14)
-F: Update 'prometheus' to version '2.11.2'
+F: Update Prometheus to version 2.11.2
 
 * Version 0.14.0 (2019-07-10)
-F: Update 'prometheus' to version '2.11.1'
+F: Update Prometheus to version 2.11.1
 
 * Version 0.13.0 (2019-07-09)
-F: Update 'prometheus' to version '2.11.0'
+F: Update Prometheus to version 2.11.0
 
 * Version 0.12.0 (2019-05-26)
-F: Update 'prometheus' to version '2.10.0'
+F: Update Prometheus to version 2.10.0
 
 * Version 0.11.0 (2019-05-26)
 F: Port role to Ansible 2.8
 
 * Version 0.10.0 (2019-04-25)
-F: Update 'prometheus' to version '2.9.2'
+F: Update Prometheus to version 2.9.2
 
 * Version 0.9.0 (2019-04-16)
-F: Update 'prometheus' to version '2.9.1'
+F: Update Prometheus to version 2.9.1
 
 * Version 0.8.0 (2019-04-15)
-F: Update 'prometheus' to version '2.9.0'
+F: Update Prometheus to version 2.9.0
 
 * Version 0.7.0 (2019-03-29)
-F: Update 'prometheus' to version '2.8.1'
+F: Update Prometheus to version 2.8.1
 
 * Version 0.6.0 (2019-03-12)
-F: Update 'prometheus' to version '2.8.0'
+F: Update Prometheus to version 2.8.0
 
 * Version 0.5.0 (2019-03-03)
-F: Update 'prometheus' to version '2.7.2'
+F: Update Prometheus to version 2.7.2
 
 * Version 0.4.2 (2019-02-05)
 E: Use Jinja2 argument 'indentfirst' instead of 'first' (support older Jinja2 versions)
@@ -161,11 +164,11 @@ E: Improve Jinja2 indent filter
 
 * Version 0.4.0 (2019-01-31)
 C: Redesign 'prometheus_scrape_configs' option (alter config variable to string)
-F: Update 'prometheus' to version '2.7.1'
+F: Update Prometheus to version 2.7.1
 
 * Version 0.3.0 (2019-01-28)
 C: Rename option 'prometheus_storage_tsdb_retention' to 'prometheus_storage_tsdb_retention_time'
-F: Update 'prometheus' to version '2.7.0'
+F: Update Prometheus to version 2.7.0
 
 * Version 0.2.0 (2019-01-21)
 C: Manage configuration file 'prometheus.yml'
