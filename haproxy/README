@@ -144,6 +144,17 @@ ROLE
           server host02 10.30.10.10:8332
       None: ''
 
+  haproxy_monitor_monit_state
+    Description: Control the 'haproxy_monitor_monit_state' option.
+    Implemented: 2.3
+    Required   : False
+    Value      : Predetermined
+    Type       : String
+    Default    : 'false'
+    Options    :
+      Enable : 'true' | 'yes' | 'enable'
+      Disable: 'false' | 'no' | 'disable'
+
   haproxy_stats_auth
     Description: Define the 'haproxy_stats_auth' option.
     Implemented: 0.2

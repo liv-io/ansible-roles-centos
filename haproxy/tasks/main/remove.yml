@@ -31,6 +31,15 @@
 # FILES
 #-------------------------------------------------------------------------------
 
+- name: 'file remove monit-haproxy.cfg'
+  file:
+    state: 'absent'
+    path: "{{file_dst_monit_haproxy_cfg}}"
+  notify: 'service reload monit'
+  tags:
+    - remove
+    - haproxy
+
 - name: 'file remove haproxy.cfg'
   file:
     state: 'absent'

@@ -4,6 +4,8 @@ haproxy_state: 'enable'
 
 haproxy_config: ''
 
+haproxy_monitor_monit_state: 'false'
+
 haproxy_stats_auth: []
 
 haproxy_stats_defaults_state: 'disable'
