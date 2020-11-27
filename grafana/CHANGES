@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.5.1 (2020-11-27)
+B: Correct and improve Monit configuration file
+
 * Version 0.5.0 (2020-11-24)
 F: Add support for Monit service monitoring (grafana_monitor_monit_state)
 
