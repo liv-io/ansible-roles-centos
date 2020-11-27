@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.4.1 (2020-11-27)
+E: Improve Monit configuration file
+
 * Version 1.4.0 (2020-11-23)
 F: Add support for Monit service monitoring (nsd_monitor_monit_state)
 
