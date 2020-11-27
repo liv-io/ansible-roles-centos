@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.7.1 (2020-11-27)
+E: Improve Monit configuration file
+
 * Version 1.7.0 (2020-11-26)
 F: Update Prometheus to version 2.23.0
 
