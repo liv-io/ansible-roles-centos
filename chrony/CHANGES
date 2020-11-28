@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 0.5.2 (2020-11-28)
+E: Improve Monit check
+
 * Version 0.5.1 (2020-11-27)
 E: Improve Monit configuration file
 
