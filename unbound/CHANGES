@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.3.2 (2020-11-28)
+B: Eliminate Monit DNS protocol check
+
 * Version 1.3.1 (2020-11-27)
 E: Improve Monit configuration file
 
