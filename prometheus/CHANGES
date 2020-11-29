@@ -14,6 +14,10 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.8.0 (2020-11-29)
+F: Add option prometheus_monit_exporter_target_ansible_groups
+F: Add option prometheus_monit_exporter_target_manual_hosts
+
 * Version 1.7.1 (2020-11-27)
 E: Improve Monit configuration file
 

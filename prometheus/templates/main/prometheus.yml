@@ -179,6 +179,40 @@ scrape_configs:
 {% endif %}
 
   #-----------------------------------------------------------------------------
+  # MONIT_EXPORTER
+  #-----------------------------------------------------------------------------
+
+  - job_name: 'monit'
+    static_configs:
+
+    # Localhost
+    - targets: ['localhost:9388']
+      labels:
+        instance: '{{ansible_hostname}}'
+
+    # Manual Hosts
+{% if not (prometheus_monit_exporter_target_manual_hosts == []) %}
+{% for item in prometheus_monit_exporter_target_manual_hosts %}
+    - targets: ['{{item.address}}:9388']
+      labels:
+        instance: '{{item.hostname}}'
+
+{% endfor %}
+{% endif %}
+
+    # Ansible Groups
+{% if not (prometheus_monit_exporter_target_ansible_groups == []) %}
+{% for group in prometheus_monit_exporter_target_ansible_groups %}
+{% for item in (groups[group]|sort) %}
+    - targets: ['{{hostvars[item].inventory_hostname}}:9388']
+      labels:
+        instance: '{{hostvars[item].inventory_hostname_short}}'
+
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+  #-----------------------------------------------------------------------------
   # MYSQLD_EXPORTER
   #-----------------------------------------------------------------------------
 
