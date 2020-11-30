@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.8.1 (2020-11-30)
+E: Do not create home directory for service user
+
 * Version 1.8.0 (2020-11-29)
 F: Add option prometheus_monit_exporter_target_ansible_groups
 F: Add option prometheus_monit_exporter_target_manual_hosts
