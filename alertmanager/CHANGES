@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 2.8.2 (2020-11-30)
+E: Do not create home directory for service user
+
 * Version 2.8.1 (2020-11-27)
 E: Improve Monit configuration file
 
