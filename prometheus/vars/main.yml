@@ -34,6 +34,18 @@ file_mode_prometheus_data_dir: '0750'
 file_owner_prometheus_data_dir: 'prometheus'
 file_group_prometheus_data_dir: 'prometheus'
 
+# dashboards.dir
+file_dst_dashboards_dir: '/var/lib/grafana/dashboards'
+file_mode_dashboards_dir: '0750'
+file_owner_dashboards_dir: 'grafana'
+file_group_dashboards_dir: 'grafana'
+
+# builtin_dashboards.dir
+file_dst_builtin_dashboards_dir: '/var/lib/grafana/dashboards/builtin'
+file_mode_builtin_dashboards_dir: '0750'
+file_owner_builtin_dashboards_dir: 'grafana'
+file_group_builtin_dashboards_dir: 'grafana'
+
 # prometheus.tar.gz
 file_src_prometheus_tar_gz: "https://github.com/prometheus/prometheus/releases/download/v{{prometheus_version}}/prometheus-{{prometheus_version}}.linux-amd64.tar.gz"
 file_dst_prometheus_tar_gz: "/usr/local/src/prometheus-{{prometheus_version}}.linux-amd64.tar.gz"
@@ -55,6 +67,13 @@ file_src_prometheus_current_link: "/app/prometheus/prometheus-{{prometheus_versi
 file_dst_prometheus_current_link: '/app/prometheus/current'
 file_owner_prometheus_current_link: 'root'
 file_group_prometheus_current_link: 'root'
+
+# builtin_dashboards.yaml
+file_src_builtin_dashboards_yaml: 'templates/main/builtin_dashboards.yaml'
+file_dst_builtin_dashboards_yaml: '/etc/grafana/provisioning/dashboards/builtin.yaml'
+file_mode_builtin_dashboards_yaml: '0640'
+file_owner_builtin_dashboards_yaml: 'root'
+file_group_builtin_dashboards_yaml: 'grafana'
 
 # prometheus_alertmanager_datasource.yaml
 file_src_prometheus_alertmanager_datasource_yaml: 'templates/main/prometheus_alertmanager_datasource.yaml'
@@ -97,6 +116,48 @@ file_dst_alerting_rules_yml: '/etc/prometheus/alerting_rules.yml'
 file_mode_alerting_rules_yml: '0644'
 file_owner_alerting_rules_yml: 'root'
 file_group_alerting_rules_yml: 'root'
+
+# network_traffic.json
+file_src_network_traffic_json: 'files/main/network_traffic.json'
+file_dst_network_traffic_json: '/var/lib/grafana/dashboards/builtin/network_traffic.json'
+file_mode_network_traffic_json: '0640'
+file_owner_network_traffic_json: 'grafana'
+file_group_network_traffic_json: 'grafana'
+
+# node_exporter.json
+file_src_node_exporter_json: 'files/main/node_exporter.json'
+file_dst_node_exporter_json: '/var/lib/grafana/dashboards/builtin/node_exporter.json'
+file_mode_node_exporter_json: '0640'
+file_owner_node_exporter_json: 'grafana'
+file_group_node_exporter_json: 'grafana'
+
+# ping_prober.json
+file_src_ping_prober_json: 'files/main/ping_prober.json'
+file_dst_ping_prober_json: '/var/lib/grafana/dashboards/builtin/ping_prober.json'
+file_mode_ping_prober_json: '0640'
+file_owner_ping_prober_json: 'grafana'
+file_group_ping_prober_json: 'grafana'
+
+# script_status.json
+file_src_script_status_json: 'files/main/script_status.json'
+file_dst_script_status_json: '/var/lib/grafana/dashboards/builtin/script_status.json'
+file_mode_script_status_json: '0640'
+file_owner_script_status_json: 'grafana'
+file_group_script_status_json: 'grafana'
+
+# smokeping_prober.json
+file_src_smokeping_prober_json: 'files/main/smokeping_prober.json'
+file_dst_smokeping_prober_json: '/var/lib/grafana/dashboards/builtin/smokeping_prober.json'
+file_mode_smokeping_prober_json: '0640'
+file_owner_smokeping_prober_json: 'grafana'
+file_group_smokeping_prober_json: 'grafana'
+
+# system_status.json
+file_src_system_status_json: 'templates/main/system_status.json'
+file_dst_system_status_json: '/var/lib/grafana/dashboards/builtin/system_status.json'
+file_mode_system_status_json: '0640'
+file_owner_system_status_json: 'grafana'
+file_group_system_status_json: 'grafana'
 
 # monit.d
 file_dst_monit_d: '/etc/monit.d'

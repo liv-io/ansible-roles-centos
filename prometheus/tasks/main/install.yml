@@ -130,6 +130,29 @@
     - install
     - prometheus
 
+- name: 'file create dashboards.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_dashboards_dir}}"
+    mode: "{{file_mode_dashboards_dir}}"
+    owner: "{{file_owner_dashboards_dir}}"
+    group: "{{file_group_dashboards_dir}}"
+  tags:
+    - install
+    - prometheus
+
+- name: 'file create builtin_dashboards.dir'
+  file:
+    state: 'directory'
+    path: "{{file_dst_builtin_dashboards_dir}}"
+    mode: "{{file_mode_builtin_dashboards_dir}}"
+    owner: "{{file_owner_builtin_dashboards_dir}}"
+    group: "{{file_group_builtin_dashboards_dir}}"
+  when: (prometheus_builtin_dashboards_state is match('true|yes|enable'))
+  tags:
+    - install
+    - prometheus
+
 - name: 'file create prometheus.service'
   template:
     src: "{{file_src_prometheus_service}}"

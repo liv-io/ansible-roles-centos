@@ -70,6 +70,22 @@
     - remove
     - prometheus
 
+- name: 'file remove builtin_dashboards.yaml'
+  file:
+    state: 'absent'
+    path: "{{file_dst_builtin_dashboards_yaml}}"
+  tags:
+    - remove
+    - prometheus
+
+- name: 'file remove dashboards.dir'
+  file:
+    state: 'absent'
+    path: "{{file_dst_dashboards_dir}}"
+  tags:
+    - remove
+    - prometheus
+
 - name: 'file remove prometheus_alertmanager_datasource.yaml'
   file:
     state: 'absent'
