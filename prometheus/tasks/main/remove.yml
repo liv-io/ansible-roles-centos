@@ -70,6 +70,14 @@
     - remove
     - prometheus
 
+- name: 'file remove prometheus_alertmanager_datasource.yaml'
+  file:
+    state: 'absent'
+    path: "{{file_dst_prometheus_alertmanager_datasource_yaml}}"
+  tags:
+    - remove
+    - prometheus
+
 - name: 'file remove prometheus_datasource.yaml'
   file:
     state: 'absent'

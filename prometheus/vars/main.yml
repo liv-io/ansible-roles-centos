@@ -56,6 +56,13 @@ file_dst_prometheus_current_link: '/app/prometheus/current'
 file_owner_prometheus_current_link: 'root'
 file_group_prometheus_current_link: 'root'
 
+# prometheus_alertmanager_datasource.yaml
+file_src_prometheus_alertmanager_datasource_yaml: 'templates/main/prometheus_alertmanager_datasource.yaml'
+file_dst_prometheus_alertmanager_datasource_yaml: '/etc/grafana/provisioning/datasources/prometheus_alertmanager_datasource.yaml'
+file_mode_prometheus_alertmanager_datasource_yaml: '0640'
+file_owner_prometheus_alertmanager_datasource_yaml: 'root'
+file_group_prometheus_alertmanager_datasource_yaml: 'grafana'
+
 # prometheus_datasource.yaml
 file_src_prometheus_datasource_yaml: 'templates/main/prometheus_datasource.yaml'
 file_dst_prometheus_datasource_yaml: '/etc/grafana/provisioning/datasources/prometheus_datasource.yaml'

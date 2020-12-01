@@ -5,22 +5,22 @@ apiVersion: 1
 
 # list of datasources that should be deleted from the database
 #deleteDatasources:
-#  - name: "Prometheus"
+#  - name: "Prometheus AlertManager"
 #    orgId: 1
 
 # list of datasources to insert/update depending
 # what's available in the database
 datasources:
   # <string, required> name of the datasource. Required
-  - name: "Prometheus"
+  - name: "Prometheus AlertManager"
     # <string, required> datasource type. Required
-    type: prometheus
+    type: camptocamp-prometheus-alertmanager-datasource
     # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
     access: proxy
     # <int> org id. will default to orgId 1 if not specified
     orgId: 1
     # <string> url
-    url: http://localhost:9090
+    url: http://localhost:9093
     # <string> Deprecated, use secureJsonData.password
     password:
     # <string> database user, if used
@@ -36,9 +36,13 @@ datasources:
     # <bool> enable/disable with credentials headers
     withCredentials:
     # <bool> mark as default datasource. Max one per org
-    isDefault: true
+    isDefault: false
     # <map> fields that will be converted to json and stored in jsonData
     jsonData:
+      severity_critical: "critical"
+      severity_high: "high"
+      severity_warning: "warning"
+      severity_info: "info"
     version: 1
     # <bool> allow users to edit datasources from the UI.
     editable: false

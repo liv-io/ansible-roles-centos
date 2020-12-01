@@ -68,6 +68,19 @@
     - enable
     - prometheus
 
+- name: 'file create prometheus_alertmanager_datasource.yaml'
+  template:
+    src: "{{file_src_prometheus_alertmanager_datasource_yaml}}"
+    dest: "{{file_dst_prometheus_alertmanager_datasource_yaml}}"
+    mode: "{{file_mode_prometheus_alertmanager_datasource_yaml}}"
+    owner: "{{file_owner_prometheus_alertmanager_datasource_yaml}}"
+    group: "{{file_group_prometheus_alertmanager_datasource_yaml}}"
+  notify: 'service restart grafana'
+  when: (prometheus_alertmanager_state is match('true|yes|enable'))
+  tags:
+    - enable
+    - prometheus
+
 - name: 'file create prometheus_datasource.yaml'
   template:
     src: "{{file_src_prometheus_datasource_yaml}}"
