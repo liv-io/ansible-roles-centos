@@ -93,7 +93,8 @@ ROLE
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
-    Default    : [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'},
+    Default    : [{name: 'camptocamp-prometheus-alertmanager-datasource', state: 'true', version: 'latest'},
+                  {name: 'grafana-piechart-panel', state: 'true', version: 'latest'},
                   {name: 'grafana-worldmap-panel', state: 'true', version: 'latest'}]
     Options    :
       Examples: [{name: 'grafana-piechart-panel', state: 'true', version: 'latest'},
