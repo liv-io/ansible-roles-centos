@@ -29,4 +29,3 @@ ROLES
 - ca_trust
 - logrotate
 - networking
-- rsyslog
