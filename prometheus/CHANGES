@@ -14,6 +14,11 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 1.11.0 (2020-12-02)
+F: Add built-in alerting rules
+E: Clear predefined alerting rules (prometheus_alerting_rules)
+E: Improve System Status dashboard (system_status)
+
 * Version 1.10.0 (2020-12-01)
 F: Add collection of built-in dashboards (prometheus_builtin_dashboards_state)
 F: Add option to define Alertmanager URL (prometheus_alertmanager_url)
@@ -21,7 +26,7 @@ F: Add option to define Grafana URL (prometheus_grafana_url)
 F: Add option to define Prometheus URL (prometheus_prometheus_url)
 
 * Version 1.9.0 (2020-12-01)
-F: Add Prometheus datasource 'Prometheus AlertManager'
+F: Add Prometheus datasource 'Prometheus Alertmanager'
 
 * Version 1.8.1 (2020-11-30)
 E: Do not create home directory for service user

@@ -5,14 +5,14 @@ apiVersion: 1
 
 # list of datasources that should be deleted from the database
 #deleteDatasources:
-#  - name: "Prometheus AlertManager"
+#  - name: "Prometheus Alertmanager"
 #    orgId: 1
 
 # list of datasources to insert/update depending
 # what's available in the database
 datasources:
   # <string, required> name of the datasource. Required
-  - name: "Prometheus AlertManager"
+  - name: "Prometheus Alertmanager"
     # <string, required> datasource type. Required
     type: camptocamp-prometheus-alertmanager-datasource
     # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required

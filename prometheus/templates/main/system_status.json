@@ -21,7 +21,7 @@
     {
       "columns": [],
       "datasource": null,
-      "description": "Monit process status in error or unmonitored state.",
+      "description": "Monit Exporter Alerts",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -38,7 +38,7 @@
       "id": 6,
       "links": [
         {
-          "title": "Show details in Prometheus",
+          "title": "Show metrics in Prometheus",
           "url": "{{prometheus_prometheus_url}}/graph?g0.range_input=1h&g0.expr=monit_exporter_service_check&g0.tab=1"
         }
       ],
@@ -50,13 +50,13 @@
       },
       "styles": [
         {
-          "alias": "",
+          "alias": "Time",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
@@ -67,13 +67,13 @@
           "unit": "dateTimeAsIso"
         },
         {
-          "alias": "",
+          "alias": "Value",
           "align": "auto",
           "colorMode": "cell",
           "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "#3274D9",
-            "rgba(245, 54, 54, 0.9)"
+            "#32B43C",
+            "#3296CC",
+            "#F53737"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
@@ -91,43 +91,143 @@
               "value": "0"
             },
             {
-              "text": "Initialising",
-              "value": "512"
+              "text": "Checksum failed",
+              "value": "1"
             },
             {
               "text": "Execution failed",
-              "value": "4608"
-            },
-            {
-              "text": "Resource limit matched",
               "value": "2"
             },
             {
-              "text": "Connection failed",
-              "value": "544"
+              "text": "Timeout",
+              "value": "4"
+            },
+            {
+              "text": "Timestamp failed",
+              "value": "8"
+            },
+            {
+              "text": "Size failed",
+              "value": "16"
             },
             {
               "text": "Connection failed",
               "value": "32"
             },
             {
+              "text": "Permission failed",
+              "value": "64"
+            },
+            {
+              "text": "UID failed",
+              "value": "128"
+            },
+            {
+              "text": "GID failed",
+              "value": "256"
+            },
+            {
+              "text": "Does not exist",
+              "value": "512"
+            },
+            {
+              "text": "Invalid type",
+              "value": "1024"
+            },
+            {
               "text": "Data access error",
               "value": "2048"
             },
             {
-              "text": "Connection failed | Execution failed | Does not exist",
-              "value": "4640"
+              "text": "Execution failed",
+              "value": "4096"
+            },
+            {
+              "text": "Filesystem flags failed",
+              "value": "8192"
+            },
+            {
+              "text": "ICMP failed",
+              "value": "16384"
+            },
+            {
+              "text": "Content failed",
+              "value": "32768"
+            },
+            {
+              "text": "Monit instance failed",
+              "value": "65536"
+            },
+            {
+              "text": "Action done",
+              "value": "131072"
+            },
+            {
+              "text": "PID failed",
+              "value": "262144"
+            },
+            {
+              "text": "PPID failed",
+              "value": "524288"
+            },
+            {
+              "text": "Heartbeat failed",
+              "value": "1048576"
+            },
+            {
+              "text": "Status failed",
+              "value": "2097152"
+            },
+            {
+              "text": "Uptime failed",
+              "value": "4194304"
+            },
+            {
+              "text": "Link down",
+              "value": "8388608"
+            },
+            {
+              "text": "Speed failed",
+              "value": "16777216"
+            },
+            {
+              "text": "Saturation exceeded",
+              "value": "33554432"
+            },
+            {
+              "text": "Download bytes exceeded",
+              "value": "67108864"
+            },
+            {
+              "text": "Upload bytes exceeded",
+              "value": "134217728"
+            },
+            {
+              "text": "Download packets exceeded",
+              "value": "268435456"
+            },
+            {
+              "text": "Upload packets exceeded",
+              "value": "536870912"
+            },
+            {
+              "text": "Does exist",
+              "value": "1073741824"
+            },
+            {
+              "text": "All Errors",
+              "value": "2147483647"
             }
           ]
         },
         {
-          "alias": "",
+          "alias": "Monitored",
           "align": "auto",
           "colorMode": "cell",
           "colors": [
-            "#E0B400",
-            "#37872D",
-            "rgba(245, 54, 54, 0.9)"
+            "#FFC800",
+            "#32B43C",
+            "#F53737"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
@@ -159,13 +259,13 @@
           ]
         },
         {
-          "alias": "",
+          "alias": "Instance",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
@@ -176,13 +276,13 @@
           "unit": "short"
         },
         {
-          "alias": "",
+          "alias": "Job",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
@@ -194,13 +294,13 @@
           "unit": "short"
         },
         {
-          "alias": "",
+          "alias": "Type",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
@@ -211,20 +311,20 @@
           "unit": "short"
         },
         {
-          "alias": "instance",
+          "alias": "Instance",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "",
-          "linkUrl": "{{prometheus_grafana_url}}/d/GirsCapmz/node-exporter-server-metrics?orgId=1&var-node=[[__cell:raw]]",
+          "linkTooltip": "Show metrics in Grafana",
+          "linkUrl": "{{prometheus_grafana_url}}/d/0SkoOb0Mz/node-exporter?orgId=1&var-node=[[__cell:raw]]",
           "mappingType": 1,
           "pattern": "instance",
           "thresholds": [],
@@ -251,8 +351,8 @@
     },
     {
       "columns": [],
-      "datasource": "Prometheus AlertManager",
-      "description": "Alertmanager based alerts.",
+      "datasource": "Prometheus Alertmanager",
+      "description": "Prometheus Alertmanager",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -271,7 +371,7 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 0,
+        "col": 4,
         "desc": true
       },
       "styles": [
@@ -287,9 +387,9 @@
           "align": "auto",
           "colorMode": "cell",
           "colors": [
-            "#56A64B",
-            "#FF780A",
-            "#E02F44"
+            "#32B43C",
+            "#FF7700",
+            "#F53737"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
@@ -325,15 +425,15 @@
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "#E02F44",
-            "#FF780A",
-            "#56A64B"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Alerts for [[__cell:raw]]",
+          "linkTooltip": "Show instance",
           "linkUrl": "{{prometheus_alertmanager_url}}/#/alerts?silenced=false&inhibited=false&active=true&filter=%7Binstance%3D%22[[__cell:raw]]%22%7D",
           "mappingType": 1,
           "pattern": "instance",
@@ -346,15 +446,15 @@
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "#E02F44",
-            "#FF780A",
-            "#56A64B"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Monit check: [[__cell:raw]]",
+          "linkTooltip": "Show check",
           "linkUrl": "{{prometheus_alertmanager_url}}/#/alerts?silenced=false&inhibited=false&active=true&filter=%7Bcheck_name%3D%22[[__cell:raw]]%22%7D",
           "mappingType": 1,
           "pattern": "check_name",
@@ -363,19 +463,19 @@
           "unit": "short"
         },
         {
-          "alias": "Alert Name",
+          "alias": "Alert",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "#E02F44",
-            "#FF780A",
-            "#56A64B"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Open alert",
+          "linkTooltip": "Show alert",
           "linkUrl": "{{prometheus_alertmanager_url}}/#/alerts?silenced=false&inhibited=false&active=true&filter=%7Balertname%3D%22[[__cell:raw]]%22%7D",
           "mappingType": 1,
           "pattern": "alertname",
@@ -384,13 +484,13 @@
           "unit": "short"
         },
         {
-          "alias": "",
+          "alias": "Type",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
@@ -401,19 +501,19 @@
           "unit": "short"
         },
         {
-          "alias": "",
+          "alias": "Monitored",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "#E02F44",
-            "#FF780A",
-            "#56A64B"
+            "#F53737",
+            "#FF7700",
+            "#32B43C"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Process_unmonitored alert",
+          "linkTooltip": "Show status",
           "linkUrl": "{{prometheus_alertmanager_url}}/#/alerts?silenced=false&inhibited=false&active=true&filter=%7Bmonitored%3D%220%22%7D",
           "mappingType": 1,
           "pattern": "monitored",

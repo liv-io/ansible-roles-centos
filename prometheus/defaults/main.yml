@@ -2,18 +2,7 @@
 
 prometheus_state: 'enable'
 
-prometheus_alerting_rules: |
-  groups:
-    - name: common
-      rules:
-        - alert: "ICMP Ping Failed"
-          expr: probe_success{job="icmp_ip4"} == 0
-          for: 2m
-          labels:
-            severity: critical
-          annotations:
-            summary: "{% raw %} {{ $labels.instance }} {% endraw %} has been down for two minutes."
-            description: "blackbox_exporter ICMPv4 ping failed. {% raw %} {{ $labels.instance }} {% endraw %} has been down for two minutes."
+prometheus_alerting_rules: ''
 
 prometheus_alertmanager_state: 'true'
 
