@@ -78,6 +78,14 @@
     - remove
     - loki
 
+- name: 'file remove loki_prometheus_datasource.yaml'
+  file:
+    state: 'absent'
+    path: "{{file_dst_loki_prometheus_datasource_yaml}}"
+  tags:
+    - remove
+    - loki
+
 - name: 'file remove loki_etc.dir'
   file:
     state: 'absent'

@@ -47,6 +47,13 @@ file_mode_loki_datasource_yaml: '0640'
 file_owner_loki_datasource_yaml: 'root'
 file_group_loki_datasource_yaml: 'grafana'
 
+# loki_prometheus_datasource.yaml
+file_src_loki_prometheus_datasource_yaml: 'templates/main/loki_prometheus_datasource.yaml'
+file_dst_loki_prometheus_datasource_yaml: '/etc/grafana/provisioning/datasources/loki_prometheus_datasource.yaml'
+file_mode_loki_prometheus_datasource_yaml: '0640'
+file_owner_loki_prometheus_datasource_yaml: 'root'
+file_group_loki_prometheus_datasource_yaml: 'grafana'
+
 # loki_etc.dir
 file_dst_loki_etc_dir: '/etc/loki'
 file_mode_loki_etc_dir: '0755'
