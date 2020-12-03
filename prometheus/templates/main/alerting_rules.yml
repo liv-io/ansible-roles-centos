@@ -193,14 +193,23 @@ groups:
           summary: "DNF: Check Update (script_status)"
           description: "DNF pending updates for at least 7 days"
 
-      - alert: "YUM Pending Updates"
-        expr: yum_check_update_exit != 0
-        for: 7d
+      - alert: "MariaDB Backup Failed"
+        expr: mariadb_run_backup_exit != 0
+        for: 30s
         labels:
-          severity: info
+          severity: warning
         annotations:
-          summary: "YUM: Check Update (script_status)"
-          description: "YUM pending updates for at least 7 days"
+          summary: "MariaDB: Run Backup (script_status)"
+          description: "MariaDB backup failed"
+
+      - alert: "PostgreSQL Backup Failed"
+        expr: postgresql_run_backup_exit != 0
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL: Run Backup (script_status)"
+          description: "PostgreSQL backup failed"
 
       - alert: "Restic Backup Failed"
         expr: restic_run_backup_exit != 0
@@ -211,14 +220,41 @@ groups:
           summary: "Restic: Run Backup (script_status)"
           description: "Restic backup failed"
 
+      - alert: "YUM Pending Updates"
+        expr: yum_check_update_exit != 0
+        for: 7d
+        labels:
+          severity: info
+        annotations:
+          summary: "YUM: Check Update (script_status)"
+          description: "YUM pending updates for at least 7 days"
+
       - alert: "ZFS Disk Failure"
         expr: zfs_check_pools_exit != 0
         for: 30s
         labels:
           severity: warning
         annotations:
-          summary: "ZFS: Check Pool (script_status)"
+          summary: "ZFS: Check Pools (script_status)"
           description: "ZFS pool with faulty disk"
+
+      - alert: "ZFS Scrub Failed"
+        expr: zfs_check_pools_exit != 0
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "ZFS: Scrub Pools (script_status)"
+          description: "ZFS failed to scrub pool"
+
+      - alert: "ZFS Trim Failed"
+        expr: zfs_trim_pools_exit != 0
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "ZFS: Trim Pools (script_status)"
+          description: "ZFS failed to trim pool"
 
 {% if not (prometheus_alerting_rules == '') %}
   #-----------------------------------------------------------------------------
