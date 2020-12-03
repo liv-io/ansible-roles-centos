@@ -97,13 +97,13 @@ See `CREDITS` file for more information.
 ## Appendix
 
 <!-- shields.io -->
-[contributors-shield]: https://img.shields.io/github/contributors/liv-io/coremon.svg?style=flat
-[contributors-url]: https://github.com/liv-io/coremon/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/liv-io/coremon.svg?style=flat
-[forks-url]: https://github.com/liv-io/coremon/network/members
-[stars-shield]: https://img.shields.io/github/stars/liv-io/coremon.svg?style=flat
-[stars-url]: https://github.com/liv-io/coremon/stargazers
-[issues-shield]: https://img.shields.io/github/issues/liv-io/coremon.svg?style=flat
-[issues-url]: https://github.com/liv-io/coremon/issues
-[license-shield]: https://img.shields.io/github/license/liv-io/coremon.svg?style=flat
-[license-url]: https://github.com/liv-io/coremon/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/liv-io/ansible-roles-centos.svg?style=flat
+[contributors-url]: https://github.com/liv-io/ansible-roles-centos/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/liv-io/ansible-roles-centos.svg?style=flat
+[forks-url]: https://github.com/liv-io/ansible-roles-centos/network/members
+[stars-shield]: https://img.shields.io/github/stars/liv-io/ansible-roles-centos.svg?style=flat
+[stars-url]: https://github.com/liv-io/ansible-roles-centos/stargazers
+[issues-shield]: https://img.shields.io/github/issues/liv-io/ansible-roles-centos.svg?style=flat
+[issues-url]: https://github.com/liv-io/ansible-roles-centos/issues
+[license-shield]: https://img.shields.io/github/license/liv-io/ansible-roles-centos.svg?style=flat
+[license-url]: https://github.com/liv-io/ansible-roles-centos/blob/master/LICENSE
