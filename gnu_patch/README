@@ -74,7 +74,7 @@ DEPENDENCIES
 
 PACKAGES
   gnu-patch
-    Version: >= 2.7
+    Version: >= 2.7.0
     Name   :
       CentOS 7: 'patch'
       CentOS 8: 'patch'
@@ -89,11 +89,11 @@ REQUIREMENTS
 
 CONTROL NODE
   Ansible
-    Version: >= 2.8
+    Version: >= 2.8.0
 
 MANAGED NODE
   Python
-    Version: >= 2.7
+    Version: >= 2.7.0
 
 --------------------------------------------------------------------------------
 SUPPORT
