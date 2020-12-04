@@ -136,7 +136,7 @@ PARAMETERS
 ROLE
   alertmanager_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -150,7 +150,7 @@ ROLE
 
   alertmanager_config
     Description: Define the 'alertmanager_config' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -173,7 +173,7 @@ ROLE
 
   alertmanager_monitor_monit_state
     Description: Control the 'alertmanager_monitor_monit_state' option.
-    Implemented: 2.8
+    Implemented: 2.8.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -184,7 +184,7 @@ ROLE
 
   alertmanager_version
     Description: Define the 'alertmanager_version' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -194,7 +194,7 @@ ROLE
 
   alertmanager_web_external_url
     Description: Define the 'alertmanager_web_external_url' option.
-    Implemented: 3.0
+    Implemented: 3.0.0
     Required   : False
     Value      : Arbitrary
     Type       : String

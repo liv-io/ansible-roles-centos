@@ -63,7 +63,7 @@ PARAMETERS
 ROLE
   smokeping_prober_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -77,7 +77,7 @@ ROLE
 
    smokeping_prober_monitor_monit_state
     Description: Control the 'smokeping_prober_monitor_monit_state' option.
-    Implemented: 0.4
+    Implemented: 0.4.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -88,7 +88,7 @@ ROLE
 
   smokeping_prober_hosts
     Description: Define the 'smokeping_prober_hosts' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -100,7 +100,7 @@ ROLE
 
   smokeping_prober_version
     Description: Define the 'smokeping_prober_version' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

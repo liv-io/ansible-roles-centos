@@ -122,7 +122,7 @@ PARAMETERS
 CONFIG
   alias
     Description: Define the 'alias' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -133,7 +133,7 @@ CONFIG
 
   config
     Description: Define the 'config' option.
-    Implemented: 2.0
+    Implemented: 2.0.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -148,7 +148,7 @@ CONFIG
 
   document_root
     Description: Define the 'document_root' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -158,7 +158,7 @@ CONFIG
 
   hsts_max_age
     Description: Set the 'hsts_max_age' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -168,7 +168,7 @@ CONFIG
 
   hsts_state
     Description: Control the 'hsts_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -179,7 +179,7 @@ CONFIG
 
   listen
     Description: Define the 'listen' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -189,7 +189,7 @@ CONFIG
 
   log_level
     Description: Define the 'log_level' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -200,7 +200,7 @@ CONFIG
 
   name
     Description: Define the 'name' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : True
     Value      : Arbitrary
     Type       : String
@@ -210,7 +210,7 @@ CONFIG
 
   port
     Description: Set the 'port' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : True
     Value      : Arbitrary
     Type       : Integer, String
@@ -220,7 +220,7 @@ CONFIG
 
    server_admin
     Description: Define the 'server_admin' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -231,7 +231,7 @@ CONFIG
 
   ssl_ca_certificate
     Description: Define the 'ssl_ca_certificate' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -242,7 +242,7 @@ CONFIG
 
   ssl_certificate
     Description: Define the 'ssl_certificate_file' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -253,7 +253,7 @@ CONFIG
 
   ssl_certificate_chain
     Description: Define the 'ssl_certificate_chain' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -264,7 +264,7 @@ CONFIG
 
   ssl_certificate_key
     Description: Define the 'ssl_certificate_key' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -275,7 +275,7 @@ CONFIG
 
   ssl_ciphers
     Description: Define the 'ssl_ciphers' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -287,7 +287,7 @@ CONFIG
 
   ssl_compression
     Description: Control the 'ssl_compression' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -298,7 +298,7 @@ CONFIG
 
   ssl_honor_cipher_order
     Description: Control the 'ssl_honor_cipher_order' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -309,7 +309,7 @@ CONFIG
 
   ssl_protocols
     Description: Define the 'ssl_protocols' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -321,7 +321,7 @@ CONFIG
 
   ssl_session_tickets
     Description: Control the 'ssl_session_tickets' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -332,7 +332,7 @@ CONFIG
 
   ssl_state
     Description: Control the 'ssl_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -343,7 +343,7 @@ CONFIG
 
   xss_protection_state
     Description: Control the 'xss_protection_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -355,7 +355,7 @@ CONFIG
 ROLE
   httpd_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -369,7 +369,7 @@ ROLE
 
   httpd_config
     Description: Define the 'httpd_config' option.
-    Implemented: 2.0
+    Implemented: 2.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -387,7 +387,7 @@ ROLE
 
   httpd_enable_mmap
     Description: Control the 'httpd_enable_mmap' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -398,7 +398,7 @@ ROLE
 
   httpd_enable_sendfile
     Description: Control the 'httpd_enable_sendfile' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -409,7 +409,7 @@ ROLE
 
   httpd_global_config
     Description: Define the 'httpd_global_config' option.
-    Implemented: 2.0
+    Implemented: 2.0.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -426,7 +426,7 @@ ROLE
 
   httpd_hsts_max_age
     Description: Set the 'httpd_hsts_max_age' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -436,7 +436,7 @@ ROLE
 
   httpd_listen
     Description: Set the 'httpd_listen' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -447,7 +447,7 @@ ROLE
 
   httpd_log_format_combined
     Description: Define the 'httpd_log_format_combined' option.
-    Implemented: 2.3
+    Implemented: 2.3.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -457,7 +457,7 @@ ROLE
 
   httpd_log_format_combined_io
     Description: Define the 'httpd_log_format_combined_io' option.
-    Implemented: 2.3
+    Implemented: 2.3.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -467,7 +467,7 @@ ROLE
 
   httpd_log_format_combined_ssl
     Description: Define the 'httpd_log_format_combined_ssl' option.
-    Implemented: 2.3
+    Implemented: 2.3.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -477,7 +477,7 @@ ROLE
 
   httpd_log_format_common
     Description: Define the 'httpd_log_format_common' option.
-    Implemented: 2.3
+    Implemented: 2.3.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -487,7 +487,7 @@ ROLE
 
   httpd_monitor_monit_state
     Description: Control the 'httpd_monitor_monit_state' option.
-    Implemented: 2.4
+    Implemented: 2.4.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -498,7 +498,7 @@ ROLE
 
   httpd_server_admin
     Description: Define the 'httpd_server_admin' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -509,7 +509,7 @@ ROLE
 
   httpd_server_signature
     Description: Control the 'httpd_server_signature' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -521,7 +521,7 @@ ROLE
 
   httpd_server_tokens
     Description: Control the 'httpd_server_tokens' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -536,7 +536,7 @@ ROLE
 
   httpd_trace_enable
     Description: Control the 'httpd_trace_enable' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -547,7 +547,7 @@ ROLE
 
   httpd_vhosts_d
     Description: Define the 'httpd_vhosts_d' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

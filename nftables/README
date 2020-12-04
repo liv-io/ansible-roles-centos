@@ -96,7 +96,7 @@ PARAMETERS
 ROLE
   nftables_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -110,7 +110,7 @@ ROLE
 
   nftables_filter_all
     Description: Define the 'nftables_filter_all' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -158,7 +158,7 @@ ROLE
 
   nftables_filter_group
     Description: Define the 'nftables_filter_group' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -170,7 +170,7 @@ ROLE
 
   nftables_filter_host
     Description: Define the 'nftables_filter_host' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -182,7 +182,7 @@ ROLE
 
   nftables_filter_policies
     Description: Define the 'nftables_filter_policies' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -202,7 +202,7 @@ ROLE
 
   nftables_nat_all
     Description: Define the 'nftables_nat_all' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -222,7 +222,7 @@ ROLE
 
   nftables_nat_group
     Description: Define the 'nftables_nat_group' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -241,7 +241,7 @@ ROLE
 
   nftables_nat_host
     Description: Define the 'nftables_nat_host' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -260,7 +260,7 @@ ROLE
 
   nftables_nat_policies
     Description: Define the 'nftables_nat_policies' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash

@@ -43,7 +43,7 @@ ROLE
   issue_state
     Description: Control the state of the role.
                  'issue' is a core file and can therefore not be removed.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -58,7 +58,7 @@ ROLE
                  created. The custom Jinja2 file for an example configuration
                  called 'example' needs to be placed as follows:
                  'issue/templates/example/issue'
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

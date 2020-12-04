@@ -43,7 +43,7 @@ PARAMETERS
 ROLE
   timezone_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -54,7 +54,7 @@ ROLE
 
   timezone_timezone
     Description: Define the 'timezone_timezone' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

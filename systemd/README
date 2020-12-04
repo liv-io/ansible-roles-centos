@@ -128,7 +128,7 @@ PARAMETERS
 CONFIG
   state
     Description: Control the 'state' of the systemd file.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -139,7 +139,7 @@ CONFIG
 
   mode
     Description: Define the 'mode' of the systemd file.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : True
     Value      : Arbitrary
     Type       : String
@@ -149,7 +149,7 @@ CONFIG
 
   name
     Description: Define the 'name' of the systemd file.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : True
     Value      : Arbitrary
     Type       : String
@@ -159,7 +159,7 @@ CONFIG
 
   comment
     Description: Define a 'comment' for the systemd file.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -170,7 +170,7 @@ CONFIG
 
   options
     Description: Define the systemd 'options'.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -190,7 +190,7 @@ CONFIG
 
   type
     Description: Define the 'type' of the systemd file.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -203,7 +203,7 @@ CONFIG
 ROLE
   systemd_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -214,7 +214,7 @@ ROLE
 
   systemd_config_all
     Description: Define the 'systemd_config_all' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -227,7 +227,7 @@ ROLE
 
   systemd_config_group
     Description: Define the 'systemd_config_group' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -239,7 +239,7 @@ ROLE
 
   systemd_config_host
     Description: Define the 'systemd_config_host' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash

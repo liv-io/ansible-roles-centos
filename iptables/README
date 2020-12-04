@@ -98,7 +98,7 @@ PARAMETERS
 ROLE
   iptables_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -112,7 +112,7 @@ ROLE
 
   iptables_filter_all
     Description: Define the 'iptables_filter_all' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -168,7 +168,7 @@ ROLE
 
   iptables_filter_group
     Description: Define the 'iptables_filter_group' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -180,7 +180,7 @@ ROLE
 
   iptables_filter_host
     Description: Define the 'iptables_filter_host' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -192,7 +192,7 @@ ROLE
 
   iptables_filter_policies
     Description: Define the 'iptables_filter_policies' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash

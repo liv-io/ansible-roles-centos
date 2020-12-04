@@ -101,7 +101,7 @@ PARAMETERS
 CONFIG
   alias
     Description: Define the 'alias' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -112,7 +112,7 @@ CONFIG
 
   config
     Description: Define the 'config' option.
-    Implemented: 2.0
+    Implemented: 2.0.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -130,7 +130,7 @@ CONFIG
 
   hsts_max_age
     Description: Set the 'hsts_max_age' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -140,7 +140,7 @@ CONFIG
 
   hsts_state
     Description: Control the 'hsts_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -151,7 +151,7 @@ CONFIG
 
   listen
     Description: Define the 'listen' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -161,7 +161,7 @@ CONFIG
 
   name
     Description: Define the 'name' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : True
     Value      : Arbitrary
     Type       : String
@@ -171,7 +171,7 @@ CONFIG
 
   port
     Description: Set the 'port' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : True
     Value      : Arbitrary
     Type       : Integer, String
@@ -181,7 +181,7 @@ CONFIG
 
   ssl_certificate
     Description: Define the 'ssl_certificate_file' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -192,7 +192,7 @@ CONFIG
 
   ssl_certificate_key
     Description: Define the 'ssl_certificate_key' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -203,7 +203,7 @@ CONFIG
 
   ssl_ciphers
     Description: Define the 'ssl_ciphers' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -215,7 +215,7 @@ CONFIG
 
   ssl_client_certificate
     Description: Define the 'ssl_client_certificate' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -226,7 +226,7 @@ CONFIG
 
   ssl_ecdh_curve
     Description: Define the 'ssl_ecdh_curve' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -236,7 +236,7 @@ CONFIG
 
   ssl_prefer_server_ciphers
     Description: Control the 'ssl_prefer_server_ciphers' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -247,7 +247,7 @@ CONFIG
 
   ssl_protocols
     Description: Define the 'ssl_protocols' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -259,7 +259,7 @@ CONFIG
 
   ssl_state
     Description: Control the 'ssl_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -270,7 +270,7 @@ CONFIG
 
   ssl_verify_client
     Description: Control the 'ssl_verify_client' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -281,7 +281,7 @@ CONFIG
 
   ssl_verify_depth
     Description: Set the 'ssl_verify_depth' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -291,7 +291,7 @@ CONFIG
 
   xss_protection_state
     Description: Control the 'xss_protection_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -303,7 +303,7 @@ CONFIG
 ROLE
   nginx_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -317,7 +317,7 @@ ROLE
 
   nginx_config
     Description: Define the 'nginx_config' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -335,7 +335,7 @@ ROLE
 
   nginx_hsts_max_age
     Description: Set the 'nginx_hsts_max_age' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -345,7 +345,7 @@ ROLE
 
   nginx_log_format_main
     Description: Define the 'nginx_log_format_main' option.
-    Implemented: 2.3
+    Implemented: 2.3.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -361,7 +361,7 @@ ROLE
 
   nginx_log_format_main_ssl
     Description: Define the 'nginx_log_format_main_ssl' option.
-    Implemented: 2.3
+    Implemented: 2.3.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -379,7 +379,7 @@ ROLE
 
   nginx_monitor_monit_state
     Description: Control the 'nginx_monitor_monit_state' option.
-    Implemented: 2.4
+    Implemented: 2.4.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -390,7 +390,7 @@ ROLE
 
   nginx_vhosts_d
     Description: Define the 'nginx_vhosts_d' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -400,7 +400,7 @@ ROLE
 
   nginx_worker_connections
     Description: Set the 'nginx_worker_connections' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String

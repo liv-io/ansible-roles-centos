@@ -78,7 +78,7 @@ PARAMETERS
 ROLE
   mysqld_exporter_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -92,7 +92,7 @@ ROLE
 
   mysqld_exporter_monitor_monit_state
     Description: Control the 'mysqld_exporter_monitor_monit_state' option.
-    Implemented: 3.1
+    Implemented: 3.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -103,7 +103,7 @@ ROLE
 
   mysqld_exporter_mysql_password
     Description: Define the 'mysqld_exporter_mysql_password' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -113,7 +113,7 @@ ROLE
 
   mysqld_exporter_version
     Description: Define the 'mysqld_exporter_version' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

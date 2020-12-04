@@ -65,7 +65,7 @@ PARAMETERS
 ROLE
   promtail_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -79,7 +79,7 @@ ROLE
 
   promtail_monitor_monit_state
     Description: Control the 'promtail_monitor_monit_state' option.
-    Implemented: 0.3
+    Implemented: 0.3.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -90,7 +90,7 @@ ROLE
 
   promtail_pipeline_stages_all
     Description: Define the 'promtail_pipeline_stages_all' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -179,7 +179,7 @@ ROLE
 
   promtail_pipeline_stages_group
     Description: Define the 'promtail_pipeline_stages_group' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -209,7 +209,7 @@ ROLE
 
   promtail_pipeline_stages_host
     Description: Define the 'promtail_pipeline_stages_host' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -239,7 +239,7 @@ ROLE
 
   promtail_version
     Description: Define the 'promtail_version' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

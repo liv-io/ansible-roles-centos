@@ -78,7 +78,7 @@ PARAMETERS
 ROLE
   haproxy_exporter_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -92,7 +92,7 @@ ROLE
 
   haproxy_exporter_haproxy_scrape_uri
     Description: Define the 'haproxy_exporter_haproxy_scrape_uri' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -104,7 +104,7 @@ ROLE
 
   haproxy_exporter_monitor_monit_state
     Description: Control the 'haproxy_exporter_monitor_monit_state' option.
-    Implemented: 3.1
+    Implemented: 3.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -115,7 +115,7 @@ ROLE
 
   haproxy_exporter_version
     Description: Define the 'haproxy_exporter_version' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

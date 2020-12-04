@@ -70,7 +70,7 @@ PARAMETERS
 ROLE
   postgresql_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -84,7 +84,7 @@ ROLE
 
   postgresql_connections
     Description: Define the 'postgresql_connections' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -98,7 +98,7 @@ ROLE
 
   postgresql_listen_addresses
     Description: Define the 'postgresql_listen_addresses' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -108,7 +108,7 @@ ROLE
 
   postgresql_monitor_mail_from_address
     Description: Define the 'postgresql_monitor_mail_from_address' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -118,7 +118,7 @@ ROLE
 
   postgresql_monitor_mail_to_address
     Description: Define the 'postgresql_monitor_mail_to_address' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -129,7 +129,7 @@ ROLE
 
   postgresql_monitor_mail_state
     Description: Control the 'postgresql_monitor_mail_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -140,7 +140,7 @@ ROLE
 
   postgresql_monitor_monit_state
     Description: Control the 'postgresql_monitor_monit_state' option.
-    Implemented: 0.7
+    Implemented: 0.7.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -151,7 +151,7 @@ ROLE
 
   postgresql_monitor_prom_state
     Description: Control the 'postgresql_monitor_prom_state' option.
-    Implemented: 0.3
+    Implemented: 0.3.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -162,7 +162,7 @@ ROLE
 
   postgresql_monitor_prom_textfile_collector
     Description: Define the 'postgresql_monitor_prom_textfile_collector' option.
-    Implemented: 0.3
+    Implemented: 0.3.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -172,7 +172,7 @@ ROLE
 
   postgresql_postgres_password
     Description: Define the 'postgresql_postgres_password' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -182,7 +182,7 @@ ROLE
 
   postgresql_run_backup_day
     Description: Define the 'postgresql_run_backup_day' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -192,7 +192,7 @@ ROLE
 
   postgresql_run_backup_exclude
     Description: Define the 'postgresql_run_backup_exclude' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -203,7 +203,7 @@ ROLE
 
   postgresql_run_backup_hour
     Description: Define the 'postgresql_run_backup_hour' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -213,7 +213,7 @@ ROLE
 
   postgresql_run_backup_minute
     Description: Define the 'postgresql_run_backup_minute' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -223,7 +223,7 @@ ROLE
 
   postgresql_run_backup_month
     Description: Define the 'postgresql_run_backup_month' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -233,7 +233,7 @@ ROLE
 
   postgresql_run_backup_state
     Description: Control the 'postgresql_run_backup_state' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -244,7 +244,7 @@ ROLE
 
   postgresql_run_backup_weekday
     Description: Define the 'postgresql_run_backup_weekday' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String

@@ -67,7 +67,7 @@ PARAMETERS
 ROLE
   mod_security_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -81,7 +81,7 @@ ROLE
 
   mod_security_sec_audit_log_parts
     Description: Define the 'mod_security_sec_audit_log_parts' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -91,7 +91,7 @@ ROLE
 
   mod_security_sec_pcre_match_limit
     Description: Set the 'mod_security_sec_pcre_match_limit' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer
@@ -101,7 +101,7 @@ ROLE
 
   mod_security_sec_pcre_match_limit_recursion
     Description: Set the 'mod_security_sec_pcre_match_limit_recursion' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer
@@ -111,7 +111,7 @@ ROLE
 
   mod_security_sec_request_body_access
     Description: Control the 'mod_security_sec_request_body_access' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -122,7 +122,7 @@ ROLE
 
   mod_security_sec_request_body_limit
     Description: Set the 'mod_security_sec_request_body_limit' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer
@@ -132,7 +132,7 @@ ROLE
 
   mod_security_sec_request_body_limit_action
     Description: Define the 'mod_security_sec_request_body_limit_action' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -143,7 +143,7 @@ ROLE
 
   mod_security_sec_request_body_no_files_limit
     Description: Set the 'mod_security_sec_request_body_no_files_limit' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer
@@ -153,7 +153,7 @@ ROLE
 
   mod_security_sec_response_body_access
     Description: Control the 'mod_security_sec_response_body_access' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -164,7 +164,7 @@ ROLE
 
   mod_security_sec_response_body_limit_action
     Description: Define the 'mod_security_sec_response_body_limit_action' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -175,7 +175,7 @@ ROLE
 
   mod_security_sec_rule_engine
     Description: Define the 'mod_security_sec_rule_engine' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -187,7 +187,7 @@ ROLE
 
   mod_security_sec_server_signature
     Description: Define the 'mod_security_sec_server_signature' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

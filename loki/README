@@ -66,7 +66,7 @@ PARAMETERS
 ROLE
   loki_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -80,7 +80,7 @@ ROLE
 
   loki_alertmanager_state
     Description: Control the 'loki_alertmanager_state' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -91,7 +91,7 @@ ROLE
 
   loki_monitor_monit_state
     Description: Control the 'loki_monitor_monit_state' option.
-    Implemented: 0.3
+    Implemented: 0.3.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -102,7 +102,7 @@ ROLE
 
   loki_retention_period
     Description: Define the 'loki_retention_period' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -112,7 +112,7 @@ ROLE
 
   loki_version
     Description: Define the 'loki_version' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

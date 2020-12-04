@@ -64,7 +64,7 @@ PARAMETERS
 ROLE
   mod_ssl_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -78,7 +78,7 @@ ROLE
 
   mod_ssl_listen
     Description: Set the 'mod_ssl_listen' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : Array

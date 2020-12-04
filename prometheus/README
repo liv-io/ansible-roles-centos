@@ -88,7 +88,7 @@ PARAMETERS
 ROLE
   prometheus_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -102,7 +102,7 @@ ROLE
 
   prometheus_alerting_rules
     Description: Define the 'prometheus_alerting_rules' option.
-    Implemented: 1.11
+    Implemented: 1.11.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -121,7 +121,7 @@ ROLE
 
   prometheus_alertmanager_state
     Description: Control the 'prometheus_alertmanager_state' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -132,7 +132,7 @@ ROLE
 
   prometheus_alertmanager_url
     Description: Define the 'prometheus_alertmanager_url' option.
-    Implemented: 1.10
+    Implemented: 1.10.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -142,7 +142,7 @@ ROLE
 
   prometheus_blackbox_exporter_state
     Description: Control the 'prometheus_blackbox_exporter_state' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -153,7 +153,7 @@ ROLE
 
   prometheus_blackbox_exporter_http_ip4_basic_manual_hosts
     Description: Define the 'prometheus_blackbox_exporter_http_ip4_basic_manual_hosts' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -166,7 +166,7 @@ ROLE
 
   prometheus_blackbox_exporter_icmp_ip4_ansible_groups
     Description: Define the 'prometheus_blackbox_exporter_icmp_ip4_ansible_groups' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -177,7 +177,7 @@ ROLE
 
   prometheus_blackbox_exporter_icmp_ip4_manual_hosts
     Description: Define the 'prometheus_blackbox_exporter_icmp_ip4_manual_hosts' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -190,7 +190,7 @@ ROLE
 
   prometheus_builtin_dashboards_state
     Description: Control the 'prometheus_builtin_dashboards_state' option.
-    Implemented: 1.10
+    Implemented: 1.10.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -201,7 +201,7 @@ ROLE
 
   prometheus_global_evaluation_interval
     Description: Define the 'prometheus_global_evaluation_interval' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -211,7 +211,7 @@ ROLE
 
   prometheus_global_scrape_interval
     Description: Define the 'prometheus_global_scrape_interval' option.
-    Implemented: 0.2
+    Implemented: 0.2.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -221,7 +221,7 @@ ROLE
 
   prometheus_grafana_url
     Description: Define the 'prometheus_grafana_url' option.
-    Implemented: 1.10
+    Implemented: 1.10.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -231,7 +231,7 @@ ROLE
 
   prometheus_haproxy_exporter_target_ansible_groups
     Description: Define the 'prometheus_haproxy_exporter_target_ansible_groups' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -242,7 +242,7 @@ ROLE
 
   prometheus_haproxy_exporter_target_manual_hosts
     Description: Define the 'prometheus_haproxy_exporter_target_manual_hosts' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -255,7 +255,7 @@ ROLE
 
   prometheus_monit_exporter_target_ansible_groups
     Description: Define the 'prometheus_monit_exporter_target_ansible_groups' option.
-    Implemented: 1.8
+    Implemented: 1.8.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -266,7 +266,7 @@ ROLE
 
   prometheus_monit_exporter_target_manual_hosts
     Description: Define the 'prometheus_monit_exporter_target_manual_hosts' option.
-    Implemented: 1.8
+    Implemented: 1.8.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -279,7 +279,7 @@ ROLE
 
   prometheus_monitor_monit_state
     Description: Control the 'prometheus_monitor_monit_state' option.
-    Implemented: 1.6
+    Implemented: 1.6.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -290,7 +290,7 @@ ROLE
 
   prometheus_mysqld_exporter_target_ansible_groups
     Description: Define the 'prometheus_mysqld_exporter_target_ansible_groups' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -301,7 +301,7 @@ ROLE
 
   prometheus_mysqld_exporter_target_manual_hosts
     Description: Define the 'prometheus_mysqld_exporter_target_manual_hosts' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -314,7 +314,7 @@ ROLE
 
   prometheus_node_exporter_target_ansible_groups
     Description: Define the 'prometheus_node_exporter_target_ansible_groups' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -325,7 +325,7 @@ ROLE
 
   prometheus_node_exporter_target_manual_hosts
     Description: Define the 'prometheus_node_exporter_target_manual_hosts' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -338,7 +338,7 @@ ROLE
 
   prometheus_prometheus_url
     Description: Define the 'prometheus_prometheus_url' option.
-    Implemented: 1.10
+    Implemented: 1.10.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -348,7 +348,7 @@ ROLE
 
   prometheus_smokeping_prober_state
     Description: Control the 'prometheus_smokeping_prober_state' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -359,7 +359,7 @@ ROLE
 
   prometheus_smokeping_prober_target_ansible_groups
     Description: Define the 'prometheus_smokeping_prober_target_ansible_groups' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -370,7 +370,7 @@ ROLE
 
   prometheus_smokeping_prober_target_manual_hosts
     Description: Define the 'prometheus_smokeping_prober_target_manual_hosts' option.
-    Implemented: 1.0
+    Implemented: 1.0.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -383,7 +383,7 @@ ROLE
 
   prometheus_storage_tsdb_retention_time
     Description: Define the 'prometheus_storage_tsdb_retention_time' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -393,7 +393,7 @@ ROLE
 
   prometheus_version
     Description: Define the 'prometheus_version' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

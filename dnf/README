@@ -174,7 +174,7 @@ PARAMETERS
 ROLE
   dnf_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -185,7 +185,7 @@ ROLE
 
   dnf_check_update_day
     Description: Define the 'dnf_check_update_day' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -195,7 +195,7 @@ ROLE
 
   dnf_check_update_hour
     Description: Define the 'dnf_check_update_hour' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -205,7 +205,7 @@ ROLE
 
   dnf_check_update_minute
     Description: Define the 'dnf_check_update_minute' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -215,7 +215,7 @@ ROLE
 
   dnf_check_update_month
     Description: Define the 'dnf_check_update_month' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -225,7 +225,7 @@ ROLE
 
   dnf_check_update_state
     Description: Control the 'dnf_check_update_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -236,7 +236,7 @@ ROLE
 
   dnf_check_update_weekday
     Description: Define the 'dnf_check_update_weekday' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Integer, String
@@ -246,7 +246,7 @@ ROLE
 
   dnf_config_all
     Description: Define the 'dnf_config_all' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -269,7 +269,7 @@ ROLE
 
   dnf_config_group
     Description: Define the 'dnf_config_group' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -282,7 +282,7 @@ ROLE
 
   dnf_config_host
     Description: Define the 'dnf_config_host' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array/Hash
@@ -295,7 +295,7 @@ ROLE
 
   dnf_exclude
     Description: Define the 'dnf_exclude' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -306,7 +306,7 @@ ROLE
 
   dnf_include
     Description: Define the 'dnf_include' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -317,7 +317,7 @@ ROLE
 
   dnf_monitor_mail_from_address
     Description: Define the 'dnf_monitor_mail_from_address' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -327,7 +327,7 @@ ROLE
 
   dnf_monitor_mail_to_address
     Description: Define the 'dnf_monitor_mail_to_address' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : Array
@@ -338,7 +338,7 @@ ROLE
 
   dnf_monitor_mail_state
     Description: Control the 'dnf_monitor_mail_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -349,7 +349,7 @@ ROLE
 
   dnf_monitor_prom_state
     Description: Control the 'dnf_monitor_prom_state' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -360,7 +360,7 @@ ROLE
 
   dnf_monitor_prom_textfile_collector
     Description: Define the 'dnf_monitor_prom_textfile_collector' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -370,7 +370,7 @@ ROLE
 
   dnf_proxy
     Description: Define the 'dnf_proxy' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -381,7 +381,7 @@ ROLE
 
   dnf_proxy_password
     Description: Define the 'dnf_proxy_password' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
@@ -392,7 +392,7 @@ ROLE
 
   dnf_proxy_username
     Description: Define the 'dnf_proxy_username' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String

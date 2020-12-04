@@ -63,7 +63,7 @@ PARAMETERS
 ROLE
   mod_security_crs2_state
     Description: Control the state of the role.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Predetermined
     Type       : String
@@ -77,7 +77,7 @@ ROLE
 
   mod_security_crs2_sec_default_action
     Description: Define the 'mod_security_crs2_sec_default_action' option.
-    Implemented: 0.1
+    Implemented: 0.1.0
     Required   : False
     Value      : Arbitrary
     Type       : String
