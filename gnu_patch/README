@@ -74,7 +74,7 @@ DEPENDENCIES
 
 PACKAGES
   gnu-patch
-    Version: >= 2.7.0
+    Version: >= 2.7
     Name   :
       CentOS 7: 'patch'
       CentOS 8: 'patch'
