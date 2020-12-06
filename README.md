@@ -26,7 +26,7 @@
 
 ## About
 
-`ansible-roles-centos` is a collection of well curated Ansible roles for the CentOS Linux distribution. The Ansible roles are licensed under the Simplified BSD License.
+`ansible-roles-centos` is a collection of well curated Ansible roles for the CentOS Linux distribution. All Ansible roles are licensed under the Simplified BSD License.
 
 ### Features
 
@@ -51,7 +51,7 @@
 
 ### Support
 
-The Ansible roles support the following operating systems:
+The following operating systems are supported:
 * CentOS 7
 * CentOS 8
 
