@@ -176,6 +176,7 @@ PACKAGES
   rsyslog
     Version: >= 8.0
     Name   :
+      CentOS 7: 'rsyslog'
       CentOS 8: 'rsyslog'
 
 ROLES
@@ -201,7 +202,7 @@ SUPPORT
 OPERATING SYSTEMS
   CentOS
     Version: 7
-      Status: Planned
+      Status: Development
 
   CentOS
     Version: 8

@@ -1,0 +1,3 @@
+---
+
+rsyslog_pid: '/run/syslogd.pid'

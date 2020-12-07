@@ -73,7 +73,6 @@ The Ansible managed node depends on:
 
 ## Roadmap
 
-* Add support for CentOS 7 (rsyslog)
 * Add Ansible roles (certificates, ca_trust, logrotate, networking, routes)
 * Support monitoring via Coremon
 
