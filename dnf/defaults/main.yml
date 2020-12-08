@@ -15,26 +15,26 @@ dnf_check_update_state: 'enable'
 dnf_check_update_weekday: '*'
 
 dnf_config_all:
-  - name: 'CentOS-AppStream'
+  - name: 'CentOS-Linux-AppStream'
     state: 'true'
-    comment: 'CentOS AppStream'
+    comment: 'CentOS Linux - AppStream'
     repositories:
-      - name: 'AppStream'
+      - name: 'appstream'
         state: 'true'
-        comment: 'CentOS AppStream'
-        description: 'CentOS-$releasever - AppStream'
+        comment: 'CentOS Linux - AppStream'
+        description: 'CentOS Linux $releasever - AppStream'
         url: 'http://mirror.centos.org/$contentdir/$releasever/AppStream/$basearch/os/'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
 
-  - name: 'CentOS-Base'
+  - name: 'CentOS-Linux-BaseOS'
     state: 'true'
-    comment: 'CentOS Base'
+    comment: 'CentOS Linux - Base'
     repositories:
-      - name: 'Base'
+      - name: 'baseos'
         state: 'true'
-        comment: 'CentOS Base'
-        description: 'CentOS-$releasever - Base'
+        comment: 'CentOS Linux - Base'
+        description: 'CentOS Linux $releasever - BaseOS'
         url: 'http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
@@ -73,77 +73,173 @@ dnf_config_all:
       =kkH7
       -----END PGP PUBLIC KEY BLOCK-----
 
-  - name: 'CentOS-centosplus'
+  - name: 'CentOS-Linux-ContinuousRelease'
     state: 'true'
-    comment: 'CentOS Plus'
-    repositories:
-      - name: 'centosplus'
-        state: 'false'
-        comment: 'CentOS Plus'
-        description: 'CentOS-$releasever - Plus'
-        url: 'http://mirror.centos.org/$contentdir/$releasever/centosplus/$basearch/os/'
-        gpg_check: 'yes'
-        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
-
-  - name: 'CentOS-CR'
-    state: 'true'
-    comment: 'CentOS CR'
+    comment: 'CentOS Linux - ContinuousRelease'
     repositories:
       - name: 'cr'
         state: 'false'
-        comment: 'CentOS CR'
-        description: 'CentOS-$releasever - cr'
+        comment: 'CentOS Linux - ContinuousRelease'
+        description: 'CentOS Linux $releasever - ContinuousRelease'
         url: 'http://mirror.centos.org/$contentdir/$releasever/cr/$basearch/os/'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
 
-  - name: 'CentOS-Debuginfo'
+  - name: 'CentOS-Linux-Debuginfo'
     state: 'true'
-    comment: 'CentOS Debuginfo'
+    comment: 'CentOS Linux - Debuginfo'
     repositories:
-      - name: 'base-debuginfo'
+      - name: 'debuginfo'
         state: 'false'
-        comment: 'CentOS-$releasever - Debuginfo'
-        description: 'CentOS Debuginfo'
+        comment: 'CentOS Linux - Debuginfo'
+        description: 'CentOS Linux $releasever - Debuginfo'
         url: 'http://debuginfo.centos.org/$releasever/$basearch/'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
 
-  - name: 'CentOS-Extras'
+  - name: 'CentOS-Linux-Devel'
     state: 'true'
-    comment: 'CentOS Extras'
+    comment: 'CentOS Linux - Devel'
+    repositories:
+      - name: 'devel'
+        state: 'false'
+        comment: 'CentOS Linux - Devel'
+        description: 'CentOS Linux $releasever'
+        url: 'http://mirror.centos.org/$contentdir/$releasever/Devel/$basearch/os/'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+  - name: 'CentOS-Linux-Extras'
+    state: 'true'
+    comment: 'CentOS Linux - Extras'
     repositories:
       - name: 'extras'
         state: 'true'
-        comment: 'CentOS Extras'
-        description: 'CentOS-$releasever - Extras'
+        comment: 'CentOS Linux - Extras'
+        description: 'CentOS Linux $releasever - Extras'
         url: 'http://mirror.centos.org/$contentdir/$releasever/extras/$basearch/os/'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
 
-  - name: 'CentOS-fasttrack'
+  - name: 'CentOS-Linux-FastTrack'
     state: 'true'
-    comment: 'CentOS Fasttrack'
+    comment: 'CentOS Linux - FastTrack'
     repositories:
       - name: 'fasttrack'
         state: 'false'
-        comment: 'CentOS Fasttrack'
-        description: 'CentOS-$releasever - fasttrack'
+        comment: 'CentOS Linux - FastTrack'
+        description: 'CentOS Linux $releasever - FastTrack'
         url: 'http://mirror.centos.org/$contentdir/$releasever/fasttrack/$basearch/os/'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
 
-  - name: 'CentOS-PowerTools'
+  - name: 'CentOS-Linux-HighAvailability'
     state: 'true'
-    comment: 'CentOS PowerTools'
+    comment: 'CentOS Linux - HighAvailability'
     repositories:
-      - name: 'PowerTools'
+      - name: 'ha'
         state: 'false'
-        comment: 'CentOS PowerTools'
-        description: 'CentOS-$releasever - PowerTools'
+        comment: 'CentOS Linux - HighAvailability'
+        description: 'CentOS Linux $releasever - HighAvailability'
+        url: 'http://mirror.centos.org/$contentdir/$releasever/HighAvailability/$basearch/os/'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+  - name: 'CentOS-Linux-Plus'
+    state: 'true'
+    comment: 'CentOS Linux - Plus'
+    repositories:
+      - name: 'plus'
+        state: 'false'
+        comment: 'CentOS Linux - Plus'
+        description: 'CentOS Linux $releasever - Plus'
+        url: 'http://mirror.centos.org/$contentdir/$releasever/centosplus/$basearch/os/'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+  - name: 'CentOS-Linux-PowerTools'
+    state: 'true'
+    comment: 'CentOS Linux - PowerTools'
+    repositories:
+      - name: 'powertools'
+        state: 'false'
+        comment: 'CentOS Linux - PowerTools'
+        description: 'CentOS Linux $releasever - PowerTools'
         url: 'http://mirror.centos.org/$contentdir/$releasever/PowerTools/$basearch/os/'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+  - name: 'CentOS-Linux-Sources'
+    state: 'true'
+    comment: 'CentOS Linux Sources'
+    repositories:
+      - name: 'baseos-source'
+        state: 'false'
+        comment: 'CentOS Linux - BaseOS - Source'
+        description: 'CentOS Linux $releasever - BaseOS - Source'
+        url: 'http://vault.centos.org/$contentdir/$releasever/BaseOS/Source/'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+      - name: 'appstream-source'
+        state: 'false'
+        comment: 'CentOS Linux - AppStream - Source'
+        description: 'CentOS Linux $releasever - AppStream - Source'
+        url: 'http://vault.centos.org/$contentdir/$releasever/AppStream/Source/'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+      - name: 'extras-source'
+        state: 'false'
+        comment: 'CentOS Linux - Extras - Source'
+        description: 'CentOS Linux $releasever - Extras - Source'
+        url: 'http://vault.centos.org/$contentdir/$releasever/extras/Source/'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+      - name: 'plus-source'
+        state: 'false'
+        comment: 'CentOS Linux Plus - Source'
+        description: 'CentOS Linux $releasever - Plus - Source'
+        url: 'http://vault.centos.org/$contentdir/$releasever/centosplus/Source/'
+        gpg_check: 'yes'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+
+  - name: 'CentOS-AppStream'
+    state: 'false'
+
+  - name: 'CentOS-Base'
+    state: 'false'
+
+  - name: 'CentOS-centosplus'
+    state: 'false'
+
+  - name: 'CentOS-CR'
+    state: 'false'
+
+  - name: 'CentOS-Debuginfo'
+    state: 'false'
+
+  - name: 'CentOS-Devel'
+    state: 'false'
+
+  - name: 'CentOS-Extras'
+    state: 'false'
+
+  - name: 'CentOS-fasttrack'
+    state: 'false'
+
+  - name: 'CentOS-HA'
+    state: 'false'
+
+  - name: 'CentOS-PowerTools'
+    state: 'false'
+
+  - name: 'CentOS-Sources'
+    state: 'false'
+
+  - name: 'CentOS-Vault'
+    state: 'false'
 
   - name: 'epel'
     state: 'true'
@@ -159,7 +255,7 @@ dnf_config_all:
 
       - name: 'epel-debuginfo'
         state: 'false'
-        comment: 'Extra Packages for Enterprise Linux'
+        comment: 'Extra Packages for Enterprise Linux - Debug'
         description: 'Extra Packages for Enterprise Linux $releasever - $basearch - Debug'
         url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Everything/$basearch/debug'
         gpg_check: 'yes'
@@ -167,17 +263,17 @@ dnf_config_all:
 
       - name: 'epel-source'
         state: 'false'
-        comment: 'Extra Packages for Enterprise Linux'
+        comment: 'Extra Packages for Enterprise Linux - Source'
         description: 'Extra Packages for Enterprise Linux $releasever - $basearch - Source'
         url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Everything/SRPMS'
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
 
-    gpg_name: 'RPM-GPG-KEY-EPEL-8'
+    gpg_name: 'RPM-GPG-KEY-8'
     gpg_state: 'true'
     gpg_content: |
       -----BEGIN PGP PUBLIC KEY BLOCK-----
-      
+
       mQINBFz3zvsBEADJOIIWllGudxnpvJnkxQz2CtoWI7godVnoclrdl83kVjqSQp+2
       dgxuG5mUiADUfYHaRQzxKw8efuQnwxzU9kZ70ngCxtmbQWGmUmfSThiapOz00018
       +eo5MFabd2vdiGo1y+51m2sRDpN8qdCaqXko65cyMuLXrojJHIuvRA/x7iqOrRfy
@@ -207,31 +303,46 @@ dnf_config_all:
 
   - name: 'epel-modular'
     state: 'true'
-    comment: 'Extra Packages for Enterprise Linux Modular'
+    comment: 'Extra Packages for Enterprise Linux'
     repositories:
       - name: 'epel-modular'
-        state: 'false'
-        comment: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch'
+        state: 'true'
+        comment: 'Extra Packages for Enterprise Linux Modular'
         description: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch'
-        url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Modular/$basearch'
+        url: 'https://mirrors.kernel.org/fedora-epel/$releasever/Modular/$basearch'
         gpg_check: 'yes'
-        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$releasever'
 
       - name: 'epel-modular-debuginfo'
         state: 'false'
-        comment: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch - Debug'
+        comment: 'Extra Packages for Enterprise Linux Modular - Debug'
         description: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch - Debug'
-        url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Modular/$basearch/debug'
+        url: 'https://mirrors.kernel.org/fedora-epel/$releasever/Modular/$basearch/debug'
         gpg_check: 'yes'
-        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$releasever'
 
       - name: 'epel-modular-source'
         state: 'false'
-        comment: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch - Source'
+        comment: 'Extra Packages for Enterprise Linux Modular - Source'
         description: 'Extra Packages for Enterprise Linux Modular $releasever - $basearch - Source'
-        url: 'http://mirrors.kernel.org/fedora-epel/$releasever/Modular/SRPMS'
+        url: 'https://mirrors.kernel.org/fedora-epel/$releasever/Modular/SRPMS'
         gpg_check: 'yes'
-        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
+        gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$releasever'
+
+  - name: 'epel-playground'
+    state: 'true'
+    comment: 'Extra Packages for Enterprise Linux'
+    repositories: []
+
+  - name: 'epel-testing'
+    state: 'true'
+    comment: 'Extra Packages for Enterprise Linux'
+    repositories: []
+
+  - name: 'epel-testing-modular'
+    state: 'true'
+    comment: 'Extra Packages for Enterprise Linux'
+    repositories: []
 
 dnf_config_group: []
 
