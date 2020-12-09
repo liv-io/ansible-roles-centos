@@ -269,7 +269,7 @@ dnf_config_all:
         gpg_check: 'yes'
         gpg_key: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever'
 
-    gpg_name: 'RPM-GPG-KEY-8'
+    gpg_name: 'RPM-GPG-KEY-EPEL-8'
     gpg_state: 'true'
     gpg_content: |
       -----BEGIN PGP PUBLIC KEY BLOCK-----
