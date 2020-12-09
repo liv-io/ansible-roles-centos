@@ -14,6 +14,9 @@ F: feature
 
 --------------------------------------------------------------------------------
 
+* Version 3.2.0 (2020-12-09)
+F: Update haproxy_exporter to version 0.12.0
+
 * Version 3.1.2 (2020-11-30)
 E: Do not create home directory for service user
 
@@ -36,7 +39,7 @@ E: Simplify checksum verification
 C: Redesign role to support SELinux
 
 * Version 2.1.0 (2020-06-21)
-C: Update 'haproxy_exporter' to version '0.11.0'
+F: Update haproxy_exporter to version 0.11.0
 
 * Version 2.0.2 (2020-05-27)
 B: Remove 'creates' Ansible parameter (make unarchive override files)
@@ -52,7 +55,7 @@ F: Add support for CentOS 8
 F: Port role to Ansible 2.8
 
 * Version 1.1.0 (2019-01-15)
-C: Update 'haproxy_exporter' to version '0.10.0'
+F: Update haproxy_exporter to version 0.10.0
 
 * Version 1.0.1 (2018-12-13)
 B: Fix bug introduced with Jinja2 style improvements
