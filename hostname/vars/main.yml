@@ -17,7 +17,7 @@ command_cmd_get_chassis: "hostnamectl status | grep '^.*Chassis: ' | sed 's/^.*C
 # get deployment
 command_cmd_get_deployment: "hostnamectl status | grep '^.*Deployment: ' | sed 's/^.*Deployment: //'"
 
-# get hostname 
+# get hostname
 command_cmd_get_hostname: "hostnamectl status | grep '^.*Static hostname: ' | sed 's/^.*Static hostname: //'"
 
 # get icon-name
@@ -29,7 +29,7 @@ command_cmd_get_location: "hostnamectl status | grep '^.*Location: ' | sed 's/^.
 # get pretty-hostname
 command_cmd_get_pretty_hostname: "hostnamectl status | grep '^.*Pretty hostname: ' | sed 's/^.*Pretty hostname: //'"
 
-# set chassis 
+# set chassis
 command_cmd_set_chassis: "hostnamectl set-chassis {{hostname_chassis}}"
 
 # set deployment
