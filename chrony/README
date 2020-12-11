@@ -57,9 +57,9 @@ CRONJOB
     vars:
       chrony_state: 'cronjob'
       chrony_server:
-        - {address: '162.23.41.55', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
-        - {address: '162.23.41.56', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
-        - {address: '162.23.41.10', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
+        - {address: '195.176.26.204', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
+        - {address: '195.176.26.205', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
+        - {address: '195.176.26.206', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'}
         - {address: '192.33.96.101', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'}
         - {address: '192.33.96.102', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'}
 
@@ -280,9 +280,9 @@ ROLE
     Type       : Array/Hash
     Default    : [{address: "chrony.{{ansible_domain}}", options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Default NTP server'}]
     Options    :
-      Examples: [{address: '162.23.41.55', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
-                 {address: '162.23.41.56', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
-                 {address: '162.23.41.10', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
+      Examples: [{address: '195.176.26.204', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
+                 {address: '195.176.26.205', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
+                 {address: '195.176.26.206', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Federal Institute of Metrology METAS'},
                  {address: '192.33.96.101', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'},
                  {address: '192.33.96.102', options: {'burst', 'prefer', 'minpoll 4', 'maxpoll 6'}, comment: 'Swiss Federal Institute of Technology Zurich'}]
       None    : []
